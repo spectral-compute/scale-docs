@@ -5,7 +5,7 @@ extra_css:
   - style.css
 
 nav:
-  - Introduction: index.md
+  - Introduction: README.md
   - Getting Started:
       - Installation: manual/01-installing.md
       - Compiling CUDA with SCALE: manual/02-how-to-use.md

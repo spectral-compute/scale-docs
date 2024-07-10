@@ -11,7 +11,7 @@ Please [report a bug](../contact/report-a-bug.md)
 
 If you project needs a missing "CUDA-X" API (cuBLAS, cuFFT, cuSOLVER and
 friends), this is most likely something you can fix yourself by submitting a
-patch to the open-source library wrapper project [here](WRAPPER LINK HERE).
+patch to the [open-source library wrapper project](https://github.com/spectral-compute/scale-library-wrappers).
 So long as an equivalent function is available in a ROCm library, the wrapper
 code is trivial.
 
