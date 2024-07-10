@@ -12,3 +12,10 @@
     margin-top: 0.3em;
     pointer-events: none;
 }
+
+.book-summary ul.summary li .active>a,
+.book-summary ul.summary li a.active {
+    color: #008cff;
+    background: 0 0;
+    text-decoration: none;
+}
