@@ -12,7 +12,7 @@ This example covers the following features on top of what was shown in the [basi
     - `ptx_add()`
     - `ptx_lop3()`
 
-Build and run the example by following the [general instructions](./index.md).
+Build and run the example by following the [general instructions](./README.md).
 
 ## Extra info
 

@@ -72,4 +72,4 @@ hsainfo
 hsakmtinfo
 ```
 
-[get-in-touch]: ../index.md#contact-us
+[get-in-touch]: ../README.md#contact-us

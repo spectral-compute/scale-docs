@@ -14,7 +14,7 @@ The example consists of:
 - Receiving data back from the device
 - Checking that the data we received is what we expect
 
-Build and run the example by following the [general instructions](./index.md).
+Build and run the example by following the [general instructions](./README.md).
 
 ## Example source code
 
