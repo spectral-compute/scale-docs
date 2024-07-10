@@ -27,6 +27,7 @@ sudo mkdir /opt/scale
 tar xf scale-1.2.3.tar.xz -C /opt/scale
 
 # Add to PATH
+export PATH="/opt/scale/bin:$PATH"
 ```
 
 The tarball is significantly larger than the `.deb`, since it includes many dependent libraries directly instead of asking the system package manager to install them.
