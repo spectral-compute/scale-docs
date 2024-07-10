@@ -6,9 +6,9 @@ SCALE has some few runtime/library features not found in NVIDIA's CUDA Toolkit.
 
 Some extra features can be enabled by environment variables.
 
-### `REDSCALE_EXCEPTIONS=1`
+### `SCALE_EXCEPTIONS=1`
 
-Setting `REDSCALE_EXCEPTIONS=1` will cause all CUDA APIs to throw 
+Setting `SCALE_EXCEPTIONS=1` will cause all CUDA APIs to throw 
 exceptions instead of returning C-style error codes. The exceptions contain 
 descriptive error messages that make it clear what the problem is. For 
 example: instead of simply returning `cudaErrorInvalidArgument`, you might 

@@ -57,7 +57,7 @@ For the specified example, this will:
 1. Remove its build directory if it already exists
 2. Configure CMake for that example in a freshly-created build directory
 3. Build the example in that directory using Make
-4. Set the `REDSCALE_EXCEPTIONS=1` environment variable for better error reporting (read more [in the manual][exceptions])
+4. Set the `SCALE_EXCEPTIONS=1` environment variable for better error reporting (read more [in the manual][exceptions])
 4. Run the example
 
 [exceptions]: ../manual/03-troubleshooting.md#exceptions

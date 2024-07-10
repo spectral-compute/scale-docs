@@ -25,7 +25,7 @@ case "${EXAMPLE}" in
         make \
             -C "src/${EXAMPLE}/build"
 
-        export REDSCALE_EXCEPTIONS=1
+        export SCALE_EXCEPTIONS=1
 
         "src/${EXAMPLE}/build/example_${EXAMPLE}"
     ;;

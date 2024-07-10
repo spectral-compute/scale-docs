@@ -15,10 +15,10 @@ is one provided by SCALE, rather than the one provided by NVIDIA.
 ## Identifying GPU Target
 
 If you don't already know which AMD GPU target you need to compile for, you can
-use the `redscaleinfo` command provided by SCALE to find out:
+use the `scaleinfo` command provided by SCALE to find out:
 
 ```bash
-redscaleinfo
+scaleinfo
 ```
 
 Example output:
@@ -46,7 +46,7 @@ In this example, the GPU target ID is `gfx1030`.
 If your GPU is not listed in the output of this command, it is not currently
 supported by SCALE.
 
-If the `redscaleinfo` command is not found, ensure
+If the `scaleinfo` command is not found, ensure
 that `<SCALE install path>/bin` is in `PATH`.
 
 ## Point your build system at SCALE
