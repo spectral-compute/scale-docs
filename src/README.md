@@ -79,15 +79,18 @@ SCALE consists of:
 
 ## What are the differences between SCALE and other solutions?
 
-SCALE aims to be fully compatible with NVIDIA CUDA.
-We believe that users should not have to maintain multiple codebases or
-compromise on performance to support multiple GPU vendors. A toolchain that
-can compile CUDA for multiple vendors is the best way to achieve that.
+Instead of providing a [new way](https://xkcd.com/927/) to write GPGPU 
+software, SCALE allows programs written using the widely-popular CUDA
+language to be directly compiled for AMD GPUs.
 
-SCALE's language is a _superset_ of NVIDIA CUDA.
+SCALE aims to be fully compatible with NVIDIA CUDA. We believe that users 
+should not have to maintain multiple codebases or compromise on performance
+to support multiple GPU vendors.
 
-SCALE offers some [language extensions](./manual/language-extensions.md)
-that can make writing GPU code easier and more efficient.
+SCALE's language is a _superset_ of NVIDIA CUDA, offering some opt-in
+[language extensions](./manual/language-extensions.md)
+that can make writing GPU code easier and more efficient for users who wish
+to move away from `nvcc`.
 
 SCALE is a work in progress. If there is a missing API that is blocking your
 attempt to use SCALE, please contact us so we can prioritise its development.
