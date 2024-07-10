@@ -1,0 +1,14 @@
+.search-results, #book-search-input {
+    display: none;
+}
+
+.summary > li:last-child,
+.summary > li:nth-last-child(2) {
+    display: none;
+}
+
+.summary > li:first-child {
+    font-weight: bold;
+    margin-top: 0.3em;
+    pointer-events: none;
+}

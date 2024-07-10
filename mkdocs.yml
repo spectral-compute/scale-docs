@@ -1,0 +1,33 @@
+site_name: SCALE documentation
+docs_dir: src/
+theme: gitbook
+extra_css:
+  - style.css
+
+nav:
+  - Introduction: index.md
+  - Getting Started:
+      - Installation: manual/01-installing.md
+      - Compiling CUDA with SCALE: manual/02-how-to-use.md
+      - Examples:
+        - Basic example: examples/01-basic.md
+        - PTX example: examples/02-ptx.md
+        - BLAS example: examples/03-blas.md
+  - Diving Deeper:
+      - Troubleshooting: manual/03-troubleshooting.md
+      - Comparison to other solutions: manual/comparison.md
+      - Differences from NVIDIA CUDA: manual/80-differences.md
+      - Compute Capability Mapping: manual/98-compute-capabilities.md
+      - CUDA Dialects: manual/dialects.md
+      - SCALE Extensions:
+          - Runtime Extensions: manual/runtime-extensions.md
+          - Language Extensions: manual/language-extensions.md
+  - Contact Us:
+      - Report a Bug: contact/report-a-bug.md
+
+markdown_extensions:
+  - pymdownx.snippets:
+
+exclude_docs: |
+  examples/README.md
+  examples/*/build
