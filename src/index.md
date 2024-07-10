@@ -94,4 +94,7 @@ attempt to use SCALE, please contact us so we can prioritise its development.
 
 ## Contact us
 
-<!-- TODO: provide contact info -->
+There are multiple ways to get in touch with us:
+
+ - Join our [Discord](https://discord.gg/KNpgGbTc38)
+ - Send us an e-mail at hello@spectralcompute.co.uk
