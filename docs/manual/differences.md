@@ -28,6 +28,35 @@ A workaround which will also slightly improve the performance of your
 program when run on NVIDIA GPUs is to use nonblocking CUDA streams
 explicitly, rather than relying on the implicit CUDA stream.
 
+### Host-side `__half` support
+
+The CUDA API allows many `__half` math functions to be used on both host and 
+device.
+
+When compiling _non-CUDA_ translation units, you can include `<cuda_fp16.h>` 
+and use the `__half` math APIs in host code.
+
+NVIDIA's CUDA implementation converts the `__half` to 32-bit `float`, does the
+calculation, and converts back.
+
+SCALE only allows these functoins to be used when the host compiler supports 
+compiling fp16 code directly (via the `_Float16` type). Current versions of 
+both gcc and clang both support this.
+
+This difference only applies to _non-CUDA_ translation units (ie. not `.cu` 
+files) using compilers at least 2 years old.
+
+This means:
+
+- All `__half` APIs work in host code in `.cu` files.
+- `__half` APIs that perform floating point math will not compile in host 
+  code in non-CUDA translation units if an old host compiler is used.
+- The outcome of `__half` calculations on host/device will always be the same.
+- APIs for using `__half` as a storage type are always supported.
+
+SCALE bundles a modern host compiler at `<SCALE_DIR>/targets/gfxXXX/bin/gcc` 
+you can use as a workaround if this edgecase becomes a problem.
+
 ## Enhancements
 
 ### Contexts where CUDA APIs are forbidden
