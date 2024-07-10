@@ -19,11 +19,11 @@ Build and run the example by following the [general instructions](./README.md).
 ## Example source code
 
 ```cpp
----8<--- "public/examples/src/basic/basic.cu"
+---8<--- "examples/src/basic/basic.cu"
 ```
 
 ## `CMakeLists.txt` used
 
 ```cmake
----8<--- "public/examples/src/basic/CMakeLists.txt"
+---8<--- "examples/src/basic/CMakeLists.txt"
 ```

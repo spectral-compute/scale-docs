@@ -26,15 +26,15 @@ You can clone it using git:
 
 ```sh
 git clone https://github.com/spectral-compute/scale-docs.git
-cd scale-docs
+cd scale-docs/examples
 ```
 
 You can also download it as a ZIP file:
 
 ```sh
-wget -O scale-docs.zip https://github.com/spectral-compute/scale-docs/archive/refs/heads/main.zip
+wget -O scale-docs.zip https://github.com/spectral-compute/scale-docs/archive/refs/heads/master.zip
 unzip scale-docs.zip
-cd scale-docs-main
+cd scale-docs-master/examples
 ```
 
 ## Using the examples
@@ -47,7 +47,7 @@ The example repository includes a helper script, `example.sh`, that configures, 
 Here is how you can use it for the [Basic](./basic.md) example:
 
 ```sh
-# You should be in the root directory of the repository when running this
+# You should be in the `examples` directory of the `scale-docs` repository
 ./example.sh {SCALE_DIR} basic
 ```
 
@@ -67,5 +67,5 @@ For accessibilty, SCALE documentation portal includes the source code of the exa
 This is the source code of `example.sh` referenced above:
 
 ```sh
----8<--- "public/examples/example.sh"
+---8<--- "examples/example.sh"
 ```

@@ -11,11 +11,11 @@ Just like in other examples, this allows seamless transition of projects to SCAL
 ## Example source code
 
 ```cpp
----8<--- "public/examples/src/blas/blas.cu"
+---8<--- "examples/src/blas/blas.cu"
 ```
 
 ## `CMakeLists.txt` used
 
 ```cmake
----8<--- "public/examples/src/blas/CMakeLists.txt"
+---8<--- "examples/src/blas/CMakeLists.txt"
 ```

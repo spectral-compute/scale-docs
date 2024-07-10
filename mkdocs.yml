@@ -1,5 +1,5 @@
 site_name: SCALE documentation
-docs_dir: src/
+docs_dir: docs/
 theme: gitbook
 extra_css:
   - style.css
@@ -36,6 +36,3 @@ nav:
       - manual/language-extensions.md
   - Contact Us:
     - contact/report-a-bug.md
-
-exclude_docs: |
-  examples/*/build

@@ -27,11 +27,11 @@ PTX instructions used:
 ## Example source code
 
 ```cpp
----8<--- "public/examples/src/ptx/ptx.cu"
+---8<--- "examples/src/ptx/ptx.cu"
 ```
 
 ## `CMakeLists.txt` used
 
 ```cmake
----8<--- "public/examples/src/ptx/CMakeLists.txt"
+---8<--- "examples/src/ptx/CMakeLists.txt"
 ```
