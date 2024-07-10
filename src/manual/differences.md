@@ -1,7 +1,7 @@
-# Differences between SCALE and NVIDIA CUDA
+# Differences from NVIDIA CUDA
 
-There are some areas where SCALE's implementation of a certain feature also 
-found in NVIDIA CUDA has different behaviour. This document does not 
+There are some areas where SCALE's implementation of a certain feature also
+found in NVIDIA CUDA has different behaviour. This document does not
 enumerate _missing_ CUDA APIs/features.
 
 ## Defects
@@ -49,7 +49,7 @@ This is more permissive than what is allowed by NVIDIA's implementation.
 
 ### Device `printf`
 
-SCALE's device `printf` accepts an unlimited number of arguments if you compile 
+SCALE's device `printf` accepts an unlimited number of arguments if you compile
 with at least C++11.
 
 If you target an older version of C++ then it is limited to 32, like NVIDIA's
@@ -58,12 +58,12 @@ implementation.
 ### Contexts
 
 If `cuCtxDestroy()` is used to destroy the context that is current to a
-different CPU thread, and that CPU thread then issues an API call that 
-depends on the context without first setting a different context to be 
+different CPU thread, and that CPU thread then issues an API call that
+depends on the context without first setting a different context to be
 current, the behaviour is undefined.
 
-In NVIDIA's implementation, this condition returns 
-`CUDA_ERROR_CONTEXT_IS_DESTROYED`. 
+In NVIDIA's implementation, this condition returns
+`CUDA_ERROR_CONTEXT_IS_DESTROYED`.
 
-Matching NVIDIA's behaviour would have incurred a small performance penalty 
+Matching NVIDIA's behaviour would have incurred a small performance penalty
 on many operations to handle an edgecase that is not permitted.

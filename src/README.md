@@ -11,7 +11,7 @@ Support for more GPU vendors and CUDA APIs is in development.
 
 To get started:
 
-- See the [tutorial](./manual/02-how-to-use.md).
+- See the [tutorial](./manual/how-to-use.md).
 - Review the [examples](./examples/README.md)
 - [Contact us](#contact-us) for help.
 
@@ -53,7 +53,7 @@ The following GPU targets are supported, and covered by our nightly tests:
 - AMD `gfx1030` (Navi 21, RDNA 2.0)
 - AMD `gfx1100` (Navi 31, RDNA 3.0)
 
-The following GPU targets have undergone ad-hoc manual testing and "seem to 
+The following GPU targets have undergone ad-hoc manual testing and "seem to
 work":
 
 - AMD `gfx1010`
@@ -81,7 +81,7 @@ SCALE consists of:
 
 SCALE aims to be fully compatible with NVIDIA CUDA.
 We believe that users should not have to maintain multiple codebases or
-compromise on performance to support multiple GPU vendors. A toolchain that 
+compromise on performance to support multiple GPU vendors. A toolchain that
 can compile CUDA for multiple vendors is the best way to achieve that.
 
 SCALE's language is a _superset_ of NVIDIA CUDA.

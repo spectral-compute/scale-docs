@@ -1,16 +1,16 @@
-# Compiling CUDA with SCALE
+# Compile CUDA with SCALE
 
 This guide covers the steps required to compile an existing CUDA project for an
 AMD GPU using SCALE.
 
 SCALE creates directories that aim to impersonate the NVIDIA CUDA Toolkit (from
-the point of view of your build system). Compilation with SCALE is therefore 
-a matter of telling your build system that the CUDA installation path 
+the point of view of your build system). Compilation with SCALE is therefore
+a matter of telling your build system that the CUDA installation path
 is one provided by SCALE, rather than the one provided by NVIDIA.
 
 ## Install SCALE
 
-[Install SCALE](./01-installing.md), if you haven't already.
+[Install SCALE](./how-to-install.md), if you haven't already.
 
 ## Identifying GPU Target
 
@@ -54,23 +54,23 @@ that `<SCALE install path>/bin` is in `PATH`.
 To allow compilation without build system changes, SCALE provides a series of
 directories that are recognised by build systems as being CUDA Toolkit
 installations. One such directory is provided for each supported AMD GPU
-target. These directories can be found at `<SCALE install 
-path>/targets/gfxXXXX`, where `gfxXXXX` is the name of an AMD GPU target, 
+target. These directories can be found at `<SCALE install
+path>/targets/gfxXXXX`, where `gfxXXXX` is the name of an AMD GPU target,
 such as `gfx1030`.
 
-You must tell your build system to use the "CUDA Toolkit" corresponding to the 
+You must tell your build system to use the "CUDA Toolkit" corresponding to the
 desired AMD GPU target.
 
-For example: to build for `gfx1030` you would tell your build system that 
+For example: to build for `gfx1030` you would tell your build system that
 CUDA is installed at `<SCALE install path>/targets/gfx1030`.
 
 The remainder of this document assumes that `SCALE_PATH` is an environment
-variable you have set to such a path (for example: 
+variable you have set to such a path (for example:
 `/opt/scale/targets/gfx1030`).
 
 ### CMake
 
-In most cases, it is sufficient to add these two arguments to your `cmake` 
+In most cases, it is sufficient to add these two arguments to your `cmake`
 invocation:
 
 ```
@@ -82,7 +82,7 @@ invocation:
 -DCMAKE_CUDA_ARCHITECTURES=86
 ```
 
-This will work for any modern CMake project that is using CMake's native 
+This will work for any modern CMake project that is using CMake's native
 CUDA support.
 
 If not using CMake's native CUDA support, most build systems can be fixed by adding
@@ -99,18 +99,18 @@ picking up NVIDIA CUDA (if it is installed):
 -- Check for working CUDA compiler: /opt/scale/gfx1030/bin/nvcc
 ```
 
-- The compiler ID should be "NVIDIA", followed by a version number ending in 
+- The compiler ID should be "NVIDIA", followed by a version number ending in
   `999`.
-- The "Check for working CUDA compiler" line should point to the SCALE nvcc 
+- The "Check for working CUDA compiler" line should point to the SCALE nvcc
   compiler, not the NVIDIA one.
-- Other paths (such as that of cublas, for example) should be pointing to 
+- Other paths (such as that of cublas, for example) should be pointing to
   the SCALE versions, not the NVIDIA ones.
 
 ### Others
 
-In the absence of other options, most build systems will use environment 
-variables and information from invoking the first `nvcc` found in `PATH` to 
-determine where CUDA is. As a result, the following works for many other 
+In the absence of other options, most build systems will use environment
+variables and information from invoking the first `nvcc` found in `PATH` to
+determine where CUDA is. As a result, the following works for many other
 build systems:
 
 ```bash
@@ -130,10 +130,10 @@ export CUDA_PATH="${SCALE_INSTALL_DIR}"
 <Your usual build command here>
 ```
 
-A buildsystem-specific way of specifying you wish to compile for sm_86 may 
+A buildsystem-specific way of specifying you wish to compile for sm_86 may
 also be required.
 
-You can verify that SCALE has been correctly added to `PATH` by executing 
+You can verify that SCALE has been correctly added to `PATH` by executing
 `nvcc --version`. You should see output like:
 
 ```
@@ -148,7 +148,7 @@ Cuda compilation tools, release 12.5, V12.5.999
 
 ## Next steps
 
-- Understand why all compilation magically uses `sm_86` by reading about 
-  [Compute Capability Mapping](98-compute-capabilities.md)
+- Understand why all compilation magically uses `sm_86` by reading about
+  [Compute Capability Mapping](compute-capabilities.md)
 - Learn about [CUDA dialects](dialects.md) and [SCALE language extensions](language-extensions.md)
 - [Report a bug](../contact/report-a-bug.md)

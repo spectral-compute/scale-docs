@@ -1,4 +1,4 @@
-# Example: BLAS
+# BLAS example
 
 This example shows how a math wrapper library for BLAS can be used.
 

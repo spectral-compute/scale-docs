@@ -1,4 +1,4 @@
-# Compute Capability Mapping for SCALE
+# Compute Capability Mapping
 
 "Compute capability" is a numbering system used by NVIDIA's CUDA tools to
 represent different GPU targets. The value of the `__CUDA_ARCH__` macro is
@@ -36,15 +36,15 @@ mode is unsupported except when a compute capability mapping is in use.
 
 ## Default numbering scheme
 
-By default (when no ccmap is in use), AMD GPUs are assigned a compute 
+By default (when no ccmap is in use), AMD GPUs are assigned a compute
 capability of at least 60000.0, or `sm_600000`.
 
-For a given GPU, e.g: `gfx1030`, the last two digits are each represented by 
+For a given GPU, e.g: `gfx1030`, the last two digits are each represented by
 two digits, and the remaining digits are copied verbatim. If one
 of the last digits is a letter, then the numbering continues from 10. The
-resulting number is used as the major compute capability. The minor version 
-number is currently unused and always zero. For example: `gfx1030` is 
-represented as compute capability 100300.0 (`sm_1003000`), and `gfx90c` is 
+resulting number is used as the major compute capability. The minor version
+number is currently unused and always zero. For example: `gfx1030` is
+represented as compute capability 100300.0 (`sm_1003000`), and `gfx90c` is
 represented as compute capability 90012.0 (`sm_900120`).
 
 

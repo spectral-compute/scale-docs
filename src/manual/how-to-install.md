@@ -1,4 +1,4 @@
-# Installing SCALE
+# Install SCALE
 
 SCALE is currently available as either a `.deb` package or a tarball.
 

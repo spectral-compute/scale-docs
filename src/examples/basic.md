@@ -1,4 +1,4 @@
-# Example: Basic
+# Basic example
 
 This example covers the basic features of the CUDA language:
 

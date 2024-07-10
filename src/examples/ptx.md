@@ -1,6 +1,6 @@
-# Example: PTX
+# PTX example
 
-This example covers the following features on top of what was shown in the [basic example](./01-basic.md):
+This example covers the following features on top of what was shown in the [basic example](./basic.md):
 
 - defining `__device__` functions
     - `ptx_add()`
