@@ -48,7 +48,7 @@ tests and pass fully:
 
 ## Which GPUs are supported?
 
-The following GPU targets are supported, and covered by our nightly tests:
+The following GPU targets are supported, and are covered by our nightly tests:
 
 - AMD `gfx1030` (Navi 21, RDNA 2.0)
 - AMD `gfx1100` (Navi 31, RDNA 3.0)
