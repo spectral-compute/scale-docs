@@ -27,6 +27,16 @@
 }
 
 /*
+    Make useless section links that don't lead anywhere actually non-interactive.
+*/
+.book-summary .summary li > a[href="#"],
+.book-summary .summary li > a[href="#"]:hover {
+    /* Color from `.book-summary ul.summary li.header` */
+    color: #939da3;
+    pointer-events: none;
+}
+
+/*
     Hide auto-inserted navigation elements.
 */
 .summary > li:last-child,
