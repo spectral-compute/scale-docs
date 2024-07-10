@@ -15,7 +15,7 @@ Dependencides:
 
 ```sh
 yay -S mkdocs pymdown-extensions
-pip install mkdocs-gitbook
+pip install mkdocs-material
 ```
 
 Development:

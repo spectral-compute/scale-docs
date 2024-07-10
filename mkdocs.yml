@@ -1,11 +1,12 @@
 site_name: SCALE documentation
 docs_dir: docs/
-theme: gitbook
-extra_css:
-  - style.css
+theme: material
 
 markdown_extensions:
-  - pymdownx.snippets:
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
 
 # Navigation and file naming conventions:
 #
