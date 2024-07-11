@@ -1,6 +1,13 @@
 # Report a Bug
 
-SCALE is still in active development, so bugs are reasonably likely.
+SCALE is still in active development, so you may encounter bugs. If you run 
+into problems, contact us:
+
+- Join our [Discord](https://discord.gg/KNpgGbTc38)
+- Send us an e-mail at [hello@spectralcompute.co.uk](mailto:hello@spectralcompute.co.uk)
+
+The remainder of this page provides information about how to make your 
+report as helpful as possible.
 
 ## "No such function: cudaSomethingSomething()"
 
@@ -61,7 +68,6 @@ from reproducing the crash with one or both of these enabled can be helpful:
 
 ## Something else
 
-Please [get in touch][get-in-touch].
 It will be helpful if you provide the output of the following commands along
 with your report:
 

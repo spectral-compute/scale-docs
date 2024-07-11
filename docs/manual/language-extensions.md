@@ -44,14 +44,16 @@ __device__ void example(int n) {
 
 `__builtin_provable(X)` accepts a boolean, `X`, and:
 
-- If the compiler is able to prove (during optimisation) that `X` is a 
+- If the compiler is able to prove, during optimisation, that `X` is a 
   compile-time constant true, the entire expression evaluates to a 
   compile-time constant true.
 - Otherwise (if `X` is unknown, or provably false), the entire expression 
   evaluates to a compile-time constant false.
 
 This allows you to write code that opportunistically optimises for a special 
-case, without ever having a runtime overhead. For example:
+case, without the risk of runtime branching overhead or the inconvenience of 
+propagating this information through your entire program using templates. 
+For example:
 
 ```c++
 __device__ int myCleverFunction(int input) {
@@ -69,6 +71,10 @@ compiler may be able to prove that `input % 2 == 0` for specific calls to
 this function. Those cases will be compiled with the "fast path", while all 
 others will be compiled to the "slow path". The `if` statement will never 
 compile to an actual conditional.
+
+Since there are no guarantees that the optimiser is able to prove the 
+condition, the program must produce identical outputs from either path, or 
+the behaviour is undefined.
 
 This feature differs from the standard c++17 `if constexpr` in that it is 
 not required that the input boolean be `constexpr`. `__builtin_provable()` 

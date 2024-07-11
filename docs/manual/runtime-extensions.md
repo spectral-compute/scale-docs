@@ -18,3 +18,34 @@ allowed to be nullptr"`.
 In cases where CUDA APIs are expected to return a value other than 
 `cudaSuccess` during normal operatoin (such as `cudaStreamQuery()`, an 
 exception will not be thrown except if an exceptional case arises.
+
+## API Extensions
+
+### Programmatic Exception Enablement
+
+SCALE exceptions (see documentation of `SCALE_EXCEPTIONS` environment 
+variable above) may also be enabled/disabled programmatically using
+these two global functions:
+
+```c++
+scale::Exception::enable();
+scale::Exception::disable();
+```
+
+Even when exceptions are disabled, you can access a `scale::Exception` object
+containing the descriptive error message from the most recent failure using
+`scale::Exception::last()`:
+
+```c++
+cudaError_t e = cudaSomething();
+
+#ifdef __REDSCALE__
+if (e != cudaSuccess) {
+    const scale::Exception &ex = scale::Exception::last();
+    std::cerr << "CUDA error: " << ex.what() << '\n';
+}
+#endif __REDSCALE__
+```
+
+The error accessed by this API is the same one you'd get from using the CUDA
+API `cudaGetLastError()`, just more descriptive.

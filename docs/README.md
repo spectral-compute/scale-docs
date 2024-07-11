@@ -17,23 +17,21 @@ To get started:
 
 ## How does it work?
 
-SCALE has several key innovations missing from other cross-platform GPGPU
+SCALE has several key innovations compared to other cross-platform GPGPU
 solutions:
 
+- SCALE accepts CUDA programs as-is. No need to port them to another 
+  language. This is true even if your program uses inline PTX `asm`.
 - The SCALE compiler accepts the same command-line options and CUDA dialect
   as `nvcc`, serving as a drop-in replacement.
-- The compiler accepts inline PTX `asm`, and can compile it for AMD GPUs.
-- Seamless integration with existing build tools by "looking like" an
-  installation of the NVIDIA CUDA Toolkit.
-  This eliminates the need to modify your project's build system: just point
-  `cmake` (or equivalent) to SCALE instead of NVIDIA CUDA, and your compilation
-  will produce AMD-compatible binaries instead.
+- "Impesonates" an installation of the NVIDIA CUDA Toolkit, so existing 
+  build tools and scripts like `cmake` _just work_.
 
 ## What projects have been tested?
 
-We validate the correctness of SCALE by compiling open-source CUDA projects and
-running their tests.
-The following popular open-source projects are part of our nightly automated
+We validate SCALE by compiling open-source CUDA projects and running their
+tests.
+The following open-source projects are currently part of our nightly automated 
 tests and pass fully:
 
 - [NVIDIA Thrust](https://github.com/NVIDIA/thrust)

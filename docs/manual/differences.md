@@ -69,8 +69,7 @@ This implementation allows CUDA API calls in such cases.
 ### Static initialization and deinitialization
 
 This implementation permits the use of CUDA API functions during global static
-initialization, `thread_local` static initialization, and
-`thread_local` static deinitialization.
+initialization and `thread_local` static initialization.
 
 It is not permitted to use CUDA API functions during static deinitialization.
 
