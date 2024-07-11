@@ -29,6 +29,13 @@ wget https://example.com/scale-free-1.0.0.0-Ubuntu22.04.deb
 sudo apt-get install ./scale-free-1.0.0.0-Ubuntu22.04.deb
 ```
 
+The `/dev/kfd` device is writable only to root and members of the `render` group by default on Ubuntu. Add your user
+(in this example: `youruser`) to that group, then log out and log back in:
+
+```bash
+sudo usermod -a -G render youruser
+```
+
 If, as is the case on Ubuntu 22.04, your kernel is too old, you'll need to install the kernel driver as well. On Ubuntu
 22.04. this can be done as follows:
 
