@@ -1,5 +1,7 @@
 site_name: SCALE documentation
 docs_dir: docs/
+extra_css:
+  - style.css
 theme:
   name: material
   logo: logo_white.svg
