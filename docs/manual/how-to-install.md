@@ -11,7 +11,7 @@ SCALE can be installed like any other package:
 wget https://example.com/scale-1.2.3.deb
 
 # Install the package
-sudo dpkg -i scale-1.2.3.deb
+sudo apt-get install ./scale-1.2.3.deb
 ```
 
 ## Other Linux distros
