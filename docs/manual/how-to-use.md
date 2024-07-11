@@ -127,7 +127,7 @@ export CUDA_PATH="${SCALE_INSTALL_DIR}"
 #export CXX="${SCALE_INSTALL_DIR}/bin/g++"
 #export CUDAHOSTCXX="${SCALE_INSTALL_DIR}/bin/g++"
 
-<Your usual build command here>
+<Your usual build here>
 ```
 
 A build-system-specific way of specifying you wish to compile for sm_86 may
