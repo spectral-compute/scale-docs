@@ -70,8 +70,8 @@ variable you have set to such a path (for example:
 
 ### CMake
 
-In most cases, it is sufficient to add these two arguments to your `cmake`
-invocation:
+In most cases, it is sufficient to add `${SCALE_PATH}/bin` to the start of
+`PATH`, and add these two arguments to your `cmake` invocation:
 
 ```
 # Replace with the path to your SCALE install, followed by the name of the
@@ -84,10 +84,6 @@ invocation:
 
 This will work for any modern CMake project that is using CMake's native
 CUDA support.
-
-If not using CMake's native CUDA support, most build systems can be fixed by adding
-`${SCALE_PATH}/bin` to the start of `PATH`, and verifying that the first `nvcc` in
-`PATH` is the SCALE one for your architecture.
 
 You can check CMake's output to verify it has properly detected SCALE instead of
 picking up NVIDIA CUDA (if it is installed):
