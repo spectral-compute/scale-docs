@@ -78,4 +78,7 @@ hsainfo
 hsakmtinfo
 ```
 
+Running your program with the environment variable `SCALE_EXCEPTIONS=1` set might give a more detailed error that would
+be helpful to us too.
+
 [get-in-touch]: ../README.md#contact-us

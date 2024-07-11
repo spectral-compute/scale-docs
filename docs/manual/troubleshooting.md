@@ -15,6 +15,12 @@ patch to the [open-source library wrapper project](https://github.com/spectral-c
 So long as an equivalent function is available in a ROCm library, the wrapper
 code is trivial.
 
+## General problems and API call returns an error code
+
+Particularly useful for diagnosing general errors and problems is to set the environment variable `SCALE_EXCEPTIONS=1`.
+This causes API calls to throw an exception which is usually printed to `stderr` if not caught. The exception often
+contains more information about what went wrong.
+
 ## wave64 issues
 
 Some AMD GPUs have a warp size of 64, not 32. All current NVIDIA GPU have a 
