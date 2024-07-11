@@ -70,8 +70,13 @@ variable you have set to such a path (for example:
 
 ### CMake
 
-In most cases, it is sufficient to add `${SCALE_PATH}/bin` to the start of
-`PATH`, and add these two arguments to your `cmake` invocation:
+Add SCALE's `nvcc` first in `PATH`:
+
+```bash
+expot PATH=${SCALE_PATH}/bin
+```
+
+Then add these two arguments to your `cmake` invocation:
 
 ```
 # Replace with the path to your SCALE install, followed by the name of the
@@ -104,10 +109,9 @@ picking up NVIDIA CUDA (if it is installed):
 
 ### Others
 
-In the absence of other options, most build systems will use environment
-variables and information from invoking the first `nvcc` found in `PATH` to
-determine where CUDA is. As a result, the following works for many other
-build systems:
+Most build systems will use environment variables and information from invoking
+the first `nvcc` found in `PATH` to determine where CUDA is. As a result, 
+the following works for many other build systems:
 
 ```bash
 # Update accordingly.
@@ -126,7 +130,7 @@ export CUDA_PATH="${SCALE_INSTALL_DIR}"
 <Your usual build command here>
 ```
 
-A buildsystem-specific way of specifying you wish to compile for sm_86 may
+A build-system-specific way of specifying you wish to compile for sm_86 may
 also be required.
 
 You can verify that SCALE has been correctly added to `PATH` by executing
@@ -134,7 +138,7 @@ You can verify that SCALE has been correctly added to `PATH` by executing
 
 ```
 nvcc: NVIDIA (R) Cuda compiler driver
-Actually: no. That's a lie to make cmake work. Truthfully:
+Actualy, no. This is the SCALE compiler, and the first/last line of this output are lies to make CMake work.
 clang version 17.0.0
 Target: x86_64-unknown-linux-gnu
 Thread model: posix
