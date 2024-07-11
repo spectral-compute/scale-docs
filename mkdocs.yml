@@ -18,6 +18,8 @@ theme:
     - navigation.expand
 
 markdown_extensions:
+  - toc:
+      permalink: "#"
   - pymdownx.highlight
   - pymdownx.inlinehilite
   - pymdownx.snippets
