@@ -84,3 +84,19 @@ terminate called after throwing an instance of 'std::runtime_error'
   what():  HSAKMT Error 20: Could not open KFD
 Aborted (core dumped)
 ```
+
+## Cannot find shared object
+
+The SCALE library does not install a library path because the correct path can be target dependent (in particular due to
+[compute capability mapping](../compute-capabilities.md)). This can lead to runtime errors where the SCALE libraries
+cannot be found, such as:
+
+```
+error while loading shared libraries: libredscale.so: cannot open shared object file: No such file or directory
+```
+
+This can be solved by making sure the SCALE libraries can be found. Example solutions include:
+ - Setting `LD_LIBRARY_PATH` to the appropriate library directory, for example
+   `LD_LIBRARY_PATH=/opt/scale/targets/gfx1030/lib:$LD_LIBRARY_PATH` for `gfx1030`.
+ - Making sure your program is compiled with the SCALE libraries' directory in their
+   [rpath](https://en.wikipedia.org/wiki/Rpath).
