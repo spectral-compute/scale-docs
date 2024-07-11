@@ -114,6 +114,33 @@ Two ways to solve this problem are:
  - Compile your program is compiled with that directory in RPATH:
    [rpath](https://en.wikipedia.org/wiki/Rpath).
 
+## Cannot compile using the nvrtc API or reported compute capabilities are huge
+
+Both of these problems are caused by using a `libredscale.so` that is not
+located in the correct place relative to its support files when running a
+program. In the case of the nvrtc API, it's because the compiler cannot be
+found. In the case of reported huge compute capabilities, it's because the
+[compute capability map](./compute-capabilities.md) cannot be found.
+
+The solution is to make sure to use the `lib` subdirectories for one of the
+targets, rather than the `lib` directory of the SCALE installation directory.
+For example, `/opt/scale/targets/gfx1030/lib` rather than `/opt/scale/lib`. The
+`gfxany` target is suitable for using the nvrtc API, but it does not contain a
+compute capability map so will not report small compute capabilities.
+
+As with being [unable to find the shared object](#cannot-find-shared-object) at
+all, this can be solved either by setting `LD_LIBRARY_PATH` or by setting the
+binary's rpath.
+
+#### Example error:
+
+```
+$ SCALE_EXCEPTIONS=1 ./rtc
+terminate called after throwing an instance of 'redscale::RtcException'
+  what():  nvrtcCompileProgram: Could not find clang-nvcc or nvcc., CUDA error: "JIT compiler not found", NVRTC error: "Compilation"
+Aborted (core dumped)
+```
+
 ## CMake: Error running link command: no such file or directory
 
 CMake tries to detect the linker to use based on the compiler. For SCALE's
