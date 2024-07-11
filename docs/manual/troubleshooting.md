@@ -43,3 +43,38 @@ To write code that works correctly on both platforms:
   on both platforms.
 - Avoid hardcoding the constant "32" to represent warp size, instead using 
   the global `warpSize` available on all platforms.
+
+## Initialization errors or no devices found
+
+The SCALE runtime can fail to initialize and list devices if the AMD kernel module is out of date, or if `/dev/kfd` is
+not writable to the user running the program. This may also happen if there are no supported GPUs.
+
+ - Make sure your GPU is one of the supported GPUs listed [here](../README.md) by running
+  `/opt/scale/bin/hsasysinfo | grep 'Name: gfx`. If this does not show anything or returns an error, continue to the
+   next step.
+ - Make `/dev/kfd` is writable.
+    - This can be tested temporarily by making it world-writable: `sudo chmod 666 /dev/kfd`.
+    - Make sure the user is in `/dev/kfd`'s group. For example, on Ubuntu: `sudo usermod -a -G render USERNAME`.
+ - If `/dev/kfd` is writable, the kernel driver may be out of date. On Ubuntu, follow the instructions in
+   [the installation guide](../how-to-install.md) for installing `amdgpu-dkms`.
+
+#### Example error messages
+
+```
+$ SCALE_EXCEPTIONS=1 ./myProgram
+terminate called after throwing an instance of 'redscale::SimpleException'
+  what():  cudaDeviceSynchronize: No usable CUDA devices found., CUDA error: "no device"
+Aborted (core dumped)
+```
+
+```
+$ /opt/scale/bin/scaleinfo
+Error getting device count: initialization error
+```
+
+```
+$ /opt/scale/bin/hsakmtsysinfo
+terminate called after throwing an instance of 'std::runtime_error'
+  what():  HSAKMT Error 20: Could not open KFD
+Aborted (core dumped)
+```
