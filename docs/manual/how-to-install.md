@@ -29,6 +29,17 @@ wget https://example.com/scale-free-1.0.0.0-Ubuntu22.04.deb
 sudo apt-get install ./scale-free-1.0.0.0-Ubuntu22.04.deb
 ```
 
+If, as is the case on Ubuntu 22.04, your kernel is too old, you'll need to install the kernel driver as well. On Ubuntu
+22.04. this can be done as follows:
+
+```bash
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/amdgpu/6.0.2/ubuntu jammy main" \
+    | sudo tee /etc/apt/sources.list.d/amdgpu.list
+sudo apt update
+sudo apt install amdgpu-dkms g++-12
+sudo reboot
+```
+
 ## Other Linux distros
 
 ```bash
