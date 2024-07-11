@@ -3,6 +3,7 @@ docs_dir: docs/
 theme:
   name: material
   logo: logo_white.svg
+  favicon: favicon.png
   palette:
     # Palette toggle for dark mode
     - scheme: slate
