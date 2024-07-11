@@ -18,6 +18,18 @@ theme:
     - navigation.expand
     - content.code.copy
 
+extra:
+  generator: false
+  social:
+  - icon: fontawesome/brands/github
+    link: https://github.com/spectral-compute
+  - icon: fontawesome/brands/linkedin
+    link: https://www.linkedin.com/company/spectral-compute
+  - icon: fontawesome/brands/discord
+    link: https://discord.gg/KNpgGbTc38
+
+copyright: Copyright &copy; 2024 Spectral Compute Ltd
+
 markdown_extensions:
   - toc:
       permalink: "#"
