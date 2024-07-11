@@ -49,15 +49,14 @@ sudo reboot
 
 ## Other Linux distros
 
+There is also a tarball containing binaries for other distributions and that is not tied to a system-wide path.
+
 ```bash
 # Download the tarball
 wget https://example.com/scale-free-1.0.0.0-Linux.tar.xz
 
-# Create a destination directory.
-sudo mkdir /opt/scale
-
-# Install SCALE there.
-tar xf scale-free-1.0.0.0-Linux.tar.xz -C /opt/scale
+# Extract the SCALE tarball.
+tar xf scale-free-1.0.0.0-Linux.tar.xz
 ```
 
 The tarball is significantly larger than the `.deb`, since it includes many dependent libraries directly instead of asking the system package manager to install them.
