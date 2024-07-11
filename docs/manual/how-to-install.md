@@ -8,23 +8,23 @@ SCALE can be installed like any other package:
 
 ```bash
 # Download the .deb package
-wget https://example.com/scale-1.2.3.deb
+wget https://example.com/scale-free-1.0.0.0-Ubuntu22.04.deb
 
 # Install the package
-sudo apt-get install ./scale-1.2.3.deb
+sudo apt-get install ./scale-free-1.0.0.0-Ubuntu22.04.deb
 ```
 
 ## Other Linux distros
 
 ```bash
 # Download the tarball
-wget https://example.com/scale-1.2.3.tar.xz
+wget https://example.com/scale-free-1.0.0.0-Linux.tar.xz
 
 # Create a destination directory.
 sudo mkdir /opt/scale
 
 # Install SCALE there.
-tar xf scale-1.2.3.tar.xz -C /opt/scale
+tar xf scale-free-1.0.0.0-Linux.tar.xz -C /opt/scale
 
 # Add to PATH
 export PATH="/opt/scale/bin:$PATH"
