@@ -4,6 +4,21 @@ SCALE is currently available as either a `.deb` package or a tarball.
 
 ## Debian-like Linux (Debian, Ubuntu, Mint)
 
+First, set up the ROCm 6.0.2 package repository. This is
+[explained by AMD](https://rocm.docs.amd.com/projects/install-on-linux/en/latest/how-to/native-install/ubuntu.html), but
+briefly:
+
+```bash
+sudo mkdir --parents --mode=0755 /etc/apt/keyrings
+wget https://repo.radeon.com/rocm/rocm.gpg.key -O - | \
+    gpg --dearmor | sudo tee /etc/apt/keyrings/rocm.gpg > /dev/null
+echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.com/rocm/apt/6.0.2 jammy main" \
+    | sudo tee --append /etc/apt/sources.list.d/rocm.list
+echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
+    | sudo tee /etc/apt/preferences.d/rocm-pin-600
+sudo apt update
+```
+
 SCALE can be installed like any other package:
 
 ```bash
