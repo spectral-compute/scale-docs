@@ -17,7 +17,7 @@ code is trivial.
 
 ## CUDA API errors
 
-The [`SCALE_EXCEPTIONS` feature](runtime-extension.md#scale_exceptions1) can 
+The [`SCALE_EXCEPTIONS` feature](runtime-extensions.md#scale_exceptions1) can
 be helpful for getting more information about many failures.
 
 ## wave64 issues
@@ -95,13 +95,13 @@ You could temporarily make `/dev/kfd` world-writable via: `sudo chmod 666
 
 If the GPU is still not detected by SCALE, the kernel driver may be out of 
 date. On Ubuntu, follow the instructions in
-[the installation guide](../how-to-install.md#debian-like-linux-debian-ubuntu-mint)
+[the installation guide](how-to-install.md#debian-like-linux-debian-ubuntu-mint)
 for installing `amdgpu-dkms`.
 
 ## Cannot find shared object
 
 The correct library search path for a SCALE binary can be target dependent due
-to [compute capability mapping](../compute-capabilities.md). This can lead 
+to [compute capability mapping](./compute-capabilities.md). This can lead
 to runtime errors where the SCALE libraries cannot be found, such as:
 
 ```
