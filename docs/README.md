@@ -24,7 +24,7 @@ solutions:
   language. This is true even if your program uses inline PTX `asm`.
 - The SCALE compiler accepts the same command-line options and CUDA dialect
   as `nvcc`, serving as a drop-in replacement.
-- "Impesonates" an installation of the NVIDIA CUDA Toolkit, so existing 
+- "Impersonates" an installation of the NVIDIA CUDA Toolkit, so existing 
   build tools and scripts like `cmake` _just work_.
 
 ## What projects have been tested?

@@ -15,21 +15,18 @@ patch to the [open-source library wrapper project](https://github.com/spectral-c
 So long as an equivalent function is available in a ROCm library, the wrapper
 code is trivial.
 
-## General problems and API call returns an error code
+## CUDA API errors
 
-Particularly useful for diagnosing general errors and problems is to set the environment variable `SCALE_EXCEPTIONS=1`.
-This causes API calls to throw an exception which is usually printed to `stderr` if not caught. The exception often
-contains more information about what went wrong.
+The [`SCALE_EXCEPTIONS` feature](runtime-extension.md#scale_exceptions1) can 
+be helpful for getting more information about many failures.
 
 ## wave64 issues
 
-Some AMD GPUs have a warp size of 64, not 32. All current NVIDIA GPU have a 
-warp size of 32. This discrepancy can cause problems in CUDA code that has 
-been written in a way that assumes a warp size of 32.
+All current NVIDIA GPU have a warp size of 32, so many CUDA programs are 
+written in a way that assumes this is always the case.
 
-Although NVIDIA's documentation encourages writing code in a way that does 
-not depend on warp size, much real-world code ends up being hardcoded for a warp
-size of 32.
+Some AMD GPUs have a warp size of 64, which can cause problems for CUDA code 
+written in this way.
 
 SCALE offers tools to address this problem:
 
@@ -43,28 +40,22 @@ SCALE offers tools to address this problem:
 
 To write code that works correctly on both platforms:
 
-- Use `auto` not `uint32_t` when declaring a variable that is intended to 
-  contain a warp mask. With NVIDIA `nvcc` this will map to `uint32_t`, and 
-  with SCALE this will map to `cudaWarpSize_t`, producing correct behaviour 
-  on both platforms.
+- Use `auto` instead of `uint32_t` when declaring a variable that is 
+  intended to contain a warp mask. With NVIDIA `nvcc` this will map to
+  `uint32_t`, and with SCALE this will map to `cudaWarpSize_t`, producing 
+  correct behaviour on both platforms.
 - Avoid hardcoding the constant "32" to represent warp size, instead using 
   the global `warpSize` available on all platforms.
 
 ## Initialization errors or no devices found
 
-The SCALE runtime can fail to initialize and list devices if the AMD kernel module is out of date, or if `/dev/kfd` is
-not writable to the user running the program. This may also happen if there are no supported GPUs.
+The SCALE runtime can fail to initialise if:
 
- - Make sure your GPU is one of the supported GPUs listed [here](../README.md) by running
-  `/opt/scale/bin/hsasysinfo | grep 'Name: gfx`. If this does not show anything or returns an error, continue to the
-   next step.
- - Make `/dev/kfd` is writable.
-    - This can be tested temporarily by making it world-writable: `sudo chmod 666 /dev/kfd`.
-    - Make sure the user is in `/dev/kfd`'s group. For example, on Ubuntu: `sudo usermod -a -G render USERNAME`.
- - If `/dev/kfd` is writable, the kernel driver may be out of date. On Ubuntu, follow the instructions in
-   [the installation guide](../how-to-install.md) for installing `amdgpu-dkms`.
+- The AMD kernel module is out of date.
+- `/dev/kfd` is not writable by the user running the program.
+- There are no supported GPUs attached.
 
-#### Example error messages
+This situation produces error messages such as:
 
 ```
 $ SCALE_EXCEPTIONS=1 ./myProgram
@@ -85,29 +76,57 @@ terminate called after throwing an instance of 'std::runtime_error'
 Aborted (core dumped)
 ```
 
+### Verify you have a supported gpu
+
+Run `/opt/scale/bin/hsasysinfo | grep 'Name: gfx` to determine the 
+architecture of your GPU, and determine if it is one of the supported 
+architectures listed [here](../README.md#which-gpus-are-supported)
+
+### Ensure `/dev/kfd` is writable
+
+Ensure your user is in the group that grants access to `/dev/kfd`. On Ubuntu,
+this is via membership of the `render` group:
+`sudo usermod -a -G render USERNAME`
+
+You could temporarily make `/dev/kfd` world-writable via: `sudo chmod 666 
+/dev/kfd`.
+
+### Ensure kernel module is up to date
+
+If the GPU is still not detected by SCALE, the kernel driver may be out of 
+date. On Ubuntu, follow the instructions in
+[the installation guide](../how-to-install.md#debian-like-linux-debian-ubuntu-mint)
+for installing `amdgpu-dkms`.
+
 ## Cannot find shared object
 
-The SCALE library does not install a library path because the correct path can be target dependent (in particular due to
-[compute capability mapping](../compute-capabilities.md)). This can lead to runtime errors where the SCALE libraries
-cannot be found, such as:
+The correct library search path for a SCALE binary can be target dependent due
+to [compute capability mapping](../compute-capabilities.md). This can lead 
+to runtime errors where the SCALE libraries cannot be found, such as:
 
 ```
 error while loading shared libraries: libredscale.so: cannot open shared object file: No such file or directory
 ```
 
-This can be solved by making sure the SCALE libraries can be found. Example solutions include:
- - Setting `LD_LIBRARY_PATH` to the appropriate library directory, for example
+Two ways to solve this problem are:
+ - Set `LD_LIBRARY_PATH` to the SCALE target library directory, such as:
    `LD_LIBRARY_PATH=/opt/scale/targets/gfx1030/lib:$LD_LIBRARY_PATH` for `gfx1030`.
- - Making sure your program is compiled with the SCALE libraries' directory in their
+ - Compile your program is compiled with that directory in RPATH:
    [rpath](https://en.wikipedia.org/wiki/Rpath).
 
 ## CMake: Error running link command: no such file or directory
 
-CMake tries to detect the linker to use based on the compiler used. For SCALE's `nvcc`, it uses `clang++` as the linker.
-If this does not exist in your `PATH`, the result is an error like the one in the example below.
+CMake tries to detect the linker to use based on the compiler. For SCALE's
+`nvcc`, it uses `clang++` as the linker. If this does not exist in your `PATH`,
+the result is an error like the one in the example below.
 
-A good solution is to make sure SCALE's `nvcc` is at the start of your `PATH`. This will place our `clang++` on your
-path too.
+A good solution is to make sure SCALE's `nvcc` is at the start of your `PATH`.
+This will place our `clang++` on your path too, avoiding the problem.
+
+```bash
+# Adjust for the target you want to use.
+export PATH=/opt/scale/targets/gfx1030/bin:$PATH
+```
 
 #### Example error
 
@@ -154,12 +173,14 @@ Call Stack (most recent call first):
 
 ## Half precision intrinsics not defined in C++
 
-Ubuntu 22.04 uses `g++` 11 by default. This does not have full support for half-precision floating point, so not all the
-half-precision intrinsics are defined. This can be solved by using `g++-12` or later, or by using `clang++` which is
-provided by the SCALE package.
-
-#### Example error
+If you're using `__half` in host code in a non-cuda translation unit, you 
+might get an error claiming the function you want does not exist:
 
 ```
 error: ‘__half2float’ was not declared in this scope
 ```
+
+This problem can be resolved by using newer C++ compiler.
+
+This issue is discussed in more detail in the [Differences from NVIDIA CUDA](differences.md#host-side-__half-support) 
+section.
