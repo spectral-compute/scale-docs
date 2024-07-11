@@ -1,16 +1,12 @@
 # PTX example
 
-This example covers the following features on top of what was shown in the [basic example](./basic.md):
+This example demonstrates SCALE's support for inline PTX. Lots of real-world 
+CUDA code uses inline PTX asm blocks, which are inherently NVIDIA-only. No 
+need to rewrote those when using SCALE: the compiler just digests them and 
+spits out AMD machine code!
 
-- defining `__device__` functions
-    - `ptx_add()`
-    - `ptx_lop3()`
-- using C++ templates with `__device__` and `__global__` functions
-    - `ptx_lop3()`
-    - `kernelLop3()`
-- using inline PTX Assembly `asm(...);` blocks
-    - `ptx_add()`
-    - `ptx_lop3()`
+This example uses C++ templates to access the functionality of the PTX 
+`lop3` instruction, used in various ways throughout the kernel.
 
 Build and run the example by following the [general instructions](./README.md).
 

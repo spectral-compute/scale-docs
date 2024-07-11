@@ -1,17 +1,15 @@
-# About the examples
+# SCALE Example Programs
 
-There are a few simple CUDA programs included in SCALE documentation to demonstrate key features of SCALE.
+These example programs are simple CUDA programs demonstrating the 
+capabilities of SCALE.
 
-The examples don't aim to cover all the things available with SCALE.
-Instead, they highlight individual features in isolation from each other.
-This way, they can be used as a reference in your development process.
-
-Additionally, you are welcome to use these examples as a starting point for your project.
+SCALE is capable of much more, but these small demonstrations serve as a 
+proof of concept of CUDA compatibility, as well as a starting point for 
+users wising to get into GPGPU programming.
 
 ## List of examples
 
 Here is the list of examples that are currently available.
-Read more about them in their corresponding pages.
 
 | Example             | What it is about           |
 | ------------------- | -------------------------- |
@@ -21,34 +19,28 @@ Read more about them in their corresponding pages.
 
 ## Accessing the examples
 
-The examples are hosted in a public repository, together with the rest of SCALE documentation.
-You can clone it using git:
+The examples are hosted in [the public github repository](https://github.com/spectral-compute/scale-docs)
+with the rest of this manual.
 
 ```sh
 git clone https://github.com/spectral-compute/scale-docs.git
 cd scale-docs/examples
 ```
 
-You can also download it as a ZIP file:
-
-```sh
-wget -O scale-docs.zip https://github.com/spectral-compute/scale-docs/archive/refs/heads/master.zip
-unzip scale-docs.zip
-cd scale-docs-master/examples
-```
-
 ## Using the examples
 
-To build and run the examples, you should have SCALE [installed on your machine](../manual/how-to-install.md).
-You should also determine which [path to SCALE](../manual/how-to-use.md#identifying-gpu-target) to use, as it depends on your target GPU.
+To build an example:
+- [Install SCALE](../manual/how-to-install.md).
+- [Decide on a GPU target](../manual/how-to-use.md#identifying-gpu-target)
+- [Build the example using cmake](../manual/how-to-use.md#cmake)
 
-The example repository includes a helper script, `example.sh`, that configures, builds and runs the example of your choice.
+The example repository includes a helper script, `example.sh` that can fully 
+automate the process. Pass your SCALE target directory as the first argument,
+and the example you want to build/run as the second:
 
-Here is how you can use it for the [Basic](./basic.md) example:
-
-```sh
+```bash
 # You should be in the `examples` directory of the `scale-docs` repository
-./example.sh {SCALE_DIR} basic
+./example.sh /opt/scale/targets/gfx1030 basic
 ```
 
 For the specified example, this will:
@@ -56,16 +48,8 @@ For the specified example, this will:
 1. Remove its build directory if it already exists
 2. Configure CMake for that example in a freshly-created build directory
 3. Build the example in that directory using Make
-4. Set the `SCALE_EXCEPTIONS=1` environment variable for better error reporting (read more [in the manual][exceptions])
+4. Set the [`SCALE_EXCEPTIONS=1` environment variable][exceptions] for better 
+   error reporting.
 4. Run the example
 
 [exceptions]: ../manual/runtime-extensions.md#scale_exceptions1
-
----
-
-For accessibilty, SCALE documentation portal includes the source code of the examples in its pages.
-This is the source code of `example.sh` referenced above:
-
-```sh
----8<--- "examples/example.sh"
-```

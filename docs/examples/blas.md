@@ -1,12 +1,10 @@
 # BLAS example
 
-This example shows how a math wrapper library for BLAS can be used.
-
-The example uses the `cublasDdot()` function to calculate the dot product of two vectors.
+This example demonstrates SCALE's compatibility with cuBLAS APIs by using 
+cuBLAS to perform a double-precision dot-product on an AMD GPU.
 
 cuBLAS APIs are forwarded to use the relevant ROCm APIs.
 Note that the example links to `cublas` in its [`CMakeLists.txt`](#cmakeliststxt-used).
-Just like in other examples, this allows seamless transition of projects to SCALE without code modification.
 
 ## Example source code
 

@@ -1,18 +1,14 @@
 # Basic example
 
-This example covers the basic features of the CUDA language:
+This is simple vector-sum kernel using CUDA. 
 
-- defining a kernel (`__global__ basicSum()`)
-- using CUDA APIs such as `cudaMalloc()`, `cudaFree()` and `cudaMemcpy()`
-- launching a kernel
+The example:
 
-The example consists of:
-
-- Generating test data on the host
-- Sending data to the device
-- Launching a kernel on the device
-- Receiving data back from the device
-- Checking that the data we received is what we expect
+- Generates test data on the host
+- Sends data to the device
+- Launches a kernel on the device
+- Receives data back from the device
+- Checks that the data is correct.
 
 Build and run the example by following the [general instructions](./README.md).
 
