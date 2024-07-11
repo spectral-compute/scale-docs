@@ -100,3 +100,15 @@ This can be solved by making sure the SCALE libraries can be found. Example solu
    `LD_LIBRARY_PATH=/opt/scale/targets/gfx1030/lib:$LD_LIBRARY_PATH` for `gfx1030`.
  - Making sure your program is compiled with the SCALE libraries' directory in their
    [rpath](https://en.wikipedia.org/wiki/Rpath).
+
+## Half precision intrinsics not defined in C++
+
+Ubuntu 22.04 uses `g++` 11 by default. This does not have full support for half-precision floating point, so not all the
+half-precision intrinsics are defined. This can be solved by using `g++-12` or later, or by using `clang++` which is
+provided by the SCALE package.
+
+#### Example error
+
+```
+error: ‘__half2float’ was not declared in this scope
+```
