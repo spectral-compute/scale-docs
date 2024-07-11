@@ -16,6 +16,7 @@ theme:
   features:
     - navigation.sections
     - navigation.expand
+    - content.code.copy
 
 markdown_extensions:
   - toc:
