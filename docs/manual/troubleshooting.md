@@ -101,6 +101,57 @@ This can be solved by making sure the SCALE libraries can be found. Example solu
  - Making sure your program is compiled with the SCALE libraries' directory in their
    [rpath](https://en.wikipedia.org/wiki/Rpath).
 
+## CMake: Error running link command: no such file or directory
+
+CMake tries to detect the linker to use based on the compiler used. For SCALE's `nvcc`, it uses `clang++` as the linker.
+If this does not exist in your `PATH`, the result is an error like the one in the example below.
+
+A good solution is to make sure SCALE's `nvcc` is at the start of your `PATH`. This will place our `clang++` on your
+path too.
+
+#### Example error
+
+```
+-- The CUDA compiler identification is NVIDIA 12.5.999
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - failed
+-- Check for working CUDA compiler: /opt/scale/targets/gfx1030/bin/nvcc
+-- Check for working CUDA compiler: /opt/scale/targets/gfx1030/bin/nvcc - broken
+CMake Error at /usr/local/share/cmake-3.29/Modules/CMakeTestCUDACompiler.cmake:59 (message):
+  The CUDA compiler
+
+    "/opt/scale/targets/gfx1030/bin/nvcc"
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: '/home/user/test/cmake/build/CMakeFiles/CMakeScratch/TryCompile-vLZLYV'
+
+    Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_185e7/fast
+    /usr/bin/gmake  -f CMakeFiles/cmTC_185e7.dir/build.make CMakeFiles/cmTC_185e7.dir/build
+    gmake[1]: Entering directory '/home/user/test/cmake/build/CMakeFiles/CMakeScratch/TryCompile-vLZLYV'
+    Building CUDA object CMakeFiles/cmTC_185e7.dir/main.cu.o
+    /opt/scale/targets/gfx1030/bin/nvcc -forward-unknown-to-host-compiler   "--generate-code=arch=compute_86,code=[compute_86,sm_86]" -MD -MT CMakeFiles/cmTC_185e7.dir/main.cu.o -MF CMakeFiles/cmTC_185e7.dir/main.cu.o.d -x cu -c /home/user/test/cmake/build/CMakeFiles/CMakeScratch/TryCompile-vLZLYV/main.cu -o CMakeFiles/cmTC_185e7.dir/main.cu.o
+    Linking CUDA executable cmTC_185e7
+    /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_185e7.dir/link.txt --verbose=1
+    clang++ @CMakeFiles/cmTC_185e7.dir/objects1.rsp -o cmTC_185e7 @CMakeFiles/cmTC_185e7.dir/linkLibs.rsp -L"/opt/scale/targets/gfx1030/lib"
+    Error running link command: no such file or directorygmake[1]: *** [CMakeFiles/cmTC_185e7.dir/build.make:102: cmTC_185e7] Error 2
+    gmake[1]: Leaving directory '/home/user/test/cmake/build/CMakeFiles/CMakeScratch/TryCompile-vLZLYV'
+    gmake: *** [Makefile:127: cmTC_185e7/fast] Error 2
+
+
+
+
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
+```
+
 ## Half precision intrinsics not defined in C++
 
 Ubuntu 22.04 uses `g++` 11 by default. This does not have full support for half-precision floating point, so not all the
