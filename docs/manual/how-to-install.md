@@ -58,9 +58,6 @@ sudo mkdir /opt/scale
 
 # Install SCALE there.
 tar xf scale-free-1.0.0.0-Linux.tar.xz -C /opt/scale
-
-# Add to PATH
-export PATH="/opt/scale/bin:$PATH"
 ```
 
 The tarball is significantly larger than the `.deb`, since it includes many dependent libraries directly instead of asking the system package manager to install them.
