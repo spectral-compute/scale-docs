@@ -26,7 +26,7 @@ Finding the optimal amount to unroll is not usually possible in the compiler
 because the number of threads to be used is a runtime value. Programmers
 therefore usually want to set unroll depth by hand.
 
-The existing `#pramga unroll N` allows this to be set at the preprocessor level.
+The existing `#pragma unroll N` allows this to be set at the preprocessor level.
 The new `[[clang::loop_unroll N]]` allows doing this in a template-dependent
 way:
 
@@ -103,7 +103,7 @@ In practice, this means the compiler detects the majority of cases where code
 is written in a way that will break on a device with a warp size of 64.
 
 Programmers should modify their CUDA code to be agnostic to warp size. 
-NVIDIA's documentation recommends this practice, but lots of real-world CUDA 
+NVIDIA's documentation recommends this practice, but a lot of real-world CUDA 
 code does it incorrectly because no current NVIDIA hardware has a warp size 
 other than 32.
 
