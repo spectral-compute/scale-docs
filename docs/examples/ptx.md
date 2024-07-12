@@ -2,7 +2,7 @@
 
 This example demonstrates SCALE's support for inline PTX. Lots of real-world 
 CUDA code uses inline PTX asm blocks, which are inherently NVIDIA-only. No 
-need to rewrote those when using SCALE: the compiler just digests them and 
+need to rewrite those when using SCALE: the compiler just digests them and 
 spits out AMD machine code!
 
 This example uses C++ templates to access the functionality of the PTX 
