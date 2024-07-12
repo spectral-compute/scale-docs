@@ -2,12 +2,12 @@
 
 The Free Edition of SCALE has the following licensing terms:
 
-| Permissions                     | Conditions                                            | Limitations                           |
-| ------------------------------- | ----------------------------------------------------- | ------------------------------------- |
-| :material-check: Commercial use | :material-check-outline: License and copyright notice | :fontawesome-solid-xmark: Liability   |
-| :material-check: Distribution   | :material-check-outline: No reverse engineering       | :fontawesome-solid-xmark: Warranty    |
-| :material-check: Modification   |                                                       |                                       |
-| :material-check: Private Use    |                                                       |                                       |
+| Permissions                     | Conditions                                              | Limitations                           |
+| ------------------------------- | ------------------------------------------------------- | ------------------------------------- |
+| :material-check: Commercial use | :material-check-outline: License and copyright notice   | :fontawesome-solid-xmark: Liability   |
+| :material-check: Distribution   | :material-check-outline: No reverse engineering         | :fontawesome-solid-xmark: Warranty    |
+| :material-check: Modification   | :material-check-outline: No endorsement                 |                                       |
+| :material-check: Private Use    | :material-check-outline: Comply with 3rd party licenses |                                       |
 
 This table is intended as an overview, for detailed terms, please see the full license text below.
 
