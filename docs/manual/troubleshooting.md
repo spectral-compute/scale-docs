@@ -109,6 +109,7 @@ error while loading shared libraries: libredscale.so: cannot open shared object 
 ```
 
 Two ways to solve this problem are:
+
  - Set `LD_LIBRARY_PATH` to the SCALE target library directory, such as:
    `LD_LIBRARY_PATH=/opt/scale/targets/gfx1030/lib:$LD_LIBRARY_PATH` for `gfx1030`.
  - Compile your program is compiled with that directory in RPATH:
