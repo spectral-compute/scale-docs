@@ -12,7 +12,7 @@ Support for more GPU vendors and CUDA APIs is in development.
 To get started:
 
 - See the [tutorial](./manual/how-to-use.md).
-- Review the [examples](./examples/README.md)
+- Review the [examples](./examples/README.md).
 - [Contact us](#contact-us) for help.
 
 ## How does it work?
