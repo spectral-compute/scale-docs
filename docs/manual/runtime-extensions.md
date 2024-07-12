@@ -1,6 +1,6 @@
 # API Extensions
 
-SCALE has some few runtime/library features not found in NVIDIA's CUDA Toolkit.
+SCALE has some runtime/library features not found in NVIDIA's CUDA Toolkit.
 
 ## Environment variables
 
@@ -16,7 +16,7 @@ get an exception thrown containing the message `"The second argument is not
 allowed to be nullptr"`.
 
 In cases where CUDA APIs are expected to return a value other than 
-`cudaSuccess` during normal operatoin (such as `cudaStreamQuery()`, an 
+`cudaSuccess` during normal operation (such as `cudaStreamQuery()`, an 
 exception will not be thrown except if an exceptional case arises.
 
 ## API Extensions
