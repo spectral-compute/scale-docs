@@ -73,7 +73,7 @@ variable you have set to such a path (for example:
 Add SCALE's `nvcc` first in `PATH`:
 
 ```bash
-expot PATH=${SCALE_PATH}/bin
+export PATH="${SCALE_PATH}/bin:$PATH"
 ```
 
 Then add these two arguments to your `cmake` invocation:
