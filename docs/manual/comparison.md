@@ -46,7 +46,7 @@ There are some downsides:
   their hardware specifically.
 - Compiling source code directly to AMDGPU machine code should
   offer greater opportunities for optimisation than working backwards from
-  PTX that has already been optimised for a specific NVIDIA virtual target.
+  PTX that has already been optimised for a specific NVIDIA target.
 
 We believe that ZLUDA fills a useful niche, but that software distributors 
 should have the power to compile their CUDA source code directly to the 
