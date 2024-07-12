@@ -1,6 +1,6 @@
 # Install SCALE
 
-SCALE is currently available as either a `.deb` package or a tarball.
+SCALE is currently available as either a `.deb` package or a tarball for Linux operating systems.
 
 ## Debian-like Linux (Debian, Ubuntu, Mint)
 
