@@ -31,8 +31,7 @@ target identifiers) may do so. The remainder of this document coves this topic.
 
 The special target directory `<SCALE>/targets/gfxany` is a SCALE toolchain
 with no Compute Capability Mapping configuration. This may be used in
-combination with `clang++`'s usual flags for selecting a GPU target. `nvcc`
-mode is unsupported except when compute capability mapping is in use.
+combination with `clang++`'s usual flags for selecting a GPU target.
 
 ## Default numbering scheme
 
