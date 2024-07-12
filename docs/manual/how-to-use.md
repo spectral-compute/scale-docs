@@ -138,11 +138,11 @@ You can verify that SCALE has been correctly added to `PATH` by executing
 
 ```
 nvcc: NVIDIA (R) Cuda compiler driver
-Actualy, no. This is the SCALE compiler, and the first/last line of this output are lies to make CMake work.
+Actually, no. This is the SCALE compiler, and the first/last line of this output are lies to make CMake work.
 clang version 17.0.0
 Target: x86_64-unknown-linux-gnu
 Thread model: posix
-InstalledDir: /home/ckitching/spectral/llvm/inst/gfxany/bin
+InstalledDir: /opt/scale/targets/gfx1030/bin
 Cuda compilation tools, release 12.5, V12.5.999
 ```
 

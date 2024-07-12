@@ -5,11 +5,11 @@ capabilities of SCALE.
 
 SCALE is capable of much more, but these small demonstrations serve as a 
 proof of concept of CUDA compatibility, as well as a starting point for 
-users wising to get into GPGPU programming.
+users wishing to get into GPGPU programming.
 
 ## List of examples
 
-Here is the list of examples that are currently available.
+Here is the list of examples that are currently available:
 
 | Example             | What it is about           |
 | ------------------- | -------------------------- |
@@ -30,7 +30,7 @@ cd scale-docs/examples
 ## Using the examples
 
 To build an example:
-- [Install SCALE](../manual/how-to-install.md).
+- [Install SCALE](../manual/how-to-install.md)
 - [Decide on a GPU target](../manual/how-to-use.md#identifying-gpu-target)
 - [Build the example using cmake](../manual/how-to-use.md#cmake)
 
@@ -45,11 +45,11 @@ and the example you want to build/run as the second:
 
 For the specified example, this will:
 
-1. Remove its build directory if it already exists
-2. Configure CMake for that example in a freshly-created build directory
-3. Build the example in that directory using Make
+1. Remove its build directory if it already exists.
+2. Configure CMake for that example in a freshly-created build directory.
+3. Build the example in that directory using Make.
 4. Set the [`SCALE_EXCEPTIONS=1` environment variable][exceptions] for better 
    error reporting.
-4. Run the example
+4. Run the example.
 
 [exceptions]: ../manual/runtime-extensions.md#scale_exceptions1

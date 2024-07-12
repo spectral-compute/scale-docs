@@ -5,7 +5,7 @@ therefore approximately "whatever `nvcc` does". Although `clang` supports
 compiling CUDA, it supports a somewhat different dialect compared to `nvcc`.
 
 You can read more about (some of) the specific differences in
-[the LLVM manual page about it](https://llvm.org/docs/CompileCudaWithLLVM.html#dialect-differences-between-clang-and-nvcc)
+[the LLVM manual page about it](https://llvm.org/docs/CompileCudaWithLLVM.html#dialect-differences-between-clang-and-nvcc).
 
 This leads to a problem: most CUDA code is written with `nvcc` in mind, but 
 the only open-source compiler available with a CUDA frontend is `clang`. Many 

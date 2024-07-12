@@ -5,11 +5,11 @@ to compile or run CUDA programs with SCALE.
 
 ## Crashes
 
-Please [report a bug](../contact/report-a-bug.md)
+Please [report a bug](../contact/report-a-bug.md).
 
 ## "No such function: cuBlas/cuFFt/cuSolverSomethingSomething()"
 
-If you project needs a missing "CUDA-X" API (cuBLAS, cuFFT, cuSOLVER and
+If your project needs a missing "CUDA-X" API (cuBLAS, cuFFT, cuSOLVER and
 friends), this is most likely something you can fix yourself by submitting a
 patch to the [open-source library wrapper project](https://github.com/spectral-compute/scale-library-wrappers).
 So long as an equivalent function is available in a ROCm library, the wrapper
@@ -22,7 +22,7 @@ be helpful for getting more information about many failures.
 
 ## wave64 issues
 
-All current NVIDIA GPU have a warp size of 32, so many CUDA programs are 
+All current NVIDIA GPUs have a warp size of 32, so many CUDA programs are 
 written in a way that assumes this is always the case.
 
 Some AMD GPUs have a warp size of 64, which can cause problems for CUDA code 
@@ -80,13 +80,13 @@ Aborted (core dumped)
 
 Run `/opt/scale/bin/hsasysinfo | grep 'Name: gfx` to determine the 
 architecture of your GPU, and determine if it is one of the supported 
-architectures listed [here](../README.md#which-gpus-are-supported)
+architectures listed [here](../README.md#which-gpus-are-supported).
 
 ### Ensure `/dev/kfd` is writable
 
 Ensure your user is in the group that grants access to `/dev/kfd`. On Ubuntu,
 this is via membership of the `render` group:
-`sudo usermod -a -G render USERNAME`
+`sudo usermod -a -G render USERNAME`.
 
 You could temporarily make `/dev/kfd` world-writable via: `sudo chmod 666 
 /dev/kfd`.
@@ -126,7 +126,7 @@ The solution is to make sure to use the `lib` subdirectories for one of the
 targets, rather than the `lib` directory of the SCALE installation directory.
 For example, `/opt/scale/targets/gfx1030/lib` rather than `/opt/scale/lib`. The
 `gfxany` target is suitable for using the nvrtc API, but it does not contain a
-compute capability map so will not report small compute capabilities.
+compute capability map so it will not report small compute capabilities.
 
 As with being [unable to find the shared object](#cannot-find-shared-object) at
 all, this can be solved either by setting `LD_LIBRARY_PATH` or by setting the
@@ -200,7 +200,7 @@ Call Stack (most recent call first):
 
 ## Half precision intrinsics not defined in C++
 
-If you're using `__half` in host code in a non-cuda translation unit, you 
+If you're using `__half` in host code in a non-CUDA translation unit, you 
 might get an error claiming the function you want does not exist:
 
 ```

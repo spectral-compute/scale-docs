@@ -17,7 +17,7 @@ We believe HIP does not solve the "CUDA compatibility problem" because:
   manually removed or guarded by macros. SCALE simply accepts them and
   compiles them for AMD.
 - HIP's support for NVIDIA is via wrapper APIs rather than simply using 
-  nvidia's tools directly as a SCALE-based solution does.
+  NVIDIA's tools directly as a SCALE-based solution does.
 - `hipify` is unable to handle many CUDA code constructs, such as complex 
   macros.
 

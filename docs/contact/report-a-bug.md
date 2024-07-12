@@ -1,10 +1,10 @@
 # Report a Bug
 
 SCALE is still in active development, so you may encounter bugs. If you run 
-into problems, contact us:
+into problems, contact us by:
 
-- Join our [Discord](https://discord.gg/KNpgGbTc38)
-- Send us an e-mail at [hello@spectralcompute.co.uk](mailto:hello@spectralcompute.co.uk)
+- Joining our [Discord](https://discord.gg/KNpgGbTc38)
+- Sending us an e-mail at [hello@spectralcompute.co.uk](mailto:hello@spectralcompute.co.uk)
 
 The remainder of this page provides information about how to make your 
 report as helpful as possible.
@@ -13,11 +13,11 @@ report as helpful as possible.
 
 If your project fails to compile due to a missing CUDA Runtime or Driver API
 function, [get in touch][get-in-touch]: this helps us prioritise work by fixing
-the holes that have the most demand, first.
+the holes that have the most demand first.
 
 ## "No such function: cuBlas/cuFFt/cuSolverSomethingSomething()"
 
-If you project needs a missing "CUDA-X" API (cuBLAS, cuFFT, cuSOLVER and
+If your project needs a missing "CUDA-X" API (cuBLAS, cuFFT, cuSOLVER and
 friends), this is most likely something you can fix yourself by submitting a
 patch to the [open-source library wrapper project](https://github.com/spectral-compute/scale-library-wrappers).
 So long as an equivalent function is available in a ROCm library, the wrapper
@@ -61,9 +61,9 @@ from reproducing the crash with one or both of these enabled can be helpful:
 
 - `REDSCALE_CRASH_REPORT_DETAILED=1` will dump extra information from the
   GPU trap handler. This includes register state and some symbol names, so
-  is unlikely to contain any sensitive/proprietary information from your code.
+  it is unlikely to contain any sensitive/proprietary information from your code.
 - `REDSCALE_CRASH_DUMP=somefilename` will write the crashing machine code to
-  a file. This makes it easier to investigate the problem, but means you're
+  a file. This makes it easier to investigate the problem, but it means that you're
   sharing the compiled version of the crasing GPU kernel with us.
 
 ## Something else

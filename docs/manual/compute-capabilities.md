@@ -25,14 +25,14 @@ most features in most projects. The default mapping number is likely to
 increase over time.
 
 Behind the scenes, this mapping is governed by a configuration file. Users
-who which to take direct control of the process (either by changing the
+who wish to take direct control of the process (either by changing the
 mapping, or modifying their project to accept both AMD and NVIDIA-format
 target identifiers) may do so. The remainder of this document coves this topic.
 
 The special target directory `<SCALE>/targets/gfxany` is a SCALE toolchain
 with no Compute Capability Mapping configuration. This may be used in
-combination with `clang++`'s usual flags for selecting GPU target. `nvcc`
-mode is unsupported except when a compute capability mapping is in use.
+combination with `clang++`'s usual flags for selecting a GPU target. `nvcc`
+mode is unsupported except when compute capability mapping is in use.
 
 ## Default numbering scheme
 
@@ -57,7 +57,7 @@ compute capability represented as an integer, e.g: `86`, separated by a space.
 The entries are tried in order, so it's
 possible to map more than one ISA and compute capability to each other
 unambiguously. If the space and compute
-capability are omitted, then the compiler associates all Nvidia compute
+capability are omitted, then the compiler associates all NVIDIA compute
 capabilities with the specified GPU.
 
 If no entry is found for the given GPU or if no configuration file is found,
