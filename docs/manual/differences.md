@@ -39,7 +39,7 @@ and use the `__half` math APIs in host code.
 NVIDIA's CUDA implementation converts the `__half` to 32-bit `float`, does the
 calculation, and converts back.
 
-SCALE only allows these functoins to be used when the host compiler supports 
+SCALE only allows these functions to be used when the host compiler supports 
 compiling fp16 code directly (via the `_Float16` type). Current versions of 
 both gcc and clang both support this.
 
