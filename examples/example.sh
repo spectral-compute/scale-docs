@@ -15,9 +15,9 @@ case "${EXAMPLE}" in
         rm -rf "src/${EXAMPLE}/build"
 
         cmake \
-            -DCUDAToolkit_ROOT="${SCALE_DIR}" \
             -DCMAKE_CUDA_COMPILER="${SCALE_DIR}/bin/nvcc" \
             -DCMAKE_CUDA_ARCHITECTURES="86" \
+            -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON \
             -DCMAKE_BUILD_TYPE=RelWithDebInfo \
             -B "src/${EXAMPLE}/build" \
             "src/${EXAMPLE}"
