@@ -115,17 +115,18 @@ the following works for many other build systems:
 
 ```bash
 # Update accordingly.
-SCALE_INSTALL_DIR=/opt/scale/gfx1030
+SCALE_INSTALL_DIR=/opt/scale/targets/gfx1030
 
 export PATH="${SCALE_INSTALL_DIR}/bin:$PATH"
 export CUDA_HOME="${SCALE_INSTALL_DIR}"
 export CUDA_PATH="${SCALE_INSTALL_DIR}"
 
-# Try adding these if your system has a very old GCC that chokes on SCALE
-# headers (and send us a bug report!). Note that this "gcc" is secretly clang!
-#export CC="${SCALE_INSTALL_DIR}/bin/gcc"
-#export CXX="${SCALE_INSTALL_DIR}/bin/g++"
-#export CUDAHOSTCXX="${SCALE_INSTALL_DIR}/bin/g++"
+# If your system has a very old C++ compiler that chokes on SCALE compilers, 
+# you could add the following to build all your C++ code with the modern 
+# version of `clang++` bundled with SCALE (and send us a bug report!)
+#export CC="${SCALE_INSTALL_DIR}/bin/clang"
+#export CXX="${SCALE_INSTALL_DIR}/bin/clang++"
+#export CUDAHOSTCXX="${SCALE_INSTALL_DIR}/bin/clang++"
 
 <Your usual build here>
 ```
