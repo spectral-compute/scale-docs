@@ -36,7 +36,7 @@ The `/dev/kfd` device is writable only to root and members of the `render` group
 sudo usermod -a -G render youruser
 ```
 
-If, as is the case on Ubuntu 22.04, your kernel is too old, you'll need to install the kernel driver as well. On Ubuntu
+If, as is the case on Ubuntu 22.04, your kernel is too old, then you'll need to install the kernel driver as well. On Ubuntu
 22.04. this can be done as follows:
 
 ```bash
