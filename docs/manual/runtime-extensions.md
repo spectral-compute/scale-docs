@@ -24,12 +24,11 @@ exception will not be thrown except if an exceptional case arises.
 ### Programmatic Exception Enablement
 
 SCALE exceptions (see documentation of `SCALE_EXCEPTIONS` environment 
-variable above) may also be enabled/disabled programmatically using
-these two global functions:
+variable above) may also be enabled/disabled programmatically using:
 
 ```c++
-scale::Exception::enable();
-scale::Exception::disable();
+scale::Exception::enable(); // To enable.
+scale::Exception::enable(false); // To disable.
 ```
 
 Even when exceptions are disabled, you can access a `scale::Exception` object
