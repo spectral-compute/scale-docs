@@ -33,7 +33,7 @@ extra:
   - icon: fontawesome/brands/discord
     link: https://discord.gg/KNpgGbTc38
 
-copyright: Copyright &copy; 2024 Spectral Compute Ltd
+copyright: Copyright &copy; 2024 <a href="https://www.spectralcompute.co.uk">Spectral Compute Ltd</a>
 
 markdown_extensions:
   - toc:
