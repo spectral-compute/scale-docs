@@ -21,6 +21,8 @@ exception will not be thrown except if an exceptional case arises.
 
 ## API Extensions
 
+Some of SCALE's API extensions require the `scale.h` header to be included. 
+
 ### Programmatic Exception Enablement
 
 SCALE exceptions (see documentation of `SCALE_EXCEPTIONS` environment 
