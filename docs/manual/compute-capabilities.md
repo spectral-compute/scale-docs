@@ -8,7 +8,7 @@ target to build for.
 AMD GPUs are identified using architecture IDs like `gfx1030`.
 
 Buildsystems for existing CUDA projects are generally unable to accept AMD
-format target identifiers. Existing CUDA projects also frequently do numeric
+format target identifiers. Existing CUDA projects sometimes do numeric
 comparisons on the compute capability value to enable/disable features using
 the preprocessor. If we simply used the "GFX number" as the compute
 capability, these numeric comparisons would malfunction.
@@ -27,11 +27,16 @@ increase over time.
 Behind the scenes, this mapping is governed by a configuration file. Users
 who wish to take direct control of the process (either by changing the
 mapping, or modifying their project to accept both AMD and NVIDIA-format
-target identifiers) may do so. The remainder of this document coves this topic.
+target identifiers) may do so. The remainder of this document covers this topic.
 
 The special target directory `<SCALE>/targets/gfxany` is a SCALE toolchain
 with no Compute Capability Mapping configuration. This may be used in
 combination with `clang++`'s usual flags for selecting a GPU target.
+
+`nvcc` mode does not support short compute capabilities except when compute 
+capability mapping is in use; instead `-arch` must be given explicitly. An 
+AMDGPU architecture (e.g: `gfx1030`) is accepted, as is the default 
+numbering scheme explained below.
 
 ## Default numbering scheme
 
@@ -45,8 +50,6 @@ resulting number is used as the major compute capability. The minor version
 number is currently unused and always zero. For example: `gfx1030` is
 represented as compute capability 100300.0 (`sm_1003000`), and `gfx90c` is
 represented as compute capability 90012.0 (`sm_900120`).
-
-
 
 ## Configuration file format
 
