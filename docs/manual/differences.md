@@ -13,7 +13,7 @@ compiler as a subprocess instead of a library. This differs from how
 NVIDIA's implementation works, and means that the library must be able to
 locate the compiler to invoke it.
 
-If your program that uses the rtc APIs fails with errors relating to being
+If your program uses the rtc APIs and fails with errors that relate to being 
 unable to locate the compiler, ensure that SCALE's `nvcc` is first in PATH.
 
 ### Stream synchronization
