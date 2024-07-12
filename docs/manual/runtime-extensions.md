@@ -39,13 +39,10 @@ containing the descriptive error message from the most recent failure using
 
 ```c++
 cudaError_t e = cudaSomething();
-
-#ifdef __REDSCALE__
 if (e != cudaSuccess) {
     const scale::Exception &ex = scale::Exception::last();
     std::cerr << "CUDA error: " << ex.what() << '\n';
 }
-#endif __REDSCALE__
 ```
 
 The error accessed by this API is the same one you'd get from using the CUDA
