@@ -142,6 +142,19 @@ terminate called after throwing an instance of 'redscale::RtcException'
 Aborted (core dumped)
 ```
 
+## nvcc: cannot find libdevice for sm_52 and cannot find CUDA installation
+
+If `targets/gfxany` rather than a specific target like `targets/gfx1030` is used, then there is no default GPU to
+target. This leads to an error like the example below. The solution is to either use a target-specific directory like
+`targets/gfx1030`, or to specify a specific target such as with `-arch gfx1030`.
+
+#### Example error
+
+```
+nvcc: error: cannot find libdevice for sm_52; provide path to different CUDA installation via '--cuda-path', or pass '-nocudalib' to build without linking with libdevice
+nvcc: error: cannot find CUDA installation; provide its path via '--cuda-path', or pass '-nocudainc' to build without CUDA includes
+```
+
 ## CMake: Error running link command: no such file or directory
 
 CMake tries to detect the linker to use based on the compiler. For SCALE's
