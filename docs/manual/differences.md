@@ -54,7 +54,7 @@ This means:
 - The outcome of `__half` calculations on host/device will always be the same.
 - APIs for using `__half` as a storage type are always supported.
 
-SCALE bundles a modern host compiler at `<SCALE_DIR>/targets/gfxXXX/bin/gcc` 
+SCALE bundles a modern host compiler at `<SCALE_DIR>/targets/gfxXXX/bin/clang++` 
 you can use as a workaround if this edgecase becomes a problem.
 
 ## Enhancements
