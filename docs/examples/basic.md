@@ -8,7 +8,7 @@ The example:
 - Sends data to the device
 - Launches a kernel on the device
 - Receives data back from the device
-- Checks that the data is correct.
+- Checks that the data is correct
 
 Build and run the example by following the [general instructions](./README.md).
 
