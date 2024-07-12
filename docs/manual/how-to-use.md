@@ -76,7 +76,7 @@ Add SCALE's `nvcc` first in `PATH`:
 export PATH="${SCALE_PATH}/bin:$PATH"
 ```
 
-Then add these two arguments to your `cmake` invocation:
+Then add these arguments to your `cmake` invocation:
 
 ```
 # Replace with the path to your SCALE install, followed by the name of the
@@ -85,6 +85,10 @@ Then add these two arguments to your `cmake` invocation:
 
 # See "Why sm_86?" below
 -DCMAKE_CUDA_ARCHITECTURES=86
+
+# Either this, or set LD_LIBRARY_PATH to point to ${SCALE_PATH}/lib at runtime.
+# Read more below.
+-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON
 ```
 
 This will work for any modern CMake project that is using CMake's native
@@ -146,6 +150,27 @@ Thread model: posix
 InstalledDir: /opt/scale/targets/gfx1030/bin
 Cuda compilation tools, release 12.5, V12.5.999
 ```
+
+## Finding the libraries at runtime
+
+For maximum compatibility with projects that depend on NVIDIA's "compute 
+capability" numbering scheme, SCALE provides one "cuda mimic directory" per 
+supported GPU target that maps the new target to "sm_86" in NVIDIA's 
+numbering scheme.
+
+This means that each of the `target` subdirectories contains 
+identically-named libraries, so SCALE cannot meaningfully add them to the 
+system's library search path when it is installed. The built executable/library
+therefore needs to be told how to find the libraries via another mechanism, 
+such as:
+
+- [rpath](https://en.wikipedia.org/wiki/Rpath). With CMake, the simplest 
+  thing that "usually just works" is to add 
+  `-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON` to your cmake incantation.
+- Set `LD_LIBRARY_PATH` to include `${SCALE_DIR}/lib` at runtime.
+
+Support for multiple GPU architectures in a single binary ("Fat binaries") 
+is in development.
 
 ## Next steps
 
