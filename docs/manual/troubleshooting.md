@@ -155,6 +155,36 @@ nvcc: error: cannot find libdevice for sm_52; provide path to different CUDA ins
 nvcc: error: cannot find CUDA installation; provide its path via '--cuda-path', or pass '-nocudainc' to build without CUDA includes
 ```
 
+## Cannot find C++ standard library include
+
+Some distributions, such as Ubuntu, permit multiple versions of `gcc` and `g++` to be installed separately. It is
+possible to have a version of `gcc` installed without the corresponding version of `g++`. This can cause our compiler to
+be unable to find the C++ standard library headers.
+
+The solution is to ensure the corresponding version of `g++` is installed. For example: if the latest version of `gcc`
+you have installed is `gcc-12`, but you do not have `g++-12` installed, run: `sudo apt-get install g++-12`.
+
+#### Example error
+
+```
+  In file included from <built-in>:1:
+
+  In file included from
+  /opt/scale/targets/gfx1100/include/redscale_impl/device.h:6:
+
+  In file included from
+  /opt/scale/targets/gfx1100/include/redscale_impl/common.h:40:
+
+  /opt/scale/targets/gfx1100/include/redscale_impl/../cuda.h:15:10: fatal
+  error: 'cstddef' file not found
+
+  #include <cstddef>
+
+           ^~~~~~~~~
+
+  1 error generated when compiling for gfx1100.
+```
+
 ## CMake: Error running link command: no such file or directory
 
 CMake tries to detect the linker to use based on the compiler. For SCALE's
