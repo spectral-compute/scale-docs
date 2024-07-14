@@ -1,9 +1,4 @@
 [data-md-color-scheme="slate"], [data-md-color-scheme="default"] {
     --md-primary-fg-color: rgb(41, 37, 36);
-}
-
-[data-md-color-scheme="default"] {
-    .md-nav__link--active {
-        font-weight: bold;
-    }
+    --md-typeset-a-color: #4051b5;
 }
