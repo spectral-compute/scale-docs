@@ -2,6 +2,7 @@ site_name: SCALE documentation
 docs_dir: docs/
 extra_css:
   - style.css
+site_url: https://docs.scale-lang.com
 theme:
   name: material
   custom_dir: overrides
@@ -22,7 +23,11 @@ theme:
     - navigation.sections
     - navigation.footer
     - navigation.expand
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.instant.prefetch
     - content.code.copy
+    - toc.follow
 
 extra:
   generator: false
