@@ -20,6 +20,7 @@ theme:
         name: Switch to dark mode
   features:
     - navigation.sections
+    - navigation.footer
     - navigation.expand
     - content.code.copy
 
