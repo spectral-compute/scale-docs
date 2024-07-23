@@ -5,8 +5,8 @@ compiler in "nvcc mode" interpret compiler flags.
 
 ## `clang++` flags
 
-Except where doing so would create an ambiguity, the SCALE compiler accepts 
-all of `clang++`'s usual flags in addition to those provided by nvcc.
+The SCALE compiler accepts all of `clang++`'s usual flags in addition to those provided by nvcc,
+except where doing so would create an ambiguity.
 
 ## Compiler warnings
 
@@ -36,7 +36,7 @@ to make all warnings into errors, or a set of `-Werror=name` flags to make
 specific things into errors.
 
 In `nvcc` mode, the SCALE compiler accepts only the `nvcc` syntax, but 
-allows allows the same set of diagnostic names accepted by `clang` (as well 
+allows the same set of diagnostic names accepted by `clang` (as well 
 as the special names supported by NVIDIA's `nvcc`). For example:
 
 ```
