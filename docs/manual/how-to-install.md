@@ -24,10 +24,10 @@ SCALE can be installed as follows:
 ```bash
 # Download the .deb package
 # sha512sum: 1ca1faa8fa72854db5f28c513791b49287adad765a84620a16d82189c4a7a582d74fe5391e5169ba15c3fc9e08ce6c43f957390670252b44811f29953bad34f5
-wget https://dist.scale-lang.com/scale-free-1.0.0.0-Ubuntu22.04.deb
+wget https://dist.scale-lang.com/scale-free-1.0.1.0-Ubuntu22.04.deb
 
 # Install the package
-sudo apt-get install ./scale-free-1.0.0.0-Ubuntu22.04.deb
+sudo apt-get install ./scale-free-1.0.1.0-Ubuntu22.04.deb
 ```
 
 The `/dev/kfd` device is writable only to root and members of the `render` group by default on Ubuntu. Add your user
@@ -55,10 +55,10 @@ There is also a tarball containing binaries for other distributions and that is 
 ```bash
 # Download the tarball
 # sha512sum: 0581e37269bbd31cdf07408a0a26ba3d9f6bc8c8f77fd983193bc1dfa9211aa6238f045353331fd36bc3929131866027f0991bcf1fc15afc7e9e83331e6c3664
-wget https://dist.scale-lang.com/scale-free-1.0.0.0-Linux.tar.xz
+wget https://dist.scale-lang.com/scale-free-1.0.1.0-Linux.tar.xz
 
 # Extract the SCALE tarball.
-tar xf scale-free-1.0.0.0-Linux.tar.xz
+tar xf scale-free-1.0.1.0-Linux.tar.xz
 ```
 
 The tarball is significantly larger than the `.deb`, since it includes many dependent libraries directly instead of asking the system package manager to install them.
