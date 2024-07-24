@@ -4,6 +4,7 @@ SCALE is still in active development, so you may encounter bugs. If you run
 into problems, contact us by:
 
 - Joining our [Discord](https://discord.gg/KNpgGbTc38)
+- Creating [a ticket](https://github.com/spectral-compute/scale-validation/issues)
 - Sending us an e-mail at [hello@spectralcompute.co.uk](mailto:hello@spectralcompute.co.uk)
 
 The remainder of this page provides information about how to make your 

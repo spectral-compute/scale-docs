@@ -64,7 +64,8 @@ submitted bug reports.
 
 - The `meson` build system no longer regards SCALE-nvcc as a "broken" compiler.
 - `hsakmtsysinfo` no longer explodes if it doesn't like your GPU.
-- Fleshed out the documentation pages slightly more.
+- New documentation pages.
+- Published more details about thirdparty testing, including the build scripts.
  
 ## Release 1.0.0.0 (2024-07-15)
 

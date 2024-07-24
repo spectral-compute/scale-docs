@@ -49,8 +49,9 @@ tests and pass fully:
 | [xgboost](https://github.com/dmlc/xgboost)             | `v2.1.0`       |
 
 The scripts we use to build and test these projects (and others that do not 
-yet entirely work) are available [on github](). You can use these to reproduce 
-our results (and find bugs!).
+yet entirely work) are available
+[on github](https://github.com/spectral-compute/scale-validation). You can use
+these to reproduce our results (and find bugs!).
 
 ## Which GPUs are supported?
 
