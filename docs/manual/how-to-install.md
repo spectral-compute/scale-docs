@@ -23,7 +23,7 @@ SCALE can be installed as follows:
 
 ```bash
 # Download the .deb package
-# sha512sum: 1ca1faa8fa72854db5f28c513791b49287adad765a84620a16d82189c4a7a582d74fe5391e5169ba15c3fc9e08ce6c43f957390670252b44811f29953bad34f5
+# sha512sum: b1d7ca6fdf50b0e2802803842affb699506b77e0c5a59f7b1b49daae2555f9964176811bd26a8aec55319f715526a18ebe5947c9de8d81cf64f9306b71a8668a
 wget https://dist.scale-lang.com/scale-free-1.0.1.0-Ubuntu22.04.deb
 
 # Install the package
@@ -54,7 +54,7 @@ There is also a tarball containing binaries for other distributions and that is 
 
 ```bash
 # Download the tarball
-# sha512sum: 0581e37269bbd31cdf07408a0a26ba3d9f6bc8c8f77fd983193bc1dfa9211aa6238f045353331fd36bc3929131866027f0991bcf1fc15afc7e9e83331e6c3664
+# sha512sum: 287da603f90e2c266ba3606211f3370967c947432bdebf8c17eb0830aac17c49a49ce5fa2101f0e92f8965c78598a0334311141cfd0e9f40c914712a39fe9a22
 wget https://dist.scale-lang.com/scale-free-1.0.1.0-Linux.tar.xz
 
 # Extract the SCALE tarball.
