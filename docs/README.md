@@ -31,18 +31,25 @@ solutions:
 
 We validate SCALE by compiling open-source CUDA projects and running their
 tests.
+
 The following open-source projects are currently part of our nightly automated 
 tests and pass fully:
 
-- [NVIDIA Thrust](https://github.com/NVIDIA/thrust)
-- [Blender Cycles](https://github.com/blender/cycles)
-- [AMGX](https://github.com/NVIDIA/AMGX)
-- [llama-cpp](https://github.com/ggerganov/llama.cpp)
-- [faiss](https://github.com/facebookresearch/faiss)
-- [xgboost](https://github.com/dmlc/xgboost)
-- [GOMC](https://github.com/GOMC-WSU/GOMC)
-- [stdgpu](https://github.com/stotko/stdgpu)
-- [hashcat](https://github.com/hashcat/hashcat)
+| Project                                                | Version Tested |
+|--------------------------------------------------------|----------------|
+| [AMGX](https://github.com/NVIDIA/AMGX)                 | `v2.4.0`       |
+| [Blender Cycles](https://github.com/blender/cycles)    | `v4.2.0`       |
+| [faiss](https://github.com/facebookresearch/faiss)     | `c3b93749`     |
+| [GOMC](https://github.com/GOMC-WSU/GOMC)               | `9fc85f`       |
+| [hashcat](https://github.com/hashcat/hashcat)          | `6716447dfc`   |
+| [llama-cpp](https://github.com/ggerganov/llama.cpp)    | `b1500`        |
+| [NVIDIA Thrust](https://github.com/NVIDIA/thrust)      | `756c5af`      |
+| [stdgpu](https://github.com/stotko/stdgpu)             | `3b7d712`      |
+| [xgboost](https://github.com/dmlc/xgboost)             | `v2.1.0`       |
+
+The scripts we use to build and test these projects (and others that do not 
+yet entirely work) are available [on github](). You can use these to reproduce 
+our results (and find bugs!).
 
 ## Which GPUs are supported?
 

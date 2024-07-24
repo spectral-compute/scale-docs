@@ -66,6 +66,7 @@ nav:
   - Getting Started:
     - manual/how-to-install.md
     - manual/how-to-use.md
+    - manual/comparison.md
     - Examples:
       - examples/README.md
       - examples/basic.md
@@ -73,12 +74,13 @@ nav:
       - examples/blas.md
   - Diving deeper:
     - manual/troubleshooting.md
-    - manual/comparison.md
-    - manual/differences.md
     - manual/compute-capabilities.md
     - manual/dialects.md
-    - Scale Extensions:
-      - manual/runtime-extensions.md
+    - manual/differences.md
+    - manual/runtime-extensions.md
+    - Compiler:
+      - manual/inline-ptx.md
+      - manual/diagnostic-flags.md
       - manual/language-extensions.md
   - Contact Us:
     - contact/report-a-bug.md

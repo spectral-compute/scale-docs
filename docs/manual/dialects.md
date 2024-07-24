@@ -21,11 +21,9 @@ semantics.
 
 SCALE resolves this issue by offering two compilers:
 
-- `"nvcc"`: a clang frontend that replicates the behaviour of `nvcc`, allowing 
-  existing CUDA programs to compile directly. This is similar to how LLVM 
-  already provides `clang-cl`: a frontend to clang that replicates the 
-  quirks of the 
-  Microsoft compiler for c++.
+- `"nvcc"`: a clang frontend that replicates the behaviour of NVIDIA's `nvcc`, 
+  allowing existing CUDA programs to compile directly. This is similar to how
+  LLVM achieves MSVC compatibility by providing `clang-cl`.
 - `clang`: providing clang's usual clang-dialect-CUDA support, with our 
   opt-in language extensions.
 

@@ -14,13 +14,24 @@ The SCALE compiler has the same default warning behaviour as `clang`, which
 is somewhat more strict than `nvcc`. Warnings may be disabled with the usual 
 `-Wno-` flags documented in the [clang diagnostics reference](https://clang.llvm.org/docs/DiagnosticsReference.html).
 
-There may be value in *enabling* even more warnings to find further issues 
+There may be value in *enabling* even more warnings to find further issues
 and improve your code.
+
+Note that the end of every compiler warning message tells you the name of 
+the warning flag it is associated with, such as:
+
+```
+warning: implicit conversion from 'int' to 'float' changes value from 
+2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
+```
+
+By changing `-W` to `-Wno-`, you obtain the flag required to disable that 
+warning.
 
 The SCALE implementation of the CUDA runtime/driver APIs uses `[[nodiscard]]`
 for the error return codes, meaning you'll get a warning from code that 
 ignores potential errors from CUDA APIs. This warning can be disabled via 
-`-Wno-`.
+`-Wno-unused-result`.
 
 ## `-Werror`
 
