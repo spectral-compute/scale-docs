@@ -13,6 +13,7 @@ To get started:
 
 - See the [tutorial](./manual/how-to-use.md).
 - Review the [examples](./examples/README.md).
+- Check out the [FAQ](./manual/faq.md)
 - [Contact us](#contact-us) for help.
 
 ## How does it work?

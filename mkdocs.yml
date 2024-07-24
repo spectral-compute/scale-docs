@@ -63,6 +63,7 @@ markdown_extensions:
 
 nav:
   - README.md
+  - manual/CHANGELOG.md
   - Getting Started:
     - manual/how-to-install.md
     - manual/how-to-use.md
