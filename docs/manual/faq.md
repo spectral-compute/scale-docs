@@ -11,7 +11,7 @@ Bug reports - no matter how small - accelerate the SCALE project.
 
 Let's work together to democratise the GPGPU market!
 
-## When will <some GPU> be supported?
+## When will `<some GPU>` be supported?
 
 Expanding the set of supported GPUs is an ongoing process. At present we're 
 being very conservative with the set of GPUs enabled with SCALE to avoid 
@@ -21,7 +21,7 @@ If your GPU is supported by ROCm, it'll probably become available on SCALE a
 little sooner than if it is not, since it won't break our "CUDA-X" library 
 delegation mechanism.
 
-## When will <some CUDA API> be supported?
+## When will `<some CUDA API>` be supported?
 
 We prioritise CUDA APIs based on the number and popularity of third-party 
 projects requiring the missing API.
