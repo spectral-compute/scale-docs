@@ -57,7 +57,7 @@ submitted bug reports.
   causing PTX to end up in the AMD binary unmodified.
 - CUDA launch tokens with spaces (ie.: `myKernel<< <1, 1>> >()`) are now 
   supported.
-- Building non-cuda C translation units with SCALE-nvcc now works.)
+- Building non-cuda C translation units with SCALE-nvcc now works.
 
 ### Other
 
