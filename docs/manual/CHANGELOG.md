@@ -16,11 +16,12 @@ submitted bug reports.
   checking cuda include guard macros.
 - `lrint()` and `llrint()` no longer crash the compiler. :D
 - Newly supported CUDA APIs:
-  * `nvrtcGetNumSupportedArchs`
-  * `nvrtcGetSupportedArchs`
-  * `cudaLaunchKernelEx`, `cuLaunchKernelEx`, `cudaLaunchKernelExC`: some of the performance-hint 
+    * `nvrtcGetNumSupportedArchs`
+    * `nvrtcGetSupportedArchs`
+    * `cudaLaunchKernelEx`, `cuLaunchKernelEx`, `cudaLaunchKernelExC`: some 
+     of the performance-hint 
     launch options are no-ops.
-  * `__vavgs2`, `__vavgs4`
+    * `__vavgs2`, `__vavgs4`
 
 ### Compiler
 
@@ -31,22 +32,22 @@ submitted bug reports.
        embedded quotes and `\,`. We now correctly handle cursed arguments like:
        '-Xcompiler=-Wl\,-O1' '-Xcompiler=-Wl\,-rpath\,/usr/lib,-Wl\,-rpath-link\,/usr/lib'`
 - Support for more nvcc arguments:
-  * NVCC-style diagnostic flags: `-Werror`, `-disable-warnings`, etc.
-  * `--run`, `--run-args`
-  * `-Xlinker`, `-linker-options`
-  * `-no-exceptions`, `-noeh`
-  * `-minimal`: no-op. Exact semantics are undocumented, and build times
-    are reasonably fast anyway.
-  * `-gen-opt-lto`, `-dlink-time-opt`, `-dlto`. No-ops: device LTO not yet 
-    supported.
-  * `-t`, `--threads`, `-split-compile`: No-ops: they're flags for making 
-    compilation faster and are specific to how nvcc is implemented.
-  * `-device-int128`: no-op: we always enable int128.
-  * `-extra-device-vectorization`: no-op: vectorisation optimisations are 
-    controlled by the usual `-O*` flags.
-  * `-entries`, `-source-in-ptx`, `-src-in-ptx`: no-ops: there is no PTX.
-  * `-use-local-env`, `-idp`, `-ddp`, `-dp`, etc.: ignored since they are 
-    meaningless except on Windows.
+    * NVCC-style diagnostic flags: `-Werror`, `-disable-warnings`, etc.
+    * `--run`, `--run-args`
+    * `-Xlinker`, `-linker-options`
+    * `-no-exceptions`, `-noeh`
+    * `-minimal`: no-op. Exact semantics are undocumented, and build times
+      are reasonably fast anyway.
+    * `-gen-opt-lto`, `-dlink-time-opt`, `-dlto`. No-ops: device LTO not yet 
+      supported.
+    * `-t`, `--threads`, `-split-compile`: No-ops: they're flags for making 
+      compilation faster and are specific to how nvcc is implemented.
+    * `-device-int128`: no-op: we always enable int128.
+    * `-extra-device-vectorization`: no-op: vectorisation optimisations are 
+      controlled by the usual `-O*` flags.
+    * `-entries`, `-source-in-ptx`, `-src-in-ptx`: no-ops: there is no PTX.
+    * `-use-local-env`, `-idp`, `-ddp`, `-dp`, etc.: ignored since they are 
+      meaningless except on Windows.
 
 - Allow variadic device functions in non-evaluated functions.
 - Don't warn about implicit conversion from `cudaLaneMask_t` to `bool`.
