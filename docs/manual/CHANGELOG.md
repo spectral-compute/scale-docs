@@ -30,7 +30,7 @@ submitted bug reports.
        `--foo=bar`, and `-foo=bar` are always allowed, it seems).
      * Implement "interesting" quoting/escaping rules in nvcc arguments, such as
        embedded quotes and `\,`. We now correctly handle cursed arguments like:
-       '-Xcompiler=-Wl\,-O1' '-Xcompiler=-Wl\,-rpath\,/usr/lib,-Wl\,-rpath-link\,/usr/lib'`
+       `'-Xcompiler=-Wl\,-O1' '-Xcompiler=-Wl\,-rpath\,/usr/lib,-Wl\,-rpath-link\,/usr/lib'`
 - Support for more nvcc arguments:
     * NVCC-style diagnostic flags: `-Werror`, `-disable-warnings`, etc.
     * `--run`, `--run-args`
