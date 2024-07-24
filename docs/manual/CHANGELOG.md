@@ -22,6 +22,7 @@ submitted bug reports.
      of the performance-hint 
     launch options are no-ops.
     * `__vavgs2`, `__vavgs4`
+    * All the `atomic*_block()` and `atomic*_system()` variants.
 
 ### Compiler
 
