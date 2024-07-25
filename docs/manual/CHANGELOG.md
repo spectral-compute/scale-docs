@@ -54,7 +54,7 @@ submitted bug reports.
 - Don't warn about implicit conversion from `cudaLaneMask_t` to `bool`.
 - `__builtin_provable` no longer causes compiler crashes in `-O0`/`-O1` builds.
 - Fixed a bug causing PTX `asm` blocks inside non-template, non-dependent 
-  member functions of template classes would sometimes not be compiled, 
+  member functions of template classes to sometimes not be compiled, 
   causing PTX to end up in the AMD binary unmodified.
 - CUDA launch tokens with spaces (ie.: `myKernel<< <1, 1>> >()`) are now 
   supported.
