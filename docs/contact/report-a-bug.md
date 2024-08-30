@@ -60,12 +60,12 @@ useful information can be harvested by enabling some environment variables
 that dump extra information. If you are able, sharing the output obtained
 from reproducing the crash with one or both of these enabled can be helpful:
 
-- `REDSCALE_CRASH_REPORT_DETAILED=1` will dump extra information from the
+- `SCALE_CRASH_REPORT_DETAILED=1` will dump extra information from the
   GPU trap handler. This includes register state and some symbol names, so
   it is unlikely to contain any sensitive/proprietary information from your code.
-- `REDSCALE_CRASH_DUMP=somefilename` will write the crashing machine code to
+- `SCALE_CRASH_DUMP=somefilename` will write the crashing machine code to
   a file. This makes it easier to investigate the problem, but it means that you're
-  sharing the compiled version of the crasing GPU kernel with us.
+  sharing the compiled version of the crashing GPU kernel with us.
 
 ## Something else
 
@@ -74,7 +74,7 @@ with your report:
 
 ```
 lspci | grep VGA
-redscaleinfo
+scaleinfo
 hsainfo
 hsakmtinfo
 ```

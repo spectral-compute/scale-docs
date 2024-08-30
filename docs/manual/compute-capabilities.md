@@ -92,7 +92,7 @@ gfx1100
 
 The library searches for a compute capability map in the following order:
 
-- The file pointed the `REDSCALE_CCMAP` environment variable. It is an error if
+- The file pointed the `SCALE_CCMAP` environment variable. It is an error if
   this environment variable is set but the
   file to which it points does not exist.
 - `../share/redscale/ccmap.conf` relative to the directory
@@ -109,7 +109,7 @@ The compiler searches for a compute capability map in the following order:
 - The file pointed to by the `--cuda-ccmap` flag. It is an error if this flag is
   given but the file to which it points
   does not exist.
-- The file pointed the `REDSCALE_CCMAP` environment variable. It is an error if
+- The file pointed the `SCALE_CCMAP` environment variable. It is an error if
   this environment variable is set but the
   file to which it points does not exist.
 - `../share/redscale/ccmap.conf` relative to the directory containing the
