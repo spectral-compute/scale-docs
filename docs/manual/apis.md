@@ -1,11 +1,11 @@
 # Introduction to implemented APIs
 
 This section of the manual lists CUDA APIs that are implemented by SCALE.
-It is split in three subsections:
+It is split in three pages:
 
-- [Driver API](./api-driver.md)
-- [Math API](./api-math.md)
-- [Runtime API](./api-runtime.md)
+- List of [Driver APIs](./api-driver.md)
+- List of [Math APIs](./api-math.md)
+- List of [Runtime API](./api-runtime.md)
 
 The lists are based on the official Nvidia documentation and use the same layout.
 Every heading links back to the page where its entries originate from.
