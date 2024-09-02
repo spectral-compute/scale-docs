@@ -83,6 +83,11 @@ nav:
       - manual/inline-ptx.md
       - manual/diagnostic-flags.md
       - manual/language-extensions.md
+    - Implemented APIs:
+      - manual/apis.md
+      - manual/api-driver.md
+      - manual/api-math.md
+      - manual/api-runtime.md
   - Contact Us:
     - contact/report-a-bug.md
   - Legal:
