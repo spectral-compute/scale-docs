@@ -69,5 +69,5 @@ For this reason, some successful matches may simply get missed.
 Note that these lists currently **don't check members of types** such as struct fields or enum variants.
 
 [Reach out to us](../contact/report-a-bug.md) if you experience problems for any of these reasons.
-Possible problems with the entires would require our attention on a case-by-case basis.
+Possible problems with the entries require our attention on a case-by-case basis.
 Your feedback will help us find possible inconsistencies and prioritise our work to fix them.
