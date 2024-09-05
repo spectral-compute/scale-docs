@@ -1,5 +1,67 @@
 # What's new?
 
+## Release 1.0.2.0 (2024-09-05)
+
+Documented a record of the CUDA APIs already available in SCALE, and those still to come: [Implemented APIs](./apis.md).
+
+### Library Enhancements
+
+- Kernel arguments larger than 4kb no longer crash the library.
+- Programs that ignore CUDA error codes can no longer get stuck in a state
+  where the library always returns the error code you ignored.
+- Fixed synchronisation bugs when using synchronous `cuMemset*` APIs.
+- Fixed implicit synchronisation behaviour of `cuMemcpy2D/cuMemcpy2DAsync()`.
+- Fixed precision issues in fp16 `exp2()`, `rsqrt()`, and `h2log()`.
+- `cudaEventRecord` for an empty event no longer returns a time in the past.
+- Fixed occupancy API behaviour in edgecases that are not multiples of warp
+  size.
+- Fixed rare crashes during static de-initialisation when library wrappers
+  were in use.
+- All flags supported by SCALE's nvcc are now also accepted by our nvrtc
+  implementation.
+- Various small header fixes.
+
+### Compiler Enhancements
+
+- `decltype()` now works correctly for `__host__ __device__` functions.
+- `-Winvalid-constexpr` no longer defaults to `-Werror`, for consistency
+  with nvcc.
+- PTX variable names including `%` are no longer rejected.
+- Support for nvcc's nonstandard permissiveness surrounding missing
+  `typename` keywords in dependent types.
+- Support for nvcc's wacky "split declaration" syntax for `__host__ __device`
+  functions (with a warning):
+  ```
+  int foo();
+  __device__ int foo();
+  __host__ int foo() {
+      return 5;
+  }
+  // foo() is a __host__ __device__ function. :D
+  ```
+- Newly-supported compiler flags (all of which are aliases for
+  standard flags, or combinations thereof):
+    * `-device-c`
+    * `-device-w`
+    * `-pre-include`
+    * `-library`
+    * `-output-file`
+    * `-define-macro`
+    * `-undefine-macro`
+
+### New CUDA APIs
+
+#### Math APIs
+
+- `exp10(__half)`
+- `exp2(__half)`
+- `rcp(__half)`
+- `rint(__half)`
+- `h2exp10(__half2)`
+- `h2exp2(__half2)`
+- `h2rcp(__half2)`
+- `h2rint(__half2)`
+
 ## Release 1.0.1.0 (2024-07-24)
 
 This release primarily fixes issues that prevent people from successfully
