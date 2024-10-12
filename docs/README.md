@@ -47,6 +47,7 @@ tests and pass fully:
 | [NVIDIA Thrust](https://github.com/NVIDIA/thrust)      | `756c5af`      |
 | [stdgpu](https://github.com/stotko/stdgpu)             | `3b7d712`      |
 | [xgboost](https://github.com/dmlc/xgboost)             | `v2.1.0`       |
+| [GPUJPEG](https://github.com/CESNET/GPUJPEG)           | `3e045d1`      |
 
 The scripts we use to build and test these projects (and others that do not 
 yet entirely work) are available
