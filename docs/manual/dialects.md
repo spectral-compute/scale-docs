@@ -29,5 +29,4 @@ SCALE resolves this issue by offering two compilers:
 
 Existing projects can be compiled without modification using the 
 `nvcc`-equivalent compiler. Users of clang-dialect CUDA may use the provided 
-clang compiler to compile for either platform, optionally using the language 
-extensions.
+clang compiler to compile for either platform.

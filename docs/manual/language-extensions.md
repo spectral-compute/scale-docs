@@ -3,9 +3,9 @@
 SCALE has various opt-in language extensions that aim to improve the 
 experience of writing GPU code. More language extensions are in development.
 
-Language extensions are currently only available when compiling in `clang` 
-mode. Using language extensions in `nvcc` mode would break compatibility 
-with NVIDIA's `nvcc` compiler.
+Unless otherwise noted, SCALE accepts these language extensions in both 
+`clang` and `nvcc` modes. Note that there are [dialect differences](dialects.md)
+between the two modes.
 
 Since NVIDIA's compiler does not support SCALE language extensions, if you 
 want to retain the ability to compile for NVIDIA GPUs you must do one of two 

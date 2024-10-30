@@ -94,3 +94,12 @@ In NVIDIA's implementation, this condition returns
 
 Matching NVIDIA's behaviour would have incurred a small performance penalty
 on many operations to handle an edgecase that is not permitted.
+
+### Kernel argument size
+
+SCALE accepts kernel arguments up to 2GB, whereas NVIDIA CUDA allows only 
+32kb (and 4kb before version 12.1).
+
+This is more an implementation quirk than a feature, since huge kernel 
+arguments are unlikely to perform well compared to achieving the same effect 
+with async copies, memory mapping, etc.

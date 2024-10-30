@@ -3,6 +3,132 @@
 SCALE accepts inline PTX `asm` blocks in CUDA programs and will attempt to 
 compile it for AMD along with the rest of your program.
 
+## Wave64 considerations
+
+A small number of PTX instructions depend on the warp size of the GPU being 
+used. Since all NVIDIA GPUs and many AMD ones have a warp size of 32, much 
+code implicitly relies on this. As a result, issues can appear when 
+targeting wave64 devices.
+
+SCALE provides several tools and compiler warnings to help you write 
+portable PTX code. In most cases only small tweaks are required to get things
+working. Since so little PTX actually depends on the warp size, most 
+projects are unaffected by the issues documented in this section. 
+Nevertheless, it is useful to adjust your code to be warp-size-agnostic, 
+since doing so can be done with no downsides.
+
+### Querying warp size
+
+PTX defines the `WARP_SIZE` global constant which can be used to access the 
+warp size directly. It's a compile-time constant in nvidia's implementation 
+as well as in SCALE, so there is no cost to using this and doing arithmetic 
+with it (like with `warpSize` in CUDA code).
+
+### Lanemask inputs
+
+The length of lanemask operands on instructions will always have a number of 
+bits equal to the warp size on the target GPU. For 
+example, when compiling for a wave64 GPU, the lanemask argument to `shfl.sync`
+is a `b64`, not `b32`.
+
+The following rules are applied to help detect problems with such operands:
+
+- If a non-constant lanemask operand is used, and its bit-length is <= the 
+  warp size, an error is raised.
+- If a constant lanemask operand is used with no 1-bits in the high 32 bits, 
+  while compiling for a wave64 architecture, a warning is raised (which can 
+  be disabled). This catches the common case of hardcoded lanemasks like 
+  `0xFFFFFFFF` which will typecheck as `b64`, but will probably not do what 
+  you want.
+
+In the common case where you want an all-ones lanemask, the most convenient 
+thing to do is write `-1` instead of `0xFFFFFFFF`: this will give you the 
+correct number of 1-bits in all cases, including on nvidia platforms.
+
+### The `c` argument to `shfl` instructions
+
+The `shfl` PTX instruction has a funky operand, `c`, used for clamping etc.
+See [the documentation](https://docs.nvidia.com/cuda/parallel-thread-execution/index.html#data-movement-and-conversion-instructions-shfl-sync).
+
+The `c` operand is really two operands packed together: `cval` in
+bits 0-4, and `segmask` in bits 8-12. For wave64, an extra bit is needed. Since
+there is space for an extra bit in each of these values, we simply add it in
+the obvious place.
+
+A portable way of reasoning about this is to assume that `cval` is in bits 0-7
+and `segmask` in bits 8-15.
+
+Here's a concrete example of a reverse cumsum that works on either warp size:
+
+```c++
+__global__ void shuffleRevCumsumKernel(float *dst)
+{
+    float out;
+    const int C = warpSize - 1;
+    asm(
+    ".reg .f32 Rx;"
+    ".reg .f32 Ry;"
+    ".reg .pred p;"
+    "mov.b32 Rx, %1;"
+    "shfl.sync.down.b32  Ry|p, Rx, 0x1,  %2, -1;"
+    "@p  add.f32        Rx, Ry, Rx;"
+    "shfl.sync.down.b32  Ry|p, Rx, 0x2,  %2, -1;"
+    "@p  add.f32        Rx, Ry, Rx;"
+    "shfl.sync.down.b32  Ry|p, Rx, 0x4,  %2, -1;"
+    "@p  add.f32        Rx, Ry, Rx;"
+    "shfl.sync.down.b32  Ry|p, Rx, 0x8,  %2, -1;"
+    "@p  add.f32        Rx, Ry, Rx;"
+    "shfl.sync.down.b32  Ry|p, Rx, 0x10, %2, -1;"
+    "@p  add.f32        Rx, Ry, Rx;"
+    
+    // One extra shuffle is needed for the larger warp size.
+    #if __SCALE_WARP_SIZE__ > 32
+    "shfl.sync.down.b32  Ry|p, Rx, 0x20, %2, -1;"
+    "@p  add.f32        Rx, Ry, Rx;"
+    #endif // __SCALE_WARP_SIZE__
+    "mov.b32 %0, Rx;"
+    : "=f"(out) : "f"(1.0f), "n"(C)
+    );
+
+    dst[threadIdx.x] = out;
+}
+```
+
+And here's how to do a portable butterfly shuffle reduction:
+
+```c++
+__global__ void shuffleBflyKernel(float *dst)
+{
+    const int C = warpSize - 1;
+
+    float out;
+    asm(
+    ".reg .f32 Rx;"
+    ".reg .f32 Ry;"
+    ".reg .pred p;"
+    "mov.b32 Rx, %1;"
+    #if __SCALE_WARP_SIZE__ > 32
+    "shfl.sync.bfly.b32  Ry, Rx, 0x20, %2, -1;"
+    "add.f32        Rx, Ry, Rx;"
+    #endif // __SCALE_WARP_SIZE__
+    "shfl.sync.bfly.b32  Ry, Rx, 0x10, %2, -1;"
+    "add.f32        Rx, Ry, Rx;"
+    "shfl.sync.bfly.b32  Ry, Rx, 0x8,  %2, -1;"
+    "add.f32        Rx, Ry, Rx;"
+    "shfl.sync.bfly.b32  Ry, Rx, 0x4,  %2, -1;"
+    "add.f32        Rx, Ry, Rx;"
+    "shfl.sync.bfly.b32  Ry, Rx, 0x2,  %2, -1;"
+    "add.f32        Rx, Ry, Rx;"
+    "shfl.sync.bfly.b32  Ry, Rx, 0x1,  %2, -1;"
+    "add.f32        Rx, Ry, Rx;"
+    "mov.b32 %0, Rx;"
+    : "=f"(out) : "f"((float) threadIdx.x), "n"(C)
+    );
+
+    dst[threadIdx.x] = out;
+}
+```
+
 ## Dialect differences
 
 The SCALE compiler accepts a more permissive dialect of PTX than NVIDIA's 
@@ -23,7 +149,20 @@ extra sext/trunc instructions, so isn't necessarily a good idea).
 
 AMD hardware does not seem to have a mechanism by which individual threads 
 can terminate early (only entire warps). As a result, the `exit` 
-instruction may be used only in converged contexts.
+instruction may be used only in converged contexts. We transform it into
+approximately:
+
+```c++
+if (__activemask() == -1) {
+    exit_entire_warp();
+} else {
+    // This situation is unrepresentable
+    __trap();
+}
+```
+
+Code that uses `exit` as a performance optimisation for nvidia hardware may 
+benefit from being adjusted for AMD.
 
 ## Empty `asm volatile` blocks
 
@@ -34,11 +173,20 @@ barrier to prevent the compiler breaking programs that contain undefined
 behaviour. This pragmatic choice should reduce how often such broken programs
 fail to function, but such code is broken by definition.
 
+Note that the `volatile` on non-empty `volatile asm` blocks has no effect on the
+behaviour of the SCALE compiler. `volatile` asm is a conservative feature that
+allows the compiler to model "unknowable" implicit dependencies of the actions
+takenby the inline asm. Since we're compiling the asm to IR, the *actual*
+dependencies and properties of everything it does are known and modelled. This
+can improve optimisation, but may break programs that have undefined behaviour
+that was being hidden by the optimisation barrier effect of the volatile asm 
+block.
+
 ## `asm` input/output types
 
 `nvcc` doesn't appear to consistently follow its own tying rules for PTX asm 
-inputs/outputs. It the following invalid things to occur in some cases (and real
-programs depend on this):
+inputs/outputs. It allows the following invalid things to occur in some cases 
+(and real programs depend on this):
 
 - Writes to read-only asm bindings are permitted (such as writing to an "r") 
   constraint. The result of the write is not visible to the caller: it's 
@@ -63,9 +211,8 @@ which are intended to maximise compatibility (and minimise "weirdness"):
   the behaviour of programs unless they rely on using a "too short" PTX 
   constraint type to truncate a value, and then implicitly widen it within 
   PTX (hence zeroing out some of the bits). Since such truncations are 
-  inconsistently applied even in nvidia mode, they are probably best achieved
-  with an explicit cast. In any case, we have thus far never seen such code 
-  in the wild!
+  inconsistently applied even with nvidia nvcc mode, they are probably best 
+  achieved with an explicit cast.
 
 ## Performance considerations
 
@@ -138,6 +285,7 @@ currently supported in SCALE, they are also not supported here.
 | elect                            |                           |
 | exit                             | Only from convergent code |
 | fma                              |                           |
+| fns                              |                           |
 | griddepcontrol.launch_dependents | Currently a no-op         |
 | griddepcontrol.wait              | Currently a no-op         |
 | isspacep                         |                           |

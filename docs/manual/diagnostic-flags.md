@@ -1,12 +1,12 @@
-# Compiler warning flags
+# Compiler warnings
 
 There are some differences in how NVIDIA's `nvcc` and the SCALE 
-compiler in "nvcc mode" interpret compiler flags.
+compiler in "nvcc mode" interpret compiler options relatig to warnings.
 
 ## `clang++` flags
 
-The SCALE compiler accepts all of `clang++`'s usual flags in addition to those provided by nvcc,
-except where doing so would create an ambiguity.
+The SCALE compiler accepts all of `clang++`'s usual flags in addition to those
+provided by nvcc, except where doing so would create an ambiguity.
 
 ## Compiler warnings
 
@@ -58,3 +58,24 @@ clang++ -Werror=documentation -Werror=implicit-int-conversion foo.cu
 Since SCALE enables more warnings than nvcc does by default, many projects 
 using `-Werror` with nvcc will not compile without either disabling the flag 
 or fixing the underlying code issues.
+
+## Diagnostic control pragmas
+
+The SCALE compiler does not currently support `#pragma nv_diag_suppress` or
+`#pragma diag_suppress` because the set of integers accepted by these pragmas
+does not appear to be documented, so we do not know which diagnostics should
+be controlled by which pragmas. Using these pragmas in your program will
+produce an "unrecognised pragma ignored" warning, which can itself be disabled
+with `-Wno-unknown-pragmas`.
+
+SCALE supports clang-style diagnostic pragmas, as documented [here]
+(https://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
+This can be combined with preprocessor macros to achieve the desired effect:
+
+```c++
+#if defined(__clang__) // All clang-like compilers, including SCALE.
+#pragma clang diagnostic ignored "-Wunused-result"
+#elif defined(__NVCC__) // NVCC, but not clang. AKA: nvidia's one.
+#pragma nv_diag_suppress ...
+#endif
+```
