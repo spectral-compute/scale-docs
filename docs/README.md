@@ -36,17 +36,20 @@ tests.
 The following open-source projects are currently part of our nightly automated 
 tests and pass fully:
 
-| Project                                                | Version Tested |
-|--------------------------------------------------------|----------------|
-| [AMGX](https://github.com/NVIDIA/AMGX)                 | `v2.4.0`       |
-| [Blender Cycles](https://github.com/blender/cycles)    | `v4.2.0`       |
-| [faiss](https://github.com/facebookresearch/faiss)     | `c3b93749`     |
-| [GOMC](https://github.com/GOMC-WSU/GOMC)               | `9fc85f`       |
-| [hashcat](https://github.com/hashcat/hashcat)          | `6716447dfc`   |
-| [llama-cpp](https://github.com/ggerganov/llama.cpp)    | `b1500`        |
-| [NVIDIA Thrust](https://github.com/NVIDIA/thrust)      | `756c5af`      |
-| [stdgpu](https://github.com/stotko/stdgpu)             | `3b7d712`      |
-| [xgboost](https://github.com/dmlc/xgboost)             | `v2.1.0`       |
+| Project                                             | Version Tested |
+|-----------------------------------------------------|----------------|
+| [AMGX](https://github.com/NVIDIA/AMGX)              | `v2.4.0`       |
+| [Blender Cycles](https://github.com/blender/cycles) | `v4.2.0`       |
+| [faiss](https://github.com/facebookresearch/faiss)  | `c3b93749`     |
+| [FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2)  | `4e02604`      |
+| [GOMC](https://github.com/GOMC-WSU/GOMC)            | `9fc85f`       |
+| [GPUJPEG](https://github.com/CESNET/GPUJPEG)        | `3e045d1`      |
+| [gpu_jpeg2k](https://github.com/ePirat/gpu_jpeg2k)  | `ee715e9`      |
+| [hashcat](https://github.com/hashcat/hashcat)       | `6716447dfc`   |
+| [llama-cpp](https://github.com/ggerganov/llama.cpp) | `b1500`        |
+| [NVIDIA Thrust](https://github.com/NVIDIA/thrust)   | `756c5af`      |
+| [stdgpu](https://github.com/stotko/stdgpu)          | `3b7d712`      |
+| [xgboost](https://github.com/dmlc/xgboost)          | `v2.1.0`       |
 
 The scripts we use to build and test these projects (and others that do not 
 yet entirely work) are available
