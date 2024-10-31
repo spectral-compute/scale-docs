@@ -1,4 +1,26 @@
-# What's new?
+## Release 1.1.0 (2024-10-31)
+
+### Library Enhancements
+
+- Added much of the CUDA graph API.
+- Improvements to multi-GPU handling.
+- Fixed rare shutdown-time segfaults.
+- Added many random API functions. As usual, see [The diff](./apis.md).
+
+### PTX
+
+- `f16x2`, `u16x2` and `s16x2` types.
+- `fns` instruction
+- Fixed miscompile of `sad` instruction.
+
+### Thirdparty Project demos
+
+The `scale-validation` repo now has working demos for the following 
+additional projects:
+
+- FLAMEGPU2
+- GPUJPEG
+- gpu_jpeg2k
 
 ## Release 1.0.2.0 (2024-09-05)
 
