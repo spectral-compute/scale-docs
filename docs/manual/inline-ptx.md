@@ -19,7 +19,7 @@ since doing so can be done with no downsides.
 
 ### Querying warp size
 
-PTX defines the `WARP_SIZE` global constant which can be used to access the 
+PTX defines the `WARP_SZ` global constant which can be used to access the
 warp size directly. It's a compile-time constant in nvidia's implementation 
 as well as in SCALE, so there is no cost to using this and doing arithmetic 
 with it (like with `warpSize` in CUDA code).
