@@ -1,5 +1,22 @@
 # What's new?
 
+## Release 1.2.0 (2024-11-27)
+
+### Library Enhancements
+
+- Support for `gfx900` architecture.
+- Support for `gfx1102` architecture.
+
+### PTX
+
+- [Improved handling of wave64](./inline-ptx.md#wave64-considerations) in inline PTX.
+- Various inline PTX compilation fixes.
+
+### Other
+
+- Support for Ubuntu 24.04.
+- Upgraded to ROCm 6.2.2.
+
 ## Release 1.1.0 (2024-10-31)
 
 ### Library Enhancements
