@@ -60,6 +60,7 @@ these to reproduce our results (and find bugs!).
 
 The following GPU targets are supported, and are covered by our nightly tests:
 
+- AMD `gfx900` (Vega 10, GCN 5.0)
 - AMD `gfx1030` (Navi 21, RDNA 2.0)
 - AMD `gfx1100` (Navi 31, RDNA 3.0)
 
@@ -68,10 +69,7 @@ work":
 
 - AMD `gfx1010`
 - AMD `gfx1101`
-
-We are working on supporting the following GPUs:
-
-- AMD `gfx900` (Vega 10, GCN 5.0)
+- AMD `gfx1102`
 
 [Contact us](#contact-us) if you want us to expedite support for a particular AMD GPU
 architecture.
