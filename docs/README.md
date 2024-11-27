@@ -40,7 +40,7 @@ tests and pass fully:
 |-----------------------------------------------------|----------------|
 | [AMGX](https://github.com/NVIDIA/AMGX)              | `v2.4.0`       |
 | [Blender Cycles](https://github.com/blender/cycles) | `v4.2.0`       |
-| [faiss](https://github.com/facebookresearch/faiss)  | `c3b93749`     |
+| [faiss](https://github.com/facebookresearch/faiss)  | `v1.9.0`       |
 | [FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2)  | `4e02604`      |
 | [GOMC](https://github.com/GOMC-WSU/GOMC)            | `9fc85f`       |
 | [GPUJPEG](https://github.com/CESNET/GPUJPEG)        | `3e045d1`      |
