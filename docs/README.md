@@ -42,7 +42,7 @@ tests and pass fully:
 | [Blender Cycles](https://github.com/blender/cycles) | `v4.2.0`       |
 | [faiss](https://github.com/facebookresearch/faiss)  | `v1.9.0`       |
 | [FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2)  | `4e02604`      |
-| [GOMC](https://github.com/GOMC-WSU/GOMC)            | `9fc85f`       |
+| [GOMC](https://github.com/GOMC-WSU/GOMC)            | `4c12477`      |
 | [GPUJPEG](https://github.com/CESNET/GPUJPEG)        | `3e045d1`      |
 | [gpu_jpeg2k](https://github.com/ePirat/gpu_jpeg2k)  | `ee715e9`      |
 | [hashcat](https://github.com/hashcat/hashcat)       | `6716447dfc`   |
