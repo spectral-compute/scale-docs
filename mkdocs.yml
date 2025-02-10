@@ -1,8 +1,8 @@
-site_name: SCALE documentation
+site_name: SCALE documentation (unstable)
 docs_dir: docs/
 extra_css:
   - style.css
-site_url: https://docs.scale-lang.com
+site_url: https://unstable.docs.scale-lang.com
 theme:
   name: material
   custom_dir: overrides
