@@ -38,17 +38,18 @@ tests and pass fully:
 
 | Project                                             | Version Tested |
 |-----------------------------------------------------|----------------|
+| [alien](https://github.com/chrxh/alien)             | `v4.12`        |
 | [AMGX](https://github.com/NVIDIA/AMGX)              | `v2.4.0`       |
 | [Blender Cycles](https://github.com/blender/cycles) | `v4.2.0`       |
 | [faiss](https://github.com/facebookresearch/faiss)  | `v1.9.0`       |
-| [FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2)  | `4e02604`      |
-| [GOMC](https://github.com/GOMC-WSU/GOMC)            | `4c12477`      |
+| [FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2)  | `345e0ae`      |
+| [GOMC](https://github.com/GOMC-WSU/GOMC)            | `9fc85fb`      |
 | [GPUJPEG](https://github.com/CESNET/GPUJPEG)        | `3e045d1`      |
 | [gpu_jpeg2k](https://github.com/ePirat/gpu_jpeg2k)  | `ee715e9`      |
 | [hashcat](https://github.com/hashcat/hashcat)       | `6716447dfc`   |
 | [llama-cpp](https://github.com/ggerganov/llama.cpp) | `b1500`        |
 | [NVIDIA Thrust](https://github.com/NVIDIA/thrust)   | `756c5af`      |
-| [stdgpu](https://github.com/stotko/stdgpu)          | `3b7d712`      |
+| [stdgpu](https://github.com/stotko/stdgpu)          | `2588168`      |
 | [xgboost](https://github.com/dmlc/xgboost)          | `v2.1.0`       |
 
 The scripts we use to build and test these projects (and others that do not 
