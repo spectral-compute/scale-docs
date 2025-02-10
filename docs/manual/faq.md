@@ -11,6 +11,20 @@ Bug reports - no matter how small - accelerate the SCALE project.
 
 Let's work together to democratise the GPGPU market!
 
+## What are `unstable` builds?
+
+`unstable` builds give you access to our latest features and performance
+optimisations. `unstable` builds give you access to these features sooner
+than they would become available via our
+[stable releases](https://docs.scale-lang.com/manual/how-to-install/).
+However, `unstable` builds do not pass through our full quality assurance
+process: they may contain regressions and other bugs. `unstable` builds
+are made available "as is", and no detailed changlogs are available for
+`unstable` builds.
+
+* [Instructions for installing `unstable` builds](https://docs.scale-lang.com/manual/how-to-install-unstable/)
+* [Documentation for `unstable` builds](https://unstable-docs.scale-lang.com/)
+
 ## When will `<some GPU>` be supported?
 
 Expanding the set of supported GPUs is an ongoing process. At present we're 

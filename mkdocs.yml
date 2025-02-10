@@ -81,6 +81,7 @@ nav:
     - manual/dialects.md
     - manual/differences.md
     - manual/runtime-extensions.md
+    - manual/how-to-install-unstable.md
     - Compiler:
       - manual/inline-ptx.md
       - manual/diagnostic-flags.md
