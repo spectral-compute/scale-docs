@@ -1,5 +1,7 @@
 # What's new?
 
+The changes made in each official SCALE release are described below. Some newer or experimental features may be available via our [unstable builds](https://docs.scale-lang.com/manual/how-to-install-unstable/).
+
 ## Release 1.2.0 (2024-11-27)
 
 ### Library Enhancements
