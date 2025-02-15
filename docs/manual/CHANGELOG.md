@@ -26,10 +26,8 @@ inaccurate, or mention features that are currently a horribly buggy mess.
 
 ### PTX
 
-- Compiler diagnostics for:
-  - Unused PTX variables
-  - Attempts to return the carry-bit (undefined behaviour on nvidia).
-
+- Compiler diagnostics for unused PTX variables and attempts to return 
+  the carry-bit.
 - PTX variable references and `{}` now work correctly between `asm` blocks
   within the same function.
 - Added PTX `C` constraints (dynamic asm strings).
