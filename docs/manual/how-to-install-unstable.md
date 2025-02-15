@@ -47,7 +47,6 @@ SCALE can then be installed as follows:
 
 <h4>Ubuntu 22.04</h4>
 ```bash
-# TODO: UPDATE THIS ONCE UNSTABLE .DEB NAMES KNOWN
 # Download the .deb package
 # sha512sum: 6b6d8a4c706a6486d840d375764b58e338debb7d284a1d8abfa7a524c2a61cf8df1957e4f223a389158a0c3a4f3d53fc99c96a1de78affc209bd55369b776f42
 wget https://dist-unstable.scale-lang.com/scale-free-unstable-2025-02-13-Ubuntu22.04.deb
