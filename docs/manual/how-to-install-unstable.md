@@ -49,22 +49,21 @@ SCALE can then be installed as follows:
 ```bash
 # TODO: UPDATE THIS ONCE UNSTABLE .DEB NAMES KNOWN
 # Download the .deb package
-# sha512sum: f588262a30d123d0ab812e6c6f820ec2d8011c9e535e4cdf2a25b5f57376736f79893cce57593efa8142aaa71210b5b0f56db3b5d422e62c17336b3908a36508
-wget https://dist.scale-lang.com/scale-free-1.2.0-Ubuntu22.04.deb
+# sha512sum: 6b6d8a4c706a6486d840d375764b58e338debb7d284a1d8abfa7a524c2a61cf8df1957e4f223a389158a0c3a4f3d53fc99c96a1de78affc209bd55369b776f42
+wget https://dist-unstable.scale-lang.com/scale-free-unstable-2025-02-13-Ubuntu22.04.deb
 
 # Install the package
-sudo apt install ./scale-free-1.2.0-Ubuntu22.04.deb
+sudo apt install ./scale-free-unstable-2025-02-13-Ubuntu22.04.deb
 ```
 
 <h4>Ubuntu 24.04</h4>
 ```bash
-# TODO: UPDATE THIS ONCE UNSTABLE .DEB NAMES KNOWN
 # Download the .deb package
 # sha512sum: 95eaad55354a80fa873daa81e4d573456445f993f8132afdd5cbd497189cf8b220387a320b045e836828c8d15dc32a57bcbcf59f161d4cdbf09abfd29da4a423
-wget https://dist.scale-lang.com/scale-free-1.2.0-Ubuntu24.04.deb
+wget https://dist-unstable.scale-lang.com/scale-free-unstable-2025-02-13-Ubuntu24.04.deb
 
 # Install the package
-sudo apt install ./scale-free-1.2.0-Ubuntu24.04.deb
+sudo apt install ./scale-free-unstable-2025-02-13-Ubuntu24.04.deb
 ```
 
 On either version of Ubuntu, `/dev/kfd` device is writable only to root and members of the `video` group when the `amdgpu-dkms` driver is used. Add your user (in this example: `youruser`) to that group:
@@ -80,13 +79,12 @@ If you did not already have the `amdgpu-dkms` kernel driver installed prior to i
 There is also a tarball containing binaries for other distributions and that is not tied to a system-wide path.
 
 ```bash
-# TODO: UPDATE THIS ONCE UNSTABLE .TAR.XZ NAMES KNOWN
 # Download the tarball
-# sha512sum: c08d823d5ee53027cad31c1daadf325aa684c324f64db0ac09d7bcda1d7dc3aba2cc943f5224d7f5f8363e2ba495a5c910956fe79b48396bbe61a93e8b364eb8
-wget https://dist.scale-lang.com/scale-free-1.2.0-Linux.tar.xz
+# sha512sum: 2d074757545e1f31f97ecc795c9fe59bc72b0f82751491847189400de6fef005989a65889d1d7ce5b64cb07950fe693f7822beb1975ddb469ed005a234a75690
+wget https://dist-unstable.scale-lang.com/scale-free-unstable-2025-02-13-Linux.tar.xz
 
 # Extract the SCALE tarball.
-tar xf scale-free-1.2.0-Linux.tar.xz
+tar xf scale-free-unstable-2025-02-13-Linux.tar.xz
 ```
 
 The tarball is significantly larger than the `.deb`, since it includes many dependent libraries directly instead of asking the system package manager to install them.
