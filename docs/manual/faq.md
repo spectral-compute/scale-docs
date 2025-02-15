@@ -5,7 +5,7 @@
 Strange compiler errors? Performance not as great as expected? Something else
 not working as expected?
 
-[Contact us](https://docs.scale-lang.com/contact/report-a-bug/)
+[Contact us](../contact/report-a-bug/)
 
 Bug reports - no matter how small - accelerate the SCALE project.
 
@@ -22,7 +22,7 @@ process: they may contain regressions and other bugs. `unstable` builds
 are made available "as is", and no detailed changlogs are available for
 `unstable` builds.
 
-* [Instructions for installing `unstable` builds](https://docs.scale-lang.com/manual/how-to-install-unstable/)
+* [Instructions for installing `unstable` builds](https://unstable-docs.scale-lang.com/manual/how-to-install-unstable/)
 * [Documentation for `unstable` builds](https://unstable-docs.scale-lang.com/)
 
 ## When will `<some GPU>` be supported?
@@ -41,7 +41,7 @@ We prioritise CUDA APIs based on the number and popularity of third-party
 projects requiring the missing API.
 
 If you'd like to bring a missing API to our attention,
-[Contact us](https://docs.scale-lang.com/contact/report-a-bug/)
+[Contact us](../contact/report-a-bug/)
 
 ## Can't NVIDIA just change CUDA and break SCALE?
 
