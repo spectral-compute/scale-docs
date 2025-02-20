@@ -6,10 +6,25 @@ A separate version of the SCALE documentation, updated to describe some of the n
 
 If you're using SCALE in a production application, always make sure to use a [stable build](https://docs.scale-lang.com/manual/how-to-install/).
 
-Similar to the stable builds, `unstable` builds of SCALE are available as either a `.deb` package or a tarball for Linux operating systems. Note that the version of ROCm required for the latest `unstable` build may be newer than the version used for stable builds.
-
+`unstable` builds of SCALE are available as a `.deb` package (in or outside a repository), or a tarball for Linux operating systems. Note that the version of ROCm required for the latest `unstable` build may be newer than the version used for stable builds.
 
 ## Debian-like Linux (Debian, Ubuntu, Mint)
+
+### Managed repository setup (Recommended for Ubuntu 22.04 or 24.04)
+
+This sets up all of the required repositories by installing a single .deb which configures them.
+
+```bash
+cd $(mktemp -d)
+# sha512sum for 22.04: 01aaf9d54c47faf877c5e3e720b27fa300db81d74b01a5ecb618c92ea8b9eb93b52c82c3cc33463fa5698603c02628bb93aac6d0661be5e93fedc2bc571c1110
+# sha512sum for 24.04: 21ed939a02b3cdf742884faec3eab3ddff7ad47ea24ed2c5805c35c6a36d12856f341eff777bbc45f82c5e62ac3ce1115f4f27f033ee9ac35f792f027d493ed7
+source /etc/os-release
+curl -vlO https://unstable-pkgs.scale-lang.com/deb/dists/$VERSION_CODENAME/main/binary-all/scale-repos.deb
+sudo dpkg -i scale-repos.deb
+sudo apt update && sudo apt install scale-free-unstable
+```
+
+### Manual repository setup
 
 First, set up the AMDGPU and ROCm 6.3.1 package repositories. This is
 [explained by AMD](https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.1/install/install-methods/package-manager/package-manager-ubuntu.html), but
@@ -26,7 +41,6 @@ echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.
     | sudo tee --append /etc/apt/sources.list.d/rocm.list
 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
     | sudo tee /etc/apt/preferences.d/rocm-pin-600
-sudo apt update
 ```
 
 <h4>Ubuntu 24.04</h4>
@@ -40,21 +54,21 @@ echo "deb [arch=amd64 signed-by=/etc/apt/keyrings/rocm.gpg] https://repo.radeon.
     | sudo tee --append /etc/apt/sources.list.d/rocm.list
 echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
     | sudo tee /etc/apt/preferences.d/rocm-pin-600
-sudo apt update
 ```
 
-You can then either add the unstable repository, and install via apt:
+You can then add the unstable repository, and install via apt:
 
 ```bash
-# run as root
-mkdir -p /etc/apt/keyrings
-curl -o /etc/apt/keyrings/spectral.gpg https://unstable-pkgs.scale-lang.com/pub.gpg
+sudo mkdir -p /etc/apt/keyrings
+sudo curl -o /etc/apt/keyrings/spectral.gpg https://unstable-pkgs.scale-lang.com/pub.gpg
 source /etc/os-release
-echo "deb [signed-by=/etc/apt/keyrings/spectral.gpg] https://unstable-pkgs.scale-lang.com/deb ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/spectral-free-unstable.list
-apt update && apt search '^scale'
+echo "deb [signed-by=/etc/apt/keyrings/spectral.gpg] https://unstable-pkgs.scale-lang.com/deb ${VERSION_CODENAME} main" | sudo tee /etc/apt/sources.list.d/spectral-free-unstable.list
+sudo apt update && sudo apt install scale-free-unstable
 ```
 
-or download and install the `.deb` files yourself:
+### Manual install from `.deb`
+
+You will need to setup the AMDGPU and ROCM 6.3.1 repositories as shown above.
 
 <h4>Ubuntu 22.04</h4>
 ```bash
