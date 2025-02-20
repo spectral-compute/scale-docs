@@ -230,8 +230,7 @@ entire `asm volatile` block as an opaque, immutable unit.
 
 Programs that have already added support for HIP might have multiple 
 codepaths: one for CUDA that uses inline PTX, and one for AMD which doesn't. 
-In such cases, it is worth experimentally determining which is actually 
-superior: the result can vary on a case-by-case basis.
+In such cases, it is worth testing both to see which is fastest.
 
 ## Supported constraints
 
@@ -244,10 +243,8 @@ nuances regarding how they are interpreted.
 `f`: f32
 `d`: f64
 `n`: constants
+`C`: dynamic asm strings
 
-The `"C"` constraint type is in development, and seems likely to prove 
-useful for authors wishing to generalise their PTX code for wave sizes other 
-than 32.
 
 ## Supported instructions
 
@@ -284,6 +281,7 @@ currently supported in SCALE, they are also not supported here.
 | dp4a                             |                           |
 | elect                            |                           |
 | exit                             | Only from convergent code |
+| fence                            | Memory ranges unsupported |
 | fma                              |                           |
 | fns                              |                           |
 | griddepcontrol.launch_dependents | Currently a no-op         |
@@ -291,6 +289,7 @@ currently supported in SCALE, they are also not supported here.
 | isspacep                         |                           |
 | ld                               |                           |
 | ld.nc                            |                           |
+| ldmatrix                         |                           |
 | ldu                              |                           |
 | lop3                             |                           |
 | mad                              |                           |
@@ -300,8 +299,10 @@ currently supported in SCALE, they are also not supported here.
 | match.any                        |                           |
 | max                              |                           |
 | max.xorsign.abs                  |                           |
+| membar                           |                           |
 | min                              |                           |
 | min.xorsign.abs                  |                           |
+| mma                              | `wmma.mma` likely faster  |
 | mov                              |                           |
 | mul                              |                           |
 | mul24                            |                           |
@@ -338,6 +339,7 @@ currently supported in SCALE, they are also not supported here.
 | shr                              |                           |
 | slct                             |                           |
 | st                               |                           |
+| stmatrix                         |                           |
 | sub                              |                           |
 | subc                             |                           |
 | szext                            |                           |
@@ -359,4 +361,7 @@ currently supported in SCALE, they are also not supported here.
 | vshl                             |                           |
 | vshr                             |                           |
 | vsub                             |                           |
+| wmma.load                        |                           |
+| wmma.store                       |                           |
+| wmma.mma                         |                           |
 | xor                              |                           |
