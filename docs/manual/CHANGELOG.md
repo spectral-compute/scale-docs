@@ -13,6 +13,7 @@ inaccurate, or mention features that are currently a horribly buggy mess.
 - Support for `bfloat16`.
 - Upgraded from llvm17 to llvm18.1.8.
 - Support for rocm 6.3.1
+- Availabiliy of an Ubuntu package repo to simplify installation/upgrades.
 
 ### Library Enhancements
 
