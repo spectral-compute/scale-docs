@@ -43,7 +43,18 @@ echo -e 'Package: *\nPin: release o=repo.radeon.com\nPin-Priority: 600' \
 sudo apt update
 ```
 
-SCALE can then be installed as follows:
+You can then either add the unstable repository, and install via apt:
+
+```bash
+# run as root
+mkdir -p /etc/apt/keyrings
+curl -o /etc/apt/keyrings/spectral.gpg https://unstable-pkgs.scale-lang.com/pub.gpg
+source /etc/os-release
+echo "deb [signed-by=/etc/apt/keyrings/spectral.gpg] https://unstable-pkgs.scale-lang.com/deb ${VERSION_CODENAME} main" > /etc/apt/sources.list.d/spectral-free-unstable.list
+apt update && apt search '^scale'
+```
+
+or download and install the `.deb` files yourself:
 
 <h4>Ubuntu 22.04</h4>
 ```bash
