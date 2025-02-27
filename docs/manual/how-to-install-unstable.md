@@ -50,11 +50,11 @@ Select your operating system and version below to see installation instructions.
     Download and extract the SCALE tarball:
     
     ```bash
-    # sha512sum: c08d823d5ee53027cad31c1daadf325aa684c324f64db0ac09d7bcda1d7dc3aba2cc943f5224d7f5f8363e2ba495a5c910956fe79b48396bbe61a93e8b364eb8
-    wget https://dist.scale-lang.com/scale-free-1.2.0-Linux.tar.xz
+    # sha512sum: a6f430280f7ad91481ad2d164a06dc09d0ee69dc8fb175c6326e7c7a441e294eafe16c43c2a15fe1d9a2c068e7d84eb27323436f83f1f56856c674a73b529997
+    wget https://dist-unstable.scale-lang.com/scale-free-unstable-2025.02.19-Linux.tar.xz
 
     # Extract the SCALE tarball.
-    tar xf scale-free-1.2.0-Linux.tar.xz
+    tar xf scale-free-unstable-2025.02.19-Linux.tar.xz
     ```
     
     The tarball is significantly larger than other options since it 
