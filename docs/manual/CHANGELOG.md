@@ -1,5 +1,118 @@
 # What's new?
 
+{% if false %}
+
+## NEXT
+
+- SCALE_EXCEPTIONS now supports a non-fatal, print-only mode for projects 
+  that create exceptions intentionally.
+- Huge improvement to performance of device-level atomics.
+- `--device-c` no longer inappropriately triggers the linker.
+- Denorm-flushing optimisations are now applied in all cases they're 
+  supposed to be.
+- Added a compiler error for certain patterns of undefined-behaviour atomic 
+  operations banned by the CUDA language (in cases the compiler manages to 
+  prove it!)
+- Added `nvcc -compress-mode`
+
+{% endif %}
+
+## Unstable-2025.03.24
+
+### Platform
+
+- Packages for Rocky9 are now available.
+- Upgraded from llvm18.1.8 to llvm19.1.7. Much zoominess ensues.
+- Added faux "stubs" libraries to placate non-cmake buildsystems
+- Added some fake symbols to satisfy ancient/insane buildsystems.
+- Added `SCALE_CUDA_VERSION` environment variable to tell SCALE to impersonate a
+  specific version of CUDA.
+
+### Library Enhancements
+
+- Fix a crash when initialising SCALE with many GPUs with huge amounts of memory.
+- Faster startup times, especially on many-GPU machines.
+- Added CUDA IPC APIs. Among other things, this enables CUDA-MPI 
+  applications to work, including AMGX's distributed mode.
+- Fixed lots of multi-GPU brokenness.
+- Added lots more of cuSolver and cuSPARSE
+- Filled in some missing NVTX APIs
+- Implemented the `CU_CTX_SYNC_MEMOPS` context flag.
+- Fixed accuracy issues in some of the CUDA Math APIs.
+- fp16 headers no longer produce warnings for projects that include them without
+  `-isystem`.
+- Improved performance and correctness of cudaMemcpy/memset by finishing the 
+  move away from hsa's buggy implementation.
+- Fix some wave64 issues with `cooperative_groups.h`.
+- Support for `grid_sync()`.
+- Fix subtle issues with pointer attribute APIs.
+- Implicit context initialisation rules now more closely match NVIDIA's, fixing
+  some projects that depended on checking primary context state.
+- Improvements to C89 compatibility of headers.
+
+### Compiler Enhancements
+
+- `__launch_bounds__` now works correctly, significantly improving performance.
+- Added the nvcc `-prec-sqrt` and `-prec-div` flags.
+- Corrected the behaviour of the nvcc `-odir` flag in during dependency generation.
+- `use_fast_math` now matches nivida's behaviour, instead of mapping to clang's
+  `-ffast-math`, which does too much.
+- Support broken template code in more situations in nvcc mode.
+- Allow invalid const-correctness in unexpanded template code in nvcc mode.
+- Allow trailing commas in template argument lists in nvcc mode.
+- Fix a parser crash when explicitly calling `operator<<<int>()` in CUDA mode.
+
+### Thirdparty Project demos
+
+Things that now appear to work include:
+
+- CUDA-aware MPI
+- MAGMA
+
+## Unstable-2025.02.19
+
+### Platform
+
+- Support for simulating a warp size of 32 even on wave64 platforms, fixing 
+  many projects on such platforms.
+- Support for `bfloat16`.
+- Upgraded from llvm17 to llvm18.1.8.
+- Support for rocm 6.3.1
+- Availabiliy of an Ubuntu package repo to simplify installation/upgrades.
+
+### Library Enhancements
+
+- Added software emulated WMMA APIs, and `wmma`/`mma` PTX instructions. 
+  Hardware-accelerated versions are in development.
+- Added more Cooperative Groups APIs.
+- Rewritten device allocator to work around HSA bugs and performance issues.
+- Significant performance improvements for most warp-level cooperative 
+  operations.
+- Various random APIs added.
+
+### PTX
+
+- Compiler diagnostics for unused PTX variables and attempts to return 
+  the carry-bit.
+- PTX variable references and `{}` now work correctly between `asm` blocks
+  within the same function.
+- Added PTX `C` constraints (dynamic asm strings).
+- Added the new mixed-precision `add/sub/fma` FP instructions.
+- Added `membar` instruction.
+- Partial support for `fence` instruction.
+- half-float PTX instructions now work correctly even if `cuda_fp16.h` has not 
+  been included.
+- Fixed various parsing issues (undocumented syntax quirks etc.).
+- Fixed an issue where template-dependent asm strings were mishandled.
+- Fixed various miscompilations.
+
+### Thirdparty Project demos
+
+The `scale-validation` repo now has working demos for the following:
+
+- whisper.cpp
+- TCLB
+
 ## Release 1.2.0 (2024-11-27)
 
 ### Library Enhancements
