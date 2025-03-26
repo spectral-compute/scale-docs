@@ -15,6 +15,7 @@ Needed Python modules:
 
 - `pymdown-extensions`
 - `mkdocs-material`
+- `mike`
 
 Development:
 
@@ -25,5 +26,5 @@ mkdocs serve
 Generating:
 
 ```sh
-mkdocs build
+mkdocs build -f mkdocs-stable.yml
 ```

@@ -6,14 +6,20 @@ SCALE has some runtime/library features not found in NVIDIA's CUDA Toolkit.
 
 Some extra features can be enabled by environment variables.
 
-### `SCALE_EXCEPTIONS=1`
+### `SCALE_EXCEPTIONS`
 
-Setting `SCALE_EXCEPTIONS=1` will cause all CUDA APIs to throw 
-exceptions instead of returning C-style error codes. The exceptions contain 
-descriptive error messages that make it clear what the problem is. For 
-example: instead of simply returning `cudaErrorInvalidArgument`, you might 
-get an exception thrown containing the message `"The second argument is not 
-allowed to be nullptr"`.
+Errors from the CUDA API can be hard to debug, since they simply return an
+error code that the host program has to do something with.
+
+SCALE provides an environment variable to make any error from the CUDA API
+produce a observable result.
+
+Setting `SCALE_EXCEPTIONS=1` will cause all CUDA APIs to throw descriptive 
+exceptions instead of returning C-style error codes.
+
+Setting `SCALE_EXCEPTIONS=2` will print the error messages to stderr, but not
+throw them. This is helpful for programs that deliberately create CUDA errors
+as part of their processing.
 
 In cases where CUDA APIs are expected to return a value other than 
 `cudaSuccess` during normal operation (such as `cudaStreamQuery()`, an 

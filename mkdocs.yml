@@ -1,8 +1,8 @@
-site_name: SCALE documentation (unstable)
+site_name: SCALE documentation
+site_url: https://docs.scale-lang.com/
 docs_dir: docs/
 extra_css:
   - style.css
-site_url: https://unstable.docs.scale-lang.com
 theme:
   name: material
   custom_dir: overrides
@@ -29,8 +29,22 @@ theme:
     - content.code.copy
     - toc.follow
 
+plugins:
+  - search
+  - macros
+  - mike:
+      canonical_version: latest
+      version_selector: true
+      css_dir: css
+      javascript_dir: js
+
 extra:
+  branch: master
   generator: false
+  version:
+    provider: mike
+    alias: true
+    default: stable
   social:
   - icon: fontawesome/brands/github
     link: https://github.com/spectral-compute
@@ -81,7 +95,6 @@ nav:
     - manual/dialects.md
     - manual/differences.md
     - manual/runtime-extensions.md
-    - manual/how-to-install-unstable.md
     - Compiler:
       - manual/inline-ptx.md
       - manual/diagnostic-flags.md

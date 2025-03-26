@@ -1,8 +1,57 @@
 # Install SCALE
 
-You are currently viewing the documentation for `unstable` builds.
+Select your operating system and version below to see installation instructions.
 
-Instructions for installing `unstable` builds are available [here](/manual/how-to-install-unstable/).
+=== "Ubuntu"
 
-Alternatively, you can [switch back to our documentation for stable builds](https://docs.scale-lang.com/manual/how-to-install/) to see the documentation for installing a Release version of SCALE.
+    === "22.04"
 
+        ```bash
+        # Add the scale and rocm deb repos.
+        curl -vlO https://{{repo_subdomain}}.scale-lang.com/deb/dists/jammy/main/binary-all/scale-repos.deb
+        sudo dpkg -i scale-repos.deb
+
+        # Install SCALE
+        sudo apt update && sudo apt install scale-free-unstable
+
+        # Add your user to the `video` group:
+        sudo usermod -a -G video $(whoami)
+        ```
+
+        If you did not already have the `amdgpu-dkms` kernel driver installed prior to
+        installing SCALE, you should now reboot.
+
+    === "24.04"
+
+        ```bash
+        # Add the scale and rocm deb repos.
+        curl -vlO https://{{repo_subdomain}}.scale-lang.com/deb/dists/noble/main/binary-all/scale-repos.deb
+        sudo dpkg -i scale-repos.deb
+
+        # Install SCALE
+        sudo apt update && sudo apt install scale-free-unstable
+
+        # Add your user to the `video` group:
+        sudo usermod -a -G video $(whoami)
+        ```
+
+        If you did not already have the `amdgpu-dkms` kernel driver installed prior to
+        installing SCALE, you should now reboot.
+
+=== "Other Distros"
+
+    {% set url = 'https://dist.scale-lang.com/scale-' + scale_version + '-Linux.tar.xz' %}
+
+    Download and extract the SCALE tarball:
+
+    ```bash
+    # sha512sum: {{ checksum(url) }}
+    wget {{ url }}
+
+    # Extract the SCALE tarball.
+    tar xf scale-{{ scale_version }}-Linux.tar.xz
+    ```
+    
+    The tarball is significantly larger than other options since it 
+    includes many dependent libraries directly instead of asking the system 
+    package manager to install them.
