@@ -43,6 +43,7 @@ Full details about these flags are available in the [clang user manal](https://r
 These optimisations can be controlled per-line using the [fp control pragmas](https://releases.llvm.org/19.1.0/tools/clang/docs/LanguageExtensions.html#extensions-to-specify-floating-point-flags).
 
 This allows you to either:
+
 - Specify the compiler flag (to enable an optimisation by default) and then 
   switch it off for special code regions (ie. opt-out mode).
 - Opt-in to the optimisation in regions of code where you know it to be safe.
