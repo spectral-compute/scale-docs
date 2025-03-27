@@ -4,6 +4,7 @@
 
 ## NEXT
 
+- Packages for Rocky9 are now available.
 - SCALE_EXCEPTIONS now supports a non-fatal, print-only mode for projects 
   that create exceptions intentionally.
 - Huge improvement to performance of device-level atomics.
@@ -21,7 +22,6 @@
 
 ### Platform
 
-- Packages for Rocky9 are now available.
 - Upgraded from llvm18.1.8 to llvm19.1.7. Much zoominess ensues.
 - Added faux "stubs" libraries to placate non-cmake buildsystems
 - Added some fake symbols to satisfy ancient/insane buildsystems.
