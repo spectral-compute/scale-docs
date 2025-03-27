@@ -52,4 +52,4 @@ For the specified example, this will:
    error reporting.
 4. Run the example.
 
-[exceptions]: ../manual/runtime-extensions.md#scale_exceptions1
+[exceptions]: ../manual/runtime-extensions.md#scale_exceptions

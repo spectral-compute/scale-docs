@@ -17,7 +17,7 @@ code is trivial.
 
 ## CUDA API errors
 
-The [`SCALE_EXCEPTIONS` feature](runtime-extensions.md#scale_exceptions1) can
+The [`SCALE_EXCEPTIONS` feature](runtime-extensions.md#scale_exceptions) can
 be helpful for getting more information about many failures.
 
 ## wave64 issues

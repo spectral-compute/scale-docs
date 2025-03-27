@@ -4,6 +4,7 @@
 
 ## NEXT
 
+- scaleenv
 - Packages for Rocky9 are now available.
 - SCALE_EXCEPTIONS now supports a non-fatal, print-only mode for projects 
   that create exceptions intentionally.

@@ -84,13 +84,14 @@ nav:
   - Getting Started:
     - manual/how-to-install.md
     - manual/how-to-use.md
-    - manual/comparison.md
+    - manual/faq.md
     - Examples:
       - examples/README.md
       - examples/basic.md
       - examples/ptx.md
       - examples/blas.md
   - Diving deeper:
+    - manual/comparison.md
     - manual/troubleshooting.md
     - manual/compute-capabilities.md
     - manual/dialects.md
@@ -99,6 +100,7 @@ nav:
     - Compiler:
       - manual/inline-ptx.md
       - manual/diagnostic-flags.md
+      - manual/optimisation-flags.md
       - manual/language-extensions.md
     - Implemented APIs:
       - manual/apis.md
@@ -110,3 +112,6 @@ nav:
   - Legal:
     - licensing.md
     - notices.md
+
+not_in_nav: |
+  /use_of_trademarks.md
