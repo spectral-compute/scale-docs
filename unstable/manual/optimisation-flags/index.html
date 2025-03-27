@@ -1248,10 +1248,12 @@ such as:</p>
 </ul>
 <p>Full details about these flags are available in the <a href="https://releases.llvm.org/19.1.0/tools/clang/docs/UsersManual.html">clang user manal</a>.</p>
 <p>These optimisations can be controlled per-line using the <a href="https://releases.llvm.org/19.1.0/tools/clang/docs/LanguageExtensions.html#extensions-to-specify-floating-point-flags">fp control pragmas</a>.</p>
-<p>This allows you to either:
-- Specify the compiler flag (to enable an optimisation by default) and then 
-  switch it off for special code regions (ie. opt-out mode).
-- Opt-in to the optimisation in regions of code where you know it to be safe.</p>
+<p>This allows you to either:</p>
+<ul>
+<li>Specify the compiler flag (to enable an optimisation by default) and then 
+  switch it off for special code regions (ie. opt-out mode).</li>
+<li>Opt-in to the optimisation in regions of code where you know it to be safe.</li>
+</ul>
 <p>These flags will affect the performance of functions 
 in the SCALE implementation of the CUDA Math API.</p>
 <p>These flags do not affect the accuracy of the results of the Math API, but 
