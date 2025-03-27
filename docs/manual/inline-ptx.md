@@ -182,6 +182,49 @@ can improve optimisation, but may break programs that have undefined behaviour
 that was being hidden by the optimisation barrier effect of the volatile asm 
 block.
 
+## Returning the carry-bit
+
+The PTX carry-bit may not be implicitly returned from functions.
+
+Some PTX instructions have a carry flag bit, used to perform extended-precision
+integer arithmetic across multiple instructions. The [PTX manual](https://docs.nvidia.com/cuda/parallel-thread-execution/index.html#extended-precision-integer-arithmetic-instructions)
+notes:
+
+> The condition code register is not preserved across calls and is mainly
+> intended for use in straight-line code sequences for computing
+> extended-precision integer addition, subtraction, and multiplication.
+
+It is, therefore, undefined behaviour to write code that writes to the 
+carry-bit in one function and then attempts to read it from another. The 
+correct execution of such code is optimiser-dependent on NVIDIA's platform 
+(depending on the function to inline), so will likely fail in `-O0` builds. 
+
+For example:
+
+```c++
+void createCarryBit(int x, int y) {
+    // Add with carry-out.
+    asm("add.cc.u32 %0, %0, %1": "+r"(x) : "r"(y));
+}
+
+void useCarryBit(int x, int y) {
+    createCarryBit(x, y);
+    
+    // Add with carry-in. Not allowed, since it's trying to read the
+    // carry-bit across a function boundary.
+    int z;
+    asm("add.cc.u32 %0, %1, %2" : "=r"(z) : "r"(x), "r"(y));
+}
+```
+
+Due to how SCALE's PTX support works, it *can't* support this pattern, so this
+situation is a compiler error instead. To write code like this in a portable 
+way, you can refactor it to use macros instead.
+
+It may also be worth considering if you truly still need this inline asm: both
+NVIDIA nvcc and SCALE have good support for `int128_t` now, which makes many 
+common uses of these asm constructs redundant.
+
 ## `asm` input/output types
 
 `nvcc` doesn't appear to consistently follow its own tying rules for PTX asm 
