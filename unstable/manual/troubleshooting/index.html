@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/troubleshooting/">
       
       
-        <link rel="prev" href="../../examples/blas/">
+        <link rel="prev" href="../comparison/">
       
       
         <link rel="next" href="../compute-capabilities/">
@@ -357,11 +357,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../comparison/" class="md-nav__link">
+      <a href="../faq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Comparison to other solutions
+    Frequently asked questions
   </span>
   
 
@@ -555,6 +555,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison to other solutions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -662,15 +683,6 @@
   <a href="#ensure-devkfd-is-writable" class="md-nav__link">
     <span class="md-ellipsis">
       Ensure /dev/kfd is writable
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ensure-kernel-module-is-up-to-date" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ensure kernel module is up to date
     </span>
   </a>
   
@@ -906,10 +918,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
         
           
-          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -920,8 +932,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_6">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
             <span class="md-nav__icon md-icon"></span>
             Compiler
           </label>
@@ -960,6 +972,27 @@
   
   <span class="md-ellipsis">
     Compiler warnings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../optimisation-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiler Optimisation Flags
   </span>
   
 
@@ -1016,10 +1049,10 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_7" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_8" >
         
           
-          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_4_8" id="__nav_4_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1030,8 +1063,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4_7">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_8">
             <span class="md-nav__icon md-icon"></span>
             Implemented APIs
           </label>
@@ -1387,15 +1420,6 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#ensure-kernel-module-is-up-to-date" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ensure kernel module is up to date
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
   
@@ -1542,7 +1566,7 @@ patch to the <a href="https://github.com/spectral-compute/scale-library-wrappers
 So long as an equivalent function is available in a ROCm library, the wrapper
 code is trivial.</p>
 <h2 id="cuda-api-errors">CUDA API errors<a class="headerlink" href="#cuda-api-errors" title="Permanent link">#</a></h2>
-<p>The <a href="../runtime-extensions/#scale_exceptions1"><code>SCALE_EXCEPTIONS</code> feature</a> can
+<p>The <a href="../runtime-extensions/#scale_exceptions"><code>SCALE_EXCEPTIONS</code> feature</a> can
 be helpful for getting more information about many failures.</p>
 <h2 id="wave64-issues">wave64 issues<a class="headerlink" href="#wave64-issues" title="Permanent link">#</a></h2>
 <p>All current NVIDIA GPUs have a warp size of 32, so many CUDA programs are 
@@ -1599,11 +1623,6 @@ this is via membership of the <code>render</code> group:
 <code>sudo usermod -a -G render USERNAME</code>.</p>
 <p>You could temporarily make <code>/dev/kfd</code> world-writable via: <code>sudo chmod 666 
 /dev/kfd</code>.</p>
-<h3 id="ensure-kernel-module-is-up-to-date">Ensure kernel module is up to date<a class="headerlink" href="#ensure-kernel-module-is-up-to-date" title="Permanent link">#</a></h3>
-<p>If the GPU is still not detected by SCALE, the kernel driver may be out of 
-date. On Ubuntu, follow the instructions in
-<a href="../how-to-install/#debian-like-linux-debian-ubuntu-mint">the installation guide</a>
-for installing <code>amdgpu-dkms</code>.</p>
 <h2 id="cannot-find-shared-object">Cannot find shared object<a class="headerlink" href="#cannot-find-shared-object" title="Permanent link">#</a></h2>
 <p>The correct library search path for a SCALE binary can be target dependent due
 to <a href="../compute-capabilities/">compute capability mapping</a>. This can lead
@@ -1755,7 +1774,7 @@ section.</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../../examples/blas/" class="md-footer__link md-footer__link--prev" aria-label="Previous: BLAS example">
+          <a href="../comparison/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Comparison to other solutions">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -1765,7 +1784,7 @@ section.</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                BLAS example
+                Comparison to other solutions
               </div>
             </div>
           </a>
