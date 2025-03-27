@@ -1,53 +1,5 @@
 # What's new?
 
-This is the changelog for the current unstable build, which is effectively a 
-draft changelog for the upcoming stable release. It may be incomplete, 
-inaccurate, or mention features that are currently a horribly buggy mess.
-
-## Unstable
-
-### Platform
-
-- Support for simulating a warp size of 32 even on wave64 platforms, fixing 
-  many projects on such platforms.
-- Support for `bfloat16`.
-- Upgraded from llvm17 to llvm18.1.8.
-- Support for rocm 6.3.1
-- Availabiliy of an Ubuntu package repo to simplify installation/upgrades.
-
-### Library Enhancements
-
-- Added software emulated WMMA APIs, and `wmma`/`mma` PTX instructions. 
-  Hardware-accelerated versions are in development.
-- Added more Cooperative Groups APIs.
-- Rewritten device allocator to work around HSA bugs and performance issues.
-- Significant performance improvements for most warp-level cooperative 
-  operations.
-- Various random APIs added.
-
-### PTX
-
-- Compiler diagnostics for unused PTX variables and attempts to return 
-  the carry-bit.
-- PTX variable references and `{}` now work correctly between `asm` blocks
-  within the same function.
-- Added PTX `C` constraints (dynamic asm strings).
-- Added the new mixed-precision `add/sub/fma` FP instructions.
-- Added `membar` instruction.
-- Partial support for `fence` instruction.
-- half-float PTX instructions now work correctly even if `cuda_fp16.h` has not 
-  been included.
-- Fixed various parsing issues (undocumented syntax quirks etc.).
-- Fixed an issue where template-dependent asm strings were mishandled.
-- Fixed various miscompilations.
-
-### Thirdparty Project demos
-
-The `scale-validation` repo now has working demos for the following:
-
-- whisper.cpp
-- TCLB
-
 ## Release 1.2.0 (2024-11-27)
 
 ### Library Enhancements
