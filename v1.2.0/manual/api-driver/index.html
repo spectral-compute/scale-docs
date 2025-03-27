@@ -1,0 +1,3037 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/api-driver/">
+      
+      
+        <link rel="prev" href="../apis/">
+      
+      
+        <link rel="next" href="../api-math/">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+    
+    
+      
+        <title>Driver API - SCALE documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6543a935.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#driver-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SCALE documentation" class="md-header__button md-logo" aria-label="SCALE documentation" data-md-component="logo">
+      
+  <img src="../../logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SCALE documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Driver API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SCALE documentation" class="md-nav__button md-logo" aria-label="SCALE documentation" data-md-component="logo">
+      
+  <img src="../../logo_white.svg" alt="logo">
+
+    </a>
+    SCALE documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCALE by Spectral Compute
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What's new?
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install SCALE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compile CUDA with SCALE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison to other solutions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCALE Example Programs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ptx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PTX example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/blas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BLAS example
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Diving deeper
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Diving deeper
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compute-capabilities/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compute Capability Mapping
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dialects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Dialects
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../differences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Differences from NVIDIA CUDA
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Extensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Compiler
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Compiler
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inline-ptx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inline PTX support
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagnostic-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiler warnings
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language-extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Language Extensions
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Implemented APIs
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Implemented APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Introduction to implemented APIs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Driver API
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Driver API
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-data-types-used-by-cuda-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Data types used by CUDA driver
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Error Handling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Initialization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-version-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Version Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-device-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5. Device Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-device-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.6. Device Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-primary-context-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.7. Primary Context Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-context-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.8. Context Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-context-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.9. Context Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-module-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.10. Module Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#611-module-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.11. Module Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#612-library-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.12. Library Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#613-memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.13. Memory Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#614-virtual-memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.14. Virtual Memory Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#615-stream-ordered-memory-allocator" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.15. Stream Ordered Memory Allocator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#616-multicast-object-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.16. Multicast Object Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#617-unified-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.17. Unified Addressing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#618-stream-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.18. Stream Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#619-event-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.19. Event Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#620-external-resource-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.20. External Resource Interoperability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#621-stream-memory-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.21. Stream Memory Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#622-execution-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.22. Execution Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#623-execution-control-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.23. Execution Control [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#624-graph-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.24. Graph Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#625-occupancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.25. Occupancy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#626-texture-reference-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.26. Texture Reference Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#627-surface-reference-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.27. Surface Reference Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#628-texture-object-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.28. Texture Object Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#629-surface-object-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.29. Surface Object Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#630-tensor-map-object-managment" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.30. Tensor Map Object Managment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#631-peer-context-memory-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.31. Peer Context Memory Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#632-graphics-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.32. Graphics Interoperability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#633-driver-entry-point-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.33. Driver Entry Point Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#634-coredump-attributes-control-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.34. Coredump Attributes Control API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#635-green-contexts" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.35. Green Contexts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#636-profiler-control-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.36. Profiler Control [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#637-profiler-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.37. Profiler Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#638-opengl-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.38. OpenGL Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.38. OpenGL Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6381-opengl-interoperability-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.38.1. OpenGL Interoperability [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#639-direct3d-9-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.39. Direct3D 9 Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.39. Direct3D 9 Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6391-direct3d-9-interoperability-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.39.1. Direct3D 9 Interoperability [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#640-direct3d-10-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.40. Direct3D 10 Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.40. Direct3D 10 Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6401-direct3d-10-interoperability-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.40.1. Direct3D 10 Interoperability [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#641-direct3d-11-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.41. Direct3D 11 Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.41. Direct3D 11 Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6411-direct3d-11-interoperability-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.41.1. Direct3D 11 Interoperability [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#642-vdpau-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.42. VDPAU Interoperability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#643-egl-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.43. EGL Interoperability
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-math/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Math API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-runtime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Runtime API
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contact Us
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contact Us
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/report-a-bug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report a Bug
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Legal
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Legal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Free Edition License
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../notices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Third party software
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#61-data-types-used-by-cuda-driver" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.1. Data types used by CUDA driver
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#62-error-handling" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.2. Error Handling
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#63-initialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.3. Initialization
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#64-version-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.4. Version Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#65-device-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.5. Device Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#66-device-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.6. Device Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#67-primary-context-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.7. Primary Context Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#68-context-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.8. Context Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#69-context-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.9. Context Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#610-module-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.10. Module Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#611-module-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.11. Module Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#612-library-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.12. Library Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#613-memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.13. Memory Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#614-virtual-memory-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.14. Virtual Memory Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#615-stream-ordered-memory-allocator" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.15. Stream Ordered Memory Allocator
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#616-multicast-object-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.16. Multicast Object Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#617-unified-addressing" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.17. Unified Addressing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#618-stream-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.18. Stream Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#619-event-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.19. Event Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#620-external-resource-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.20. External Resource Interoperability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#621-stream-memory-operations" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.21. Stream Memory Operations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#622-execution-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.22. Execution Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#623-execution-control-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.23. Execution Control [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#624-graph-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.24. Graph Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#625-occupancy" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.25. Occupancy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#626-texture-reference-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.26. Texture Reference Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#627-surface-reference-management-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.27. Surface Reference Management [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#628-texture-object-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.28. Texture Object Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#629-surface-object-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.29. Surface Object Management
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#630-tensor-map-object-managment" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.30. Tensor Map Object Managment
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#631-peer-context-memory-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.31. Peer Context Memory Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#632-graphics-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.32. Graphics Interoperability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#633-driver-entry-point-access" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.33. Driver Entry Point Access
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#634-coredump-attributes-control-api" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.34. Coredump Attributes Control API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#635-green-contexts" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.35. Green Contexts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#636-profiler-control-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.36. Profiler Control [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#637-profiler-control" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.37. Profiler Control
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#638-opengl-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.38. OpenGL Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.38. OpenGL Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6381-opengl-interoperability-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.38.1. OpenGL Interoperability [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#639-direct3d-9-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.39. Direct3D 9 Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.39. Direct3D 9 Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6391-direct3d-9-interoperability-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.39.1. Direct3D 9 Interoperability [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#640-direct3d-10-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.40. Direct3D 10 Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.40. Direct3D 10 Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6401-direct3d-10-interoperability-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.40.1. Direct3D 10 Interoperability [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#641-direct3d-11-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.41. Direct3D 11 Interoperability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6.41. Direct3D 11 Interoperability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#6411-direct3d-11-interoperability-deprecated" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.41.1. Direct3D 11 Interoperability [DEPRECATED]
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#642-vdpau-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.42. VDPAU Interoperability
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#643-egl-interoperability" class="md-nav__link">
+    <span class="md-ellipsis">
+      6.43. EGL Interoperability
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="driver-api">Driver API<a class="headerlink" href="#driver-api" title="Permanent link">#</a></h1>
+<p>Read how this document is structured in the <a href="../apis/">Introduction to implemented APIs</a>.</p>
+<h2 id="61-data-types-used-by-cuda-driver"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TYPES.html">6.1. Data types used by CUDA driver</a><a class="headerlink" href="#61-data-types-used-by-cuda-driver" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-struct CUDA_ARRAY3D_DESCRIPTOR_v2;</span>
+<span class="gd">-struct CUDA_ARRAY_DESCRIPTOR_v2;</span>
+<span class="gd">-struct CUDA_ARRAY_MEMORY_REQUIREMENTS_v1;</span>
+<span class="gd">-struct CUDA_ARRAY_SPARSE_PROPERTIES_v1;</span>
+<span class="gd">-struct CUDA_BATCH_MEM_OP_NODE_PARAMS_v2;</span>
+<span class="gd">-struct CUDA_CHILD_GRAPH_NODE_PARAMS;</span>
+<span class="gd">-struct CUDA_CONDITIONAL_NODE_PARAMS;</span>
+<span class="gd">-struct CUDA_EVENT_RECORD_NODE_PARAMS;</span>
+<span class="gd">-struct CUDA_EVENT_WAIT_NODE_PARAMS;</span>
+<span class="gd">-struct CUDA_EXTERNAL_MEMORY_BUFFER_DESC_v1;</span>
+<span class="gd">-struct CUDA_EXTERNAL_MEMORY_HANDLE_DESC_v1;</span>
+<span class="gd">-struct CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC_v1;</span>
+<span class="gd">-struct CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC_v1;</span>
+<span class="gd">-struct CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS_v1;</span>
+<span class="gd">-struct CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS_v1;</span>
+<span class="gd">-struct CUDA_EXT_SEM_SIGNAL_NODE_PARAMS_v1;</span>
+<span class="gd">-struct CUDA_EXT_SEM_SIGNAL_NODE_PARAMS_v2;</span>
+<span class="gd">-struct CUDA_EXT_SEM_WAIT_NODE_PARAMS_v1;</span>
+<span class="gd">-struct CUDA_EXT_SEM_WAIT_NODE_PARAMS_v2;</span>
+<span class="gd">-struct CUDA_GRAPH_INSTANTIATE_PARAMS;</span>
+<span class="gd">-struct CUDA_HOST_NODE_PARAMS_v1;</span>
+<span class="gd">-struct CUDA_HOST_NODE_PARAMS_v2;</span>
+<span class="gd">-struct CUDA_KERNEL_NODE_PARAMS_v1;</span>
+<span class="gd">-struct CUDA_KERNEL_NODE_PARAMS_v2;</span>
+<span class="gd">-struct CUDA_KERNEL_NODE_PARAMS_v3;</span>
+<span class="gd">-struct CUDA_LAUNCH_PARAMS_v1;</span>
+<span class="gd">-struct CUDA_MEMCPY2D_v2;</span>
+<span class="gd">-struct CUDA_MEMCPY3D_PEER_v1;</span>
+<span class="gd">-struct CUDA_MEMCPY3D_v2;</span>
+<span class="gd">-struct CUDA_MEMCPY_NODE_PARAMS;</span>
+<span class="gd">-struct CUDA_MEMSET_NODE_PARAMS_v1;</span>
+<span class="gd">-struct CUDA_MEMSET_NODE_PARAMS_v2;</span>
+<span class="gd">-struct CUDA_MEM_ALLOC_NODE_PARAMS_v1;</span>
+<span class="gd">-struct CUDA_MEM_ALLOC_NODE_PARAMS_v2;</span>
+<span class="gd">-struct CUDA_MEM_FREE_NODE_PARAMS;</span>
+<span class="gd">-struct CUDA_POINTER_ATTRIBUTE_P2P_TOKENS_v1;</span>
+<span class="gd">-struct CUDA_RESOURCE_DESC_v1;</span>
+<span class="gd">-struct CUDA_RESOURCE_VIEW_DESC_v1;</span>
+<span class="gd">-struct CUDA_TEXTURE_DESC_v1;</span>
+<span class="gd">-struct CUaccessPolicyWindow_v1;</span>
+<span class="gd">-struct CUarrayMapInfo_v1;</span>
+<span class="gd">-struct CUasyncNotificationInfo;</span>
+<span class="gd">-struct CUctxCigParam;</span>
+<span class="gd">-struct CUctxCreateParams;</span>
+<span class="gd">-struct CUdevprop_v1;</span>
+<span class="gd">-struct CUeglFrame_v1;</span>
+<span class="gd">-struct CUexecAffinityParam_v1;</span>
+<span class="gd">-struct CUexecAffinitySmCount_v1;</span>
+<span class="gd">-struct CUgraphEdgeData;</span>
+<span class="gd">-struct CUgraphExecUpdateResultInfo_v1;</span>
+<span class="gd">-struct CUgraphNodeParams;</span>
+<span class="gd">-struct CUipcEventHandle_v1;</span>
+<span class="gd">-struct CUipcMemHandle_v1;</span>
+<span class="gd">-struct CUlaunchAttribute;</span>
+<span class="gd">-union CUlaunchAttributeValue;</span>
+<span class="gd">-struct CUlaunchConfig;</span>
+<span class="gd">-struct CUlaunchMemSyncDomainMap;</span>
+<span class="gd">-struct CUmemAccessDesc_v1;</span>
+<span class="gd">-struct CUmemAllocationProp_v1;</span>
+<span class="gd">-struct CUmemFabricHandle_v1;</span>
+<span class="gd">-struct CUmemLocation_v1;</span>
+<span class="gd">-struct CUmemPoolProps_v1;</span>
+<span class="gd">-struct CUmemPoolPtrExportData_v1;</span>
+<span class="gd">-struct CUmulticastObjectProp_v1;</span>
+<span class="gd">-union CUstreamBatchMemOpParams_v1;</span>
+<span class="gd">-struct CUtensorMap;</span>
+<span class="gd">-#define CUDA_ARRAY3D_2DARRAY</span>
+<span class="gd">-#define CUDA_ARRAY3D_COLOR_ATTACHMENT</span>
+<span class="gd">-#define CUDA_ARRAY3D_CUBEMAP</span>
+<span class="gd">-#define CUDA_ARRAY3D_DEFERRED_MAPPING</span>
+<span class="gd">-#define CUDA_ARRAY3D_DEPTH_TEXTURE</span>
+<span class="gd">-#define CUDA_ARRAY3D_LAYERED</span>
+<span class="gd">-#define CUDA_ARRAY3D_SPARSE</span>
+<span class="gd">-#define CUDA_ARRAY3D_SURFACE_LDST</span>
+<span class="gd">-#define CUDA_ARRAY3D_TEXTURE_GATHER</span>
+<span class="gd">-#define CUDA_ARRAY3D_VIDEO_ENCODE_DECODE</span>
+<span class="gd">-#define CUDA_COOPERATIVE_LAUNCH_MULTI_DEVICE_NO_POST_LAUNCH_SYNC</span>
+<span class="gd">-#define CUDA_COOPERATIVE_LAUNCH_MULTI_DEVICE_NO_PRE_LAUNCH_SYNC</span>
+<span class="gd">-#define CUDA_EGL_INFINITE_TIMEOUT</span>
+<span class="gd">-#define CUDA_EXTERNAL_MEMORY_DEDICATED</span>
+<span class="gd">-#define CUDA_EXTERNAL_SEMAPHORE_SIGNAL_SKIP_NVSCIBUF_MEMSYNC</span>
+<span class="gd">-#define CUDA_EXTERNAL_SEMAPHORE_WAIT_SKIP_NVSCIBUF_MEMSYNC</span>
+<span class="gd">-#define CUDA_NVSCISYNC_ATTR_SIGNAL</span>
+<span class="gd">-#define CUDA_NVSCISYNC_ATTR_WAIT</span>
+#define CUDA_VERSION
+<span class="gd">-#define CU_ARRAY_SPARSE_PROPERTIES_SINGLE_MIPTAIL</span>
+<span class="gd">-#define CU_DEVICE_CPU</span>
+<span class="gd">-#define CU_DEVICE_INVALID</span>
+<span class="gd">-#define CU_GRAPH_COND_ASSIGN_DEFAULT</span>
+<span class="gd">-#define CU_GRAPH_KERNEL_NODE_PORT_DEFAULT</span>
+<span class="gd">-#define CU_GRAPH_KERNEL_NODE_PORT_LAUNCH_ORDER</span>
+<span class="gd">-#define CU_GRAPH_KERNEL_NODE_PORT_PROGRAMMATIC</span>
+<span class="gd">-#define CU_IPC_HANDLE_SIZE</span>
+<span class="gd">-#define CU_LAUNCH_PARAM_BUFFER_POINTER</span>
+<span class="gd">-#define CU_LAUNCH_PARAM_BUFFER_POINTER_AS_INT</span>
+<span class="gd">-#define CU_LAUNCH_PARAM_BUFFER_SIZE</span>
+<span class="gd">-#define CU_LAUNCH_PARAM_BUFFER_SIZE_AS_INT</span>
+<span class="gd">-#define CU_LAUNCH_PARAM_END</span>
+<span class="gd">-#define CU_LAUNCH_PARAM_END_AS_INT</span>
+<span class="gd">-#define CU_MEMHOSTALLOC_DEVICEMAP</span>
+<span class="gd">-#define CU_MEMHOSTALLOC_PORTABLE</span>
+<span class="gd">-#define CU_MEMHOSTALLOC_WRITECOMBINED</span>
+<span class="gd">-#define CU_MEMHOSTREGISTER_DEVICEMAP</span>
+<span class="gd">-#define CU_MEMHOSTREGISTER_IOMEMORY</span>
+<span class="gd">-#define CU_MEMHOSTREGISTER_PORTABLE</span>
+<span class="gd">-#define CU_MEMHOSTREGISTER_READ_ONLY</span>
+<span class="gd">-#define CU_MEM_CREATE_USAGE_TILE_POOL</span>
+<span class="gd">-#define CU_PARAM_TR_DEFAULT</span>
+#define CU_STREAM_LEGACY
+#define CU_STREAM_PER_THREAD
+<span class="gd">-#define CU_TENSOR_MAP_NUM_QWORDS</span>
+<span class="gd">-#define CU_TRSA_OVERRIDE_FORMAT</span>
+#define CU_TRSF_DISABLE_TRILINEAR_OPTIMIZATION
+#define CU_TRSF_NORMALIZED_COORDINATES
+#define CU_TRSF_READ_AS_INTEGER
+#define CU_TRSF_SEAMLESS_CUBEMAP
+#define CU_TRSF_SRGB
+<span class="gd">-#define MAX_PLANES</span>
+<span class="gd">-typedef struct CUaccessPolicyWindow_v1 CUaccessPolicyWindow;</span>
+<span class="gd">-typedef CUarray_st * CUarray;</span>
+<span class="gd">-typedef void(* CUasyncCallback)(CUasyncNotificationInfo *, void *, CUasyncCallbackHandle);</span>
+<span class="gd">-typedef CUasyncCallbackEntry_st * CUasyncCallbackHandle;</span>
+<span class="gd">-typedef CUctx_st * CUcontext;</span>
+<span class="gd">-typedef CUdevice_v1 CUdevice;</span>
+<span class="gd">-typedef int CUdevice_v1;</span>
+<span class="gd">-typedef CUdeviceptr_v2 CUdeviceptr;</span>
+<span class="gd">-typedef unsigned int CUdeviceptr_v2;</span>
+<span class="gd">-typedef CUeglStreamConnection_st * CUeglStreamConnection;</span>
+<span class="gd">-typedef CUevent_st * CUevent;</span>
+<span class="gd">-typedef struct CUexecAffinityParam_v1 CUexecAffinityParam;</span>
+<span class="gd">-typedef CUextMemory_st * CUexternalMemory;</span>
+<span class="gd">-typedef CUextSemaphore_st * CUexternalSemaphore;</span>
+<span class="gd">-typedef CUfunc_st * CUfunction;</span>
+<span class="gd">-typedef CUgraph_st * CUgraph;</span>
+<span class="gd">-typedef cuuint64_t CUgraphConditionalHandle;</span>
+<span class="gd">-typedef CUgraphDeviceUpdatableNode_st * CUgraphDeviceNode;</span>
+<span class="gd">-typedef CUgraphExec_st * CUgraphExec;</span>
+<span class="gd">-typedef CUgraphNode_st * CUgraphNode;</span>
+<span class="gd">-typedef CUgraphicsResource_st * CUgraphicsResource;</span>
+<span class="gd">-typedef CUgreenCtx_st * CUgreenCtx;</span>
+<span class="gd">-typedef void(* CUhostFn)(void *);</span>
+<span class="gd">-typedef CUkern_st * CUkernel;</span>
+<span class="gd">-typedef CUlib_st * CUlibrary;</span>
+<span class="gd">-typedef CUmemPoolHandle_st * CUmemoryPool;</span>
+typedef CUmipmappedArray_st * CUmipmappedArray;
+<span class="gd">-typedef CUmod_st * CUmodule;</span>
+typedef size_t(* CUoccupancyB2DSize)(int);
+<span class="gd">-typedef CUstream_st * CUstream;</span>
+<span class="gd">-typedef void(* CUstreamCallback)(CUstream, CUresult, void *);</span>
+<span class="gd">-typedef CUsurfObject_v1 CUsurfObject;</span>
+<span class="gd">-typedef unsigned long long CUsurfObject_v1;</span>
+<span class="gd">-typedef CUsurfref_st * CUsurfref;</span>
+typedef CUtexObject_v1 CUtexObject;
+typedef unsigned long long CUtexObject_v1;
+typedef CUtexref_st * CUtexref;
+<span class="gd">-typedef CUuserObject_st * CUuserObject;</span>
+<span class="gd">-enum CUDA_POINTER_ATTRIBUTE_ACCESS_FLAGS;</span>
+<span class="gd">-enum CUGPUDirectRDMAWritesOrdering;</span>
+<span class="gd">-enum CUaccessProperty;</span>
+<span class="gd">-enum CUaddress_mode;</span>
+<span class="gd">-enum CUarraySparseSubresourceType;</span>
+<span class="gd">-enum CUarray_cubemap_face;</span>
+<span class="gd">-enum CUarray_format;</span>
+<span class="gd">-enum CUasyncNotificationType;</span>
+<span class="gd">-enum CUclusterSchedulingPolicy;</span>
+<span class="gd">-enum CUcomputemode;</span>
+<span class="gd">-enum CUctx_flags;</span>
+<span class="gd">-enum CUdeviceNumaConfig;</span>
+<span class="gd">-enum CUdevice_P2PAttribute;</span>
+<span class="gd">-enum CUdevice_attribute;</span>
+<span class="gd">-enum CUdriverProcAddressQueryResult;</span>
+<span class="gd">-enum CUdriverProcAddress_flags;</span>
+<span class="gd">-enum CUeglColorFormat;</span>
+<span class="gd">-enum CUeglFrameType;</span>
+<span class="gd">-enum CUeglResourceLocationFlags;</span>
+enum CUevent_flags;
+<span class="gd">-enum CUevent_record_flags;</span>
+<span class="gd">-enum CUevent_sched_flags;</span>
+<span class="gd">-enum CUevent_wait_flags;</span>
+<span class="gd">-enum CUexecAffinityType;</span>
+<span class="gd">-enum CUexternalMemoryHandleType;</span>
+<span class="gd">-enum CUexternalSemaphoreHandleType;</span>
+<span class="gd">-enum CUfilter_mode;</span>
+<span class="gd">-enum CUflushGPUDirectRDMAWritesOptions;</span>
+<span class="gd">-enum CUflushGPUDirectRDMAWritesScope;</span>
+<span class="gd">-enum CUflushGPUDirectRDMAWritesTarget;</span>
+<span class="gd">-enum CUfunc_cache;</span>
+<span class="gd">-enum CUfunction_attribute;</span>
+<span class="gd">-enum CUgraphConditionalNodeType;</span>
+<span class="gd">-enum CUgraphDebugDot_flags;</span>
+<span class="gd">-enum CUgraphDependencyType;</span>
+<span class="gd">-enum CUgraphExecUpdateResult;</span>
+<span class="gd">-enum CUgraphInstantiateResult;</span>
+<span class="gd">-enum CUgraphInstantiate_flags;</span>
+<span class="gd">-enum CUgraphNodeType;</span>
+<span class="gd">-enum CUgraphicsMapResourceFlags;</span>
+<span class="gd">-enum CUgraphicsRegisterFlags;</span>
+<span class="gd">-enum CUipcMem_flags;</span>
+<span class="gd">-enum CUjitInputType;</span>
+<span class="gd">-enum CUjit_cacheMode;</span>
+<span class="gd">-enum CUjit_fallback;</span>
+<span class="gd">-enum CUjit_option;</span>
+<span class="gd">-enum CUjit_target;</span>
+<span class="gd">-enum CUlaunchAttributeID;</span>
+<span class="gd">-enum CUlaunchMemSyncDomain;</span>
+<span class="gd">-enum CUlibraryOption;</span>
+<span class="gd">-enum CUlimit;</span>
+<span class="gd">-enum CUmemAccess_flags;</span>
+<span class="gd">-enum CUmemAllocationCompType;</span>
+<span class="gd">-enum CUmemAllocationGranularity_flags;</span>
+<span class="gd">-enum CUmemAllocationHandleType;</span>
+<span class="gd">-enum CUmemAllocationType;</span>
+<span class="gd">-enum CUmemAttach_flags;</span>
+<span class="gd">-enum CUmemHandleType;</span>
+<span class="gd">-enum CUmemLocationType;</span>
+<span class="gd">-enum CUmemOperationType;</span>
+<span class="gd">-enum CUmemPool_attribute;</span>
+<span class="gd">-enum CUmemRangeHandleType;</span>
+<span class="gd">-enum CUmem_advise;</span>
+<span class="gd">-enum CUmemorytype;</span>
+<span class="gd">-enum CUmulticastGranularity_flags;</span>
+<span class="gd">-enum CUoccupancy_flags;</span>
+<span class="gd">-enum CUpointer_attribute;</span>
+<span class="gd">-enum CUresourceViewFormat;</span>
+<span class="gd">-enum CUresourcetype;</span>
+<span class="gd">-enum CUresult;</span>
+<span class="gd">-enum CUshared_carveout;</span>
+<span class="gd">-enum CUsharedconfig;</span>
+<span class="gd">-enum CUstreamBatchMemOpType;</span>
+<span class="gd">-enum CUstreamCaptureMode;</span>
+<span class="gd">-enum CUstreamCaptureStatus;</span>
+<span class="gd">-enum CUstreamMemoryBarrier_flags;</span>
+<span class="gd">-enum CUstreamUpdateCaptureDependencies_flags;</span>
+<span class="gd">-enum CUstreamWaitValue_flags;</span>
+<span class="gd">-enum CUstreamWriteValue_flags;</span>
+<span class="gd">-enum CUstream_flags;</span>
+<span class="gd">-enum CUtensorMapDataType;</span>
+<span class="gd">-enum CUtensorMapFloatOOBfill;</span>
+<span class="gd">-enum CUtensorMapInterleave;</span>
+<span class="gd">-enum CUtensorMapL2promotion;</span>
+<span class="gd">-enum CUtensorMapSwizzle;</span>
+<span class="gd">-enum CUuserObjectRetain_flags;</span>
+<span class="gd">-enum CUuserObject_flags;</span>
+<span class="gd">-enum cl_context_flags;</span>
+<span class="gd">-enum cl_event_flags;</span>
+</code></pre></div>
+<h2 id="62-error-handling"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__ERROR.html#group__CUDA__ERROR">6.2. Error Handling</a><a class="headerlink" href="#62-error-handling" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuGetErrorName(CUresult, const char * *);
+CUresult cuGetErrorString(CUresult, const char * *);
+</code></pre></div>
+<h2 id="63-initialization"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__INITIALIZE.html#group__CUDA__INITIALIZE">6.3. Initialization</a><a class="headerlink" href="#63-initialization" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuInit(unsigned);
+</code></pre></div>
+<h2 id="64-version-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__VERSION.html#group__CUDA__VERSION">6.4. Version Management</a><a class="headerlink" href="#64-version-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuDriverGetVersion(int *);
+</code></pre></div>
+<h2 id="65-device-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__DEVICE.html#group__CUDA__DEVICE">6.5. Device Management</a><a class="headerlink" href="#65-device-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuDeviceGet(CUdevice *, int);
+CUresult cuDeviceGetAttribute(int *, CUdevice_attribute, CUdevice);
+CUresult cuDeviceGetCount(int *);
+<span class="gd">-CUresult cuDeviceGetDefaultMemPool(CUmemoryPool *, CUdevice);</span>
+<span class="gd">-CUresult cuDeviceGetExecAffinitySupport(int *, CUexecAffinityType, CUdevice);</span>
+CUresult cuDeviceGetLuid(char *, unsigned *, CUdevice);
+<span class="gd">-CUresult cuDeviceGetMemPool(CUmemoryPool *, CUdevice);</span>
+CUresult cuDeviceGetName(char *, int, CUdevice);
+<span class="gd">-CUresult cuDeviceGetNvSciSyncAttributes(void *, CUdevice, int);</span>
+<span class="gd">-CUresult cuDeviceGetTexture1DLinearMaxWidth(size_t *, CUarray_format, unsigned, CUdevice);</span>
+CUresult cuDeviceGetUuid(CUuuid *, CUdevice);
+CUresult cuDeviceGetUuid_v2(CUuuid *, CUdevice);
+<span class="gd">-CUresult cuDeviceSetMemPool(CUdevice, CUmemoryPool);</span>
+CUresult cuDeviceTotalMem(size_t *, CUdevice);
+<span class="gd">-CUresult cuFlushGPUDirectRDMAWrites(CUflushGPUDirectRDMAWritesTarget, CUflushGPUDirectRDMAWritesScope);</span>
+</code></pre></div>
+<h2 id="66-device-management-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__DEVICE__DEPRECATED.html#group__CUDA__DEVICE__DEPRECATED">6.6. Device Management [DEPRECATED]</a><a class="headerlink" href="#66-device-management-deprecated" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuDeviceComputeCapability(int *, int *, CUdevice);
+CUresult cuDeviceGetProperties(CUdevprop *, CUdevice);
+</code></pre></div>
+<h2 id="67-primary-context-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PRIMARY__CTX.html#group__CUDA__PRIMARY__CTX">6.7. Primary Context Management</a><a class="headerlink" href="#67-primary-context-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuDevicePrimaryCtxGetState(CUdevice, unsigned *, int *);
+CUresult cuDevicePrimaryCtxRelease(CUdevice);
+CUresult cuDevicePrimaryCtxReset(CUdevice);
+CUresult cuDevicePrimaryCtxRetain(CUcontext *, CUdevice);
+CUresult cuDevicePrimaryCtxSetFlags(CUdevice, unsigned);
+</code></pre></div>
+<h2 id="68-context-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__CTX.html#group__CUDA__CTX">6.8. Context Management</a><a class="headerlink" href="#68-context-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuCtxCreate(CUcontext *, unsigned, CUdevice);
+<span class="gd">-CUresult cuCtxCreate_v3(CUcontext *, CUexecAffinityParam *, int, unsigned, CUdevice);</span>
+<span class="gd">-CUresult cuCtxCreate_v4(CUcontext *, CUctxCreateParams *, unsigned, CUdevice);</span>
+CUresult cuCtxDestroy(CUcontext);
+CUresult cuCtxGetApiVersion(CUcontext, unsigned *);
+CUresult cuCtxGetCacheConfig(CUfunc_cache *);
+CUresult cuCtxGetCurrent(CUcontext *);
+CUresult cuCtxGetDevice(CUdevice *);
+<span class="gd">-CUresult cuCtxGetExecAffinity(CUexecAffinityParam *, CUexecAffinityType);</span>
+CUresult cuCtxGetFlags(unsigned *);
+CUresult cuCtxGetId(CUcontext, unsigned long long *);
+CUresult cuCtxGetLimit(size_t *, CUlimit);
+CUresult cuCtxGetStreamPriorityRange(int *, int *);
+CUresult cuCtxPopCurrent(CUcontext *);
+CUresult cuCtxPushCurrent(CUcontext);
+<span class="gd">-CUresult cuCtxRecordEvent(CUcontext, CUevent);</span>
+CUresult cuCtxResetPersistingL2Cache();
+CUresult cuCtxSetCacheConfig(CUfunc_cache);
+CUresult cuCtxSetCurrent(CUcontext);
+CUresult cuCtxSetFlags(unsigned);
+CUresult cuCtxSetLimit(CUlimit, size_t);
+CUresult cuCtxSynchronize();
+<span class="gd">-CUresult cuCtxWaitEvent(CUcontext, CUevent);</span>
+</code></pre></div>
+<h2 id="69-context-management-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__CTX__DEPRECATED.html#group__CUDA__CTX__DEPRECATED">6.9. Context Management [DEPRECATED]</a><a class="headerlink" href="#69-context-management-deprecated" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuCtxAttach(CUcontext *, unsigned);
+CUresult cuCtxDetach(CUcontext);
+CUresult cuCtxGetSharedMemConfig(CUsharedconfig *);
+CUresult cuCtxSetSharedMemConfig(CUsharedconfig);
+</code></pre></div>
+<h2 id="610-module-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MODULE.html#group__CUDA__MODULE">6.10. Module Management</a><a class="headerlink" href="#610-module-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-enum CUmoduleLoadingMode;</span>
+CUresult cuLinkAddData(CUlinkState, CUjitInputType, void *, size_t, const char *, unsigned, CUjit_option *, void * *);
+CUresult cuLinkAddFile(CUlinkState, CUjitInputType, const char *, unsigned, CUjit_option *, void * *);
+CUresult cuLinkComplete(CUlinkState, void * *, size_t *);
+CUresult cuLinkCreate(unsigned, CUjit_option *, void * *, CUlinkState *);
+CUresult cuLinkDestroy(CUlinkState);
+<span class="gd">-CUresult cuModuleEnumerateFunctions(CUfunction *, unsigned, CUmodule);</span>
+CUresult cuModuleGetFunction(CUfunction *, CUmodule, const char *);
+<span class="gd">-CUresult cuModuleGetFunctionCount(unsigned *, CUmodule);</span>
+CUresult cuModuleGetGlobal(CUdeviceptr *, size_t *, CUmodule, const char *);
+CUresult cuModuleGetLoadingMode(CUmoduleLoadingMode *);
+CUresult cuModuleLoad(CUmodule *, const char *);
+CUresult cuModuleLoadData(CUmodule *, const void *);
+CUresult cuModuleLoadDataEx(CUmodule *, const void *, unsigned, CUjit_option *, void * *);
+CUresult cuModuleLoadFatBinary(CUmodule *, const void *);
+CUresult cuModuleUnload(CUmodule);
+</code></pre></div>
+<h2 id="611-module-management-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MODULE__DEPRECATED.html#group__CUDA__MODULE__DEPRECATED">6.11. Module Management [DEPRECATED]</a><a class="headerlink" href="#611-module-management-deprecated" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuModuleGetSurfRef(CUsurfref *, CUmodule, const char *);</span>
+<span class="gd">-CUresult cuModuleGetTexRef(CUtexref *, CUmodule, const char *);</span>
+</code></pre></div>
+<h2 id="612-library-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__LIBRARY.html#group__CUDA__LIBRARY">6.12. Library Management</a><a class="headerlink" href="#612-library-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuKernelGetAttribute(int *, CUfunction_attribute, CUkernel, CUdevice);</span>
+<span class="gd">-CUresult cuKernelGetFunction(CUfunction *, CUkernel);</span>
+<span class="gd">-CUresult cuKernelGetLibrary(CUlibrary *, CUkernel);</span>
+<span class="gd">-CUresult cuKernelGetName(const char * *, CUkernel);</span>
+<span class="gd">-CUresult cuKernelGetParamInfo(CUkernel, size_t, size_t *, size_t *);</span>
+<span class="gd">-CUresult cuKernelSetAttribute(CUfunction_attribute, int, CUkernel, CUdevice);</span>
+<span class="gd">-CUresult cuKernelSetCacheConfig(CUkernel, CUfunc_cache, CUdevice);</span>
+<span class="gd">-CUresult cuLibraryEnumerateKernels(CUkernel *, unsigned, CUlibrary);</span>
+<span class="gd">-CUresult cuLibraryGetGlobal(CUdeviceptr *, size_t *, CUlibrary, const char *);</span>
+<span class="gd">-CUresult cuLibraryGetKernel(CUkernel *, CUlibrary, const char *);</span>
+<span class="gd">-CUresult cuLibraryGetKernelCount(unsigned *, CUlibrary);</span>
+<span class="gd">-CUresult cuLibraryGetManaged(CUdeviceptr *, size_t *, CUlibrary, const char *);</span>
+<span class="gd">-CUresult cuLibraryGetModule(CUmodule *, CUlibrary);</span>
+<span class="gd">-CUresult cuLibraryGetUnifiedFunction(void * *, CUlibrary, const char *);</span>
+<span class="gd">-CUresult cuLibraryLoadData(CUlibrary *, const void *, CUjit_option *, void * *, unsigned, CUlibraryOption *, void * *, unsigned);</span>
+<span class="gd">-CUresult cuLibraryLoadFromFile(CUlibrary *, const char *, CUjit_option *, void * *, unsigned, CUlibraryOption *, void * *, unsigned);</span>
+<span class="gd">-CUresult cuLibraryUnload(CUlibrary);</span>
+</code></pre></div>
+<h2 id="613-memory-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MEM.html#group__CUDA__MEM">6.13. Memory Management</a><a class="headerlink" href="#613-memory-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuArray3DCreate(CUarray *, const CUDA_ARRAY3D_DESCRIPTOR *);</span>
+<span class="gd">-CUresult cuArray3DGetDescriptor(CUDA_ARRAY3D_DESCRIPTOR *, CUarray);</span>
+<span class="gd">-CUresult cuArrayCreate(CUarray *, const CUDA_ARRAY_DESCRIPTOR *);</span>
+CUresult cuArrayDestroy(CUarray);
+<span class="gd">-CUresult cuArrayGetDescriptor(CUDA_ARRAY_DESCRIPTOR *, CUarray);</span>
+<span class="gd">-CUresult cuArrayGetMemoryRequirements(CUDA_ARRAY_MEMORY_REQUIREMENTS *, CUarray, CUdevice);</span>
+<span class="gd">-CUresult cuArrayGetPlane(CUarray *, CUarray, unsigned);</span>
+<span class="gd">-CUresult cuArrayGetSparseProperties(CUDA_ARRAY_SPARSE_PROPERTIES *, CUarray);</span>
+CUresult cuDeviceGetByPCIBusId(CUdevice *, const char *);
+CUresult cuDeviceGetPCIBusId(char *, int, CUdevice);
+<span class="gd">-CUresult cuDeviceRegisterAsyncNotification(CUdevice, CUasyncCallback, void *, CUasyncCallbackHandle *);</span>
+<span class="gd">-CUresult cuDeviceUnregisterAsyncNotification(CUdevice, CUasyncCallbackHandle);</span>
+<span class="gd">-CUresult cuIpcCloseMemHandle(CUdeviceptr);</span>
+<span class="gd">-CUresult cuIpcGetEventHandle(CUipcEventHandle *, CUevent);</span>
+<span class="gd">-CUresult cuIpcGetMemHandle(CUipcMemHandle *, CUdeviceptr);</span>
+<span class="gd">-CUresult cuIpcOpenEventHandle(CUevent *, CUipcEventHandle);</span>
+<span class="gd">-CUresult cuIpcOpenMemHandle(CUdeviceptr *, CUipcMemHandle, unsigned);</span>
+CUresult cuMemAlloc(CUdeviceptr *, size_t);
+CUresult cuMemAllocHost(void * *, size_t);
+CUresult cuMemAllocManaged(CUdeviceptr *, size_t, unsigned);
+CUresult cuMemAllocPitch(CUdeviceptr *, size_t *, size_t, size_t, unsigned);
+CUresult cuMemFree(CUdeviceptr);
+CUresult cuMemFreeHost(void *);
+CUresult cuMemGetAddressRange(CUdeviceptr *, size_t *, CUdeviceptr);
+<span class="gd">-CUresult cuMemGetHandleForAddressRange(void *, CUdeviceptr, size_t, CUmemRangeHandleType, unsigned long long);</span>
+CUresult cuMemGetInfo(size_t *, size_t *);
+CUresult cuMemHostAlloc(void * *, size_t, unsigned);
+CUresult cuMemHostGetDevicePointer(CUdeviceptr *, void *, unsigned);
+<span class="gd">-CUresult cuMemHostGetFlags(unsigned *, void *);</span>
+CUresult cuMemHostRegister(void *, size_t, unsigned);
+CUresult cuMemHostUnregister(void *);
+CUresult cuMemcpy(CUdeviceptr, CUdeviceptr, size_t);
+CUresult cuMemcpy2D(const CUDA_MEMCPY2D *);
+CUresult cuMemcpy2DAsync(const CUDA_MEMCPY2D *, CUstream);
+CUresult cuMemcpy2DUnaligned(const CUDA_MEMCPY2D *);
+CUresult cuMemcpy3D(const CUDA_MEMCPY3D *);
+CUresult cuMemcpy3DAsync(const CUDA_MEMCPY3D *, CUstream);
+<span class="gd">-CUresult cuMemcpy3DPeer(const CUDA_MEMCPY3D_PEER *);</span>
+<span class="gd">-CUresult cuMemcpy3DPeerAsync(const CUDA_MEMCPY3D_PEER *, CUstream);</span>
+CUresult cuMemcpyAsync(CUdeviceptr, CUdeviceptr, size_t, CUstream);
+<span class="gd">-CUresult cuMemcpyAtoA(CUarray, size_t, CUarray, size_t, size_t);</span>
+<span class="gd">-CUresult cuMemcpyAtoD(CUdeviceptr, CUarray, size_t, size_t);</span>
+<span class="gd">-CUresult cuMemcpyAtoH(void *, CUarray, size_t, size_t);</span>
+<span class="gd">-CUresult cuMemcpyAtoHAsync(void *, CUarray, size_t, size_t, CUstream);</span>
+<span class="gd">-CUresult cuMemcpyDtoA(CUarray, size_t, CUdeviceptr, size_t);</span>
+CUresult cuMemcpyDtoD(CUdeviceptr, CUdeviceptr, size_t);
+CUresult cuMemcpyDtoDAsync(CUdeviceptr, CUdeviceptr, size_t, CUstream);
+CUresult cuMemcpyDtoH(void *, CUdeviceptr, size_t);
+CUresult cuMemcpyDtoHAsync(void *, CUdeviceptr, size_t, CUstream);
+<span class="gd">-CUresult cuMemcpyHtoA(CUarray, size_t, const void *, size_t);</span>
+<span class="gd">-CUresult cuMemcpyHtoAAsync(CUarray, size_t, const void *, size_t, CUstream);</span>
+CUresult cuMemcpyHtoD(CUdeviceptr, const void *, size_t);
+CUresult cuMemcpyHtoDAsync(CUdeviceptr, const void *, size_t, CUstream);
+<span class="gd">-CUresult cuMemcpyPeer(CUdeviceptr, CUcontext, CUdeviceptr, CUcontext, size_t);</span>
+<span class="gd">-CUresult cuMemcpyPeerAsync(CUdeviceptr, CUcontext, CUdeviceptr, CUcontext, size_t, CUstream);</span>
+CUresult cuMemsetD16(CUdeviceptr, unsigned short, size_t);
+CUresult cuMemsetD16Async(CUdeviceptr, unsigned short, size_t, CUstream);
+CUresult cuMemsetD2D16(CUdeviceptr, size_t, unsigned short, size_t, size_t);
+CUresult cuMemsetD2D16Async(CUdeviceptr, size_t, unsigned short, size_t, size_t, CUstream);
+CUresult cuMemsetD2D32(CUdeviceptr, size_t, unsigned, size_t, size_t);
+CUresult cuMemsetD2D32Async(CUdeviceptr, size_t, unsigned, size_t, size_t, CUstream);
+CUresult cuMemsetD2D8(CUdeviceptr, size_t, unsigned char, size_t, size_t);
+CUresult cuMemsetD2D8Async(CUdeviceptr, size_t, unsigned char, size_t, size_t, CUstream);
+CUresult cuMemsetD32(CUdeviceptr, unsigned, size_t);
+CUresult cuMemsetD32Async(CUdeviceptr, unsigned, size_t, CUstream);
+CUresult cuMemsetD8(CUdeviceptr, unsigned char, size_t);
+CUresult cuMemsetD8Async(CUdeviceptr, unsigned char, size_t, CUstream);
+<span class="gd">-CUresult cuMipmappedArrayCreate(CUmipmappedArray *, const CUDA_ARRAY3D_DESCRIPTOR *, unsigned);</span>
+<span class="gd">-CUresult cuMipmappedArrayDestroy(CUmipmappedArray);</span>
+<span class="gd">-CUresult cuMipmappedArrayGetLevel(CUarray *, CUmipmappedArray, unsigned);</span>
+<span class="gd">-CUresult cuMipmappedArrayGetMemoryRequirements(CUDA_ARRAY_MEMORY_REQUIREMENTS *, CUmipmappedArray, CUdevice);</span>
+<span class="gd">-CUresult cuMipmappedArrayGetSparseProperties(CUDA_ARRAY_SPARSE_PROPERTIES *, CUmipmappedArray);</span>
+</code></pre></div>
+<h2 id="614-virtual-memory-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__VA.html#group__CUDA__VA">6.14. Virtual Memory Management</a><a class="headerlink" href="#614-virtual-memory-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuMemAddressFree(CUdeviceptr, size_t);
+CUresult cuMemAddressReserve(CUdeviceptr *, size_t, size_t, CUdeviceptr, unsigned long long);
+CUresult cuMemCreate(CUmemGenericAllocationHandle *, size_t, const CUmemAllocationProp *, unsigned long long);
+<span class="gd">-CUresult cuMemExportToShareableHandle(void *, CUmemGenericAllocationHandle, CUmemAllocationHandleType, unsigned long long);</span>
+CUresult cuMemGetAccess(unsigned long long *, const CUmemLocation *, CUdeviceptr);
+CUresult cuMemGetAllocationGranularity(size_t *, const CUmemAllocationProp *, CUmemAllocationGranularity_flags);
+CUresult cuMemGetAllocationPropertiesFromHandle(CUmemAllocationProp *, CUmemGenericAllocationHandle);
+<span class="gd">-CUresult cuMemImportFromShareableHandle(CUmemGenericAllocationHandle *, void *, CUmemAllocationHandleType);</span>
+CUresult cuMemMap(CUdeviceptr, size_t, size_t, CUmemGenericAllocationHandle, unsigned long long);
+<span class="gd">-CUresult cuMemMapArrayAsync(CUarrayMapInfo *, unsigned, CUstream);</span>
+CUresult cuMemRelease(CUmemGenericAllocationHandle);
+CUresult cuMemRetainAllocationHandle(CUmemGenericAllocationHandle *, void *);
+CUresult cuMemSetAccess(CUdeviceptr, size_t, const CUmemAccessDesc *, size_t);
+CUresult cuMemUnmap(CUdeviceptr, size_t);
+</code></pre></div>
+<h2 id="615-stream-ordered-memory-allocator"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MALLOC__ASYNC.html#group__CUDA__MALLOC__ASYNC">6.15. Stream Ordered Memory Allocator</a><a class="headerlink" href="#615-stream-ordered-memory-allocator" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuMemAllocAsync(CUdeviceptr *, size_t, CUstream);</span>
+<span class="gd">-CUresult cuMemAllocFromPoolAsync(CUdeviceptr *, size_t, CUmemoryPool, CUstream);</span>
+<span class="gd">-CUresult cuMemFreeAsync(CUdeviceptr, CUstream);</span>
+<span class="gd">-CUresult cuMemPoolCreate(CUmemoryPool *, const CUmemPoolProps *);</span>
+<span class="gd">-CUresult cuMemPoolDestroy(CUmemoryPool);</span>
+<span class="gd">-CUresult cuMemPoolExportPointer(CUmemPoolPtrExportData *, CUdeviceptr);</span>
+<span class="gd">-CUresult cuMemPoolExportToShareableHandle(void *, CUmemoryPool, CUmemAllocationHandleType, unsigned long long);</span>
+<span class="gd">-CUresult cuMemPoolGetAccess(CUmemAccess_flags *, CUmemoryPool, CUmemLocation *);</span>
+<span class="gd">-CUresult cuMemPoolGetAttribute(CUmemoryPool, CUmemPool_attribute, void *);</span>
+<span class="gd">-CUresult cuMemPoolImportFromShareableHandle(CUmemoryPool *, void *, CUmemAllocationHandleType, unsigned long long);</span>
+<span class="gd">-CUresult cuMemPoolImportPointer(CUdeviceptr *, CUmemoryPool, CUmemPoolPtrExportData *);</span>
+<span class="gd">-CUresult cuMemPoolSetAccess(CUmemoryPool, const CUmemAccessDesc *, size_t);</span>
+<span class="gd">-CUresult cuMemPoolSetAttribute(CUmemoryPool, CUmemPool_attribute, void *);</span>
+<span class="gd">-CUresult cuMemPoolTrimTo(CUmemoryPool, size_t);</span>
+</code></pre></div>
+<h2 id="616-multicast-object-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MULTICAST.html#group__CUDA__MULTICAST">6.16. Multicast Object Management</a><a class="headerlink" href="#616-multicast-object-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuMulticastAddDevice(CUmemGenericAllocationHandle, CUdevice);</span>
+<span class="gd">-CUresult cuMulticastBindAddr(CUmemGenericAllocationHandle, size_t, CUdeviceptr, size_t, unsigned long long);</span>
+<span class="gd">-CUresult cuMulticastBindMem(CUmemGenericAllocationHandle, size_t, CUmemGenericAllocationHandle, size_t, size_t, unsigned long long);</span>
+<span class="gd">-CUresult cuMulticastCreate(CUmemGenericAllocationHandle *, const CUmulticastObjectProp *);</span>
+<span class="gd">-CUresult cuMulticastGetGranularity(size_t *, const CUmulticastObjectProp *, CUmulticastGranularity_flags);</span>
+<span class="gd">-CUresult cuMulticastUnbind(CUmemGenericAllocationHandle, CUdevice, size_t, size_t);</span>
+</code></pre></div>
+<h2 id="617-unified-addressing"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__UNIFIED.html#group__CUDA__UNIFIED">6.17. Unified Addressing</a><a class="headerlink" href="#617-unified-addressing" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuMemAdvise(CUdeviceptr, size_t, CUmem_advise, CUdevice);
+CUresult cuMemAdvise_v2(CUdeviceptr, size_t, CUmem_advise, CUmemLocation);
+CUresult cuMemPrefetchAsync(CUdeviceptr, size_t, CUdevice, CUstream);
+<span class="gd">-CUresult cuMemPrefetchAsync_v2(CUdeviceptr, size_t, CUmemLocation, unsigned, CUstream);</span>
+<span class="gd">-CUresult cuMemRangeGetAttribute(void *, size_t, CUmem_range_attribute, CUdeviceptr, size_t);</span>
+<span class="gd">-CUresult cuMemRangeGetAttributes(void * *, size_t *, CUmem_range_attribute *, size_t, CUdeviceptr, size_t);</span>
+CUresult cuPointerGetAttribute(void *, CUpointer_attribute, CUdeviceptr);
+CUresult cuPointerGetAttributes(unsigned, CUpointer_attribute *, void * *, CUdeviceptr);
+<span class="gd">-CUresult cuPointerSetAttribute(const void *, CUpointer_attribute, CUdeviceptr);</span>
+</code></pre></div>
+<h2 id="618-stream-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__STREAM.html#group__CUDA__STREAM">6.18. Stream Management</a><a class="headerlink" href="#618-stream-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuStreamAddCallback(CUstream, CUstreamCallback, void *, unsigned);
+<span class="gd">-CUresult cuStreamAttachMemAsync(CUstream, CUdeviceptr, size_t, unsigned);</span>
+<span class="gd">-CUresult cuStreamBeginCapture(CUstream, CUstreamCaptureMode);</span>
+<span class="gd">-CUresult cuStreamBeginCaptureToGraph(CUstream, CUgraph, const CUgraphNode *, const CUgraphEdgeData *, size_t, CUstreamCaptureMode);</span>
+<span class="gd">-CUresult cuStreamCopyAttributes(CUstream, CUstream);</span>
+CUresult cuStreamCreate(CUstream *, unsigned);
+CUresult cuStreamCreateWithPriority(CUstream *, unsigned, int);
+CUresult cuStreamDestroy(CUstream);
+<span class="gd">-CUresult cuStreamEndCapture(CUstream, CUgraph *);</span>
+<span class="gd">-CUresult cuStreamGetAttribute(CUstream, CUstreamAttrID, CUstreamAttrValue *);</span>
+<span class="gd">-CUresult cuStreamGetCaptureInfo(CUstream, CUstreamCaptureStatus *, cuuint64_t *, CUgraph *, const CUgraphNode * *, size_t *);</span>
+<span class="gd">-CUresult cuStreamGetCaptureInfo_v3(CUstream, CUstreamCaptureStatus *, cuuint64_t *, CUgraph *, const CUgraphNode * *, const CUgraphEdgeData * *, size_t *);</span>
+CUresult cuStreamGetCtx(CUstream, CUcontext *);
+<span class="gd">-CUresult cuStreamGetCtx_v2(CUstream, CUcontext *, CUgreenCtx *);</span>
+CUresult cuStreamGetFlags(CUstream, unsigned *);
+CUresult cuStreamGetId(CUstream, unsigned long long *);
+CUresult cuStreamGetPriority(CUstream, int *);
+<span class="gd">-CUresult cuStreamIsCapturing(CUstream, CUstreamCaptureStatus *);</span>
+CUresult cuStreamQuery(CUstream);
+<span class="gd">-CUresult cuStreamSetAttribute(CUstream, CUstreamAttrID, const CUstreamAttrValue *);</span>
+CUresult cuStreamSynchronize(CUstream);
+<span class="gd">-CUresult cuStreamUpdateCaptureDependencies(CUstream, CUgraphNode *, size_t, unsigned);</span>
+<span class="gd">-CUresult cuStreamUpdateCaptureDependencies_v2(CUstream, CUgraphNode *, const CUgraphEdgeData *, size_t, unsigned);</span>
+CUresult cuStreamWaitEvent(CUstream, CUevent, unsigned);
+<span class="gd">-CUresult cuThreadExchangeStreamCaptureMode(CUstreamCaptureMode *);</span>
+</code></pre></div>
+<h2 id="619-event-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EVENT.html#group__CUDA__EVENT">6.19. Event Management</a><a class="headerlink" href="#619-event-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuEventCreate(CUevent *, unsigned);
+CUresult cuEventDestroy(CUevent);
+CUresult cuEventElapsedTime(float *, CUevent, CUevent);
+CUresult cuEventQuery(CUevent);
+CUresult cuEventRecord(CUevent, CUstream);
+<span class="gd">-CUresult cuEventRecordWithFlags(CUevent, CUstream, unsigned);</span>
+CUresult cuEventSynchronize(CUevent);
+</code></pre></div>
+<h2 id="620-external-resource-interoperability"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP">6.20. External Resource Interoperability</a><a class="headerlink" href="#620-external-resource-interoperability" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuDestroyExternalMemory(CUexternalMemory);</span>
+<span class="gd">-CUresult cuDestroyExternalSemaphore(CUexternalSemaphore);</span>
+<span class="gd">-CUresult cuExternalMemoryGetMappedBuffer(CUdeviceptr *, CUexternalMemory, const CUDA_EXTERNAL_MEMORY_BUFFER_DESC *);</span>
+<span class="gd">-CUresult cuExternalMemoryGetMappedMipmappedArray(CUmipmappedArray *, CUexternalMemory, const CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC *);</span>
+<span class="gd">-CUresult cuImportExternalMemory(CUexternalMemory *, const CUDA_EXTERNAL_MEMORY_HANDLE_DESC *);</span>
+<span class="gd">-CUresult cuImportExternalSemaphore(CUexternalSemaphore *, const CUDA_EXTERNAL_SEMAPHORE_HANDLE_DESC *);</span>
+<span class="gd">-CUresult cuSignalExternalSemaphoresAsync(const CUexternalSemaphore *, const CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS *, unsigned, CUstream);</span>
+<span class="gd">-CUresult cuWaitExternalSemaphoresAsync(const CUexternalSemaphore *, const CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS *, unsigned, CUstream);</span>
+</code></pre></div>
+<h2 id="621-stream-memory-operations"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MEMOP.html#group__CUDA__MEMOP">6.21. Stream Memory Operations</a><a class="headerlink" href="#621-stream-memory-operations" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuStreamBatchMemOp(CUstream, unsigned, CUstreamBatchMemOpParams *, unsigned);</span>
+<span class="gd">-CUresult cuStreamWaitValue32(CUstream, CUdeviceptr, cuuint32_t, unsigned);</span>
+<span class="gd">-CUresult cuStreamWaitValue64(CUstream, CUdeviceptr, cuuint64_t, unsigned);</span>
+<span class="gd">-CUresult cuStreamWriteValue32(CUstream, CUdeviceptr, cuuint32_t, unsigned);</span>
+<span class="gd">-CUresult cuStreamWriteValue64(CUstream, CUdeviceptr, cuuint64_t, unsigned);</span>
+</code></pre></div>
+<h2 id="622-execution-control"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EXEC.html#group__CUDA__EXEC">6.22. Execution Control</a><a class="headerlink" href="#622-execution-control" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuFuncGetAttribute(int *, CUfunction_attribute, CUfunction);
+<span class="gd">-CUresult cuFuncGetModule(CUmodule *, CUfunction);</span>
+<span class="gd">-CUresult cuFuncGetName(const char * *, CUfunction);</span>
+<span class="gd">-CUresult cuFuncGetParamInfo(CUfunction, size_t, size_t *, size_t *);</span>
+<span class="gd">-CUresult cuFuncIsLoaded(CUfunctionLoadingState *, CUfunction);</span>
+<span class="gd">-CUresult cuFuncLoad(CUfunction);</span>
+CUresult cuFuncSetAttribute(CUfunction, CUfunction_attribute, int);
+CUresult cuFuncSetCacheConfig(CUfunction, CUfunc_cache);
+<span class="gd">-CUresult cuLaunchCooperativeKernel(CUfunction, unsigned, unsigned, unsigned, unsigned, unsigned, unsigned, unsigned, CUstream, void * *);</span>
+<span class="gd">-CUresult cuLaunchCooperativeKernelMultiDevice(CUDA_LAUNCH_PARAMS *, unsigned, unsigned);</span>
+CUresult cuLaunchHostFunc(CUstream, CUhostFn, void *);
+<span class="gd">-CUresult cuLaunchKernel(CUfunction, unsigned, unsigned, unsigned, unsigned, unsigned, unsigned, unsigned, CUstream, void * *, void * *);</span>
+CUresult cuLaunchKernelEx(const CUlaunchConfig *, CUfunction, void * *, void * *);
+</code></pre></div>
+<h2 id="623-execution-control-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EXEC__DEPRECATED.html#group__CUDA__EXEC__DEPRECATED">6.23. Execution Control [DEPRECATED]</a><a class="headerlink" href="#623-execution-control-deprecated" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuFuncSetBlockShape(CUfunction, int, int, int);</span>
+CUresult cuFuncSetSharedMemConfig(CUfunction, CUsharedconfig);
+<span class="gd">-CUresult cuFuncSetSharedSize(CUfunction, unsigned);</span>
+<span class="gd">-CUresult cuLaunch(CUfunction);</span>
+<span class="gd">-CUresult cuLaunchGrid(CUfunction, int, int);</span>
+<span class="gd">-CUresult cuLaunchGridAsync(CUfunction, int, int, CUstream);</span>
+<span class="gd">-CUresult cuParamSetSize(CUfunction, unsigned);</span>
+<span class="gd">-CUresult cuParamSetTexRef(CUfunction, int, CUtexref);</span>
+<span class="gd">-CUresult cuParamSetf(CUfunction, int, float);</span>
+<span class="gd">-CUresult cuParamSeti(CUfunction, int, unsigned);</span>
+<span class="gd">-CUresult cuParamSetv(CUfunction, int, void *, unsigned);</span>
+</code></pre></div>
+<h2 id="624-graph-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GRAPH.html#group__CUDA__GRAPH">6.24. Graph Management</a><a class="headerlink" href="#624-graph-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuDeviceGetGraphMemAttribute(CUdevice, CUgraphMem_attribute, void *);</span>
+<span class="gd">-CUresult cuDeviceGraphMemTrim(CUdevice);</span>
+<span class="gd">-CUresult cuDeviceSetGraphMemAttribute(CUdevice, CUgraphMem_attribute, void *);</span>
+<span class="gd">-CUresult cuGraphAddBatchMemOpNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, const CUDA_BATCH_MEM_OP_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphAddChildGraphNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, CUgraph);</span>
+<span class="gd">-CUresult cuGraphAddDependencies(CUgraph, const CUgraphNode *, const CUgraphNode *, size_t);</span>
+<span class="gd">-CUresult cuGraphAddDependencies_v2(CUgraph, const CUgraphNode *, const CUgraphNode *, const CUgraphEdgeData *, size_t);</span>
+<span class="gd">-CUresult cuGraphAddEmptyNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t);</span>
+<span class="gd">-CUresult cuGraphAddEventRecordNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, CUevent);</span>
+<span class="gd">-CUresult cuGraphAddEventWaitNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, CUevent);</span>
+<span class="gd">-CUresult cuGraphAddExternalSemaphoresSignalNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphAddExternalSemaphoresWaitNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, const CUDA_EXT_SEM_WAIT_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphAddHostNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, const CUDA_HOST_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphAddKernelNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, const CUDA_KERNEL_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphAddMemAllocNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, CUDA_MEM_ALLOC_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphAddMemFreeNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, CUdeviceptr);</span>
+<span class="gd">-CUresult cuGraphAddMemcpyNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, const CUDA_MEMCPY3D *, CUcontext);</span>
+<span class="gd">-CUresult cuGraphAddMemsetNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, const CUDA_MEMSET_NODE_PARAMS *, CUcontext);</span>
+<span class="gd">-CUresult cuGraphAddNode(CUgraphNode *, CUgraph, const CUgraphNode *, size_t, CUgraphNodeParams *);</span>
+<span class="gd">-CUresult cuGraphAddNode_v2(CUgraphNode *, CUgraph, const CUgraphNode *, const CUgraphEdgeData *, size_t, CUgraphNodeParams *);</span>
+<span class="gd">-CUresult cuGraphBatchMemOpNodeGetParams(CUgraphNode, CUDA_BATCH_MEM_OP_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphBatchMemOpNodeSetParams(CUgraphNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphChildGraphNodeGetGraph(CUgraphNode, CUgraph *);</span>
+<span class="gd">-CUresult cuGraphClone(CUgraph *, CUgraph);</span>
+<span class="gd">-CUresult cuGraphConditionalHandleCreate(CUgraphConditionalHandle *, CUgraph, CUcontext, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuGraphCreate(CUgraph *, unsigned);</span>
+<span class="gd">-CUresult cuGraphDebugDotPrint(CUgraph, const char *, unsigned);</span>
+<span class="gd">-CUresult cuGraphDestroy(CUgraph);</span>
+<span class="gd">-CUresult cuGraphDestroyNode(CUgraphNode);</span>
+<span class="gd">-CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode, CUevent *);</span>
+<span class="gd">-CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode, CUevent);</span>
+<span class="gd">-CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode, CUevent *);</span>
+<span class="gd">-CUresult cuGraphEventWaitNodeSetEvent(CUgraphNode, CUevent);</span>
+<span class="gd">-CUresult cuGraphExecBatchMemOpNodeSetParams(CUgraphExec, CUgraphNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphExecChildGraphNodeSetParams(CUgraphExec, CUgraphNode, CUgraph);</span>
+<span class="gd">-CUresult cuGraphExecDestroy(CUgraphExec);</span>
+<span class="gd">-CUresult cuGraphExecEventRecordNodeSetEvent(CUgraphExec, CUgraphNode, CUevent);</span>
+<span class="gd">-CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec, CUgraphNode, CUevent);</span>
+<span class="gd">-CUresult cuGraphExecExternalSemaphoresSignalNodeSetParams(CUgraphExec, CUgraphNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphExecExternalSemaphoresWaitNodeSetParams(CUgraphExec, CUgraphNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphExecGetFlags(CUgraphExec, cuuint64_t *);</span>
+<span class="gd">-CUresult cuGraphExecHostNodeSetParams(CUgraphExec, CUgraphNode, const CUDA_HOST_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphExecKernelNodeSetParams(CUgraphExec, CUgraphNode, const CUDA_KERNEL_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphExecMemcpyNodeSetParams(CUgraphExec, CUgraphNode, const CUDA_MEMCPY3D *, CUcontext);</span>
+<span class="gd">-CUresult cuGraphExecMemsetNodeSetParams(CUgraphExec, CUgraphNode, const CUDA_MEMSET_NODE_PARAMS *, CUcontext);</span>
+<span class="gd">-CUresult cuGraphExecNodeSetParams(CUgraphExec, CUgraphNode, CUgraphNodeParams *);</span>
+<span class="gd">-CUresult cuGraphExecUpdate(CUgraphExec, CUgraph, CUgraphExecUpdateResultInfo *);</span>
+<span class="gd">-CUresult cuGraphExternalSemaphoresSignalNodeGetParams(CUgraphNode, CUDA_EXT_SEM_SIGNAL_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphExternalSemaphoresSignalNodeSetParams(CUgraphNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphExternalSemaphoresWaitNodeGetParams(CUgraphNode, CUDA_EXT_SEM_WAIT_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphExternalSemaphoresWaitNodeSetParams(CUgraphNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphGetEdges(CUgraph, CUgraphNode *, CUgraphNode *, size_t *);</span>
+<span class="gd">-CUresult cuGraphGetEdges_v2(CUgraph, CUgraphNode *, CUgraphNode *, CUgraphEdgeData *, size_t *);</span>
+<span class="gd">-CUresult cuGraphGetNodes(CUgraph, CUgraphNode *, size_t *);</span>
+<span class="gd">-CUresult cuGraphGetRootNodes(CUgraph, CUgraphNode *, size_t *);</span>
+<span class="gd">-CUresult cuGraphHostNodeGetParams(CUgraphNode, CUDA_HOST_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphHostNodeSetParams(CUgraphNode, const CUDA_HOST_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphInstantiate(CUgraphExec *, CUgraph, unsigned long long);</span>
+<span class="gd">-CUresult cuGraphInstantiateWithParams(CUgraphExec *, CUgraph, CUDA_GRAPH_INSTANTIATE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphKernelNodeCopyAttributes(CUgraphNode, CUgraphNode);</span>
+<span class="gd">-CUresult cuGraphKernelNodeGetAttribute(CUgraphNode, CUkernelNodeAttrID, CUkernelNodeAttrValue *);</span>
+<span class="gd">-CUresult cuGraphKernelNodeGetParams(CUgraphNode, CUDA_KERNEL_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphKernelNodeSetAttribute(CUgraphNode, CUkernelNodeAttrID, const CUkernelNodeAttrValue *);</span>
+<span class="gd">-CUresult cuGraphKernelNodeSetParams(CUgraphNode, const CUDA_KERNEL_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphLaunch(CUgraphExec, CUstream);</span>
+<span class="gd">-CUresult cuGraphMemAllocNodeGetParams(CUgraphNode, CUDA_MEM_ALLOC_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphMemFreeNodeGetParams(CUgraphNode, CUdeviceptr *);</span>
+<span class="gd">-CUresult cuGraphMemcpyNodeGetParams(CUgraphNode, CUDA_MEMCPY3D *);</span>
+<span class="gd">-CUresult cuGraphMemcpyNodeSetParams(CUgraphNode, const CUDA_MEMCPY3D *);</span>
+<span class="gd">-CUresult cuGraphMemsetNodeGetParams(CUgraphNode, CUDA_MEMSET_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphMemsetNodeSetParams(CUgraphNode, const CUDA_MEMSET_NODE_PARAMS *);</span>
+<span class="gd">-CUresult cuGraphNodeFindInClone(CUgraphNode *, CUgraphNode, CUgraph);</span>
+<span class="gd">-CUresult cuGraphNodeGetDependencies(CUgraphNode, CUgraphNode *, size_t *);</span>
+<span class="gd">-CUresult cuGraphNodeGetDependencies_v2(CUgraphNode, CUgraphNode *, CUgraphEdgeData *, size_t *);</span>
+<span class="gd">-CUresult cuGraphNodeGetDependentNodes(CUgraphNode, CUgraphNode *, size_t *);</span>
+<span class="gd">-CUresult cuGraphNodeGetDependentNodes_v2(CUgraphNode, CUgraphNode *, CUgraphEdgeData *, size_t *);</span>
+<span class="gd">-CUresult cuGraphNodeGetEnabled(CUgraphExec, CUgraphNode, unsigned *);</span>
+<span class="gd">-CUresult cuGraphNodeGetType(CUgraphNode, CUgraphNodeType *);</span>
+<span class="gd">-CUresult cuGraphNodeSetEnabled(CUgraphExec, CUgraphNode, unsigned);</span>
+<span class="gd">-CUresult cuGraphNodeSetParams(CUgraphNode, CUgraphNodeParams *);</span>
+<span class="gd">-CUresult cuGraphReleaseUserObject(CUgraph, CUuserObject, unsigned);</span>
+<span class="gd">-CUresult cuGraphRemoveDependencies(CUgraph, const CUgraphNode *, const CUgraphNode *, size_t);</span>
+<span class="gd">-CUresult cuGraphRemoveDependencies_v2(CUgraph, const CUgraphNode *, const CUgraphNode *, const CUgraphEdgeData *, size_t);</span>
+<span class="gd">-CUresult cuGraphRetainUserObject(CUgraph, CUuserObject, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuGraphUpload(CUgraphExec, CUstream);</span>
+<span class="gd">-CUresult cuUserObjectCreate(CUuserObject *, void *, CUhostFn, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuUserObjectRelease(CUuserObject, unsigned);</span>
+<span class="gd">-CUresult cuUserObjectRetain(CUuserObject, unsigned);</span>
+</code></pre></div>
+<h2 id="625-occupancy"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__OCCUPANCY.html#group__CUDA__OCCUPANCY">6.25. Occupancy</a><a class="headerlink" href="#625-occupancy" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuOccupancyAvailableDynamicSMemPerBlock(size_t *, CUfunction, int, int);
+CUresult cuOccupancyMaxActiveBlocksPerMultiprocessor(int *, CUfunction, int, size_t);
+CUresult cuOccupancyMaxActiveBlocksPerMultiprocessorWithFlags(int *, CUfunction, int, size_t, unsigned);
+<span class="gd">-CUresult cuOccupancyMaxActiveClusters(int *, CUfunction, const CUlaunchConfig *);</span>
+CUresult cuOccupancyMaxPotentialBlockSize(int *, int *, CUfunction, CUoccupancyB2DSize, size_t, int);
+CUresult cuOccupancyMaxPotentialBlockSizeWithFlags(int *, int *, CUfunction, CUoccupancyB2DSize, size_t, int, unsigned);
+<span class="gd">-CUresult cuOccupancyMaxPotentialClusterSize(int *, CUfunction, const CUlaunchConfig *);</span>
+</code></pre></div>
+<h2 id="626-texture-reference-management-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TEXREF__DEPRECATED.html#group__CUDA__TEXREF__DEPRECATED">6.26. Texture Reference Management [DEPRECATED]</a><a class="headerlink" href="#626-texture-reference-management-deprecated" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuTexRefCreate(CUtexref *);
+CUresult cuTexRefDestroy(CUtexref);
+CUresult cuTexRefGetAddress(CUdeviceptr *, CUtexref);
+CUresult cuTexRefGetAddressMode(CUaddress_mode *, CUtexref, int);
+CUresult cuTexRefGetArray(CUarray *, CUtexref);
+<span class="gd">-CUresult cuTexRefGetBorderColor(float *, CUtexref);</span>
+CUresult cuTexRefGetFilterMode(CUfilter_mode *, CUtexref);
+<span class="gd">-CUresult cuTexRefGetFlags(unsigned *, CUtexref);</span>
+<span class="gd">-CUresult cuTexRefGetFormat(CUarray_format *, int *, CUtexref);</span>
+<span class="gd">-CUresult cuTexRefGetMaxAnisotropy(int *, CUtexref);</span>
+<span class="gd">-CUresult cuTexRefGetMipmapFilterMode(CUfilter_mode *, CUtexref);</span>
+<span class="gd">-CUresult cuTexRefGetMipmapLevelBias(float *, CUtexref);</span>
+<span class="gd">-CUresult cuTexRefGetMipmapLevelClamp(float *, float *, CUtexref);</span>
+<span class="gd">-CUresult cuTexRefGetMipmappedArray(CUmipmappedArray *, CUtexref);</span>
+<span class="gd">-CUresult cuTexRefSetAddress(size_t *, CUtexref, CUdeviceptr, size_t);</span>
+<span class="gd">-CUresult cuTexRefSetAddress2D(CUtexref, const CUDA_ARRAY_DESCRIPTOR *, CUdeviceptr, size_t);</span>
+<span class="gd">-CUresult cuTexRefSetAddressMode(CUtexref, int, CUaddress_mode);</span>
+<span class="gd">-CUresult cuTexRefSetArray(CUtexref, CUarray, unsigned);</span>
+<span class="gd">-CUresult cuTexRefSetBorderColor(CUtexref, float *);</span>
+<span class="gd">-CUresult cuTexRefSetFilterMode(CUtexref, CUfilter_mode);</span>
+<span class="gd">-CUresult cuTexRefSetFlags(CUtexref, unsigned);</span>
+<span class="gd">-CUresult cuTexRefSetFormat(CUtexref, CUarray_format, int);</span>
+<span class="gd">-CUresult cuTexRefSetMaxAnisotropy(CUtexref, unsigned);</span>
+<span class="gd">-CUresult cuTexRefSetMipmapFilterMode(CUtexref, CUfilter_mode);</span>
+<span class="gd">-CUresult cuTexRefSetMipmapLevelBias(CUtexref, float);</span>
+<span class="gd">-CUresult cuTexRefSetMipmapLevelClamp(CUtexref, float, float);</span>
+<span class="gd">-CUresult cuTexRefSetMipmappedArray(CUtexref, CUmipmappedArray, unsigned);</span>
+</code></pre></div>
+<h2 id="627-surface-reference-management-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__SURFREF__DEPRECATED.html#group__CUDA__SURFREF__DEPRECATED">6.27. Surface Reference Management [DEPRECATED]</a><a class="headerlink" href="#627-surface-reference-management-deprecated" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuSurfRefGetArray(CUarray *, CUsurfref);</span>
+<span class="gd">-CUresult cuSurfRefSetArray(CUsurfref, CUarray, unsigned);</span>
+</code></pre></div>
+<h2 id="628-texture-object-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TEXOBJECT.html#group__CUDA__TEXOBJECT">6.28. Texture Object Management</a><a class="headerlink" href="#628-texture-object-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuTexObjectCreate(CUtexObject *, const CUDA_RESOURCE_DESC *, const CUDA_TEXTURE_DESC *, const CUDA_RESOURCE_VIEW_DESC *);
+CUresult cuTexObjectDestroy(CUtexObject);
+<span class="gd">-CUresult cuTexObjectGetResourceDesc(CUDA_RESOURCE_DESC *, CUtexObject);</span>
+<span class="gd">-CUresult cuTexObjectGetResourceViewDesc(CUDA_RESOURCE_VIEW_DESC *, CUtexObject);</span>
+<span class="gd">-CUresult cuTexObjectGetTextureDesc(CUDA_TEXTURE_DESC *, CUtexObject);</span>
+</code></pre></div>
+<h2 id="629-surface-object-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__SURFOBJECT.html#group__CUDA__SURFOBJECT">6.29. Surface Object Management</a><a class="headerlink" href="#629-surface-object-management" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuSurfObjectCreate(CUsurfObject *, const CUDA_RESOURCE_DESC *);</span>
+<span class="gd">-CUresult cuSurfObjectDestroy(CUsurfObject);</span>
+<span class="gd">-CUresult cuSurfObjectGetResourceDesc(CUDA_RESOURCE_DESC *, CUsurfObject);</span>
+</code></pre></div>
+<h2 id="630-tensor-map-object-managment"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TENSOR__MEMORY.html#group__CUDA__TENSOR__MEMORY">6.30. Tensor Map Object Managment</a><a class="headerlink" href="#630-tensor-map-object-managment" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuTensorMapEncodeIm2col(CUtensorMap *, CUtensorMapDataType, cuuint32_t, void *, const cuuint64_t *, const cuuint64_t *, const int *, const int *, cuuint32_t, cuuint32_t, const cuuint32_t *, CUtensorMapInterleave, CUtensorMapSwizzle, CUtensorMapL2promotion, CUtensorMapFloatOOBfill);</span>
+<span class="gd">-CUresult cuTensorMapEncodeTiled(CUtensorMap *, CUtensorMapDataType, cuuint32_t, void *, const cuuint64_t *, const cuuint64_t *, const cuuint32_t *, const cuuint32_t *, CUtensorMapInterleave, CUtensorMapSwizzle, CUtensorMapL2promotion, CUtensorMapFloatOOBfill);</span>
+<span class="gd">-CUresult cuTensorMapReplaceAddress(CUtensorMap *, void *);</span>
+</code></pre></div>
+<h2 id="631-peer-context-memory-access"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PEER__ACCESS.html#group__CUDA__PEER__ACCESS">6.31. Peer Context Memory Access</a><a class="headerlink" href="#631-peer-context-memory-access" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuCtxDisablePeerAccess(CUcontext);</span>
+<span class="gd">-CUresult cuCtxEnablePeerAccess(CUcontext, unsigned);</span>
+<span class="gd">-CUresult cuDeviceCanAccessPeer(int *, CUdevice, CUdevice);</span>
+<span class="gd">-CUresult cuDeviceGetP2PAttribute(int *, CUdevice_P2PAttribute, CUdevice, CUdevice);</span>
+</code></pre></div>
+<h2 id="632-graphics-interoperability"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GRAPHICS.html#group__CUDA__GRAPHICS">6.32. Graphics Interoperability</a><a class="headerlink" href="#632-graphics-interoperability" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuGraphicsMapResources(unsigned, CUgraphicsResource *, CUstream);</span>
+<span class="gd">-CUresult cuGraphicsResourceGetMappedMipmappedArray(CUmipmappedArray *, CUgraphicsResource);</span>
+<span class="gd">-CUresult cuGraphicsResourceGetMappedPointer(CUdeviceptr *, size_t *, CUgraphicsResource);</span>
+<span class="gd">-CUresult cuGraphicsResourceSetMapFlags(CUgraphicsResource, unsigned);</span>
+<span class="gd">-CUresult cuGraphicsSubResourceGetMappedArray(CUarray *, CUgraphicsResource, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuGraphicsUnmapResources(unsigned, CUgraphicsResource *, CUstream);</span>
+<span class="gd">-CUresult cuGraphicsUnregisterResource(CUgraphicsResource);</span>
+</code></pre></div>
+<h2 id="633-driver-entry-point-access"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__DRIVER__ENTRY__POINT.html#group__CUDA__DRIVER__ENTRY__POINT">6.33. Driver Entry Point Access</a><a class="headerlink" href="#633-driver-entry-point-access" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuGetProcAddress(const char *, void * *, int, cuuint64_t, CUdriverProcAddressQueryResult *);</span>
+</code></pre></div>
+<h2 id="634-coredump-attributes-control-api"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__COREDUMP.html#group__CUDA__COREDUMP">6.34. Coredump Attributes Control API</a><a class="headerlink" href="#634-coredump-attributes-control-api" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-enum CUCoredumpGenerationFlags;</span>
+<span class="gd">-enum CUcoredumpSettings;</span>
+<span class="gd">-CUresult cuCoredumpGetAttribute(CUcoredumpSettings, void *, size_t *);</span>
+<span class="gd">-CUresult cuCoredumpGetAttributeGlobal(CUcoredumpSettings, void *, size_t *);</span>
+<span class="gd">-CUresult cuCoredumpSetAttribute(CUcoredumpSettings, void *, size_t *);</span>
+<span class="gd">-CUresult cuCoredumpSetAttributeGlobal(CUcoredumpSettings, void *, size_t *);</span>
+</code></pre></div>
+<h2 id="635-green-contexts"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GREEN__CONTEXTS.html#group__CUDA__GREEN__CONTEXTS">6.35. Green Contexts</a><a class="headerlink" href="#635-green-contexts" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-struct CUdevResource;</span>
+<span class="gd">-struct CUdevSmResource;</span>
+<span class="gd">-typedef CUdevResourceDesc_st * CUdevResourceDesc;</span>
+<span class="gd">-enum CUdevResourceType;</span>
+<span class="gd">-CUresult cuCtxFromGreenCtx(CUcontext *, CUgreenCtx);</span>
+<span class="gd">-CUresult cuCtxGetDevResource(CUcontext, CUdevResource *, CUdevResourceType);</span>
+<span class="gd">-CUresult cuDevResourceGenerateDesc(CUdevResourceDesc *, CUdevResource *, unsigned);</span>
+<span class="gd">-CUresult cuDevSmResourceSplitByCount(CUdevResource *, unsigned *, const CUdevResource *, CUdevResource *, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuDeviceGetDevResource(CUdevice, CUdevResource *, CUdevResourceType);</span>
+<span class="gd">-CUresult cuGreenCtxCreate(CUgreenCtx *, CUdevResourceDesc, CUdevice, unsigned);</span>
+<span class="gd">-CUresult cuGreenCtxDestroy(CUgreenCtx);</span>
+<span class="gd">-CUresult cuGreenCtxGetDevResource(CUgreenCtx, CUdevResource *, CUdevResourceType);</span>
+<span class="gd">-CUresult cuGreenCtxRecordEvent(CUgreenCtx, CUevent);</span>
+<span class="gd">-CUresult cuGreenCtxStreamCreate(CUstream *, CUgreenCtx, unsigned, int);</span>
+<span class="gd">-CUresult cuGreenCtxWaitEvent(CUgreenCtx, CUevent);</span>
+<span class="gd">-CUresult cuStreamGetGreenCtx(CUstream, CUgreenCtx *);</span>
+</code></pre></div>
+<h2 id="636-profiler-control-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PROFILER__DEPRECATED.html#group__CUDA__PROFILER__DEPRECATED">6.36. Profiler Control [DEPRECATED]</a><a class="headerlink" href="#636-profiler-control-deprecated" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuProfilerInitialize(const char *, const char *, CUoutput_mode);
+</code></pre></div>
+<h2 id="637-profiler-control"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PROFILER.html#group__CUDA__PROFILER">6.37. Profiler Control</a><a class="headerlink" href="#637-profiler-control" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code>CUresult cuProfilerStart();
+CUresult cuProfilerStop();
+</code></pre></div>
+<h2 id="638-opengl-interoperability"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GL.html#group__CUDA__GL">6.38. OpenGL Interoperability</a><a class="headerlink" href="#638-opengl-interoperability" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-enum CUGLDeviceList;</span>
+<span class="gd">-CUresult cuGLGetDevices(unsigned *, CUdevice *, unsigned, CUGLDeviceList);</span>
+<span class="gd">-CUresult cuGraphicsGLRegisterBuffer(CUgraphicsResource *, GLuint, unsigned);</span>
+<span class="gd">-CUresult cuGraphicsGLRegisterImage(CUgraphicsResource *, GLuint, GLenum, unsigned);</span>
+<span class="gd">-CUresult cuWGLGetDevice(CUdevice *, HGPUNV);</span>
+</code></pre></div>
+<h3 id="6381-opengl-interoperability-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GL__DEPRECATED.html#group__CUDA__GL__DEPRECATED">6.38.1. OpenGL Interoperability [DEPRECATED]</a><a class="headerlink" href="#6381-opengl-interoperability-deprecated" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gd">-enum CUGLmap_flags;</span>
+<span class="gd">-CUresult cuGLCtxCreate(CUcontext *, unsigned, CUdevice);</span>
+<span class="gd">-CUresult cuGLInit();</span>
+<span class="gd">-CUresult cuGLMapBufferObject(CUdeviceptr *, size_t *, GLuint);</span>
+<span class="gd">-CUresult cuGLMapBufferObjectAsync(CUdeviceptr *, size_t *, GLuint, CUstream);</span>
+<span class="gd">-CUresult cuGLRegisterBufferObject(GLuint);</span>
+<span class="gd">-CUresult cuGLSetBufferObjectMapFlags(GLuint, unsigned);</span>
+<span class="gd">-CUresult cuGLUnmapBufferObject(GLuint);</span>
+<span class="gd">-CUresult cuGLUnmapBufferObjectAsync(GLuint, CUstream);</span>
+<span class="gd">-CUresult cuGLUnregisterBufferObject(GLuint);</span>
+</code></pre></div>
+<h2 id="639-direct3d-9-interoperability"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D9.html#group__CUDA__D3D9">6.39. Direct3D 9 Interoperability</a><a class="headerlink" href="#639-direct3d-9-interoperability" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-enum CUd3d9DeviceList;</span>
+<span class="gd">-CUresult cuD3D9CtxCreate(CUcontext *, CUdevice *, unsigned, IDirect3DDevice9 *);</span>
+<span class="gd">-CUresult cuD3D9CtxCreateOnDevice(CUcontext *, unsigned, IDirect3DDevice9 *, CUdevice);</span>
+<span class="gd">-CUresult cuD3D9GetDevice(CUdevice *, const char *);</span>
+<span class="gd">-CUresult cuD3D9GetDevices(unsigned *, CUdevice *, unsigned, IDirect3DDevice9 *, CUd3d9DeviceList);</span>
+<span class="gd">-CUresult cuD3D9GetDirect3DDevice(IDirect3DDevice9 * *);</span>
+<span class="gd">-CUresult cuGraphicsD3D9RegisterResource(CUgraphicsResource *, IDirect3DResource9 *, unsigned);</span>
+</code></pre></div>
+<h3 id="6391-direct3d-9-interoperability-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D9__DEPRECATED.html#group__CUDA__D3D9__DEPRECATED">6.39.1. Direct3D 9 Interoperability [DEPRECATED]</a><a class="headerlink" href="#6391-direct3d-9-interoperability-deprecated" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gd">-enum CUd3d9map_flags;</span>
+<span class="gd">-enum CUd3d9register_flags;</span>
+<span class="gd">-CUresult cuD3D9MapResources(unsigned, IDirect3DResource9 * *);</span>
+<span class="gd">-CUresult cuD3D9RegisterResource(IDirect3DResource9 *, unsigned);</span>
+<span class="gd">-CUresult cuD3D9ResourceGetMappedArray(CUarray *, IDirect3DResource9 *, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuD3D9ResourceGetMappedPitch(size_t *, size_t *, IDirect3DResource9 *, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuD3D9ResourceGetMappedPointer(CUdeviceptr *, IDirect3DResource9 *, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuD3D9ResourceGetMappedSize(size_t *, IDirect3DResource9 *, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuD3D9ResourceGetSurfaceDimensions(size_t *, size_t *, size_t *, IDirect3DResource9 *, unsigned, unsigned);</span>
+<span class="gd">-CUresult cuD3D9ResourceSetMapFlags(IDirect3DResource9 *, unsigned);</span>
+<span class="gd">-CUresult cuD3D9UnmapResources(unsigned, IDirect3DResource9 * *);</span>
+<span class="gd">-CUresult cuD3D9UnregisterResource(IDirect3DResource9 *);</span>
+</code></pre></div>
+<h2 id="640-direct3d-10-interoperability"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D10.html#group__CUDA__D3D10">6.40. Direct3D 10 Interoperability</a><a class="headerlink" href="#640-direct3d-10-interoperability" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-enum CUd3d10DeviceList;</span>
+<span class="gd">-CUresult cuD3D10GetDevice(CUdevice *, IDXGIAdapter *);</span>
+<span class="gd">-CUresult cuD3D10GetDevices(unsigned *, CUdevice *, unsigned, ID3D10Device *, CUd3d10DeviceList);</span>
+<span class="gd">-CUresult cuGraphicsD3D10RegisterResource(CUgraphicsResource *, ID3D10Resource *, unsigned);</span>
+</code></pre></div>
+<h3 id="6401-direct3d-10-interoperability-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D10__DEPRECATED.html#group__CUDA__D3D10__DEPRECATED">6.40.1. Direct3D 10 Interoperability [DEPRECATED]</a><a class="headerlink" href="#6401-direct3d-10-interoperability-deprecated" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gd">-enum CUD3D10map_flags;</span>
+<span class="gd">-enum CUD3D10register_flags;</span>
+<span class="gd">-CUresult cuD3D10CtxCreate(CUcontext *, CUdevice *, unsigned, ID3D10Device *);</span>
+<span class="gd">-CUresult cuD3D10CtxCreateOnDevice(CUcontext *, unsigned, ID3D10Device *, CUdevice);</span>
+<span class="gd">-CUresult cuD3D10GetDirect3DDevice(ID3D10Device * *);</span>
+<span class="gd">-CUresult cuD3D10MapResources(unsigned, ID3D10Resource * *);</span>
+<span class="gd">-CUresult cuD3D10RegisterResource(ID3D10Resource *, unsigned);</span>
+<span class="gd">-CUresult cuD3D10ResourceGetMappedArray(CUarray *, ID3D10Resource *, unsigned);</span>
+<span class="gd">-CUresult cuD3D10ResourceGetMappedPitch(size_t *, size_t *, ID3D10Resource *, unsigned);</span>
+<span class="gd">-CUresult cuD3D10ResourceGetMappedPointer(CUdeviceptr *, ID3D10Resource *, unsigned);</span>
+<span class="gd">-CUresult cuD3D10ResourceGetMappedSize(size_t *, ID3D10Resource *, unsigned);</span>
+<span class="gd">-CUresult cuD3D10ResourceGetSurfaceDimensions(size_t *, size_t *, size_t *, ID3D10Resource *, unsigned);</span>
+<span class="gd">-CUresult cuD3D10ResourceSetMapFlags(ID3D10Resource *, unsigned);</span>
+<span class="gd">-CUresult cuD3D10UnmapResources(unsigned, ID3D10Resource * *);</span>
+<span class="gd">-CUresult cuD3D10UnregisterResource(ID3D10Resource *);</span>
+</code></pre></div>
+<h2 id="641-direct3d-11-interoperability"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D11.html#group__CUDA__D3D11">6.41. Direct3D 11 Interoperability</a><a class="headerlink" href="#641-direct3d-11-interoperability" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-enum CUd3d11DeviceList;</span>
+<span class="gd">-CUresult cuD3D11GetDevice(CUdevice *, IDXGIAdapter *);</span>
+<span class="gd">-CUresult cuD3D11GetDevices(unsigned *, CUdevice *, unsigned, ID3D11Device *, CUd3d11DeviceList);</span>
+<span class="gd">-CUresult cuGraphicsD3D11RegisterResource(CUgraphicsResource *, ID3D11Resource *, unsigned);</span>
+</code></pre></div>
+<h3 id="6411-direct3d-11-interoperability-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D11__DEPRECATED.html#group__CUDA__D3D11__DEPRECATED">6.41.1. Direct3D 11 Interoperability [DEPRECATED]</a><a class="headerlink" href="#6411-direct3d-11-interoperability-deprecated" title="Permanent link">#</a></h3>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuD3D11CtxCreate(CUcontext *, CUdevice *, unsigned, ID3D11Device *);</span>
+<span class="gd">-CUresult cuD3D11CtxCreateOnDevice(CUcontext *, unsigned, ID3D11Device *, CUdevice);</span>
+<span class="gd">-CUresult cuD3D11GetDirect3DDevice(ID3D11Device * *);</span>
+</code></pre></div>
+<h2 id="642-vdpau-interoperability"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__VDPAU.html#group__CUDA__VDPAU">6.42. VDPAU Interoperability</a><a class="headerlink" href="#642-vdpau-interoperability" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuGraphicsVDPAURegisterOutputSurface(CUgraphicsResource *, VdpOutputSurface, unsigned);</span>
+<span class="gd">-CUresult cuGraphicsVDPAURegisterVideoSurface(CUgraphicsResource *, VdpVideoSurface, unsigned);</span>
+<span class="gd">-CUresult cuVDPAUCtxCreate(CUcontext *, unsigned, CUdevice, VdpDevice, VdpGetProcAddress *);</span>
+<span class="gd">-CUresult cuVDPAUGetDevice(CUdevice *, VdpDevice, VdpGetProcAddress *);</span>
+</code></pre></div>
+<h2 id="643-egl-interoperability"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EGL.html#group__CUDA__EGL">6.43. EGL Interoperability</a><a class="headerlink" href="#643-egl-interoperability" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuEGLStreamConsumerAcquireFrame(CUeglStreamConnection *, CUgraphicsResource *, CUstream *, unsigned);</span>
+<span class="gd">-CUresult cuEGLStreamConsumerConnect(CUeglStreamConnection *, EGLStreamKHR);</span>
+<span class="gd">-CUresult cuEGLStreamConsumerConnectWithFlags(CUeglStreamConnection *, EGLStreamKHR, unsigned);</span>
+<span class="gd">-CUresult cuEGLStreamConsumerDisconnect(CUeglStreamConnection *);</span>
+<span class="gd">-CUresult cuEGLStreamConsumerReleaseFrame(CUeglStreamConnection *, CUgraphicsResource, CUstream *);</span>
+<span class="gd">-CUresult cuEGLStreamProducerConnect(CUeglStreamConnection *, EGLStreamKHR, EGLint, EGLint);</span>
+<span class="gd">-CUresult cuEGLStreamProducerDisconnect(CUeglStreamConnection *);</span>
+<span class="gd">-CUresult cuEGLStreamProducerPresentFrame(CUeglStreamConnection *, CUeglFrame, CUstream *);</span>
+<span class="gd">-CUresult cuEGLStreamProducerReturnFrame(CUeglStreamConnection *, CUeglFrame *, CUstream *);</span>
+<span class="gd">-CUresult cuEventCreateFromEGLSync(CUevent *, EGLSyncKHR, unsigned);</span>
+<span class="gd">-CUresult cuGraphicsEGLRegisterImage(CUgraphicsResource *, EGLImageKHR, unsigned);</span>
+<span class="gd">-CUresult cuGraphicsResourceGetMappedEglFrame(CUeglFrame *, CUgraphicsResource, unsigned, unsigned);</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../apis/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Introduction to implemented APIs">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Introduction to implemented APIs
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../api-math/" class="md-footer__link md-footer__link--next" aria-label="Next: Math API">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Math API
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/spectral-compute" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/spectral-compute" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/KNpgGbTc38" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.5.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485.065 485.065 0 0 0 404.081 32.03a1.816 1.816 0 0 0-1.923.91 337.461 337.461 0 0 0-14.9 30.6 447.848 447.848 0 0 0-134.426 0 309.541 309.541 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.689 483.689 0 0 0-119.688 37.107 1.712 1.712 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.016 2.016 0 0 0 .765 1.375 487.666 487.666 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348.2 348.2 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321.173 321.173 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251.047 251.047 0 0 0 9.109-7.137 1.819 1.819 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.812 1.812 0 0 1 1.924.233 234.533 234.533 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.407 301.407 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391.055 391.055 0 0 0 30.014 48.815 1.864 1.864 0 0 0 2.063.7A486.048 486.048 0 0 0 610.7 405.729a1.882 1.882 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541ZM222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241Zm195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241Z"/></svg>
+    </a>
+  
+</div>
+      
+      <div class="md-copyright"><a href="https://spectralcompute.co.uk/privacy">Privacy Statement</a></div>
+      <div class="md-copyright"><a href="/use_of_trademarks">Trademarks</a></div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://www.spectralcompute.co.uk">Spectral Compute Ltd</a>
+    </div>
+  
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "navigation.expand", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      
+    
+  </body>
+</html>
