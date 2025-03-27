@@ -91,13 +91,6 @@ this is via membership of the `render` group:
 You could temporarily make `/dev/kfd` world-writable via: `sudo chmod 666 
 /dev/kfd`.
 
-### Ensure kernel module is up to date
-
-If the GPU is still not detected by SCALE, the kernel driver may be out of 
-date. On Ubuntu, follow the instructions in
-[the installation guide](how-to-install.md#debian-like-linux-debian-ubuntu-mint)
-for installing `amdgpu-dkms`.
-
 ## Cannot find shared object
 
 The correct library search path for a SCALE binary can be target dependent due
