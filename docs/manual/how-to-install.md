@@ -12,7 +12,7 @@ Select your operating system and version below to see installation instructions.
         sudo dpkg -i scale-repos.deb
 
         # Install SCALE
-        sudo apt update && sudo apt install scale-free-unstable
+        sudo apt update && sudo apt install {{ scale_pkgname }}
 
         # Add your user to the `video` group:
         sudo usermod -a -G video $(whoami)
@@ -29,7 +29,7 @@ Select your operating system and version below to see installation instructions.
         sudo dpkg -i scale-repos.deb
 
         # Install SCALE
-        sudo apt update && sudo apt install scale-free-unstable
+        sudo apt update && sudo apt install {{ scale_pkgname }}
 
         # Add your user to the `video` group:
         sudo usermod -a -G video $(whoami)
@@ -40,7 +40,7 @@ Select your operating system and version below to see installation instructions.
 
 === "Other Distros"
 
-    {% set url = 'https://dist.scale-lang.com/scale-' + scale_version + '-Linux.tar.xz' %}
+    {% set url = 'https://' + tarball_subdomain + '.scale-lang.com/scale-' + scale_version + '-Linux.tar.xz' %}
 
     Download and extract the SCALE tarball:
 

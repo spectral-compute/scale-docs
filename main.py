@@ -11,8 +11,12 @@ print("Current branch: " + current_branch)
 
 def define_env(env):
     env.variables["branch"] = current_branch
+    env.variables["scale_pkgname"] = "scale-free-unstable" if current_branch == "unstable" else "scale-free"
     env.variables["scale_version"] = SCALE_UNSTABLE_VERSION if current_branch == "unstable" else SCALE_STABLE_VERSION
+
+    # Why are these different!!
     env.variables["repo_subdomain"] = "unstable-pkgs" if current_branch == "unstable" else "pkgs"
+    env.variables["tarball_subdomain"] = "dist-unstable" if current_branch == "unstable" else "dist"
 
     @env.macro
     def checksum(url):
