@@ -27,7 +27,9 @@ mkdocs serve
 
 ## Publishing
 
-To publish a new version of the manual for a stable release:
+### To publish a new version of the manual for a stable release:
+
+*Make sure not to prepend 'v' to the version number*
 
 - Ensure your changes are all in master, and master is checked out.
 - `mike deploy --push --update-aliases <SCALE VERSION NUMBER> stable`
@@ -35,4 +37,11 @@ To publish a new version of the manual for a stable release:
 To deploy an unstable release of the manual:
 
 - Check out the `unstable` branch.
+- `mike deploy --push unstable`
+
+### To publish a new version of the manual for an unstable release:
+
+*Make sure not to prepend 'v' to the version number*
+
+- Ensure your changes are all in `unstable`, and `unstable` is checked out.
 - `mike deploy --push unstable`
