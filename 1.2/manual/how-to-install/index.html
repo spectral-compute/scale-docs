@@ -1148,9 +1148,10 @@
 <div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">22.04</label><label for="__tabbed_2_2">24.04</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale and rocm deb repos.</span>
-curl<span class="w"> </span>-vlO<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/jammy/main/binary-all/scale-repos.deb
-sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>scale-repos.deb
+<p>First, add ROCM 6.3.1's package repositories, as <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.1/install/quick-start.html">per AMD's instructions</a>. Then, add our repository and install from it.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
+wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/jammy/main/binary-all/scale-repos.deb
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
 
 <span class="c1"># Install SCALE</span>
 sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>scale-free
@@ -1162,9 +1163,10 @@ sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </
 installing SCALE, you should now reboot.</p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale and rocm deb repos.</span>
-curl<span class="w"> </span>-vlO<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/noble/main/binary-all/scale-repos.deb
-sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>scale-repos.deb
+<p>First, add ROCM 6.3.1's package repositories, as <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.1/install/quick-start.html">per AMD's instructions</a>. Then, add our repository and install from it.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
+wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/noble/main/binary-all/scale-repos.deb
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
 
 <span class="c1"># Install SCALE</span>
 sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>scale-free
@@ -1180,14 +1182,14 @@ installing SCALE, you should now reboot.</p>
 </div>
 <div class="tabbed-block">
 <p>Download and extract the SCALE tarball:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># sha512sum: c08d823d5ee53027cad31c1daadf325aa684c324f64db0ac09d7bcda1d7dc3aba2cc943f5224d7f5f8363e2ba495a5c910956fe79b48396bbe61a93e8b364eb8</span>
-wget<span class="w"> </span>https://dist.scale-lang.com/scale-free-1.2.0-Linux.tar.xz
+<div class="highlight"><pre><span></span><code><span class="c1"># Download the tarball</span>
+wget<span class="w"> </span>https://pkgs.scale-lang.com/tar/scale-free-1.2.0-amd64.tar.xz
 
-<span class="c1"># Extract the SCALE tarball.</span>
-tar<span class="w"> </span>xf<span class="w"> </span>scale-free-1.2.0-Linux.tar.xz
+<span class="c1"># Extract it to the current directory</span>
+tar<span class="w"> </span>xf<span class="w"> </span>scale-free-1.2.0-amd64.tar.xz
 </code></pre></div>
-<p>The tarball is significantly larger than other options since it 
-includes many dependent libraries directly instead of asking the system 
+<p>The tarball is significantly larger than other options since it
+includes many dependent libraries directly instead of asking the system
 package manager to install them.</p>
 </div>
 </div>

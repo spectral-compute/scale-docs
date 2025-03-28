@@ -5,6 +5,11 @@
     "aliases": []
   },
   {
+    "version": "nonfree-unstable",
+    "title": "nonfree-unstable",
+    "aliases": []
+  },
+  {
     "version": "1.2",
     "title": "1.2",
     "aliases": [
