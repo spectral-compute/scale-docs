@@ -121,11 +121,6 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://docs.scale-lang.com/latest/manual/optimisation-flags/</loc>
-         <lastmod>2025-03-28</lastmod>
-         <changefreq>daily</changefreq>
-    </url>
-    <url>
          <loc>https://docs.scale-lang.com/latest/manual/runtime-extensions/</loc>
          <lastmod>2025-03-28</lastmod>
          <changefreq>daily</changefreq>
