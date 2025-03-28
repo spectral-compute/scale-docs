@@ -11,7 +11,8 @@ print("Current branch: " + current_branch)
 
 def define_env(env):
     env.variables["branch"] = current_branch
-
+    env.variables["customer_specific_repo"] = "nonfree" in current_branch
+    
     scale_pkgname = "scale"
     scale_version = SCALE_UNSTABLE_VERSION if "unstable" in current_branch else SCALE_STABLE_VERSION
 
