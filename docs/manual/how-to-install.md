@@ -44,6 +44,23 @@ Select your operating system and version below to see installation instructions.
         If you did not already have the `amdgpu-dkms` kernel driver installed prior to
         installing SCALE, you should now reboot.
 
+=== "Rocky Linux"
+
+    === "9"
+
+        {{ rocm_message }}
+
+        ```bash
+        # Add the scale rpm repos.
+        sudo dnf install https://{{repo_subdomain}}.scale-lang.com/rpm/el9/main/scale-repos.rpm
+
+        # Install SCALE
+        sudo dnf install {{ scale_pkgname }}
+        ```
+
+        If you did not already have the `amdgpu-dkms` kernel driver installed prior to
+        installing SCALE, you should now reboot.
+
 === "Other Distros"
 
     Download and extract the SCALE tarball:
