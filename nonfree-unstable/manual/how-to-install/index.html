@@ -1181,13 +1181,23 @@
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>First, add ROCM 6.3.1's package repositories, as <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.1/install/quick-start.html">per AMD's instructions</a>. Then, add our repository and install from it.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/jammy/main/binary-all/scale-repos.deb
+<div class="highlight"><pre><span></span><code><span class="c1"># Replace with your credentials</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;customer-username&gt;&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&lt;customer-password&gt;&quot;</span>
+
+<span class="c1"># Tell apt to authenticate to the repo</span>
+sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/auth.conf.d/scale.conf<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">machine unstable-nonfree-pkgs.scale-lang.com</span>
+<span class="s">login $CUSTOMER_NAME</span>
+<span class="s">password $CUSTOMER_PASSWORD</span>
+<span class="s">EOF</span>
+<span class="c1"># Add the scale deb repos.</span>
+wget<span class="w"> </span>--http-user<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--http-password<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>https://unstable-nonfree-pkgs.scale-lang.com/<span class="nv">$CUSTOMER_NAME</span>/deb/dists/jammy/main/binary-all/scale-repos.deb
 
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
 
 <span class="c1"># Install SCALE</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>scale-free
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>scale-unstable
 
 <span class="c1"># Add your user to the `video` group:</span>
 sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>video<span class="w"> </span><span class="k">$(</span>whoami<span class="k">)</span>
@@ -1197,13 +1207,23 @@ installing SCALE, you should now reboot.</p>
 </div>
 <div class="tabbed-block">
 <p>First, add ROCM 6.3.1's package repositories, as <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.1/install/quick-start.html">per AMD's instructions</a>. Then, add our repository and install from it.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/noble/main/binary-all/scale-repos.deb
+<div class="highlight"><pre><span></span><code><span class="c1"># Replace with your credentials</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;customer-username&gt;&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&lt;customer-password&gt;&quot;</span>
+
+<span class="c1"># Tell apt to authenticate to the repo</span>
+sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/auth.conf.d/scale.conf<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">machine unstable-nonfree-pkgs.scale-lang.com</span>
+<span class="s">login $CUSTOMER_NAME</span>
+<span class="s">password $CUSTOMER_PASSWORD</span>
+<span class="s">EOF</span>
+<span class="c1"># Add the scale deb repos.</span>
+wget<span class="w"> </span>--http-user<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--http-password<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>https://unstable-nonfree-pkgs.scale-lang.com/<span class="nv">$CUSTOMER_NAME</span>/deb/dists/noble/main/binary-all/scale-repos.deb
 
 sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
 
 <span class="c1"># Install SCALE</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>scale-free
+sudo<span class="w"> </span>apt<span class="w"> </span>update<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>scale-unstable
 
 <span class="c1"># Add your user to the `video` group:</span>
 sudo<span class="w"> </span>usermod<span class="w"> </span>-a<span class="w"> </span>-G<span class="w"> </span>video<span class="w"> </span><span class="k">$(</span>whoami<span class="k">)</span>
@@ -1219,11 +1239,22 @@ installing SCALE, you should now reboot.</p>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>First, add ROCM 6.3.1's package repositories, as <a href="https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.1/install/quick-start.html">per AMD's instructions</a>. Then, add our repository and install from it.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale rpm repos.</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>https://pkgs.scale-lang.com/rpm/el9/main/scale-repos.rpm
+<div class="highlight"><pre><span></span><code><span class="c1"># Replace with your credentials</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;customer-username&gt;&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&lt;customer-password&gt;&quot;</span>
+
+<span class="c1"># Add the scale rpm repos.</span>
+wget<span class="w"> </span>--http-user<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--http-password<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>https://unstable-nonfree-pkgs.scale-lang.com/<span class="nv">$CUSTOMER_NAME</span>/rpm/el9/main/scale-repos.rpm
+sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>./scale-repos.rpm
+
+<span class="c1"># Tell dnf to authenticate to the repo</span>
+sudo<span class="w"> </span>tee<span class="w"> </span>-a<span class="w"> </span>/etc/yum.repos.d/scale.repo<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<span class="s">username = $CUSTOMER_NAME</span>
+<span class="s">password = $CUSTOMER_PASSWORD</span>
+<span class="s">EOF</span>
 
 <span class="c1"># Install SCALE</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>scale-free
+sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>scale-unstable
 </code></pre></div>
 <p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
 installing SCALE, you should now reboot.</p>
@@ -1233,11 +1264,14 @@ installing SCALE, you should now reboot.</p>
 </div>
 <div class="tabbed-block">
 <p>Download and extract the SCALE tarball:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Download the tarball</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/tar/scale-free-1.2.0-amd64.tar.xz
+<div class="highlight"><pre><span></span><code><span class="c1"># Replace with your credentials</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;customer-username&gt;&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&lt;customer-password&gt;&quot;</span>
+
+wget<span class="w"> </span>--http-user<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--http-password<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>https://unstable-nonfree-pkgs.scale-lang.com/<span class="nv">$CUSTOMER_NAME</span>/tar/scale-unstable-2025.02.19-amd64.tar.xz
 
 <span class="c1"># Extract it to the current directory</span>
-tar<span class="w"> </span>xf<span class="w"> </span>scale-free-1.2.0-amd64.tar.xz
+tar<span class="w"> </span>xf<span class="w"> </span>scale-unstable-2025.02.19-amd64.tar.xz
 </code></pre></div>
 <p>The tarball is significantly larger than other options since it
 includes many dependent libraries directly instead of asking the system
