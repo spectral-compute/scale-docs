@@ -7,7 +7,10 @@
   {
     "version": "nonfree-unstable",
     "title": "nonfree-unstable",
-    "aliases": []
+    "aliases": [],
+    "properties": {
+      "hidden": true
+    }
   },
   {
     "version": "1.2",
