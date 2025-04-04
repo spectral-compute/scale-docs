@@ -2,20 +2,39 @@
 
 {% if false %}
 
-## NEXT
+## Unstable-2025.04.04
 
-- scaleenv
+### Platform
+
 - Packages for Rocky9 are now available.
-- SCALE_EXCEPTIONS now supports a non-fatal, print-only mode for projects 
+- Added `scaleenv`, a new and much easier way to [use SCALE](./how-to-use.md).
+
+### Library
+
+- Added most of cuFFT.
+- Lazy-initialisation of primary contexts now works properly, fixing some 
+  subtle lifecycle issues.
+- Added some missing undocumented headers like `texture_types.h`.
+- `SCALE_EXCEPTIONS` now supports a non-fatal, print-only mode for projects 
   that create exceptions intentionally.
-- Huge improvement to performance of device-level atomics.
+- Fixed even more multigpu/IPC bugs, especially when combining P2P and IPC 
+  memory APIs.
+- Added `cuMemcpyPeer`/`cuMemcpyPeerAsync`.
+
+### Compiler
+
 - `--device-c` no longer inappropriately triggers the linker.
-- Denorm-flushing optimisations are now applied in all cases they're 
+- Support for PTX `bar.warp.sync`
+- Newly-supported `nvcc` flags:
+    * `-arch=native`
+    * `-jump-table-density`
+    * `-compress-mode`
+    * `-split-compile-extended` (ignored)
+- Denorm-flushing optimisations are no longer skipped when they aren't
   supposed to be.
-- Added a compiler error for certain patterns of undefined-behaviour atomic 
-  operations banned by the CUDA language (in cases the compiler manages to 
-  prove it!)
-- Added `nvcc -compress-mode`
+- Compiler diagnostic to catch some undefined behaviour patterns with CUDA 
+  atomics.
+
 
 {% endif %}
 
