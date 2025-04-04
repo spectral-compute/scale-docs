@@ -5,51 +5,39 @@ represent different GPU targets. The value of the `__CUDA_ARCH__` macro is
 derived from this, and it's how you communicate with `nvcc` to request the
 target to build for.
 
-AMD GPUs are identified using architecture IDs like `gfx1030`.
+GPUs from other vendors have their own numbering scheme, such as AMD's 
+`gfx1234` format.
 
-Buildsystems for existing CUDA projects are generally unable to accept AMD
-format target identifiers. Existing CUDA projects sometimes do numeric
-comparisons on the compute capability value to enable/disable features using
-the preprocessor. If we simply used the "GFX number" as the compute
-capability, these numeric comparisons would malfunction.
+CUDA projects sometimes do numeric comparisons on the compute capability 
+value to enable/disable features using the preprocessor. This is a problem, 
+since those comparisons are inherently meaningless when targeting non-NVIDIA 
+hardware.
 
-To solve this, SCALE:
+There is no meaningful mapping between compute capability numbers and the 
+hardware of other vendors.
 
-- Provides one "CUDA installation directory" per AMD target, all of which
-  map the NVIDIA compute capability "sm_86" to the corresponding AMD GPU target.
-- Aims to support all CUDA APIs everywhere, including ones that NVIDIA
-  deprecated/removed for newer compute capability targets.
+SCALE addresses this problem by providing a "CUDA installation directory" 
+for each supported GPU target. By default, the `nvcc` in each of these 
+directories maps *every* compute capability number to the corresponding AMD 
+GPU target.
 
-86 was chosen because it's a "fairly new" NVIDIA target that should enable
-most features in most projects. The default mapping number is likely to
-increase over time.
+This approach works, but has one obvious downside: it makes fat binaries 
+unrepresentable.
 
-Behind the scenes, this mapping is governed by a configuration file. Users
-who wish to take direct control of the process (either by changing the
-mapping, or modifying their project to accept both AMD and NVIDIA-format
-target identifiers) may do so. The remainder of this document covers this topic.
+To resolve that, your buildsystem must be at least somewhat SCALE-aware: 
+compute capabilities are not a sufficiently powerful abstraction to model 
+the needs of a cross-vendor fat binary.
 
-The special target directory `<SCALE>/targets/gfxany` is a SCALE toolchain
-with no Compute Capability Mapping configuration. This may be used in
-combination with `clang++`'s usual flags for selecting a GPU target.
+The special `gfxany` target directory is a "CUDA installation directory" 
+that does not perform this compute capability mapping at all. Instead, you 
+may provide your own arbitrary mapping from GPU targets to CC-number - or 
+use no such mapping at all (if your program doesn't use the CC-number for 
+metaprogramming). We recommend CUDA progras be written using more portable 
+and reliable means of detecting the existence of features: even within 
+NVIDIA's universe, the CC number is a rather blunt instrument.
 
-`nvcc` mode does not support short compute capabilities except when compute 
-capability mapping is in use; instead `-arch` must be given explicitly. An 
-AMDGPU architecture (e.g: `gfx1030`) is accepted, as is the default 
-numbering scheme explained below.
-
-## Default numbering scheme
-
-By default (when no ccmap is in use), AMD GPUs are assigned a compute
-capability of at least 60000.0, or `sm_600000`.
-
-For a given GPU, e.g: `gfx1030`, the last two digits are each represented by
-two digits, and the remaining digits are copied verbatim. If one
-of the last digits is a letter, then the numbering continues from 10. The
-resulting number is used as the major compute capability. The minor version
-number is currently unused and always zero. For example: `gfx1030` is
-represented as compute capability 100300.0 (`sm_1003000`), and `gfx90c` is
-represented as compute capability 90012.0 (`sm_900120`).
+The remainder of this document explains how the compute capability mapping 
+configuration works for users of the `gfxany` target.
 
 ## Configuration file format
 
