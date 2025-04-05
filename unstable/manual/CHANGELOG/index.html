@@ -299,6 +299,48 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#unstable-20250404" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unstable-2025.04.04
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unstable-2025.04.04">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compiler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#unstable-20250324" class="md-nav__link">
     <span class="md-ellipsis">
       Unstable-2025.03.24
@@ -309,7 +351,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#platform" class="md-nav__link">
+  <a href="#platform_1" class="md-nav__link">
     <span class="md-ellipsis">
       Platform
     </span>
@@ -360,7 +402,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#platform_1" class="md-nav__link">
+  <a href="#platform_2" class="md-nav__link">
     <span class="md-ellipsis">
       Platform
     </span>
@@ -561,7 +603,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#compiler" class="md-nav__link">
+  <a href="#compiler_1" class="md-nav__link">
     <span class="md-ellipsis">
       Compiler
     </span>
@@ -1454,6 +1496,48 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#unstable-20250404" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unstable-2025.04.04
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unstable-2025.04.04">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#platform" class="md-nav__link">
+    <span class="md-ellipsis">
+      Platform
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#library" class="md-nav__link">
+    <span class="md-ellipsis">
+      Library
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#compiler" class="md-nav__link">
+    <span class="md-ellipsis">
+      Compiler
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#unstable-20250324" class="md-nav__link">
     <span class="md-ellipsis">
       Unstable-2025.03.24
@@ -1464,7 +1548,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#platform" class="md-nav__link">
+  <a href="#platform_1" class="md-nav__link">
     <span class="md-ellipsis">
       Platform
     </span>
@@ -1515,7 +1599,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#platform_1" class="md-nav__link">
+  <a href="#platform_2" class="md-nav__link">
     <span class="md-ellipsis">
       Platform
     </span>
@@ -1716,7 +1800,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#compiler" class="md-nav__link">
+  <a href="#compiler_1" class="md-nav__link">
     <span class="md-ellipsis">
       Compiler
     </span>
@@ -1763,8 +1847,42 @@
 
 
 <h1 id="whats-new">What's new?<a class="headerlink" href="#whats-new" title="Permanent link">#</a></h1>
-<h2 id="unstable-20250324">Unstable-2025.03.24<a class="headerlink" href="#unstable-20250324" title="Permanent link">#</a></h2>
+<h2 id="unstable-20250404">Unstable-2025.04.04<a class="headerlink" href="#unstable-20250404" title="Permanent link">#</a></h2>
 <h3 id="platform">Platform<a class="headerlink" href="#platform" title="Permanent link">#</a></h3>
+<ul>
+<li>Packages for Rocky9 are now available.</li>
+<li>Added <code>scaleenv</code>, a new and much easier way to <a href="../how-to-use/">use SCALE</a>.</li>
+</ul>
+<h3 id="library">Library<a class="headerlink" href="#library" title="Permanent link">#</a></h3>
+<ul>
+<li>Added most of cuFFT.</li>
+<li>Lazy-initialisation of primary contexts now works properly, fixing some 
+  subtle lifecycle issues.</li>
+<li>Added some missing undocumented headers like <code>texture_types.h</code>.</li>
+<li><code>SCALE_EXCEPTIONS</code> now supports a non-fatal, print-only mode for projects 
+  that create exceptions intentionally.</li>
+<li>Fixed even more multigpu/IPC bugs, especially when combining P2P and IPC 
+  memory APIs.</li>
+<li>Added <code>cuMemcpyPeer</code>/<code>cuMemcpyPeerAsync</code>.</li>
+</ul>
+<h3 id="compiler">Compiler<a class="headerlink" href="#compiler" title="Permanent link">#</a></h3>
+<ul>
+<li><code>--device-c</code> no longer inappropriately triggers the linker.</li>
+<li>Support for PTX <code>bar.warp.sync</code></li>
+<li>Newly-supported <code>nvcc</code> flags:<ul>
+<li><code>-arch=native</code></li>
+<li><code>-jump-table-density</code></li>
+<li><code>-compress-mode</code></li>
+<li><code>-split-compile-extended</code> (ignored)</li>
+</ul>
+</li>
+<li>Denorm-flushing optimisations are no longer skipped when they aren't
+  supposed to be.</li>
+<li>Compiler diagnostic to catch some undefined behaviour patterns with CUDA 
+  atomics.</li>
+</ul>
+<h2 id="unstable-20250324">Unstable-2025.03.24<a class="headerlink" href="#unstable-20250324" title="Permanent link">#</a></h2>
+<h3 id="platform_1">Platform<a class="headerlink" href="#platform_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Upgraded from llvm18.1.8 to llvm19.1.7. Much zoominess ensues.</li>
 <li>Added faux "stubs" libraries to placate non-cmake buildsystems</li>
@@ -1813,7 +1931,7 @@
 <li>MAGMA</li>
 </ul>
 <h2 id="unstable-20250219">Unstable-2025.02.19<a class="headerlink" href="#unstable-20250219" title="Permanent link">#</a></h2>
-<h3 id="platform_1">Platform<a class="headerlink" href="#platform_1" title="Permanent link">#</a></h3>
+<h3 id="platform_2">Platform<a class="headerlink" href="#platform_2" title="Permanent link">#</a></h3>
 <ul>
 <li>Support for simulating a warp size of 32 even on wave64 platforms, fixing 
   many projects on such platforms.</li>
@@ -1976,7 +2094,7 @@ launch options are no-ops.</li>
 </ul>
 </li>
 </ul>
-<h3 id="compiler">Compiler<a class="headerlink" href="#compiler" title="Permanent link">#</a></h3>
+<h3 id="compiler_1">Compiler<a class="headerlink" href="#compiler_1" title="Permanent link">#</a></h3>
 <ul>
 <li>Improved parsing of nvcc arguments:<ul>
 <li>Allow undocumented option variants (<code>-foo bar</code>, <code>--foo bar</code>,
