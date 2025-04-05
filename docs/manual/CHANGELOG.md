@@ -1,7 +1,5 @@
 # What's new?
 
-{% if false %}
-
 ## Unstable-2025.04.04
 
 ### Platform
@@ -34,9 +32,6 @@
   supposed to be.
 - Compiler diagnostic to catch some undefined behaviour patterns with CUDA 
   atomics.
-
-
-{% endif %}
 
 ## Unstable-2025.03.24
 
