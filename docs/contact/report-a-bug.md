@@ -74,9 +74,7 @@ with your report:
 
 ```
 lspci | grep VGA
-redscaleinfo
-hsainfo
-hsakmtinfo
+scaleinfo
 ```
 
 Running your program with the environment variable `SCALE_EXCEPTIONS=1` set might give a more detailed error that would
