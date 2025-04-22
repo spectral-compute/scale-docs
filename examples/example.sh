@@ -1,13 +1,12 @@
-#!/bin/sh
+#!/bin/bash
 
 set -e
 
 SCALE_DIR="$1"
-EXAMPLE="$2"
+SCALE_GPU_ARCH="$2"
+EXAMPLE="$3"
 
-export PATH="${SCALE_DIR}/bin:${PATH}"
-export LD_LIBRARY_PATH="${SCALE_DIR}/lib:${LD_LIBRARY_PATH}"
-
+source "${SCALE_DIR}/bin/scaleenv" "${SCALE_GPU_ARCH}"
 
 case "${EXAMPLE}" in
 
@@ -15,8 +14,7 @@ case "${EXAMPLE}" in
         rm -rf "src/${EXAMPLE}/build"
 
         cmake \
-            -DCMAKE_CUDA_COMPILER="${SCALE_DIR}/bin/nvcc" \
-            -DCMAKE_CUDA_ARCHITECTURES="86" \
+            -DCMAKE_CUDA_ARCHITECTURES="${CUDAARCHS}" \
             -DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON \
             -DCMAKE_BUILD_TYPE=RelWithDebInfo \
             -B "src/${EXAMPLE}/build" \

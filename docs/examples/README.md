@@ -40,7 +40,7 @@ and the example you want to build/run as the second:
 
 ```bash
 # You should be in the `examples` directory of the `scale-docs` repository
-./example.sh /opt/scale/targets/gfx1030 basic
+./example.sh /opt/scale gfx1030 basic
 ```
 
 For the specified example, this will:
