@@ -1793,11 +1793,13 @@
 <li>Upgraded from llvm17 to llvm19.1.7.</li>
 <li>Support for rocm 6.3.1.</li>
 <li>Support for <code>gfx902</code> architecture.</li>
-<li>Enterprise edition: Support for new architectures:</li>
+<li>Enterprise edition: Support for new architectures:<ul>
 <li><code>gfx908</code></li>
 <li><code>gfx90a</code></li>
 <li><code>gfx940</code></li>
 <li><code>gfx942</code></li>
+</ul>
+</li>
 </ul>
 <h3 id="packaging">Packaging<a class="headerlink" href="#packaging" title="Permanent link">#</a></h3>
 <ul>
@@ -1864,11 +1866,13 @@
 <li><code>use_fast_math</code> now matches nivida's behaviour, instead of mapping to clang's
   <code>-ffast-math</code>, which does too much.</li>
 <li><code>--device-c</code> no longer inappropriately triggers the linker.</li>
-<li>Newly-supported <code>nvcc</code> flags:</li>
+<li>Newly-supported <code>nvcc</code> flags:<ul>
 <li><code>-arch=native</code></li>
 <li><code>-jump-table-density</code> (ignored)</li>
 <li><code>-compress-mode</code> (ignored)</li>
 <li><code>-split-compile-extended</code> (ignored)</li>
+</ul>
+</li>
 </ul>
 <h3 id="nvcc-semantics">NVCC Semantics<a class="headerlink" href="#nvcc-semantics" title="Permanent link">#</a></h3>
 <ul>
@@ -1888,7 +1892,7 @@
 </ul>
 <h3 id="ptx">PTX<a class="headerlink" href="#ptx" title="Permanent link">#</a></h3>
 <ul>
-<li>New instructions supported</li>
+<li>New instructions supported<ul>
 <li><code>sm_100</code> variants of <code>redux</code>.</li>
 <li>Mixed-precision <code>add/sub/fma</code> FP instructions.</li>
 <li><code>membar</code></li>
@@ -1896,6 +1900,8 @@
 <li><code>fence</code> (partial)</li>
 <li><code>mma</code> (software emulated)</li>
 <li><code>wmma</code> (software emulated)</li>
+</ul>
+</li>
 <li>Fixed parsing of hex-float constants.</li>
 <li>Support for PTX <code>C</code> constraints (dynamic asm strings).</li>
 <li>f16/bf16 PTX instructions no longer depend on the corresponding C++ header.</li>
