@@ -8,10 +8,10 @@
 - Support for rocm 6.3.1.
 - Support for `gfx902` architecture.
 - Enterprise edition: Support for new architectures:
-  - `gfx908`
-  - `gfx90a`
-  - `gfx940`
-  - `gfx942`
+    - `gfx908`
+    - `gfx90a`
+    - `gfx940`
+    - `gfx942`
 
 ### Packaging
 
@@ -79,10 +79,10 @@
   `-ffast-math`, which does too much.
 - `--device-c` no longer inappropriately triggers the linker.
 - Newly-supported `nvcc` flags:
-  * `-arch=native`
-  * `-jump-table-density` (ignored)
-  * `-compress-mode` (ignored)
-  * `-split-compile-extended` (ignored)
+    * `-arch=native`
+    * `-jump-table-density` (ignored)
+    * `-compress-mode` (ignored)
+    * `-split-compile-extended` (ignored)
 
 ### NVCC Semantics
 
@@ -103,13 +103,13 @@
 ### PTX
 
 - New instructions supported
-  - `sm_100` variants of `redux`.
-  - Mixed-precision `add/sub/fma` FP instructions.
-  - `membar`
-  - `bar.warp.sync`
-  - `fence` (partial)
-  - `mma` (software emulated)
-  - `wmma` (software emulated)
+    - `sm_100` variants of `redux`.
+    - Mixed-precision `add/sub/fma` FP instructions.
+    - `membar`
+    - `bar.warp.sync`
+    - `fence` (partial)
+    - `mma` (software emulated)
+    - `wmma` (software emulated)
 - Fixed parsing of hex-float constants.
 - Support for PTX `C` constraints (dynamic asm strings).
 - f16/bf16 PTX instructions no longer depend on the corresponding C++ header.
