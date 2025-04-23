@@ -1,7 +1,7 @@
 import subprocess
 
-SCALE_STABLE_VERSION = "1.2.0"
-SCALE_UNSTABLE_VERSION = "2025.02.19"
+SCALE_STABLE_VERSION = "1.3.0"
+SCALE_UNSTABLE_VERSION = "2025.03.24"
 
 # Find the current git branch to choose stable or unstable variation.
 g = subprocess.run(["git", "branch", "--show-current"], capture_output=True)
