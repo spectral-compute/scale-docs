@@ -1,28 +1,13 @@
-# Introduction to implemented APIs
+# API Coverage Report
 
-This section of the manual lists CUDA APIs that are implemented by SCALE.
-It is split in three pages:
+These pages provide a diff between SCALE's headers and the NVIDIA 
+documentation, describing which APIs are supported by SCALE.
 
-- List of [Driver APIs](./api-driver.md)
-- List of [Math APIs](./api-math.md)
-- List of [Runtime API](./api-runtime.md)
+- [Driver API](./api-driver.md)
+- [Math API](./api-math.md)
+- [Runtime API](./api-runtime.md)
 
 The lists are based on the official Nvidia documentation and use the same layout.
-Every heading links back to the page where its entries originate from.
-We compare those entries against SCALE source code and identify the parts that are present or missing.
-
-There are several types of entries:
-
-- **Macros**, for which we only compare the names, as some of the values differ naturally between NVIDIA CUDA and SCALE
-- **Types**, for which we compare:
-    - their names
-    - the exact way they are defined
-- **Functions**, for which we compare:
-    - their names
-    - types and default values of their arguments (argument names are stripped among some other things)
-    - their type arguments if present
-
-The rules for comparing functions are also applied to function pointer types which are sometimes `typedef`'d or are themselves listed as function arguments.
 
 ## Presentation
 
@@ -56,7 +41,8 @@ This may happen for a few reasons.
 
 NVIDIA documentation may differ from what CUDA provides in reality.
 An example of that is differences in `const`-ness of some function arguments.
-In such cases SCALE may be forced to maintain "bug compatibility" and the functions stop matching what NVIDIA documentation promises.
+In such cases SCALE may be forced to maintain "bug compatibility" and the
+functions stop matching what NVIDIA documentation promises.
 
 Many functions are called conditionally and may never get used in certain scenarios.
 For some of those functions, SCALE may provide an empty implementation.
