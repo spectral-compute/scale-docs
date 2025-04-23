@@ -2,78 +2,45 @@
 
 ## What is SCALE?
 
-SCALE is a GPGPU programming toolkit that allows CUDA applications to be
-natively compiled for AMD GPUs.
+SCALE is a GPGPU programming toolkit that can natively compile CUDA 
+applications for AMD GPUs.
 
 SCALE does not require the CUDA program or its build system to be modified.
 
 Support for more GPU vendors and CUDA APIs is in development.
 
-To get started:
+## How do I use SCALE?
 
-- See the [tutorial](./manual/how-to-use.md).
-- Review the [examples](./examples/README.md).
-- Check out the [FAQ](./manual/faq.md)
-- [Contact us](#contact-us) for help.
-
-## How does it work?
-
-SCALE has several key innovations compared to other cross-platform GPGPU
-solutions:
-
-- SCALE accepts CUDA programs as-is. No need to port them to another 
-  language. This is true even if your program uses inline PTX `asm`.
-- The SCALE compiler accepts the same command-line options and CUDA dialect
-  as `nvcc`, serving as a drop-in replacement.
-- "Impersonates" an installation of the NVIDIA CUDA Toolkit, so existing 
-  build tools and scripts like `cmake` _just work_.
+1. [Install SCALE](./manual/how-to-install.md).
+2. Activate SCALE, eg. `. /opt/SCALE/scaleenv gfx1100`
+3. Compile your application, following the same steps you would use for 
+   NVIDIA CUDA.
 
 ## What projects have been tested?
 
 We validate SCALE by compiling open-source CUDA projects and running their
-tests.
-
-The following open-source projects are currently part of our nightly automated 
-tests and pass fully:
-
-| Project                                             | Version Tested |
-|-----------------------------------------------------|----------------|
-| [alien](https://github.com/chrxh/alien)             | `scaletest`    |
-| [AMGX](https://github.com/NVIDIA/AMGX)              | `v2.4.0`       |
-| [Blender Cycles](https://github.com/blender/cycles) | `v4.4.0`       |
-| [faiss](https://github.com/facebookresearch/faiss)  | `v1.9.0`       |
-| [FastEddy](https://github.com/NCAR/FastEddy-model)  | `v2.0.0`       |
-| [FLAMEGPU2](https://github.com/FLAMEGPU/FLAMEGPU2)  | `v2.0.0-rc.2`  |
-| [GOMC](https://github.com/GOMC-WSU/GOMC)            | `4c12477`      |
-| [GPUJPEG](https://github.com/CESNET/GPUJPEG)        | `3e045d1`      |
-| [gpu_jpeg2k](https://github.com/ePirat/gpu_jpeg2k)  | `ee715e9`      |
-| [hashcat](https://github.com/hashcat/hashcat)       | `6716447dfc`   |
-| [llama-cpp](https://github.com/ggerganov/llama.cpp) | `b1500`        |
-| [NVIDIA Thrust](https://github.com/NVIDIA/thrust)   | `756c5af`      |
-| [Open MPI](https://www.open-mpi.org/)               | `4.1.8`        |
-| [stdgpu](https://github.com/stotko/stdgpu)          | `563dc59`      |
-| [TCLB](https://github.com/CFD-GO/TCLB)              | `v6.7`         |
-| [xgboost](https://github.com/dmlc/xgboost)          | `v2.1.0`       |
-
-The scripts we use to build and test these projects (and others that do not 
-yet entirely work) are available
-[on github](https://github.com/spectral-compute/scale-validation). You can use
-these to reproduce our results (and find bugs!).
+tests. The list of currently-tested projects and their compatibility status
+can be found [here](https://github.com/spectral-compute/scale-validation/tree/master?tab=readme-ov-file#current-status)
 
 ## Which GPUs are supported?
 
-The following GPU targets are supported, and are covered by our nightly tests:
+The following GPU targets are supported in the free edition of SCALE:
 
 - AMD `gfx900` (Vega 10, GCN 5.0)
 - AMD `gfx1030` (Navi 21, RDNA 2.0)
 - AMD `gfx1100` (Navi 31, RDNA 3.0)
-
-The following GPU targets have undergone ad-hoc manual testing and "seem to
-work":
-
 - AMD `gfx1010`
 - AMD `gfx1101`
 - AMD `gfx1102`
+
+The enterprise edition also has support for:
+
+- AMD `gfx908`
+- AMD `gfx90a`
+- AMD `gfx940`
+- AMD `gfx942`
+
+Academic/research licenses are available.
 
 [Contact us](#contact-us) if you want us to expedite support for a particular AMD GPU
 architecture.
@@ -84,7 +51,7 @@ SCALE consists of:
 
 - An `nvcc`-compatible compiler capable of compiling nvcc-dialect CUDA for AMD
   GPUs, including PTX asm.
-- Implementations of the CUDA runtime and driver APIs for AMD GPUs.
+- An of the CUDA runtime, driver and math APIs for AMD GPUs.
 - Open-source wrapper libraries providing the "CUDA-X" APIs by delegating to the
   corresponding ROCm libraries.
   This is how libraries such as `cuBLAS` and `cuSOLVER` are handled.
