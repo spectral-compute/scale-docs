@@ -13,6 +13,14 @@
     }
   },
   {
+    "version": "nonfree",
+    "title": "nonfree",
+    "aliases": [],
+    "properties": {
+      "hidden": true
+    }
+  },
+  {
     "version": "1.3",
     "title": "1.3",
     "aliases": [
