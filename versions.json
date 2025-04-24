@@ -2,7 +2,10 @@
   {
     "version": "unstable",
     "title": "unstable",
-    "aliases": []
+    "aliases": [],
+    "properties": {
+      "hidden": true
+    }
   },
   {
     "version": "nonfree-unstable",
