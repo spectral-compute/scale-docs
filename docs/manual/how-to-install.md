@@ -87,9 +87,8 @@ Select your operating system and version below to see installation instructions.
     # Replace with your credentials
     export CUSTOMER_NAME="<customer-username>"
     export CUSTOMER_PASSWORD="<customer-password>"
-    export CUSTOMER_ID="<customer-id>"
 
-    wget --http-user="$CUSTOMER_NAME" --http-password="$CUSTOMER_PASSWORD" https://{{repo_subdomain}}.scale-lang.com/$CUSTOMER_NAME/tar/$CUSTOMER_ID/{{scale_pkgname}}-{{scale_version}}-amd64.tar.xz
+    wget --http-user="$CUSTOMER_NAME" --http-password="$CUSTOMER_PASSWORD" https://{{repo_subdomain}}.scale-lang.com/$CUSTOMER_NAME/tar/{{scale_pkgname}}-{{scale_version}}-amd64.tar.xz
     {% else %}
     # Download the tarball
     wget https://{{ repo_subdomain }}.scale-lang.com/tar/{{scale_pkgname}}-{{scale_version}}-amd64.tar.xz
