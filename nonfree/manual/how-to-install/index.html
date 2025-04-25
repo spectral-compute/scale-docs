@@ -1270,9 +1270,8 @@ installing SCALE, you should now reboot.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Replace with your credentials</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;customer-username&gt;&quot;</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&lt;customer-password&gt;&quot;</span>
-<span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_ID</span><span class="o">=</span><span class="s2">&quot;&lt;customer-id&gt;&quot;</span>
 
-wget<span class="w"> </span>--http-user<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--http-password<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>https://nonfree-pkgs.scale-lang.com/<span class="nv">$CUSTOMER_NAME</span>/tar/<span class="nv">$CUSTOMER_ID</span>/scale-1.3.0-amd64.tar.xz
+wget<span class="w"> </span>--http-user<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--http-password<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>https://nonfree-pkgs.scale-lang.com/<span class="nv">$CUSTOMER_NAME</span>/tar/scale-1.3.0-amd64.tar.xz
 
 <span class="c1"># Extract it to the current directory</span>
 tar<span class="w"> </span>xf<span class="w"> </span>scale-1.3.0-amd64.tar.xz
