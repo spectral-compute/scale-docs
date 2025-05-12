@@ -1,5 +1,28 @@
 # What's new?
 
+## Release 1.3.1 (2025-05-12)
+
+### Compiler
+
+- Fixed a bug in the handling of weak device-side symbols which broke the 
+  device binaries for certain projects.
+- Fixed various PTX miscompilations.
+- Added support for approximate-math PTX instructions (`lg2.approx` and 
+  friends).
+
+### Library
+
+- Fixed many small bugs in the device-side APIs.
+- Per-thread-default-stream actually works now, rather than silently using 
+  the legacy stream.
+- Fixed a race condition in the fft library.
+
+### Thirdparty Project demos
+
+- GROMACS now works. SCALE appears to support a wider selection of AMD 
+  architectures than the HIP port, and seems to perform somewhat better (on 
+  MI210, at least!).
+
 ## Release 1.3.0 (2025-04-23)
 
 ### Platform
