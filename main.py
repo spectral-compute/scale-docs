@@ -1,6 +1,6 @@
 import subprocess
 
-SCALE_STABLE_VERSION = "1.3.0"
+SCALE_STABLE_VERSION = "1.3.1"
 SCALE_UNSTABLE_VERSION = "2025.03.24"
 
 # Find the current git branch to choose stable or unstable variation.
