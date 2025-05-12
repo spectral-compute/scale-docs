@@ -22,7 +22,7 @@
     
     
       
-        <title>Math API - SCALE documentation</title>
+        <title>Api math - SCALE documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#math-api" class="md-skip">
+        <a href="#1-fp4-intrinsics" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Math API
+              Api math
             
           </span>
         </div>
@@ -873,7 +873,7 @@
         
   
   <span class="md-ellipsis">
-    Driver API
+    Api driver
   </span>
   
 
@@ -896,14 +896,12 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
-        
-      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Math API
+    Api math
   </span>
   
 
@@ -914,7 +912,7 @@
         
   
   <span class="md-ellipsis">
-    Math API
+    Api math
   </span>
   
 
@@ -925,8 +923,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
     <label class="md-nav__title" for="__toc">
@@ -1090,7 +1086,7 @@
         
   
   <span class="md-ellipsis">
-    Runtime API
+    Api runtime
   </span>
   
 
@@ -1289,8 +1285,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1448,7 +1442,8 @@
                   
 
 
-<h1 id="math-api">Math API<a class="headerlink" href="#math-api" title="Permanent link">#</a></h1>
+  <h1>Api math</h1>
+
 <h2 id="1-fp4-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__FP4.html">1. FP4 Intrinsics</a><a class="headerlink" href="#1-fp4-intrinsics" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="gd">-4 bit floating point is not supported</span>
 </code></pre></div>
@@ -1665,14 +1660,14 @@
 <span class="w"> </span>__device__ __half2 __lowhigh2highlow(const __half2 a);
 <span class="w"> </span>__half2 __lows2half2(const __half2 a, const __half2 b);
 <span class="w"> </span>__device__ __half2 __lows2half2(const __half2 a, const __half2 b);
-<span class="gd">-__device__ __half __shfl_down_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);</span>
-<span class="gd">-__device__ __half2 __shfl_down_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);</span>
-<span class="gd">-__device__ __half2 __shfl_sync(const unsigned int mask, const __half2 var, const int srcLane, const int width=warpSize);</span>
-<span class="gd">-__device__ __half __shfl_sync(const unsigned int mask, const __half var, const int srcLane, const int width=warpSize);</span>
-<span class="gd">-__device__ __half2 __shfl_up_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);</span>
-<span class="gd">-__device__ __half __shfl_up_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);</span>
-<span class="gd">-__device__ __half2 __shfl_xor_sync(const unsigned int mask, const __half2 var, const int laneMask, const int width=warpSize);</span>
-<span class="gd">-__device__ __half __shfl_xor_sync(const unsigned int mask, const __half var, const int laneMask, const int width=warpSize);</span>
+<span class="w"> </span>__device__ __half __shfl_down_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __half2 __shfl_down_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __half2 __shfl_sync(const unsigned int mask, const __half2 var, const int srcLane, const int width=warpSize);
+<span class="w"> </span>__device__ __half __shfl_sync(const unsigned int mask, const __half var, const int srcLane, const int width=warpSize);
+<span class="w"> </span>__device__ __half2 __shfl_up_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __half __shfl_up_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __half2 __shfl_xor_sync(const unsigned int mask, const __half2 var, const int laneMask, const int width=warpSize);
+<span class="w"> </span>__device__ __half __shfl_xor_sync(const unsigned int mask, const __half var, const int laneMask, const int width=warpSize);
 <span class="gd">-__half __short2half_rd(const short int i);</span>
 <span class="gd">-__device__ __half __short2half_rd(const short int i);</span>
 <span class="w"> </span>__half __short2half_rn(const short int i);
@@ -2043,14 +2038,14 @@
 <span class="w"> </span>__device__ __nv_bfloat162 __lowhigh2highlow(const __nv_bfloat162 a);
 <span class="w"> </span>__nv_bfloat162 __lows2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
 <span class="w"> </span>__device__ __nv_bfloat162 __lows2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
-<span class="gd">-__device__ __nv_bfloat162 __shfl_down_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);</span>
-<span class="gd">-__device__ __nv_bfloat16 __shfl_down_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);</span>
-<span class="gd">-__device__ __nv_bfloat162 __shfl_sync(const unsigned int mask, const __nv_bfloat162 var, const int srcLane, const int width=warpSize);</span>
-<span class="gd">-__device__ __nv_bfloat16 __shfl_sync(const unsigned int mask, const __nv_bfloat16 var, const int srcLane, const int width=warpSize);</span>
-<span class="gd">-__device__ __nv_bfloat16 __shfl_up_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);</span>
-<span class="gd">-__device__ __nv_bfloat162 __shfl_up_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);</span>
-<span class="gd">-__device__ __nv_bfloat16 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat16 var, const int laneMask, const int width=warpSize);</span>
-<span class="gd">-__device__ __nv_bfloat162 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat162 var, const int laneMask, const int width=warpSize);</span>
+<span class="w"> </span>__device__ __nv_bfloat162 __shfl_down_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat16 __shfl_down_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat162 __shfl_sync(const unsigned int mask, const __nv_bfloat162 var, const int srcLane, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat16 __shfl_sync(const unsigned int mask, const __nv_bfloat16 var, const int srcLane, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat16 __shfl_up_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat162 __shfl_up_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat16 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat16 var, const int laneMask, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat162 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat162 var, const int laneMask, const int width=warpSize);
 <span class="gd">-__device__ __nv_bfloat16 __short2bfloat16_rd(const short int i);</span>
 <span class="w"> </span>__nv_bfloat16 __short2bfloat16_rn(const short int i);
 <span class="w"> </span>__device__ __nv_bfloat16 __short2bfloat16_rn(const short int i);
@@ -2311,51 +2306,51 @@
 <span class="w"> </span>__device__ float __exp10f(float x);
 <span class="w"> </span>__device__ float __expf(float x);
 <span class="gd">-__device__ float2 __fadd2_rd(float2 x, float2 y);</span>
-<span class="gd">-__device__ float2 __fadd2_rn(float2 x, float2 y);</span>
+<span class="w"> </span>__device__ float2 __fadd2_rn(float2 x, float2 y);
 <span class="gd">-__device__ float2 __fadd2_ru(float2 x, float2 y);</span>
 <span class="gd">-__device__ float2 __fadd2_rz(float2 x, float2 y);</span>
-<span class="w"> </span>__device__ float __fadd_rd(float x, float y);
+<span class="gd">-__device__ float __fadd_rd(float x, float y);</span>
 <span class="w"> </span>__device__ float __fadd_rn(float x, float y);
-<span class="w"> </span>__device__ float __fadd_ru(float x, float y);
-<span class="w"> </span>__device__ float __fadd_rz(float x, float y);
-<span class="w"> </span>__device__ float __fdiv_rd(float x, float y);
+<span class="gd">-__device__ float __fadd_ru(float x, float y);</span>
+<span class="gd">-__device__ float __fadd_rz(float x, float y);</span>
+<span class="gd">-__device__ float __fdiv_rd(float x, float y);</span>
 <span class="w"> </span>__device__ float __fdiv_rn(float x, float y);
-<span class="w"> </span>__device__ float __fdiv_ru(float x, float y);
-<span class="w"> </span>__device__ float __fdiv_rz(float x, float y);
+<span class="gd">-__device__ float __fdiv_ru(float x, float y);</span>
+<span class="gd">-__device__ float __fdiv_rz(float x, float y);</span>
 <span class="w"> </span>__device__ float __fdividef(float x, float y);
 <span class="gd">-__device__ float2 __ffma2_rd(float2 x, float2 y, float2 z);</span>
-<span class="gd">-__device__ float2 __ffma2_rn(float2 x, float2 y, float2 z);</span>
+<span class="w"> </span>__device__ float2 __ffma2_rn(float2 x, float2 y, float2 z);
 <span class="gd">-__device__ float2 __ffma2_ru(float2 x, float2 y, float2 z);</span>
 <span class="gd">-__device__ float2 __ffma2_rz(float2 x, float2 y, float2 z);</span>
-<span class="w"> </span>__device__ float __fmaf_ieee_rd(float x, float y, float z);
+<span class="gd">-__device__ float __fmaf_ieee_rd(float x, float y, float z);</span>
 <span class="w"> </span>__device__ float __fmaf_ieee_rn(float x, float y, float z);
-<span class="w"> </span>__device__ float __fmaf_ieee_ru(float x, float y, float z);
-<span class="w"> </span>__device__ float __fmaf_ieee_rz(float x, float y, float z);
-<span class="w"> </span>__device__ float __fmaf_rd(float x, float y, float z);
+<span class="gd">-__device__ float __fmaf_ieee_ru(float x, float y, float z);</span>
+<span class="gd">-__device__ float __fmaf_ieee_rz(float x, float y, float z);</span>
+<span class="gd">-__device__ float __fmaf_rd(float x, float y, float z);</span>
 <span class="w"> </span>__device__ float __fmaf_rn(float x, float y, float z);
-<span class="w"> </span>__device__ float __fmaf_ru(float x, float y, float z);
-<span class="w"> </span>__device__ float __fmaf_rz(float x, float y, float z);
+<span class="gd">-__device__ float __fmaf_ru(float x, float y, float z);</span>
+<span class="gd">-__device__ float __fmaf_rz(float x, float y, float z);</span>
 <span class="gd">-__device__ float2 __fmul2_rd(float2 x, float2 y);</span>
-<span class="gd">-__device__ float2 __fmul2_rn(float2 x, float2 y);</span>
+<span class="w"> </span>__device__ float2 __fmul2_rn(float2 x, float2 y);
 <span class="gd">-__device__ float2 __fmul2_ru(float2 x, float2 y);</span>
 <span class="gd">-__device__ float2 __fmul2_rz(float2 x, float2 y);</span>
-<span class="w"> </span>__device__ float __fmul_rd(float x, float y);
+<span class="gd">-__device__ float __fmul_rd(float x, float y);</span>
 <span class="w"> </span>__device__ float __fmul_rn(float x, float y);
-<span class="w"> </span>__device__ float __fmul_ru(float x, float y);
-<span class="w"> </span>__device__ float __fmul_rz(float x, float y);
-<span class="w"> </span>__device__ float __frcp_rd(float x);
+<span class="gd">-__device__ float __fmul_ru(float x, float y);</span>
+<span class="gd">-__device__ float __fmul_rz(float x, float y);</span>
+<span class="gd">-__device__ float __frcp_rd(float x);</span>
 <span class="w"> </span>__device__ float __frcp_rn(float x);
-<span class="w"> </span>__device__ float __frcp_ru(float x);
-<span class="w"> </span>__device__ float __frcp_rz(float x);
+<span class="gd">-__device__ float __frcp_ru(float x);</span>
+<span class="gd">-__device__ float __frcp_rz(float x);</span>
 <span class="w"> </span>__device__ float __frsqrt_rn(float x);
-<span class="w"> </span>__device__ float __fsqrt_rd(float x);
+<span class="gd">-__device__ float __fsqrt_rd(float x);</span>
 <span class="w"> </span>__device__ float __fsqrt_rn(float x);
-<span class="w"> </span>__device__ float __fsqrt_ru(float x);
-<span class="w"> </span>__device__ float __fsqrt_rz(float x);
-<span class="w"> </span>__device__ float __fsub_rd(float x, float y);
+<span class="gd">-__device__ float __fsqrt_ru(float x);</span>
+<span class="gd">-__device__ float __fsqrt_rz(float x);</span>
+<span class="gd">-__device__ float __fsub_rd(float x, float y);</span>
 <span class="w"> </span>__device__ float __fsub_rn(float x, float y);
-<span class="w"> </span>__device__ float __fsub_ru(float x, float y);
-<span class="w"> </span>__device__ float __fsub_rz(float x, float y);
+<span class="gd">-__device__ float __fsub_ru(float x, float y);</span>
+<span class="gd">-__device__ float __fsub_rz(float x, float y);</span>
 <span class="w"> </span>__device__ float __log10f(float x);
 <span class="w"> </span>__device__ float __log2f(float x);
 <span class="w"> </span>__device__ float __logf(float x);
@@ -2568,9 +2563,9 @@
 <span class="gd">-__device__ float __ull2float_rz(unsigned long long int x);</span>
 </code></pre></div>
 <h2 id="12-integer-mathematical-functions"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INT.html">12. Integer Mathematical Functions</a><a class="headerlink" href="#12-integer-mathematical-functions" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="gd">-__device__ long int abs(long int a);</span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ long int abs(long int a);
 <span class="w"> </span>__device__ int abs(int a);
-<span class="gd">-__device__ long long int abs(long long int a);</span>
+<span class="w"> </span>__device__ long long int abs(long long int a);
 <span class="w"> </span>__device__ long int labs(long int a);
 <span class="w"> </span>__device__ long long int llabs(long long int a);
 <span class="w"> </span>__device__ long long int llmax(const long long int a, const long long int b);
@@ -2633,12 +2628,12 @@
 <span class="w"> </span>__device__ int __mul24(int x, int y);
 <span class="w"> </span>__device__ long long int __mul64hi(long long int x, long long int y);
 <span class="w"> </span>__device__ int __mulhi(int x, int y);
-<span class="gd">-unsigned short __nv_bswap16(unsigned short x);</span>
-<span class="gd">-__device__ unsigned short __nv_bswap16(unsigned short x);</span>
-<span class="gd">-unsigned int __nv_bswap32(unsigned int x);</span>
-<span class="gd">-__device__ unsigned int __nv_bswap32(unsigned int x);</span>
-<span class="gd">-unsigned long long __nv_bswap64(unsigned long long x);</span>
-<span class="gd">-__device__ unsigned long long __nv_bswap64(unsigned long long x);</span>
+<span class="w"> </span>unsigned short __nv_bswap16(unsigned short x);
+<span class="w"> </span>__device__ unsigned short __nv_bswap16(unsigned short x);
+<span class="w"> </span>unsigned int __nv_bswap32(unsigned int x);
+<span class="w"> </span>__device__ unsigned int __nv_bswap32(unsigned int x);
+<span class="w"> </span>unsigned long long __nv_bswap64(unsigned long long x);
+<span class="w"> </span>__device__ unsigned long long __nv_bswap64(unsigned long long x);
 <span class="w"> </span>__device__ int __popc(unsigned int x);
 <span class="w"> </span>__device__ int __popcll(unsigned long long int x);
 <span class="w"> </span>__device__ int __rhadd(int x, int y);
@@ -2863,7 +2858,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../api-driver/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Driver API">
+          <a href="../api-driver/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Api driver">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
@@ -2873,20 +2868,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Driver API
+                Api driver
               </div>
             </div>
           </a>
         
         
           
-          <a href="../api-runtime/" class="md-footer__link md-footer__link--next" aria-label="Next: Runtime API">
+          <a href="../api-runtime/" class="md-footer__link md-footer__link--next" aria-label="Next: Api runtime">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Runtime API
+                Api runtime
               </div>
             </div>
             <div class="md-footer__button md-icon">
