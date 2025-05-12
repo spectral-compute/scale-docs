@@ -1,6 +1,6 @@
 # What's new?
 
-## Release 1.3.0 (2025-02-23)
+## Release 1.3.0 (2025-04-23)
 
 ### Platform
 
