@@ -1,7 +1,4 @@
-# Driver API
-
 ## [6.1. Data types used by CUDA driver](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TYPES.html#group__CUDA__TYPES)
-
 ```diff
 -#define CUDA_ARRAY3D_2DARRAY
 -#define CUDA_ARRAY3D_COLOR_ATTACHMENT
@@ -30,6 +27,7 @@
 -#define CU_GRAPH_KERNEL_NODE_PORT_LAUNCH_ORDER
 -#define CU_GRAPH_KERNEL_NODE_PORT_PROGRAMMATIC
 -#define CU_IPC_HANDLE_SIZE
+-#define CU_LAUNCH_KERNEL_REQUIRED_BLOCK_DIM
 -#define CU_LAUNCH_PARAM_BUFFER_POINTER
 -#define CU_LAUNCH_PARAM_BUFFER_POINTER_AS_INT
 -#define CU_LAUNCH_PARAM_BUFFER_SIZE
@@ -59,36 +57,37 @@
 -#define MAX_PLANES
 -enum CUDA_POINTER_ATTRIBUTE_ACCESS_FLAGS
 -enum CUGPUDirectRDMAWritesOrdering
- enum CUaccessProperty
--enum CUaddress_mode
+-enum CUaccessProperty
+ enum CUaddress_mode
 -enum CUarraySparseSubresourceType
 -enum CUarray_cubemap_face
--enum CUarray_format
+ enum CUarray_format
 -enum CUasyncNotificationType
- enum CUclusterSchedulingPolicy
+-enum CUclusterSchedulingPolicy
 -enum CUcomputemode
  enum CUctx_flags
 -enum CUdeviceNumaConfig
  enum CUdevice_P2PAttribute
--enum CUdevice_attribute
+ enum CUdevice_attribute
  enum CUdriverProcAddressQueryResult
  enum CUdriverProcAddress_flags
 -enum CUeglColorFormat
 -enum CUeglFrameType
 -enum CUeglResourceLocationFlags
- enum CUevent_flags
+-enum CUevent_flags
 -enum CUevent_record_flags
 -enum CUevent_sched_flags
 -enum CUevent_wait_flags
  enum CUexecAffinityType
 -enum CUexternalMemoryHandleType
 -enum CUexternalSemaphoreHandleType
--enum CUfilter_mode
+ enum CUfilter_mode
 -enum CUflushGPUDirectRDMAWritesOptions
 -enum CUflushGPUDirectRDMAWritesScope
 -enum CUflushGPUDirectRDMAWritesTarget
  enum CUfunc_cache
  enum CUfunction_attribute
+-enum CUgraphChildGraphNodeOwnership
 -enum CUgraphConditionalNodeType
 -enum CUgraphDebugDot_flags
 -enum CUgraphDependencyType
@@ -102,12 +101,12 @@
  enum CUjitInputType
 -enum CUjit_cacheMode
 -enum CUjit_fallback
--enum CUjit_option
+ enum CUjit_option
 -enum CUjit_target
 -enum CUlaunchAttributeID
- enum CUlaunchMemSyncDomain
+-enum CUlaunchMemSyncDomain
 -enum CUlibraryOption
--enum CUlimit
+ enum CUlimit
  enum CUmemAccess_flags
 -enum CUmemAllocationCompType
  enum CUmemAllocationGranularity_flags
@@ -115,7 +114,7 @@
  enum CUmemAllocationType
 -enum CUmemAttach_flags
 -enum CUmemHandleType
- enum CUmemLocationType
+-enum CUmemLocationType
 -enum CUmemOperationType
 -enum CUmemPool_attribute
 -enum CUmemRangeFlags
@@ -124,14 +123,14 @@
 -enum CUmemcpy3DOperandType
 -enum CUmemcpyFlags
 -enum CUmemcpySrcAccessOrder
--enum CUmemorytype
+ enum CUmemorytype
 -enum CUmulticastGranularity_flags
 -enum CUoccupancy_flags
  enum CUpointer_attribute
 -enum CUprocessState
--enum CUresourceViewFormat
--enum CUresourcetype
--enum CUresult
+ enum CUresourceViewFormat
+ enum CUresourcetype
+ enum CUresult
 -enum CUshared_carveout
  enum CUsharedconfig
 -enum CUstreamBatchMemOpType
@@ -141,7 +140,7 @@
 -enum CUstreamUpdateCaptureDependencies_flags
 -enum CUstreamWaitValue_flags
 -enum CUstreamWriteValue_flags
- enum CUstream_flags
+-enum CUstream_flags
 -enum CUtensorMapDataType
 -enum CUtensorMapFloatOOBfill
 -enum CUtensorMapIm2ColWideMode
@@ -172,15 +171,15 @@
 -struct CUDA_EXT_SEM_WAIT_NODE_PARAMS_v1
 -struct CUDA_EXT_SEM_WAIT_NODE_PARAMS_v2
 -struct CUDA_GRAPH_INSTANTIATE_PARAMS
--struct CUDA_HOST_NODE_PARAMS_v1
--struct CUDA_HOST_NODE_PARAMS_v2
--struct CUDA_KERNEL_NODE_PARAMS_v1
--struct CUDA_KERNEL_NODE_PARAMS_v2
+ struct CUDA_HOST_NODE_PARAMS_v1
+ struct CUDA_HOST_NODE_PARAMS_v2
+ struct CUDA_KERNEL_NODE_PARAMS_v1
+ struct CUDA_KERNEL_NODE_PARAMS_v2
 -struct CUDA_KERNEL_NODE_PARAMS_v3
 -struct CUDA_LAUNCH_PARAMS_v1
-struct CUDA_MEMCPY2D_v2
+ struct CUDA_MEMCPY2D_v2
 -struct CUDA_MEMCPY3D_PEER_v1
--struct CUDA_MEMCPY3D_v2
+ struct CUDA_MEMCPY3D_v2
 -struct CUDA_MEMCPY_NODE_PARAMS
 -struct CUDA_MEMSET_NODE_PARAMS_v1
 -struct CUDA_MEMSET_NODE_PARAMS_v2
@@ -188,28 +187,28 @@ struct CUDA_MEMCPY2D_v2
 -struct CUDA_MEM_ALLOC_NODE_PARAMS_v2
 -struct CUDA_MEM_FREE_NODE_PARAMS
 -struct CUDA_POINTER_ATTRIBUTE_P2P_TOKENS_v1
--struct CUDA_RESOURCE_DESC_v1
--struct CUDA_RESOURCE_VIEW_DESC_v1
--struct CUDA_TEXTURE_DESC_v1
--struct CUaccessPolicyWindow_v1
+ struct CUDA_RESOURCE_DESC_v1
+ struct CUDA_RESOURCE_VIEW_DESC_v1
+ struct CUDA_TEXTURE_DESC_v1
+ struct CUaccessPolicyWindow_v1
 -struct CUarrayMapInfo_v1
 -struct CUasyncNotificationInfo
 -struct CUcheckpointCheckpointArgs
 -struct CUcheckpointLockArgs
 -struct CUcheckpointRestoreArgs
 -struct CUcheckpointUnlockArgs
--struct CUctxCigParam
--struct CUctxCreateParams
+ struct CUctxCigParam
+ struct CUctxCreateParams
  struct CUdevprop_v1
 -struct CUeglFrame_v1
--struct CUexecAffinityParam_v1
--struct CUexecAffinitySmCount_v1
+ struct CUexecAffinityParam_v1
+ struct CUexecAffinitySmCount_v1
 -struct CUextent3D_v1
 -struct CUgraphEdgeData
  struct CUgraphExecUpdateResultInfo_v1
 -struct CUgraphNodeParams
--struct CUipcEventHandle_v1
--struct CUipcMemHandle_v1
+ struct CUipcEventHandle_v1
+ struct CUipcMemHandle_v1
  struct CUlaunchAttribute
  union CUlaunchAttributeValue
  struct CUlaunchConfig
@@ -226,8 +225,7 @@ struct CUDA_MEMCPY2D_v2
 -struct CUoffset3D_v1
 -union CUstreamBatchMemOpParams_v1
 -struct CUtensorMap
--typedef struct CUaccessPolicyWindow_v1 CUaccessPolicyWindow;
--typedef CUarray_st * CUarray;
+ typedef CUarray_st * CUarray;
 -typedef void (*CUasyncCallback)(CUasyncNotificationInfo* info, void* userData, CUasyncCallbackHandle callback);
 -typedef CUasyncCallbackEntry_st * CUasyncCallbackHandle;
  typedef CUctx_st * CUcontext;
@@ -237,7 +235,6 @@ struct CUDA_MEMCPY2D_v2
  typedef unsigned long long CUdeviceptr_v2;
 -typedef CUeglStreamConnection_st * CUeglStreamConnection;
  typedef CUevent_st * CUevent;
--typedef struct CUexecAffinityParam_v1 CUexecAffinityParam;
 -typedef CUextMemory_st * CUexternalMemory;
 -typedef CUextSemaphore_st * CUexternalSemaphore;
  typedef CUfunc_st * CUfunction;
@@ -247,7 +244,7 @@ struct CUDA_MEMCPY2D_v2
  typedef CUgraphExec_st * CUgraphExec;
  typedef CUgraphNode_st * CUgraphNode;
 -typedef CUgraphicsResource_st * CUgraphicsResource;
--typedef CUgreenCtx_st * CUgreenCtx;
+ typedef CUgreenCtx_st * CUgreenCtx;
  typedef void(* CUhostFn)(void* userData);
 -typedef CUkern_st * CUkernel;
 -typedef CUlib_st * CUlibrary;
@@ -262,31 +259,23 @@ struct CUDA_MEMCPY2D_v2
 -typedef CUsurfref_st * CUsurfref;
  typedef CUtexObject_v1 CUtexObject;
  typedef unsigned long long CUtexObject_v1;
--typedef CUtexref_st * CUtexref;
+ typedef CUtexref_st * CUtexref;
 -typedef CUuserObject_st * CUuserObject;
 ```
-
 ## [6.2. Error Handling](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__ERROR.html#group__CUDA__ERROR)
-
 ```diff
  CUresult cuGetErrorName(CUresult error, const char** pStr);
  CUresult cuGetErrorString(CUresult error, const char** pStr);
 ```
-
 ## [6.3. Initialization](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__INITIALIZE.html#group__CUDA__INITIALIZE)
-
 ```diff
  CUresult cuInit(unsigned int Flags);
 ```
-
 ## [6.4. Version Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__VERSION.html#group__CUDA__VERSION)
-
 ```diff
  CUresult cuDriverGetVersion(int* driverVersion);
 ```
-
 ## [6.5. Device Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__DEVICE.html#group__CUDA__DEVICE)
-
 ```diff
  CUresult cuDeviceGet(CUdevice* device, int ordinal);
  CUresult cuDeviceGetAttribute(int* pi, CUdevice_attribute attrib, CUdevice dev);
@@ -298,22 +287,18 @@ struct CUDA_MEMCPY2D_v2
  CUresult cuDeviceGetName(char* name, int len, CUdevice dev);
 -CUresult cuDeviceGetNvSciSyncAttributes(void* nvSciSyncAttrList, CUdevice dev, int flags);
 -CUresult cuDeviceGetTexture1DLinearMaxWidth(size_t* maxWidthInElements, CUarray_format format, unsigned numChannels, CUdevice dev);
--CUresult cuDeviceGetUuid(CUuuid* uuid, CUdevice dev);
--CUresult cuDeviceGetUuid_v2(CUuuid* uuid, CUdevice dev);
+ CUresult cuDeviceGetUuid(CUuuid* uuid, CUdevice dev);
+ CUresult cuDeviceGetUuid_v2(CUuuid* uuid, CUdevice dev);
 -CUresult cuDeviceSetMemPool(CUdevice dev, CUmemoryPool pool);
  CUresult cuDeviceTotalMem(size_t* bytes, CUdevice dev);
 -CUresult cuFlushGPUDirectRDMAWrites(CUflushGPUDirectRDMAWritesTarget target, CUflushGPUDirectRDMAWritesScope scope);
 ```
-
 ## [6.6. Device Management [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__DEVICE__DEPRECATED.html#group__CUDA__DEVICE__DEPRECATED)
-
 ```diff
  CUresult cuDeviceComputeCapability(int* major, int* minor, CUdevice dev);
  CUresult cuDeviceGetProperties(CUdevprop* prop, CUdevice dev);
 ```
-
 ## [6.7. Primary Context Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PRIMARY__CTX.html#group__CUDA__PRIMARY__CTX)
-
 ```diff
  CUresult cuDevicePrimaryCtxGetState(CUdevice dev, unsigned int* flags, int* active);
  CUresult cuDevicePrimaryCtxRelease(CUdevice dev);
@@ -321,19 +306,17 @@ struct CUDA_MEMCPY2D_v2
  CUresult cuDevicePrimaryCtxRetain(CUcontext* pctx, CUdevice dev);
  CUresult cuDevicePrimaryCtxSetFlags(CUdevice dev, unsigned int flags);
 ```
-
 ## [6.8. Context Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__CTX.html#group__CUDA__CTX)
-
 ```diff
  CUresult cuCtxCreate(CUcontext* pctx, unsigned int flags, CUdevice dev);
--CUresult cuCtxCreate_v3(CUcontext* pctx, CUexecAffinityParam* paramsArray, int numParams, unsigned int flags, CUdevice dev);
--CUresult cuCtxCreate_v4(CUcontext* pctx, CUctxCreateParams* ctxCreateParams, unsigned int flags, CUdevice dev);
+ CUresult cuCtxCreate_v3(CUcontext* pctx, CUexecAffinityParam* paramsArray, int numParams, unsigned int flags, CUdevice dev);
+ CUresult cuCtxCreate_v4(CUcontext* pctx, CUctxCreateParams* ctxCreateParams, unsigned int flags, CUdevice dev);
  CUresult cuCtxDestroy(CUcontext ctx);
  CUresult cuCtxGetApiVersion(CUcontext ctx, unsigned int* version);
  CUresult cuCtxGetCacheConfig(CUfunc_cache* pconfig);
  CUresult cuCtxGetCurrent(CUcontext* pctx);
  CUresult cuCtxGetDevice(CUdevice* device);
--CUresult cuCtxGetExecAffinity(CUexecAffinityParam* pExecAffinity, CUexecAffinityType type);
+ CUresult cuCtxGetExecAffinity(CUexecAffinityParam* pExecAffinity, CUexecAffinityType type);
  CUresult cuCtxGetFlags(unsigned int* flags);
  CUresult cuCtxGetId(CUcontext ctx, unsigned long long* ctxId);
  CUresult cuCtxGetLimit(size_t* pvalue, CUlimit limit);
@@ -349,25 +332,21 @@ struct CUDA_MEMCPY2D_v2
  CUresult cuCtxSynchronize(void);
 -CUresult cuCtxWaitEvent(CUcontext hCtx, CUevent hEvent);
 ```
-
 ## [6.9. Context Management [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__CTX__DEPRECATED.html#group__CUDA__CTX__DEPRECATED)
-
 ```diff
  CUresult cuCtxAttach(CUcontext* pctx, unsigned int flags);
  CUresult cuCtxDetach(CUcontext ctx);
  CUresult cuCtxGetSharedMemConfig(CUsharedconfig* pConfig);
  CUresult cuCtxSetSharedMemConfig(CUsharedconfig config);
 ```
-
 ## [6.10. Module Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MODULE.html#group__CUDA__MODULE)
-
 ```diff
  enum CUmoduleLoadingMode
--CUresult cuLinkAddData(CUlinkState state, CUjitInputType type, void* data, size_t size, const char* name, unsigned int numOptions, CUjit_option* options, void** optionValues);
--CUresult cuLinkAddFile(CUlinkState state, CUjitInputType type, const char* path, unsigned int numOptions, CUjit_option* options, void** optionValues);
--CUresult cuLinkComplete(CUlinkState state, void** cubinOut, size_t* sizeOut);
--CUresult cuLinkCreate(unsigned int numOptions, CUjit_option* options, void** optionValues, CUlinkState* stateOut);
--CUresult cuLinkDestroy(CUlinkState state);
+ CUresult cuLinkAddData(CUlinkState state, CUjitInputType type, void* data, size_t size, const char* name, unsigned int numOptions, CUjit_option* options, void** optionValues);
+ CUresult cuLinkAddFile(CUlinkState state, CUjitInputType type, const char* path, unsigned int numOptions, CUjit_option* options, void** optionValues);
+ CUresult cuLinkComplete(CUlinkState state, void** cubinOut, size_t* sizeOut);
+ CUresult cuLinkCreate(unsigned int numOptions, CUjit_option* options, void** optionValues, CUlinkState* stateOut);
+ CUresult cuLinkDestroy(CUlinkState state);
 -CUresult cuModuleEnumerateFunctions(CUfunction* functions, unsigned int numFunctions, CUmodule mod);
  CUresult cuModuleGetFunction(CUfunction* hfunc, CUmodule hmod, const char* name);
 -CUresult cuModuleGetFunctionCount(unsigned int* count, CUmodule mod);
@@ -379,16 +358,12 @@ struct CUDA_MEMCPY2D_v2
  CUresult cuModuleLoadFatBinary(CUmodule* module, const void* fatCubin);
  CUresult cuModuleUnload(CUmodule hmod);
 ```
-
 ## [6.11. Module Management [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MODULE__DEPRECATED.html#group__CUDA__MODULE__DEPRECATED)
-
 ```diff
 -CUresult cuModuleGetSurfRef(CUsurfref* pSurfRef, CUmodule hmod, const char* name);
 -CUresult cuModuleGetTexRef(CUtexref* pTexRef, CUmodule hmod, const char* name);
 ```
-
 ## [6.12. Library Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__LIBRARY.html#group__CUDA__LIBRARY)
-
 ```diff
 -CUresult cuKernelGetAttribute(int* pi, CUfunction_attribute attrib, CUkernel kernel, CUdevice dev);
 -CUresult cuKernelGetFunction(CUfunction* pFunc, CUkernel kernel);
@@ -408,16 +383,14 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuLibraryLoadFromFile(CUlibrary* library, const char* fileName, CUjit_option* jitOptions, void** jitOptionsValues, unsigned int numJitOptions, CUlibraryOption* libraryOptions, void** libraryOptionValues, unsigned int numLibraryOptions);
 -CUresult cuLibraryUnload(CUlibrary library);
 ```
-
 ## [6.13. Memory Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MEM.html#group__CUDA__MEM)
-
 ```diff
 -enum CUmemDecompressAlgorithm
 -struct CUmemDecompressParams
 -CUresult cuArray3DCreate(CUarray* pHandle, const CUDA_ARRAY3D_DESCRIPTOR* pAllocateArray);
 -CUresult cuArray3DGetDescriptor(CUDA_ARRAY3D_DESCRIPTOR* pArrayDescriptor, CUarray hArray);
 -CUresult cuArrayCreate(CUarray* pHandle, const CUDA_ARRAY_DESCRIPTOR* pAllocateArray);
--CUresult cuArrayDestroy(CUarray hArray);
+ CUresult cuArrayDestroy(CUarray hArray);
 -CUresult cuArrayGetDescriptor(CUDA_ARRAY_DESCRIPTOR* pArrayDescriptor, CUarray hArray);
 -CUresult cuArrayGetMemoryRequirements(CUDA_ARRAY_MEMORY_REQUIREMENTS* memoryRequirements, CUarray array, CUdevice device);
 -CUresult cuArrayGetPlane(CUarray* pPlaneArray, CUarray hArray, unsigned int planeIdx);
@@ -427,10 +400,10 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuDeviceRegisterAsyncNotification(CUdevice device, CUasyncCallback callbackFunc, void* userData, CUasyncCallbackHandle* callback);
 -CUresult cuDeviceUnregisterAsyncNotification(CUdevice device, CUasyncCallbackHandle callback);
  CUresult cuIpcCloseMemHandle(CUdeviceptr dptr);
--CUresult cuIpcGetEventHandle(CUipcEventHandle* pHandle, CUevent event);
--CUresult cuIpcGetMemHandle(CUipcMemHandle* pHandle, CUdeviceptr dptr);
--CUresult cuIpcOpenEventHandle(CUevent* phEvent, CUipcEventHandle handle);
--CUresult cuIpcOpenMemHandle(CUdeviceptr* pdptr, CUipcMemHandle handle, unsigned int Flags);
+ CUresult cuIpcGetEventHandle(CUipcEventHandle* pHandle, CUevent event);
+ CUresult cuIpcGetMemHandle(CUipcMemHandle* pHandle, CUdeviceptr dptr);
+ CUresult cuIpcOpenEventHandle(CUevent* phEvent, CUipcEventHandle handle);
+ CUresult cuIpcOpenMemHandle(CUdeviceptr* pdptr, CUipcMemHandle handle, unsigned int Flags);
  CUresult cuMemAlloc(CUdeviceptr* dptr, size_t bytesize);
  CUresult cuMemAllocHost(void** pp, size_t bytesize);
  CUresult cuMemAllocManaged(CUdeviceptr* dptr, size_t bytesize, unsigned int flags);
@@ -490,9 +463,7 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuMipmappedArrayGetMemoryRequirements(CUDA_ARRAY_MEMORY_REQUIREMENTS* memoryRequirements, CUmipmappedArray mipmap, CUdevice device);
 -CUresult cuMipmappedArrayGetSparseProperties(CUDA_ARRAY_SPARSE_PROPERTIES* sparseProperties, CUmipmappedArray mipmap);
 ```
-
 ## [6.14. Virtual Memory Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__VA.html#group__CUDA__VA)
-
 ```diff
  CUresult cuMemAddressFree(CUdeviceptr ptr, size_t size);
  CUresult cuMemAddressReserve(CUdeviceptr* ptr, size_t size, size_t alignment, CUdeviceptr addr, unsigned long long flags);
@@ -509,9 +480,7 @@ struct CUDA_MEMCPY2D_v2
  CUresult cuMemSetAccess(CUdeviceptr ptr, size_t size, const CUmemAccessDesc* desc, size_t count);
  CUresult cuMemUnmap(CUdeviceptr ptr, size_t size);
 ```
-
 ## [6.15. Stream Ordered Memory Allocator](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MALLOC__ASYNC.html#group__CUDA__MALLOC__ASYNC)
-
 ```diff
  CUresult cuMemAllocAsync(CUdeviceptr* dptr, size_t bytesize, CUstream hStream);
 -CUresult cuMemAllocFromPoolAsync(CUdeviceptr* dptr, size_t bytesize, CUmemoryPool pool, CUstream hStream);
@@ -528,9 +497,7 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
 -CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep);
 ```
-
 ## [6.16. Multicast Object Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MULTICAST.html#group__CUDA__MULTICAST)
-
 ```diff
 -CUresult cuMulticastAddDevice(CUmemGenericAllocationHandle mcHandle, CUdevice dev);
 -CUresult cuMulticastBindAddr(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUdeviceptr memptr, size_t size, unsigned long long flags);
@@ -539,9 +506,7 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuMulticastGetGranularity(size_t* granularity, const CUmulticastObjectProp* prop, CUmulticastGranularity_flags option);
 -CUresult cuMulticastUnbind(CUmemGenericAllocationHandle mcHandle, CUdevice dev, size_t mcOffset, size_t size);
 ```
-
 ## [6.17. Unified Addressing](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__UNIFIED.html#group__CUDA__UNIFIED)
-
 ```diff
  CUresult cuMemAdvise(CUdeviceptr devPtr, size_t count, CUmem_advise advice, CUdevice device);
  CUresult cuMemAdvise_v2(CUdeviceptr devPtr, size_t count, CUmem_advise advice, CUmemLocation location);
@@ -553,11 +518,9 @@ struct CUDA_MEMCPY2D_v2
  CUresult cuPointerGetAttributes(unsigned int numAttributes, CUpointer_attribute* attributes, void** data, CUdeviceptr ptr);
  CUresult cuPointerSetAttribute(const void* value, CUpointer_attribute attribute, CUdeviceptr ptr);
 ```
-
 ## [6.18. Stream Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__STREAM.html#group__CUDA__STREAM)
-
 ```diff
- CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void* userData, unsigned int flags);
+-CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void* userData, unsigned int flags);
 -CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int flags);
 -CUresult cuStreamBeginCapture(CUstream hStream, CUstreamCaptureMode mode);
 -CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode);
@@ -570,7 +533,7 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, size_t* numDependencies_out);
 -CUresult cuStreamGetCaptureInfo_v3(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, const CUgraphEdgeData** edgeData_out, size_t* numDependencies_out);
  CUresult cuStreamGetCtx(CUstream hStream, CUcontext* pctx);
--CUresult cuStreamGetCtx_v2(CUstream hStream, CUcontext* pCtx, CUgreenCtx* pGreenCtx);
+ CUresult cuStreamGetCtx_v2(CUstream hStream, CUcontext* pCtx, CUgreenCtx* pGreenCtx);
  CUresult cuStreamGetDevice(CUstream hStream, CUdevice* device);
  CUresult cuStreamGetFlags(CUstream hStream, unsigned int* flags);
  CUresult cuStreamGetId(CUstream hStream, unsigned long long* streamId);
@@ -584,9 +547,7 @@ struct CUDA_MEMCPY2D_v2
  CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int Flags);
 -CUresult cuThreadExchangeStreamCaptureMode(CUstreamCaptureMode* mode);
 ```
-
 ## [6.19. Event Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EVENT.html#group__CUDA__EVENT)
-
 ```diff
  CUresult cuEventCreate(CUevent* phEvent, unsigned int Flags);
  CUresult cuEventDestroy(CUevent hEvent);
@@ -594,12 +555,10 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuEventElapsedTime_v2(float* pMilliseconds, CUevent hStart, CUevent hEnd);
  CUresult cuEventQuery(CUevent hEvent);
  CUresult cuEventRecord(CUevent hEvent, CUstream hStream);
--CUresult cuEventRecordWithFlags(CUevent hEvent, CUstream hStream, unsigned int flags);
+ CUresult cuEventRecordWithFlags(CUevent hEvent, CUstream hStream, unsigned int flags);
  CUresult cuEventSynchronize(CUevent hEvent);
 ```
-
 ## [6.20. External Resource Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EXTRES__INTEROP.html#group__CUDA__EXTRES__INTEROP)
-
 ```diff
 -CUresult cuDestroyExternalMemory(CUexternalMemory extMem);
 -CUresult cuDestroyExternalSemaphore(CUexternalSemaphore extSem);
@@ -610,9 +569,7 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuSignalExternalSemaphoresAsync(const CUexternalSemaphore* extSemArray, const CUDA_EXTERNAL_SEMAPHORE_SIGNAL_PARAMS* paramsArray, unsigned int numExtSems, CUstream stream);
 -CUresult cuWaitExternalSemaphoresAsync(const CUexternalSemaphore* extSemArray, const CUDA_EXTERNAL_SEMAPHORE_WAIT_PARAMS* paramsArray, unsigned int numExtSems, CUstream stream);
 ```
-
 ## [6.21. Stream Memory Operations](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MEMOP.html#group__CUDA__MEMOP)
-
 ```diff
 -CUresult cuStreamBatchMemOp(CUstream stream, unsigned int count, CUstreamBatchMemOpParams* paramArray, unsigned int flags);
 -CUresult cuStreamWaitValue32(CUstream stream, CUdeviceptr addr, cuuint32_t value, unsigned int flags);
@@ -620,16 +577,14 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuStreamWriteValue32(CUstream stream, CUdeviceptr addr, cuuint32_t value, unsigned int flags);
 -CUresult cuStreamWriteValue64(CUstream stream, CUdeviceptr addr, cuuint64_t value, unsigned int flags);
 ```
-
 ## [6.22. Execution Control](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EXEC.html#group__CUDA__EXEC)
-
 ```diff
  CUresult cuFuncGetAttribute(int* pi, CUfunction_attribute attrib, CUfunction hfunc);
 -CUresult cuFuncGetModule(CUmodule* hmod, CUfunction hfunc);
 -CUresult cuFuncGetName(const char** name, CUfunction hfunc);
 -CUresult cuFuncGetParamInfo(CUfunction func, size_t paramIndex, size_t* paramOffset, size_t* paramSize);
  CUresult cuFuncIsLoaded(CUfunctionLoadingState* state, CUfunction function);
--CUresult cuFuncLoad(CUfunction function);
+ CUresult cuFuncLoad(CUfunction function);
  CUresult cuFuncSetAttribute(CUfunction hfunc, CUfunction_attribute attrib, int value);
  CUresult cuFuncSetCacheConfig(CUfunction hfunc, CUfunc_cache config);
  CUresult cuLaunchCooperativeKernel(CUfunction f, unsigned int gridDimX, unsigned int gridDimY, unsigned int gridDimZ, unsigned int blockDimX, unsigned int blockDimY, unsigned int blockDimZ, unsigned int sharedMemBytes, CUstream hStream, void** kernelParams);
@@ -638,9 +593,7 @@ struct CUDA_MEMCPY2D_v2
  CUresult cuLaunchKernel(CUfunction f, unsigned int gridDimX, unsigned int gridDimY, unsigned int gridDimZ, unsigned int blockDimX, unsigned int blockDimY, unsigned int blockDimZ, unsigned int sharedMemBytes, CUstream hStream, void** kernelParams, void** extra);
  CUresult cuLaunchKernelEx(const CUlaunchConfig* config, CUfunction f, void** kernelParams, void** extra);
 ```
-
 ## [6.23. Execution Control [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EXEC__DEPRECATED.html#group__CUDA__EXEC__DEPRECATED)
-
 ```diff
 -CUresult cuFuncSetBlockShape(CUfunction hfunc, int x, int y, int z);
  CUresult cuFuncSetSharedMemConfig(CUfunction hfunc, CUsharedconfig config);
@@ -654,9 +607,7 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuParamSeti(CUfunction hfunc, int offset, unsigned int value);
 -CUresult cuParamSetv(CUfunction hfunc, int offset, void* ptr, unsigned int numbytes);
 ```
-
 ## [6.24. Graph Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GRAPH.html#group__CUDA__GRAPH)
-
 ```diff
 -CUresult cuDeviceGetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void* value);
 -CUresult cuDeviceGraphMemTrim(CUdevice device);
@@ -670,7 +621,7 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuGraphAddEventWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
 -CUresult cuGraphAddExternalSemaphoresSignalNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS* nodeParams);
 -CUresult cuGraphAddExternalSemaphoresWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_EXT_SEM_WAIT_NODE_PARAMS* nodeParams);
--CUresult cuGraphAddHostNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_HOST_NODE_PARAMS* nodeParams);
+ CUresult cuGraphAddHostNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_HOST_NODE_PARAMS* nodeParams);
 -CUresult cuGraphAddKernelNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_KERNEL_NODE_PARAMS* nodeParams);
 -CUresult cuGraphAddMemAllocNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUDA_MEM_ALLOC_NODE_PARAMS* nodeParams);
 -CUresult cuGraphAddMemFreeNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUdeviceptr dptr);
@@ -713,8 +664,8 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuGraphGetEdges_v2(CUgraph hGraph, CUgraphNode* from, CUgraphNode* to, CUgraphEdgeData* edgeData, size_t* numEdges);
  CUresult cuGraphGetNodes(CUgraph hGraph, CUgraphNode* nodes, size_t* numNodes);
 -CUresult cuGraphGetRootNodes(CUgraph hGraph, CUgraphNode* rootNodes, size_t* numRootNodes);
--CUresult cuGraphHostNodeGetParams(CUgraphNode hNode, CUDA_HOST_NODE_PARAMS* nodeParams);
--CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS* nodeParams);
+ CUresult cuGraphHostNodeGetParams(CUgraphNode hNode, CUDA_HOST_NODE_PARAMS* nodeParams);
+ CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS* nodeParams);
  CUresult cuGraphInstantiate(CUgraphExec* phGraphExec, CUgraph hGraph, unsigned long long flags);
 -CUresult cuGraphInstantiateWithParams(CUgraphExec* phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS* instantiateParams);
 -CUresult cuGraphKernelNodeCopyAttributes(CUgraphNode dst, CUgraphNode src);
@@ -747,9 +698,7 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuUserObjectRelease(CUuserObject object, unsigned int count);
 -CUresult cuUserObjectRetain(CUuserObject object, unsigned int count);
 ```
-
 ## [6.25. Occupancy](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__OCCUPANCY.html#group__CUDA__OCCUPANCY)
-
 ```diff
  CUresult cuOccupancyAvailableDynamicSMemPerBlock(size_t* dynamicSmemSize, CUfunction func, int numBlocks, int blockSize);
  CUresult cuOccupancyMaxActiveBlocksPerMultiprocessor(int* numBlocks, CUfunction func, int blockSize, size_t dynamicSMemSize);
@@ -759,17 +708,15 @@ struct CUDA_MEMCPY2D_v2
  CUresult cuOccupancyMaxPotentialBlockSizeWithFlags(int* minGridSize, int* blockSize, CUfunction func, CUoccupancyB2DSize blockSizeToDynamicSMemSize, size_t dynamicSMemSize, int blockSizeLimit, unsigned int flags);
 -CUresult cuOccupancyMaxPotentialClusterSize(int* clusterSize, CUfunction func, const CUlaunchConfig* config);
 ```
-
 ## [6.26. Texture Reference Management [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TEXREF__DEPRECATED.html#group__CUDA__TEXREF__DEPRECATED)
-
 ```diff
--CUresult cuTexRefCreate(CUtexref* pTexRef);
--CUresult cuTexRefDestroy(CUtexref hTexRef);
--CUresult cuTexRefGetAddress(CUdeviceptr* pdptr, CUtexref hTexRef);
--CUresult cuTexRefGetAddressMode(CUaddress_mode* pam, CUtexref hTexRef, int dim);
--CUresult cuTexRefGetArray(CUarray* phArray, CUtexref hTexRef);
+ CUresult cuTexRefCreate(CUtexref* pTexRef);
+ CUresult cuTexRefDestroy(CUtexref hTexRef);
+ CUresult cuTexRefGetAddress(CUdeviceptr* pdptr, CUtexref hTexRef);
+ CUresult cuTexRefGetAddressMode(CUaddress_mode* pam, CUtexref hTexRef, int dim);
+ CUresult cuTexRefGetArray(CUarray* phArray, CUtexref hTexRef);
 -CUresult cuTexRefGetBorderColor(float* pBorderColor, CUtexref hTexRef);
--CUresult cuTexRefGetFilterMode(CUfilter_mode* pfm, CUtexref hTexRef);
+ CUresult cuTexRefGetFilterMode(CUfilter_mode* pfm, CUtexref hTexRef);
 -CUresult cuTexRefGetFlags(unsigned int* pFlags, CUtexref hTexRef);
 -CUresult cuTexRefGetFormat(CUarray_format* pFormat, int* pNumChannels, CUtexref hTexRef);
 -CUresult cuTexRefGetMaxAnisotropy(int* pmaxAniso, CUtexref hTexRef);
@@ -791,52 +738,40 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuTexRefSetMipmapLevelClamp(CUtexref hTexRef, float minMipmapLevelClamp, float maxMipmapLevelClamp);
 -CUresult cuTexRefSetMipmappedArray(CUtexref hTexRef, CUmipmappedArray hMipmappedArray, unsigned int Flags);
 ```
-
 ## [6.27. Surface Reference Management [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__SURFREF__DEPRECATED.html#group__CUDA__SURFREF__DEPRECATED)
-
 ```diff
 -CUresult cuSurfRefGetArray(CUarray* phArray, CUsurfref hSurfRef);
 -CUresult cuSurfRefSetArray(CUsurfref hSurfRef, CUarray hArray, unsigned int Flags);
 ```
-
 ## [6.28. Texture Object Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TEXOBJECT.html#group__CUDA__TEXOBJECT)
-
 ```diff
--CUresult cuTexObjectCreate(CUtexObject* pTexObject, const CUDA_RESOURCE_DESC* pResDesc, const CUDA_TEXTURE_DESC* pTexDesc, const CUDA_RESOURCE_VIEW_DESC* pResViewDesc);
+ CUresult cuTexObjectCreate(CUtexObject* pTexObject, const CUDA_RESOURCE_DESC* pResDesc, const CUDA_TEXTURE_DESC* pTexDesc, const CUDA_RESOURCE_VIEW_DESC* pResViewDesc);
  CUresult cuTexObjectDestroy(CUtexObject texObject);
--CUresult cuTexObjectGetResourceDesc(CUDA_RESOURCE_DESC* pResDesc, CUtexObject texObject);
--CUresult cuTexObjectGetResourceViewDesc(CUDA_RESOURCE_VIEW_DESC* pResViewDesc, CUtexObject texObject);
--CUresult cuTexObjectGetTextureDesc(CUDA_TEXTURE_DESC* pTexDesc, CUtexObject texObject);
+ CUresult cuTexObjectGetResourceDesc(CUDA_RESOURCE_DESC* pResDesc, CUtexObject texObject);
+ CUresult cuTexObjectGetResourceViewDesc(CUDA_RESOURCE_VIEW_DESC* pResViewDesc, CUtexObject texObject);
+ CUresult cuTexObjectGetTextureDesc(CUDA_TEXTURE_DESC* pTexDesc, CUtexObject texObject);
 ```
-
 ## [6.29. Surface Object Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__SURFOBJECT.html#group__CUDA__SURFOBJECT)
-
 ```diff
 -CUresult cuSurfObjectCreate(CUsurfObject* pSurfObject, const CUDA_RESOURCE_DESC* pResDesc);
 -CUresult cuSurfObjectDestroy(CUsurfObject surfObject);
 -CUresult cuSurfObjectGetResourceDesc(CUDA_RESOURCE_DESC* pResDesc, CUsurfObject surfObject);
 ```
-
 ## [6.30. Tensor Map Object Managment](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TENSOR__MEMORY.html#group__CUDA__TENSOR__MEMORY)
-
 ```diff
 -CUresult cuTensorMapEncodeIm2col(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const int* pixelBoxLowerCorner, const int* pixelBoxUpperCorner, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
 -CUresult cuTensorMapEncodeIm2colWide(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, int pixelBoxLowerCornerWidth, int pixelBoxUpperCornerWidth, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapIm2ColWideMode mode, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
 -CUresult cuTensorMapEncodeTiled(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const cuuint32_t* boxDim, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
 -CUresult cuTensorMapReplaceAddress(CUtensorMap* tensorMap, void* globalAddress);
 ```
-
 ## [6.31. Peer Context Memory Access](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PEER__ACCESS.html#group__CUDA__PEER__ACCESS)
-
 ```diff
 -CUresult cuCtxDisablePeerAccess(CUcontext peerContext);
 -CUresult cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int Flags);
  CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev);
  CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice);
 ```
-
 ## [6.32. Graphics Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GRAPHICS.html#group__CUDA__GRAPHICS)
-
 ```diff
 -CUresult cuGraphicsMapResources(unsigned int count, CUgraphicsResource* resources, CUstream hStream);
 -CUresult cuGraphicsResourceGetMappedMipmappedArray(CUmipmappedArray* pMipmappedArray, CUgraphicsResource resource);
@@ -846,15 +781,11 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuGraphicsUnmapResources(unsigned int count, CUgraphicsResource* resources, CUstream hStream);
 -CUresult cuGraphicsUnregisterResource(CUgraphicsResource resource);
 ```
-
 ## [6.33. Driver Entry Point Access](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__DRIVER__ENTRY__POINT.html#group__CUDA__DRIVER__ENTRY__POINT)
-
 ```diff
  CUresult cuGetProcAddress(const char* symbol, void** pfn, int cudaVersion, cuuint64_t flags, CUdriverProcAddressQueryResult* symbolStatus);
 ```
-
 ## [6.34. Coredump Attributes Control API](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__COREDUMP.html#group__CUDA__COREDUMP)
-
 ```diff
 -enum CUCoredumpGenerationFlags
 -enum CUcoredumpSettings
@@ -863,9 +794,7 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuCoredumpSetAttribute(CUcoredumpSettings attrib, void* value, size_t* size);
 -CUresult cuCoredumpSetAttributeGlobal(CUcoredumpSettings attrib, void* value, size_t* size);
 ```
-
 ## [6.35. Green Contexts](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GREEN__CONTEXTS.html#group__CUDA__GREEN__CONTEXTS)
-
 ```diff
 -enum CUdevResourceType
 -struct CUdevResource
@@ -884,9 +813,15 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuGreenCtxWaitEvent(CUgreenCtx hCtx, CUevent hEvent);
 -CUresult cuStreamGetGreenCtx(CUstream hStream, CUgreenCtx* phCtx);
 ```
-
-## [6.36. CUDA Checkpointing](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__CHECKPOINT.html#group__CUDA__CHECKPOINT)
-
+## [6.36. Error Log Management Functions](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__LOGS.html#group__CUDA__LOGS)
+```diff
+-CUresult cuLogsCurrent(CUlogIterator* iterator_out, unsigned int flags);
+-CUresult cuLogsDumpToFile(CUlogIterator* iterator, const char* pathToFile, unsigned int flags);
+-CUresult cuLogsDumpToMemory(CUlogIterator* iterator, char* buffer, size_t* size, unsigned int flags);
+-CUresult cuLogsRegisterCallback(CUlogsCallback callbackFunc, void* userData, CUlogsCallbackHandle* callback_out);
+-CUresult cuLogsUnregisterCallback(CUlogsCallbackHandle callback);
+```
+## [6.37. CUDA Checkpointing](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__CHECKPOINT.html#group__CUDA__CHECKPOINT)
 ```diff
 -CUresult cuCheckpointProcessCheckpoint(int pid, CUcheckpointCheckpointArgs* args);
 -CUresult cuCheckpointProcessGetRestoreThreadId(int pid, int* tid);
@@ -895,32 +830,24 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuCheckpointProcessRestore(int pid, CUcheckpointRestoreArgs* args);
 -CUresult cuCheckpointProcessUnlock(int pid, CUcheckpointUnlockArgs* args);
 ```
-
-## [6.37. Profiler Control [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PROFILER__DEPRECATED.html#group__CUDA__PROFILER__DEPRECATED)
-
+## [6.38. Profiler Control [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PROFILER__DEPRECATED.html#group__CUDA__PROFILER__DEPRECATED)
 ```diff
  CUresult cuProfilerInitialize(const char* configFile, const char* outputFile, CUoutput_mode outputMode);
 ```
-
-## [6.38. Profiler Control](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PROFILER.html#group__CUDA__PROFILER)
-
+## [6.39. Profiler Control](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PROFILER.html#group__CUDA__PROFILER)
 ```diff
  CUresult cuProfilerStart(void);
  CUresult cuProfilerStop(void);
 ```
-
-## [6.39. OpenGL Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GL.html#group__CUDA__GL)
-
+## [6.40. OpenGL Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GL.html#group__CUDA__GL)
 ```diff
- enum CUGLDeviceList
+-enum CUGLDeviceList
 -CUresult cuGLGetDevices(unsigned int* pCudaDeviceCount, CUdevice* pCudaDevices, unsigned int cudaDeviceCount, CUGLDeviceList deviceList);
 -CUresult cuGraphicsGLRegisterBuffer(CUgraphicsResource* pCudaResource, GLuint buffer, unsigned int Flags);
 -CUresult cuGraphicsGLRegisterImage(CUgraphicsResource* pCudaResource, GLuint image, GLenum target, unsigned int Flags);
 -CUresult cuWGLGetDevice(CUdevice* pDevice, HGPUNV hGpu);
 ```
-
-## [6.39.1. OpenGL Interoperability [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GL__DEPRECATED.html#group__CUDA__GL__DEPRECATED)
-
+## [6.40.1. OpenGL Interoperability [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GL__DEPRECATED.html#group__CUDA__GL__DEPRECATED)
 ```diff
 -enum CUGLmap_flags
 -CUresult cuGLCtxCreate(CUcontext* pCtx, unsigned int Flags, CUdevice device);
@@ -933,51 +860,35 @@ struct CUDA_MEMCPY2D_v2
 -CUresult cuGLUnmapBufferObjectAsync(GLuint buffer, CUstream hStream);
 -CUresult cuGLUnregisterBufferObject(GLuint buffer);
 ```
-
-## [6.40. Direct3D 9 Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D9.html#group__CUDA__D3D9)
-
+## [6.41. Direct3D 9 Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D9.html#group__CUDA__D3D9)
 ```diff
 -Windows APIs are currently unsupported
 ```
-
-## [6.40.1. Direct3D 9 Interoperability [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D9__DEPRECATED.html#group__CUDA__D3D9__DEPRECATED)
-
+## [6.41.1. Direct3D 9 Interoperability [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D9__DEPRECATED.html#group__CUDA__D3D9__DEPRECATED)
 ```diff
 -Windows APIs are currently unsupported
 ```
-
-## [6.41. Direct3D 10 Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D10.html#group__CUDA__D3D10)
-
+## [6.42. Direct3D 10 Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D10.html#group__CUDA__D3D10)
 ```diff
 -Windows APIs are currently unsupported
 ```
-
-## [6.41.1. Direct3D 10 Interoperability [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D10__DEPRECATED.html#group__CUDA__D3D10__DEPRECATED)
-
+## [6.42.1. Direct3D 10 Interoperability [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D10__DEPRECATED.html#group__CUDA__D3D10__DEPRECATED)
 ```diff
 -Windows APIs are currently unsupported
 ```
-
-## [6.42. Direct3D 11 Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D11.html#group__CUDA__D3D11)
-
+## [6.43. Direct3D 11 Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D11.html#group__CUDA__D3D11)
 ```diff
 -Windows APIs are currently unsupported
 ```
-
-## [6.42.1. Direct3D 11 Interoperability [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D11__DEPRECATED.html#group__CUDA__D3D11__DEPRECATED)
-
+## [6.43.1. Direct3D 11 Interoperability [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__D3D11__DEPRECATED.html#group__CUDA__D3D11__DEPRECATED)
 ```diff
 -Windows APIs are currently unsupported
 ```
-
-## [6.43. VDPAU Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__VDPAU.html#group__CUDA__VDPAU)
-
+## [6.44. VDPAU Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__VDPAU.html#group__CUDA__VDPAU)
 ```diff
 -VDPAU is currently unsupported
 ```
-
-## [6.44. EGL Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EGL.html#group__CUDA__EGL)
-
+## [6.45. EGL Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__EGL.html#group__CUDA__EGL)
 ```diff
 -EGL is currently unsupported
 ```

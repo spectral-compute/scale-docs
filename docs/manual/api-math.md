@@ -1,24 +1,16 @@
-# Math API
 ## [1. FP4 Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__FP4.html)
-
 ```diff
 -4 bit floating point is not supported
 ```
-
 ## [2. FP6 Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__FP6.html)
-
 ```diff
 -6 bit floating point is not supported
 ```
-
 ## [3. FP8 Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__FP8.html)
-
 ```diff
 -8 bit floating point is not supported
 ```
-
 ## [4. Half Precision Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__HALF.html)
-
 ```diff
  typedef __half __nv_half;
  typedef __half2 __nv_half2;
@@ -226,14 +218,14 @@
  __device__ __half2 __lowhigh2highlow(const __half2 a);
  __half2 __lows2half2(const __half2 a, const __half2 b);
  __device__ __half2 __lows2half2(const __half2 a, const __half2 b);
--__device__ __half __shfl_down_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
--__device__ __half2 __shfl_down_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
--__device__ __half2 __shfl_sync(const unsigned int mask, const __half2 var, const int srcLane, const int width=warpSize);
--__device__ __half __shfl_sync(const unsigned int mask, const __half var, const int srcLane, const int width=warpSize);
--__device__ __half2 __shfl_up_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
--__device__ __half __shfl_up_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
--__device__ __half2 __shfl_xor_sync(const unsigned int mask, const __half2 var, const int laneMask, const int width=warpSize);
--__device__ __half __shfl_xor_sync(const unsigned int mask, const __half var, const int laneMask, const int width=warpSize);
+ __device__ __half __shfl_down_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
+ __device__ __half2 __shfl_down_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
+ __device__ __half2 __shfl_sync(const unsigned int mask, const __half2 var, const int srcLane, const int width=warpSize);
+ __device__ __half __shfl_sync(const unsigned int mask, const __half var, const int srcLane, const int width=warpSize);
+ __device__ __half2 __shfl_up_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
+ __device__ __half __shfl_up_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
+ __device__ __half2 __shfl_xor_sync(const unsigned int mask, const __half2 var, const int laneMask, const int width=warpSize);
+ __device__ __half __shfl_xor_sync(const unsigned int mask, const __half var, const int laneMask, const int width=warpSize);
 -__half __short2half_rd(const short int i);
 -__device__ __half __short2half_rd(const short int i);
  __half __short2half_rn(const short int i);
@@ -409,9 +401,7 @@
 -__device__ __half2 h2tanh_approx(const __half2 a);
  __device__ __half2 h2trunc(const __half2 h);
 ```
-
 ## [5. Bfloat16 Precision Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__BFLOAT16.html)
-
 ```diff
  typedef __nv_bfloat16 nv_bfloat16;
  typedef __nv_bfloat162 nv_bfloat162;
@@ -607,14 +597,14 @@
  __device__ __nv_bfloat162 __lowhigh2highlow(const __nv_bfloat162 a);
  __nv_bfloat162 __lows2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
  __device__ __nv_bfloat162 __lows2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
--__device__ __nv_bfloat162 __shfl_down_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
--__device__ __nv_bfloat16 __shfl_down_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
--__device__ __nv_bfloat162 __shfl_sync(const unsigned int mask, const __nv_bfloat162 var, const int srcLane, const int width=warpSize);
--__device__ __nv_bfloat16 __shfl_sync(const unsigned int mask, const __nv_bfloat16 var, const int srcLane, const int width=warpSize);
--__device__ __nv_bfloat16 __shfl_up_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
--__device__ __nv_bfloat162 __shfl_up_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
--__device__ __nv_bfloat16 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat16 var, const int laneMask, const int width=warpSize);
--__device__ __nv_bfloat162 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat162 var, const int laneMask, const int width=warpSize);
+ __device__ __nv_bfloat162 __shfl_down_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
+ __device__ __nv_bfloat16 __shfl_down_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
+ __device__ __nv_bfloat162 __shfl_sync(const unsigned int mask, const __nv_bfloat162 var, const int srcLane, const int width=warpSize);
+ __device__ __nv_bfloat16 __shfl_sync(const unsigned int mask, const __nv_bfloat16 var, const int srcLane, const int width=warpSize);
+ __device__ __nv_bfloat16 __shfl_up_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
+ __device__ __nv_bfloat162 __shfl_up_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
+ __device__ __nv_bfloat16 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat16 var, const int laneMask, const int width=warpSize);
+ __device__ __nv_bfloat162 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat162 var, const int laneMask, const int width=warpSize);
 -__device__ __nv_bfloat16 __short2bfloat16_rd(const short int i);
  __nv_bfloat16 __short2bfloat16_rn(const short int i);
  __device__ __nv_bfloat16 __short2bfloat16_rn(const short int i);
@@ -778,9 +768,7 @@
 -__device__ __nv_bfloat162 h2tanh_approx(const __nv_bfloat162 a);
  __device__ __nv_bfloat162 h2trunc(const __nv_bfloat162 h);
 ```
-
 ## [6. Single Precision Mathematical Functions](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__SINGLE.html)
-
 ```diff
  __device__ float acosf(float x);
  __device__ float acoshf(float x);
@@ -873,59 +861,57 @@
 -__device__ float y1f(float x);
 -__device__ float ynf(int n, float x);
 ```
-
 ## [7. Single Precision Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__SINGLE.html)
-
 ```diff
  __device__ float __cosf(float x);
  __device__ float __exp10f(float x);
  __device__ float __expf(float x);
 -__device__ float2 __fadd2_rd(float2 x, float2 y);
--__device__ float2 __fadd2_rn(float2 x, float2 y);
+ __device__ float2 __fadd2_rn(float2 x, float2 y);
 -__device__ float2 __fadd2_ru(float2 x, float2 y);
 -__device__ float2 __fadd2_rz(float2 x, float2 y);
- __device__ float __fadd_rd(float x, float y);
+-__device__ float __fadd_rd(float x, float y);
  __device__ float __fadd_rn(float x, float y);
- __device__ float __fadd_ru(float x, float y);
- __device__ float __fadd_rz(float x, float y);
- __device__ float __fdiv_rd(float x, float y);
+-__device__ float __fadd_ru(float x, float y);
+-__device__ float __fadd_rz(float x, float y);
+-__device__ float __fdiv_rd(float x, float y);
  __device__ float __fdiv_rn(float x, float y);
- __device__ float __fdiv_ru(float x, float y);
- __device__ float __fdiv_rz(float x, float y);
+-__device__ float __fdiv_ru(float x, float y);
+-__device__ float __fdiv_rz(float x, float y);
  __device__ float __fdividef(float x, float y);
 -__device__ float2 __ffma2_rd(float2 x, float2 y, float2 z);
--__device__ float2 __ffma2_rn(float2 x, float2 y, float2 z);
+ __device__ float2 __ffma2_rn(float2 x, float2 y, float2 z);
 -__device__ float2 __ffma2_ru(float2 x, float2 y, float2 z);
 -__device__ float2 __ffma2_rz(float2 x, float2 y, float2 z);
- __device__ float __fmaf_ieee_rd(float x, float y, float z);
+-__device__ float __fmaf_ieee_rd(float x, float y, float z);
  __device__ float __fmaf_ieee_rn(float x, float y, float z);
- __device__ float __fmaf_ieee_ru(float x, float y, float z);
- __device__ float __fmaf_ieee_rz(float x, float y, float z);
- __device__ float __fmaf_rd(float x, float y, float z);
+-__device__ float __fmaf_ieee_ru(float x, float y, float z);
+-__device__ float __fmaf_ieee_rz(float x, float y, float z);
+-__device__ float __fmaf_rd(float x, float y, float z);
  __device__ float __fmaf_rn(float x, float y, float z);
- __device__ float __fmaf_ru(float x, float y, float z);
- __device__ float __fmaf_rz(float x, float y, float z);
+-__device__ float __fmaf_ru(float x, float y, float z);
+-__device__ float __fmaf_rz(float x, float y, float z);
 -__device__ float2 __fmul2_rd(float2 x, float2 y);
--__device__ float2 __fmul2_rn(float2 x, float2 y);
+ __device__ float2 __fmul2_rn(float2 x, float2 y);
 -__device__ float2 __fmul2_ru(float2 x, float2 y);
 -__device__ float2 __fmul2_rz(float2 x, float2 y);
- __device__ float __fmul_rd(float x, float y);
+-__device__ float __fmul_rd(float x, float y);
  __device__ float __fmul_rn(float x, float y);
- __device__ float __fmul_ru(float x, float y);
- __device__ float __fmul_rz(float x, float y);
- __device__ float __frcp_rd(float x);
+-__device__ float __fmul_ru(float x, float y);
+-__device__ float __fmul_rz(float x, float y);
+-__device__ float __frcp_rd(float x);
  __device__ float __frcp_rn(float x);
- __device__ float __frcp_ru(float x);
- __device__ float __frcp_rz(float x);
+-__device__ float __frcp_ru(float x);
+-__device__ float __frcp_rz(float x);
  __device__ float __frsqrt_rn(float x);
- __device__ float __fsqrt_rd(float x);
+-__device__ float __fsqrt_rd(float x);
  __device__ float __fsqrt_rn(float x);
- __device__ float __fsqrt_ru(float x);
- __device__ float __fsqrt_rz(float x);
- __device__ float __fsub_rd(float x, float y);
+-__device__ float __fsqrt_ru(float x);
+-__device__ float __fsqrt_rz(float x);
+-__device__ float __fsub_rd(float x, float y);
  __device__ float __fsub_rn(float x, float y);
- __device__ float __fsub_ru(float x, float y);
- __device__ float __fsub_rz(float x, float y);
+-__device__ float __fsub_ru(float x, float y);
+-__device__ float __fsub_rz(float x, float y);
  __device__ float __log10f(float x);
  __device__ float __log2f(float x);
  __device__ float __logf(float x);
@@ -936,9 +922,7 @@
  __device__ float __tanf(float x);
 -__device__ float __tanhf(float x);
 ```
-
 ## [8. Double Precision Mathematical Functions](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__DOUBLE.html)
-
 ```diff
  __device__ double acos(double x);
  __device__ double acosh(double x);
@@ -1034,9 +1018,7 @@
 -__device__ double y1(double x);
 -__device__ double yn(int n, double x);
 ```
-
 ## [9. Double Precision Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__DOUBLE.html)
-
 ```diff
  __device__ double __dadd_rd(double x, double y);
  __device__ double __dadd_rn(double x, double y);
@@ -1067,15 +1049,11 @@
  __device__ double __fma_ru(double x, double y, double z);
  __device__ double __fma_rz(double x, double y, double z);
 ```
-
 ## [10. FP128 Quad Precision Mathematical Functions](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__QUAD.html)
-
 ```diff
 -128 bit floating point is not supported
 ```
-
 ## [11. Type Casting Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__CAST.html)
-
 ```diff
 -__device__ float __double2float_rd(double x);
 -__device__ float __double2float_rn(double x);
@@ -1149,13 +1127,11 @@
 -__device__ float __ull2float_ru(unsigned long long int x);
 -__device__ float __ull2float_rz(unsigned long long int x);
 ```
-
 ## [12. Integer Mathematical Functions](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INT.html)
-
 ```diff
--__device__ long int abs(long int a);
+ __device__ long int abs(long int a);
  __device__ int abs(int a);
--__device__ long long int abs(long long int a);
+ __device__ long long int abs(long long int a);
  __device__ long int labs(long int a);
  __device__ long long int llabs(long long int a);
  __device__ long long int llmax(const long long int a, const long long int b);
@@ -1189,9 +1165,7 @@
  __device__ unsigned int umax(const unsigned int a, const unsigned int b);
  __device__ unsigned int umin(const unsigned int a, const unsigned int b);
 ```
-
 ## [13. Integer Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__INT.html)
-
 ```diff
  __device__ unsigned int __brev(unsigned int x);
  __device__ unsigned long long int __brevll(unsigned long long int x);
@@ -1221,12 +1195,12 @@
  __device__ int __mul24(int x, int y);
  __device__ long long int __mul64hi(long long int x, long long int y);
  __device__ int __mulhi(int x, int y);
--unsigned short __nv_bswap16(unsigned short x);
--__device__ unsigned short __nv_bswap16(unsigned short x);
--unsigned int __nv_bswap32(unsigned int x);
--__device__ unsigned int __nv_bswap32(unsigned int x);
--unsigned long long __nv_bswap64(unsigned long long x);
--__device__ unsigned long long __nv_bswap64(unsigned long long x);
+ unsigned short __nv_bswap16(unsigned short x);
+ __device__ unsigned short __nv_bswap16(unsigned short x);
+ unsigned int __nv_bswap32(unsigned int x);
+ __device__ unsigned int __nv_bswap32(unsigned int x);
+ unsigned long long __nv_bswap64(unsigned long long x);
+ __device__ unsigned long long __nv_bswap64(unsigned long long x);
  __device__ int __popc(unsigned int x);
  __device__ int __popcll(unsigned long long int x);
  __device__ int __rhadd(int x, int y);
@@ -1238,9 +1212,7 @@
  __device__ unsigned int __urhadd(unsigned int x, unsigned int y);
  __device__ unsigned int __usad(unsigned int x, unsigned int y, unsigned int z);
 ```
-
 ## [14. SIMD Intrinsics](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__SIMD.html)
-
 ```diff
  __device__ unsigned int __vabs2(unsigned int a);
  __device__ unsigned int __vabs4(unsigned int a);
@@ -1397,9 +1369,7 @@
  __device__ unsigned int __vsubus2(unsigned int a, unsigned int b);
  __device__ unsigned int __vsubus4(unsigned int a, unsigned int b);
 ```
-
 ## [15. Structs](https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/structs.html)
-
 ```diff
  struct __half
  struct __half2

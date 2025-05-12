@@ -316,6 +316,7 @@ currently supported in SCALE, they are also not supported here.
 | clz                              |                           |
 | cnot                             |                           |
 | copysign                         |                           |
+| cos.approx                       |                           |
 | cvt                              |                           |
 | cvt.pack                         |                           |
 | discard                          | Currently a no-op         |
@@ -323,6 +324,7 @@ currently supported in SCALE, they are also not supported here.
 | dp2a                             |                           |
 | dp4a                             |                           |
 | elect                            |                           |
+| ex2.approx                       |                           |
 | exit                             | Only from convergent code |
 | fence                            | Memory ranges unsupported |
 | fma                              |                           |
@@ -334,6 +336,7 @@ currently supported in SCALE, they are also not supported here.
 | ld.nc                            |                           |
 | ldmatrix                         |                           |
 | ldu                              |                           |
+| lg2.approx                       |                           |
 | lop3                             |                           |
 | mad                              |                           |
 | mad24                            |                           |
@@ -369,6 +372,7 @@ currently supported in SCALE, they are also not supported here.
 | redux                            |                           |
 | rem                              |                           |
 | sad                              |                           |
+| sin.approx                       |                           |
 | selp                             |                           |
 | set                              |                           |
 | setp                             |                           |
