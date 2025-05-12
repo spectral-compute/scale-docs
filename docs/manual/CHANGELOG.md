@@ -10,7 +10,6 @@
 - Enterprise edition: Support for new architectures:
     - `gfx908`
     - `gfx90a`
-    - `gfx940`
     - `gfx942`
 
 ### Packaging

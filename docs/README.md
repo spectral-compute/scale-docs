@@ -37,7 +37,6 @@ The enterprise edition also has support for:
 
 - AMD `gfx908`
 - AMD `gfx90a`
-- AMD `gfx940`
 - AMD `gfx942`
 
 Academic/research licenses are available.
