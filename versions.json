@@ -10,7 +10,9 @@
   {
     "version": "enterprise",
     "title": "enterprise",
-    "aliases": []
+    "aliases": [
+      "nonfree"
+    ]
   },
   {
     "version": "1.3.1",
