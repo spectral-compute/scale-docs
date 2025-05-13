@@ -8,14 +8,6 @@
     }
   },
   {
-    "version": "nonfree-unstable",
-    "title": "nonfree-unstable",
-    "aliases": [],
-    "properties": {
-      "hidden": true
-    }
-  },
-  {
     "version": "nonfree",
     "title": "nonfree",
     "aliases": [],
