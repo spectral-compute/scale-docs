@@ -10,7 +10,10 @@
   {
     "version": "nonfree",
     "title": "nonfree",
-    "aliases": []
+    "aliases": [],
+    "properties": {
+      "hidden": true
+    }
   },
   {
     "version": "enterprise",
