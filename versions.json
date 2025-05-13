@@ -8,14 +8,6 @@
     }
   },
   {
-    "version": "nonfree",
-    "title": "nonfree",
-    "aliases": [],
-    "properties": {
-      "hidden": true
-    }
-  },
-  {
     "version": "enterprise",
     "title": "enterprise",
     "aliases": []
