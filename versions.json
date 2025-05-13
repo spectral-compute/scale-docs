@@ -12,7 +12,10 @@
     "title": "enterprise",
     "aliases": [
       "nonfree"
-    ]
+    ],
+    "properties": {
+      "hidden": true
+    }
   },
   {
     "version": "1.3.1",
