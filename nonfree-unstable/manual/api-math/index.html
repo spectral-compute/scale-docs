@@ -1,0 +1,3000 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/api-math/">
+      
+      
+        <link rel="prev" href="../api-driver/">
+      
+      
+        <link rel="next" href="../api-runtime/">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Api math - SCALE documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-fp4-intrinsics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SCALE documentation" class="md-header__button md-logo" aria-label="SCALE documentation" data-md-component="logo">
+      
+  <img src="../../logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SCALE documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Api math
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SCALE documentation" class="md-nav__button md-logo" aria-label="SCALE documentation" data-md-component="logo">
+      
+  <img src="../../logo_white.svg" alt="logo">
+
+    </a>
+    SCALE documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCALE by Spectral Compute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What's new?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install SCALE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compile CUDA with SCALE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently asked questions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCALE Example Programs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ptx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PTX example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/blas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BLAS example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Diving deeper
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Diving deeper
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison to other solutions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dialects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Dialects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../differences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Differences from NVIDIA CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Extensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Compiler
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Compiler
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inline-ptx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inline PTX support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagnostic-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiler warnings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../optimisation-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiler Optimisation Flags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language-extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Language Extensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compute-capabilities/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compute Capability Mapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Implemented APIs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Implemented APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Coverage Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-driver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Api driver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Api math
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Api math
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fp4-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. FP4 Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fp6-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. FP6 Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fp8-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. FP8 Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-half-precision-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Half Precision Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bfloat16-precision-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Bfloat16 Precision Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-single-precision-mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Single Precision Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-single-precision-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Single Precision Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-double-precision-mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Double Precision Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-double-precision-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Double Precision Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-fp128-quad-precision-mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. FP128 Quad Precision Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-type-casting-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Type Casting Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-integer-mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Integer Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-integer-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Integer Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-simd-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. SIMD Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Structs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-runtime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Api runtime
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contact Us
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contact Us
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/report-a-bug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report a Bug
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Legal
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Legal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Free Edition License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../notices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Third party software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-fp4-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. FP4 Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-fp6-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. FP6 Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-fp8-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. FP8 Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-half-precision-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Half Precision Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-bfloat16-precision-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Bfloat16 Precision Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-single-precision-mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Single Precision Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-single-precision-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      7. Single Precision Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-double-precision-mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      8. Double Precision Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-double-precision-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      9. Double Precision Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10-fp128-quad-precision-mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      10. FP128 Quad Precision Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11-type-casting-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      11. Type Casting Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12-integer-mathematical-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      12. Integer Mathematical Functions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#13-integer-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      13. Integer Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#14-simd-intrinsics" class="md-nav__link">
+    <span class="md-ellipsis">
+      14. SIMD Intrinsics
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#15-structs" class="md-nav__link">
+    <span class="md-ellipsis">
+      15. Structs
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>Api math</h1>
+
+<h2 id="1-fp4-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__FP4.html">1. FP4 Intrinsics</a><a class="headerlink" href="#1-fp4-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-4 bit floating point is not supported</span>
+</code></pre></div>
+<h2 id="2-fp6-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__FP6.html">2. FP6 Intrinsics</a><a class="headerlink" href="#2-fp6-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-6 bit floating point is not supported</span>
+</code></pre></div>
+<h2 id="3-fp8-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__FP8.html">3. FP8 Intrinsics</a><a class="headerlink" href="#3-fp8-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-8 bit floating point is not supported</span>
+</code></pre></div>
+<h2 id="4-half-precision-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__HALF.html">4. Half Precision Intrinsics</a><a class="headerlink" href="#4-half-precision-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>typedef __half __nv_half;
+<span class="w"> </span>typedef __half2 __nv_half2;
+<span class="w"> </span>typedef __half2_raw __nv_half2_raw;
+<span class="w"> </span>typedef __half_raw __nv_half_raw;
+<span class="w"> </span>typedef __half half;
+<span class="w"> </span>typedef __half2 half2;
+<span class="w"> </span>typedef __half nv_half;
+<span class="w"> </span>typedef __half2 nv_half2;
+<span class="w"> </span>#define CUDART_INF_FP16
+<span class="w"> </span>#define CUDART_MAX_NORMAL_FP16
+<span class="w"> </span>#define CUDART_MIN_DENORM_FP16
+<span class="w"> </span>#define CUDART_NAN_FP16
+<span class="w"> </span>#define CUDART_NEG_ZERO_FP16
+<span class="w"> </span>#define CUDART_ONE_FP16
+<span class="w"> </span>#define CUDART_ZERO_FP16
+<span class="w"> </span>__half __habs(const __half a);
+<span class="w"> </span>__device__ __half __habs(const __half a);
+<span class="w"> </span>__half __hadd(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hadd(const __half a, const __half b);
+<span class="w"> </span>__half __hadd_rn(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hadd_rn(const __half a, const __half b);
+<span class="w"> </span>__half __hadd_sat(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hadd_sat(const __half a, const __half b);
+<span class="w"> </span>__half __hdiv(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hdiv(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hfma(const __half a, const __half b, const __half c);
+<span class="w"> </span>__device__ __half __hfma_relu(const __half a, const __half b, const __half c);
+<span class="w"> </span>__device__ __half __hfma_sat(const __half a, const __half b, const __half c);
+<span class="w"> </span>__half __hmul(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hmul(const __half a, const __half b);
+<span class="w"> </span>__half __hmul_rn(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hmul_rn(const __half a, const __half b);
+<span class="w"> </span>__half __hmul_sat(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hmul_sat(const __half a, const __half b);
+<span class="w"> </span>__half __hneg(const __half a);
+<span class="w"> </span>__device__ __half __hneg(const __half a);
+<span class="w"> </span>__half __hsub(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hsub(const __half a, const __half b);
+<span class="w"> </span>__half __hsub_rn(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hsub_rn(const __half a, const __half b);
+<span class="w"> </span>__half __hsub_sat(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hsub_sat(const __half a, const __half b);
+<span class="w"> </span>__device__ __half atomicAdd(__half *const address, const __half val);
+<span class="w"> </span>bool __heq(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __heq(const __half a, const __half b);
+<span class="w"> </span>bool __hequ(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hequ(const __half a, const __half b);
+<span class="w"> </span>bool __hge(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hge(const __half a, const __half b);
+<span class="w"> </span>bool __hgeu(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hgeu(const __half a, const __half b);
+<span class="w"> </span>bool __hgt(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hgt(const __half a, const __half b);
+<span class="w"> </span>bool __hgtu(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hgtu(const __half a, const __half b);
+<span class="w"> </span>int __hisinf(const __half a);
+<span class="w"> </span>__device__ int __hisinf(const __half a);
+<span class="w"> </span>bool __hisnan(const __half a);
+<span class="w"> </span>__device__ bool __hisnan(const __half a);
+<span class="w"> </span>bool __hle(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hle(const __half a, const __half b);
+<span class="w"> </span>bool __hleu(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hleu(const __half a, const __half b);
+<span class="w"> </span>bool __hlt(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hlt(const __half a, const __half b);
+<span class="w"> </span>bool __hltu(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hltu(const __half a, const __half b);
+<span class="w"> </span>__half __hmax(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hmax(const __half a, const __half b);
+<span class="w"> </span>__half __hmax_nan(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hmax_nan(const __half a, const __half b);
+<span class="w"> </span>__half __hmin(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hmin(const __half a, const __half b);
+<span class="w"> </span>__half __hmin_nan(const __half a, const __half b);
+<span class="w"> </span>__device__ __half __hmin_nan(const __half a, const __half b);
+<span class="w"> </span>bool __hne(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hne(const __half a, const __half b);
+<span class="w"> </span>bool __hneu(const __half a, const __half b);
+<span class="w"> </span>__device__ bool __hneu(const __half a, const __half b);
+<span class="w"> </span>__device__ __half hceil(const __half h);
+<span class="w"> </span>__device__ __half hcos(const __half a);
+<span class="w"> </span>__device__ __half hexp(const __half a);
+<span class="w"> </span>__device__ __half hexp10(const __half a);
+<span class="w"> </span>__device__ __half hexp2(const __half a);
+<span class="w"> </span>__device__ __half hfloor(const __half h);
+<span class="w"> </span>__device__ __half hlog(const __half a);
+<span class="w"> </span>__device__ __half hlog10(const __half a);
+<span class="w"> </span>__device__ __half hlog2(const __half a);
+<span class="w"> </span>__device__ __half hrcp(const __half a);
+<span class="w"> </span>__device__ __half hrint(const __half h);
+<span class="w"> </span>__device__ __half hrsqrt(const __half a);
+<span class="w"> </span>__device__ __half hsin(const __half a);
+<span class="w"> </span>__device__ __half hsqrt(const __half a);
+<span class="gd">-__device__ __half htanh(const __half a);</span>
+<span class="gd">-__device__ __half htanh_approx(const __half a);</span>
+<span class="w"> </span>__device__ __half htrunc(const __half h);
+<span class="w"> </span>__half __double2half(const double a);
+<span class="w"> </span>__device__ __half __double2half(const double a);
+<span class="w"> </span>__half2 __float22half2_rn(const float2 a);
+<span class="w"> </span>__device__ __half2 __float22half2_rn(const float2 a);
+<span class="w"> </span>__half __float2half(const float a);
+<span class="w"> </span>__device__ __half __float2half(const float a);
+<span class="w"> </span>__half2 __float2half2_rn(const float a);
+<span class="w"> </span>__device__ __half2 __float2half2_rn(const float a);
+<span class="gd">-__half __float2half_rd(const float a);</span>
+<span class="gd">-__device__ __half __float2half_rd(const float a);</span>
+<span class="w"> </span>__half __float2half_rn(const float a);
+<span class="w"> </span>__device__ __half __float2half_rn(const float a);
+<span class="gd">-__half __float2half_ru(const float a);</span>
+<span class="gd">-__device__ __half __float2half_ru(const float a);</span>
+<span class="gd">-__half __float2half_rz(const float a);</span>
+<span class="gd">-__device__ __half __float2half_rz(const float a);</span>
+<span class="w"> </span>__half2 __floats2half2_rn(const float a, const float b);
+<span class="w"> </span>__device__ __half2 __floats2half2_rn(const float a, const float b);
+<span class="w"> </span>float2 __half22float2(const __half2 a);
+<span class="w"> </span>__device__ float2 __half22float2(const __half2 a);
+<span class="gd">-signed char __half2char_rz(const __half h);</span>
+<span class="gd">-__device__ signed char __half2char_rz(const __half h);</span>
+<span class="w"> </span>float __half2float(const __half a);
+<span class="w"> </span>__device__ float __half2float(const __half a);
+<span class="w"> </span>__half2 __half2half2(const __half a);
+<span class="w"> </span>__device__ __half2 __half2half2(const __half a);
+<span class="w"> </span>__device__ int __half2int_rd(const __half h);
+<span class="w"> </span>__device__ int __half2int_rn(const __half h);
+<span class="w"> </span>__device__ int __half2int_ru(const __half h);
+<span class="w"> </span>int __half2int_rz(const __half h);
+<span class="w"> </span>__device__ int __half2int_rz(const __half h);
+<span class="w"> </span>__device__ long long int __half2ll_rd(const __half h);
+<span class="w"> </span>__device__ long long int __half2ll_rn(const __half h);
+<span class="w"> </span>__device__ long long int __half2ll_ru(const __half h);
+<span class="w"> </span>long long int __half2ll_rz(const __half h);
+<span class="w"> </span>__device__ long long int __half2ll_rz(const __half h);
+<span class="w"> </span>__device__ short int __half2short_rd(const __half h);
+<span class="w"> </span>__device__ short int __half2short_rn(const __half h);
+<span class="w"> </span>__device__ short int __half2short_ru(const __half h);
+<span class="w"> </span>short int __half2short_rz(const __half h);
+<span class="w"> </span>__device__ short int __half2short_rz(const __half h);
+<span class="gd">-unsigned char __half2uchar_rz(const __half h);</span>
+<span class="gd">-__device__ unsigned char __half2uchar_rz(const __half h);</span>
+<span class="w"> </span>__device__ unsigned int __half2uint_rd(const __half h);
+<span class="w"> </span>__device__ unsigned int __half2uint_rn(const __half h);
+<span class="w"> </span>__device__ unsigned int __half2uint_ru(const __half h);
+<span class="w"> </span>unsigned int __half2uint_rz(const __half h);
+<span class="w"> </span>__device__ unsigned int __half2uint_rz(const __half h);
+<span class="w"> </span>__device__ unsigned long long int __half2ull_rd(const __half h);
+<span class="w"> </span>__device__ unsigned long long int __half2ull_rn(const __half h);
+<span class="w"> </span>__device__ unsigned long long int __half2ull_ru(const __half h);
+<span class="w"> </span>unsigned long long int __half2ull_rz(const __half h);
+<span class="w"> </span>__device__ unsigned long long int __half2ull_rz(const __half h);
+<span class="w"> </span>__device__ unsigned short int __half2ushort_rd(const __half h);
+<span class="w"> </span>__device__ unsigned short int __half2ushort_rn(const __half h);
+<span class="w"> </span>__device__ unsigned short int __half2ushort_ru(const __half h);
+<span class="w"> </span>unsigned short int __half2ushort_rz(const __half h);
+<span class="w"> </span>__device__ unsigned short int __half2ushort_rz(const __half h);
+<span class="w"> </span>short int __half_as_short(const __half h);
+<span class="w"> </span>__device__ short int __half_as_short(const __half h);
+<span class="w"> </span>unsigned short int __half_as_ushort(const __half h);
+<span class="w"> </span>__device__ unsigned short int __half_as_ushort(const __half h);
+<span class="w"> </span>__half2 __halves2half2(const __half a, const __half b);
+<span class="w"> </span>__device__ __half2 __halves2half2(const __half a, const __half b);
+<span class="w"> </span>float __high2float(const __half2 a);
+<span class="w"> </span>__device__ float __high2float(const __half2 a);
+<span class="w"> </span>__half __high2half(const __half2 a);
+<span class="w"> </span>__device__ __half __high2half(const __half2 a);
+<span class="w"> </span>__half2 __high2half2(const __half2 a);
+<span class="w"> </span>__device__ __half2 __high2half2(const __half2 a);
+<span class="w"> </span>__half2 __highs2half2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __highs2half2(const __half2 a, const __half2 b);
+<span class="gd">-__half __int2half_rd(const int i);</span>
+<span class="gd">-__device__ __half __int2half_rd(const int i);</span>
+<span class="w"> </span>__half __int2half_rn(const int i);
+<span class="w"> </span>__device__ __half __int2half_rn(const int i);
+<span class="gd">-__half __int2half_ru(const int i);</span>
+<span class="gd">-__device__ __half __int2half_ru(const int i);</span>
+<span class="gd">-__half __int2half_rz(const int i);</span>
+<span class="gd">-__device__ __half __int2half_rz(const int i);</span>
+<span class="w"> </span>__device__ __half2 __ldca(const __half2 *const ptr);
+<span class="w"> </span>__device__ __half __ldca(const __half *const ptr);
+<span class="w"> </span>__device__ __half __ldcg(const __half *const ptr);
+<span class="w"> </span>__device__ __half2 __ldcg(const __half2 *const ptr);
+<span class="w"> </span>__device__ __half __ldcs(const __half *const ptr);
+<span class="w"> </span>__device__ __half2 __ldcs(const __half2 *const ptr);
+<span class="w"> </span>__device__ __half2 __ldcv(const __half2 *const ptr);
+<span class="w"> </span>__device__ __half __ldcv(const __half *const ptr);
+<span class="w"> </span>__device__ __half2 __ldg(const __half2 *const ptr);
+<span class="w"> </span>__device__ __half __ldg(const __half *const ptr);
+<span class="w"> </span>__device__ __half __ldlu(const __half *const ptr);
+<span class="w"> </span>__device__ __half2 __ldlu(const __half2 *const ptr);
+<span class="gd">-__half __ll2half_rd(const long long int i);</span>
+<span class="gd">-__device__ __half __ll2half_rd(const long long int i);</span>
+<span class="w"> </span>__half __ll2half_rn(const long long int i);
+<span class="w"> </span>__device__ __half __ll2half_rn(const long long int i);
+<span class="gd">-__half __ll2half_ru(const long long int i);</span>
+<span class="gd">-__device__ __half __ll2half_ru(const long long int i);</span>
+<span class="gd">-__half __ll2half_rz(const long long int i);</span>
+<span class="gd">-__device__ __half __ll2half_rz(const long long int i);</span>
+<span class="w"> </span>float __low2float(const __half2 a);
+<span class="w"> </span>__device__ float __low2float(const __half2 a);
+<span class="w"> </span>__half __low2half(const __half2 a);
+<span class="w"> </span>__device__ __half __low2half(const __half2 a);
+<span class="w"> </span>__half2 __low2half2(const __half2 a);
+<span class="w"> </span>__device__ __half2 __low2half2(const __half2 a);
+<span class="w"> </span>__half2 __lowhigh2highlow(const __half2 a);
+<span class="w"> </span>__device__ __half2 __lowhigh2highlow(const __half2 a);
+<span class="w"> </span>__half2 __lows2half2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __lows2half2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half __shfl_down_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __half2 __shfl_down_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __half2 __shfl_sync(const unsigned int mask, const __half2 var, const int srcLane, const int width=warpSize);
+<span class="w"> </span>__device__ __half __shfl_sync(const unsigned int mask, const __half var, const int srcLane, const int width=warpSize);
+<span class="w"> </span>__device__ __half2 __shfl_up_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __half __shfl_up_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __half2 __shfl_xor_sync(const unsigned int mask, const __half2 var, const int laneMask, const int width=warpSize);
+<span class="w"> </span>__device__ __half __shfl_xor_sync(const unsigned int mask, const __half var, const int laneMask, const int width=warpSize);
+<span class="gd">-__half __short2half_rd(const short int i);</span>
+<span class="gd">-__device__ __half __short2half_rd(const short int i);</span>
+<span class="w"> </span>__half __short2half_rn(const short int i);
+<span class="w"> </span>__device__ __half __short2half_rn(const short int i);
+<span class="gd">-__half __short2half_ru(const short int i);</span>
+<span class="gd">-__device__ __half __short2half_ru(const short int i);</span>
+<span class="gd">-__half __short2half_rz(const short int i);</span>
+<span class="gd">-__device__ __half __short2half_rz(const short int i);</span>
+<span class="w"> </span>__half __short_as_half(const short int i);
+<span class="w"> </span>__device__ __half __short_as_half(const short int i);
+<span class="w"> </span>__device__ void __stcg(__half2 *const ptr, const __half2 value);
+<span class="w"> </span>__device__ void __stcg(__half *const ptr, const __half value);
+<span class="w"> </span>__device__ void __stcs(__half2 *const ptr, const __half2 value);
+<span class="w"> </span>__device__ void __stcs(__half *const ptr, const __half value);
+<span class="w"> </span>__device__ void __stwb(__half2 *const ptr, const __half2 value);
+<span class="w"> </span>__device__ void __stwb(__half *const ptr, const __half value);
+<span class="w"> </span>__device__ void __stwt(__half *const ptr, const __half value);
+<span class="w"> </span>__device__ void __stwt(__half2 *const ptr, const __half2 value);
+<span class="gd">-__half __uint2half_rd(const unsigned int i);</span>
+<span class="gd">-__device__ __half __uint2half_rd(const unsigned int i);</span>
+<span class="w"> </span>__half __uint2half_rn(const unsigned int i);
+<span class="w"> </span>__device__ __half __uint2half_rn(const unsigned int i);
+<span class="gd">-__half __uint2half_ru(const unsigned int i);</span>
+<span class="gd">-__device__ __half __uint2half_ru(const unsigned int i);</span>
+<span class="gd">-__half __uint2half_rz(const unsigned int i);</span>
+<span class="gd">-__device__ __half __uint2half_rz(const unsigned int i);</span>
+<span class="gd">-__half __ull2half_rd(const unsigned long long int i);</span>
+<span class="gd">-__device__ __half __ull2half_rd(const unsigned long long int i);</span>
+<span class="w"> </span>__half __ull2half_rn(const unsigned long long int i);
+<span class="w"> </span>__device__ __half __ull2half_rn(const unsigned long long int i);
+<span class="gd">-__half __ull2half_ru(const unsigned long long int i);</span>
+<span class="gd">-__device__ __half __ull2half_ru(const unsigned long long int i);</span>
+<span class="gd">-__half __ull2half_rz(const unsigned long long int i);</span>
+<span class="gd">-__device__ __half __ull2half_rz(const unsigned long long int i);</span>
+<span class="gd">-__half __ushort2half_rd(const unsigned short int i);</span>
+<span class="gd">-__device__ __half __ushort2half_rd(const unsigned short int i);</span>
+<span class="w"> </span>__half __ushort2half_rn(const unsigned short int i);
+<span class="w"> </span>__device__ __half __ushort2half_rn(const unsigned short int i);
+<span class="gd">-__half __ushort2half_ru(const unsigned short int i);</span>
+<span class="gd">-__device__ __half __ushort2half_ru(const unsigned short int i);</span>
+<span class="gd">-__half __ushort2half_rz(const unsigned short int i);</span>
+<span class="gd">-__device__ __half __ushort2half_rz(const unsigned short int i);</span>
+<span class="w"> </span>__half __ushort_as_half(const unsigned short int i);
+<span class="w"> </span>__device__ __half __ushort_as_half(const unsigned short int i);
+<span class="w"> </span>__half2 make_half2(const __half x, const __half y);
+<span class="w"> </span>__device__ __half2 make_half2(const __half x, const __half y);
+<span class="w"> </span>__half2 __h2div(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __h2div(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __habs2(const __half2 a);
+<span class="w"> </span>__device__ __half2 __habs2(const __half2 a);
+<span class="w"> </span>__half2 __hadd2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hadd2(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hadd2_rn(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hadd2_rn(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hadd2_sat(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hadd2_sat(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hcmadd(const __half2 a, const __half2 b, const __half2 c);
+<span class="w"> </span>__device__ __half2 __hfma2(const __half2 a, const __half2 b, const __half2 c);
+<span class="w"> </span>__device__ __half2 __hfma2_relu(const __half2 a, const __half2 b, const __half2 c);
+<span class="w"> </span>__device__ __half2 __hfma2_sat(const __half2 a, const __half2 b, const __half2 c);
+<span class="w"> </span>__half2 __hmul2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hmul2(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hmul2_rn(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hmul2_rn(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hmul2_sat(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hmul2_sat(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hneg2(const __half2 a);
+<span class="w"> </span>__device__ __half2 __hneg2(const __half2 a);
+<span class="w"> </span>__half2 __hsub2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hsub2(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hsub2_rn(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hsub2_rn(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hsub2_sat(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hsub2_sat(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 atomicAdd(__half2 *const address, const __half2 val);
+<span class="w"> </span>bool __hbeq2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbeq2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hbequ2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbequ2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hbge2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbge2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hbgeu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbgeu2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hbgt2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbgt2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hbgtu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbgtu2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hble2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hble2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hbleu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbleu2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hblt2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hblt2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hbltu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbltu2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hbne2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbne2(const __half2 a, const __half2 b);
+<span class="w"> </span>bool __hbneu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ bool __hbneu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __heq2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __heq2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __heq2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __heq2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hequ2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hequ2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hequ2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hequ2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hge2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hge2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hge2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hge2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hgeu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hgeu2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hgeu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hgeu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hgt2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hgt2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hgt2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hgt2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hgtu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hgtu2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hgtu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hgtu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hisnan2(const __half2 a);
+<span class="w"> </span>__device__ __half2 __hisnan2(const __half2 a);
+<span class="w"> </span>__half2 __hle2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hle2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hle2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hle2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hleu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hleu2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hleu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hleu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hlt2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hlt2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hlt2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hlt2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hltu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hltu2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hltu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hltu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hmax2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hmax2(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hmax2_nan(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hmax2_nan(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hmin2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hmin2(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hmin2_nan(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hmin2_nan(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hne2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hne2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hne2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hne2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__half2 __hneu2(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 __hneu2(const __half2 a, const __half2 b);
+<span class="w"> </span>unsigned int __hneu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ unsigned int __hneu2_mask(const __half2 a, const __half2 b);
+<span class="w"> </span>__device__ __half2 h2ceil(const __half2 h);
+<span class="w"> </span>__device__ __half2 h2cos(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2exp(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2exp10(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2exp2(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2floor(const __half2 h);
+<span class="w"> </span>__device__ __half2 h2log(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2log10(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2log2(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2rcp(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2rint(const __half2 h);
+<span class="w"> </span>__device__ __half2 h2rsqrt(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2sin(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2sqrt(const __half2 a);
+<span class="gd">-__device__ __half2 h2tanh(const __half2 a);</span>
+<span class="gd">-__device__ __half2 h2tanh_approx(const __half2 a);</span>
+<span class="w"> </span>__device__ __half2 h2trunc(const __half2 h);
+</code></pre></div>
+<h2 id="5-bfloat16-precision-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__BFLOAT16.html">5. Bfloat16 Precision Intrinsics</a><a class="headerlink" href="#5-bfloat16-precision-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>typedef __nv_bfloat16 nv_bfloat16;
+<span class="w"> </span>typedef __nv_bfloat162 nv_bfloat162;
+<span class="w"> </span>#define CUDART_INF_BF16
+<span class="w"> </span>#define CUDART_MAX_NORMAL_BF16
+<span class="w"> </span>#define CUDART_MIN_DENORM_BF16
+<span class="w"> </span>#define CUDART_NAN_BF16
+<span class="w"> </span>#define CUDART_NEG_ZERO_BF16
+<span class="w"> </span>#define CUDART_ONE_BF16
+<span class="w"> </span>#define CUDART_ZERO_BF16
+<span class="w"> </span>__nv_bfloat16 __habs(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 __habs(const __nv_bfloat16 a);
+<span class="w"> </span>__nv_bfloat16 __hadd(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hadd(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hadd_rn(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hadd_rn(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hadd_sat(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hadd_sat(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hdiv(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hdiv(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hfma(const __nv_bfloat16 a, const __nv_bfloat16 b, const __nv_bfloat16 c);
+<span class="w"> </span>__device__ __nv_bfloat16 __hfma_relu(const __nv_bfloat16 a, const __nv_bfloat16 b, const __nv_bfloat16 c);
+<span class="w"> </span>__device__ __nv_bfloat16 __hfma_sat(const __nv_bfloat16 a, const __nv_bfloat16 b, const __nv_bfloat16 c);
+<span class="w"> </span>__nv_bfloat16 __hmul(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hmul(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hmul_rn(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hmul_rn(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hmul_sat(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hmul_sat(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hneg(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 __hneg(const __nv_bfloat16 a);
+<span class="w"> </span>__nv_bfloat16 __hsub(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hsub(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hsub_rn(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hsub_rn(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hsub_sat(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hsub_sat(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 atomicAdd(__nv_bfloat16 *const address, const __nv_bfloat16 val);
+<span class="w"> </span>bool __heq(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __heq(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hequ(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hequ(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hge(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hge(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hgeu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hgeu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hgt(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hgt(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hgtu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hgtu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>int __hisinf(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ int __hisinf(const __nv_bfloat16 a);
+<span class="w"> </span>bool __hisnan(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ bool __hisnan(const __nv_bfloat16 a);
+<span class="w"> </span>bool __hle(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hle(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hleu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hleu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hlt(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hlt(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hltu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hltu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hmax(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hmax(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hmax_nan(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hmax_nan(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hmin(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hmin(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __hmin_nan(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 __hmin_nan(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hne(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hne(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>bool __hneu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ bool __hneu(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat16 hceil(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ __nv_bfloat16 hcos(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hexp(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hexp10(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hexp2(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hfloor(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ __nv_bfloat16 hlog(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hlog10(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hlog2(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hrcp(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hrint(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ __nv_bfloat16 hrsqrt(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hsin(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat16 hsqrt(const __nv_bfloat16 a);
+<span class="gd">-__device__ __nv_bfloat16 htanh(const __nv_bfloat16 a);</span>
+<span class="gd">-__device__ __nv_bfloat16 htanh_approx(const __nv_bfloat16 a);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 htrunc(const __nv_bfloat16 h);
+<span class="w"> </span>float2 __bfloat1622float2(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ float2 __bfloat1622float2(const __nv_bfloat162 a);
+<span class="w"> </span>__nv_bfloat162 __bfloat162bfloat162(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ __nv_bfloat162 __bfloat162bfloat162(const __nv_bfloat16 a);
+<span class="gd">-signed char __bfloat162char_rz(const __nv_bfloat16 h);</span>
+<span class="gd">-__device__ signed char __bfloat162char_rz(const __nv_bfloat16 h);</span>
+<span class="w"> </span>float __bfloat162float(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ float __bfloat162float(const __nv_bfloat16 a);
+<span class="w"> </span>__device__ int __bfloat162int_rd(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ int __bfloat162int_rn(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ int __bfloat162int_ru(const __nv_bfloat16 h);
+<span class="w"> </span>int __bfloat162int_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ int __bfloat162int_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ long long int __bfloat162ll_rd(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ long long int __bfloat162ll_rn(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ long long int __bfloat162ll_ru(const __nv_bfloat16 h);
+<span class="w"> </span>long long int __bfloat162ll_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ long long int __bfloat162ll_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ short int __bfloat162short_rd(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ short int __bfloat162short_rn(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ short int __bfloat162short_ru(const __nv_bfloat16 h);
+<span class="w"> </span>short int __bfloat162short_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ short int __bfloat162short_rz(const __nv_bfloat16 h);
+<span class="gd">-unsigned char __bfloat162uchar_rz(const __nv_bfloat16 h);</span>
+<span class="gd">-__device__ unsigned char __bfloat162uchar_rz(const __nv_bfloat16 h);</span>
+<span class="w"> </span>__device__ unsigned int __bfloat162uint_rd(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned int __bfloat162uint_rn(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned int __bfloat162uint_ru(const __nv_bfloat16 h);
+<span class="w"> </span>unsigned int __bfloat162uint_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned int __bfloat162uint_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned long long int __bfloat162ull_rd(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned long long int __bfloat162ull_rn(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned long long int __bfloat162ull_ru(const __nv_bfloat16 h);
+<span class="w"> </span>unsigned long long int __bfloat162ull_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned long long int __bfloat162ull_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned short int __bfloat162ushort_rd(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned short int __bfloat162ushort_rn(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned short int __bfloat162ushort_ru(const __nv_bfloat16 h);
+<span class="w"> </span>unsigned short int __bfloat162ushort_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned short int __bfloat162ushort_rz(const __nv_bfloat16 h);
+<span class="w"> </span>short int __bfloat16_as_short(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ short int __bfloat16_as_short(const __nv_bfloat16 h);
+<span class="w"> </span>unsigned short int __bfloat16_as_ushort(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned short int __bfloat16_as_ushort(const __nv_bfloat16 h);
+<span class="w"> </span>__nv_bfloat16 __double2bfloat16(const double a);
+<span class="w"> </span>__device__ __nv_bfloat16 __double2bfloat16(const double a);
+<span class="w"> </span>__nv_bfloat162 __float22bfloat162_rn(const float2 a);
+<span class="w"> </span>__device__ __nv_bfloat162 __float22bfloat162_rn(const float2 a);
+<span class="w"> </span>__nv_bfloat16 __float2bfloat16(const float a);
+<span class="w"> </span>__device__ __nv_bfloat16 __float2bfloat16(const float a);
+<span class="w"> </span>__nv_bfloat162 __float2bfloat162_rn(const float a);
+<span class="w"> </span>__device__ __nv_bfloat162 __float2bfloat162_rn(const float a);
+<span class="gd">-__nv_bfloat16 __float2bfloat16_rd(const float a);</span>
+<span class="gd">-__device__ __nv_bfloat16 __float2bfloat16_rd(const float a);</span>
+<span class="w"> </span>__nv_bfloat16 __float2bfloat16_rn(const float a);
+<span class="w"> </span>__device__ __nv_bfloat16 __float2bfloat16_rn(const float a);
+<span class="gd">-__nv_bfloat16 __float2bfloat16_ru(const float a);</span>
+<span class="gd">-__device__ __nv_bfloat16 __float2bfloat16_ru(const float a);</span>
+<span class="gd">-__nv_bfloat16 __float2bfloat16_rz(const float a);</span>
+<span class="gd">-__device__ __nv_bfloat16 __float2bfloat16_rz(const float a);</span>
+<span class="w"> </span>__nv_bfloat162 __floats2bfloat162_rn(const float a, const float b);
+<span class="w"> </span>__device__ __nv_bfloat162 __floats2bfloat162_rn(const float a, const float b);
+<span class="w"> </span>__nv_bfloat162 __halves2bfloat162(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __halves2bfloat162(const __nv_bfloat16 a, const __nv_bfloat16 b);
+<span class="w"> </span>__nv_bfloat16 __high2bfloat16(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat16 __high2bfloat16(const __nv_bfloat162 a);
+<span class="w"> </span>__nv_bfloat162 __high2bfloat162(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 __high2bfloat162(const __nv_bfloat162 a);
+<span class="w"> </span>float __high2float(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ float __high2float(const __nv_bfloat162 a);
+<span class="w"> </span>__nv_bfloat162 __highs2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __highs2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="gd">-__device__ __nv_bfloat16 __int2bfloat16_rd(const int i);</span>
+<span class="w"> </span>__nv_bfloat16 __int2bfloat16_rn(const int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __int2bfloat16_rn(const int i);
+<span class="gd">-__device__ __nv_bfloat16 __int2bfloat16_ru(const int i);</span>
+<span class="gd">-__device__ __nv_bfloat16 __int2bfloat16_rz(const int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat162 __ldca(const __nv_bfloat162 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat16 __ldca(const __nv_bfloat16 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat16 __ldcg(const __nv_bfloat16 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat162 __ldcg(const __nv_bfloat162 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat162 __ldcs(const __nv_bfloat162 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat16 __ldcs(const __nv_bfloat16 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat16 __ldcv(const __nv_bfloat16 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat162 __ldcv(const __nv_bfloat162 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat162 __ldg(const __nv_bfloat162 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat16 __ldg(const __nv_bfloat16 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat162 __ldlu(const __nv_bfloat162 *const ptr);
+<span class="w"> </span>__device__ __nv_bfloat16 __ldlu(const __nv_bfloat16 *const ptr);
+<span class="gd">-__device__ __nv_bfloat16 __ll2bfloat16_rd(const long long int i);</span>
+<span class="w"> </span>__nv_bfloat16 __ll2bfloat16_rn(const long long int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __ll2bfloat16_rn(const long long int i);
+<span class="gd">-__device__ __nv_bfloat16 __ll2bfloat16_ru(const long long int i);</span>
+<span class="gd">-__device__ __nv_bfloat16 __ll2bfloat16_rz(const long long int i);</span>
+<span class="w"> </span>__nv_bfloat16 __low2bfloat16(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat16 __low2bfloat16(const __nv_bfloat162 a);
+<span class="w"> </span>__nv_bfloat162 __low2bfloat162(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 __low2bfloat162(const __nv_bfloat162 a);
+<span class="w"> </span>float __low2float(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ float __low2float(const __nv_bfloat162 a);
+<span class="w"> </span>__nv_bfloat162 __lowhigh2highlow(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 __lowhigh2highlow(const __nv_bfloat162 a);
+<span class="w"> </span>__nv_bfloat162 __lows2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __lows2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __shfl_down_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat16 __shfl_down_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat162 __shfl_sync(const unsigned int mask, const __nv_bfloat162 var, const int srcLane, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat16 __shfl_sync(const unsigned int mask, const __nv_bfloat16 var, const int srcLane, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat16 __shfl_up_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat162 __shfl_up_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat16 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat16 var, const int laneMask, const int width=warpSize);
+<span class="w"> </span>__device__ __nv_bfloat162 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat162 var, const int laneMask, const int width=warpSize);
+<span class="gd">-__device__ __nv_bfloat16 __short2bfloat16_rd(const short int i);</span>
+<span class="w"> </span>__nv_bfloat16 __short2bfloat16_rn(const short int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __short2bfloat16_rn(const short int i);
+<span class="gd">-__device__ __nv_bfloat16 __short2bfloat16_ru(const short int i);</span>
+<span class="gd">-__device__ __nv_bfloat16 __short2bfloat16_rz(const short int i);</span>
+<span class="w"> </span>__nv_bfloat16 __short_as_bfloat16(const short int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __short_as_bfloat16(const short int i);
+<span class="w"> </span>__device__ void __stcg(__nv_bfloat16 *const ptr, const __nv_bfloat16 value);
+<span class="w"> </span>__device__ void __stcg(__nv_bfloat162 *const ptr, const __nv_bfloat162 value);
+<span class="w"> </span>__device__ void __stcs(__nv_bfloat16 *const ptr, const __nv_bfloat16 value);
+<span class="w"> </span>__device__ void __stcs(__nv_bfloat162 *const ptr, const __nv_bfloat162 value);
+<span class="w"> </span>__device__ void __stwb(__nv_bfloat16 *const ptr, const __nv_bfloat16 value);
+<span class="w"> </span>__device__ void __stwb(__nv_bfloat162 *const ptr, const __nv_bfloat162 value);
+<span class="w"> </span>__device__ void __stwt(__nv_bfloat162 *const ptr, const __nv_bfloat162 value);
+<span class="w"> </span>__device__ void __stwt(__nv_bfloat16 *const ptr, const __nv_bfloat16 value);
+<span class="gd">-__device__ __nv_bfloat16 __uint2bfloat16_rd(const unsigned int i);</span>
+<span class="w"> </span>__nv_bfloat16 __uint2bfloat16_rn(const unsigned int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __uint2bfloat16_rn(const unsigned int i);
+<span class="gd">-__device__ __nv_bfloat16 __uint2bfloat16_ru(const unsigned int i);</span>
+<span class="gd">-__device__ __nv_bfloat16 __uint2bfloat16_rz(const unsigned int i);</span>
+<span class="gd">-__device__ __nv_bfloat16 __ull2bfloat16_rd(const unsigned long long int i);</span>
+<span class="w"> </span>__nv_bfloat16 __ull2bfloat16_rn(const unsigned long long int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __ull2bfloat16_rn(const unsigned long long int i);
+<span class="gd">-__device__ __nv_bfloat16 __ull2bfloat16_ru(const unsigned long long int i);</span>
+<span class="gd">-__device__ __nv_bfloat16 __ull2bfloat16_rz(const unsigned long long int i);</span>
+<span class="gd">-__device__ __nv_bfloat16 __ushort2bfloat16_rd(const unsigned short int i);</span>
+<span class="w"> </span>__nv_bfloat16 __ushort2bfloat16_rn(const unsigned short int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __ushort2bfloat16_rn(const unsigned short int i);
+<span class="gd">-__device__ __nv_bfloat16 __ushort2bfloat16_ru(const unsigned short int i);</span>
+<span class="gd">-__device__ __nv_bfloat16 __ushort2bfloat16_rz(const unsigned short int i);</span>
+<span class="w"> </span>__nv_bfloat16 __ushort_as_bfloat16(const unsigned short int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __ushort_as_bfloat16(const unsigned short int i);
+<span class="w"> </span>__nv_bfloat162 make_bfloat162(const __nv_bfloat16 x, const __nv_bfloat16 y);
+<span class="w"> </span>__device__ __nv_bfloat162 make_bfloat162(const __nv_bfloat16 x, const __nv_bfloat16 y);
+<span class="w"> </span>__nv_bfloat162 __h2div(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __h2div(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __habs2(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 __habs2(const __nv_bfloat162 a);
+<span class="w"> </span>__nv_bfloat162 __hadd2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hadd2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hadd2_rn(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hadd2_rn(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hadd2_sat(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hadd2_sat(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hcmadd(const __nv_bfloat162 a, const __nv_bfloat162 b, const __nv_bfloat162 c);
+<span class="w"> </span>__device__ __nv_bfloat162 __hfma2(const __nv_bfloat162 a, const __nv_bfloat162 b, const __nv_bfloat162 c);
+<span class="w"> </span>__device__ __nv_bfloat162 __hfma2_relu(const __nv_bfloat162 a, const __nv_bfloat162 b, const __nv_bfloat162 c);
+<span class="w"> </span>__device__ __nv_bfloat162 __hfma2_sat(const __nv_bfloat162 a, const __nv_bfloat162 b, const __nv_bfloat162 c);
+<span class="w"> </span>__nv_bfloat162 __hmul2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hmul2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hmul2_rn(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hmul2_rn(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hmul2_sat(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hmul2_sat(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hneg2(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 __hneg2(const __nv_bfloat162 a);
+<span class="w"> </span>__nv_bfloat162 __hsub2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hsub2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hsub2_rn(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hsub2_rn(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hsub2_sat(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hsub2_sat(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 atomicAdd(__nv_bfloat162 *const address, const __nv_bfloat162 val);
+<span class="w"> </span>bool __hbeq2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbeq2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hbequ2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbequ2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hbge2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbge2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hbgeu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbgeu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hbgt2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbgt2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hbgtu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbgtu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hble2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hble2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hbleu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbleu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hblt2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hblt2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hbltu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbltu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hbne2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbne2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>bool __hbneu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ bool __hbneu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __heq2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __heq2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __heq2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __heq2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hequ2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hequ2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hequ2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hequ2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hge2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hge2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hge2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hge2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hgeu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hgeu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hgeu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hgeu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hgt2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hgt2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hgt2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hgt2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hgtu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hgtu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hgtu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hgtu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hisnan2(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 __hisnan2(const __nv_bfloat162 a);
+<span class="w"> </span>__nv_bfloat162 __hle2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hle2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hle2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hle2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hleu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hleu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hleu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hleu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hlt2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hlt2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hlt2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hlt2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hltu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hltu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hltu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hltu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hmax2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hmax2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hmax2_nan(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hmax2_nan(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hmin2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hmin2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hmin2_nan(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hmin2_nan(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hne2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hne2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hne2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hne2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__nv_bfloat162 __hneu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 __hneu2(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>unsigned int __hneu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ unsigned int __hneu2_mask(const __nv_bfloat162 a, const __nv_bfloat162 b);
+<span class="w"> </span>__device__ __nv_bfloat162 h2ceil(const __nv_bfloat162 h);
+<span class="w"> </span>__device__ __nv_bfloat162 h2cos(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2exp(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2exp10(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2exp2(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2floor(const __nv_bfloat162 h);
+<span class="w"> </span>__device__ __nv_bfloat162 h2log(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2log10(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2log2(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2rcp(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2rint(const __nv_bfloat162 h);
+<span class="w"> </span>__device__ __nv_bfloat162 h2rsqrt(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2sin(const __nv_bfloat162 a);
+<span class="w"> </span>__device__ __nv_bfloat162 h2sqrt(const __nv_bfloat162 a);
+<span class="gd">-__device__ __nv_bfloat162 h2tanh(const __nv_bfloat162 a);</span>
+<span class="gd">-__device__ __nv_bfloat162 h2tanh_approx(const __nv_bfloat162 a);</span>
+<span class="w"> </span>__device__ __nv_bfloat162 h2trunc(const __nv_bfloat162 h);
+</code></pre></div>
+<h2 id="6-single-precision-mathematical-functions"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__SINGLE.html">6. Single Precision Mathematical Functions</a><a class="headerlink" href="#6-single-precision-mathematical-functions" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ float acosf(float x);
+<span class="w"> </span>__device__ float acoshf(float x);
+<span class="w"> </span>__device__ float asinf(float x);
+<span class="w"> </span>__device__ float asinhf(float x);
+<span class="w"> </span>__device__ float atan2f(float y, float x);
+<span class="w"> </span>__device__ float atanf(float x);
+<span class="w"> </span>__device__ float atanhf(float x);
+<span class="w"> </span>__device__ float cbrtf(float x);
+<span class="w"> </span>__device__ float ceilf(float x);
+<span class="w"> </span>__device__ float copysignf(float x, float y);
+<span class="w"> </span>__device__ float cosf(float x);
+<span class="w"> </span>__device__ float coshf(float x);
+<span class="w"> </span>__device__ float cospif(float x);
+<span class="gd">-__device__ float cyl_bessel_i0f(float x);</span>
+<span class="gd">-__device__ float cyl_bessel_i1f(float x);</span>
+<span class="w"> </span>__device__ float erfcf(float x);
+<span class="w"> </span>__device__ float erfcinvf(float x);
+<span class="gd">-__device__ float erfcxf(float x);</span>
+<span class="w"> </span>__device__ float erff(float x);
+<span class="w"> </span>__device__ float erfinvf(float x);
+<span class="w"> </span>__device__ float exp10f(float x);
+<span class="w"> </span>__device__ float exp2f(float x);
+<span class="w"> </span>__device__ float expf(float x);
+<span class="w"> </span>__device__ float expm1f(float x);
+<span class="w"> </span>__device__ float fabsf(float x);
+<span class="w"> </span>__device__ float fdimf(float x, float y);
+<span class="w"> </span>__device__ float fdividef(float x, float y);
+<span class="w"> </span>__device__ float floorf(float x);
+<span class="w"> </span>__device__ float fmaf(float x, float y, float z);
+<span class="w"> </span>__device__ float fmaxf(float x, float y);
+<span class="w"> </span>__device__ float fminf(float x, float y);
+<span class="w"> </span>__device__ float fmodf(float x, float y);
+<span class="w"> </span>__device__ float frexpf(float x, int *nptr);
+<span class="w"> </span>__device__ float hypotf(float x, float y);
+<span class="w"> </span>__device__ int ilogbf(float x);
+<span class="w"> </span>__device__ bool isfinite(float a);
+<span class="w"> </span>__device__ bool isinf(float a);
+<span class="w"> </span>__device__ bool isnan(float a);
+<span class="gd">-__device__ float j0f(float x);</span>
+<span class="gd">-__device__ float j1f(float x);</span>
+<span class="gd">-__device__ float jnf(int n, float x);</span>
+<span class="w"> </span>__device__ float ldexpf(float x, int exp);
+<span class="w"> </span>__device__ float lgammaf(float x);
+<span class="w"> </span>__device__ long long int llrintf(float x);
+<span class="w"> </span>__device__ long long int llroundf(float x);
+<span class="w"> </span>__device__ float log10f(float x);
+<span class="w"> </span>__device__ float log1pf(float x);
+<span class="w"> </span>__device__ float log2f(float x);
+<span class="w"> </span>__device__ float logbf(float x);
+<span class="w"> </span>__device__ float logf(float x);
+<span class="w"> </span>__device__ long int lrintf(float x);
+<span class="w"> </span>__device__ long int lroundf(float x);
+<span class="w"> </span>__device__ float max(const float a, const float b);
+<span class="w"> </span>__device__ float min(const float a, const float b);
+<span class="w"> </span>__device__ float modff(float x, float *iptr);
+<span class="w"> </span>__device__ float nanf(const char *tagp);
+<span class="w"> </span>__device__ float nearbyintf(float x);
+<span class="w"> </span>__device__ float nextafterf(float x, float y);
+<span class="w"> </span>__device__ float norm3df(float a, float b, float c);
+<span class="w"> </span>__device__ float norm4df(float a, float b, float c, float d);
+<span class="w"> </span>__device__ float normcdff(float x);
+<span class="gd">-__device__ float normcdfinvf(float x);</span>
+<span class="w"> </span>__device__ float normf(int dim, float const *p);
+<span class="w"> </span>__device__ float powf(float x, float y);
+<span class="gd">-__device__ float rcbrtf(float x);</span>
+<span class="w"> </span>__device__ float remainderf(float x, float y);
+<span class="w"> </span>__device__ float remquof(float x, float y, int *quo);
+<span class="w"> </span>__device__ float rhypotf(float x, float y);
+<span class="w"> </span>__device__ float rintf(float x);
+<span class="w"> </span>__device__ float rnorm3df(float a, float b, float c);
+<span class="w"> </span>__device__ float rnorm4df(float a, float b, float c, float d);
+<span class="w"> </span>__device__ float rnormf(int dim, float const *p);
+<span class="w"> </span>__device__ float roundf(float x);
+<span class="w"> </span>__device__ float rsqrtf(float x);
+<span class="w"> </span>__device__ float scalblnf(float x, long int n);
+<span class="w"> </span>__device__ float scalbnf(float x, int n);
+<span class="w"> </span>__device__ bool signbit(float a);
+<span class="w"> </span>__device__ void sincosf(float x, float *sptr, float *cptr);
+<span class="w"> </span>__device__ void sincospif(float x, float *sptr, float *cptr);
+<span class="w"> </span>__device__ float sinf(float x);
+<span class="w"> </span>__device__ float sinhf(float x);
+<span class="w"> </span>__device__ float sinpif(float x);
+<span class="w"> </span>__device__ float sqrtf(float x);
+<span class="w"> </span>__device__ float tanf(float x);
+<span class="w"> </span>__device__ float tanhf(float x);
+<span class="w"> </span>__device__ float tgammaf(float x);
+<span class="w"> </span>__device__ float truncf(float x);
+<span class="gd">-__device__ float y0f(float x);</span>
+<span class="gd">-__device__ float y1f(float x);</span>
+<span class="gd">-__device__ float ynf(int n, float x);</span>
+</code></pre></div>
+<h2 id="7-single-precision-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__SINGLE.html">7. Single Precision Intrinsics</a><a class="headerlink" href="#7-single-precision-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ float __cosf(float x);
+<span class="w"> </span>__device__ float __exp10f(float x);
+<span class="w"> </span>__device__ float __expf(float x);
+<span class="gd">-__device__ float2 __fadd2_rd(float2 x, float2 y);</span>
+<span class="w"> </span>__device__ float2 __fadd2_rn(float2 x, float2 y);
+<span class="gd">-__device__ float2 __fadd2_ru(float2 x, float2 y);</span>
+<span class="gd">-__device__ float2 __fadd2_rz(float2 x, float2 y);</span>
+<span class="gd">-__device__ float __fadd_rd(float x, float y);</span>
+<span class="w"> </span>__device__ float __fadd_rn(float x, float y);
+<span class="gd">-__device__ float __fadd_ru(float x, float y);</span>
+<span class="gd">-__device__ float __fadd_rz(float x, float y);</span>
+<span class="gd">-__device__ float __fdiv_rd(float x, float y);</span>
+<span class="w"> </span>__device__ float __fdiv_rn(float x, float y);
+<span class="gd">-__device__ float __fdiv_ru(float x, float y);</span>
+<span class="gd">-__device__ float __fdiv_rz(float x, float y);</span>
+<span class="w"> </span>__device__ float __fdividef(float x, float y);
+<span class="gd">-__device__ float2 __ffma2_rd(float2 x, float2 y, float2 z);</span>
+<span class="w"> </span>__device__ float2 __ffma2_rn(float2 x, float2 y, float2 z);
+<span class="gd">-__device__ float2 __ffma2_ru(float2 x, float2 y, float2 z);</span>
+<span class="gd">-__device__ float2 __ffma2_rz(float2 x, float2 y, float2 z);</span>
+<span class="gd">-__device__ float __fmaf_ieee_rd(float x, float y, float z);</span>
+<span class="w"> </span>__device__ float __fmaf_ieee_rn(float x, float y, float z);
+<span class="gd">-__device__ float __fmaf_ieee_ru(float x, float y, float z);</span>
+<span class="gd">-__device__ float __fmaf_ieee_rz(float x, float y, float z);</span>
+<span class="gd">-__device__ float __fmaf_rd(float x, float y, float z);</span>
+<span class="w"> </span>__device__ float __fmaf_rn(float x, float y, float z);
+<span class="gd">-__device__ float __fmaf_ru(float x, float y, float z);</span>
+<span class="gd">-__device__ float __fmaf_rz(float x, float y, float z);</span>
+<span class="gd">-__device__ float2 __fmul2_rd(float2 x, float2 y);</span>
+<span class="w"> </span>__device__ float2 __fmul2_rn(float2 x, float2 y);
+<span class="gd">-__device__ float2 __fmul2_ru(float2 x, float2 y);</span>
+<span class="gd">-__device__ float2 __fmul2_rz(float2 x, float2 y);</span>
+<span class="gd">-__device__ float __fmul_rd(float x, float y);</span>
+<span class="w"> </span>__device__ float __fmul_rn(float x, float y);
+<span class="gd">-__device__ float __fmul_ru(float x, float y);</span>
+<span class="gd">-__device__ float __fmul_rz(float x, float y);</span>
+<span class="gd">-__device__ float __frcp_rd(float x);</span>
+<span class="w"> </span>__device__ float __frcp_rn(float x);
+<span class="gd">-__device__ float __frcp_ru(float x);</span>
+<span class="gd">-__device__ float __frcp_rz(float x);</span>
+<span class="w"> </span>__device__ float __frsqrt_rn(float x);
+<span class="gd">-__device__ float __fsqrt_rd(float x);</span>
+<span class="w"> </span>__device__ float __fsqrt_rn(float x);
+<span class="gd">-__device__ float __fsqrt_ru(float x);</span>
+<span class="gd">-__device__ float __fsqrt_rz(float x);</span>
+<span class="gd">-__device__ float __fsub_rd(float x, float y);</span>
+<span class="w"> </span>__device__ float __fsub_rn(float x, float y);
+<span class="gd">-__device__ float __fsub_ru(float x, float y);</span>
+<span class="gd">-__device__ float __fsub_rz(float x, float y);</span>
+<span class="w"> </span>__device__ float __log10f(float x);
+<span class="w"> </span>__device__ float __log2f(float x);
+<span class="w"> </span>__device__ float __logf(float x);
+<span class="w"> </span>__device__ float __powf(float x, float y);
+<span class="w"> </span>__device__ float __saturatef(float x);
+<span class="w"> </span>__device__ void __sincosf(float x, float *sptr, float *cptr);
+<span class="w"> </span>__device__ float __sinf(float x);
+<span class="w"> </span>__device__ float __tanf(float x);
+<span class="gd">-__device__ float __tanhf(float x);</span>
+</code></pre></div>
+<h2 id="8-double-precision-mathematical-functions"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__DOUBLE.html">8. Double Precision Mathematical Functions</a><a class="headerlink" href="#8-double-precision-mathematical-functions" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ double acos(double x);
+<span class="w"> </span>__device__ double acosh(double x);
+<span class="w"> </span>__device__ double asin(double x);
+<span class="w"> </span>__device__ double asinh(double x);
+<span class="w"> </span>__device__ double atan(double x);
+<span class="w"> </span>__device__ double atan2(double y, double x);
+<span class="w"> </span>__device__ double atanh(double x);
+<span class="w"> </span>__device__ double cbrt(double x);
+<span class="w"> </span>__device__ double ceil(double x);
+<span class="w"> </span>__device__ double copysign(double x, double y);
+<span class="w"> </span>__device__ double cos(double x);
+<span class="w"> </span>__device__ double cosh(double x);
+<span class="w"> </span>__device__ double cospi(double x);
+<span class="gd">-__device__ double cyl_bessel_i0(double x);</span>
+<span class="gd">-__device__ double cyl_bessel_i1(double x);</span>
+<span class="w"> </span>__device__ double erf(double x);
+<span class="w"> </span>__device__ double erfc(double x);
+<span class="w"> </span>__device__ double erfcinv(double x);
+<span class="gd">-__device__ double erfcx(double x);</span>
+<span class="w"> </span>__device__ double erfinv(double x);
+<span class="w"> </span>__device__ double exp(double x);
+<span class="w"> </span>__device__ double exp10(double x);
+<span class="w"> </span>__device__ double exp2(double x);
+<span class="w"> </span>__device__ double expm1(double x);
+<span class="w"> </span>__device__ double fabs(double x);
+<span class="w"> </span>__device__ double fdim(double x, double y);
+<span class="w"> </span>__device__ double floor(double x);
+<span class="w"> </span>__device__ double fma(double x, double y, double z);
+<span class="w"> </span>__device__ double fmax(double, double);
+<span class="w"> </span>__device__ double fmin(double x, double y);
+<span class="w"> </span>__device__ double fmod(double x, double y);
+<span class="w"> </span>__device__ double frexp(double x, int *nptr);
+<span class="w"> </span>__device__ double hypot(double x, double y);
+<span class="w"> </span>__device__ int ilogb(double x);
+<span class="w"> </span>__device__ bool isfinite(double a);
+<span class="w"> </span>__device__ bool isinf(double a);
+<span class="w"> </span>__device__ bool isnan(double a);
+<span class="gd">-__device__ double j0(double x);</span>
+<span class="gd">-__device__ double j1(double x);</span>
+<span class="gd">-__device__ double jn(int n, double x);</span>
+<span class="w"> </span>__device__ double ldexp(double x, int exp);
+<span class="w"> </span>__device__ double lgamma(double x);
+<span class="w"> </span>__device__ long long int llrint(double x);
+<span class="w"> </span>__device__ long long int llround(double x);
+<span class="w"> </span>__device__ double log(double x);
+<span class="w"> </span>__device__ double log10(double x);
+<span class="w"> </span>__device__ double log1p(double x);
+<span class="w"> </span>__device__ double log2(double x);
+<span class="w"> </span>__device__ double logb(double x);
+<span class="w"> </span>__device__ long int lrint(double x);
+<span class="w"> </span>__device__ long int lround(double x);
+<span class="w"> </span>__device__ double max(const float a, const double b);
+<span class="w"> </span>__device__ double max(const double a, const float b);
+<span class="w"> </span>__device__ double max(const double a, const double b);
+<span class="w"> </span>__device__ double min(const float a, const double b);
+<span class="w"> </span>__device__ double min(const double a, const double b);
+<span class="w"> </span>__device__ double min(const double a, const float b);
+<span class="w"> </span>__device__ double modf(double x, double *iptr);
+<span class="w"> </span>__device__ double nan(const char *tagp);
+<span class="w"> </span>__device__ double nearbyint(double x);
+<span class="w"> </span>__device__ double nextafter(double x, double y);
+<span class="w"> </span>__device__ double norm(int dim, double const *p);
+<span class="w"> </span>__device__ double norm3d(double a, double b, double c);
+<span class="w"> </span>__device__ double norm4d(double a, double b, double c, double d);
+<span class="w"> </span>__device__ double normcdf(double x);
+<span class="gd">-__device__ double normcdfinv(double x);</span>
+<span class="w"> </span>__device__ double pow(double x, double y);
+<span class="gd">-__device__ double rcbrt(double x);</span>
+<span class="w"> </span>__device__ double remainder(double x, double y);
+<span class="w"> </span>__device__ double remquo(double x, double y, int *quo);
+<span class="w"> </span>__device__ double rhypot(double x, double y);
+<span class="w"> </span>__device__ double rint(double x);
+<span class="w"> </span>__device__ double rnorm(int dim, double const *p);
+<span class="w"> </span>__device__ double rnorm3d(double a, double b, double c);
+<span class="w"> </span>__device__ double rnorm4d(double a, double b, double c, double d);
+<span class="w"> </span>__device__ double round(double x);
+<span class="w"> </span>__device__ double rsqrt(double x);
+<span class="w"> </span>__device__ double scalbln(double x, long int n);
+<span class="w"> </span>__device__ double scalbn(double x, int n);
+<span class="w"> </span>__device__ bool signbit(double a);
+<span class="w"> </span>__device__ double sin(double x);
+<span class="w"> </span>__device__ void sincos(double x, double *sptr, double *cptr);
+<span class="w"> </span>__device__ void sincospi(double x, double *sptr, double *cptr);
+<span class="w"> </span>__device__ double sinh(double x);
+<span class="w"> </span>__device__ double sinpi(double x);
+<span class="w"> </span>__device__ double sqrt(double x);
+<span class="w"> </span>__device__ double tan(double x);
+<span class="w"> </span>__device__ double tanh(double x);
+<span class="w"> </span>__device__ double tgamma(double x);
+<span class="w"> </span>__device__ double trunc(double x);
+<span class="gd">-__device__ double y0(double x);</span>
+<span class="gd">-__device__ double y1(double x);</span>
+<span class="gd">-__device__ double yn(int n, double x);</span>
+</code></pre></div>
+<h2 id="9-double-precision-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__DOUBLE.html">9. Double Precision Intrinsics</a><a class="headerlink" href="#9-double-precision-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ double __dadd_rd(double x, double y);
+<span class="w"> </span>__device__ double __dadd_rn(double x, double y);
+<span class="w"> </span>__device__ double __dadd_ru(double x, double y);
+<span class="w"> </span>__device__ double __dadd_rz(double x, double y);
+<span class="w"> </span>__device__ double __ddiv_rd(double x, double y);
+<span class="w"> </span>__device__ double __ddiv_rn(double x, double y);
+<span class="w"> </span>__device__ double __ddiv_ru(double x, double y);
+<span class="w"> </span>__device__ double __ddiv_rz(double x, double y);
+<span class="w"> </span>__device__ double __dmul_rd(double x, double y);
+<span class="w"> </span>__device__ double __dmul_rn(double x, double y);
+<span class="w"> </span>__device__ double __dmul_ru(double x, double y);
+<span class="w"> </span>__device__ double __dmul_rz(double x, double y);
+<span class="w"> </span>__device__ double __drcp_rd(double x);
+<span class="w"> </span>__device__ double __drcp_rn(double x);
+<span class="w"> </span>__device__ double __drcp_ru(double x);
+<span class="w"> </span>__device__ double __drcp_rz(double x);
+<span class="w"> </span>__device__ double __dsqrt_rd(double x);
+<span class="w"> </span>__device__ double __dsqrt_rn(double x);
+<span class="w"> </span>__device__ double __dsqrt_ru(double x);
+<span class="w"> </span>__device__ double __dsqrt_rz(double x);
+<span class="w"> </span>__device__ double __dsub_rd(double x, double y);
+<span class="w"> </span>__device__ double __dsub_rn(double x, double y);
+<span class="w"> </span>__device__ double __dsub_ru(double x, double y);
+<span class="w"> </span>__device__ double __dsub_rz(double x, double y);
+<span class="w"> </span>__device__ double __fma_rd(double x, double y, double z);
+<span class="w"> </span>__device__ double __fma_rn(double x, double y, double z);
+<span class="w"> </span>__device__ double __fma_ru(double x, double y, double z);
+<span class="w"> </span>__device__ double __fma_rz(double x, double y, double z);
+</code></pre></div>
+<h2 id="10-fp128-quad-precision-mathematical-functions"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__QUAD.html">10. FP128 Quad Precision Mathematical Functions</a><a class="headerlink" href="#10-fp128-quad-precision-mathematical-functions" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-128 bit floating point is not supported</span>
+</code></pre></div>
+<h2 id="11-type-casting-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__CAST.html">11. Type Casting Intrinsics</a><a class="headerlink" href="#11-type-casting-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="gd">-__device__ float __double2float_rd(double x);</span>
+<span class="gd">-__device__ float __double2float_rn(double x);</span>
+<span class="gd">-__device__ float __double2float_ru(double x);</span>
+<span class="gd">-__device__ float __double2float_rz(double x);</span>
+<span class="w"> </span>__device__ int __double2hiint(double x);
+<span class="w"> </span>__device__ int __double2int_rd(double x);
+<span class="w"> </span>__device__ int __double2int_rn(double x);
+<span class="w"> </span>__device__ int __double2int_ru(double x);
+<span class="w"> </span>__device__ int __double2int_rz(double x);
+<span class="w"> </span>__device__ long long int __double2ll_rd(double x);
+<span class="w"> </span>__device__ long long int __double2ll_rn(double x);
+<span class="w"> </span>__device__ long long int __double2ll_ru(double x);
+<span class="w"> </span>__device__ long long int __double2ll_rz(double x);
+<span class="w"> </span>__device__ int __double2loint(double x);
+<span class="w"> </span>__device__ unsigned int __double2uint_rd(double x);
+<span class="w"> </span>__device__ unsigned int __double2uint_rn(double x);
+<span class="w"> </span>__device__ unsigned int __double2uint_ru(double x);
+<span class="w"> </span>__device__ unsigned int __double2uint_rz(double x);
+<span class="w"> </span>__device__ unsigned long long int __double2ull_rd(double x);
+<span class="w"> </span>__device__ unsigned long long int __double2ull_rn(double x);
+<span class="w"> </span>__device__ unsigned long long int __double2ull_ru(double x);
+<span class="w"> </span>__device__ unsigned long long int __double2ull_rz(double x);
+<span class="w"> </span>__device__ long long int __double_as_longlong(double x);
+<span class="w"> </span>__device__ int __float2int_rd(float x);
+<span class="w"> </span>__device__ int __float2int_rn(float x);
+<span class="w"> </span>__device__ int __float2int_ru(float);
+<span class="w"> </span>__device__ int __float2int_rz(float x);
+<span class="w"> </span>__device__ long long int __float2ll_rd(float x);
+<span class="w"> </span>__device__ long long int __float2ll_rn(float x);
+<span class="w"> </span>__device__ long long int __float2ll_ru(float x);
+<span class="w"> </span>__device__ long long int __float2ll_rz(float x);
+<span class="w"> </span>__device__ unsigned int __float2uint_rd(float x);
+<span class="w"> </span>__device__ unsigned int __float2uint_rn(float x);
+<span class="w"> </span>__device__ unsigned int __float2uint_ru(float x);
+<span class="w"> </span>__device__ unsigned int __float2uint_rz(float x);
+<span class="w"> </span>__device__ unsigned long long int __float2ull_rd(float x);
+<span class="w"> </span>__device__ unsigned long long int __float2ull_rn(float x);
+<span class="w"> </span>__device__ unsigned long long int __float2ull_ru(float x);
+<span class="w"> </span>__device__ unsigned long long int __float2ull_rz(float x);
+<span class="w"> </span>__device__ int __float_as_int(float x);
+<span class="w"> </span>__device__ unsigned int __float_as_uint(float x);
+<span class="w"> </span>__device__ double __hiloint2double(int hi, int lo);
+<span class="w"> </span>__device__ double __int2double_rn(int x);
+<span class="gd">-__device__ float __int2float_rd(int x);</span>
+<span class="w"> </span>__device__ float __int2float_rn(int x);
+<span class="gd">-__device__ float __int2float_ru(int x);</span>
+<span class="gd">-__device__ float __int2float_rz(int x);</span>
+<span class="w"> </span>__device__ float __int_as_float(int x);
+<span class="gd">-__device__ double __ll2double_rd(long long int x);</span>
+<span class="gd">-__device__ double __ll2double_rn(long long int x);</span>
+<span class="gd">-__device__ double __ll2double_ru(long long int x);</span>
+<span class="gd">-__device__ double __ll2double_rz(long long int x);</span>
+<span class="gd">-__device__ float __ll2float_rd(long long int x);</span>
+<span class="gd">-__device__ float __ll2float_rn(long long int x);</span>
+<span class="gd">-__device__ float __ll2float_ru(long long int x);</span>
+<span class="gd">-__device__ float __ll2float_rz(long long int x);</span>
+<span class="w"> </span>__device__ double __longlong_as_double(long long int x);
+<span class="w"> </span>__device__ double __uint2double_rn(unsigned int x);
+<span class="gd">-__device__ float __uint2float_rd(unsigned int x);</span>
+<span class="w"> </span>__device__ float __uint2float_rn(unsigned int x);
+<span class="gd">-__device__ float __uint2float_ru(unsigned int x);</span>
+<span class="gd">-__device__ float __uint2float_rz(unsigned int x);</span>
+<span class="w"> </span>__device__ float __uint_as_float(unsigned int x);
+<span class="gd">-__device__ double __ull2double_rd(unsigned long long int x);</span>
+<span class="gd">-__device__ double __ull2double_rn(unsigned long long int x);</span>
+<span class="gd">-__device__ double __ull2double_ru(unsigned long long int x);</span>
+<span class="gd">-__device__ double __ull2double_rz(unsigned long long int x);</span>
+<span class="gd">-__device__ float __ull2float_rd(unsigned long long int x);</span>
+<span class="gd">-__device__ float __ull2float_rn(unsigned long long int x);</span>
+<span class="gd">-__device__ float __ull2float_ru(unsigned long long int x);</span>
+<span class="gd">-__device__ float __ull2float_rz(unsigned long long int x);</span>
+</code></pre></div>
+<h2 id="12-integer-mathematical-functions"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INT.html">12. Integer Mathematical Functions</a><a class="headerlink" href="#12-integer-mathematical-functions" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ long int abs(long int a);
+<span class="w"> </span>__device__ int abs(int a);
+<span class="w"> </span>__device__ long long int abs(long long int a);
+<span class="w"> </span>__device__ long int labs(long int a);
+<span class="w"> </span>__device__ long long int llabs(long long int a);
+<span class="w"> </span>__device__ long long int llmax(const long long int a, const long long int b);
+<span class="w"> </span>__device__ long long int llmin(const long long int a, const long long int b);
+<span class="w"> </span>__device__ unsigned long int max(const long int a, const unsigned long int b);
+<span class="w"> </span>__device__ unsigned long long int max(const unsigned long long int a, const unsigned long long int b);
+<span class="w"> </span>__device__ unsigned int max(const unsigned int a, const int b);
+<span class="w"> </span>__device__ unsigned long long int max(const long long int a, const unsigned long long int b);
+<span class="w"> </span>__device__ unsigned long int max(const unsigned long int a, const unsigned long int b);
+<span class="w"> </span>__device__ long long int max(const long long int a, const long long int b);
+<span class="w"> </span>__device__ unsigned long long int max(const unsigned long long int a, const long long int b);
+<span class="w"> </span>__device__ unsigned long int max(const unsigned long int a, const long int b);
+<span class="w"> </span>__device__ long int max(const long int a, const long int b);
+<span class="w"> </span>__device__ int max(const int a, const int b);
+<span class="w"> </span>__device__ unsigned int max(const unsigned int a, const unsigned int b);
+<span class="w"> </span>__device__ unsigned int max(const int a, const unsigned int b);
+<span class="w"> </span>__device__ unsigned long int min(const long int a, const unsigned long int b);
+<span class="w"> </span>__device__ unsigned long long int min(const unsigned long long int a, const unsigned long long int b);
+<span class="w"> </span>__device__ unsigned long long int min(const unsigned long long int a, const long long int b);
+<span class="w"> </span>__device__ int min(const int a, const int b);
+<span class="w"> </span>__device__ unsigned int min(const unsigned int a, const int b);
+<span class="w"> </span>__device__ unsigned long long int min(const long long int a, const unsigned long long int b);
+<span class="w"> </span>__device__ long long int min(const long long int a, const long long int b);
+<span class="w"> </span>__device__ unsigned int min(const int a, const unsigned int b);
+<span class="w"> </span>__device__ long int min(const long int a, const long int b);
+<span class="w"> </span>__device__ unsigned int min(const unsigned int a, const unsigned int b);
+<span class="w"> </span>__device__ unsigned long int min(const unsigned long int a, const long int b);
+<span class="w"> </span>__device__ unsigned long int min(const unsigned long int a, const unsigned long int b);
+<span class="w"> </span>__device__ unsigned long long int ullmax(const unsigned long long int a, const unsigned long long int b);
+<span class="w"> </span>__device__ unsigned long long int ullmin(const unsigned long long int a, const unsigned long long int b);
+<span class="w"> </span>__device__ unsigned int umax(const unsigned int a, const unsigned int b);
+<span class="w"> </span>__device__ unsigned int umin(const unsigned int a, const unsigned int b);
+</code></pre></div>
+<h2 id="13-integer-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__INT.html">13. Integer Intrinsics</a><a class="headerlink" href="#13-integer-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ unsigned int __brev(unsigned int x);
+<span class="w"> </span>__device__ unsigned long long int __brevll(unsigned long long int x);
+<span class="w"> </span>__device__ unsigned int __byte_perm(unsigned int x, unsigned int y, unsigned int s);
+<span class="w"> </span>__device__ int __clz(int x);
+<span class="w"> </span>__device__ int __clzll(long long int x);
+<span class="w"> </span>__device__ int __dp2a_hi(int srcA, int srcB, int c);
+<span class="w"> </span>__device__ unsigned int __dp2a_hi(unsigned int srcA, unsigned int srcB, unsigned int c);
+<span class="w"> </span>__device__ unsigned int __dp2a_hi(ushort2 srcA, uchar4 srcB, unsigned int c);
+<span class="w"> </span>__device__ int __dp2a_hi(short2 srcA, char4 srcB, int c);
+<span class="w"> </span>__device__ unsigned int __dp2a_lo(ushort2 srcA, uchar4 srcB, unsigned int c);
+<span class="w"> </span>__device__ int __dp2a_lo(short2 srcA, char4 srcB, int c);
+<span class="w"> </span>__device__ unsigned int __dp2a_lo(unsigned int srcA, unsigned int srcB, unsigned int c);
+<span class="w"> </span>__device__ int __dp2a_lo(int srcA, int srcB, int c);
+<span class="w"> </span>__device__ unsigned int __dp4a(uchar4 srcA, uchar4 srcB, unsigned int c);
+<span class="w"> </span>__device__ unsigned int __dp4a(unsigned int srcA, unsigned int srcB, unsigned int c);
+<span class="w"> </span>__device__ int __dp4a(int srcA, int srcB, int c);
+<span class="w"> </span>__device__ int __dp4a(char4 srcA, char4 srcB, int c);
+<span class="w"> </span>__device__ int __ffs(int x);
+<span class="w"> </span>__device__ int __ffsll(long long int x);
+<span class="w"> </span>__device__ unsigned __fns(unsigned mask, unsigned base, int offset);
+<span class="w"> </span>__device__ unsigned int __funnelshift_l(unsigned int lo, unsigned int hi, unsigned int shift);
+<span class="w"> </span>__device__ unsigned int __funnelshift_lc(unsigned int lo, unsigned int hi, unsigned int shift);
+<span class="w"> </span>__device__ unsigned int __funnelshift_r(unsigned int lo, unsigned int hi, unsigned int shift);
+<span class="w"> </span>__device__ unsigned int __funnelshift_rc(unsigned int lo, unsigned int hi, unsigned int shift);
+<span class="w"> </span>__device__ int __hadd(int x, int y);
+<span class="w"> </span>__device__ int __mul24(int x, int y);
+<span class="w"> </span>__device__ long long int __mul64hi(long long int x, long long int y);
+<span class="w"> </span>__device__ int __mulhi(int x, int y);
+<span class="w"> </span>unsigned short __nv_bswap16(unsigned short x);
+<span class="w"> </span>__device__ unsigned short __nv_bswap16(unsigned short x);
+<span class="w"> </span>unsigned int __nv_bswap32(unsigned int x);
+<span class="w"> </span>__device__ unsigned int __nv_bswap32(unsigned int x);
+<span class="w"> </span>unsigned long long __nv_bswap64(unsigned long long x);
+<span class="w"> </span>__device__ unsigned long long __nv_bswap64(unsigned long long x);
+<span class="w"> </span>__device__ int __popc(unsigned int x);
+<span class="w"> </span>__device__ int __popcll(unsigned long long int x);
+<span class="w"> </span>__device__ int __rhadd(int x, int y);
+<span class="w"> </span>__device__ unsigned int __sad(int x, int y, unsigned int z);
+<span class="w"> </span>__device__ unsigned int __uhadd(unsigned int x, unsigned int y);
+<span class="w"> </span>__device__ unsigned int __umul24(unsigned int x, unsigned int y);
+<span class="w"> </span>__device__ unsigned long long int __umul64hi(unsigned long long int x, unsigned long long int y);
+<span class="w"> </span>__device__ unsigned int __umulhi(unsigned int x, unsigned int y);
+<span class="w"> </span>__device__ unsigned int __urhadd(unsigned int x, unsigned int y);
+<span class="w"> </span>__device__ unsigned int __usad(unsigned int x, unsigned int y, unsigned int z);
+</code></pre></div>
+<h2 id="14-simd-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__SIMD.html">14. SIMD Intrinsics</a><a class="headerlink" href="#14-simd-intrinsics" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ unsigned int __vabs2(unsigned int a);
+<span class="w"> </span>__device__ unsigned int __vabs4(unsigned int a);
+<span class="w"> </span>__device__ unsigned int __vabsdiffs2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vabsdiffs4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vabsdiffu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vabsdiffu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vabsss2(unsigned int a);
+<span class="w"> </span>__device__ unsigned int __vabsss4(unsigned int a);
+<span class="w"> </span>__device__ unsigned int __vadd2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vadd4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vaddss2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vaddss4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vaddus2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vaddus4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vavgs2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vavgs4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vavgu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vavgu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpeq2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpeq4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpges2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpges4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpgeu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpgeu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpgts2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpgts4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpgtu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpgtu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmples2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmples4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpleu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpleu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmplts2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmplts4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpltu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpltu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpne2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vcmpne4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vhaddu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vhaddu4(unsigned int a, unsigned int b);
+<span class="w"> </span>unsigned int __viaddmax_s16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __viaddmax_s16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __viaddmax_s16x2_relu(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __viaddmax_s16x2_relu(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>int __viaddmax_s32(const int a, const int b, const int c);
+<span class="w"> </span>__device__ int __viaddmax_s32(const int a, const int b, const int c);
+<span class="w"> </span>int __viaddmax_s32_relu(const int a, const int b, const int c);
+<span class="w"> </span>__device__ int __viaddmax_s32_relu(const int a, const int b, const int c);
+<span class="w"> </span>unsigned int __viaddmax_u16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __viaddmax_u16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __viaddmax_u32(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __viaddmax_u32(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __viaddmin_s16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __viaddmin_s16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __viaddmin_s16x2_relu(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __viaddmin_s16x2_relu(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>int __viaddmin_s32(const int a, const int b, const int c);
+<span class="w"> </span>__device__ int __viaddmin_s32(const int a, const int b, const int c);
+<span class="w"> </span>int __viaddmin_s32_relu(const int a, const int b, const int c);
+<span class="w"> </span>__device__ int __viaddmin_s32_relu(const int a, const int b, const int c);
+<span class="w"> </span>unsigned int __viaddmin_u16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __viaddmin_u16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __viaddmin_u32(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __viaddmin_u32(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __vibmax_s16x2(const unsigned int a, const unsigned int b, bool *const pred_hi, bool *const pred_lo);
+<span class="w"> </span>__device__ unsigned int __vibmax_s16x2(const unsigned int a, const unsigned int b, bool *const pred_hi, bool *const pred_lo);
+<span class="w"> </span>int __vibmax_s32(const int a, const int b, bool *const pred);
+<span class="w"> </span>__device__ int __vibmax_s32(const int a, const int b, bool *const pred);
+<span class="w"> </span>unsigned int __vibmax_u16x2(const unsigned int a, const unsigned int b, bool *const pred_hi, bool *const pred_lo);
+<span class="w"> </span>__device__ unsigned int __vibmax_u16x2(const unsigned int a, const unsigned int b, bool *const pred_hi, bool *const pred_lo);
+<span class="w"> </span>unsigned int __vibmax_u32(const unsigned int a, const unsigned int b, bool *const pred);
+<span class="w"> </span>__device__ unsigned int __vibmax_u32(const unsigned int a, const unsigned int b, bool *const pred);
+<span class="w"> </span>unsigned int __vibmin_s16x2(const unsigned int a, const unsigned int b, bool *const pred_hi, bool *const pred_lo);
+<span class="w"> </span>__device__ unsigned int __vibmin_s16x2(const unsigned int a, const unsigned int b, bool *const pred_hi, bool *const pred_lo);
+<span class="w"> </span>int __vibmin_s32(const int a, const int b, bool *const pred);
+<span class="w"> </span>__device__ int __vibmin_s32(const int a, const int b, bool *const pred);
+<span class="w"> </span>unsigned int __vibmin_u16x2(const unsigned int a, const unsigned int b, bool *const pred_hi, bool *const pred_lo);
+<span class="w"> </span>__device__ unsigned int __vibmin_u16x2(const unsigned int a, const unsigned int b, bool *const pred_hi, bool *const pred_lo);
+<span class="w"> </span>unsigned int __vibmin_u32(const unsigned int a, const unsigned int b, bool *const pred);
+<span class="w"> </span>__device__ unsigned int __vibmin_u32(const unsigned int a, const unsigned int b, bool *const pred);
+<span class="w"> </span>unsigned int __vimax3_s16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __vimax3_s16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __vimax3_s16x2_relu(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __vimax3_s16x2_relu(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>int __vimax3_s32(const int a, const int b, const int c);
+<span class="w"> </span>__device__ int __vimax3_s32(const int a, const int b, const int c);
+<span class="w"> </span>int __vimax3_s32_relu(const int a, const int b, const int c);
+<span class="w"> </span>__device__ int __vimax3_s32_relu(const int a, const int b, const int c);
+<span class="w"> </span>unsigned int __vimax3_u16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __vimax3_u16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __vimax3_u32(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __vimax3_u32(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __vimax_s16x2_relu(const unsigned int a, const unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vimax_s16x2_relu(const unsigned int a, const unsigned int b);
+<span class="w"> </span>int __vimax_s32_relu(const int a, const int b);
+<span class="w"> </span>__device__ int __vimax_s32_relu(const int a, const int b);
+<span class="w"> </span>unsigned int __vimin3_s16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __vimin3_s16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __vimin3_s16x2_relu(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __vimin3_s16x2_relu(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>int __vimin3_s32(const int a, const int b, const int c);
+<span class="w"> </span>__device__ int __vimin3_s32(const int a, const int b, const int c);
+<span class="w"> </span>int __vimin3_s32_relu(const int a, const int b, const int c);
+<span class="w"> </span>__device__ int __vimin3_s32_relu(const int a, const int b, const int c);
+<span class="w"> </span>unsigned int __vimin3_u16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __vimin3_u16x2(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __vimin3_u32(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>__device__ unsigned int __vimin3_u32(const unsigned int a, const unsigned int b, const unsigned int c);
+<span class="w"> </span>unsigned int __vimin_s16x2_relu(const unsigned int a, const unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vimin_s16x2_relu(const unsigned int a, const unsigned int b);
+<span class="w"> </span>int __vimin_s32_relu(const int a, const int b);
+<span class="w"> </span>__device__ int __vimin_s32_relu(const int a, const int b);
+<span class="w"> </span>__device__ unsigned int __vmaxs2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vmaxs4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vmaxu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vmaxu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vmins2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vmins4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vminu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vminu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vneg2(unsigned int a);
+<span class="w"> </span>__device__ unsigned int __vneg4(unsigned int a);
+<span class="gd">-__device__ unsigned int __vnegss2(unsigned int a);</span>
+<span class="gd">-__device__ unsigned int __vnegss4(unsigned int a);</span>
+<span class="gd">-__device__ unsigned int __vsads2(unsigned int a, unsigned int b);</span>
+<span class="gd">-__device__ unsigned int __vsads4(unsigned int a, unsigned int b);</span>
+<span class="w"> </span>__device__ unsigned int __vsadu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsadu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vseteq2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vseteq4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetges2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetges4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetgeu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetgeu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetgts2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetgts4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetgtu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetgtu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetles2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetles4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetleu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetleu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetlts2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetlts4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetltu2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetltu4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetne2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsetne4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsub2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsub4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsubss2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsubss4(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsubus2(unsigned int a, unsigned int b);
+<span class="w"> </span>__device__ unsigned int __vsubus4(unsigned int a, unsigned int b);
+</code></pre></div>
+<h2 id="15-structs"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/structs.html">15. Structs</a><a class="headerlink" href="#15-structs" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>struct __half
+<span class="w"> </span>struct __half2
+<span class="w"> </span>struct __half2_raw
+<span class="w"> </span>struct __half_raw
+<span class="w"> </span>struct __nv_bfloat16
+<span class="w"> </span>struct __nv_bfloat162
+<span class="w"> </span>struct __nv_bfloat162_raw
+<span class="w"> </span>struct __nv_bfloat16_raw
+<span class="gd">-__nv_fp4_e2m1</span>
+<span class="gd">-__nv_fp4x2_e2m1</span>
+<span class="gd">-__nv_fp4x4_e2m1</span>
+<span class="gd">-__nv_fp6_e2m3</span>
+<span class="gd">-__nv_fp6_e3m2</span>
+<span class="gd">-__nv_fp6x2_e2m3</span>
+<span class="gd">-__nv_fp6x2_e3m2</span>
+<span class="gd">-__nv_fp6x4_e2m3</span>
+<span class="gd">-__nv_fp6x4_e3m2</span>
+<span class="gd">-__nv_fp8_e4m3</span>
+<span class="gd">-__nv_fp8_e5m2</span>
+<span class="gd">-__nv_fp8_e8m0</span>
+<span class="gd">-__nv_fp8x2_e4m3</span>
+<span class="gd">-__nv_fp8x2_e5m2</span>
+<span class="gd">-__nv_fp8x2_e8m0</span>
+<span class="gd">-__nv_fp8x4_e4m3</span>
+<span class="gd">-__nv_fp8x4_e5m2</span>
+<span class="gd">-__nv_fp8x4_e8m0</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../api-driver/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Api driver">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Api driver
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../api-runtime/" class="md-footer__link md-footer__link--next" aria-label="Next: Api runtime">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Api runtime
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/spectral-compute" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/spectral-compute" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/KNpgGbTc38" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485 485 0 0 0 404.081 32.03a1.82 1.82 0 0 0-1.923.91 338 338 0 0 0-14.9 30.6 447.9 447.9 0 0 0-134.426 0 310 310 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.7 483.7 0 0 0-119.688 37.107 1.7 1.7 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.02 2.02 0 0 0 .765 1.375 487.7 487.7 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348 348 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321 321 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251 251 0 0 0 9.109-7.137 1.82 1.82 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.81 1.81 0 0 1 1.924.233 235 235 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.4 301.4 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391 391 0 0 0 30.014 48.815 1.86 1.86 0 0 0 2.063.7A486 486 0 0 0 610.7 405.729a1.88 1.88 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541M222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241m195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241"/></svg>
+    </a>
+  
+</div>
+      
+      <div class="md-copyright"><a href="https://spectralcompute.co.uk/privacy">Privacy Statement</a></div>
+      <div class="md-copyright"><a href="/use_of_trademarks">Trademarks</a></div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://www.spectralcompute.co.uk">Spectral Compute Ltd</a>
+    </div>
+  
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,1904 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/troubleshooting/">
+      
+      
+        <link rel="prev" href="../comparison/">
+      
+      
+        <link rel="next" href="../dialects/">
+      
+      
+      <link rel="icon" href="../../favicon.png">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>Troubleshooting - SCALE documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../style.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#troubleshooting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="SCALE documentation" class="md-header__button md-logo" aria-label="SCALE documentation" data-md-component="logo">
+      
+  <img src="../../logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SCALE documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Troubleshooting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="SCALE documentation" class="md-nav__button md-logo" aria-label="SCALE documentation" data-md-component="logo">
+      
+  <img src="../../logo_white.svg" alt="logo">
+
+    </a>
+    SCALE documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCALE by Spectral Compute
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CHANGELOG/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What's new?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Getting Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Getting Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install SCALE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compile CUDA with SCALE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently asked questions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCALE Example Programs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/ptx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PTX example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/blas/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    BLAS example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Diving deeper
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Diving deeper
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison to other solutions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#crashes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crashes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-such-function-cublascufftcusolversomethingsomething" class="md-nav__link">
+    <span class="md-ellipsis">
+      "No such function: cuBlas/cuFFt/cuSolverSomethingSomething()"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuda-api-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUDA API errors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wave64-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      wave64 issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialization-errors-or-no-devices-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialization errors or no devices found
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initialization errors or no devices found">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verify-you-have-a-supported-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify you have a supported gpu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ensure-devkfd-is-writable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ensure /dev/kfd is writable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cannot-find-shared-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot find shared object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cannot-compile-using-the-nvrtc-api-or-reported-compute-capabilities-are-huge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot compile using the nvrtc API or reported compute capabilities are huge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cannot compile using the nvrtc API or reported compute capabilities are huge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example error:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nvcc-cannot-find-libdevice-for-sm_52-and-cannot-find-cuda-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      nvcc: cannot find libdevice for sm_52 and cannot find CUDA installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="nvcc: cannot find libdevice for sm_52 and cannot find CUDA installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-error_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cannot-find-c-standard-library-include" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot find C++ standard library include
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cannot find C++ standard library include">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-error_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake-error-running-link-command-no-such-file-or-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMake: Error running link command: no such file or directory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CMake: Error running link command: no such file or directory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-error_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#half-precision-intrinsics-not-defined-in-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Half precision intrinsics not defined in C++
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dialects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Dialects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../differences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Differences from NVIDIA CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runtime-extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Extensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Compiler
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_6">
+            <span class="md-nav__icon md-icon"></span>
+            Compiler
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../inline-ptx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inline PTX support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagnostic-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiler warnings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../optimisation-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiler Optimisation Flags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../language-extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Language Extensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compute-capabilities/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compute Capability Mapping
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_7" id="__nav_4_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Implemented APIs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_7">
+            <span class="md-nav__icon md-icon"></span>
+            Implemented APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Coverage Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-driver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Api driver
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-math/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Api math
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api-runtime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Api runtime
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Contact Us
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Contact Us
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/report-a-bug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report a Bug
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Legal
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Legal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../licensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Free Edition License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../notices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Third party software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#crashes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Crashes
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#no-such-function-cublascufftcusolversomethingsomething" class="md-nav__link">
+    <span class="md-ellipsis">
+      "No such function: cuBlas/cuFFt/cuSolverSomethingSomething()"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cuda-api-errors" class="md-nav__link">
+    <span class="md-ellipsis">
+      CUDA API errors
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#wave64-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      wave64 issues
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#initialization-errors-or-no-devices-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initialization errors or no devices found
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initialization errors or no devices found">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#verify-you-have-a-supported-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Verify you have a supported gpu
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ensure-devkfd-is-writable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ensure /dev/kfd is writable
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cannot-find-shared-object" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot find shared object
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cannot-compile-using-the-nvrtc-api-or-reported-compute-capabilities-are-huge" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot compile using the nvrtc API or reported compute capabilities are huge
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cannot compile using the nvrtc API or reported compute capabilities are huge">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example error:
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nvcc-cannot-find-libdevice-for-sm_52-and-cannot-find-cuda-installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      nvcc: cannot find libdevice for sm_52 and cannot find CUDA installation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="nvcc: cannot find libdevice for sm_52 and cannot find CUDA installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-error_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cannot-find-c-standard-library-include" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cannot find C++ standard library include
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Cannot find C++ standard library include">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-error_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmake-error-running-link-command-no-such-file-or-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      CMake: Error running link command: no such file or directory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="CMake: Error running link command: no such file or directory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#example-error_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Example error
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#half-precision-intrinsics-not-defined-in-c" class="md-nav__link">
+    <span class="md-ellipsis">
+      Half precision intrinsics not defined in C++
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h1>
+<p>This page provides tips for solving common problems encountered when trying 
+to compile or run CUDA programs with SCALE.</p>
+<h2 id="crashes">Crashes<a class="headerlink" href="#crashes" title="Permanent link">#</a></h2>
+<p>Please <a href="../../contact/report-a-bug/">report a bug</a>.</p>
+<h2 id="no-such-function-cublascufftcusolversomethingsomething">"No such function: cuBlas/cuFFt/cuSolverSomethingSomething()"<a class="headerlink" href="#no-such-function-cublascufftcusolversomethingsomething" title="Permanent link">#</a></h2>
+<p>If your project needs a missing "CUDA-X" API (cuBLAS, cuFFT, cuSOLVER and
+friends), this is most likely something you can fix yourself by submitting a
+patch to the <a href="https://github.com/spectral-compute/scale-library-wrappers">open-source library wrapper project</a>.
+So long as an equivalent function is available in a ROCm library, the wrapper
+code is trivial.</p>
+<h2 id="cuda-api-errors">CUDA API errors<a class="headerlink" href="#cuda-api-errors" title="Permanent link">#</a></h2>
+<p>The <a href="../runtime-extensions/#scale_exceptions"><code>SCALE_EXCEPTIONS</code> feature</a> can
+be helpful for getting more information about many failures.</p>
+<h2 id="wave64-issues">wave64 issues<a class="headerlink" href="#wave64-issues" title="Permanent link">#</a></h2>
+<p>All current NVIDIA GPUs have a warp size of 32, so many CUDA programs are 
+written in a way that assumes this is always the case.</p>
+<p>Some AMD GPUs have a warp size of 64, which can cause problems for CUDA code 
+written in this way.</p>
+<p>SCALE offers tools to address this problem:</p>
+<ul>
+<li>APIs that operate on warp masks accept and return a new type: 
+  <code>cudaWarpSize_t</code>. This is an integer with as many bits as there are 
+  threads in a warp on the target GPU.</li>
+<li>Some APIs (such as <code>__ffs()</code>) have extra overloads for <code>cudaWarpSize_t</code>, so
+  common patterns (such as <code>__ffs(__ballot(...))</code>) just work.</li>
+<li>The SCALE compiler will emit compiler warnings when values that represent 
+  warp masks are implicitly truncated to 32 bits.</li>
+</ul>
+<p>To write code that works correctly on both platforms:</p>
+<ul>
+<li>Use <code>auto</code> instead of <code>uint32_t</code> when declaring a variable that is 
+  intended to contain a warp mask. With NVIDIA <code>nvcc</code> this will map to
+  <code>uint32_t</code>, and with SCALE this will map to <code>cudaWarpSize_t</code>, producing 
+  correct behaviour on both platforms.</li>
+<li>Avoid hardcoding the constant "32" to represent warp size, instead using 
+  the global <code>warpSize</code> available on all platforms.</li>
+</ul>
+<h2 id="initialization-errors-or-no-devices-found">Initialization errors or no devices found<a class="headerlink" href="#initialization-errors-or-no-devices-found" title="Permanent link">#</a></h2>
+<p>The SCALE runtime can fail to initialise if:</p>
+<ul>
+<li>The AMD kernel module is out of date.</li>
+<li><code>/dev/kfd</code> is not writable by the user running the program.</li>
+<li>There are no supported GPUs attached.</li>
+</ul>
+<p>This situation produces error messages such as:</p>
+<div class="highlight"><pre><span></span><code>$ SCALE_EXCEPTIONS=1 ./myProgram
+terminate called after throwing an instance of &#39;redscale::SimpleException&#39;
+  what():  cudaDeviceSynchronize: No usable CUDA devices found., CUDA error: &quot;no device&quot;
+Aborted (core dumped)
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ /opt/scale/bin/scaleinfo
+Error getting device count: initialization error
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ /opt/scale/bin/hsakmtsysinfo
+terminate called after throwing an instance of &#39;std::runtime_error&#39;
+  what():  HSAKMT Error 20: Could not open KFD
+Aborted (core dumped)
+</code></pre></div>
+<h3 id="verify-you-have-a-supported-gpu">Verify you have a supported gpu<a class="headerlink" href="#verify-you-have-a-supported-gpu" title="Permanent link">#</a></h3>
+<p>Run <code>/opt/scale/bin/hsasysinfo | grep 'Name: gfx</code> to determine the 
+architecture of your GPU, and determine if it is one of the supported 
+architectures listed <a href="../../#which-gpus-are-supported">here</a>.</p>
+<h3 id="ensure-devkfd-is-writable">Ensure <code>/dev/kfd</code> is writable<a class="headerlink" href="#ensure-devkfd-is-writable" title="Permanent link">#</a></h3>
+<p>Ensure your user is in the group that grants access to <code>/dev/kfd</code>. On Ubuntu,
+this is via membership of the <code>render</code> group:
+<code>sudo usermod -a -G render USERNAME</code>.</p>
+<p>You could temporarily make <code>/dev/kfd</code> world-writable via: <code>sudo chmod 666 
+/dev/kfd</code>.</p>
+<h2 id="cannot-find-shared-object">Cannot find shared object<a class="headerlink" href="#cannot-find-shared-object" title="Permanent link">#</a></h2>
+<p>The correct library search path for a SCALE binary can be target dependent due
+to <a href="../compute-capabilities/">compute capability mapping</a>. This can lead
+to runtime errors where the SCALE libraries cannot be found, such as:</p>
+<div class="highlight"><pre><span></span><code>error while loading shared libraries: libredscale.so: cannot open shared object file: No such file or directory
+</code></pre></div>
+<p>Two ways to solve this problem are:</p>
+<ul>
+<li>Set <code>LD_LIBRARY_PATH</code> to the SCALE target library directory, such as:
+   <code>LD_LIBRARY_PATH=/opt/scale/targets/gfx1030/lib:$LD_LIBRARY_PATH</code> for <code>gfx1030</code>.</li>
+<li>Compile your program is compiled with that directory in RPATH:
+   <a href="https://en.wikipedia.org/wiki/Rpath">rpath</a>.</li>
+</ul>
+<h2 id="cannot-compile-using-the-nvrtc-api-or-reported-compute-capabilities-are-huge">Cannot compile using the nvrtc API or reported compute capabilities are huge<a class="headerlink" href="#cannot-compile-using-the-nvrtc-api-or-reported-compute-capabilities-are-huge" title="Permanent link">#</a></h2>
+<p>Both of these problems are caused by using a <code>libredscale.so</code> that is not
+located in the correct place relative to its support files when running a
+program. In the case of the nvrtc API, it's because the compiler cannot be
+found. In the case of reported huge compute capabilities, it's because the
+<a href="../compute-capabilities/">compute capability map</a> cannot be found.</p>
+<p>The solution is to make sure to use the <code>lib</code> subdirectories for one of the
+targets, rather than the <code>lib</code> directory of the SCALE installation directory.
+For example, <code>/opt/scale/targets/gfx1030/lib</code> rather than <code>/opt/scale/lib</code>. The
+<code>gfxany</code> target is suitable for using the nvrtc API, but it does not contain a
+compute capability map so it will not report small compute capabilities.</p>
+<p>As with being <a href="#cannot-find-shared-object">unable to find the shared object</a> at
+all, this can be solved either by setting <code>LD_LIBRARY_PATH</code> or by setting the
+binary's rpath.</p>
+<h4 id="example-error">Example error:<a class="headerlink" href="#example-error" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>$ SCALE_EXCEPTIONS=1 ./rtc
+terminate called after throwing an instance of &#39;redscale::RtcException&#39;
+  what():  nvrtcCompileProgram: Could not find clang-nvcc or nvcc., CUDA error: &quot;JIT compiler not found&quot;, NVRTC error: &quot;Compilation&quot;
+Aborted (core dumped)
+</code></pre></div>
+<h2 id="nvcc-cannot-find-libdevice-for-sm_52-and-cannot-find-cuda-installation">nvcc: cannot find libdevice for sm_52 and cannot find CUDA installation<a class="headerlink" href="#nvcc-cannot-find-libdevice-for-sm_52-and-cannot-find-cuda-installation" title="Permanent link">#</a></h2>
+<p>If <code>targets/gfxany</code> rather than a specific target like <code>targets/gfx1030</code> is used, then there is no default GPU to
+target. This leads to an error like the example below. The solution is to either use a target-specific directory like
+<code>targets/gfx1030</code>, or to specify a specific target such as with <code>-arch gfx1030</code>.</p>
+<h4 id="example-error_1">Example error<a class="headerlink" href="#example-error_1" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>nvcc: error: cannot find libdevice for sm_52; provide path to different CUDA installation via &#39;--cuda-path&#39;, or pass &#39;-nocudalib&#39; to build without linking with libdevice
+nvcc: error: cannot find CUDA installation; provide its path via &#39;--cuda-path&#39;, or pass &#39;-nocudainc&#39; to build without CUDA includes
+</code></pre></div>
+<h2 id="cannot-find-c-standard-library-include">Cannot find C++ standard library include<a class="headerlink" href="#cannot-find-c-standard-library-include" title="Permanent link">#</a></h2>
+<p>Some distributions, such as Ubuntu, permit multiple versions of <code>gcc</code> and <code>g++</code> to be installed separately. It is
+possible to have a version of <code>gcc</code> installed without the corresponding version of <code>g++</code>. This can cause our compiler to
+be unable to find the C++ standard library headers.</p>
+<p>The solution is to ensure the corresponding version of <code>g++</code> is installed. For example: if the latest version of <code>gcc</code>
+you have installed is <code>gcc-12</code>, but you do not have <code>g++-12</code> installed, run: <code>sudo apt-get install g++-12</code>.</p>
+<h4 id="example-error_2">Example error<a class="headerlink" href="#example-error_2" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>  In file included from &lt;built-in&gt;:1:
+
+  In file included from
+  /opt/scale/targets/gfx1100/include/redscale_impl/device.h:6:
+
+  In file included from
+  /opt/scale/targets/gfx1100/include/redscale_impl/common.h:40:
+
+  /opt/scale/targets/gfx1100/include/redscale_impl/../cuda.h:15:10: fatal
+  error: &#39;cstddef&#39; file not found
+
+  #include &lt;cstddef&gt;
+
+           ^~~~~~~~~
+
+  1 error generated when compiling for gfx1100.
+</code></pre></div>
+<h2 id="cmake-error-running-link-command-no-such-file-or-directory">CMake: Error running link command: no such file or directory<a class="headerlink" href="#cmake-error-running-link-command-no-such-file-or-directory" title="Permanent link">#</a></h2>
+<p>CMake tries to detect the linker to use based on the compiler. For SCALE's
+<code>nvcc</code>, it uses <code>clang++</code> as the linker. If this does not exist in your <code>PATH</code>,
+the result is an error like the one in the example below.</p>
+<p>A good solution is to make sure SCALE's <code>nvcc</code> is at the start of your <code>PATH</code>.
+This will place our <code>clang++</code> on your path too, avoiding the problem.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Adjust for the target you want to use.</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PATH</span><span class="o">=</span>/opt/scale/targets/gfx1030/bin:<span class="nv">$PATH</span>
+</code></pre></div>
+<h4 id="example-error_3">Example error<a class="headerlink" href="#example-error_3" title="Permanent link">#</a></h4>
+<div class="highlight"><pre><span></span><code>-- The CUDA compiler identification is NVIDIA 12.5.999
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - failed
+-- Check for working CUDA compiler: /opt/scale/targets/gfx1030/bin/nvcc
+-- Check for working CUDA compiler: /opt/scale/targets/gfx1030/bin/nvcc - broken
+CMake Error at /usr/local/share/cmake-3.29/Modules/CMakeTestCUDACompiler.cmake:59 (message):
+  The CUDA compiler
+
+    &quot;/opt/scale/targets/gfx1030/bin/nvcc&quot;
+
+  is not able to compile a simple test program.
+
+  It fails with the following output:
+
+    Change Dir: &#39;/home/user/test/cmake/build/CMakeFiles/CMakeScratch/TryCompile-vLZLYV&#39;
+
+    Run Build Command(s): /usr/local/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile cmTC_185e7/fast
+    /usr/bin/gmake  -f CMakeFiles/cmTC_185e7.dir/build.make CMakeFiles/cmTC_185e7.dir/build
+    gmake[1]: Entering directory &#39;/home/user/test/cmake/build/CMakeFiles/CMakeScratch/TryCompile-vLZLYV&#39;
+    Building CUDA object CMakeFiles/cmTC_185e7.dir/main.cu.o
+    /opt/scale/targets/gfx1030/bin/nvcc -forward-unknown-to-host-compiler   &quot;--generate-code=arch=compute_86,code=[compute_86,sm_86]&quot; -MD -MT CMakeFiles/cmTC_185e7.dir/main.cu.o -MF CMakeFiles/cmTC_185e7.dir/main.cu.o.d -x cu -c /home/user/test/cmake/build/CMakeFiles/CMakeScratch/TryCompile-vLZLYV/main.cu -o CMakeFiles/cmTC_185e7.dir/main.cu.o
+    Linking CUDA executable cmTC_185e7
+    /usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_185e7.dir/link.txt --verbose=1
+    clang++ @CMakeFiles/cmTC_185e7.dir/objects1.rsp -o cmTC_185e7 @CMakeFiles/cmTC_185e7.dir/linkLibs.rsp -L&quot;/opt/scale/targets/gfx1030/lib&quot;
+    Error running link command: no such file or directorygmake[1]: *** [CMakeFiles/cmTC_185e7.dir/build.make:102: cmTC_185e7] Error 2
+    gmake[1]: Leaving directory &#39;/home/user/test/cmake/build/CMakeFiles/CMakeScratch/TryCompile-vLZLYV&#39;
+    gmake: *** [Makefile:127: cmTC_185e7/fast] Error 2
+
+
+
+
+
+  CMake will not be able to correctly generate this project.
+Call Stack (most recent call first):
+  CMakeLists.txt:2 (project)
+
+
+-- Configuring incomplete, errors occurred!
+</code></pre></div>
+<h2 id="half-precision-intrinsics-not-defined-in-c">Half precision intrinsics not defined in C++<a class="headerlink" href="#half-precision-intrinsics-not-defined-in-c" title="Permanent link">#</a></h2>
+<p>If you're using <code>__half</code> in host code in a non-CUDA translation unit, you 
+might get an error claiming the function you want does not exist:</p>
+<div class="highlight"><pre><span></span><code>error: ‘__half2float’ was not declared in this scope
+</code></pre></div>
+<p>This problem can be resolved by using newer C++ compiler.</p>
+<p>This issue is discussed in more detail in the <a href="../differences/#host-side-__half-support">Differences from NVIDIA CUDA</a> 
+section.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../comparison/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Comparison to other solutions">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Comparison to other solutions
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../dialects/" class="md-footer__link md-footer__link--next" aria-label="Next: CUDA Dialects">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                CUDA Dialects
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/spectral-compute" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/spectral-compute" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/KNpgGbTc38" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485 485 0 0 0 404.081 32.03a1.82 1.82 0 0 0-1.923.91 338 338 0 0 0-14.9 30.6 447.9 447.9 0 0 0-134.426 0 310 310 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.7 483.7 0 0 0-119.688 37.107 1.7 1.7 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.02 2.02 0 0 0 .765 1.375 487.7 487.7 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348 348 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321 321 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251 251 0 0 0 9.109-7.137 1.82 1.82 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.81 1.81 0 0 1 1.924.233 235 235 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.4 301.4 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391 391 0 0 0 30.014 48.815 1.86 1.86 0 0 0 2.063.7A486 486 0 0 0 610.7 405.729a1.88 1.88 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541M222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241m195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241"/></svg>
+    </a>
+  
+</div>
+      
+      <div class="md-copyright"><a href="https://spectralcompute.co.uk/privacy">Privacy Statement</a></div>
+      <div class="md-copyright"><a href="/use_of_trademarks">Trademarks</a></div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2024 <a href="https://www.spectralcompute.co.uk">Spectral Compute Ltd</a>
+    </div>
+  
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.sections", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "content.code.copy", "toc.follow"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
