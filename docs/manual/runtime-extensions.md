@@ -31,12 +31,12 @@ Some of SCALE's API extensions require the `scale.h` header to be included.
 
 ### Programmatic Exception Enablement
 
-SCALE exceptions (see documentation of `SCALE_EXCEPTIONS` environment 
-variable above) may also be enabled/disabled programmatically using:
+SCALE's exception mode may also be controlled programmatically:
 
 ```c++
-scale::Exception::enable(); // To enable.
-scale::Exception::enable(false); // To disable.
+scale::Exception::setMode(scale::ExceptionMode::THROW); // Throw exceptions
+scale::Exception::setMode(scale::ExceptionMode::PRINT); // Print errors
+scale::Exception::setMode(scale::ExceptionMode::OFF); // Match CUDA behaviour
 ```
 
 Even when exceptions are disabled, you can access a `scale::Exception` object
