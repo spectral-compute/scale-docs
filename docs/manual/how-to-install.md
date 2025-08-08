@@ -1,7 +1,5 @@
 # Install SCALE
 
-{% set rocm_message = 'First, add ROCM 6.3.1\'s package repositories, as [per AMD\'s instructions](https://rocm.docs.amd.com/projects/install-on-linux/en/docs-6.3.1/install/quick-start.html). Then, add our repository and install from it.' %}
-
 Select your operating system and version below to see installation instructions.
 
 === "Ubuntu"
@@ -10,7 +8,7 @@ Select your operating system and version below to see installation instructions.
 
     === "{{deb_os.version}}"
 
-        {{ rocm_message }}
+        Set up the SCALE repository, if you haven't already:
 
         ```bash
         {% if customer_specific_repo %}
@@ -33,8 +31,14 @@ Select your operating system and version below to see installation instructions.
         {% endif %}
         sudo apt install ./scale-repos.deb
 
-        # Install SCALE
-        sudo apt update && sudo apt install {{ scale_pkgname }}
+        # Update package list
+        sudo apt update
+        ```
+
+        Then, install the SCALE package:
+
+        ```
+        sudo apt install {{ scale_pkgname }}
 
         # Add your user to the `video` group:
         sudo usermod -a -G video $(whoami)
@@ -49,7 +53,7 @@ Select your operating system and version below to see installation instructions.
 
     === "9"
 
-        {{ rocm_message }}
+        Set up the SCALE repository, if you haven't already:
 
         ```bash
         {% if customer_specific_repo %}
@@ -71,6 +75,11 @@ Select your operating system and version below to see installation instructions.
         # Add the scale rpm repos.
         sudo dnf install https://{{repo_subdomain}}.scale-lang.com/rpm/el9/main/scale-repos.rpm
         {% endif %}
+        ```
+
+        Then, install the SCALE package:
+
+        ```
         # Install SCALE
         sudo dnf install {{ scale_pkgname }}
         ```
