@@ -98,3 +98,43 @@ Select your operating system and version below to see installation instructions.
     The tarball is significantly larger than other options since it
     includes many dependent libraries directly instead of asking the system
         package manager to install them.
+
+## Troubleshooting
+
+These issues relate to installation specifically. For more general troubleshooting steps, see [here](./troubleshooting.md).
+
+### I'm not able to set up the SCALE repository
+
+  - To follow the installation instructions above, you will need to install `wget` and `tar`.
+    This is installed by default on many systems, and usually available in your system package manager otherwise.
+{% if customer_specific_repo %}
+  - Double-check your credentials are correct, and that both `CUSTOMER_NAME` and `CUSTOMER_PASSWORD` are set.
+    If installing with `apt`, check that `/etc/apt/auth.conf.d/scale.conf` exists and has the correct credentials.
+    If installing with `dnf`, check that `/etc/yum.repos.d/scale.repo` exists and has the correct credentials.
+{% endif %}
+  - If you're still unable to download the repository setup package (`scale-repos.deb` / `scale-repos.rpm`), check your internet connection.
+  - If you're unable to install the repository setup package, you may have manually added the repository previously. If so, these files can be safely overwritten when prompted by your package manager.
+
+### I get an error related to `amdgpu-dkms`
+
+AMD's kernel modules are only supported on certain kernels. If your system uses a very out of date kernel, you may need to upgrade it in order to build it correctly.
+
+### I get file conflicts when installing the SCALE package
+
+This is usually caused by a previous manual installation of SCALE, or a different version of SCALE installed on the same system. Currently, only one version of SCALE and its associated ROCM version can be installed at once.
+
+### I previously had your repositories set up, but it broke mysteriously.
+
+We recently merged our stable and unstable repos. This shouldn't require any action for our users, but if you're having troubles then we suggest completely removing our repositories and adding them again:
+
+```bash
+# On Rocky
+sudo dnf remove 'scale-repos*'
+sudo rm -f /etc/yum.repos.d/scale.repo
+
+# On Ubuntu
+sudo apt-get remove 'scale-repos*'
+sudo rm -f /etc/apt/sources.list.d/scale.list /etc/apt/auth.conf.d/scale.conf
+
+# Then follow the instructions above again.
+```
