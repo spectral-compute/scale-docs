@@ -1327,10 +1327,10 @@ exception will not be thrown except if an exceptional case arises.</p>
 <h2 id="api-extensions_1">API Extensions<a class="headerlink" href="#api-extensions_1" title="Permanent link">#</a></h2>
 <p>Some of SCALE's API extensions require the <code>scale.h</code> header to be included. </p>
 <h3 id="programmatic-exception-enablement">Programmatic Exception Enablement<a class="headerlink" href="#programmatic-exception-enablement" title="Permanent link">#</a></h3>
-<p>SCALE exceptions (see documentation of <code>SCALE_EXCEPTIONS</code> environment 
-variable above) may also be enabled/disabled programmatically using:</p>
-<div class="highlight"><pre><span></span><code><span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="o">::</span><span class="n">enable</span><span class="p">();</span><span class="w"> </span><span class="c1">// To enable.</span>
-<span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="o">::</span><span class="n">enable</span><span class="p">(</span><span class="nb">false</span><span class="p">);</span><span class="w"> </span><span class="c1">// To disable.</span>
+<p>SCALE's exception mode may also be controlled programmatically:</p>
+<div class="highlight"><pre><span></span><code><span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="o">::</span><span class="n">setMode</span><span class="p">(</span><span class="n">scale</span><span class="o">::</span><span class="n">ExceptionMode</span><span class="o">::</span><span class="n">THROW</span><span class="p">);</span><span class="w"> </span><span class="c1">// Throw exceptions</span>
+<span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="o">::</span><span class="n">setMode</span><span class="p">(</span><span class="n">scale</span><span class="o">::</span><span class="n">ExceptionMode</span><span class="o">::</span><span class="n">PRINT</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print errors</span>
+<span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="o">::</span><span class="n">setMode</span><span class="p">(</span><span class="n">scale</span><span class="o">::</span><span class="n">ExceptionMode</span><span class="o">::</span><span class="n">OFF</span><span class="p">);</span><span class="w"> </span><span class="c1">// Match CUDA behaviour</span>
 </code></pre></div>
 <p>Even when exceptions are disabled, you can access a <code>scale::Exception</code> object
 containing the descriptive error message from the most recent failure using
