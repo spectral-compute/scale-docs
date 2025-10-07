@@ -394,9 +394,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#i-get-file-conflicts-when-installing-the-scale-package-or-rocm-scale" class="md-nav__link">
+  <a href="#i-get-file-conflicts-when-installing-the-scale-package" class="md-nav__link">
     <span class="md-ellipsis">
-      I get file conflicts when installing the SCALE package, or rocm-scale
+      I get file conflicts when installing the SCALE package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" class="md-nav__link">
+    <span class="md-ellipsis">
+      I previously had your repositories set up, but it broke mysteriously.
     </span>
   </a>
   
@@ -1266,9 +1275,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#i-get-file-conflicts-when-installing-the-scale-package-or-rocm-scale" class="md-nav__link">
+  <a href="#i-get-file-conflicts-when-installing-the-scale-package" class="md-nav__link">
     <span class="md-ellipsis">
-      I get file conflicts when installing the SCALE package, or rocm-scale
+      I get file conflicts when installing the SCALE package
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" class="md-nav__link">
+    <span class="md-ellipsis">
+      I previously had your repositories set up, but it broke mysteriously.
     </span>
   </a>
   
@@ -1401,10 +1419,10 @@ installing SCALE, you should now reboot.</p>
 <span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_NAME</span><span class="o">=</span><span class="s2">&quot;&lt;customer-username&gt;&quot;</span>
 <span class="nb">export</span><span class="w"> </span><span class="nv">CUSTOMER_PASSWORD</span><span class="o">=</span><span class="s2">&quot;&lt;customer-password&gt;&quot;</span>
 
-wget<span class="w"> </span>--http-user<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--http-password<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>https://nonfree-pkgs.scale-lang.com/<span class="nv">$CUSTOMER_NAME</span>/tar/scale-1.4.1-amd64.tar.xz
+wget<span class="w"> </span>--http-user<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_NAME</span><span class="s2">&quot;</span><span class="w"> </span>--http-password<span class="o">=</span><span class="s2">&quot;</span><span class="nv">$CUSTOMER_PASSWORD</span><span class="s2">&quot;</span><span class="w"> </span>https://nonfree-pkgs.scale-lang.com/<span class="nv">$CUSTOMER_NAME</span>/tar/scale-latest-amd64.tar.xz
 
 <span class="c1"># Extract it to the current directory</span>
-tar<span class="w"> </span>xf<span class="w"> </span>scale-1.4.1-amd64.tar.xz
+tar<span class="w"> </span>xf<span class="w"> </span>scale-latest-amd64.tar.xz
 </code></pre></div>
 <p>The tarball is significantly larger than other options since it
 includes many dependent libraries directly instead of asking the system
@@ -1432,8 +1450,20 @@ includes many dependent libraries directly instead of asking the system
 </ul>
 <h3 id="i-get-an-error-related-to-amdgpu-dkms">I get an error related to <code>amdgpu-dkms</code><a class="headerlink" href="#i-get-an-error-related-to-amdgpu-dkms" title="Permanent link">#</a></h3>
 <p>AMD's kernel modules are only supported on certain kernels. If your system uses a very out of date kernel, you may need to upgrade it in order to build it correctly.</p>
-<h3 id="i-get-file-conflicts-when-installing-the-scale-package-or-rocm-scale">I get file conflicts when installing the SCALE package, or <code>rocm-scale</code><a class="headerlink" href="#i-get-file-conflicts-when-installing-the-scale-package-or-rocm-scale" title="Permanent link">#</a></h3>
+<h3 id="i-get-file-conflicts-when-installing-the-scale-package">I get file conflicts when installing the SCALE package<a class="headerlink" href="#i-get-file-conflicts-when-installing-the-scale-package" title="Permanent link">#</a></h3>
 <p>This is usually caused by a previous manual installation of SCALE, or a different version of SCALE installed on the same system. Currently, only one version of SCALE and its associated ROCM version can be installed at once.</p>
+<h3 id="i-previously-had-your-repositories-set-up-but-it-broke-mysteriously">I previously had your repositories set up, but it broke mysteriously.<a class="headerlink" href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" title="Permanent link">#</a></h3>
+<p>We recently merged our stable and unstable repos. This shouldn't require any action for our users, but if you're having troubles then we suggest completely removing our repositories and adding them again:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># On Rocky</span>
+sudo<span class="w"> </span>dnf<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;scale-repos*&#39;</span>
+sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/yum.repos.d/scale.repo
+
+<span class="c1"># On Ubuntu</span>
+sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;scale-repos*&#39;</span>
+sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/apt/sources.list.d/scale.list<span class="w"> </span>/etc/apt/auth.conf.d/scale.conf
+
+<span class="c1"># Then follow the instructions above again.</span>
+</code></pre></div>
 
 
 
