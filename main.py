@@ -23,7 +23,6 @@ def define_env(env):
         scale_pkgname += "-free"
 
     if "unstable" in current_branch:
-        repo_subdomain = "unstable-" + repo_subdomain
         scale_pkgname += "-unstable"
 
     env.variables["scale_pkgname"] = scale_pkgname
