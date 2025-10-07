@@ -88,13 +88,13 @@ Select your operating system and version below to see installation instructions.
     export CUSTOMER_NAME="<customer-username>"
     export CUSTOMER_PASSWORD="<customer-password>"
 
-    wget --http-user="$CUSTOMER_NAME" --http-password="$CUSTOMER_PASSWORD" https://{{repo_subdomain}}.scale-lang.com/$CUSTOMER_NAME/tar/{{scale_pkgname}}-{{scale_version}}-amd64.tar.xz
+    wget --http-user="$CUSTOMER_NAME" --http-password="$CUSTOMER_PASSWORD" https://{{repo_subdomain}}.scale-lang.com/$CUSTOMER_NAME/tar/{{scale_pkgname}}-latest-amd64.tar.xz
     {% else %}
     # Download the tarball
-    wget https://{{ repo_subdomain }}.scale-lang.com/tar/{{scale_pkgname}}-{{scale_version}}-amd64.tar.xz
+    wget https://{{ repo_subdomain }}.scale-lang.com/tar/{{scale_pkgname}}-latest-amd64.tar.xz
     {% endif %}
     # Extract it to the current directory
-    tar xf {{scale_pkgname}}-{{ scale_version }}-amd64.tar.xz
+    tar xf {{scale_pkgname}}-latest-amd64.tar.xz
     ```
 
     The tarball is significantly larger than other options since it
