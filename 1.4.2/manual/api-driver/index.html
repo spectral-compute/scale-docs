@@ -2057,16 +2057,16 @@
   <h1>Api driver</h1>
 
 <h2 id="61-data-types-used-by-cuda-driver"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TYPES.html#group__CUDA__TYPES">6.1. Data types used by CUDA driver</a><a class="headerlink" href="#61-data-types-used-by-cuda-driver" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="gd">-#define CUDA_ARRAY3D_2DARRAY</span>
-<span class="gd">-#define CUDA_ARRAY3D_COLOR_ATTACHMENT</span>
-<span class="gd">-#define CUDA_ARRAY3D_CUBEMAP</span>
-<span class="gd">-#define CUDA_ARRAY3D_DEFERRED_MAPPING</span>
-<span class="gd">-#define CUDA_ARRAY3D_DEPTH_TEXTURE</span>
-<span class="gd">-#define CUDA_ARRAY3D_LAYERED</span>
-<span class="gd">-#define CUDA_ARRAY3D_SPARSE</span>
-<span class="gd">-#define CUDA_ARRAY3D_SURFACE_LDST</span>
-<span class="gd">-#define CUDA_ARRAY3D_TEXTURE_GATHER</span>
-<span class="gd">-#define CUDA_ARRAY3D_VIDEO_ENCODE_DECODE</span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>#define CUDA_ARRAY3D_2DARRAY
+<span class="w"> </span>#define CUDA_ARRAY3D_COLOR_ATTACHMENT
+<span class="w"> </span>#define CUDA_ARRAY3D_CUBEMAP
+<span class="w"> </span>#define CUDA_ARRAY3D_DEFERRED_MAPPING
+<span class="w"> </span>#define CUDA_ARRAY3D_DEPTH_TEXTURE
+<span class="w"> </span>#define CUDA_ARRAY3D_LAYERED
+<span class="w"> </span>#define CUDA_ARRAY3D_SPARSE
+<span class="w"> </span>#define CUDA_ARRAY3D_SURFACE_LDST
+<span class="w"> </span>#define CUDA_ARRAY3D_TEXTURE_GATHER
+<span class="w"> </span>#define CUDA_ARRAY3D_VIDEO_ENCODE_DECODE
 <span class="gd">-#define CUDA_COOPERATIVE_LAUNCH_MULTI_DEVICE_NO_POST_LAUNCH_SYNC</span>
 <span class="gd">-#define CUDA_COOPERATIVE_LAUNCH_MULTI_DEVICE_NO_PRE_LAUNCH_SYNC</span>
 <span class="gd">-#define CUDA_EGL_INFINITE_TIMEOUT</span>
@@ -2076,13 +2076,13 @@
 <span class="gd">-#define CUDA_NVSCISYNC_ATTR_SIGNAL</span>
 <span class="gd">-#define CUDA_NVSCISYNC_ATTR_WAIT</span>
 <span class="w"> </span>#define CUDA_VERSION
-<span class="gd">-#define CU_ARRAY_SPARSE_PROPERTIES_SINGLE_MIPTAIL</span>
+<span class="w"> </span>#define CU_ARRAY_SPARSE_PROPERTIES_SINGLE_MIPTAIL
 <span class="w"> </span>#define CU_DEVICE_CPU
 <span class="w"> </span>#define CU_DEVICE_INVALID
 <span class="gd">-#define CU_GRAPH_COND_ASSIGN_DEFAULT</span>
-<span class="gd">-#define CU_GRAPH_KERNEL_NODE_PORT_DEFAULT</span>
-<span class="gd">-#define CU_GRAPH_KERNEL_NODE_PORT_LAUNCH_ORDER</span>
-<span class="gd">-#define CU_GRAPH_KERNEL_NODE_PORT_PROGRAMMATIC</span>
+<span class="w"> </span>#define CU_GRAPH_KERNEL_NODE_PORT_DEFAULT
+<span class="w"> </span>#define CU_GRAPH_KERNEL_NODE_PORT_LAUNCH_ORDER
+<span class="w"> </span>#define CU_GRAPH_KERNEL_NODE_PORT_PROGRAMMATIC
 <span class="gd">-#define CU_IPC_HANDLE_SIZE</span>
 <span class="gd">-#define CU_LAUNCH_KERNEL_REQUIRED_BLOCK_DIM</span>
 <span class="gd">-#define CU_LAUNCH_PARAM_BUFFER_POINTER</span>
@@ -2120,12 +2120,14 @@
 <span class="gd">-enum CUarray_cubemap_face</span>
 <span class="w"> </span>enum CUarray_format
 <span class="gd">-enum CUasyncNotificationType</span>
+<span class="gd">-enum CUatomicOperation</span>
+<span class="gd">-enum CUatomicOperationCapability</span>
 <span class="gd">-enum CUclusterSchedulingPolicy</span>
-<span class="gd">-enum CUcomputemode</span>
+<span class="w"> </span>enum CUcomputemode
 <span class="w"> </span>enum CUctx_flags
 <span class="gd">-enum CUdeviceNumaConfig</span>
-<span class="w"> </span>enum CUdevice_P2PAttribute
-<span class="w"> </span>enum CUdevice_attribute
+<span class="gd">-enum CUdevice_P2PAttribute</span>
+<span class="gd">-enum CUdevice_attribute</span>
 <span class="w"> </span>enum CUdriverProcAddressQueryResult
 <span class="w"> </span>enum CUdriverProcAddress_flags
 <span class="gd">-enum CUeglColorFormat</span>
@@ -2158,17 +2160,17 @@
 <span class="w"> </span>enum CUjitInputType
 <span class="gd">-enum CUjit_cacheMode</span>
 <span class="gd">-enum CUjit_fallback</span>
-<span class="w"> </span>enum CUjit_option
+<span class="gd">-enum CUjit_option</span>
 <span class="gd">-enum CUjit_target</span>
 <span class="gd">-enum CUlaunchAttributeID</span>
 <span class="gd">-enum CUlaunchMemSyncDomain</span>
 <span class="gd">-enum CUlibraryOption</span>
 <span class="w"> </span>enum CUlimit
 <span class="w"> </span>enum CUmemAccess_flags
-<span class="gd">-enum CUmemAllocationCompType</span>
+<span class="w"> </span>enum CUmemAllocationCompType
 <span class="w"> </span>enum CUmemAllocationGranularity_flags
 <span class="w"> </span>enum CUmemAllocationHandleType
-<span class="w"> </span>enum CUmemAllocationType
+<span class="gd">-enum CUmemAllocationType</span>
 <span class="gd">-enum CUmemAttach_flags</span>
 <span class="gd">-enum CUmemHandleType</span>
 <span class="gd">-enum CUmemLocationType</span>
@@ -2187,7 +2189,7 @@
 <span class="gd">-enum CUprocessState</span>
 <span class="w"> </span>enum CUresourceViewFormat
 <span class="w"> </span>enum CUresourcetype
-<span class="w"> </span>enum CUresult
+<span class="gd">-enum CUresult</span>
 <span class="gd">-enum CUshared_carveout</span>
 <span class="w"> </span>enum CUsharedconfig
 <span class="gd">-enum CUstreamBatchMemOpType</span>
@@ -2198,12 +2200,12 @@
 <span class="gd">-enum CUstreamWaitValue_flags</span>
 <span class="gd">-enum CUstreamWriteValue_flags</span>
 <span class="gd">-enum CUstream_flags</span>
-<span class="gd">-enum CUtensorMapDataType</span>
-<span class="gd">-enum CUtensorMapFloatOOBfill</span>
-<span class="gd">-enum CUtensorMapIm2ColWideMode</span>
-<span class="gd">-enum CUtensorMapInterleave</span>
-<span class="gd">-enum CUtensorMapL2promotion</span>
-<span class="gd">-enum CUtensorMapSwizzle</span>
+<span class="w"> </span>enum CUtensorMapDataType
+<span class="w"> </span>enum CUtensorMapFloatOOBfill
+<span class="w"> </span>enum CUtensorMapIm2ColWideMode
+<span class="w"> </span>enum CUtensorMapInterleave
+<span class="w"> </span>enum CUtensorMapL2promotion
+<span class="w"> </span>enum CUtensorMapSwizzle
 <span class="gd">-enum CUuserObjectRetain_flags</span>
 <span class="gd">-enum CUuserObject_flags</span>
 <span class="gd">-enum cl_context_flags</span>
@@ -2212,6 +2214,7 @@
 <span class="gd">-struct CUDA_ARRAY_DESCRIPTOR_v2</span>
 <span class="gd">-struct CUDA_ARRAY_MEMORY_REQUIREMENTS_v1</span>
 <span class="gd">-struct CUDA_ARRAY_SPARSE_PROPERTIES_v1</span>
+<span class="gd">-struct CUDA_BATCH_MEM_OP_NODE_PARAMS_v1</span>
 <span class="gd">-struct CUDA_BATCH_MEM_OP_NODE_PARAMS_v2</span>
 <span class="gd">-struct CUDA_CHILD_GRAPH_NODE_PARAMS</span>
 <span class="gd">-struct CUDA_CONDITIONAL_NODE_PARAMS</span>
@@ -2251,6 +2254,7 @@
 <span class="gd">-struct CUarrayMapInfo_v1</span>
 <span class="gd">-struct CUasyncNotificationInfo</span>
 <span class="gd">-struct CUcheckpointCheckpointArgs</span>
+<span class="gd">-struct CUcheckpointGpuPair</span>
 <span class="gd">-struct CUcheckpointLockArgs</span>
 <span class="gd">-struct CUcheckpointRestoreArgs</span>
 <span class="gd">-struct CUcheckpointUnlockArgs</span>
@@ -2261,7 +2265,7 @@
 <span class="w"> </span>struct CUexecAffinityParam_v1
 <span class="w"> </span>struct CUexecAffinitySmCount_v1
 <span class="gd">-struct CUextent3D_v1</span>
-<span class="gd">-struct CUgraphEdgeData</span>
+<span class="w"> </span>struct CUgraphEdgeData
 <span class="w"> </span>struct CUgraphExecUpdateResultInfo_v1
 <span class="gd">-struct CUgraphNodeParams</span>
 <span class="w"> </span>struct CUipcEventHandle_v1
@@ -2281,7 +2285,7 @@
 <span class="gd">-struct CUmulticastObjectProp_v1</span>
 <span class="gd">-struct CUoffset3D_v1</span>
 <span class="gd">-union CUstreamBatchMemOpParams_v1</span>
-<span class="gd">-struct CUtensorMap</span>
+<span class="w"> </span>struct CUtensorMap
 <span class="w"> </span>typedef CUarray_st * CUarray;
 <span class="gd">-typedef void (*CUasyncCallback)(CUasyncNotificationInfo* info, void* userData, CUasyncCallbackHandle callback);</span>
 <span class="gd">-typedef CUasyncCallbackEntry_st * CUasyncCallbackHandle;</span>
@@ -2335,13 +2339,13 @@
 <span class="w"> </span>CUresult cuDeviceGetCount(int* count);
 <span class="gd">-CUresult cuDeviceGetDefaultMemPool(CUmemoryPool* pool_out, CUdevice dev);</span>
 <span class="w"> </span>CUresult cuDeviceGetExecAffinitySupport(int* pi, CUexecAffinityType type, CUdevice dev);
+<span class="gd">-CUresult cuDeviceGetHostAtomicCapabilities(unsigned int* capabilities, const CUatomicOperation ** operations, unsigned int count, CUdevice dev);</span>
 <span class="w"> </span>CUresult cuDeviceGetLuid(char* luid, unsigned int* deviceNodeMask, CUdevice dev);
 <span class="gd">-CUresult cuDeviceGetMemPool(CUmemoryPool* pool, CUdevice dev);</span>
 <span class="w"> </span>CUresult cuDeviceGetName(char* name, int len, CUdevice dev);
 <span class="gd">-CUresult cuDeviceGetNvSciSyncAttributes(void* nvSciSyncAttrList, CUdevice dev, int flags);</span>
 <span class="gd">-CUresult cuDeviceGetTexture1DLinearMaxWidth(size_t* maxWidthInElements, CUarray_format format, unsigned numChannels, CUdevice dev);</span>
 <span class="w"> </span>CUresult cuDeviceGetUuid(CUuuid* uuid, CUdevice dev);
-<span class="w"> </span>CUresult cuDeviceGetUuid_v2(CUuuid* uuid, CUdevice dev);
 <span class="gd">-CUresult cuDeviceSetMemPool(CUdevice dev, CUmemoryPool pool);</span>
 <span class="w"> </span>CUresult cuDeviceTotalMem(size_t* bytes, CUdevice dev);
 <span class="gd">-CUresult cuFlushGPUDirectRDMAWrites(CUflushGPUDirectRDMAWritesTarget target, CUflushGPUDirectRDMAWritesScope scope);</span>
@@ -2366,6 +2370,7 @@
 <span class="w"> </span>CUresult cuCtxGetCacheConfig(CUfunc_cache* pconfig);
 <span class="w"> </span>CUresult cuCtxGetCurrent(CUcontext* pctx);
 <span class="w"> </span>CUresult cuCtxGetDevice(CUdevice* device);
+<span class="gd">-CUresult cuCtxGetDevice_v2(CUdevice* device, CUcontext ctx);</span>
 <span class="w"> </span>CUresult cuCtxGetExecAffinity(CUexecAffinityParam* pExecAffinity, CUexecAffinityType type);
 <span class="w"> </span>CUresult cuCtxGetFlags(unsigned int* flags);
 <span class="w"> </span>CUresult cuCtxGetId(CUcontext ctx, unsigned long long* ctxId);
@@ -2380,6 +2385,7 @@
 <span class="w"> </span>CUresult cuCtxSetFlags(unsigned int flags);
 <span class="w"> </span>CUresult cuCtxSetLimit(CUlimit limit, size_t value);
 <span class="w"> </span>CUresult cuCtxSynchronize(void);
+<span class="gd">-CUresult cuCtxSynchronize_v2(CUcontext ctx);</span>
 <span class="gd">-CUresult cuCtxWaitEvent(CUcontext hCtx, CUevent hEvent);</span>
 </code></pre></div>
 <h2 id="69-context-management-deprecated"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__CTX__DEPRECATED.html#group__CUDA__CTX__DEPRECATED">6.9. Context Management [DEPRECATED]</a><a class="headerlink" href="#69-context-management-deprecated" title="Permanent link">#</a></h2>
@@ -2470,22 +2476,22 @@
 <span class="w"> </span>CUresult cuMemcpy2DUnaligned(const CUDA_MEMCPY2D* pCopy);
 <span class="gd">-CUresult cuMemcpy3D(const CUDA_MEMCPY3D* pCopy);</span>
 <span class="gd">-CUresult cuMemcpy3DAsync(const CUDA_MEMCPY3D* pCopy, CUstream hStream);</span>
-<span class="gd">-CUresult cuMemcpy3DBatchAsync(size_t numOps, CUDA_MEMCPY3D_BATCH_OP* opList, size_t* failIdx, unsigned long long flags, CUstream hStream);</span>
+<span class="gd">-CUresult cuMemcpy3DBatchAsync(size_t numOps, CUDA_MEMCPY3D_BATCH_OP* opList, unsigned long long flags, CUstream hStream);</span>
 <span class="gd">-CUresult cuMemcpy3DPeer(const CUDA_MEMCPY3D_PEER* pCopy);</span>
 <span class="gd">-CUresult cuMemcpy3DPeerAsync(const CUDA_MEMCPY3D_PEER* pCopy, CUstream hStream);</span>
 <span class="w"> </span>CUresult cuMemcpyAsync(CUdeviceptr dst, CUdeviceptr src, size_t ByteCount, CUstream hStream);
-<span class="gd">-CUresult cuMemcpyAtoA(CUarray dstArray, size_t dstOffset, CUarray srcArray, size_t srcOffset, size_t ByteCount);</span>
-<span class="gd">-CUresult cuMemcpyAtoD(CUdeviceptr dstDevice, CUarray srcArray, size_t srcOffset, size_t ByteCount);</span>
-<span class="gd">-CUresult cuMemcpyAtoH(void* dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount);</span>
-<span class="gd">-CUresult cuMemcpyAtoHAsync(void* dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount, CUstream hStream);</span>
-<span class="gd">-CUresult cuMemcpyBatchAsync(CUdeviceptr* dsts, CUdeviceptr* srcs, size_t* sizes, size_t count, CUmemcpyAttributes* attrs, size_t* attrsIdxs, size_t numAttrs, size_t* failIdx, CUstream hStream);</span>
-<span class="gd">-CUresult cuMemcpyDtoA(CUarray dstArray, size_t dstOffset, CUdeviceptr srcDevice, size_t ByteCount);</span>
+<span class="w"> </span>CUresult cuMemcpyAtoA(CUarray dstArray, size_t dstOffset, CUarray srcArray, size_t srcOffset, size_t ByteCount);
+<span class="w"> </span>CUresult cuMemcpyAtoD(CUdeviceptr dstDevice, CUarray srcArray, size_t srcOffset, size_t ByteCount);
+<span class="w"> </span>CUresult cuMemcpyAtoH(void* dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount);
+<span class="w"> </span>CUresult cuMemcpyAtoHAsync(void* dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount, CUstream hStream);
+<span class="gd">-CUresult cuMemcpyBatchAsync(CUdeviceptr* dsts, CUdeviceptr* srcs, size_t* sizes, size_t count, CUmemcpyAttributes* attrs, size_t* attrsIdxs, size_t numAttrs, CUstream hStream);</span>
+<span class="w"> </span>CUresult cuMemcpyDtoA(CUarray dstArray, size_t dstOffset, CUdeviceptr srcDevice, size_t ByteCount);
 <span class="w"> </span>CUresult cuMemcpyDtoD(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount);
 <span class="w"> </span>CUresult cuMemcpyDtoDAsync(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream);
 <span class="w"> </span>CUresult cuMemcpyDtoH(void* dstHost, CUdeviceptr srcDevice, size_t ByteCount);
 <span class="w"> </span>CUresult cuMemcpyDtoHAsync(void* dstHost, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream);
-<span class="gd">-CUresult cuMemcpyHtoA(CUarray dstArray, size_t dstOffset, const void* srcHost, size_t ByteCount);</span>
-<span class="gd">-CUresult cuMemcpyHtoAAsync(CUarray dstArray, size_t dstOffset, const void* srcHost, size_t ByteCount, CUstream hStream);</span>
+<span class="w"> </span>CUresult cuMemcpyHtoA(CUarray dstArray, size_t dstOffset, const void* srcHost, size_t ByteCount);
+<span class="w"> </span>CUresult cuMemcpyHtoAAsync(CUarray dstArray, size_t dstOffset, const void* srcHost, size_t ByteCount, CUstream hStream);
 <span class="w"> </span>CUresult cuMemcpyHtoD(CUdeviceptr dstDevice, const void* srcHost, size_t ByteCount);
 <span class="w"> </span>CUresult cuMemcpyHtoDAsync(CUdeviceptr dstDevice, const void* srcHost, size_t ByteCount, CUstream hStream);
 <span class="w"> </span>CUresult cuMemcpyPeer(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, size_t ByteCount);
@@ -2528,6 +2534,8 @@
 <div class="highlight"><pre><span></span><code><span class="w"> </span>CUresult cuMemAllocAsync(CUdeviceptr* dptr, size_t bytesize, CUstream hStream);
 <span class="gd">-CUresult cuMemAllocFromPoolAsync(CUdeviceptr* dptr, size_t bytesize, CUmemoryPool pool, CUstream hStream);</span>
 <span class="w"> </span>CUresult cuMemFreeAsync(CUdeviceptr dptr, CUstream hStream);
+<span class="gd">-CUresult cuMemGetDefaultMemPool(CUmemoryPool* pool_out, CUmemLocation* location, CUmemAllocationType type);</span>
+<span class="gd">-CUresult cuMemGetMemPool(CUmemoryPool* pool, CUmemLocation* location, CUmemAllocationType type);</span>
 <span class="gd">-CUresult cuMemPoolCreate(CUmemoryPool* pool, const CUmemPoolProps* poolProps);</span>
 <span class="gd">-CUresult cuMemPoolDestroy(CUmemoryPool pool);</span>
 <span class="gd">-CUresult cuMemPoolExportPointer(CUmemPoolPtrExportData* shareData_out, CUdeviceptr ptr);</span>
@@ -2539,6 +2547,7 @@
 <span class="gd">-CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc* map, size_t count);</span>
 <span class="gd">-CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);</span>
 <span class="gd">-CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep);</span>
+<span class="gd">-CUresult cuMemSetMemPool(CUmemLocation* location, CUmemAllocationType type, CUmemoryPool pool);</span>
 </code></pre></div>
 <h2 id="616-multicast-object-management"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MULTICAST.html#group__CUDA__MULTICAST">6.16. Multicast Object Management</a><a class="headerlink" href="#616-multicast-object-management" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuMulticastAddDevice(CUmemGenericAllocationHandle mcHandle, CUdevice dev);</span>
@@ -2553,6 +2562,9 @@
 <span class="w"> </span>CUresult cuMemAdvise_v2(CUdeviceptr devPtr, size_t count, CUmem_advise advice, CUmemLocation location);
 <span class="w"> </span>CUresult cuMemPrefetchAsync(CUdeviceptr devPtr, size_t count, CUdevice dstDevice, CUstream hStream);
 <span class="w"> </span>CUresult cuMemPrefetchAsync_v2(CUdeviceptr devPtr, size_t count, CUmemLocation location, unsigned int flags, CUstream hStream);
+<span class="gd">-CUresult cuMemDiscardAndPrefetchBatchAsync(CUdeviceptr* dptrs, size_t* sizes, size_t count, CUmemLocation* prefetchLocs, size_t* prefetchLocIdxs, size_t numPrefetchLocs, unsigned long long flags, CUstream hStream);</span>
+<span class="gd">-CUresult cuMemDiscardBatchAsync(CUdeviceptr* dptrs, size_t* sizes, size_t count, unsigned long long flags, CUstream hStream);</span>
+<span class="gd">-CUresult cuMemPrefetchBatchAsync(CUdeviceptr* dptrs, size_t* sizes, size_t count, CUmemLocation* prefetchLocs, size_t* prefetchLocIdxs, size_t numPrefetchLocs, unsigned long long flags, CUstream hStream);</span>
 <span class="gd">-CUresult cuMemRangeGetAttribute(void* data, size_t dataSize, CUmem_range_attribute attribute, CUdeviceptr devPtr, size_t count);</span>
 <span class="gd">-CUresult cuMemRangeGetAttributes(void** data, size_t* dataSizes, CUmem_range_attribute* attributes, size_t numAttributes, CUdeviceptr devPtr, size_t count);</span>
 <span class="w"> </span>CUresult cuPointerGetAttribute(void* data, CUpointer_attribute attribute, CUdeviceptr ptr);
@@ -2570,8 +2582,7 @@
 <span class="w"> </span>CUresult cuStreamDestroy(CUstream hStream);
 <span class="gd">-CUresult cuStreamEndCapture(CUstream hStream, CUgraph* phGraph);</span>
 <span class="gd">-CUresult cuStreamGetAttribute(CUstream hStream, CUstreamAttrID attr, CUstreamAttrValue* value_out);</span>
-<span class="gd">-CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, size_t* numDependencies_out);</span>
-<span class="gd">-CUresult cuStreamGetCaptureInfo_v3(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, const CUgraphEdgeData** edgeData_out, size_t* numDependencies_out);</span>
+<span class="gd">-CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, const CUgraphEdgeData** edgeData_out, size_t* numDependencies_out);</span>
 <span class="w"> </span>CUresult cuStreamGetCtx(CUstream hStream, CUcontext* pctx);
 <span class="w"> </span>CUresult cuStreamGetCtx_v2(CUstream hStream, CUcontext* pCtx, CUgreenCtx* pGreenCtx);
 <span class="w"> </span>CUresult cuStreamGetDevice(CUstream hStream, CUdevice* device);
@@ -2582,8 +2593,7 @@
 <span class="w"> </span>CUresult cuStreamQuery(CUstream hStream);
 <span class="gd">-CUresult cuStreamSetAttribute(CUstream hStream, CUstreamAttrID attr, const CUstreamAttrValue* value);</span>
 <span class="w"> </span>CUresult cuStreamSynchronize(CUstream hStream);
-<span class="gd">-CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode* dependencies, size_t numDependencies, unsigned int flags);</span>
-<span class="gd">-CUresult cuStreamUpdateCaptureDependencies_v2(CUstream hStream, CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags);</span>
+<span class="gd">-CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags);</span>
 <span class="w"> </span>CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int Flags);
 <span class="gd">-CUresult cuThreadExchangeStreamCaptureMode(CUstreamCaptureMode* mode);</span>
 </code></pre></div>
@@ -2648,8 +2658,7 @@
 <span class="gd">-CUresult cuDeviceSetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void* value);</span>
 <span class="gd">-CUresult cuGraphAddBatchMemOpNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams);</span>
 <span class="gd">-CUresult cuGraphAddChildGraphNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUgraph childGraph);</span>
-<span class="w"> </span>CUresult cuGraphAddDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, size_t numDependencies);
-<span class="gd">-CUresult cuGraphAddDependencies_v2(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);</span>
+<span class="gd">-CUresult cuGraphAddDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);</span>
 <span class="gd">-CUresult cuGraphAddEmptyNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies);</span>
 <span class="gd">-CUresult cuGraphAddEventRecordNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);</span>
 <span class="gd">-CUresult cuGraphAddEventWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);</span>
@@ -2661,8 +2670,7 @@
 <span class="gd">-CUresult cuGraphAddMemFreeNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUdeviceptr dptr);</span>
 <span class="gd">-CUresult cuGraphAddMemcpyNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMCPY3D* copyParams, CUcontext ctx);</span>
 <span class="gd">-CUresult cuGraphAddMemsetNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMSET_NODE_PARAMS* memsetParams, CUcontext ctx);</span>
-<span class="gd">-CUresult cuGraphAddNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUgraphNodeParams* nodeParams);</span>
-<span class="gd">-CUresult cuGraphAddNode_v2(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUgraphNodeParams* nodeParams);</span>
+<span class="gd">-CUresult cuGraphAddNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUgraphNodeParams* nodeParams);</span>
 <span class="gd">-CUresult cuGraphBatchMemOpNodeGetParams(CUgraphNode hNode, CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams_out);</span>
 <span class="gd">-CUresult cuGraphBatchMemOpNodeSetParams(CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams);</span>
 <span class="gd">-CUresult cuGraphChildGraphNodeGetGraph(CUgraphNode hNode, CUgraph* phGraph);</span>
@@ -2715,17 +2723,14 @@
 <span class="gd">-CUresult cuGraphMemsetNodeGetParams(CUgraphNode hNode, CUDA_MEMSET_NODE_PARAMS* nodeParams);</span>
 <span class="gd">-CUresult cuGraphMemsetNodeSetParams(CUgraphNode hNode, const CUDA_MEMSET_NODE_PARAMS* nodeParams);</span>
 <span class="gd">-CUresult cuGraphNodeFindInClone(CUgraphNode* phNode, CUgraphNode hOriginalNode, CUgraph hClonedGraph);</span>
-<span class="gd">-CUresult cuGraphNodeGetDependencies(CUgraphNode hNode, CUgraphNode* dependencies, size_t* numDependencies);</span>
-<span class="gd">-CUresult cuGraphNodeGetDependencies_v2(CUgraphNode hNode, CUgraphNode* dependencies, CUgraphEdgeData* edgeData, size_t* numDependencies);</span>
-<span class="w"> </span>CUresult cuGraphNodeGetDependentNodes(CUgraphNode hNode, CUgraphNode* dependentNodes, size_t* numDependentNodes);
-<span class="gd">-CUresult cuGraphNodeGetDependentNodes_v2(CUgraphNode hNode, CUgraphNode* dependentNodes, CUgraphEdgeData* edgeData, size_t* numDependentNodes);</span>
+<span class="gd">-CUresult cuGraphNodeGetDependencies(CUgraphNode hNode, CUgraphNode* dependencies, CUgraphEdgeData* edgeData, size_t* numDependencies);</span>
+<span class="gd">-CUresult cuGraphNodeGetDependentNodes(CUgraphNode hNode, CUgraphNode* dependentNodes, CUgraphEdgeData* edgeData, size_t* numDependentNodes);</span>
 <span class="gd">-CUresult cuGraphNodeGetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int* isEnabled);</span>
 <span class="w"> </span>CUresult cuGraphNodeGetType(CUgraphNode hNode, CUgraphNodeType* type);
 <span class="gd">-CUresult cuGraphNodeSetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int isEnabled);</span>
 <span class="gd">-CUresult cuGraphNodeSetParams(CUgraphNode hNode, CUgraphNodeParams* nodeParams);</span>
 <span class="gd">-CUresult cuGraphReleaseUserObject(CUgraph graph, CUuserObject object, unsigned int count);</span>
-<span class="w"> </span>CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, size_t numDependencies);
-<span class="gd">-CUresult cuGraphRemoveDependencies_v2(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);</span>
+<span class="gd">-CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);</span>
 <span class="gd">-CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int count, unsigned int flags);</span>
 <span class="gd">-CUresult cuGraphUpload(CUgraphExec hGraphExec, CUstream hStream);</span>
 <span class="gd">-CUresult cuUserObjectCreate(CUuserObject* object_out, void* ptr, CUhostFn destroy, unsigned int initialRefcount, unsigned int flags);</span>
@@ -2787,15 +2792,16 @@
 <span class="gd">-CUresult cuSurfObjectGetResourceDesc(CUDA_RESOURCE_DESC* pResDesc, CUsurfObject surfObject);</span>
 </code></pre></div>
 <h2 id="630-tensor-map-object-managment"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TENSOR__MEMORY.html#group__CUDA__TENSOR__MEMORY">6.30. Tensor Map Object Managment</a><a class="headerlink" href="#630-tensor-map-object-managment" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuTensorMapEncodeIm2col(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const int* pixelBoxLowerCorner, const int* pixelBoxUpperCorner, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);</span>
-<span class="gd">-CUresult cuTensorMapEncodeIm2colWide(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, int pixelBoxLowerCornerWidth, int pixelBoxUpperCornerWidth, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapIm2ColWideMode mode, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);</span>
-<span class="gd">-CUresult cuTensorMapEncodeTiled(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const cuuint32_t* boxDim, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);</span>
-<span class="gd">-CUresult cuTensorMapReplaceAddress(CUtensorMap* tensorMap, void* globalAddress);</span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>CUresult cuTensorMapEncodeIm2col(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const int* pixelBoxLowerCorner, const int* pixelBoxUpperCorner, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
+<span class="w"> </span>CUresult cuTensorMapEncodeIm2colWide(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, int pixelBoxLowerCornerWidth, int pixelBoxUpperCornerWidth, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapIm2ColWideMode mode, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
+<span class="w"> </span>CUresult cuTensorMapEncodeTiled(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const cuuint32_t* boxDim, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
+<span class="w"> </span>CUresult cuTensorMapReplaceAddress(CUtensorMap* tensorMap, void* globalAddress);
 </code></pre></div>
 <h2 id="631-peer-context-memory-access"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PEER__ACCESS.html#group__CUDA__PEER__ACCESS">6.31. Peer Context Memory Access</a><a class="headerlink" href="#631-peer-context-memory-access" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="gd">-CUresult cuCtxDisablePeerAccess(CUcontext peerContext);</span>
 <span class="gd">-CUresult cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int Flags);</span>
 <span class="w"> </span>CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev);
+<span class="gd">-CUresult cuDeviceGetP2PAtomicCapabilities(unsigned int* capabilities, const CUatomicOperation ** operations, unsigned int count, CUdevice srcDevice, CUdevice dstDevice);</span>
 <span class="w"> </span>CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice);
 </code></pre></div>
 <h2 id="632-graphics-interoperability"><a href="https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GRAPHICS.html#group__CUDA__GRAPHICS">6.32. Graphics Interoperability</a><a class="headerlink" href="#632-graphics-interoperability" title="Permanent link">#</a></h2>
@@ -2831,6 +2837,7 @@
 <span class="gd">-CUresult cuGreenCtxCreate(CUgreenCtx* phCtx, CUdevResourceDesc desc, CUdevice dev, unsigned int flags);</span>
 <span class="gd">-CUresult cuGreenCtxDestroy(CUgreenCtx hCtx);</span>
 <span class="gd">-CUresult cuGreenCtxGetDevResource(CUgreenCtx hCtx, CUdevResource* resource, CUdevResourceType type);</span>
+<span class="gd">-CUresult cuGreenCtxGetId(CUgreenCtx greenCtx, unsigned long long* greenCtxId);</span>
 <span class="gd">-CUresult cuGreenCtxRecordEvent(CUgreenCtx hCtx, CUevent hEvent);</span>
 <span class="gd">-CUresult cuGreenCtxStreamCreate(CUstream* phStream, CUgreenCtx greenCtx, unsigned int flags, int priority);</span>
 <span class="gd">-CUresult cuGreenCtxWaitEvent(CUgreenCtx hCtx, CUevent hEvent);</span>

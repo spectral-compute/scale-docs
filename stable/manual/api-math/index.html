@@ -1547,8 +1547,8 @@
 <span class="w"> </span>__device__ __half hrsqrt(const __half a);
 <span class="w"> </span>__device__ __half hsin(const __half a);
 <span class="w"> </span>__device__ __half hsqrt(const __half a);
-<span class="gd">-__device__ __half htanh(const __half a);</span>
-<span class="gd">-__device__ __half htanh_approx(const __half a);</span>
+<span class="w"> </span>__device__ __half htanh(const __half a);
+<span class="w"> </span>__device__ __half htanh_approx(const __half a);
 <span class="w"> </span>__device__ __half htrunc(const __half h);
 <span class="w"> </span>__half __double2half(const double a);
 <span class="w"> </span>__device__ __half __double2half(const double a);
@@ -1558,14 +1558,14 @@
 <span class="w"> </span>__device__ __half __float2half(const float a);
 <span class="w"> </span>__half2 __float2half2_rn(const float a);
 <span class="w"> </span>__device__ __half2 __float2half2_rn(const float a);
-<span class="gd">-__half __float2half_rd(const float a);</span>
-<span class="gd">-__device__ __half __float2half_rd(const float a);</span>
+<span class="w"> </span>__half __float2half_rd(const float a);
+<span class="w"> </span>__device__ __half __float2half_rd(const float a);
 <span class="w"> </span>__half __float2half_rn(const float a);
 <span class="w"> </span>__device__ __half __float2half_rn(const float a);
-<span class="gd">-__half __float2half_ru(const float a);</span>
-<span class="gd">-__device__ __half __float2half_ru(const float a);</span>
-<span class="gd">-__half __float2half_rz(const float a);</span>
-<span class="gd">-__device__ __half __float2half_rz(const float a);</span>
+<span class="w"> </span>__half __float2half_ru(const float a);
+<span class="w"> </span>__device__ __half __float2half_ru(const float a);
+<span class="w"> </span>__half __float2half_rz(const float a);
+<span class="w"> </span>__device__ __half __float2half_rz(const float a);
 <span class="w"> </span>__half2 __floats2half2_rn(const float a, const float b);
 <span class="w"> </span>__device__ __half2 __floats2half2_rn(const float a, const float b);
 <span class="w"> </span>float2 __half22float2(const __half2 a);
@@ -1591,8 +1591,8 @@
 <span class="w"> </span>__device__ short int __half2short_ru(const __half h);
 <span class="w"> </span>short int __half2short_rz(const __half h);
 <span class="w"> </span>__device__ short int __half2short_rz(const __half h);
-<span class="gd">-unsigned char __half2uchar_rz(const __half h);</span>
-<span class="gd">-__device__ unsigned char __half2uchar_rz(const __half h);</span>
+<span class="w"> </span>unsigned char __half2uchar_rz(const __half h);
+<span class="w"> </span>__device__ unsigned char __half2uchar_rz(const __half h);
 <span class="w"> </span>__device__ unsigned int __half2uint_rd(const __half h);
 <span class="w"> </span>__device__ unsigned int __half2uint_rn(const __half h);
 <span class="w"> </span>__device__ unsigned int __half2uint_ru(const __half h);
@@ -1622,14 +1622,14 @@
 <span class="w"> </span>__device__ __half2 __high2half2(const __half2 a);
 <span class="w"> </span>__half2 __highs2half2(const __half2 a, const __half2 b);
 <span class="w"> </span>__device__ __half2 __highs2half2(const __half2 a, const __half2 b);
-<span class="gd">-__half __int2half_rd(const int i);</span>
-<span class="gd">-__device__ __half __int2half_rd(const int i);</span>
+<span class="w"> </span>__half __int2half_rd(const int i);
+<span class="w"> </span>__device__ __half __int2half_rd(const int i);
 <span class="w"> </span>__half __int2half_rn(const int i);
 <span class="w"> </span>__device__ __half __int2half_rn(const int i);
-<span class="gd">-__half __int2half_ru(const int i);</span>
-<span class="gd">-__device__ __half __int2half_ru(const int i);</span>
-<span class="gd">-__half __int2half_rz(const int i);</span>
-<span class="gd">-__device__ __half __int2half_rz(const int i);</span>
+<span class="w"> </span>__half __int2half_ru(const int i);
+<span class="w"> </span>__device__ __half __int2half_ru(const int i);
+<span class="w"> </span>__half __int2half_rz(const int i);
+<span class="w"> </span>__device__ __half __int2half_rz(const int i);
 <span class="w"> </span>__device__ __half2 __ldca(const __half2 *const ptr);
 <span class="w"> </span>__device__ __half __ldca(const __half *const ptr);
 <span class="w"> </span>__device__ __half __ldcg(const __half *const ptr);
@@ -1642,14 +1642,14 @@
 <span class="w"> </span>__device__ __half __ldg(const __half *const ptr);
 <span class="w"> </span>__device__ __half __ldlu(const __half *const ptr);
 <span class="w"> </span>__device__ __half2 __ldlu(const __half2 *const ptr);
-<span class="gd">-__half __ll2half_rd(const long long int i);</span>
-<span class="gd">-__device__ __half __ll2half_rd(const long long int i);</span>
+<span class="w"> </span>__half __ll2half_rd(const long long int i);
+<span class="w"> </span>__device__ __half __ll2half_rd(const long long int i);
 <span class="w"> </span>__half __ll2half_rn(const long long int i);
 <span class="w"> </span>__device__ __half __ll2half_rn(const long long int i);
-<span class="gd">-__half __ll2half_ru(const long long int i);</span>
-<span class="gd">-__device__ __half __ll2half_ru(const long long int i);</span>
-<span class="gd">-__half __ll2half_rz(const long long int i);</span>
-<span class="gd">-__device__ __half __ll2half_rz(const long long int i);</span>
+<span class="w"> </span>__half __ll2half_ru(const long long int i);
+<span class="w"> </span>__device__ __half __ll2half_ru(const long long int i);
+<span class="w"> </span>__half __ll2half_rz(const long long int i);
+<span class="w"> </span>__device__ __half __ll2half_rz(const long long int i);
 <span class="w"> </span>float __low2float(const __half2 a);
 <span class="w"> </span>__device__ float __low2float(const __half2 a);
 <span class="w"> </span>__half __low2half(const __half2 a);
@@ -1660,22 +1660,22 @@
 <span class="w"> </span>__device__ __half2 __lowhigh2highlow(const __half2 a);
 <span class="w"> </span>__half2 __lows2half2(const __half2 a, const __half2 b);
 <span class="w"> </span>__device__ __half2 __lows2half2(const __half2 a, const __half2 b);
-<span class="w"> </span>__device__ __half __shfl_down_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
-<span class="w"> </span>__device__ __half2 __shfl_down_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
-<span class="w"> </span>__device__ __half2 __shfl_sync(const unsigned int mask, const __half2 var, const int srcLane, const int width=warpSize);
-<span class="w"> </span>__device__ __half __shfl_sync(const unsigned int mask, const __half var, const int srcLane, const int width=warpSize);
-<span class="w"> </span>__device__ __half2 __shfl_up_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);
-<span class="w"> </span>__device__ __half __shfl_up_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);
-<span class="w"> </span>__device__ __half2 __shfl_xor_sync(const unsigned int mask, const __half2 var, const int laneMask, const int width=warpSize);
-<span class="w"> </span>__device__ __half __shfl_xor_sync(const unsigned int mask, const __half var, const int laneMask, const int width=warpSize);
-<span class="gd">-__half __short2half_rd(const short int i);</span>
-<span class="gd">-__device__ __half __short2half_rd(const short int i);</span>
+<span class="gd">-__device__ __half __shfl_down_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);</span>
+<span class="gd">-__device__ __half2 __shfl_down_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);</span>
+<span class="gd">-__device__ __half2 __shfl_sync(const unsigned int mask, const __half2 var, const int srcLane, const int width=warpSize);</span>
+<span class="gd">-__device__ __half __shfl_sync(const unsigned int mask, const __half var, const int srcLane, const int width=warpSize);</span>
+<span class="gd">-__device__ __half2 __shfl_up_sync(const unsigned int mask, const __half2 var, const unsigned int delta, const int width=warpSize);</span>
+<span class="gd">-__device__ __half __shfl_up_sync(const unsigned int mask, const __half var, const unsigned int delta, const int width=warpSize);</span>
+<span class="gd">-__device__ __half2 __shfl_xor_sync(const unsigned int mask, const __half2 var, const int laneMask, const int width=warpSize);</span>
+<span class="gd">-__device__ __half __shfl_xor_sync(const unsigned int mask, const __half var, const int laneMask, const int width=warpSize);</span>
+<span class="w"> </span>__half __short2half_rd(const short int i);
+<span class="w"> </span>__device__ __half __short2half_rd(const short int i);
 <span class="w"> </span>__half __short2half_rn(const short int i);
 <span class="w"> </span>__device__ __half __short2half_rn(const short int i);
-<span class="gd">-__half __short2half_ru(const short int i);</span>
-<span class="gd">-__device__ __half __short2half_ru(const short int i);</span>
-<span class="gd">-__half __short2half_rz(const short int i);</span>
-<span class="gd">-__device__ __half __short2half_rz(const short int i);</span>
+<span class="w"> </span>__half __short2half_ru(const short int i);
+<span class="w"> </span>__device__ __half __short2half_ru(const short int i);
+<span class="w"> </span>__half __short2half_rz(const short int i);
+<span class="w"> </span>__device__ __half __short2half_rz(const short int i);
 <span class="w"> </span>__half __short_as_half(const short int i);
 <span class="w"> </span>__device__ __half __short_as_half(const short int i);
 <span class="w"> </span>__device__ void __stcg(__half2 *const ptr, const __half2 value);
@@ -1686,30 +1686,30 @@
 <span class="w"> </span>__device__ void __stwb(__half *const ptr, const __half value);
 <span class="w"> </span>__device__ void __stwt(__half *const ptr, const __half value);
 <span class="w"> </span>__device__ void __stwt(__half2 *const ptr, const __half2 value);
-<span class="gd">-__half __uint2half_rd(const unsigned int i);</span>
-<span class="gd">-__device__ __half __uint2half_rd(const unsigned int i);</span>
+<span class="w"> </span>__half __uint2half_rd(const unsigned int i);
+<span class="w"> </span>__device__ __half __uint2half_rd(const unsigned int i);
 <span class="w"> </span>__half __uint2half_rn(const unsigned int i);
 <span class="w"> </span>__device__ __half __uint2half_rn(const unsigned int i);
-<span class="gd">-__half __uint2half_ru(const unsigned int i);</span>
-<span class="gd">-__device__ __half __uint2half_ru(const unsigned int i);</span>
-<span class="gd">-__half __uint2half_rz(const unsigned int i);</span>
-<span class="gd">-__device__ __half __uint2half_rz(const unsigned int i);</span>
-<span class="gd">-__half __ull2half_rd(const unsigned long long int i);</span>
-<span class="gd">-__device__ __half __ull2half_rd(const unsigned long long int i);</span>
+<span class="w"> </span>__half __uint2half_ru(const unsigned int i);
+<span class="w"> </span>__device__ __half __uint2half_ru(const unsigned int i);
+<span class="w"> </span>__half __uint2half_rz(const unsigned int i);
+<span class="w"> </span>__device__ __half __uint2half_rz(const unsigned int i);
+<span class="w"> </span>__half __ull2half_rd(const unsigned long long int i);
+<span class="w"> </span>__device__ __half __ull2half_rd(const unsigned long long int i);
 <span class="w"> </span>__half __ull2half_rn(const unsigned long long int i);
 <span class="w"> </span>__device__ __half __ull2half_rn(const unsigned long long int i);
-<span class="gd">-__half __ull2half_ru(const unsigned long long int i);</span>
-<span class="gd">-__device__ __half __ull2half_ru(const unsigned long long int i);</span>
-<span class="gd">-__half __ull2half_rz(const unsigned long long int i);</span>
-<span class="gd">-__device__ __half __ull2half_rz(const unsigned long long int i);</span>
-<span class="gd">-__half __ushort2half_rd(const unsigned short int i);</span>
-<span class="gd">-__device__ __half __ushort2half_rd(const unsigned short int i);</span>
+<span class="w"> </span>__half __ull2half_ru(const unsigned long long int i);
+<span class="w"> </span>__device__ __half __ull2half_ru(const unsigned long long int i);
+<span class="w"> </span>__half __ull2half_rz(const unsigned long long int i);
+<span class="w"> </span>__device__ __half __ull2half_rz(const unsigned long long int i);
+<span class="w"> </span>__half __ushort2half_rd(const unsigned short int i);
+<span class="w"> </span>__device__ __half __ushort2half_rd(const unsigned short int i);
 <span class="w"> </span>__half __ushort2half_rn(const unsigned short int i);
 <span class="w"> </span>__device__ __half __ushort2half_rn(const unsigned short int i);
-<span class="gd">-__half __ushort2half_ru(const unsigned short int i);</span>
-<span class="gd">-__device__ __half __ushort2half_ru(const unsigned short int i);</span>
-<span class="gd">-__half __ushort2half_rz(const unsigned short int i);</span>
-<span class="gd">-__device__ __half __ushort2half_rz(const unsigned short int i);</span>
+<span class="w"> </span>__half __ushort2half_ru(const unsigned short int i);
+<span class="w"> </span>__device__ __half __ushort2half_ru(const unsigned short int i);
+<span class="w"> </span>__half __ushort2half_rz(const unsigned short int i);
+<span class="w"> </span>__device__ __half __ushort2half_rz(const unsigned short int i);
 <span class="w"> </span>__half __ushort_as_half(const unsigned short int i);
 <span class="w"> </span>__device__ __half __ushort_as_half(const unsigned short int i);
 <span class="w"> </span>__half2 make_half2(const __half x, const __half y);
@@ -1839,8 +1839,8 @@
 <span class="w"> </span>__device__ __half2 h2rsqrt(const __half2 a);
 <span class="w"> </span>__device__ __half2 h2sin(const __half2 a);
 <span class="w"> </span>__device__ __half2 h2sqrt(const __half2 a);
-<span class="gd">-__device__ __half2 h2tanh(const __half2 a);</span>
-<span class="gd">-__device__ __half2 h2tanh_approx(const __half2 a);</span>
+<span class="w"> </span>__device__ __half2 h2tanh(const __half2 a);
+<span class="w"> </span>__device__ __half2 h2tanh_approx(const __half2 a);
 <span class="w"> </span>__device__ __half2 h2trunc(const __half2 h);
 </code></pre></div>
 <h2 id="5-bfloat16-precision-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__BFLOAT16.html">5. Bfloat16 Precision Intrinsics</a><a class="headerlink" href="#5-bfloat16-precision-intrinsics" title="Permanent link">#</a></h2>
@@ -1957,8 +1957,8 @@
 <span class="w"> </span>__device__ short int __bfloat162short_ru(const __nv_bfloat16 h);
 <span class="w"> </span>short int __bfloat162short_rz(const __nv_bfloat16 h);
 <span class="w"> </span>__device__ short int __bfloat162short_rz(const __nv_bfloat16 h);
-<span class="gd">-unsigned char __bfloat162uchar_rz(const __nv_bfloat16 h);</span>
-<span class="gd">-__device__ unsigned char __bfloat162uchar_rz(const __nv_bfloat16 h);</span>
+<span class="w"> </span>unsigned char __bfloat162uchar_rz(const __nv_bfloat16 h);
+<span class="w"> </span>__device__ unsigned char __bfloat162uchar_rz(const __nv_bfloat16 h);
 <span class="w"> </span>__device__ unsigned int __bfloat162uint_rd(const __nv_bfloat16 h);
 <span class="w"> </span>__device__ unsigned int __bfloat162uint_rn(const __nv_bfloat16 h);
 <span class="w"> </span>__device__ unsigned int __bfloat162uint_ru(const __nv_bfloat16 h);
@@ -1986,14 +1986,14 @@
 <span class="w"> </span>__device__ __nv_bfloat16 __float2bfloat16(const float a);
 <span class="w"> </span>__nv_bfloat162 __float2bfloat162_rn(const float a);
 <span class="w"> </span>__device__ __nv_bfloat162 __float2bfloat162_rn(const float a);
-<span class="gd">-__nv_bfloat16 __float2bfloat16_rd(const float a);</span>
-<span class="gd">-__device__ __nv_bfloat16 __float2bfloat16_rd(const float a);</span>
+<span class="w"> </span>__nv_bfloat16 __float2bfloat16_rd(const float a);
+<span class="w"> </span>__device__ __nv_bfloat16 __float2bfloat16_rd(const float a);
 <span class="w"> </span>__nv_bfloat16 __float2bfloat16_rn(const float a);
 <span class="w"> </span>__device__ __nv_bfloat16 __float2bfloat16_rn(const float a);
-<span class="gd">-__nv_bfloat16 __float2bfloat16_ru(const float a);</span>
-<span class="gd">-__device__ __nv_bfloat16 __float2bfloat16_ru(const float a);</span>
-<span class="gd">-__nv_bfloat16 __float2bfloat16_rz(const float a);</span>
-<span class="gd">-__device__ __nv_bfloat16 __float2bfloat16_rz(const float a);</span>
+<span class="w"> </span>__nv_bfloat16 __float2bfloat16_ru(const float a);
+<span class="w"> </span>__device__ __nv_bfloat16 __float2bfloat16_ru(const float a);
+<span class="w"> </span>__nv_bfloat16 __float2bfloat16_rz(const float a);
+<span class="w"> </span>__device__ __nv_bfloat16 __float2bfloat16_rz(const float a);
 <span class="w"> </span>__nv_bfloat162 __floats2bfloat162_rn(const float a, const float b);
 <span class="w"> </span>__device__ __nv_bfloat162 __floats2bfloat162_rn(const float a, const float b);
 <span class="w"> </span>__nv_bfloat162 __halves2bfloat162(const __nv_bfloat16 a, const __nv_bfloat16 b);
@@ -2006,11 +2006,11 @@
 <span class="w"> </span>__device__ float __high2float(const __nv_bfloat162 a);
 <span class="w"> </span>__nv_bfloat162 __highs2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
 <span class="w"> </span>__device__ __nv_bfloat162 __highs2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
-<span class="gd">-__device__ __nv_bfloat16 __int2bfloat16_rd(const int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __int2bfloat16_rd(const int i);
 <span class="w"> </span>__nv_bfloat16 __int2bfloat16_rn(const int i);
 <span class="w"> </span>__device__ __nv_bfloat16 __int2bfloat16_rn(const int i);
-<span class="gd">-__device__ __nv_bfloat16 __int2bfloat16_ru(const int i);</span>
-<span class="gd">-__device__ __nv_bfloat16 __int2bfloat16_rz(const int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __int2bfloat16_ru(const int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __int2bfloat16_rz(const int i);
 <span class="w"> </span>__device__ __nv_bfloat162 __ldca(const __nv_bfloat162 *const ptr);
 <span class="w"> </span>__device__ __nv_bfloat16 __ldca(const __nv_bfloat16 *const ptr);
 <span class="w"> </span>__device__ __nv_bfloat16 __ldcg(const __nv_bfloat16 *const ptr);
@@ -2023,11 +2023,11 @@
 <span class="w"> </span>__device__ __nv_bfloat16 __ldg(const __nv_bfloat16 *const ptr);
 <span class="w"> </span>__device__ __nv_bfloat162 __ldlu(const __nv_bfloat162 *const ptr);
 <span class="w"> </span>__device__ __nv_bfloat16 __ldlu(const __nv_bfloat16 *const ptr);
-<span class="gd">-__device__ __nv_bfloat16 __ll2bfloat16_rd(const long long int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __ll2bfloat16_rd(const long long int i);
 <span class="w"> </span>__nv_bfloat16 __ll2bfloat16_rn(const long long int i);
 <span class="w"> </span>__device__ __nv_bfloat16 __ll2bfloat16_rn(const long long int i);
-<span class="gd">-__device__ __nv_bfloat16 __ll2bfloat16_ru(const long long int i);</span>
-<span class="gd">-__device__ __nv_bfloat16 __ll2bfloat16_rz(const long long int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __ll2bfloat16_ru(const long long int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __ll2bfloat16_rz(const long long int i);
 <span class="w"> </span>__nv_bfloat16 __low2bfloat16(const __nv_bfloat162 a);
 <span class="w"> </span>__device__ __nv_bfloat16 __low2bfloat16(const __nv_bfloat162 a);
 <span class="w"> </span>__nv_bfloat162 __low2bfloat162(const __nv_bfloat162 a);
@@ -2038,19 +2038,19 @@
 <span class="w"> </span>__device__ __nv_bfloat162 __lowhigh2highlow(const __nv_bfloat162 a);
 <span class="w"> </span>__nv_bfloat162 __lows2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
 <span class="w"> </span>__device__ __nv_bfloat162 __lows2bfloat162(const __nv_bfloat162 a, const __nv_bfloat162 b);
-<span class="w"> </span>__device__ __nv_bfloat162 __shfl_down_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
-<span class="w"> </span>__device__ __nv_bfloat16 __shfl_down_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
-<span class="w"> </span>__device__ __nv_bfloat162 __shfl_sync(const unsigned int mask, const __nv_bfloat162 var, const int srcLane, const int width=warpSize);
-<span class="w"> </span>__device__ __nv_bfloat16 __shfl_sync(const unsigned int mask, const __nv_bfloat16 var, const int srcLane, const int width=warpSize);
-<span class="w"> </span>__device__ __nv_bfloat16 __shfl_up_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);
-<span class="w"> </span>__device__ __nv_bfloat162 __shfl_up_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);
-<span class="w"> </span>__device__ __nv_bfloat16 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat16 var, const int laneMask, const int width=warpSize);
-<span class="w"> </span>__device__ __nv_bfloat162 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat162 var, const int laneMask, const int width=warpSize);
-<span class="gd">-__device__ __nv_bfloat16 __short2bfloat16_rd(const short int i);</span>
+<span class="gd">-__device__ __nv_bfloat162 __shfl_down_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);</span>
+<span class="gd">-__device__ __nv_bfloat16 __shfl_down_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);</span>
+<span class="gd">-__device__ __nv_bfloat162 __shfl_sync(const unsigned int mask, const __nv_bfloat162 var, const int srcLane, const int width=warpSize);</span>
+<span class="gd">-__device__ __nv_bfloat16 __shfl_sync(const unsigned int mask, const __nv_bfloat16 var, const int srcLane, const int width=warpSize);</span>
+<span class="gd">-__device__ __nv_bfloat16 __shfl_up_sync(const unsigned int mask, const __nv_bfloat16 var, const unsigned int delta, const int width=warpSize);</span>
+<span class="gd">-__device__ __nv_bfloat162 __shfl_up_sync(const unsigned int mask, const __nv_bfloat162 var, const unsigned int delta, const int width=warpSize);</span>
+<span class="gd">-__device__ __nv_bfloat16 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat16 var, const int laneMask, const int width=warpSize);</span>
+<span class="gd">-__device__ __nv_bfloat162 __shfl_xor_sync(const unsigned int mask, const __nv_bfloat162 var, const int laneMask, const int width=warpSize);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __short2bfloat16_rd(const short int i);
 <span class="w"> </span>__nv_bfloat16 __short2bfloat16_rn(const short int i);
 <span class="w"> </span>__device__ __nv_bfloat16 __short2bfloat16_rn(const short int i);
-<span class="gd">-__device__ __nv_bfloat16 __short2bfloat16_ru(const short int i);</span>
-<span class="gd">-__device__ __nv_bfloat16 __short2bfloat16_rz(const short int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __short2bfloat16_ru(const short int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __short2bfloat16_rz(const short int i);
 <span class="w"> </span>__nv_bfloat16 __short_as_bfloat16(const short int i);
 <span class="w"> </span>__device__ __nv_bfloat16 __short_as_bfloat16(const short int i);
 <span class="w"> </span>__device__ void __stcg(__nv_bfloat16 *const ptr, const __nv_bfloat16 value);
@@ -2061,21 +2061,21 @@
 <span class="w"> </span>__device__ void __stwb(__nv_bfloat162 *const ptr, const __nv_bfloat162 value);
 <span class="w"> </span>__device__ void __stwt(__nv_bfloat162 *const ptr, const __nv_bfloat162 value);
 <span class="w"> </span>__device__ void __stwt(__nv_bfloat16 *const ptr, const __nv_bfloat16 value);
-<span class="gd">-__device__ __nv_bfloat16 __uint2bfloat16_rd(const unsigned int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __uint2bfloat16_rd(const unsigned int i);
 <span class="w"> </span>__nv_bfloat16 __uint2bfloat16_rn(const unsigned int i);
 <span class="w"> </span>__device__ __nv_bfloat16 __uint2bfloat16_rn(const unsigned int i);
-<span class="gd">-__device__ __nv_bfloat16 __uint2bfloat16_ru(const unsigned int i);</span>
-<span class="gd">-__device__ __nv_bfloat16 __uint2bfloat16_rz(const unsigned int i);</span>
-<span class="gd">-__device__ __nv_bfloat16 __ull2bfloat16_rd(const unsigned long long int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __uint2bfloat16_ru(const unsigned int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __uint2bfloat16_rz(const unsigned int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __ull2bfloat16_rd(const unsigned long long int i);
 <span class="w"> </span>__nv_bfloat16 __ull2bfloat16_rn(const unsigned long long int i);
 <span class="w"> </span>__device__ __nv_bfloat16 __ull2bfloat16_rn(const unsigned long long int i);
-<span class="gd">-__device__ __nv_bfloat16 __ull2bfloat16_ru(const unsigned long long int i);</span>
-<span class="gd">-__device__ __nv_bfloat16 __ull2bfloat16_rz(const unsigned long long int i);</span>
-<span class="gd">-__device__ __nv_bfloat16 __ushort2bfloat16_rd(const unsigned short int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __ull2bfloat16_ru(const unsigned long long int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __ull2bfloat16_rz(const unsigned long long int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __ushort2bfloat16_rd(const unsigned short int i);
 <span class="w"> </span>__nv_bfloat16 __ushort2bfloat16_rn(const unsigned short int i);
 <span class="w"> </span>__device__ __nv_bfloat16 __ushort2bfloat16_rn(const unsigned short int i);
-<span class="gd">-__device__ __nv_bfloat16 __ushort2bfloat16_ru(const unsigned short int i);</span>
-<span class="gd">-__device__ __nv_bfloat16 __ushort2bfloat16_rz(const unsigned short int i);</span>
+<span class="w"> </span>__device__ __nv_bfloat16 __ushort2bfloat16_ru(const unsigned short int i);
+<span class="w"> </span>__device__ __nv_bfloat16 __ushort2bfloat16_rz(const unsigned short int i);
 <span class="w"> </span>__nv_bfloat16 __ushort_as_bfloat16(const unsigned short int i);
 <span class="w"> </span>__device__ __nv_bfloat16 __ushort_as_bfloat16(const unsigned short int i);
 <span class="w"> </span>__nv_bfloat162 make_bfloat162(const __nv_bfloat16 x, const __nv_bfloat16 y);
@@ -2274,7 +2274,7 @@
 <span class="gd">-__device__ float normcdfinvf(float x);</span>
 <span class="w"> </span>__device__ float normf(int dim, float const *p);
 <span class="w"> </span>__device__ float powf(float x, float y);
-<span class="gd">-__device__ float rcbrtf(float x);</span>
+<span class="w"> </span>__device__ float rcbrtf(float x);
 <span class="w"> </span>__device__ float remainderf(float x, float y);
 <span class="w"> </span>__device__ float remquof(float x, float y, int *quo);
 <span class="w"> </span>__device__ float rhypotf(float x, float y);
@@ -2305,52 +2305,52 @@
 <div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ float __cosf(float x);
 <span class="w"> </span>__device__ float __exp10f(float x);
 <span class="w"> </span>__device__ float __expf(float x);
-<span class="gd">-__device__ float2 __fadd2_rd(float2 x, float2 y);</span>
+<span class="w"> </span>__device__ float2 __fadd2_rd(float2 x, float2 y);
 <span class="w"> </span>__device__ float2 __fadd2_rn(float2 x, float2 y);
-<span class="gd">-__device__ float2 __fadd2_ru(float2 x, float2 y);</span>
-<span class="gd">-__device__ float2 __fadd2_rz(float2 x, float2 y);</span>
-<span class="gd">-__device__ float __fadd_rd(float x, float y);</span>
+<span class="w"> </span>__device__ float2 __fadd2_ru(float2 x, float2 y);
+<span class="w"> </span>__device__ float2 __fadd2_rz(float2 x, float2 y);
+<span class="w"> </span>__device__ float __fadd_rd(float x, float y);
 <span class="w"> </span>__device__ float __fadd_rn(float x, float y);
-<span class="gd">-__device__ float __fadd_ru(float x, float y);</span>
-<span class="gd">-__device__ float __fadd_rz(float x, float y);</span>
-<span class="gd">-__device__ float __fdiv_rd(float x, float y);</span>
+<span class="w"> </span>__device__ float __fadd_ru(float x, float y);
+<span class="w"> </span>__device__ float __fadd_rz(float x, float y);
+<span class="w"> </span>__device__ float __fdiv_rd(float x, float y);
 <span class="w"> </span>__device__ float __fdiv_rn(float x, float y);
-<span class="gd">-__device__ float __fdiv_ru(float x, float y);</span>
-<span class="gd">-__device__ float __fdiv_rz(float x, float y);</span>
+<span class="w"> </span>__device__ float __fdiv_ru(float x, float y);
+<span class="w"> </span>__device__ float __fdiv_rz(float x, float y);
 <span class="w"> </span>__device__ float __fdividef(float x, float y);
-<span class="gd">-__device__ float2 __ffma2_rd(float2 x, float2 y, float2 z);</span>
+<span class="w"> </span>__device__ float2 __ffma2_rd(float2 x, float2 y, float2 z);
 <span class="w"> </span>__device__ float2 __ffma2_rn(float2 x, float2 y, float2 z);
-<span class="gd">-__device__ float2 __ffma2_ru(float2 x, float2 y, float2 z);</span>
-<span class="gd">-__device__ float2 __ffma2_rz(float2 x, float2 y, float2 z);</span>
+<span class="w"> </span>__device__ float2 __ffma2_ru(float2 x, float2 y, float2 z);
+<span class="w"> </span>__device__ float2 __ffma2_rz(float2 x, float2 y, float2 z);
 <span class="gd">-__device__ float __fmaf_ieee_rd(float x, float y, float z);</span>
 <span class="w"> </span>__device__ float __fmaf_ieee_rn(float x, float y, float z);
 <span class="gd">-__device__ float __fmaf_ieee_ru(float x, float y, float z);</span>
 <span class="gd">-__device__ float __fmaf_ieee_rz(float x, float y, float z);</span>
-<span class="gd">-__device__ float __fmaf_rd(float x, float y, float z);</span>
+<span class="w"> </span>__device__ float __fmaf_rd(float x, float y, float z);
 <span class="w"> </span>__device__ float __fmaf_rn(float x, float y, float z);
-<span class="gd">-__device__ float __fmaf_ru(float x, float y, float z);</span>
-<span class="gd">-__device__ float __fmaf_rz(float x, float y, float z);</span>
-<span class="gd">-__device__ float2 __fmul2_rd(float2 x, float2 y);</span>
+<span class="w"> </span>__device__ float __fmaf_ru(float x, float y, float z);
+<span class="w"> </span>__device__ float __fmaf_rz(float x, float y, float z);
+<span class="w"> </span>__device__ float2 __fmul2_rd(float2 x, float2 y);
 <span class="w"> </span>__device__ float2 __fmul2_rn(float2 x, float2 y);
-<span class="gd">-__device__ float2 __fmul2_ru(float2 x, float2 y);</span>
-<span class="gd">-__device__ float2 __fmul2_rz(float2 x, float2 y);</span>
-<span class="gd">-__device__ float __fmul_rd(float x, float y);</span>
+<span class="w"> </span>__device__ float2 __fmul2_ru(float2 x, float2 y);
+<span class="w"> </span>__device__ float2 __fmul2_rz(float2 x, float2 y);
+<span class="w"> </span>__device__ float __fmul_rd(float x, float y);
 <span class="w"> </span>__device__ float __fmul_rn(float x, float y);
-<span class="gd">-__device__ float __fmul_ru(float x, float y);</span>
-<span class="gd">-__device__ float __fmul_rz(float x, float y);</span>
-<span class="gd">-__device__ float __frcp_rd(float x);</span>
+<span class="w"> </span>__device__ float __fmul_ru(float x, float y);
+<span class="w"> </span>__device__ float __fmul_rz(float x, float y);
+<span class="w"> </span>__device__ float __frcp_rd(float x);
 <span class="w"> </span>__device__ float __frcp_rn(float x);
-<span class="gd">-__device__ float __frcp_ru(float x);</span>
-<span class="gd">-__device__ float __frcp_rz(float x);</span>
+<span class="w"> </span>__device__ float __frcp_ru(float x);
+<span class="w"> </span>__device__ float __frcp_rz(float x);
 <span class="w"> </span>__device__ float __frsqrt_rn(float x);
-<span class="gd">-__device__ float __fsqrt_rd(float x);</span>
+<span class="w"> </span>__device__ float __fsqrt_rd(float x);
 <span class="w"> </span>__device__ float __fsqrt_rn(float x);
-<span class="gd">-__device__ float __fsqrt_ru(float x);</span>
-<span class="gd">-__device__ float __fsqrt_rz(float x);</span>
-<span class="gd">-__device__ float __fsub_rd(float x, float y);</span>
+<span class="w"> </span>__device__ float __fsqrt_ru(float x);
+<span class="w"> </span>__device__ float __fsqrt_rz(float x);
+<span class="w"> </span>__device__ float __fsub_rd(float x, float y);
 <span class="w"> </span>__device__ float __fsub_rn(float x, float y);
-<span class="gd">-__device__ float __fsub_ru(float x, float y);</span>
-<span class="gd">-__device__ float __fsub_rz(float x, float y);</span>
+<span class="w"> </span>__device__ float __fsub_ru(float x, float y);
+<span class="w"> </span>__device__ float __fsub_rz(float x, float y);
 <span class="w"> </span>__device__ float __log10f(float x);
 <span class="w"> </span>__device__ float __log2f(float x);
 <span class="w"> </span>__device__ float __logf(float x);
@@ -2359,7 +2359,7 @@
 <span class="w"> </span>__device__ void __sincosf(float x, float *sptr, float *cptr);
 <span class="w"> </span>__device__ float __sinf(float x);
 <span class="w"> </span>__device__ float __tanf(float x);
-<span class="gd">-__device__ float __tanhf(float x);</span>
+<span class="w"> </span>__device__ float __tanhf(float x);
 </code></pre></div>
 <h2 id="8-double-precision-mathematical-functions"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__DOUBLE.html">8. Double Precision Mathematical Functions</a><a class="headerlink" href="#8-double-precision-mathematical-functions" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ double acos(double x);
@@ -2429,7 +2429,7 @@
 <span class="w"> </span>__device__ double normcdf(double x);
 <span class="gd">-__device__ double normcdfinv(double x);</span>
 <span class="w"> </span>__device__ double pow(double x, double y);
-<span class="gd">-__device__ double rcbrt(double x);</span>
+<span class="w"> </span>__device__ double rcbrt(double x);
 <span class="w"> </span>__device__ double remainder(double x, double y);
 <span class="w"> </span>__device__ double remquo(double x, double y, int *quo);
 <span class="w"> </span>__device__ double rhypot(double x, double y);
@@ -2490,10 +2490,10 @@
 <div class="highlight"><pre><span></span><code><span class="gd">-128 bit floating point is not supported</span>
 </code></pre></div>
 <h2 id="11-type-casting-intrinsics"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__CAST.html">11. Type Casting Intrinsics</a><a class="headerlink" href="#11-type-casting-intrinsics" title="Permanent link">#</a></h2>
-<div class="highlight"><pre><span></span><code><span class="gd">-__device__ float __double2float_rd(double x);</span>
-<span class="gd">-__device__ float __double2float_rn(double x);</span>
-<span class="gd">-__device__ float __double2float_ru(double x);</span>
-<span class="gd">-__device__ float __double2float_rz(double x);</span>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ float __double2float_rd(double x);
+<span class="w"> </span>__device__ float __double2float_rn(double x);
+<span class="w"> </span>__device__ float __double2float_ru(double x);
+<span class="w"> </span>__device__ float __double2float_rz(double x);
 <span class="w"> </span>__device__ int __double2hiint(double x);
 <span class="w"> </span>__device__ int __double2int_rd(double x);
 <span class="w"> </span>__device__ int __double2int_rn(double x);
@@ -2533,34 +2533,34 @@
 <span class="w"> </span>__device__ unsigned int __float_as_uint(float x);
 <span class="w"> </span>__device__ double __hiloint2double(int hi, int lo);
 <span class="w"> </span>__device__ double __int2double_rn(int x);
-<span class="gd">-__device__ float __int2float_rd(int x);</span>
+<span class="w"> </span>__device__ float __int2float_rd(int x);
 <span class="w"> </span>__device__ float __int2float_rn(int x);
-<span class="gd">-__device__ float __int2float_ru(int x);</span>
-<span class="gd">-__device__ float __int2float_rz(int x);</span>
+<span class="w"> </span>__device__ float __int2float_ru(int x);
+<span class="w"> </span>__device__ float __int2float_rz(int x);
 <span class="w"> </span>__device__ float __int_as_float(int x);
-<span class="gd">-__device__ double __ll2double_rd(long long int x);</span>
-<span class="gd">-__device__ double __ll2double_rn(long long int x);</span>
-<span class="gd">-__device__ double __ll2double_ru(long long int x);</span>
-<span class="gd">-__device__ double __ll2double_rz(long long int x);</span>
-<span class="gd">-__device__ float __ll2float_rd(long long int x);</span>
-<span class="gd">-__device__ float __ll2float_rn(long long int x);</span>
-<span class="gd">-__device__ float __ll2float_ru(long long int x);</span>
-<span class="gd">-__device__ float __ll2float_rz(long long int x);</span>
+<span class="w"> </span>__device__ double __ll2double_rd(long long int x);
+<span class="w"> </span>__device__ double __ll2double_rn(long long int x);
+<span class="w"> </span>__device__ double __ll2double_ru(long long int x);
+<span class="w"> </span>__device__ double __ll2double_rz(long long int x);
+<span class="w"> </span>__device__ float __ll2float_rd(long long int x);
+<span class="w"> </span>__device__ float __ll2float_rn(long long int x);
+<span class="w"> </span>__device__ float __ll2float_ru(long long int x);
+<span class="w"> </span>__device__ float __ll2float_rz(long long int x);
 <span class="w"> </span>__device__ double __longlong_as_double(long long int x);
 <span class="w"> </span>__device__ double __uint2double_rn(unsigned int x);
-<span class="gd">-__device__ float __uint2float_rd(unsigned int x);</span>
+<span class="w"> </span>__device__ float __uint2float_rd(unsigned int x);
 <span class="w"> </span>__device__ float __uint2float_rn(unsigned int x);
-<span class="gd">-__device__ float __uint2float_ru(unsigned int x);</span>
-<span class="gd">-__device__ float __uint2float_rz(unsigned int x);</span>
+<span class="w"> </span>__device__ float __uint2float_ru(unsigned int x);
+<span class="w"> </span>__device__ float __uint2float_rz(unsigned int x);
 <span class="w"> </span>__device__ float __uint_as_float(unsigned int x);
-<span class="gd">-__device__ double __ull2double_rd(unsigned long long int x);</span>
-<span class="gd">-__device__ double __ull2double_rn(unsigned long long int x);</span>
-<span class="gd">-__device__ double __ull2double_ru(unsigned long long int x);</span>
-<span class="gd">-__device__ double __ull2double_rz(unsigned long long int x);</span>
-<span class="gd">-__device__ float __ull2float_rd(unsigned long long int x);</span>
-<span class="gd">-__device__ float __ull2float_rn(unsigned long long int x);</span>
-<span class="gd">-__device__ float __ull2float_ru(unsigned long long int x);</span>
-<span class="gd">-__device__ float __ull2float_rz(unsigned long long int x);</span>
+<span class="w"> </span>__device__ double __ull2double_rd(unsigned long long int x);
+<span class="w"> </span>__device__ double __ull2double_rn(unsigned long long int x);
+<span class="w"> </span>__device__ double __ull2double_ru(unsigned long long int x);
+<span class="w"> </span>__device__ double __ull2double_rz(unsigned long long int x);
+<span class="w"> </span>__device__ float __ull2float_rd(unsigned long long int x);
+<span class="w"> </span>__device__ float __ull2float_rn(unsigned long long int x);
+<span class="w"> </span>__device__ float __ull2float_ru(unsigned long long int x);
+<span class="w"> </span>__device__ float __ull2float_rz(unsigned long long int x);
 </code></pre></div>
 <h2 id="12-integer-mathematical-functions"><a href="https://docs.nvidia.com/cuda/cuda-math-api/cuda_math_api/group__CUDA__MATH__INT.html">12. Integer Mathematical Functions</a><a class="headerlink" href="#12-integer-mathematical-functions" title="Permanent link">#</a></h2>
 <div class="highlight"><pre><span></span><code><span class="w"> </span>__device__ long int abs(long int a);
