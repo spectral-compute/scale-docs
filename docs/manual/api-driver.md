@@ -1,15 +1,15 @@
 ## [6.1. Data types used by CUDA driver](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TYPES.html#group__CUDA__TYPES)
 ```diff
--#define CUDA_ARRAY3D_2DARRAY
--#define CUDA_ARRAY3D_COLOR_ATTACHMENT
--#define CUDA_ARRAY3D_CUBEMAP
--#define CUDA_ARRAY3D_DEFERRED_MAPPING
--#define CUDA_ARRAY3D_DEPTH_TEXTURE
--#define CUDA_ARRAY3D_LAYERED
--#define CUDA_ARRAY3D_SPARSE
--#define CUDA_ARRAY3D_SURFACE_LDST
--#define CUDA_ARRAY3D_TEXTURE_GATHER
--#define CUDA_ARRAY3D_VIDEO_ENCODE_DECODE
+ #define CUDA_ARRAY3D_2DARRAY
+ #define CUDA_ARRAY3D_COLOR_ATTACHMENT
+ #define CUDA_ARRAY3D_CUBEMAP
+ #define CUDA_ARRAY3D_DEFERRED_MAPPING
+ #define CUDA_ARRAY3D_DEPTH_TEXTURE
+ #define CUDA_ARRAY3D_LAYERED
+ #define CUDA_ARRAY3D_SPARSE
+ #define CUDA_ARRAY3D_SURFACE_LDST
+ #define CUDA_ARRAY3D_TEXTURE_GATHER
+ #define CUDA_ARRAY3D_VIDEO_ENCODE_DECODE
 -#define CUDA_COOPERATIVE_LAUNCH_MULTI_DEVICE_NO_POST_LAUNCH_SYNC
 -#define CUDA_COOPERATIVE_LAUNCH_MULTI_DEVICE_NO_PRE_LAUNCH_SYNC
 -#define CUDA_EGL_INFINITE_TIMEOUT
@@ -19,13 +19,13 @@
 -#define CUDA_NVSCISYNC_ATTR_SIGNAL
 -#define CUDA_NVSCISYNC_ATTR_WAIT
  #define CUDA_VERSION
--#define CU_ARRAY_SPARSE_PROPERTIES_SINGLE_MIPTAIL
+ #define CU_ARRAY_SPARSE_PROPERTIES_SINGLE_MIPTAIL
  #define CU_DEVICE_CPU
  #define CU_DEVICE_INVALID
 -#define CU_GRAPH_COND_ASSIGN_DEFAULT
--#define CU_GRAPH_KERNEL_NODE_PORT_DEFAULT
--#define CU_GRAPH_KERNEL_NODE_PORT_LAUNCH_ORDER
--#define CU_GRAPH_KERNEL_NODE_PORT_PROGRAMMATIC
+ #define CU_GRAPH_KERNEL_NODE_PORT_DEFAULT
+ #define CU_GRAPH_KERNEL_NODE_PORT_LAUNCH_ORDER
+ #define CU_GRAPH_KERNEL_NODE_PORT_PROGRAMMATIC
 -#define CU_IPC_HANDLE_SIZE
 -#define CU_LAUNCH_KERNEL_REQUIRED_BLOCK_DIM
 -#define CU_LAUNCH_PARAM_BUFFER_POINTER
@@ -63,12 +63,14 @@
 -enum CUarray_cubemap_face
  enum CUarray_format
 -enum CUasyncNotificationType
+-enum CUatomicOperation
+-enum CUatomicOperationCapability
 -enum CUclusterSchedulingPolicy
--enum CUcomputemode
+ enum CUcomputemode
  enum CUctx_flags
 -enum CUdeviceNumaConfig
- enum CUdevice_P2PAttribute
- enum CUdevice_attribute
+-enum CUdevice_P2PAttribute
+-enum CUdevice_attribute
  enum CUdriverProcAddressQueryResult
  enum CUdriverProcAddress_flags
 -enum CUeglColorFormat
@@ -101,17 +103,17 @@
  enum CUjitInputType
 -enum CUjit_cacheMode
 -enum CUjit_fallback
- enum CUjit_option
+-enum CUjit_option
 -enum CUjit_target
 -enum CUlaunchAttributeID
 -enum CUlaunchMemSyncDomain
 -enum CUlibraryOption
  enum CUlimit
  enum CUmemAccess_flags
--enum CUmemAllocationCompType
+ enum CUmemAllocationCompType
  enum CUmemAllocationGranularity_flags
  enum CUmemAllocationHandleType
- enum CUmemAllocationType
+-enum CUmemAllocationType
 -enum CUmemAttach_flags
 -enum CUmemHandleType
 -enum CUmemLocationType
@@ -130,7 +132,7 @@
 -enum CUprocessState
  enum CUresourceViewFormat
  enum CUresourcetype
- enum CUresult
+-enum CUresult
 -enum CUshared_carveout
  enum CUsharedconfig
 -enum CUstreamBatchMemOpType
@@ -141,12 +143,12 @@
 -enum CUstreamWaitValue_flags
 -enum CUstreamWriteValue_flags
 -enum CUstream_flags
--enum CUtensorMapDataType
--enum CUtensorMapFloatOOBfill
--enum CUtensorMapIm2ColWideMode
--enum CUtensorMapInterleave
--enum CUtensorMapL2promotion
--enum CUtensorMapSwizzle
+ enum CUtensorMapDataType
+ enum CUtensorMapFloatOOBfill
+ enum CUtensorMapIm2ColWideMode
+ enum CUtensorMapInterleave
+ enum CUtensorMapL2promotion
+ enum CUtensorMapSwizzle
 -enum CUuserObjectRetain_flags
 -enum CUuserObject_flags
 -enum cl_context_flags
@@ -155,6 +157,7 @@
 -struct CUDA_ARRAY_DESCRIPTOR_v2
 -struct CUDA_ARRAY_MEMORY_REQUIREMENTS_v1
 -struct CUDA_ARRAY_SPARSE_PROPERTIES_v1
+-struct CUDA_BATCH_MEM_OP_NODE_PARAMS_v1
 -struct CUDA_BATCH_MEM_OP_NODE_PARAMS_v2
 -struct CUDA_CHILD_GRAPH_NODE_PARAMS
 -struct CUDA_CONDITIONAL_NODE_PARAMS
@@ -194,6 +197,7 @@
 -struct CUarrayMapInfo_v1
 -struct CUasyncNotificationInfo
 -struct CUcheckpointCheckpointArgs
+-struct CUcheckpointGpuPair
 -struct CUcheckpointLockArgs
 -struct CUcheckpointRestoreArgs
 -struct CUcheckpointUnlockArgs
@@ -204,7 +208,7 @@
  struct CUexecAffinityParam_v1
  struct CUexecAffinitySmCount_v1
 -struct CUextent3D_v1
--struct CUgraphEdgeData
+ struct CUgraphEdgeData
  struct CUgraphExecUpdateResultInfo_v1
 -struct CUgraphNodeParams
  struct CUipcEventHandle_v1
@@ -224,7 +228,7 @@
 -struct CUmulticastObjectProp_v1
 -struct CUoffset3D_v1
 -union CUstreamBatchMemOpParams_v1
--struct CUtensorMap
+ struct CUtensorMap
  typedef CUarray_st * CUarray;
 -typedef void (*CUasyncCallback)(CUasyncNotificationInfo* info, void* userData, CUasyncCallbackHandle callback);
 -typedef CUasyncCallbackEntry_st * CUasyncCallbackHandle;
@@ -282,13 +286,13 @@
  CUresult cuDeviceGetCount(int* count);
 -CUresult cuDeviceGetDefaultMemPool(CUmemoryPool* pool_out, CUdevice dev);
  CUresult cuDeviceGetExecAffinitySupport(int* pi, CUexecAffinityType type, CUdevice dev);
+-CUresult cuDeviceGetHostAtomicCapabilities(unsigned int* capabilities, const CUatomicOperation ** operations, unsigned int count, CUdevice dev);
  CUresult cuDeviceGetLuid(char* luid, unsigned int* deviceNodeMask, CUdevice dev);
 -CUresult cuDeviceGetMemPool(CUmemoryPool* pool, CUdevice dev);
  CUresult cuDeviceGetName(char* name, int len, CUdevice dev);
 -CUresult cuDeviceGetNvSciSyncAttributes(void* nvSciSyncAttrList, CUdevice dev, int flags);
 -CUresult cuDeviceGetTexture1DLinearMaxWidth(size_t* maxWidthInElements, CUarray_format format, unsigned numChannels, CUdevice dev);
  CUresult cuDeviceGetUuid(CUuuid* uuid, CUdevice dev);
- CUresult cuDeviceGetUuid_v2(CUuuid* uuid, CUdevice dev);
 -CUresult cuDeviceSetMemPool(CUdevice dev, CUmemoryPool pool);
  CUresult cuDeviceTotalMem(size_t* bytes, CUdevice dev);
 -CUresult cuFlushGPUDirectRDMAWrites(CUflushGPUDirectRDMAWritesTarget target, CUflushGPUDirectRDMAWritesScope scope);
@@ -316,6 +320,7 @@
  CUresult cuCtxGetCacheConfig(CUfunc_cache* pconfig);
  CUresult cuCtxGetCurrent(CUcontext* pctx);
  CUresult cuCtxGetDevice(CUdevice* device);
+-CUresult cuCtxGetDevice_v2(CUdevice* device, CUcontext ctx);
  CUresult cuCtxGetExecAffinity(CUexecAffinityParam* pExecAffinity, CUexecAffinityType type);
  CUresult cuCtxGetFlags(unsigned int* flags);
  CUresult cuCtxGetId(CUcontext ctx, unsigned long long* ctxId);
@@ -330,6 +335,7 @@
  CUresult cuCtxSetFlags(unsigned int flags);
  CUresult cuCtxSetLimit(CUlimit limit, size_t value);
  CUresult cuCtxSynchronize(void);
+-CUresult cuCtxSynchronize_v2(CUcontext ctx);
 -CUresult cuCtxWaitEvent(CUcontext hCtx, CUevent hEvent);
 ```
 ## [6.9. Context Management [DEPRECATED]](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__CTX__DEPRECATED.html#group__CUDA__CTX__DEPRECATED)
@@ -425,22 +431,22 @@
  CUresult cuMemcpy2DUnaligned(const CUDA_MEMCPY2D* pCopy);
 -CUresult cuMemcpy3D(const CUDA_MEMCPY3D* pCopy);
 -CUresult cuMemcpy3DAsync(const CUDA_MEMCPY3D* pCopy, CUstream hStream);
--CUresult cuMemcpy3DBatchAsync(size_t numOps, CUDA_MEMCPY3D_BATCH_OP* opList, size_t* failIdx, unsigned long long flags, CUstream hStream);
+-CUresult cuMemcpy3DBatchAsync(size_t numOps, CUDA_MEMCPY3D_BATCH_OP* opList, unsigned long long flags, CUstream hStream);
 -CUresult cuMemcpy3DPeer(const CUDA_MEMCPY3D_PEER* pCopy);
 -CUresult cuMemcpy3DPeerAsync(const CUDA_MEMCPY3D_PEER* pCopy, CUstream hStream);
  CUresult cuMemcpyAsync(CUdeviceptr dst, CUdeviceptr src, size_t ByteCount, CUstream hStream);
--CUresult cuMemcpyAtoA(CUarray dstArray, size_t dstOffset, CUarray srcArray, size_t srcOffset, size_t ByteCount);
--CUresult cuMemcpyAtoD(CUdeviceptr dstDevice, CUarray srcArray, size_t srcOffset, size_t ByteCount);
--CUresult cuMemcpyAtoH(void* dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount);
--CUresult cuMemcpyAtoHAsync(void* dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount, CUstream hStream);
--CUresult cuMemcpyBatchAsync(CUdeviceptr* dsts, CUdeviceptr* srcs, size_t* sizes, size_t count, CUmemcpyAttributes* attrs, size_t* attrsIdxs, size_t numAttrs, size_t* failIdx, CUstream hStream);
--CUresult cuMemcpyDtoA(CUarray dstArray, size_t dstOffset, CUdeviceptr srcDevice, size_t ByteCount);
+ CUresult cuMemcpyAtoA(CUarray dstArray, size_t dstOffset, CUarray srcArray, size_t srcOffset, size_t ByteCount);
+ CUresult cuMemcpyAtoD(CUdeviceptr dstDevice, CUarray srcArray, size_t srcOffset, size_t ByteCount);
+ CUresult cuMemcpyAtoH(void* dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount);
+ CUresult cuMemcpyAtoHAsync(void* dstHost, CUarray srcArray, size_t srcOffset, size_t ByteCount, CUstream hStream);
+-CUresult cuMemcpyBatchAsync(CUdeviceptr* dsts, CUdeviceptr* srcs, size_t* sizes, size_t count, CUmemcpyAttributes* attrs, size_t* attrsIdxs, size_t numAttrs, CUstream hStream);
+ CUresult cuMemcpyDtoA(CUarray dstArray, size_t dstOffset, CUdeviceptr srcDevice, size_t ByteCount);
  CUresult cuMemcpyDtoD(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount);
  CUresult cuMemcpyDtoDAsync(CUdeviceptr dstDevice, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream);
  CUresult cuMemcpyDtoH(void* dstHost, CUdeviceptr srcDevice, size_t ByteCount);
  CUresult cuMemcpyDtoHAsync(void* dstHost, CUdeviceptr srcDevice, size_t ByteCount, CUstream hStream);
--CUresult cuMemcpyHtoA(CUarray dstArray, size_t dstOffset, const void* srcHost, size_t ByteCount);
--CUresult cuMemcpyHtoAAsync(CUarray dstArray, size_t dstOffset, const void* srcHost, size_t ByteCount, CUstream hStream);
+ CUresult cuMemcpyHtoA(CUarray dstArray, size_t dstOffset, const void* srcHost, size_t ByteCount);
+ CUresult cuMemcpyHtoAAsync(CUarray dstArray, size_t dstOffset, const void* srcHost, size_t ByteCount, CUstream hStream);
  CUresult cuMemcpyHtoD(CUdeviceptr dstDevice, const void* srcHost, size_t ByteCount);
  CUresult cuMemcpyHtoDAsync(CUdeviceptr dstDevice, const void* srcHost, size_t ByteCount, CUstream hStream);
  CUresult cuMemcpyPeer(CUdeviceptr dstDevice, CUcontext dstContext, CUdeviceptr srcDevice, CUcontext srcContext, size_t ByteCount);
@@ -485,6 +491,8 @@
  CUresult cuMemAllocAsync(CUdeviceptr* dptr, size_t bytesize, CUstream hStream);
 -CUresult cuMemAllocFromPoolAsync(CUdeviceptr* dptr, size_t bytesize, CUmemoryPool pool, CUstream hStream);
  CUresult cuMemFreeAsync(CUdeviceptr dptr, CUstream hStream);
+-CUresult cuMemGetDefaultMemPool(CUmemoryPool* pool_out, CUmemLocation* location, CUmemAllocationType type);
+-CUresult cuMemGetMemPool(CUmemoryPool* pool, CUmemLocation* location, CUmemAllocationType type);
 -CUresult cuMemPoolCreate(CUmemoryPool* pool, const CUmemPoolProps* poolProps);
 -CUresult cuMemPoolDestroy(CUmemoryPool pool);
 -CUresult cuMemPoolExportPointer(CUmemPoolPtrExportData* shareData_out, CUdeviceptr ptr);
@@ -496,6 +504,7 @@
 -CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc* map, size_t count);
 -CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
 -CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep);
+-CUresult cuMemSetMemPool(CUmemLocation* location, CUmemAllocationType type, CUmemoryPool pool);
 ```
 ## [6.16. Multicast Object Management](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__MULTICAST.html#group__CUDA__MULTICAST)
 ```diff
@@ -508,10 +517,14 @@
 ```
 ## [6.17. Unified Addressing](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__UNIFIED.html#group__CUDA__UNIFIED)
 ```diff
+
  CUresult cuMemAdvise(CUdeviceptr devPtr, size_t count, CUmem_advise advice, CUdevice device);
  CUresult cuMemAdvise_v2(CUdeviceptr devPtr, size_t count, CUmem_advise advice, CUmemLocation location);
  CUresult cuMemPrefetchAsync(CUdeviceptr devPtr, size_t count, CUdevice dstDevice, CUstream hStream);
  CUresult cuMemPrefetchAsync_v2(CUdeviceptr devPtr, size_t count, CUmemLocation location, unsigned int flags, CUstream hStream);
+-CUresult cuMemDiscardAndPrefetchBatchAsync(CUdeviceptr* dptrs, size_t* sizes, size_t count, CUmemLocation* prefetchLocs, size_t* prefetchLocIdxs, size_t numPrefetchLocs, unsigned long long flags, CUstream hStream);
+-CUresult cuMemDiscardBatchAsync(CUdeviceptr* dptrs, size_t* sizes, size_t count, unsigned long long flags, CUstream hStream);
+-CUresult cuMemPrefetchBatchAsync(CUdeviceptr* dptrs, size_t* sizes, size_t count, CUmemLocation* prefetchLocs, size_t* prefetchLocIdxs, size_t numPrefetchLocs, unsigned long long flags, CUstream hStream);
 -CUresult cuMemRangeGetAttribute(void* data, size_t dataSize, CUmem_range_attribute attribute, CUdeviceptr devPtr, size_t count);
 -CUresult cuMemRangeGetAttributes(void** data, size_t* dataSizes, CUmem_range_attribute* attributes, size_t numAttributes, CUdeviceptr devPtr, size_t count);
  CUresult cuPointerGetAttribute(void* data, CUpointer_attribute attribute, CUdeviceptr ptr);
@@ -530,8 +543,7 @@
  CUresult cuStreamDestroy(CUstream hStream);
 -CUresult cuStreamEndCapture(CUstream hStream, CUgraph* phGraph);
 -CUresult cuStreamGetAttribute(CUstream hStream, CUstreamAttrID attr, CUstreamAttrValue* value_out);
--CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, size_t* numDependencies_out);
--CUresult cuStreamGetCaptureInfo_v3(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, const CUgraphEdgeData** edgeData_out, size_t* numDependencies_out);
+-CUresult cuStreamGetCaptureInfo(CUstream hStream, CUstreamCaptureStatus* captureStatus_out, cuuint64_t* id_out, CUgraph* graph_out, const CUgraphNode** dependencies_out, const CUgraphEdgeData** edgeData_out, size_t* numDependencies_out);
  CUresult cuStreamGetCtx(CUstream hStream, CUcontext* pctx);
  CUresult cuStreamGetCtx_v2(CUstream hStream, CUcontext* pCtx, CUgreenCtx* pGreenCtx);
  CUresult cuStreamGetDevice(CUstream hStream, CUdevice* device);
@@ -542,8 +554,7 @@
  CUresult cuStreamQuery(CUstream hStream);
 -CUresult cuStreamSetAttribute(CUstream hStream, CUstreamAttrID attr, const CUstreamAttrValue* value);
  CUresult cuStreamSynchronize(CUstream hStream);
--CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode* dependencies, size_t numDependencies, unsigned int flags);
--CUresult cuStreamUpdateCaptureDependencies_v2(CUstream hStream, CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags);
+-CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags);
  CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int Flags);
 -CUresult cuThreadExchangeStreamCaptureMode(CUstreamCaptureMode* mode);
 ```
@@ -614,8 +625,7 @@
 -CUresult cuDeviceSetGraphMemAttribute(CUdevice device, CUgraphMem_attribute attr, void* value);
 -CUresult cuGraphAddBatchMemOpNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams);
 -CUresult cuGraphAddChildGraphNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUgraph childGraph);
- CUresult cuGraphAddDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, size_t numDependencies);
--CUresult cuGraphAddDependencies_v2(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
+-CUresult cuGraphAddDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
 -CUresult cuGraphAddEmptyNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies);
 -CUresult cuGraphAddEventRecordNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
 -CUresult cuGraphAddEventWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
@@ -627,8 +637,7 @@
 -CUresult cuGraphAddMemFreeNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUdeviceptr dptr);
 -CUresult cuGraphAddMemcpyNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMCPY3D* copyParams, CUcontext ctx);
 -CUresult cuGraphAddMemsetNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMSET_NODE_PARAMS* memsetParams, CUcontext ctx);
--CUresult cuGraphAddNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUgraphNodeParams* nodeParams);
--CUresult cuGraphAddNode_v2(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUgraphNodeParams* nodeParams);
+-CUresult cuGraphAddNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUgraphNodeParams* nodeParams);
 -CUresult cuGraphBatchMemOpNodeGetParams(CUgraphNode hNode, CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams_out);
 -CUresult cuGraphBatchMemOpNodeSetParams(CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams);
 -CUresult cuGraphChildGraphNodeGetGraph(CUgraphNode hNode, CUgraph* phGraph);
@@ -681,17 +690,14 @@
 -CUresult cuGraphMemsetNodeGetParams(CUgraphNode hNode, CUDA_MEMSET_NODE_PARAMS* nodeParams);
 -CUresult cuGraphMemsetNodeSetParams(CUgraphNode hNode, const CUDA_MEMSET_NODE_PARAMS* nodeParams);
 -CUresult cuGraphNodeFindInClone(CUgraphNode* phNode, CUgraphNode hOriginalNode, CUgraph hClonedGraph);
--CUresult cuGraphNodeGetDependencies(CUgraphNode hNode, CUgraphNode* dependencies, size_t* numDependencies);
--CUresult cuGraphNodeGetDependencies_v2(CUgraphNode hNode, CUgraphNode* dependencies, CUgraphEdgeData* edgeData, size_t* numDependencies);
- CUresult cuGraphNodeGetDependentNodes(CUgraphNode hNode, CUgraphNode* dependentNodes, size_t* numDependentNodes);
--CUresult cuGraphNodeGetDependentNodes_v2(CUgraphNode hNode, CUgraphNode* dependentNodes, CUgraphEdgeData* edgeData, size_t* numDependentNodes);
+-CUresult cuGraphNodeGetDependencies(CUgraphNode hNode, CUgraphNode* dependencies, CUgraphEdgeData* edgeData, size_t* numDependencies);
+-CUresult cuGraphNodeGetDependentNodes(CUgraphNode hNode, CUgraphNode* dependentNodes, CUgraphEdgeData* edgeData, size_t* numDependentNodes);
 -CUresult cuGraphNodeGetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int* isEnabled);
  CUresult cuGraphNodeGetType(CUgraphNode hNode, CUgraphNodeType* type);
 -CUresult cuGraphNodeSetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int isEnabled);
 -CUresult cuGraphNodeSetParams(CUgraphNode hNode, CUgraphNodeParams* nodeParams);
 -CUresult cuGraphReleaseUserObject(CUgraph graph, CUuserObject object, unsigned int count);
- CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, size_t numDependencies);
--CUresult cuGraphRemoveDependencies_v2(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
+-CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
 -CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int count, unsigned int flags);
 -CUresult cuGraphUpload(CUgraphExec hGraphExec, CUstream hStream);
 -CUresult cuUserObjectCreate(CUuserObject* object_out, void* ptr, CUhostFn destroy, unsigned int initialRefcount, unsigned int flags);
@@ -759,16 +765,17 @@
 ```
 ## [6.30. Tensor Map Object Managment](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__TENSOR__MEMORY.html#group__CUDA__TENSOR__MEMORY)
 ```diff
--CUresult cuTensorMapEncodeIm2col(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const int* pixelBoxLowerCorner, const int* pixelBoxUpperCorner, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
--CUresult cuTensorMapEncodeIm2colWide(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, int pixelBoxLowerCornerWidth, int pixelBoxUpperCornerWidth, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapIm2ColWideMode mode, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
--CUresult cuTensorMapEncodeTiled(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const cuuint32_t* boxDim, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
--CUresult cuTensorMapReplaceAddress(CUtensorMap* tensorMap, void* globalAddress);
+ CUresult cuTensorMapEncodeIm2col(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const int* pixelBoxLowerCorner, const int* pixelBoxUpperCorner, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
+ CUresult cuTensorMapEncodeIm2colWide(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, int pixelBoxLowerCornerWidth, int pixelBoxUpperCornerWidth, cuuint32_t channelsPerPixel, cuuint32_t pixelsPerColumn, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapIm2ColWideMode mode, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
+ CUresult cuTensorMapEncodeTiled(CUtensorMap* tensorMap, CUtensorMapDataType tensorDataType, cuuint32_t tensorRank, void* globalAddress, const cuuint64_t* globalDim, const cuuint64_t* globalStrides, const cuuint32_t* boxDim, const cuuint32_t* elementStrides, CUtensorMapInterleave interleave, CUtensorMapSwizzle swizzle, CUtensorMapL2promotion l2Promotion, CUtensorMapFloatOOBfill oobFill);
+ CUresult cuTensorMapReplaceAddress(CUtensorMap* tensorMap, void* globalAddress);
 ```
 ## [6.31. Peer Context Memory Access](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__PEER__ACCESS.html#group__CUDA__PEER__ACCESS)
 ```diff
 -CUresult cuCtxDisablePeerAccess(CUcontext peerContext);
 -CUresult cuCtxEnablePeerAccess(CUcontext peerContext, unsigned int Flags);
  CUresult cuDeviceCanAccessPeer(int* canAccessPeer, CUdevice dev, CUdevice peerDev);
+-CUresult cuDeviceGetP2PAtomicCapabilities(unsigned int* capabilities, const CUatomicOperation ** operations, unsigned int count, CUdevice srcDevice, CUdevice dstDevice);
  CUresult cuDeviceGetP2PAttribute(int* value, CUdevice_P2PAttribute attrib, CUdevice srcDevice, CUdevice dstDevice);
 ```
 ## [6.32. Graphics Interoperability](https://docs.nvidia.com/cuda/cuda-driver-api/group__CUDA__GRAPHICS.html#group__CUDA__GRAPHICS)
@@ -808,6 +815,7 @@
 -CUresult cuGreenCtxCreate(CUgreenCtx* phCtx, CUdevResourceDesc desc, CUdevice dev, unsigned int flags);
 -CUresult cuGreenCtxDestroy(CUgreenCtx hCtx);
 -CUresult cuGreenCtxGetDevResource(CUgreenCtx hCtx, CUdevResource* resource, CUdevResourceType type);
+-CUresult cuGreenCtxGetId(CUgreenCtx greenCtx, unsigned long long* greenCtxId);
 -CUresult cuGreenCtxRecordEvent(CUgreenCtx hCtx, CUevent hEvent);
 -CUresult cuGreenCtxStreamCreate(CUstream* phStream, CUgreenCtx greenCtx, unsigned int flags, int priority);
 -CUresult cuGreenCtxWaitEvent(CUgreenCtx hCtx, CUevent hEvent);
