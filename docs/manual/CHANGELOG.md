@@ -1,5 +1,87 @@
 # What's new?
 
+## Release 1.4.2 (2025-09-19)
+
+### Compiler
+
+#### NVCC Conformance
+
+- Fix `__shared__` and `__constant__` appearing after an anonymous union/struct.
+- Fix handling of `%` in inline ptx.
+- Allow template redeclarations in namespaces.
+- Make commas in inline ptx argument lists optional.
+- `%globaltimer` and friends.
+- Don't warn about passing C++ pointers to memory ops.
+- Merge various nvcc-compat flags together.
+    - Trying to implement a middle ground between clang mode and nvcc mode
+      turned out not to be useful.
+- Allow float constants that end with a `.`, like `0.`.
+- Allow whitespace in various places in modifiers, directives, and instructions.
+- Support `cp.async` ptx instruction.
+
+#### Optimisations and Improvements
+
+- Shuffle and reduction optimisations.
+- Improve handling of higher-dimensional vector types in ptx.
+- Handle any C++ integer type.
+- Fix crash parsing video byte selectors.
+- Fix parsing of integers literals ending U/u
+- Fix min/max secops on video instructions
+- Fix a subtle bug in the handling of ultra-wide shifts
+- GFX942 support (MI210, MI300X), and GFX906.
+
+#### Diagnostics
+
+- Diagnostics for use of the legacy default stream, and optional diagnostics for
+  default stream use in general.
+- Better diagnostics for accidental address operands
+    - Using `[]` is a common typo for instructions that use a pointer as an
+      integer value, so let's give a dedicated error for such a mistake.
+- Point to the end of the line for missing semi-colon PTX warnings.
+- Warn about inline ptx which declares variables not in a scope, as these will
+  leak to ptx blocks in other functions if inlining happens.
+    - Nvidia's implementation only gives errors about multiple variable
+      declarations when this happens and variables have the same name.
+- Better source location tracking for ptx operands.
+- Make `.param` qualifier a compiler error since it is always UB in an inline
+  asm block.
+- Greatly improved diagnostics for `"C"` constraint ptx inline asm.
+    - Now the specific instruction where the error occurred will be shown, along
+      with the asm block after constraint expansion.
+
+### Library
+
+#### Additions
+
+- Add sub-byte integer wmma.
+- Add NVML implementation.
+- Add better exception control using `scale::Exception::setMode()`.
+    - Controls whether any return code that is not `cudaSuccess` throws and
+      exception, or just prints a message.
+- Add missing ComputeMode driver enum.
+- More `cudaArray` API.
+- More `cusolver` API.
+- Better handling of OOM.
+- More concise f16 headers to save a few ms in everyone's parsers.
+- CUDA headers are assumed to include `cassert`.
+
+#### Fixes
+
+- Fix const-correctness in coop-groups.
+- Fix leaked `STR` macro, among a few others.
+- Fix overflow bug in `__sad()`.
+- Fix fft plan creation.
+- Fix CUcontext use-after-free bug
+- Fix `cuCtxSetCurrent` when stack is empty
+- Fix rare crash unloading modules.
+    - It was possible to unload a module right as one of its kernels was
+      scheduled.
+- Fix ZSH not picking up PATH changes in scaleenv.
+- Fix leaking implementation detail variables from `scaleenv`.
+- Fix prefix local variables of `scaleenv` with `__SCALEENV`.
+- Fix delete unused `scaleenv` variable `NEWPATH`.
+- Fix make scaleenv compatible with `set -o nounset` environments.
+
 ## Release 1.3.1 (2025-05-12)
 
 ### Compiler
