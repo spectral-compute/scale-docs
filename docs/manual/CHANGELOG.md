@@ -1,26 +1,145 @@
 # What's new?
 
+## Release 1.4.2 (2025-09-19)
+
+### Platform/Packaging
+
+- Simplified packaging/installation: removed dependency on rocm package repos. Removal of more rocm components from the package is in development.
+- Using rocm 6.4.1 versions of rocBLAS etc.
+
+### Compiler Diagnostics
+
+- Warn about PTX instruction flags that don't actually do anything.
+- Warn about PTX variable declarations leaking into the enclosing function, since this may cause ptxas failures
+  when building for NVIDIA.
+- Warn about passing a generic address space C++ pointer into an asm operand for a non-generic PTX memory instruction if the
+  corresponding addrspacecast is not a no-op.
+- Detect when the user seems to have gotten `cvta.to` and `cvta` mixed up.
+- Cleanly reject `.param` address space in PTX: using that in inline asm is undefined behaviour.
+- Diagnose accidental address operands (eg. use of `[]` for `cvta` is a common screwup).
+- Proper errors for integer width mismatch in PTX address space conversions. Implicitly truncating pointers is *bad*.
+- Disallow overloads that differ only in return type and sideness in clang-dialect mode.
+- Implement a fancier-than-nvcc edition of `-Wdefault-stream-launch`, warning about implicit use of the legacy default stream via any launch mechanism, with opt-in support for warning about any use of the default stream (ptds or not).
+- PTX diagnositcs now correctly point at the offending operand, where applicable.
+- Correctly report source locations for diagnostics in PTX blocks that use `C` constraints.
+
+### Compiler Optimisation
+
+- Use DPP to optimise applicable `__shfl*/__reduce*` calls, and loops that perform common reduction/cumsum idioms.
+- Improved instruction selection for shared-memory reads of sub-word types.
+- Vectorisation support for `__shfl*` (eg. turns multiple i8 shuffles into an i32 or i64 shuffle). Particularly useful for exploiting architectures that have support for i64 shuffles.
+- Ability to move extending conversions across shuffles, to avoid shuffling useless bits.
+- Don't generate redundant warp reductions prior to uniform atomic ops.
+- Constant propagation for `__shfl*`.
+- Improved program startup time in the presence of CUDA translation units with no device code.
+- Improvements to `i1` vectorisation.
+- Don't discard `__builtin_provable` too early when doing LTO or building bitcode libraries.
+
+### NVCC Compatibility
+
+- Support for `__shared__` and `__constant__` keywords an anonymous unions/structs.
+- Allow `__device__` keyword to redundantly accompany `__shared__` or `__constant__`.
+- Remove spurious warning about passing C++ pointers to memory ops.
+- Commas in asm statement argument lists are, it turns out, optional.
+- Support `forward-unknown-opts`.
+- Correctly handle missing `template` keywords in more dependent name lookup scenarios.
+- Tolerate wrong-sided access during constant evaluation.
+- Cleaner diagnostics when handling redundant commas in the presence of multiple templates closing at once.
+- Allow out-of-line redeclaration of namespaced template functions with conflicting signatures (this becomes an overload, when it should be a compile error).
+
+### Inline PTX Support
+
+- Support for undocumented syntax quirks, like spaces in the middle of directives.
+- Support for a wider variety of constant expressions.
+- Fix miscompilation of `min.xorsign.abs`.
+- Fix miscompilation of `testp.finite` in `-ffast-math` mode.
+- Correct behaviour of `dp4a/dp2a` in the presence of overflow.
+- Correctly parse identifiers including `%` on asm blocks with no inputs/outputs.
+- Fix miscompile of shifts/bmsk with extremely large shift amounts.
+- Implement insane implicit asm-input conversion rules.
+- Fix miscompiles in video instructions using min/max as the secondary op, since real behaviour
+  turned out to differ from the manual.
+- Avoid compiler crash when trying to constant-evaluate a PTX `n` input that has a type error.
+- `tf32` support, via upcasting to `fp32`.
+- Fix some corner cases of mixing vector splats with `_` operands.
+- Fix crash parsing video byte selectors.
+- Correctly handle implicit vector-of-vector types, because it turns out those are at least semantically a thing.
+- Newly-supported instructions:
+    * `cp.async.*`
+    * `min/max`, 3-input edition.
+    * `add/sub/mul/fma/cvt` with non-default rounding modes.
+    * `mma/wmma` for sub-byte integer types.
+    * `mma/wmma` for all remaining shapes, in all datatypes except fp8/6/4.
+    * `red/atom` for vector types.
+    * `cvt.pack`, 4-input edition.
+    * `nanosleep`
+- Newly-supported special registers:
+    * `%globaltimer`
+    * `%globaltimer_hi`
+    * `%globaltimer_lo`
+    * `%warpid`
+    * `%nwarpid`
+    * `%smid`
+    * `%nsmid`
+
+### Compiler Misc.
+
+- Fixed compiler crash when doing `decltype(lambda)` in certain conditions.
+- `__syncthreads_and()` and friends no longer use any shared memory.
+- Improvements to compile speed, espeically in the presence of inline PTX. Extremely so in the presence of `mma/wmma`.
+
+### Library: New APIs
+
+See the [API diffs](https://docs.scale-lang.com/stable/manual/apis/) for precise information.
+
+- Added most commonly-used NVML APIs.
+- More `cuSOLVER/cuSPARSE`.
+- Non-default-rounding-mode APIs (conversions and arithmetic).
+- Added 1D CUarray copy APIs.
+- Added device-side versions of device/context property query APIs (`cudaDeviceGetAttribute` etc).
+- `bmma_sync`.
+- `atomicAdd` for `float2` and `float4`.
+- Added API for programmatically controlling SCALE's exception behaviour.
+
+### Library: Fixes
+
+- Allocator improvements prevent premature OOM due to address space fragmentation in long-running applications with a high level of memory churn.
+- Fix const-correctness in coop-groups.
+- Removed some macro leaks.
+- `__sad()` now behaves correctly in the presence of integer overload.
+- Fix bugs in FFT plan creation.
+- Fix some edgecases relating to delting the active CUcontext before popping it.
+- Fixed use of `cuCtxSetCurrent` when stack is empty
+- Don't crash when unloading a module at the same time as launching one of its kernels.
+- `scaleenv` now works with zsh, and does not pollute the shell environment.
+- Endless tiny fixes, random macros, header compatibility tweaks, etc.
+- Device PCI IDs now match the format of NVIDIA CUDA _exactly_.
+- Fix some edgecases where denorms weren't being flushed, but should be.
+- Stream creation is faster.
+- Don't crash when the printf buffer is larger than 4GB.
+- Fix rare hang when using the IPC APIs.
+
 ## Release 1.3.1 (2025-05-12)
 
 ### Compiler
 
-- Fixed a bug in the handling of weak device-side symbols which broke the 
+- Fixed a bug in the handling of weak device-side symbols which broke the
   device binaries for certain projects.
 - Fixed various PTX miscompilations.
-- Added support for approximate-math PTX instructions (`lg2.approx` and 
+- Added support for approximate-math PTX instructions (`lg2.approx` and
   friends).
 
 ### Library
 
 - Fixed many small bugs in the device-side APIs.
-- Per-thread-default-stream actually works now, rather than silently using 
+- Per-thread-default-stream actually works now, rather than silently using
   the legacy stream.
 - Fixed a race condition in the fft library.
 
 ### Thirdparty Project demos
 
-- GROMACS now works. SCALE appears to support a wider selection of AMD 
-  architectures than the HIP port, and seems to perform somewhat better (on 
+- GROMACS now works. SCALE appears to support a wider selection of AMD
+  architectures than the HIP port, and seems to perform somewhat better (on
   MI210, at least!).
 
 ## Release 1.3.0 (2025-04-23)
@@ -61,7 +180,7 @@
 
 ### Library
 
-- Lazy-initialisation of primary contexts now works properly, fixing some 
+- Lazy-initialisation of primary contexts now works properly, fixing some
   subtle lifecycle issues.
 - Added some missing undocumented headers like `texture_types.h`.
 - Added the IPC memory/event APIs
@@ -89,8 +208,8 @@
 - Device atomics are now much more efficient.
 - Denorm-flushing optimisations are no longer skipped when they aren't
   supposed to be.
-- Ability to use DPP to optimise warp shuffles in some cases. Currently, 
-  this only works if the individual shfl is provably equivalent to a DPP op, 
+- Ability to use DPP to optimise warp shuffles in some cases. Currently,
+  this only works if the individual shfl is provably equivalent to a DPP op,
   not when loop analysis would be required. `__shfl_xor` is your friend.
 
 ### NVCC Interface
@@ -184,7 +303,7 @@ Things that now appear to work include:
 
 ### Thirdparty Project demos
 
-The `scale-validation` repo now has working demos for the following 
+The `scale-validation` repo now has working demos for the following
 additional projects:
 
 - FLAMEGPU2
