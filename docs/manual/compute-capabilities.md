@@ -5,60 +5,51 @@ represent different GPU targets. The value of the `__CUDA_ARCH__` macro is
 derived from this, and it's how you communicate with `nvcc` to request the
 target to build for.
 
-GPUs from other vendors have their own numbering scheme, such as AMD's 
+GPUs from other vendors have their own numbering scheme, such as AMD's
 `gfx1234` format.
 
-CUDA projects sometimes do numeric comparisons on the compute capability 
-value to enable/disable features using the preprocessor. This is a problem, 
-since those comparisons are inherently meaningless when targeting non-NVIDIA 
+CUDA projects sometimes do numeric comparisons on the compute capability
+value to enable/disable features using the preprocessor. This is a problem,
+since those comparisons are inherently meaningless when targeting non-NVIDIA
 hardware.
 
-There is no meaningful mapping between compute capability numbers and the 
+There is no meaningful mapping between compute capability numbers and the
 hardware of other vendors.
 
-SCALE addresses this problem by providing a "CUDA installation directory" 
-for each supported GPU target. By default, the `nvcc` in each of these 
-directories maps *every* compute capability number to the corresponding AMD 
+SCALE addresses this problem by providing a "CUDA installation directory"
+for each supported GPU target. By default, the `nvcc` in each of these
+directories maps *every* compute capability number to the corresponding AMD
 GPU target.
 
-This approach works, but has one obvious downside: it makes fat binaries 
-unrepresentable.
+That works fine for single-architecture builds and most simple cases,
+but has two obvious flaws:
+- Building for multiple architectures is unrepresentable.
+- nvRTC code may use arbitrary logic to choose a different target.
 
-To resolve that, your buildsystem must be at least somewhat SCALE-aware: 
-compute capabilities are not a sufficiently powerful abstraction to model 
-the needs of a cross-vendor fat binary.
-
-The special `gfxany` target directory is a "CUDA installation directory" 
-that does not perform this compute capability mapping at all. Instead, you 
-may provide your own arbitrary mapping from GPU targets to CC-number - or 
-use no such mapping at all (if your program doesn't use the CC-number for 
-metaprogramming). We recommend CUDA progras be written using more portable 
-and reliable means of detecting the existence of features: even within 
-NVIDIA's universe, the CC number is a rather blunt instrument.
-
-The remainder of this document explains how the compute capability mapping 
-configuration works for users of the `gfxany` target.
+SCALE provides two tools to address this issue:
+- The compiler and RTC APIs accept AMD architectures eg. `-arch gfx1100`, so
+  you can modify your build scripts or nvRTC code to explicitly ask for the
+  correct architecture, entirely opting-out of the mapping tricks.
+- ccmap configuration, which allows you to use config files or environment
+  variables to create an arbitrary mapping between compute capability numbers
+  and real GPU architectures.
 
 ## Configuration file format
 
-The configuration file is a newline separated list of entries. Each entry
-consists of an ISA name, e.g: `gfx1030` and a
-compute capability represented as an integer, e.g: `86`, separated by a space.
-The entries are tried in order, so it's
-possible to map more than one ISA and compute capability to each other
-unambiguously. If the space and compute
-capability are omitted, then the compiler associates all NVIDIA compute
-capabilities with the specified GPU.
+The configuration file provides the answer to two questions:
 
-If no entry is found for the given GPU or if no configuration file is found,
-then the library reports a compute
-capability with a large major version defined by the default numbering scheme.
+- For a given compute capability, which GPU should we compile for?
+- Given a device binary, which compute capability should we say it has?
 
-If no entry is found for the given GPU or if no configuration file is found, the
-compiler does not translate a compute
-capability to an AMD ISA.
+Each line consists of a GPU architecture, a space, and a compute capbility
+number. Entries are tried in order, and the first applicable one is used,
+so it's possible to unambiguously map more than one ISA and compute
+capability to each other.
 
-Lines starting with `#` and empty lines are ignored.
+A line consisting of just a GPU architecture name is a wildcard which
+maps all remaining compute capilibite sto that GPU architecture.
+
+Lines starting with `#` are comments.
 
 ### Example
 
@@ -80,29 +71,16 @@ gfx1100
 
 The library searches for a compute capability map in the following order:
 
-- The file pointed the `REDSCALE_CCMAP` environment variable. It is an error if
-  this environment variable is set but the
-  file to which it points does not exist.
-- `../share/redscale/ccmap.conf` relative to the directory
-  containing `libredscale.so`. This search location is intended
-  for users who build different installation trees for different GPUs. Packagers
-  should not place a configuration here.
-- `${HOME}/.redscale/ccmap.conf`
-- `/etc/redscale/ccmap.conf`
+- The file pointed the `SCALE_CCMAP` environment variable.
+- `../share/scale/ccmap.conf` relative to the directory containing `libredscale.so`.
+- `${HOME}/.scale/ccmap.conf`
+- `/etc/scale/ccmap.conf`
 
 ## Search locations for the compiler
 
 The compiler searches for a compute capability map in the following order:
 
-- The file pointed to by the `--cuda-ccmap` flag. It is an error if this flag is
-  given but the file to which it points
-  does not exist.
-- The file pointed the `REDSCALE_CCMAP` environment variable. It is an error if
-  this environment variable is set but the
-  file to which it points does not exist.
-- `../share/redscale/ccmap.conf` relative to the directory containing the
-  compiler binary (e.g: `nvcc`) if that
-  directory is in a CUDA installation directory. This search location is
-  intended for users who build different
-  installation trees for different GPUs. Packagers should not place a
-  configuration here.
+- The file pointed to by the `--cuda-ccmap` flag.
+- The file pointed the `SCALE_CCMAP` environment variable.
+- `../share/scale/ccmap.conf` relative to the directory containing the
+  compiler executable.
