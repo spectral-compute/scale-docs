@@ -1,3 +1,5 @@
+# Runtime API
+
 ## [6.1. Device Management](https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__DEVICE.html#group__CUDART__DEVICE)
 ```diff
  __host__ cudaError_t cudaChooseDevice(int* device, const cudaDeviceProp* prop);
