@@ -45,6 +45,9 @@ extra:
     provider: mike
     alias: true
     default: stable
+  analytics:
+    provider: google
+    property: G-FQW9W5SC5P
   social:
   - icon: fontawesome/brands/github
     link: https://github.com/spectral-compute
