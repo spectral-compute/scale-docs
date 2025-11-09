@@ -31,7 +31,7 @@ warning.
 The SCALE implementation of the CUDA runtime/driver APIs uses `[[nodiscard]]`
 for the error return codes, meaning you'll get a warning from code that 
 ignores potential errors from CUDA APIs. This warning can be disabled via 
-`-Wno-unused-result`.
+`-Wno-unused-value`.
 
 ## `-Werror`
 
