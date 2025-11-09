@@ -68,8 +68,7 @@ be controlled by which pragmas. Using these pragmas in your program will
 produce an "unrecognised pragma ignored" warning, which can itself be disabled
 with `-Wno-unknown-pragmas`.
 
-SCALE supports clang-style diagnostic pragmas, as documented [here]
-(https://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
+SCALE supports clang-style diagnostic pragmas, as documented [here](https://clang.llvm.org/docs/UsersManual.html#controlling-diagnostics-via-pragmas).
 This can be combined with preprocessor macros to achieve the desired effect:
 
 ```c++
