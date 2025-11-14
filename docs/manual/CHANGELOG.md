@@ -1,5 +1,88 @@
 # What's new?
 
+## Release 1.5.0 (2025-11-15)
+
+### Platform
+
+- Compiler is now based on llvm 20.1.8
+- Using rocm 7.1 versios of rocBLAS etc.
+
+### Supported architectures
+
+- All architectures are now enabled in the free version of SCALE. See new EULA for details.
+- Newly-supported AMD GPU architectures:
+    * `gfx950` (MI350x/MI355x)
+    * `gfx1200` (RX 9060 XT etc.)
+    * `gfx1201` (RX 9070 XT etc.)
+    * `gfx908` (MI100)
+    * `gfx906` (MI50/MI60)
+- NVIDIA support.
+
+
+## Compiler: Inline PTX support
+
+- Improve PTX diagnostics for unused instruction flags
+- Support for `q` constraints (128-bit asm inputs)
+- Diagnostics for implicit truncation via asm constraints.
+- New PTX instructions:
+    * `movmatrix`
+    * `bar`/`barrier`: only cases that can be represented as `__synthreads_*`.
+
+## Compiler: NVCC emulation
+
+- New NVCC flags:
+    * `-keep`
+    * `-keep-dir`
+    * `-link`
+    * `-preprocess` (alias of `-E`)
+    * `-libdevice-directory`/`-ldir`: Meaningless
+    * `-target-directory`/`target-dir`: Meaningless
+    * `-cudadevrt`: no-op because our devrt implementation uses no smem, so no point.
+    * `-opt-info`: alias of `-Rpass`, so it can do more than just `-inline`
+- Fix resolution of relative paths for nvcc's option-files flag.
+- Fix compiler crash when `fence.cluster` appears in inline PTX in dead code.
+- Accept even more cases of invalid identifiers in unused code in nvcc mode.
+- Improvements and fixes to the `__shfl*` optimiser. More DPP, less UB.
+- Add a compiler warning to complain about mixing `__constant__` and `constexpr`.
+
+## Compiler (misc.)
+
+- Introduce builtins for conversion between arbitrary types (fp8 here we come)
+- Further improvements to deferred diagnostics, especialy surrounding typo'd identifiers
+- Add `[[clang::getter]]`
+- Fix kernel argument buffer alignment sometimes being wrong
+- Microsoft extensions are no longer enabled in CUDA mode.
+- Arithmetic involving `threadIdx` and friends now compiles.
+- Various small optimiser enhancements.
+
+## Runtime
+
+- Fix a rare race condition resolving cudaEvents
+- Slightly improve performance of *every* API by optimising error handling routines.
+- Introduce nvtx3 support as a header-only library, like it should be.
+- New API: `cudaEventRecordWithFlags`
+- Respect `CUDA_GRAPHS_USE_NODE_PRIORITY` environment variable.
+- Implement UUID-query APIs, and make them consistent between the driver API and nvml
+- Support the new `__nv_*` atomic functions
+- Support (and ignore) the ancient `CU_CTX_MAP_HOST/cudaDeviceMapHost` flags. This feature is always enabled.
+- Startup-time improvements.
+- Fix crash when empty CUDA graphs are executed.
+- Fix occasionally picking the wrong cache coherence domain for SDMA engines and breaking everything.
+- fp16x2/bf16x2 are now trivially-copyable in C++11+: a very tiny extension.
+- Fix intermittent crash in cuMemUnmap
+- Add the new CUDA13 aligned vector types
+- Workaround SDMA bug that gave incorrect results for cuMemsetD16 on some devices.
+- Many random header compatibility/typedef fixes.
+- Accuracy improvements to `tanh()` and `sin()`.
+- Fix crash when millions of cudaStreams are destroyed all at once.
+- Crash _correctly_ when the GPU executes a trap instruction.
+- Fix the GPU trap handler on GFX94x devices.
+- Fix a few C89-compatibility issues in less-commonly-used headers.
+- Make headers warning-free on GCC, since not everyone uses `-isystem` properly.
+- Slightly improve performance of nvRTC.
+- Raise an error if the user attempts to execute PTX as AMDGPU machine code, instead of actually trying it.
+- Fix a few cases where the runtime library and RTC compiler would disagree about what architecture to build for.
+
 ## Release 1.4.2 (2025-09-19)
 
 ### Platform/Packaging
