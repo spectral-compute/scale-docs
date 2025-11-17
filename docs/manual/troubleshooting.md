@@ -1,6 +1,6 @@
 # Troubleshooting
 
-This page provides tips for solving common problems encountered when trying 
+This page provides tips for solving common problems encountered when trying
 to compile or run CUDA programs with SCALE.
 
 ## Crashes
@@ -22,29 +22,29 @@ be helpful for getting more information about many failures.
 
 ## wave64 issues
 
-All current NVIDIA GPUs have a warp size of 32, so many CUDA programs are 
+All current NVIDIA GPUs have a warp size of 32, so many CUDA programs are
 written in a way that assumes this is always the case.
 
-Some AMD GPUs have a warp size of 64, which can cause problems for CUDA code 
+Some AMD GPUs have a warp size of 64, which can cause problems for CUDA code
 written in this way.
 
 SCALE offers tools to address this problem:
 
-- APIs that operate on warp masks accept and return a new type: 
-  `cudaWarpSize_t`. This is an integer with as many bits as there are 
+- APIs that operate on warp masks accept and return a new type:
+  `cudaWarpSize_t`. This is an integer with as many bits as there are
   threads in a warp on the target GPU.
 - Some APIs (such as `__ffs()`) have extra overloads for `cudaWarpSize_t`, so
   common patterns (such as `__ffs(__ballot(...))`) just work.
-- The SCALE compiler will emit compiler warnings when values that represent 
+- The SCALE compiler will emit compiler warnings when values that represent
   warp masks are implicitly truncated to 32 bits.
 
 To write code that works correctly on both platforms:
 
-- Use `auto` instead of `uint32_t` when declaring a variable that is 
+- Use `auto` instead of `uint32_t` when declaring a variable that is
   intended to contain a warp mask. With NVIDIA `nvcc` this will map to
-  `uint32_t`, and with SCALE this will map to `cudaWarpSize_t`, producing 
+  `uint32_t`, and with SCALE this will map to `cudaWarpSize_t`, producing
   correct behaviour on both platforms.
-- Avoid hardcoding the constant "32" to represent warp size, instead using 
+- Avoid hardcoding the constant "32" to represent warp size, instead using
   the global `warpSize` available on all platforms.
 
 ## Initialization errors or no devices found
@@ -78,8 +78,8 @@ Aborted (core dumped)
 
 ### Verify you have a supported gpu
 
-Run `/opt/scale/bin/hsasysinfo | grep 'Name: gfx` to determine the 
-architecture of your GPU, and determine if it is one of the supported 
+Run `/opt/scale/bin/hsasysinfo | grep 'Name: gfx` to determine the
+architecture of your GPU, and determine if it is one of the supported
 architectures listed [here](../README.md#which-gpus-are-supported).
 
 ### Ensure `/dev/kfd` is writable
@@ -88,7 +88,7 @@ Ensure your user is in the group that grants access to `/dev/kfd`. On Ubuntu,
 this is via membership of the `render` group:
 `sudo usermod -a -G render USERNAME`.
 
-You could temporarily make `/dev/kfd` world-writable via: `sudo chmod 666 
+You could temporarily make `/dev/kfd` world-writable via: `sudo chmod 666
 /dev/kfd`.
 
 ## Cannot find shared object
@@ -105,6 +105,7 @@ Two ways to solve this problem are:
 
  - Set `LD_LIBRARY_PATH` to the SCALE target library directory, such as:
    `LD_LIBRARY_PATH=/opt/scale/targets/gfx1030/lib:$LD_LIBRARY_PATH` for `gfx1030`.
+   `scaleenv` does this for you.
  - Compile your program is compiled with that directory in RPATH:
    [rpath](https://en.wikipedia.org/wiki/Rpath).
 
@@ -237,7 +238,7 @@ Call Stack (most recent call first):
 
 ## Half precision intrinsics not defined in C++
 
-If you're using `__half` in host code in a non-CUDA translation unit, you 
+If you're using `__half` in host code in a non-CUDA translation unit, you
 might get an error claiming the function you want does not exist:
 
 ```
@@ -246,5 +247,5 @@ error: ‘__half2float’ was not declared in this scope
 
 This problem can be resolved by using newer C++ compiler.
 
-This issue is discussed in more detail in the [Differences from NVIDIA CUDA](differences.md#host-side-__half-support) 
+This issue is discussed in more detail in the [Differences from NVIDIA CUDA](differences.md#host-side-__half-support)
 section.

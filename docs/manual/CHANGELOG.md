@@ -12,6 +12,7 @@
 - All architectures are now enabled in the free version of SCALE. See new EULA for details.
 - Newly-supported AMD GPU architectures:
     * `gfx950` (MI350x/MI355x)
+    * `gfx1151` (Strix-halo etc.)
     * `gfx1200` (RX 9060 XT etc.)
     * `gfx1201` (RX 9070 XT etc.)
     * `gfx908` (MI100)

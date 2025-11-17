@@ -98,6 +98,7 @@ nav:
     - Compiler:
       - manual/inline-ptx.md
       - manual/diagnostic-flags.md
+      - manual/diagnostic-reference.md
       - manual/optimisation-flags.md
       - manual/language-extensions.md
       - manual/compute-capabilities.md

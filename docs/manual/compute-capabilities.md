@@ -1,7 +1,7 @@
 # Compute Capability Mapping
 
 "Compute capability" is a numbering system used by NVIDIA's CUDA tools to
-represent different GPU targets. The value of the `__CUDA_ARCH__` macro is
+represent different GPU targets. The value of the ``__CUDA_ARCH__`` macro is
 derived from this, and it's how you communicate with `nvcc` to request the
 target to build for.
 

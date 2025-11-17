@@ -1,6 +1,6 @@
 # API Coverage Report
 
-These pages provide a diff between SCALE's headers and the NVIDIA 
+These pages provide a diff between SCALE's headers and the NVIDIA
 documentation, describing which APIs are supported by SCALE.
 
 - [Driver API](./api-driver.md)
@@ -49,11 +49,8 @@ For some of those functions, SCALE may provide an empty implementation.
 By doing this, SCALE allows more projects pass compilation and linking.
 We don't want to list such empty functions as available, so we manually mark them as missing to avoid confusion.
 
-The code that compares entries from SCALE against NVIDIA documentation may contain imperfections.
-For this reason, some successful matches may simply get missed.
+SCALE retains support for some old APIs NVIDIA have since deleted.
 
-Note that these lists currently **don't check members of types** such as struct fields or enum variants.
+Found a mistake?
 
-[Reach out to us](../contact/report-a-bug.md) if you experience problems for any of these reasons.
-Possible problems with the entries require our attention on a case-by-case basis.
-Your feedback will help us find possible inconsistencies and prioritise our work to fix them.
+[Let us know](../contact/report-a-bug.md), or [file a pull request](https://github.com/spectral-compute/scale-docs)
