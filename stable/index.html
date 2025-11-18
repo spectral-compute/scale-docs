@@ -1023,6 +1023,34 @@
   
   
     <li class="md-nav__item">
+      <a href="manual/diagnostic-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compiler Diagnostics Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="manual/optimisation-flags/" class="md-nav__link">
         
   
@@ -1437,7 +1465,7 @@
   <span class="md-ellipsis">
     
   
-    Free Edition License
+    SCALE Free License
   
 
     
@@ -1608,7 +1636,7 @@
 
 <h1 id="scale-by-spectral-compute">SCALE by Spectral Compute<a class="headerlink" href="#scale-by-spectral-compute" title="Permanent link">#</a></h1>
 <h2 id="what-is-scale">What is SCALE?<a class="headerlink" href="#what-is-scale" title="Permanent link">#</a></h2>
-<p>SCALE is a GPGPU programming toolkit that can natively compile CUDA 
+<p>SCALE is a GPGPU programming toolkit that can natively compile CUDA
 applications for AMD GPUs.</p>
 <p>SCALE does not require the CUDA program or its build system to be modified.</p>
 <p>Support for more GPU vendors and CUDA APIs is in development.</p>
@@ -1616,7 +1644,7 @@ applications for AMD GPUs.</p>
 <ol>
 <li><a href="manual/how-to-install/">Install SCALE</a>.</li>
 <li>Activate SCALE, eg. <code>. /opt/SCALE/scaleenv gfx1100</code></li>
-<li>Compile your application, following the same steps you would use for 
+<li>Compile your application, following the same steps you would use for
    NVIDIA CUDA.</li>
 </ol>
 <h2 id="what-projects-have-been-tested">What projects have been tested?<a class="headerlink" href="#what-projects-have-been-tested" title="Permanent link">#</a></h2>
@@ -1624,22 +1652,23 @@ applications for AMD GPUs.</p>
 tests. The list of currently-tested projects and their compatibility status
 can be found <a href="https://github.com/spectral-compute/scale-validation/tree/master?tab=readme-ov-file#current-status">here</a></p>
 <h2 id="which-gpus-are-supported">Which GPUs are supported?<a class="headerlink" href="#which-gpus-are-supported" title="Permanent link">#</a></h2>
-<p>The following GPU targets are supported in the free edition of SCALE:</p>
+<p>The following GPU targets are supported:</p>
 <ul>
-<li>AMD <code>gfx900</code> (Vega 10, GCN 5.0)</li>
+<li>AMD <code>gfx900</code> (Vega 10, GCN 5.0)`</li>
+<li>AMD <code>gfx906</code> (MI50/MI60)</li>
+<li>AMD <code>gfx908</code> (MI100)</li>
+<li>AMD <code>gfx90a</code> (MI210/MI250)</li>
+<li>AMD <code>gfx942</code> (MI300x)</li>
+<li>AMD <code>gfx950</code> (MI350x/MI355x)</li>
+<li>AMD <code>gfx1010</code></li>
 <li>AMD <code>gfx1030</code> (Navi 21, RDNA 2.0)</li>
 <li>AMD <code>gfx1100</code> (Navi 31, RDNA 3.0)</li>
-<li>AMD <code>gfx1010</code></li>
+<li>AMD <code>gfx1151</code> (Strix-halo etc.)</li>
 <li>AMD <code>gfx1101</code></li>
 <li>AMD <code>gfx1102</code></li>
+<li>AMD <code>gfx1200</code> (RX 9060 XT etc.)</li>
+<li>AMD <code>gfx1201</code> (RX 9070 XT etc.)</li>
 </ul>
-<p>The enterprise edition also has support for:</p>
-<ul>
-<li>AMD <code>gfx908</code></li>
-<li>AMD <code>gfx90a</code></li>
-<li>AMD <code>gfx942</code></li>
-</ul>
-<p>Academic/research licenses are available.</p>
 <p><a href="#contact-us">Contact us</a> if you want us to expedite support for a particular AMD GPU
 architecture.</p>
 <h2 id="what-are-the-components-of-scale">What are the components of SCALE?<a class="headerlink" href="#what-are-the-components-of-scale" title="Permanent link">#</a></h2>
@@ -1647,16 +1676,16 @@ architecture.</p>
 <ul>
 <li>An <code>nvcc</code>-compatible compiler capable of compiling nvcc-dialect CUDA for AMD
   GPUs, including PTX asm.</li>
-<li>An of the CUDA runtime, driver and math APIs for AMD GPUs.</li>
+<li>An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.</li>
 <li>Open-source wrapper libraries providing the "CUDA-X" APIs by delegating to the
   corresponding ROCm libraries.
   This is how libraries such as <code>cuBLAS</code> and <code>cuSOLVER</code> are handled.</li>
 </ul>
 <h2 id="what-are-the-differences-between-scale-and-other-solutions">What are the differences between SCALE and other solutions?<a class="headerlink" href="#what-are-the-differences-between-scale-and-other-solutions" title="Permanent link">#</a></h2>
-<p>Instead of providing a <a href="https://xkcd.com/927/">new way</a> to write GPGPU 
+<p>Instead of providing a <a href="https://xkcd.com/927/">new way</a> to write GPGPU
 software, SCALE allows programs written using the widely-popular CUDA
 language to be directly compiled for AMD GPUs.</p>
-<p>SCALE aims to be fully compatible with NVIDIA CUDA. We believe that users 
+<p>SCALE aims to be fully compatible with NVIDIA CUDA. We believe that users
 should not have to maintain multiple codebases or compromise on performance
 to support multiple GPU vendors.</p>
 <p>SCALE's language is a <em>superset</em> of NVIDIA CUDA, offering some opt-in

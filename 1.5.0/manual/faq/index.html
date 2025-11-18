@@ -473,17 +473,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-are-unstable-builds" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What are unstable builds?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#when-will-some-gpu-be-supported" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -514,10 +503,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Can&#39;t NVIDIA just change CUDA and break SCALE?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#does-scale-depend-on-nvidias-compilerassembleretc" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -527,9 +515,37 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#isnt-cuda-inherently-optimised-for-nvidia-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isn't CUDA inherently optimised for NVIDIA hardware?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does'
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-it-work-on-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does it work on Windows?
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1551,17 +1567,6 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#what-are-unstable-builds" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        What are unstable builds?
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#when-will-some-gpu-be-supported" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1592,10 +1597,9 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Can&#39;t NVIDIA just change CUDA and break SCALE?">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#does-scale-depend-on-nvidias-compilerassembleretc" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1605,9 +1609,37 @@
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#isnt-cuda-inherently-optimised-for-nvidia-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Isn't CUDA inherently optimised for NVIDIA hardware?
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does'
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#does-it-work-on-windows" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Does it work on Windows?
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1630,56 +1662,63 @@
 
 <h1 id="frequently-asked-questions">Frequently asked questions<a class="headerlink" href="#frequently-asked-questions" title="Permanent link">#</a></h1>
 <h2 id="how-do-i-report-a-problem">How do I report a problem?<a class="headerlink" href="#how-do-i-report-a-problem" title="Permanent link">#</a></h2>
-<p>Strange compiler errors? Performance not as great as expected? Something else
-not working as expected?</p>
 <p><a href="../../contact/report-a-bug/">Contact us</a></p>
 <p>Bug reports - no matter how small - accelerate the SCALE project.</p>
 <p>Let's work together to democratise the GPGPU market!</p>
-<h2 id="what-are-unstable-builds">What are <code>unstable</code> builds?<a class="headerlink" href="#what-are-unstable-builds" title="Permanent link">#</a></h2>
-<p><code>unstable</code> builds give you access to our latest features and performance
-optimisations. <code>unstable</code> builds give you access to these features sooner
-than they would become available via our stable release channel.</p>
-<p>However, <code>unstable</code> builds do not pass through our full quality assurance
-process: they may contain regressions and other bugs. <code>unstable</code> builds
-are made available "as is", and no detailed changlogs are available for
-<code>unstable</code> builds.</p>
 <h2 id="when-will-some-gpu-be-supported">When will <code>&lt;some GPU&gt;</code> be supported?<a class="headerlink" href="#when-will-some-gpu-be-supported" title="Permanent link">#</a></h2>
-<p>Expanding the set of supported GPUs is an ongoing process. At present we're 
-being very conservative with the set of GPUs enabled with SCALE to avoid 
-use on platforms we currently have zero ability to test on.</p>
-<p>If your GPU is supported by ROCm, it'll probably become available on SCALE a 
-little sooner than if it is not, since it won't break our "CUDA-X" library 
-delegation mechanism.</p>
+<p>Expanding the set of supported GPUs is an ongoing process. We already
+support some GPUs ROCM has dropped support for (eg. gfx900), and are
+working to expand the set further. If there's a device you want to bring
+to our attention, please get in touch.</p>
 <h2 id="when-will-some-cuda-api-be-supported">When will <code>&lt;some CUDA API&gt;</code> be supported?<a class="headerlink" href="#when-will-some-cuda-api-be-supported" title="Permanent link">#</a></h2>
-<p>We prioritise CUDA APIs based on the number and popularity of third-party 
+<p>We prioritise CUDA APIs based on the number and popularity of third-party
 projects requiring the missing API.</p>
 <p>If you'd like to bring a missing API to our attention,
 <a href="../../contact/report-a-bug/">Contact us</a></p>
 <h2 id="cant-nvidia-just-change-cuda-and-break-scale">Can't NVIDIA just change CUDA and break SCALE?<a class="headerlink" href="#cant-nvidia-just-change-cuda-and-break-scale" title="Permanent link">#</a></h2>
 <p>Of course, we have no control over what NVIDIA does with the CUDA toolkit.</p>
-<p>Although it is possible for NVIDIA to change/remove APIs in CUDA or PTX, 
+<p>Although it is possible for NVIDIA to change/remove APIs in CUDA or PTX,
 doing so would break every CUDA program that uses these functions. Those
-programs would then be broken on both SCALE and NVIDIA's platform.</p>
-<p>NVIDIA can <em>add new things</em> to CUDA which we don't support. Projects are free to 
-choose whether or not to use any new features that are added in the future, 
-and may choose to use feature detection macros to conditionalise dependence 
-on non-essential new features. Projects face a similar choice when deciding 
+programs would then be broken on both SCALE and NVIDIA's platform. It
+seems unlikely that NVIDIA would do something that breaks existing programs.</p>
+<p>NVIDIA can <em>add new things</em> to CUDA which we don't support. Projects are free to
+choose whether or not to use any new features that are added in the future,
+and may choose to use feature detection macros to conditionalise dependence
+on non-essential new features. Projects face a similar choice when deciding
 whether or not to use SCALE's steadily growing set of features that go beyond
 NVIDIA's CUDA.</p>
-<h3 id="does-scale-depend-on-nvidias-compilerassembleretc">Does SCALE depend on NVIDIA's compiler/assembler/etc.?<a class="headerlink" href="#does-scale-depend-on-nvidias-compilerassembleretc" title="Permanent link">#</a></h3>
+<h2 id="does-scale-depend-on-nvidias-compilerassembleretc">Does SCALE depend on NVIDIA's compiler/assembler/etc.?<a class="headerlink" href="#does-scale-depend-on-nvidias-compilerassembleretc" title="Permanent link">#</a></h2>
 <p>No.</p>
-<p>Although much of this manual talks about "nvcc", it is important to 
+<p>Although much of this manual talks about "nvcc", it is important to
 understand the distinction between the two things this can refer to:</p>
 <ul>
-<li>The SCALE compiler, which is named "nvcc" for compatibility. This is the 
-  name build scripts expect, so if we named it anything else then nothing 
+<li>The SCALE compiler, which is named "nvcc" for compatibility. This is the
+  name build scripts expect, so if we named it anything else then nothing
   would work!</li>
 <li>NVIDIA's proprietary CUDA compiler, <code>nvcc</code>.</li>
 </ul>
-<p>SCALE provides a <em>thing called nvcc</em>, which is in fact absolutely nothing to 
-do with NVIDIA's <code>nvcc</code>. Our "nvcc" is built on top of the open-source 
+<p>SCALE provides a <em>thing called nvcc</em>, which is in fact absolutely nothing to
+do with NVIDIA's <code>nvcc</code>. Our "nvcc" is built on top of the open-source
 clang/llvm compiler, and has no dependency on NVIDIA's compiler.</p>
 <p>SCALE does not make use of "nvvm", either.</p>
+<h2 id="isnt-cuda-inherently-optimised-for-nvidia-hardware">Isn't CUDA inherently optimised for NVIDIA hardware?<a class="headerlink" href="#isnt-cuda-inherently-optimised-for-nvidia-hardware" title="Permanent link">#</a></h2>
+<p>Not really.</p>
+<p>CUDA is already a cross-platform language/toolkit. NVIDIA have been making
+CUDA-capable GPUs for more than 20 years, with many drastic changes in
+the hardware during that period. You can nevertheless compile CUDA programs
+and run them on NVIDIA cards spanning many years and multiple hardware
+architecture redesigns, because CUDA <em>is a cross-platform toolkit</em>.</p>
+<p>The only problem is that, of course, NVIDIA didn't extend this
+cross-platform compatibility to other vendors.</p>
+<p>Claiming "CUDA is optimised for NVIDIA GPUs" is a bit like saying
+"C++ is optimised for Intel CPUs". If compilers can be taught to
+build the same C++ program for Intel/ARM/AMD CPUs with good performance,
+why can't we do that for CUDA? It's a different and challenging
+compiler research problem, but it is possible.</p>
+<h2 id="does">Does'<a class="headerlink" href="#does" title="Permanent link">#</a></h2>
+<h2 id="does-it-work-on-windows">Does it work on Windows?<a class="headerlink" href="#does-it-work-on-windows" title="Permanent link">#</a></h2>
+<p>Not yet. :(</p>
+<p>Windows support is a challenge that we</p>
 
 
 

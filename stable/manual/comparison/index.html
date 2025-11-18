@@ -972,6 +972,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../diagnostic-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compiler Diagnostics Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../optimisation-flags/" class="md-nav__link">
         
   
@@ -1386,7 +1414,7 @@
   <span class="md-ellipsis">
     
   
-    Free Edition License
+    SCALE Free License
   
 
     
@@ -1503,49 +1531,63 @@
 <h1 id="comparison-to-other-solutions">Comparison to other solutions<a class="headerlink" href="#comparison-to-other-solutions" title="Permanent link">#</a></h1>
 <h2 id="hip">HIP<a class="headerlink" href="#hip" title="Permanent link">#</a></h2>
 <p><a href="https://github.com/ROCm/HIP">HIP</a> is AMD's answer to CUDA. It is superficially
-similar to CUDA, providing a similar programming language and similar APIs. 
-An automatic <code>hipify</code> tool exists to partially automate the process of 
+similar to CUDA, providing a similar programming language and similar APIs.
+An automatic <code>hipify</code> tool exists to partially automate the process of
 rewriting your code from CUDA to HIP.</p>
 <p>We believe HIP does not solve the "CUDA compatibility problem" because:</p>
 <ul>
-<li>The CUDA <a href="../dialects/">dialect problem</a>. HIP's language is almost 
-  identical to LLVM-dialect CUDA, which is quite different from the dialect 
-  of CUDA accepted by <code>nvcc</code>. Consequently, some CUDA programs fail in 
-  strange ways after porting.</li>
+<li>HIP does not address the  CUDA <a href="../dialects/">dialect problem</a>.
+  HIP's language is almost identical to LLVM-dialect CUDA, which is
+  quite different from the dialect
+  of CUDA accepted by NVIDIA <code>nvcc</code>. Consequently, many CUDA programs fail in
+  strange ways after porting, if they compile at all.</li>
 <li>HIP has no support for inline PTX <code>asm</code> blocks in CUDA code. These must be
   manually removed or guarded by macros. SCALE simply accepts them and
   compiles them for AMD.</li>
-<li>HIP's support for NVIDIA is via wrapper APIs rather than simply using 
+<li>HIP's support for NVIDIA is via wrapper APIs rather than simply using
   NVIDIA's tools directly as a SCALE-based solution does.</li>
-<li><code>hipify</code> is unable to handle many CUDA code constructs, such as complex 
+<li><code>hipify</code> is unable to handle many CUDA code constructs, such as complex
   macros.</li>
+<li>HIP runtime APIs have subtly different semantics than the corresponding
+  CUDA APIs. <code>hipify</code> operates under the incorrect assumption that all
+  <code>cudaFoo()</code> can be mapped to <code>hipFoo()</code> to achieve the same effect, which
+  is not the case. SCALE aims to carefully reproduce the behaviour of
+  NVIDIA's CUDA APIs.</li>
 </ul>
-<p>To avoid these issues, many projects end up maintaining separate HIP and 
-CUDA codebases (or one codebase that converts to HIP or CUDA via complex
-preprocessor macros).</p>
+<p>Most projects that use HIP mitigate these issues by maintaining separate
+HIP and  CUDA codebases, or one codebase that converts to HIP or CUDA via
+complex preprocessor macros. This significantly increases maintainence costs.</p>
+<p>We relatively often encounter projects with a significant performance or
+correctness discrepancy between their CUDA and HIP editions, because one
+or the other gets more attention, or gets changes merged more promptly.
+Such source fragmentation is bad for everyone.</p>
 <h2 id="zluda">ZLUDA<a class="headerlink" href="#zluda" title="Permanent link">#</a></h2>
 <p><a href="https://github.com/vosen/ZLUDA">ZLUDA</a> is a PTX JIT for AMD GPUs. On program
 startup, ZLUDA grabs the PTX from the CUDA binary and compiles it for your AMD
 GPU.</p>
-<p>ZLUDA is a useful tool for end-users to run CUDA programs on 
-otherwise-unsupported GPUs, without the involvement of the authors of the 
+<p>ZLUDA is a useful tool for end-users to run CUDA programs on
+otherwise-unsupported GPUs, without the involvement of the authors of the
 program (or even access to the source code!).</p>
 <p>There are some downsides:</p>
 <ul>
 <li>JIT on startup can lead to startup-time delays.</li>
-<li>Reliance on dll-injection is a bit "hacky", and tends to make antivirus 
+<li>Reliance on dll-injection is a bit "hacky", and tends to make antivirus
   software angry.</li>
-<li>ZLUDA's approach to providing AMD support inherently depends on tools 
-  provided by NVIDIA. NVIDIA controls the design of the PTX language and the 
-  compilers that produce it, and manipulate both to optimise outcomes for 
-  their hardware specifically.</li>
+<li>ZLUDA's approach to providing AMD support inherently depends on tools
+  provided by NVIDIA. NVIDIA controls the design of the PTX language and the
+  compilers that produce it, and manipulate both to optimise outcomes for
+  their hardware.</li>
 <li>Compiling source code directly to AMDGPU machine code should
   offer greater opportunities for optimisation than working backwards from
-  PTX that has already been optimised for a specific NVIDIA target.</li>
+  PTX that has already been optimised for a specific NVIDIA target. ZLUDA
+  has to deal with many of the same problems that a decompiler does, which
+  are intractible in general.</li>
+<li>ZLUDA does not support AMD GPUs with a wave size of 64, which includes
+  many exciting datacenter devices such as the MI300.</li>
 </ul>
-<p>We believe that ZLUDA fills a useful niche, but that software distributors 
-should have the power to compile their CUDA source code directly to the 
-machine code of multiple GPU vendors, without reliance on tools maintained 
+<p>We believe that ZLUDA fills a useful niche, but that software distributors
+should have the power to compile their CUDA source code directly to the
+machine code of multiple GPU vendors, without reliance on tools maintained
 by NVIDIA.</p>
 
 

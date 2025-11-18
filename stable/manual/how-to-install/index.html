@@ -1011,6 +1011,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../diagnostic-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compiler Diagnostics Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../optimisation-flags/" class="md-nav__link">
         
   
@@ -1425,7 +1453,7 @@
   <span class="md-ellipsis">
     
   
-    Free Edition License
+    SCALE Free License
   
 
     
@@ -1596,7 +1624,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 sudo<span class="w"> </span>apt<span class="w"> </span>update
 </code></pre></div>
 <p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install scale-free
+<div class="highlight"><pre><span></span><code>sudo apt install scale
 
 # Add your user to the `video` group:
 sudo usermod -a -G video $(whoami)
@@ -1615,7 +1643,7 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 sudo<span class="w"> </span>apt<span class="w"> </span>update
 </code></pre></div>
 <p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install scale-free
+<div class="highlight"><pre><span></span><code>sudo apt install scale
 
 # Add your user to the `video` group:
 sudo usermod -a -G video $(whoami)
@@ -1636,7 +1664,7 @@ sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> <
 </code></pre></div>
 <p>Then, install the SCALE package:</p>
 <div class="highlight"><pre><span></span><code># Install SCALE
-sudo dnf install scale-free
+sudo dnf install scale
 </code></pre></div>
 <p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
 installing SCALE, you should now reboot.</p>
@@ -1647,10 +1675,10 @@ installing SCALE, you should now reboot.</p>
 <div class="tabbed-block">
 <p>Download and extract the SCALE tarball:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Download the tarball</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/tar/scale-free-latest-amd64.tar.xz
+wget<span class="w"> </span>https://pkgs.scale-lang.com/tar/scale-latest-amd64.tar.xz
 
 <span class="c1"># Extract it to the current directory</span>
-tar<span class="w"> </span>xf<span class="w"> </span>scale-free-latest-amd64.tar.xz
+tar<span class="w"> </span>xf<span class="w"> </span>scale-latest-amd64.tar.xz
 </code></pre></div>
 <p>The tarball is significantly larger than other options since it
 includes many dependent libraries directly instead of asking the system

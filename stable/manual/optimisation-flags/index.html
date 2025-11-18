@@ -11,7 +11,7 @@
         <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/optimisation-flags/">
       
       
-        <link rel="prev" href="../diagnostic-flags/">
+        <link rel="prev" href="../diagnostic-reference/">
       
       
         <link rel="next" href="../language-extensions/">
@@ -902,6 +902,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../diagnostic-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compiler Diagnostics Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -1388,7 +1416,7 @@
   <span class="md-ellipsis">
     
   
-    Free Edition License
+    SCALE Free License
   
 
     
@@ -1503,20 +1531,20 @@
 
 
 <h1 id="compiler-optimisation-flags">Compiler Optimisation Flags<a class="headerlink" href="#compiler-optimisation-flags" title="Permanent link">#</a></h1>
-<p>When using the <code>nvcc</code> frontend to SCALE, it matches the behaviour of 
+<p>When using the <code>nvcc</code> frontend to SCALE, it matches the behaviour of
 NVIDIA's compiler as closely as possible.</p>
 <p>This means disabling some optimisations that are enabled by default by clang,
-since those break certain programs which rely on the behaviour of NVIDIA's 
+since those break certain programs which rely on the behaviour of NVIDIA's
 compiler. In some cases, such reliance represents undefined behaviour in the
 affected program.</p>
-<p>This page documents some of these differences, and how to opt-in to these 
-optimisations on a case-by-case basis. In general, all <code>clang++</code> flags are 
+<p>This page documents some of these differences, and how to opt-in to these
+optimisations on a case-by-case basis. In general, all <code>clang++</code> flags are
 also accepted by SCALE in <code>nvcc</code> mode.</p>
-<p>You may be able to simply switch some of these features on and immediately 
+<p>You may be able to simply switch some of these features on and immediately
 gain performance.</p>
 <p>tl;dr: try <code>-ffast-math -fstrict-aliasing</code> and see if your program explodes.</p>
 <h2 id="floating-point-optimisation">Floating Point Optimisation<a class="headerlink" href="#floating-point-optimisation" title="Permanent link">#</a></h2>
-<p>NVIDIA's compiler provides a <code>-use_fast_math</code> flag that relaxes some 
+<p>NVIDIA's compiler provides a <code>-use_fast_math</code> flag that relaxes some
 floating point rules to improve optimisation. It's documented to do exactly
 these things:</p>
 <ul>
@@ -1525,10 +1553,10 @@ these things:</p>
 <li>Flushes denorms to zero.</li>
 <li>Fuse multiply-adds into FMA operations.</li>
 </ul>
-<p>SCALE mirrors this behaviour when you use this flag in our <code>nvcc</code> emulation 
+<p>SCALE mirrors this behaviour when you use this flag in our <code>nvcc</code> emulation
 mode, aiming to produce the same results as NVIDIA's compiler.</p>
 <p>SCALE also provides all of <code>clang</code>'s flags,
-allowing access to its more aggressive floating point optimisations, 
+allowing access to its more aggressive floating point optimisations,
 such as:</p>
 <ul>
 <li>Assume infinities and NaNs never happen</li>
@@ -1538,31 +1566,32 @@ such as:</p>
 <p>These optimisations can be controlled per-line using the <a href="https://releases.llvm.org/19.1.0/tools/clang/docs/LanguageExtensions.html#extensions-to-specify-floating-point-flags">fp control pragmas</a>.</p>
 <p>This allows you to either:</p>
 <ul>
-<li>Specify the compiler flag (to enable an optimisation by default) and then 
+<li>Specify the compiler flag (to enable an optimisation by default) and then
   switch it off for special code regions (ie. opt-out mode).</li>
 <li>Opt-in to the optimisation in regions of code where you know it to be safe.</li>
 </ul>
-<p>These flags will affect the performance of functions 
+<p>These flags will affect the performance of functions
 in the SCALE implementation of the CUDA Math API.</p>
-<p>These flags do not affect the accuracy of the results of the Math API, but 
-do apply assumptions about the range of possible inputs. For example: if 
+<p>These flags do not affect the accuracy of the results of the Math API, but
+do apply assumptions about the range of possible inputs. For example: if
 you enable "assume no infinities", all infinity-handling logic will be removed
-from the Math API functions, making them slightly more efficient. Flags like
-"reassociate" and "use reciprocal math" do not affect the behaviour of the
-math functions.</p>
-<p>Each call to a math function will be optimised separately, using the set of 
-fp optimisation flags in effect at that point in that file. You can use 
-pragmas to mix different optimisation flags at different points within the 
-same file. It is OK to compile different source files with different fp 
+from the Math API functions, making them slightly more efficient.
+Only the inf, nan, and ignore-signed-zero flags will affect
+the output of the math functions. Flags like reassoc will not degrade the
+accuracy of these routines.</p>
+<p>Each call to a math function will be optimised separately, using the set of
+fp optimisation flags in effect at that point in that file. You can use
+pragmas to mix different optimisation flags at different points within the
+same file. It is OK to compile different source files with different fp
 optimisation flags and then link them together.</p>
 <h2 id="strict-aliasing">Strict aliasing<a class="headerlink" href="#strict-aliasing" title="Permanent link">#</a></h2>
-<p>By default, in C++, the compiler assumes that pointers to unrelated types 
+<p>By default, in C++, the compiler assumes that pointers to unrelated types
 (eg <code>float</code> and <code>int</code>) never point to the same place. This can significantly
 improve optimisation by improving instruction reordering and ILP.</p>
-<p>Unfortunately, NVIDIA's <code>nvcc</code> does not do strict-aliasing optimisations, 
-and enabling it breaks some CUDA programs. SCALE-nvcc therefore disables 
+<p>Unfortunately, NVIDIA's <code>nvcc</code> does not do strict-aliasing optimisations,
+and enabling it breaks some CUDA programs. SCALE-nvcc therefore disables
 this by default.</p>
-<p>You can explicitly enable this class of optimisations in SCALE by adding 
+<p>You can explicitly enable this class of optimisations in SCALE by adding
 <code>-fstrict-aliasing</code>. This may break your program if it contains TBAA violations.
 We recommend you find and fix such violations, since they are undefined
 behaviour. This would mean your code is only working correctly because NVIDIA's
@@ -1597,7 +1626,7 @@ may change in the future!</p>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../diagnostic-flags/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Compiler warnings">
+          <a href="../diagnostic-reference/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Compiler Diagnostics Reference">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1607,7 +1636,7 @@ may change in the future!</p>
                 Previous
               </span>
               <div class="md-ellipsis">
-                Compiler warnings
+                Compiler Diagnostics Reference
               </div>
             </div>
           </a>

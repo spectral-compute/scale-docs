@@ -14,7 +14,7 @@
         <link rel="prev" href="../inline-ptx/">
       
       
-        <link rel="next" href="../optimisation-flags/">
+        <link rel="next" href="../diagnostic-reference/">
       
       
         
@@ -996,6 +996,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../diagnostic-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compiler Diagnostics Reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../optimisation-flags/" class="md-nav__link">
         
   
@@ -1410,7 +1438,7 @@
   <span class="md-ellipsis">
     
   
-    Free Edition License
+    SCALE Free License
   
 
     
@@ -1547,45 +1575,50 @@
 
 
 <h1 id="compiler-warnings">Compiler warnings<a class="headerlink" href="#compiler-warnings" title="Permanent link">#</a></h1>
-<p>There are some differences in how NVIDIA's <code>nvcc</code> and the SCALE 
+<p>There are some differences in how NVIDIA's <code>nvcc</code> and the SCALE
 compiler in "nvcc mode" interpret compiler options relatig to warnings.</p>
 <h2 id="clang-flags"><code>clang++</code> flags<a class="headerlink" href="#clang-flags" title="Permanent link">#</a></h2>
 <p>The SCALE compiler accepts all of <code>clang++</code>'s usual flags in addition to those
 provided by nvcc, except where doing so would create an ambiguity.</p>
 <h2 id="compiler-warnings_1">Compiler warnings<a class="headerlink" href="#compiler-warnings_1" title="Permanent link">#</a></h2>
-<p>The SCALE compiler has the same default warning behaviour as <code>clang</code>, which 
-is somewhat more strict than <code>nvcc</code>. Warnings may be disabled with the usual 
+<p>The SCALE compiler has the same default warning behaviour as <code>clang</code>, which
+is somewhat more strict than <code>nvcc</code>. Warnings may be disabled with the usual
 <code>-Wno-</code> flags documented in the <a href="https://clang.llvm.org/docs/DiagnosticsReference.html">clang diagnostics reference</a>.</p>
 <p>There may be value in <em>enabling</em> even more warnings to find further issues
 and improve your code.</p>
-<p>Note that the end of every compiler warning message tells you the name of 
+<p>Note that the end of every compiler warning message tells you the name of
 the warning flag it is associated with, such as:</p>
-<div class="highlight"><pre><span></span><code>warning: implicit conversion from &#39;int&#39; to &#39;float&#39; changes value from 
+<div class="highlight"><pre><span></span><code>warning: implicit conversion from &#39;int&#39; to &#39;float&#39; changes value from
 2147483647 to 2147483648 [-Wimplicit-const-int-float-conversion]
 </code></pre></div>
-<p>By changing <code>-W</code> to <code>-Wno-</code>, you obtain the flag required to disable that 
+<p>By changing <code>-W</code> to <code>-Wno-</code>, you obtain the flag required to disable that
 warning.</p>
 <p>The SCALE implementation of the CUDA runtime/driver APIs uses <code>[[nodiscard]]</code>
-for the error return codes, meaning you'll get a warning from code that 
-ignores potential errors from CUDA APIs. This warning can be disabled via 
+for the error return codes, meaning you'll get a warning from code that
+ignores potential errors from CUDA APIs. This warning can be disabled via
 <code>-Wno-unused-value</code>.</p>
 <h2 id="-werror"><code>-Werror</code><a class="headerlink" href="#-werror" title="Permanent link">#</a></h2>
-<p><code>nvcc</code>'s <code>-Werror</code> takes an argument specifying the types of warnings that 
+<p><code>nvcc</code>'s <code>-Werror</code> takes an argument specifying the types of warnings that
 should be errors, such as:</p>
 <div class="highlight"><pre><span></span><code>-Werror reorder,default-stream-launch
 </code></pre></div>
-<p>This differs from clang's syntax, which consists of either a lone <code>-Werror</code> 
-to make all warnings into errors, or a set of <code>-Werror=name</code> flags to make 
+<p>This differs from clang's syntax, which consists of either a lone <code>-Werror</code>
+to make all warnings into errors, or a set of <code>-Werror=name</code> flags to make
 specific things into errors.</p>
-<p>In <code>nvcc</code> mode, the SCALE compiler accepts only the <code>nvcc</code> syntax, but 
-allows the same set of diagnostic names accepted by <code>clang</code> (as well 
+<p>In <code>nvcc</code> mode, the SCALE compiler accepts only the <code>nvcc</code> syntax, but
+allows the same set of diagnostic names accepted by <code>clang</code> (as well
 as the special names supported by NVIDIA's <code>nvcc</code>). For example:</p>
 <div class="highlight"><pre><span></span><code>nvcc -Werror=documentation,implicit-int-conversion foo.cu
 clang++ -Werror=documentation -Werror=implicit-int-conversion foo.cu
 </code></pre></div>
-<p>Since SCALE enables more warnings than nvcc does by default, many projects 
-using <code>-Werror</code> with nvcc will not compile without either disabling the flag 
-or fixing the underlying code issues.</p>
+<p>Since SCALE enables more warnings than nvcc does by default, many projects
+using <code>-Werror</code> with nvcc will not compile without one of:</p>
+<ul>
+<li>Disabling <code>-Werror</code>.</li>
+<li>Disabling the corresponding warnings.</li>
+<li>Using diagnostic pragmas to disable the corresponding warnings in a region
+  of code.</li>
+</ul>
 <h2 id="diagnostic-control-pragmas">Diagnostic control pragmas<a class="headerlink" href="#diagnostic-control-pragmas" title="Permanent link">#</a></h2>
 <p>The SCALE compiler does not currently support <code>#pragma nv_diag_suppress</code> or
 <code>#pragma diag_suppress</code> because the set of integers accepted by these pragmas
@@ -1647,13 +1680,13 @@ This can be combined with preprocessor macros to achieve the desired effect:</p>
         
         
           
-          <a href="../optimisation-flags/" class="md-footer__link md-footer__link--next" aria-label="Next: Compiler Optimisation Flags">
+          <a href="../diagnostic-reference/" class="md-footer__link md-footer__link--next" aria-label="Next: Compiler Diagnostics Reference">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Compiler Optimisation Flags
+                Compiler Diagnostics Reference
               </div>
             </div>
             <div class="md-footer__button md-icon">
