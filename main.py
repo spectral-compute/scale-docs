@@ -16,8 +16,6 @@ def define_env(env):
     repo_subdomain = "pkgs"
     if "nonfree" in current_branch:
         repo_subdomain = "nonfree-" + repo_subdomain
-    else:
-        scale_pkgname += "-free"
 
     if "unstable" in current_branch:
         scale_pkgname += "-unstable"
