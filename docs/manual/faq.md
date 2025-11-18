@@ -84,4 +84,4 @@ compiler research problem, but it is possible.
 
 Not yet. :(
 
-Windows support is a challenge that we
+Windows support is a challenge that we have ideas about.
