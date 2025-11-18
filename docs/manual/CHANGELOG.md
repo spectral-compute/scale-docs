@@ -17,8 +17,6 @@
     * `gfx1201` (RX 9070 XT etc.)
     * `gfx908` (MI100)
     * `gfx906` (MI50/MI60)
-- NVIDIA support.
-
 
 ## Compiler: Inline PTX support
 
