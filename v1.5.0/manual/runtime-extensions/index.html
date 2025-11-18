@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/how-to-install/">
+        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/runtime-extensions/">
       
       
-        <link rel="prev" href="../CHANGELOG/">
+        <link rel="prev" href="../differences/">
       
       
-        <link rel="next" href="../how-to-use/">
+        <link rel="next" href="../inline-ptx/">
       
       
       <link rel="icon" href="../../favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Install SCALE - SCALE documentation</title>
+        <title>API Extensions - SCALE documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-scale" class="md-skip">
+        <a href="#api-extensions" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Install SCALE
+              API Extensions
             
           </span>
         </div>
@@ -272,8 +272,6 @@
       
   
   
-    
-  
   
   
     
@@ -285,11 +283,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -304,7 +302,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Getting Started
@@ -315,31 +313,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Install SCALE
-    
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../how-to-install/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -349,77 +326,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
-    <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#im-not-able-to-set-up-the-scale-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      I'm not able to set up the SCALE repository
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-an-error-related-to-amdgpu-dkms" class="md-nav__link">
-    <span class="md-ellipsis">
-      I get an error related to amdgpu-dkms
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-file-conflicts-when-installing-the-scale-package" class="md-nav__link">
-    <span class="md-ellipsis">
-      I get file conflicts when installing the SCALE package
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" class="md-nav__link">
-    <span class="md-ellipsis">
-      I previously had your repositories set up, but it broke mysteriously.
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -614,8 +520,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -625,11 +533,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -644,7 +552,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Diving deeper
@@ -743,10 +651,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../runtime-extensions/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    API Extensions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -756,6 +685,74 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#environment-variables" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment variables
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Environment variables">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#scale_exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      SCALE_EXCEPTIONS
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-extensions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      API Extensions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API Extensions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#programmatic-exception-enablement" class="md-nav__link">
+    <span class="md-ellipsis">
+      Programmatic Exception Enablement
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1269,46 +1266,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#environment-variables" class="md-nav__link">
     <span class="md-ellipsis">
-      Troubleshooting
+      Environment variables
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Troubleshooting">
+    <nav class="md-nav" aria-label="Environment variables">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#im-not-able-to-set-up-the-scale-repository" class="md-nav__link">
+  <a href="#scale_exceptions" class="md-nav__link">
     <span class="md-ellipsis">
-      I'm not able to set up the SCALE repository
+      SCALE_EXCEPTIONS
     </span>
   </a>
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#i-get-an-error-related-to-amdgpu-dkms" class="md-nav__link">
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-extensions_1" class="md-nav__link">
     <span class="md-ellipsis">
-      I get an error related to amdgpu-dkms
+      API Extensions
     </span>
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="API Extensions">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#i-get-file-conflicts-when-installing-the-scale-package" class="md-nav__link">
+  <a href="#programmatic-exception-enablement" class="md-nav__link">
     <span class="md-ellipsis">
-      I get file conflicts when installing the SCALE package
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" class="md-nav__link">
-    <span class="md-ellipsis">
-      I previously had your repositories set up, but it broke mysteriously.
+      Programmatic Exception Enablement
     </span>
   </a>
   
@@ -1335,115 +1329,42 @@
 
 
 
-<h1 id="install-scale">Install SCALE<a class="headerlink" href="#install-scale" title="Permanent link">#</a></h1>
-<p>Select your operating system and version below to see installation instructions.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Ubuntu</label><label for="__tabbed_1_2">Rocky Linux</label><label for="__tabbed_1_3">Other Distros</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">22.04</label><label for="__tabbed_2_2">24.04</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Set up the SCALE repository, if you haven't already:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/jammy/main/binary-all/scale-repos.deb
-
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
-
-<span class="c1"># Update package list</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update
+<h1 id="api-extensions">API Extensions<a class="headerlink" href="#api-extensions" title="Permanent link">#</a></h1>
+<p>SCALE has some runtime/library features not found in NVIDIA's CUDA Toolkit.</p>
+<h2 id="environment-variables">Environment variables<a class="headerlink" href="#environment-variables" title="Permanent link">#</a></h2>
+<p>Some extra features can be enabled by environment variables.</p>
+<h3 id="scale_exceptions"><code>SCALE_EXCEPTIONS</code><a class="headerlink" href="#scale_exceptions" title="Permanent link">#</a></h3>
+<p>Errors from the CUDA API can be hard to debug, since they simply return an
+error code that the host program has to do something with.</p>
+<p>SCALE provides an environment variable to make any error from the CUDA API
+produce a observable result.</p>
+<p>Setting <code>SCALE_EXCEPTIONS=1</code> will cause all CUDA APIs to throw descriptive 
+exceptions instead of returning C-style error codes.</p>
+<p>Setting <code>SCALE_EXCEPTIONS=2</code> will print the error messages to stderr, but not
+throw them. This is helpful for programs that deliberately create CUDA errors
+as part of their processing.</p>
+<p>In cases where CUDA APIs are expected to return a value other than 
+<code>cudaSuccess</code> during normal operation (such as <code>cudaStreamQuery()</code>, an 
+exception will not be thrown except if an exceptional case arises.</p>
+<h2 id="api-extensions_1">API Extensions<a class="headerlink" href="#api-extensions_1" title="Permanent link">#</a></h2>
+<p>Some of SCALE's API extensions require the <code>scale.h</code> header to be included. </p>
+<h3 id="programmatic-exception-enablement">Programmatic Exception Enablement<a class="headerlink" href="#programmatic-exception-enablement" title="Permanent link">#</a></h3>
+<p>SCALE's exception mode may also be controlled programmatically:</p>
+<div class="highlight"><pre><span></span><code><span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="o">::</span><span class="n">setMode</span><span class="p">(</span><span class="n">scale</span><span class="o">::</span><span class="n">ExceptionMode</span><span class="o">::</span><span class="n">THROW</span><span class="p">);</span><span class="w"> </span><span class="c1">// Throw exceptions</span>
+<span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="o">::</span><span class="n">setMode</span><span class="p">(</span><span class="n">scale</span><span class="o">::</span><span class="n">ExceptionMode</span><span class="o">::</span><span class="n">PRINT</span><span class="p">);</span><span class="w"> </span><span class="c1">// Print errors</span>
+<span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="o">::</span><span class="n">setMode</span><span class="p">(</span><span class="n">scale</span><span class="o">::</span><span class="n">ExceptionMode</span><span class="o">::</span><span class="n">OFF</span><span class="p">);</span><span class="w"> </span><span class="c1">// Match CUDA behaviour</span>
 </code></pre></div>
-<p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install scale
-
-# Add your user to the `video` group:
-sudo usermod -a -G video $(whoami)
+<p>Even when exceptions are disabled, you can access a <code>scale::Exception</code> object
+containing the descriptive error message from the most recent failure using
+<code>scale::Exception::last()</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">cudaError_t</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cudaSomething</span><span class="p">();</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">e</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">cudaSuccess</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="w"> </span><span class="o">&amp;</span><span class="n">ex</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">scale</span><span class="o">::</span><span class="n">Exception</span><span class="o">::</span><span class="n">last</span><span class="p">();</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cerr</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;CUDA error: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">ex</span><span class="p">.</span><span class="n">what</span><span class="p">()</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="sc">&#39;\n&#39;</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
-installing SCALE, you should now reboot.</p>
-</div>
-<div class="tabbed-block">
-<p>Set up the SCALE repository, if you haven't already:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/noble/main/binary-all/scale-repos.deb
-
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
-
-<span class="c1"># Update package list</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update
-</code></pre></div>
-<p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install scale
-
-# Add your user to the `video` group:
-sudo usermod -a -G video $(whoami)
-</code></pre></div>
-<p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
-installing SCALE, you should now reboot.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">9</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Set up the SCALE repository, if you haven't already:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale rpm repos.</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>https://pkgs.scale-lang.com/rpm/el9/main/scale-repos.rpm
-</code></pre></div>
-<p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code># Install SCALE
-sudo dnf install scale
-</code></pre></div>
-<p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
-installing SCALE, you should now reboot.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<p>Download and extract the SCALE tarball:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Download the tarball</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/tar/scale-latest-amd64.tar.xz
-
-<span class="c1"># Extract it to the current directory</span>
-tar<span class="w"> </span>xf<span class="w"> </span>scale-latest-amd64.tar.xz
-</code></pre></div>
-<p>The tarball is significantly larger than other options since it
-includes many dependent libraries directly instead of asking the system
-    package manager to install them.</p>
-</div>
-</div>
-</div>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
-<p>These issues relate to installation specifically. For more general troubleshooting steps, see <a href="../troubleshooting/">here</a>.</p>
-<h3 id="im-not-able-to-set-up-the-scale-repository">I'm not able to set up the SCALE repository<a class="headerlink" href="#im-not-able-to-set-up-the-scale-repository" title="Permanent link">#</a></h3>
-<ul>
-<li>
-<p>To follow the installation instructions above, you will need to install <code>wget</code> and <code>tar</code>.
-    This is installed by default on many systems, and usually available in your system package manager otherwise.</p>
-</li>
-<li>
-<p>If you're still unable to download the repository setup package (<code>scale-repos.deb</code> / <code>scale-repos.rpm</code>), check your internet connection.</p>
-</li>
-<li>If you're unable to install the repository setup package, you may have manually added the repository previously. If so, these files can be safely overwritten when prompted by your package manager.</li>
-</ul>
-<h3 id="i-get-an-error-related-to-amdgpu-dkms">I get an error related to <code>amdgpu-dkms</code><a class="headerlink" href="#i-get-an-error-related-to-amdgpu-dkms" title="Permanent link">#</a></h3>
-<p>AMD's kernel modules are only supported on certain kernels. If your system uses a very out of date kernel, you may need to upgrade it in order to build it correctly.</p>
-<h3 id="i-get-file-conflicts-when-installing-the-scale-package">I get file conflicts when installing the SCALE package<a class="headerlink" href="#i-get-file-conflicts-when-installing-the-scale-package" title="Permanent link">#</a></h3>
-<p>This is usually caused by a previous manual installation of SCALE, or a different version of SCALE installed on the same system. Currently, only one version of SCALE and its associated ROCM version can be installed at once.</p>
-<h3 id="i-previously-had-your-repositories-set-up-but-it-broke-mysteriously">I previously had your repositories set up, but it broke mysteriously.<a class="headerlink" href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" title="Permanent link">#</a></h3>
-<p>We recently merged our stable and unstable repos. This shouldn't require any action for our users, but if you're having troubles then we suggest completely removing our repositories and adding them again:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># On Rocky</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;scale-repos*&#39;</span>
-sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/yum.repos.d/scale.repo
-
-<span class="c1"># On Ubuntu</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;scale-repos*&#39;</span>
-sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/apt/sources.list.d/scale.list<span class="w"> </span>/etc/apt/auth.conf.d/scale.conf
-
-<span class="c1"># Then follow the instructions above again.</span>
-</code></pre></div>
+<p>The error accessed by this API is the same one you'd get from using the CUDA
+API <code>cudaGetLastError()</code>, just more descriptive.</p>
 
 
 
@@ -1473,7 +1394,7 @@ sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../CHANGELOG/" class="md-footer__link md-footer__link--prev" aria-label="Previous: What&#39;s new?">
+          <a href="../differences/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Differences from NVIDIA CUDA">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1483,20 +1404,20 @@ sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>
                 Previous
               </span>
               <div class="md-ellipsis">
-                What's new?
+                Differences from NVIDIA CUDA
               </div>
             </div>
           </a>
         
         
           
-          <a href="../how-to-use/" class="md-footer__link md-footer__link--next" aria-label="Next: Compile CUDA with SCALE">
+          <a href="../inline-ptx/" class="md-footer__link md-footer__link--next" aria-label="Next: Inline PTX support">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Compile CUDA with SCALE
+                Inline PTX support
               </div>
             </div>
             <div class="md-footer__button md-icon">

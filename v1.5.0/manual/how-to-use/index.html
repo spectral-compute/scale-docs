@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/how-to-install/">
+        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/how-to-use/">
       
       
-        <link rel="prev" href="../CHANGELOG/">
+        <link rel="prev" href="../how-to-install/">
       
       
-        <link rel="next" href="../how-to-use/">
+        <link rel="next" href="../faq/">
       
       
       <link rel="icon" href="../../favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Install SCALE - SCALE documentation</title>
+        <title>Compile CUDA with SCALE - SCALE documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-scale" class="md-skip">
+        <a href="#compile-cuda-with-scale" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Install SCALE
+              Compile CUDA with SCALE
             
           </span>
         </div>
@@ -315,6 +315,28 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-to-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install SCALE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -331,7 +353,7 @@
           
   
   <span class="md-ellipsis">
-    Install SCALE
+    Compile CUDA with SCALE
     
   </span>
   
@@ -343,7 +365,7 @@
         
   
   <span class="md-ellipsis">
-    Install SCALE
+    Compile CUDA with SCALE
     
   </span>
   
@@ -366,53 +388,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#identifying-gpu-target" class="md-nav__link">
     <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#im-not-able-to-set-up-the-scale-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      I'm not able to set up the SCALE repository
+      Identifying GPU Target
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-an-error-related-to-amdgpu-dkms" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#the-easy-way-scaleenv" class="md-nav__link">
     <span class="md-ellipsis">
-      I get an error related to amdgpu-dkms
+      The easy way: scaleenv
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-file-conflicts-when-installing-the-scale-package" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#how-it-really-works" class="md-nav__link">
     <span class="md-ellipsis">
-      I get file conflicts when installing the SCALE package
+      How it really works
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#finding-the-libraries-at-runtime" class="md-nav__link">
     <span class="md-ellipsis">
-      I previously had your repositories set up, but it broke mysteriously.
+      Finding the libraries at runtime
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps
+    </span>
+  </a>
   
 </li>
       
@@ -420,28 +436,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../how-to-use/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Compile CUDA with SCALE
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1269,53 +1263,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#identifying-gpu-target" class="md-nav__link">
     <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#im-not-able-to-set-up-the-scale-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      I'm not able to set up the SCALE repository
+      Identifying GPU Target
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-an-error-related-to-amdgpu-dkms" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#the-easy-way-scaleenv" class="md-nav__link">
     <span class="md-ellipsis">
-      I get an error related to amdgpu-dkms
+      The easy way: scaleenv
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-file-conflicts-when-installing-the-scale-package" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#how-it-really-works" class="md-nav__link">
     <span class="md-ellipsis">
-      I get file conflicts when installing the SCALE package
+      How it really works
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#finding-the-libraries-at-runtime" class="md-nav__link">
     <span class="md-ellipsis">
-      I previously had your repositories set up, but it broke mysteriously.
+      Finding the libraries at runtime
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next steps
+    </span>
+  </a>
   
 </li>
       
@@ -1335,115 +1323,82 @@
 
 
 
-<h1 id="install-scale">Install SCALE<a class="headerlink" href="#install-scale" title="Permanent link">#</a></h1>
-<p>Select your operating system and version below to see installation instructions.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Ubuntu</label><label for="__tabbed_1_2">Rocky Linux</label><label for="__tabbed_1_3">Other Distros</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">22.04</label><label for="__tabbed_2_2">24.04</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Set up the SCALE repository, if you haven't already:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/jammy/main/binary-all/scale-repos.deb
-
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
-
-<span class="c1"># Update package list</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update
+<h1 id="compile-cuda-with-scale">Compile CUDA with SCALE<a class="headerlink" href="#compile-cuda-with-scale" title="Permanent link">#</a></h1>
+<p>This guide covers the steps required to compile an existing CUDA project for an
+AMD GPU using SCALE.</p>
+<p>SCALE makes this as easy as possible by convincingly impersonating the 
+NVIDIA CUDA Toolkit (from the point of view of your build system).</p>
+<p>To use SCALE, we must simply cause your build system to use the "CUDA 
+installation" offered by SCALE.</p>
+<p><a href="../how-to-install/">Install SCALE</a>, if you haven't already.</p>
+<h2 id="identifying-gpu-target">Identifying GPU Target<a class="headerlink" href="#identifying-gpu-target" title="Permanent link">#</a></h2>
+<p>If you don't already know which AMD GPU target you need to compile for, you can
+use the <code>scaleinfo</code> command provided by SCALE to find out:</p>
+<div class="highlight"><pre><span></span><code>scaleinfo<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>gfx
 </code></pre></div>
-<p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install scale
-
-# Add your user to the `video` group:
-sudo usermod -a -G video $(whoami)
+<p>Example output:</p>
+<div class="highlight"><pre><span></span><code>Device 0 (00:23:00.0): AMD Radeon Pro W6800 - gfx1030 (AMD) &lt;amdgcn-amd-amdhsa--gfx1030&gt;
 </code></pre></div>
-<p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
-installing SCALE, you should now reboot.</p>
-</div>
-<div class="tabbed-block">
-<p>Set up the SCALE repository, if you haven't already:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/noble/main/binary-all/scale-repos.deb
-
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
-
-<span class="c1"># Update package list</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update
+<p>In this example, the GPU target ID is <code>gfx1030</code>.</p>
+<p>If your GPU is not listed in the output of this command, it is not currently
+supported by SCALE.</p>
+<p>If the <code>scaleinfo</code> command is not found, ensure
+that <code>&lt;SCALE install path&gt;/bin</code> is in <code>PATH</code>.</p>
+<h2 id="the-easy-way-scaleenv">The easy way: <code>scaleenv</code><a class="headerlink" href="#the-easy-way-scaleenv" title="Permanent link">#</a></h2>
+<p>SCALE offers a "<code>venv</code>-flavoured" environment management script to allow 
+"magically" building CUDA projects.</p>
+<p>The concept is simple:</p>
+<ol>
+<li>Activate the <code>scaleenv</code> for the AMD GPU target you want to build for.</li>
+<li>Run the commands you normally use to build the project for an NVIDIA GPU.</li>
+<li>AMD binaries are sneakily produced instead of NVIDIA ones.</li>
+</ol>
+<p>To activate a scaleenv:</p>
+<div class="highlight"><pre><span></span><code>source /opt/scale/bin/scaleenv gfx1030
 </code></pre></div>
-<p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install scale
-
-# Add your user to the `video` group:
-sudo usermod -a -G video $(whoami)
-</code></pre></div>
-<p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
-installing SCALE, you should now reboot.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">9</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Set up the SCALE repository, if you haven't already:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale rpm repos.</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>https://pkgs.scale-lang.com/rpm/el9/main/scale-repos.rpm
-</code></pre></div>
-<p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code># Install SCALE
-sudo dnf install scale
-</code></pre></div>
-<p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
-installing SCALE, you should now reboot.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<p>Download and extract the SCALE tarball:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Download the tarball</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/tar/scale-latest-amd64.tar.xz
-
-<span class="c1"># Extract it to the current directory</span>
-tar<span class="w"> </span>xf<span class="w"> </span>scale-latest-amd64.tar.xz
-</code></pre></div>
-<p>The tarball is significantly larger than other options since it
-includes many dependent libraries directly instead of asking the system
-    package manager to install them.</p>
-</div>
-</div>
-</div>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
-<p>These issues relate to installation specifically. For more general troubleshooting steps, see <a href="../troubleshooting/">here</a>.</p>
-<h3 id="im-not-able-to-set-up-the-scale-repository">I'm not able to set up the SCALE repository<a class="headerlink" href="#im-not-able-to-set-up-the-scale-repository" title="Permanent link">#</a></h3>
+<p>You can exit a <code>scaleenv</code> by typing <code>deactivate</code> or closing your terminal.</p>
+<p>While the environment is active: simply run the usual <code>cmake</code>/<code>make</code>/etc.
+commands needed to build the project, and it will build for whatever AMD 
+target you handed to <code>scaleenv</code>.</p>
+<h2 id="how-it-really-works">How it really works<a class="headerlink" href="#how-it-really-works" title="Permanent link">#</a></h2>
+<p>To allow compilation without build system changes, SCALE provides a series of
+directories that are recognised by build systems as being CUDA Toolkit
+installations. One such directory is provided for each supported AMD GPU
+target. These directories can be found at <code>&lt;SCALE install 
+path&gt;/targets/gfxXXXX</code>, where <code>gfxXXXX</code> is the name of an AMD GPU target,
+such as <code>gfx1030</code>.</p>
+<p>To achieve the desired effect, we need the build system to use the "CUDA 
+toolkit" corresponding to the desired AMD GPU target.</p>
+<p>For example: to build for <code>gfx1030</code> you would tell your build system that
+CUDA is installed at <code>&lt;SCALE install path&gt;/targets/gfx1030</code>.</p>
+<p>All <code>scaleenv</code> is actually doing is setting various environment variables up 
+to make this happen. It's just a shell script: open it to see the variables 
+it is manipulating.</p>
+<h2 id="finding-the-libraries-at-runtime">Finding the libraries at runtime<a class="headerlink" href="#finding-the-libraries-at-runtime" title="Permanent link">#</a></h2>
+<p>For maximum compatibility with projects that depend on NVIDIA's "compute 
+capability" numbering scheme, SCALE provides one "cuda mimic directory" per 
+supported GPU target that maps the new target to "sm_86" in NVIDIA's 
+numbering scheme.</p>
+<p>This means that each of the <code>target</code> subdirectories contains 
+identically-named libraries, so SCALE cannot meaningfully add them to the 
+system's library search path when it is installed. The built executable/library
+therefore needs to be told how to find the libraries via another mechanism, 
+such as:</p>
 <ul>
-<li>
-<p>To follow the installation instructions above, you will need to install <code>wget</code> and <code>tar</code>.
-    This is installed by default on many systems, and usually available in your system package manager otherwise.</p>
-</li>
-<li>
-<p>If you're still unable to download the repository setup package (<code>scale-repos.deb</code> / <code>scale-repos.rpm</code>), check your internet connection.</p>
-</li>
-<li>If you're unable to install the repository setup package, you may have manually added the repository previously. If so, these files can be safely overwritten when prompted by your package manager.</li>
+<li><a href="https://en.wikipedia.org/wiki/Rpath">rpath</a>. With CMake, the simplest 
+  thing that "usually just works" is to add 
+  <code>-DCMAKE_INSTALL_RPATH_USE_LINK_PATH=ON</code> to your cmake incantation.</li>
+<li>Set <code>LD_LIBRARY_PATH</code> to include <code>${SCALE_DIR}/lib</code> at runtime. <code>scaleenv</code> 
+  does this, so if you keep that enabled when running your programs things 
+  will just work.</li>
 </ul>
-<h3 id="i-get-an-error-related-to-amdgpu-dkms">I get an error related to <code>amdgpu-dkms</code><a class="headerlink" href="#i-get-an-error-related-to-amdgpu-dkms" title="Permanent link">#</a></h3>
-<p>AMD's kernel modules are only supported on certain kernels. If your system uses a very out of date kernel, you may need to upgrade it in order to build it correctly.</p>
-<h3 id="i-get-file-conflicts-when-installing-the-scale-package">I get file conflicts when installing the SCALE package<a class="headerlink" href="#i-get-file-conflicts-when-installing-the-scale-package" title="Permanent link">#</a></h3>
-<p>This is usually caused by a previous manual installation of SCALE, or a different version of SCALE installed on the same system. Currently, only one version of SCALE and its associated ROCM version can be installed at once.</p>
-<h3 id="i-previously-had-your-repositories-set-up-but-it-broke-mysteriously">I previously had your repositories set up, but it broke mysteriously.<a class="headerlink" href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" title="Permanent link">#</a></h3>
-<p>We recently merged our stable and unstable repos. This shouldn't require any action for our users, but if you're having troubles then we suggest completely removing our repositories and adding them again:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># On Rocky</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;scale-repos*&#39;</span>
-sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/yum.repos.d/scale.repo
-
-<span class="c1"># On Ubuntu</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;scale-repos*&#39;</span>
-sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/apt/sources.list.d/scale.list<span class="w"> </span>/etc/apt/auth.conf.d/scale.conf
-
-<span class="c1"># Then follow the instructions above again.</span>
-</code></pre></div>
+<p>Support for multiple GPU architectures in a single binary ("Fat binaries") 
+is in development.</p>
+<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
+<ul>
+<li>Learn about <a href="../dialects/">CUDA dialects</a> and <a href="../language-extensions/">SCALE language extensions</a></li>
+<li><a href="../../contact/report-a-bug/">Report a bug</a></li>
+</ul>
 
 
 
@@ -1473,7 +1428,7 @@ sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../CHANGELOG/" class="md-footer__link md-footer__link--prev" aria-label="Previous: What&#39;s new?">
+          <a href="../how-to-install/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Install SCALE">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1483,20 +1438,20 @@ sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>
                 Previous
               </span>
               <div class="md-ellipsis">
-                What's new?
+                Install SCALE
               </div>
             </div>
           </a>
         
         
           
-          <a href="../how-to-use/" class="md-footer__link md-footer__link--next" aria-label="Next: Compile CUDA with SCALE">
+          <a href="../faq/" class="md-footer__link md-footer__link--next" aria-label="Next: Frequently asked questions">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Compile CUDA with SCALE
+                Frequently asked questions
               </div>
             </div>
             <div class="md-footer__button md-icon">

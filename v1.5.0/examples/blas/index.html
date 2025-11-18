@@ -8,13 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/how-to-install/">
+        <link rel="canonical" href="https://docs.scale-lang.com/latest/examples/blas/">
       
       
-        <link rel="prev" href="../CHANGELOG/">
+        <link rel="prev" href="../ptx/">
       
       
-        <link rel="next" href="../how-to-use/">
+        <link rel="next" href="../../manual/comparison/">
       
       
       <link rel="icon" href="../../favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>Install SCALE - SCALE documentation</title>
+        <title>BLAS example - SCALE documentation</title>
       
     
     
@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#install-scale" class="md-skip">
+        <a href="#blas-example" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Install SCALE
+              BLAS example
             
           </span>
         </div>
@@ -254,7 +254,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CHANGELOG/" class="md-nav__link">
+      <a href="../../manual/CHANGELOG/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -315,6 +315,178 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/how-to-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install SCALE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/how-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compile CUDA with SCALE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../manual/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently asked questions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCALE Example Programs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../basic/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Basic example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ptx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PTX example
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -331,7 +503,7 @@
           
   
   <span class="md-ellipsis">
-    Install SCALE
+    BLAS example
     
   </span>
   
@@ -343,7 +515,7 @@
         
   
   <span class="md-ellipsis">
-    Install SCALE
+    BLAS example
     
   </span>
   
@@ -366,53 +538,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#example-source-code" class="md-nav__link">
     <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#im-not-able-to-set-up-the-scale-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      I'm not able to set up the SCALE repository
+      Example source code
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-an-error-related-to-amdgpu-dkms" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#cmakeliststxt-used" class="md-nav__link">
     <span class="md-ellipsis">
-      I get an error related to amdgpu-dkms
+      CMakeLists.txt used
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-file-conflicts-when-installing-the-scale-package" class="md-nav__link">
-    <span class="md-ellipsis">
-      I get file conflicts when installing the SCALE package
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" class="md-nav__link">
-    <span class="md-ellipsis">
-      I previously had your repositories set up, but it broke mysteriously.
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -420,176 +559,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../how-to-use/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Compile CUDA with SCALE
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../faq/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Frequently asked questions
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-    
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Examples
-    
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4">
-            <span class="md-nav__icon md-icon"></span>
-            Examples
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    SCALE Example Programs
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/basic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Basic example
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/ptx/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    PTX example
-    
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../examples/blas/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    BLAS example
-    
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -658,7 +627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../comparison/" class="md-nav__link">
+      <a href="../../manual/comparison/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -680,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../manual/troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -702,7 +671,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../dialects/" class="md-nav__link">
+      <a href="../../manual/dialects/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -724,7 +693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../differences/" class="md-nav__link">
+      <a href="../../manual/differences/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -746,7 +715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../runtime-extensions/" class="md-nav__link">
+      <a href="../../manual/runtime-extensions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -806,7 +775,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../inline-ptx/" class="md-nav__link">
+      <a href="../../manual/inline-ptx/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -828,7 +797,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../diagnostic-flags/" class="md-nav__link">
+      <a href="../../manual/diagnostic-flags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -850,7 +819,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../diagnostic-reference/" class="md-nav__link">
+      <a href="../../manual/diagnostic-reference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -872,7 +841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../optimisation-flags/" class="md-nav__link">
+      <a href="../../manual/optimisation-flags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -894,7 +863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../language-extensions/" class="md-nav__link">
+      <a href="../../manual/language-extensions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -916,7 +885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../compute-capabilities/" class="md-nav__link">
+      <a href="../../manual/compute-capabilities/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -984,7 +953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../apis/" class="md-nav__link">
+      <a href="../../manual/apis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1006,7 +975,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api-driver/" class="md-nav__link">
+      <a href="../../manual/api-driver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1028,7 +997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api-math/" class="md-nav__link">
+      <a href="../../manual/api-math/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1050,7 +1019,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../api-runtime/" class="md-nav__link">
+      <a href="../../manual/api-runtime/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1269,53 +1238,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#troubleshooting" class="md-nav__link">
+  <a href="#example-source-code" class="md-nav__link">
     <span class="md-ellipsis">
-      Troubleshooting
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Troubleshooting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#im-not-able-to-set-up-the-scale-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      I'm not able to set up the SCALE repository
+      Example source code
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-an-error-related-to-amdgpu-dkms" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#cmakeliststxt-used" class="md-nav__link">
     <span class="md-ellipsis">
-      I get an error related to amdgpu-dkms
+      CMakeLists.txt used
     </span>
   </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-get-file-conflicts-when-installing-the-scale-package" class="md-nav__link">
-    <span class="md-ellipsis">
-      I get file conflicts when installing the SCALE package
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" class="md-nav__link">
-    <span class="md-ellipsis">
-      I previously had your repositories set up, but it broke mysteriously.
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1335,114 +1271,100 @@
 
 
 
-<h1 id="install-scale">Install SCALE<a class="headerlink" href="#install-scale" title="Permanent link">#</a></h1>
-<p>Select your operating system and version below to see installation instructions.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Ubuntu</label><label for="__tabbed_1_2">Rocky Linux</label><label for="__tabbed_1_3">Other Distros</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">22.04</label><label for="__tabbed_2_2">24.04</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Set up the SCALE repository, if you haven't already:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/jammy/main/binary-all/scale-repos.deb
+<h1 id="blas-example">BLAS example<a class="headerlink" href="#blas-example" title="Permanent link">#</a></h1>
+<p>This example demonstrates SCALE's compatibility with cuBLAS APIs by using 
+cuBLAS to perform a double-precision dot-product on an AMD GPU.</p>
+<p>cuBLAS APIs are forwarded to use the relevant ROCm APIs.
+Note that the example links to <code>cublas</code> in its <a href="#cmakeliststxt-used"><code>CMakeLists.txt</code></a>.</p>
+<h2 id="example-source-code">Example source code<a class="headerlink" href="#example-source-code" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;vector&gt;</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;iostream&gt;</span>
 
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&lt;cublas_v2.h&gt;</span>
 
-<span class="c1"># Update package list</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">check</span><span class="p">(</span><span class="n">cudaError_t</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">error</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">cudaSuccess</span><span class="p">)</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;cuda error: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cudaGetErrorString</span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; at &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">checkCublas</span><span class="p">(</span><span class="n">cublasStatus_t</span><span class="w"> </span><span class="n">error</span><span class="p">,</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">file</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">line</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">error</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">CUBLAS_STATUS_SUCCESS</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;cublas error: &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">cublasGetStatusString</span><span class="p">(</span><span class="n">error</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; at &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;:&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">line</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">        </span><span class="n">exit</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+
+
+<span class="cp">#define CHECK(error) check(error, __FILE__, __LINE__)</span>
+<span class="cp">#define CHECK_CUBLAS(error) checkCublas(error, __FILE__, __LINE__)</span>
+
+
+<span class="kt">int</span><span class="w"> </span><span class="nf">main</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">argc</span><span class="p">,</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="o">**</span><span class="w"> </span><span class="n">argv</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">cublasHandle_t</span><span class="w"> </span><span class="n">handle</span><span class="p">;</span>
+<span class="w">    </span><span class="n">CHECK_CUBLAS</span><span class="p">(</span><span class="n">cublasCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">handle</span><span class="p">));</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">BYTES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">double</span><span class="p">);</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">double</span><span class="w"> </span><span class="n">E</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-5</span><span class="p">;</span>
+
+<span class="w">    </span><span class="cm">/* Prepare the data */</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">(</span><span class="n">N</span><span class="p">);</span>
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="kt">double</span><span class="o">&gt;</span><span class="w"> </span><span class="n">B</span><span class="p">(</span><span class="n">N</span><span class="p">);</span>
+
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="p">;</span>
+<span class="w">        </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">N</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="cm">/* Send the data */</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">devA</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">devB</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">CHECK</span><span class="p">(</span><span class="n">cudaMalloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">devA</span><span class="p">,</span><span class="w"> </span><span class="n">BYTES</span><span class="p">));</span>
+<span class="w">    </span><span class="n">CHECK</span><span class="p">(</span><span class="n">cudaMalloc</span><span class="p">(</span><span class="o">&amp;</span><span class="n">devB</span><span class="p">,</span><span class="w"> </span><span class="n">BYTES</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">CHECK</span><span class="p">(</span><span class="n">cudaMemcpy</span><span class="p">(</span><span class="n">devA</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">BYTES</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="p">));</span>
+<span class="w">    </span><span class="n">CHECK</span><span class="p">(</span><span class="n">cudaMemcpy</span><span class="p">(</span><span class="n">devB</span><span class="p">,</span><span class="w"> </span><span class="n">B</span><span class="p">.</span><span class="n">data</span><span class="p">(),</span><span class="w"> </span><span class="n">BYTES</span><span class="p">,</span><span class="w"> </span><span class="n">cudaMemcpyHostToDevice</span><span class="p">));</span>
+
+<span class="w">    </span><span class="cm">/* Calculate */</span>
+
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">strideA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">strideB</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+
+<span class="w">    </span><span class="n">CHECK_CUBLAS</span><span class="p">(</span><span class="n">cublasDdot</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="p">.</span><span class="n">size</span><span class="p">(),</span><span class="w"> </span><span class="n">devA</span><span class="p">,</span><span class="w"> </span><span class="n">strideA</span><span class="p">,</span><span class="w"> </span><span class="n">devB</span><span class="p">,</span><span class="w"> </span><span class="n">strideB</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">result</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">CHECK</span><span class="p">(</span><span class="n">cudaDeviceSynchronize</span><span class="p">());</span>
+
+<span class="w">    </span><span class="kt">double</span><span class="w"> </span><span class="n">expected</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">size_t</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">expected</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">];</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">std</span><span class="o">::</span><span class="n">abs</span><span class="p">(</span><span class="n">result</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">expected</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">E</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Result &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot; is different from expected &quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">expected</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+
+<span class="w">    </span><span class="n">CHECK_CUBLAS</span><span class="p">(</span><span class="n">cublasDestroy</span><span class="p">(</span><span class="n">handle</span><span class="p">));</span>
+
+<span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">cout</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">&quot;Example finished.&quot;</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
 </code></pre></div>
-<p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install scale
+<h2 id="cmakeliststxt-used"><code>CMakeLists.txt</code> used<a class="headerlink" href="#cmakeliststxt-used" title="Permanent link">#</a></h2>
+<div class="highlight"><pre><span></span><code><span class="nb">cmake_minimum_required</span><span class="p">(</span><span class="s">VERSION</span><span class="w"> </span><span class="s">3.17</span><span class="w"> </span><span class="s">FATAL_ERROR</span><span class="p">)</span>
+<span class="nb">project</span><span class="p">(</span><span class="s">example_blas</span><span class="w"> </span><span class="s">LANGUAGES</span><span class="w"> </span><span class="s">CUDA</span><span class="p">)</span>
 
-# Add your user to the `video` group:
-sudo usermod -a -G video $(whoami)
-</code></pre></div>
-<p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
-installing SCALE, you should now reboot.</p>
-</div>
-<div class="tabbed-block">
-<p>Set up the SCALE repository, if you haven't already:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale deb repos.</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/deb/dists/noble/main/binary-all/scale-repos.deb
-
-sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>./scale-repos.deb
-
-<span class="c1"># Update package list</span>
-sudo<span class="w"> </span>apt<span class="w"> </span>update
-</code></pre></div>
-<p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code>sudo apt install scale
-
-# Add your user to the `video` group:
-sudo usermod -a -G video $(whoami)
-</code></pre></div>
-<p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
-installing SCALE, you should now reboot.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<div class="tabbed-set tabbed-alternate" data-tabs="3:1"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">9</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>Set up the SCALE repository, if you haven't already:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Add the scale rpm repos.</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>install<span class="w"> </span>https://pkgs.scale-lang.com/rpm/el9/main/scale-repos.rpm
-</code></pre></div>
-<p>Then, install the SCALE package:</p>
-<div class="highlight"><pre><span></span><code># Install SCALE
-sudo dnf install scale
-</code></pre></div>
-<p>If you did not already have the <code>amdgpu-dkms</code> kernel driver installed prior to
-installing SCALE, you should now reboot.</p>
-</div>
-</div>
-</div>
-</div>
-<div class="tabbed-block">
-<p>Download and extract the SCALE tarball:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Download the tarball</span>
-wget<span class="w"> </span>https://pkgs.scale-lang.com/tar/scale-latest-amd64.tar.xz
-
-<span class="c1"># Extract it to the current directory</span>
-tar<span class="w"> </span>xf<span class="w"> </span>scale-latest-amd64.tar.xz
-</code></pre></div>
-<p>The tarball is significantly larger than other options since it
-includes many dependent libraries directly instead of asking the system
-    package manager to install them.</p>
-</div>
-</div>
-</div>
-<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">#</a></h2>
-<p>These issues relate to installation specifically. For more general troubleshooting steps, see <a href="../troubleshooting/">here</a>.</p>
-<h3 id="im-not-able-to-set-up-the-scale-repository">I'm not able to set up the SCALE repository<a class="headerlink" href="#im-not-able-to-set-up-the-scale-repository" title="Permanent link">#</a></h3>
-<ul>
-<li>
-<p>To follow the installation instructions above, you will need to install <code>wget</code> and <code>tar</code>.
-    This is installed by default on many systems, and usually available in your system package manager otherwise.</p>
-</li>
-<li>
-<p>If you're still unable to download the repository setup package (<code>scale-repos.deb</code> / <code>scale-repos.rpm</code>), check your internet connection.</p>
-</li>
-<li>If you're unable to install the repository setup package, you may have manually added the repository previously. If so, these files can be safely overwritten when prompted by your package manager.</li>
-</ul>
-<h3 id="i-get-an-error-related-to-amdgpu-dkms">I get an error related to <code>amdgpu-dkms</code><a class="headerlink" href="#i-get-an-error-related-to-amdgpu-dkms" title="Permanent link">#</a></h3>
-<p>AMD's kernel modules are only supported on certain kernels. If your system uses a very out of date kernel, you may need to upgrade it in order to build it correctly.</p>
-<h3 id="i-get-file-conflicts-when-installing-the-scale-package">I get file conflicts when installing the SCALE package<a class="headerlink" href="#i-get-file-conflicts-when-installing-the-scale-package" title="Permanent link">#</a></h3>
-<p>This is usually caused by a previous manual installation of SCALE, or a different version of SCALE installed on the same system. Currently, only one version of SCALE and its associated ROCM version can be installed at once.</p>
-<h3 id="i-previously-had-your-repositories-set-up-but-it-broke-mysteriously">I previously had your repositories set up, but it broke mysteriously.<a class="headerlink" href="#i-previously-had-your-repositories-set-up-but-it-broke-mysteriously" title="Permanent link">#</a></h3>
-<p>We recently merged our stable and unstable repos. This shouldn't require any action for our users, but if you're having troubles then we suggest completely removing our repositories and adding them again:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># On Rocky</span>
-sudo<span class="w"> </span>dnf<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;scale-repos*&#39;</span>
-sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/yum.repos.d/scale.repo
-
-<span class="c1"># On Ubuntu</span>
-sudo<span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span><span class="s1">&#39;scale-repos*&#39;</span>
-sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/etc/apt/sources.list.d/scale.list<span class="w"> </span>/etc/apt/auth.conf.d/scale.conf
-
-<span class="c1"># Then follow the instructions above again.</span>
+<span class="nb">add_executable</span><span class="p">(</span><span class="s">example_blas</span><span class="w"> </span><span class="s">blas.cu</span><span class="p">)</span>
+<span class="nb">target_link_libraries</span><span class="p">(</span><span class="s">example_blas</span><span class="w"> </span><span class="s">PRIVATE</span><span class="w"> </span><span class="s">cublas</span><span class="w"> </span><span class="s">redscale</span><span class="p">)</span>
 </code></pre></div>
 
 
@@ -1473,7 +1395,7 @@ sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../CHANGELOG/" class="md-footer__link md-footer__link--prev" aria-label="Previous: What&#39;s new?">
+          <a href="../ptx/" class="md-footer__link md-footer__link--prev" aria-label="Previous: PTX example">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -1483,20 +1405,20 @@ sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>
                 Previous
               </span>
               <div class="md-ellipsis">
-                What's new?
+                PTX example
               </div>
             </div>
           </a>
         
         
           
-          <a href="../how-to-use/" class="md-footer__link md-footer__link--next" aria-label="Next: Compile CUDA with SCALE">
+          <a href="../../manual/comparison/" class="md-footer__link md-footer__link--next" aria-label="Next: Comparison to other solutions">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Compile CUDA with SCALE
+                Comparison to other solutions
               </div>
             </div>
             <div class="md-footer__button md-icon">
