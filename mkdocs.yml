@@ -7,7 +7,7 @@ theme:
   name: material
   custom_dir: overrides
   logo: logo_white.svg
-  favicon: favicon.png
+  favicon: favicon.ico
   palette:
     # Palette toggle for dark mode
     - scheme: slate
