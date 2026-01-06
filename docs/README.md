@@ -26,7 +26,7 @@ can be found [here](https://github.com/spectral-compute/scale-validation/tree/ma
 
 The following GPU targets are supported:
 
-- AMD `gfx900` (Vega 10, GCN 5.0)`
+- AMD `gfx900` (Vega 10, GCN 5.0)
 - AMD `gfx906` (MI50/MI60)
 - AMD `gfx908` (MI100)
 - AMD `gfx90a` (MI210/MI250)
