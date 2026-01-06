@@ -20,7 +20,7 @@ Support for more GPU vendors and CUDA APIs is in development.
 
 We validate SCALE by compiling open-source CUDA projects and running their
 tests. The list of currently-tested projects and their compatibility status
-can be found [here](https://github.com/spectral-compute/scale-validation/tree/master?tab=readme-ov-file#current-status)
+can be found [here](https://github.com/spectral-compute/scale-validation?tab=readme-ov-file#current-status)
 
 ## Which GPUs are supported?
 
