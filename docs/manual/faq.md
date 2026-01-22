@@ -78,8 +78,6 @@ build the same C++ program for Intel/ARM/AMD CPUs with good performance,
 why can't we do that for CUDA? It's a different and challenging
 compiler research problem, but it is possible.
 
-## Does'
-
 ## Does it work on Windows?
 
 Not yet. :(
