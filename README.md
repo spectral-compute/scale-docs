@@ -17,12 +17,16 @@ documentation versions.
 
 ## Compiling the manual
 
-Create a venv and `pip install -r requirements.txt`.
+Use uv for installing dependencies:
+
+```sh
+uv sync
+```
 
 To launch the devserver and see changes live:
 
 ```sh
-mkdocs serve
+uv run mkdocs serve
 ```
 
 ## Publishing
