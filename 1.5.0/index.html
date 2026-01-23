@@ -322,6 +322,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Which GPUs are supported?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amd" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AMD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enterprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enterprise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1320,6 +1359,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Which GPUs are supported?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#amd" class="md-nav__link">
+    <span class="md-ellipsis">
+      AMD
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="AMD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#enterprise" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enterprise
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#consumer" class="md-nav__link">
+    <span class="md-ellipsis">
+      Consumer
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1384,22 +1462,122 @@ tests. The list of currently-tested projects and their compatibility status
 can be found <a href="https://github.com/spectral-compute/scale-validation?tab=readme-ov-file#current-status">here</a></p>
 <h2 id="which-gpus-are-supported">Which GPUs are supported?<a class="headerlink" href="#which-gpus-are-supported" title="Permanent link">#</a></h2>
 <p>The following GPU targets are supported:</p>
-<ul>
-<li>AMD <code>gfx900</code> (Vega 10, GCN 5.0)</li>
-<li>AMD <code>gfx906</code> (MI50/MI60)</li>
-<li>AMD <code>gfx908</code> (MI100)</li>
-<li>AMD <code>gfx90a</code> (MI210/MI250)</li>
-<li>AMD <code>gfx942</code> (MI300x)</li>
-<li>AMD <code>gfx950</code> (MI350x/MI355x)</li>
-<li>AMD <code>gfx1010</code></li>
-<li>AMD <code>gfx1030</code> (Navi 21, RDNA 2.0)</li>
-<li>AMD <code>gfx1100</code> (Navi 31, RDNA 3.0)</li>
-<li>AMD <code>gfx1151</code> (Strix-halo etc.)</li>
-<li>AMD <code>gfx1101</code></li>
-<li>AMD <code>gfx1102</code></li>
-<li>AMD <code>gfx1200</code> (RX 9060 XT etc.)</li>
-<li>AMD <code>gfx1201</code> (RX 9070 XT etc.)</li>
-</ul>
+<h3 id="amd">AMD<a class="headerlink" href="#amd" title="Permanent link">#</a></h3>
+<p>Full technical specifications <a href="https://rocm.docs.amd.com/en/latest/reference/gpu-arch-specs.html">available here</a>.</p>
+<h4 id="enterprise">Enterprise<a class="headerlink" href="#enterprise" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Architecture</th>
+<th>LLVM target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MI350X / MI355X</td>
+<td>CDNA 4</td>
+<td>gfx950</td>
+</tr>
+<tr>
+<td>MI300A / MI300X / MI325X</td>
+<td>CDNA 3</td>
+<td>gfx942</td>
+</tr>
+<tr>
+<td>MI210 / MI250 / MI250X</td>
+<td>CDNA 2</td>
+<td>gfx90a</td>
+</tr>
+<tr>
+<td>MI100</td>
+<td>CDNA 1</td>
+<td>gfx908</td>
+</tr>
+<tr>
+<td>MI50 / MI60</td>
+<td>GCN 5.1</td>
+<td>gfx906</td>
+</tr>
+<tr>
+<td>MI25</td>
+<td>GCN 5.0</td>
+<td>gfx900</td>
+</tr>
+</tbody>
+</table>
+<h4 id="consumer">Consumer<a class="headerlink" href="#consumer" title="Permanent link">#</a></h4>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Architecture</th>
+<th>LLVM target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radeon AI PRO R9600D / R9700</td>
+<td>RDNA 4</td>
+<td>gfx1201</td>
+</tr>
+<tr>
+<td>Radeon RX 9070</td>
+<td>RDNA 4</td>
+<td>gfx1201</td>
+</tr>
+<tr>
+<td>Radeon RX 9060</td>
+<td>RDNA 4</td>
+<td>gfx1200</td>
+</tr>
+<tr>
+<td>Ryzen AI Max+ PRO 395</td>
+<td>RDNA 3.5</td>
+<td>gfx1151</td>
+</tr>
+<tr>
+<td>Radeon RX 7600</td>
+<td>RDNA 3</td>
+<td>gfx1102</td>
+</tr>
+<tr>
+<td>Radeon PRO v710 / W7700</td>
+<td>RDNA 3</td>
+<td>gfx1101</td>
+</tr>
+<tr>
+<td>Radeon RX 7700 / 7800</td>
+<td>RDNA 3</td>
+<td>gfx1101</td>
+</tr>
+<tr>
+<td>Radeon PRO W7800 / W7900</td>
+<td>RDNA 3</td>
+<td>gfx1100</td>
+</tr>
+<tr>
+<td>Radeon RX W7900 XT / XTX</td>
+<td>RDNA 3</td>
+<td>gfx1100</td>
+</tr>
+<tr>
+<td>Radeon PRO v620 / W6800</td>
+<td>RDNA 2</td>
+<td>gfx1030</td>
+</tr>
+<tr>
+<td>Radeon RX 6800 / 6900 / 6950</td>
+<td>RDNA 2</td>
+<td>gfx1030</td>
+</tr>
+<tr>
+<td>Radeon Pro W5700</td>
+<td>RDNA 1</td>
+<td>gfx1010</td>
+</tr>
+</tbody>
+</table>
 <p><a href="#contact-us">Contact us</a> if you want us to expedite support for a particular AMD GPU
 architecture.</p>
 <h2 id="what-are-the-components-of-scale">What are the components of SCALE?<a class="headerlink" href="#what-are-the-components-of-scale" title="Permanent link">#</a></h2>
