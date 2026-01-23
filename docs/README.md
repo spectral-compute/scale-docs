@@ -26,20 +26,35 @@ can be found [here](https://github.com/spectral-compute/scale-validation?tab=rea
 
 The following GPU targets are supported:
 
-- AMD `gfx900` (Vega 10, GCN 5.0)
-- AMD `gfx906` (MI50/MI60)
-- AMD `gfx908` (MI100)
-- AMD `gfx90a` (MI210/MI250)
-- AMD `gfx942` (MI300x)
-- AMD `gfx950` (MI350x/MI355x)
-- AMD `gfx1010`
-- AMD `gfx1030` (Navi 21, RDNA 2.0)
-- AMD `gfx1100` (Navi 31, RDNA 3.0)
-- AMD `gfx1151` (Strix-halo etc.)
-- AMD `gfx1101`
-- AMD `gfx1102`
-- AMD `gfx1200` (RX 9060 XT etc.)
-- AMD `gfx1201` (RX 9070 XT etc.)
+### AMD
+Full technical specifications [available here](https://rocm.docs.amd.com/en/latest/reference/gpu-arch-specs.html).
+
+#### Enterprise
+| Name                         | Architecture        | LLVM target |
+|------------------------------|---------------------|-------------|
+| MI350X / MI355X              | CDNA 4              | gfx950      |
+| MI300A / MI300X / MI325X     | CDNA 3              | gfx942      |
+| MI210 / MI250 / MI250X       | CDNA 2              | gfx90a      |
+| MI100                        | CDNA 1              | gfx908      |
+| MI50 / MI60                  | GCN 5.1             | gfx906      |
+| MI25                         | GCN 5.0             | gfx900      |
+
+#### Consumer
+| Name                         | Architecture        | LLVM target |
+|------------------------------|---------------------|-------------|
+| Radeon AI PRO R9600D / R9700 | RDNA 4              | gfx1201     |
+| Radeon RX 9070               | RDNA 4              | gfx1201     |
+| Radeon RX 9060               | RDNA 4              | gfx1200     |
+| Ryzen AI Max+ PRO 395        | RDNA 3.5            | gfx1151     |
+| Radeon RX 7600               | RDNA 3              | gfx1102     |
+| Radeon PRO v710 / W7700      | RDNA 3              | gfx1101     |
+| Radeon RX 7700 / 7800        | RDNA 3              | gfx1101     |
+| Radeon PRO W7800 / W7900     | RDNA 3              | gfx1100     |
+| Radeon RX W7900 XT / XTX     | RDNA 3              | gfx1100     |
+| Radeon PRO v620 / W6800      | RDNA 2              | gfx1030     |
+| Radeon RX 6800 / 6900 / 6950 | RDNA 2              | gfx1030     |
+| Radeon Pro W5700             | RDNA 1              | gfx1010     |
+
 
 [Contact us](#contact-us) if you want us to expedite support for a particular AMD GPU
 architecture.
