@@ -66,7 +66,7 @@ SCALE consists of:
 - An `nvcc`-compatible compiler capable of compiling nvcc-dialect CUDA for AMD
   GPUs, including PTX asm.
 - An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.
-- Open-source wrapper libraries providing the "CUDA-X" APIs by delegating to the
+- Wrapper libraries providing the "CUDA-X" APIs by delegating to the
   corresponding ROCm libraries.
   This is how libraries such as `cuBLAS` and `cuSOLVER` are handled.
 
