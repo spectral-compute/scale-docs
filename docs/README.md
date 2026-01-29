@@ -13,7 +13,6 @@ Support for more GPU vendors and CUDA APIs is in development.
 
 1. [Install SCALE](./manual/how-to-install.md).
 1. Activate SCALE, eg. `. /opt/SCALE/scaleenv gfx1100`
-We validate SCALE by compiling open-source CUDA projects and running their
 1. Compile your [CUDA code with SCALE](https://docs.scale-lang.com/stable/manual/how-to-use/), following steps similar to
    NVIDIA CUDA.
 
