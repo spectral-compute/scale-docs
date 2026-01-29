@@ -2,26 +2,47 @@
 
 ## How do I report a problem?
 
-[Contact us](../contact/report-a-bug.md)
+Go ahead and [contact us](../contact/report-a-bug.md) if facing problems.
 
 Bug reports - no matter how small - accelerate the SCALE project.
 
-Let's work together to democratise the GPGPU market!
+Let's work together to democratise the GPU market!
+
+## Is SCALE free?
+SCALE is free for non-commercial use including research and academia. 
+
+For commercial use, a license agreement is required. 
+
+To learn more about licencing SCALE, we invite you to [read this](https://scale-lang.com/#licensing) or [contact us](../contact/report-a-bug.md).
+
+## Does SCALE increase performance?
+In many cases, yes, it does. 
+
+Seeking to 'reduce compute cost' and/or 'increase performance' are good reasons to explore SCALE. That said, these depend on the specific compute workload in question and benchmarks will be different from one CUDA project to the other.
+
+For the latest performance benchmarks, see [this section](https://scale-lang.com/#benchmarks) of our website.
 
 ## When will `<some GPU>` be supported?
 
 Expanding the set of supported GPUs is an ongoing process. We already
-support some GPUs ROCM has dropped support for (eg. gfx900), and are
-working to expand the set further. If there's a device you want to bring
-to our attention, please get in touch.
+support some GPUs that vendors has dropped support for (eg. AMD MI25 / gfx900), and are
+working to expand the set further. If there's a GPU you want to bring
+to our attention, please [get in touch](../contact/report-a-bug.md).
 
 ## When will `<some CUDA API>` be supported?
 
-We prioritise CUDA APIs based on the number and popularity of third-party
+We prioritise CUDA APIs based on the number (and popularity) of third-party
 projects requiring the missing API.
 
 If you'd like to bring a missing API to our attention,
-[Contact us](../contact/report-a-bug.md)
+[contact us](../contact/report-a-bug.md).
+
+## Does SCALE infringe NVIDIA’s copyright?
+By design, SCALE does _not_ infringe NVIDIA’s EULAs or copyright. 
+
+We think CUDA is **amazing** and we follow the guidelines set by NVIDIA. 
+
+Check out [this post](https://www.linkedin.com/posts/spectral-compute_write-cuda-run-everywhere-activity-7399130853668245504-dvWQ) for an elaborate explanation.
 
 ## Can't NVIDIA just change CUDA and break SCALE?
 
@@ -80,6 +101,4 @@ compiler research problem, but it is possible.
 
 ## Does it work on Windows?
 
-Not yet. :(
-
-Windows support is a challenge that we have ideas about.
+Not yet, but windows support is a challenge that we have ideas about.
