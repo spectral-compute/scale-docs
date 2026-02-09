@@ -12,15 +12,23 @@ Support for more GPU vendors and CUDA APIs is in development.
 ## How do I use SCALE?
 
 1. [Install SCALE](./manual/how-to-install.md).
-2. Activate SCALE, eg. `. /opt/SCALE/scaleenv gfx1100`
-3. Compile your application, following the same steps you would use for
+1. Activate SCALE, eg. `. /opt/SCALE/scaleenv gfx1100`
+1. Compile your [CUDA code with SCALE](https://docs.scale-lang.com/stable/manual/how-to-use/), following steps similar to
    NVIDIA CUDA.
 
 ## What projects have been tested?
 
 We validate SCALE by compiling open-source CUDA projects and running their
 tests. The list of currently-tested projects and their compatibility status
-can be found [here](https://github.com/spectral-compute/scale-validation?tab=readme-ov-file#current-status)
+can be found [here](https://github.com/spectral-compute/scale-validation?tab=readme-ov-file#current-status).
+
+Join our [Discord](https://discord.com/invite/KNpgGbTc38) to let us know what projects are missing (_or_ support our mission by contributing yourself).
+
+## What are examples of using SCALE?
+
+Our [SCALE Examples](https://docs.scale-lang.com/stable/examples/) section show very basic examples of using SCALE and are a great place to start your hands-on experience.
+
+We welcome contributions from our developer community. Join our [Discord](https://discord.com/invite/KNpgGbTc38) to share _your_ SCALE projects.
 
 ## Which GPUs are supported?
 
