@@ -316,6 +316,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-are-examples-of-using-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are examples of using SCALE?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#which-gpus-are-supported" class="md-nav__link">
     <span class="md-ellipsis">
       Which GPUs are supported?
@@ -1200,6 +1209,28 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contact/join-our-discord/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Join our Discord
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1353,6 +1384,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#what-are-examples-of-using-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are examples of using SCALE?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#which-gpus-are-supported" class="md-nav__link">
     <span class="md-ellipsis">
       Which GPUs are supported?
@@ -1453,13 +1493,16 @@ applications for AMD GPUs.</p>
 <ol>
 <li><a href="manual/how-to-install/">Install SCALE</a>.</li>
 <li>Activate SCALE, eg. <code>. /opt/SCALE/scaleenv gfx1100</code></li>
-<li>Compile your application, following the same steps you would use for
-   NVIDIA CUDA.</li>
+<li>Compile your <a href="https://docs.scale-lang.com/stable/manual/how-to-use/">CUDA code with SCALE</a>, following the same steps as for NVIDIA CUDA.</li>
 </ol>
 <h2 id="what-projects-have-been-tested">What projects have been tested?<a class="headerlink" href="#what-projects-have-been-tested" title="Permanent link">#</a></h2>
 <p>We validate SCALE by compiling open-source CUDA projects and running their
 tests. The list of currently-tested projects and their compatibility status
-can be found <a href="https://github.com/spectral-compute/scale-validation?tab=readme-ov-file#current-status">here</a></p>
+can be found <a href="https://github.com/spectral-compute/scale-validation?tab=readme-ov-file#current-status">here</a>.</p>
+<p>Join our <a href="https://discord.com/invite/KNpgGbTc38">Discord</a> to let us know what projects are missing (<em>or</em> support our mission by contributing yourself).</p>
+<h2 id="what-are-examples-of-using-scale">What are examples of using SCALE?<a class="headerlink" href="#what-are-examples-of-using-scale" title="Permanent link">#</a></h2>
+<p>Our <a href="https://docs.scale-lang.com/stable/examples/">SCALE Examples</a> section show very basic examples of using SCALE and are a great place to start your hands-on experience.</p>
+<p>We welcome contributions from our developer community. Join our <a href="https://discord.com/invite/KNpgGbTc38">Discord</a> to share <em>your</em> SCALE projects.</p>
 <h2 id="which-gpus-are-supported">Which GPUs are supported?<a class="headerlink" href="#which-gpus-are-supported" title="Permanent link">#</a></h2>
 <p>The following GPU targets are supported:</p>
 <h3 id="amd">AMD<a class="headerlink" href="#amd" title="Permanent link">#</a></h3>
@@ -1586,7 +1629,7 @@ architecture.</p>
 <li>An <code>nvcc</code>-compatible compiler capable of compiling nvcc-dialect CUDA for AMD
   GPUs, including PTX asm.</li>
 <li>An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.</li>
-<li>Open-source wrapper libraries providing the "CUDA-X" APIs by delegating to the
+<li>Wrapper libraries providing the "CUDA-X" APIs by delegating to the
   corresponding ROCm libraries.
   This is how libraries such as <code>cuBLAS</code> and <code>cuSOLVER</code> are handled.</li>
 </ul>
