@@ -36,6 +36,7 @@ uv run mkdocs serve
 *Make sure not to prepend 'v' to the version number*
 
 - Ensure your changes are all in master, and master is checked out.
+- Create (or update) the appropriate git-tag so we can find the version published later: `git tag <SCALE VERSION NUMBER> && git push origin <SCALE VERSION NUMBER>`
 - `mike deploy --push --update-aliases <SCALE VERSION NUMBER> stable`
 
 To deploy an unstable release of the manual:
