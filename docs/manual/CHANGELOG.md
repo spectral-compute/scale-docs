@@ -1,5 +1,69 @@
 # What's new?
 
+## Release 1.5.1 (2026-02-03)
+
+### Compiler: NVCC emulation
+
+- `-Wregister` no longer defaults to an error in nvcc dialect mode.
+- `-Xfatbin` and `-Xptxas` are now parsed to extract meaningful flags from them.
+- `nvcc -v`'s path outputs now reflect the actual CUDA install search process.
+- Fixed an edgecase of the `target_overload` attribute that led to incompatibility with some versions of the standard library.
+- Don't crash when a variable is illegally declared `__host__ __device__`.
+- `nv_weak` is now an alias of `weak`.
+- Added support for `-ptx` flag.
+- Fixed some edgecases of argument translation for list-form arguments.
+- Dependency information is no longer duplicated for CUDA mode (for `-M` and friends).
+- *Even more* missing-typename relaxations to support the nvcc dialect.
+- Unqualified lookups of dependent members in base classes is now alloewd in nvcc mode.
+- Fix some builtin macro pedantry so programs that check with `#if <foo> == 1` work, as well as simply `#ifdef <foo>`, work.
+- Implement some simple IR-level optimisations for `__byte_perm()`.
+- `--extended-lambda` and `--relaxed-constexpr` now drive the same macro as they do in NVIDIA's implementation, even though they still do not change the behaviour of the semantic analyzer.
+
+### Compiler: Inline PTX support
+
+- Add minifloat types (fp8/6/4) to the PTX type system, pending implementation of the corresponding tensor core ops.
+- Fix subtle miscompiles surrounding edgecases for `.relu` PTX operations. Seems the semantics of the `.relu` operator differ between different opcodes...
+- Fix miscompile when both `.satf` and `.relu` are provided on the same instruction.
+- Implement `__nv_is_extended_device_lambda_with_preserved_return_type`. Although it is largely meaningless given our proper lambda suppport, user code relies on it.
+- Treat `.mmio` as an alias of `.volatile`, at least until we support some devices with actual IO devices stuck to the GPU.
+- Fix a compiler crash when passing a pointer to a struct directly into a PTX asm block.
+- Fix a compiler crash when compiling certain SIMD PTX instructions, such as `fma.sat.f32x2`.
+- Fix a type inference failure for instructions include vector expressions with constants in them, such as `asm("mov.b32 %0, {0, %1};" : "=f"(f) : "h"(h));`.
+- Fix a compiler crash when a mandatory round-mode operand was omitted from a float-to-int `cvt` instruction.
+- Fix failure to compile certain cases of `cvt`, such as `f64<->f16`.
+- Fix failure to compile vector-splat cases of `cvt` for small float types.
+
+## Compiler: Other
+
+- Fix a miscompilation in which rounding-mode state would sometimes be leaked, leaving the rounding mode register set to a non-default value after executing certain combinations special-rounding-mode operations.
+- `clangd` now crashes less often.
+
+### Library
+
+- Newly-added CUDA APIs:
+    * `cudaMalloc3D`
+    * `cuCtxSynchronize_v2`
+    * `cuCtxGetDevice_v2`
+    * `cuCtxWaitEvent`
+    * `cuFuncGetName`
+    * `cuFuncGetParamInfo`
+    * `cuStreamWriteValue32`
+- Add the NVML APIs for query process information.
+- Small improvements to exception handling performance.
+- Fix an implicit synchronisation bug for memsets. Memsets targeting pinned host memory are supposed to implicitly synchronise the affected stream.
+- Fix a crash when using the `extra` argument of various launch APIs to pass a user-provided kernel argument buffer containing objects with "diamond of doom" inheritance.
+- `half2char` now properly converts to *signed* char, not unsigned char.
+- Fixed handling of `-0` and `NaN` in various Math API routines.
+- Fixed a few cases where denorms were flushed on the "wrong side" of the operation. NVIDIA don't document which operations flush denorms before doig the operation (eg. min()), and which ones flush afterwards.
+- Fixed an endianness issue affecting bf16x2 assembly APIs such as `__low2bfloat16`.
+- Entirely disabled SDMA for gfx9xx devices except gfx90a, due to apparent hardware bugs. This should resolve issues where cudaMemcpys would mysteriously not synchronise with the host even when asked to. Seems SDMA barriers sometimes just don't work...?
+- Fixed various header defects (missing `typedef enum`, implicit STL includes, etc.)
+
+### Other
+
+- scaleenv no longer leaks PS1 to the env.
+- The scripts in scale-validation are now much simpler, hopefully making it more obvious that they are just copies of the upstream build scripts!
+
 ## Release 1.5.0 (2025-11-15)
 
 ### Platform
