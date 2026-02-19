@@ -1,4 +1,849 @@
-[data-md-color-scheme="slate"], [data-md-color-scheme="default"] {
-    --md-primary-fg-color: rgb(41, 37, 36);
-    --md-typeset-a-color: #4051b5;
+/* ==========================================================================
+   SCALE Brand Stylesheet — Documentation Theme
+   Built for MkDocs Material 9.x
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Brand Tokens
+   -------------------------------------------------------------------------- */
+
+:root {
+  /* Core palette */
+  --scale-dark-violet: #2b1d4f;
+  --scale-indigo: #ae84ff;
+  --scale-turquoise: #81f4e1;
+  --scale-plum: #4e2d73;
+  --scale-smoky-white: #f5f5f5;
+  --scale-smoky-black: #18161f;
+  --scale-red: #b82636;
+  --scale-green: #00916c;
+
+  /* Derived tokens */
+  --scale-dark-violet-deep: #1f1439;
+  --scale-radius: 8px;
+  --scale-spacing-lg: 2rem;
+  --scale-spacing-md: 1.2rem;
+}
+
+/* --------------------------------------------------------------------------
+   2. Light Mode (default) — Material Token Overrides
+   -------------------------------------------------------------------------- */
+
+:root,
+[data-md-color-scheme="default"] {
+  /* Primary chrome */
+  --md-primary-fg-color: var(--scale-dark-violet);
+  --md-primary-fg-color--light: var(--scale-plum);
+  --md-primary-fg-color--dark: var(--scale-dark-violet-deep);
+  --md-primary-bg-color: #ffffff;
+
+  /* Accent — turquoise for interactions only */
+  --md-accent-fg-color: var(--scale-turquoise);
+  --md-accent-fg-color--transparent: rgba(129, 244, 225, 0.1);
+
+  /* Page surfaces */
+  --md-default-bg-color: var(--scale-smoky-white);
+  --md-default-fg-color: var(--scale-smoky-black);
+  --md-default-fg-color--light: #45424d;
+  --md-default-fg-color--lighter: #6b6775;
+  --md-default-fg-color--lightest: #a09da8;
+
+  /* Links */
+  --md-typeset-a-color: var(--scale-plum);
+
+  /* Code */
+  --md-code-bg-color: var(--scale-dark-violet);
+  --md-code-fg-color: #e8e2f4;
+  --md-code-hl-color: rgba(174, 132, 255, 0.15);
+
+  /* Footer */
+  --md-footer-bg-color: var(--scale-dark-violet);
+  --md-footer-bg-color--dark: var(--scale-dark-violet-deep);
+  --md-footer-fg-color: #f5f5f5;
+  --md-footer-fg-color--light: rgba(245, 245, 245, 0.7);
+  --md-footer-fg-color--lighter: rgba(245, 245, 245, 0.5);
+}
+
+/* --------------------------------------------------------------------------
+   3. Dark Mode (slate) — Material Token Overrides
+   -------------------------------------------------------------------------- */
+
+[data-md-color-scheme="slate"] {
+  /* Page surfaces */
+  --md-default-bg-color: var(--scale-dark-violet-deep);
+  --md-default-fg-color: #f5f5f5;
+  --md-default-fg-color--light: #d4d0dc;
+  --md-default-fg-color--lighter: #a49daf;
+  --md-default-fg-color--lightest: #7a748a;
+
+  /* Primary chrome */
+  --md-primary-fg-color: var(--scale-dark-violet);
+  --md-primary-fg-color--light: var(--scale-plum);
+  --md-primary-fg-color--dark: #160e2e;
+  --md-primary-bg-color: #f5f5f5;
+
+  /* Accent */
+  --md-accent-fg-color: var(--scale-turquoise);
+  --md-accent-fg-color--transparent: rgba(129, 244, 225, 0.08);
+
+  /* Links */
+  --md-typeset-a-color: var(--scale-turquoise);
+
+  /* Code */
+  --md-code-bg-color: #160e2e;
+  --md-code-fg-color: #e8e2f4;
+  --md-code-hl-color: rgba(174, 132, 255, 0.2);
+  --md-code-hl-comment-color: #9f97b2;
+
+  /* Footer */
+  --md-footer-bg-color: var(--scale-dark-violet);
+  --md-footer-bg-color--dark: #160e2e;
+  --md-footer-fg-color: #f5f5f5;
+  --md-footer-fg-color--light: rgba(245, 245, 245, 0.7);
+  --md-footer-fg-color--lighter: rgba(245, 245, 245, 0.5);
+}
+
+/* Keep light-mode code tokens readable against the dark branded code surface */
+[data-md-color-scheme="default"] {
+  --md-code-fg-color: #f2ecff;
+  --md-code-hl-color--light: rgba(174, 132, 255, 0.25);
+  --md-code-hl-number-color: #ff9d8f;
+  --md-code-hl-special-color: #ff75b1;
+  --md-code-hl-function-color: #e7a1ff;
+  --md-code-hl-constant-color: #c0adff;
+  --md-code-hl-keyword-color: #8db4ff;
+  --md-code-hl-string-color: #6adbb0;
+  --md-code-hl-name-color: var(--md-code-fg-color);
+  --md-code-hl-operator-color: #cfc4e4;
+  --md-code-hl-punctuation-color: #cfc4e4;
+  --md-code-hl-comment-color: #b8accf;
+  --md-code-hl-generic-color: #cfc4e4;
+  --md-code-hl-variable-color: #cfc4e4;
+}
+
+/* --------------------------------------------------------------------------
+   4. Typography — Brand Hierarchy
+   -------------------------------------------------------------------------- */
+
+/* Headings: Lato 800 — authoritative, technical */
+.md-typeset h1,
+.md-typeset h2,
+.md-typeset h3 {
+  font-family: "Lato", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.md-typeset h1 {
+  margin-bottom: 0.8rem;
+  color: var(--scale-dark-violet);
+}
+
+.md-typeset h2,
+.md-typeset h3 {
+  margin-top: var(--scale-spacing-lg);
+}
+
+/* Body / subheadings: Inter */
+.md-typeset h4,
+.md-typeset h5,
+.md-typeset h6,
+.md-typeset {
+  font-family: "Inter", sans-serif;
+}
+
+/* Code: JetBrains Mono */
+.md-typeset code,
+.md-typeset pre code,
+.md-typeset kbd {
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* H2 — no decorative underline */
+.md-typeset h2 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+/* Dark mode h1 colour */
+[data-md-color-scheme="slate"] .md-typeset h1 {
+  color: #f5f5f5;
+}
+
+/* Increase vertical rhythm */
+.md-typeset p,
+.md-typeset ul,
+.md-typeset ol {
+  margin-bottom: var(--scale-spacing-md);
+}
+
+/* --------------------------------------------------------------------------
+   4b. Body Links — Accessible, Underlined by Default
+   -------------------------------------------------------------------------- */
+
+/* Links in body content get underlines for accessibility */
+.md-typeset
+  a:not(.md-button):not(.md-nav__link):not(.md-footer__link):not(
+    .md-header__button
+  ):not(.md-logo):not(.md-tabs__link):not(.headerlink):not(h1 > a):not(
+    h2 > a
+  ):not(h3 > a):not(h4 > a):not(h5 > a):not(h6 > a) {
+  text-decoration: underline;
+  text-decoration-color: currentColor;
+  text-underline-offset: 0.15em;
+  transition:
+    color 0.15s ease,
+    text-decoration-color 0.15s ease;
+}
+
+.md-typeset
+  a:not(.md-button):not(.md-nav__link):not(.md-footer__link):not(
+    .md-header__button
+  ):not(.md-logo):not(.md-tabs__link):not(.headerlink):not(h1 > a):not(
+    h2 > a
+  ):not(h3 > a):not(h4 > a):not(h5 > a):not(h6 > a):hover,
+.md-typeset
+  a:not(.md-button):not(.md-nav__link):not(.md-footer__link):not(
+    .md-header__button
+  ):not(.md-logo):not(.md-tabs__link):not(.headerlink):not(h1 > a):not(
+    h2 > a
+  ):not(h3 > a):not(h4 > a):not(h5 > a):not(h6 > a):active {
+  text-decoration: none;
+}
+
+/* Light mode: darken link hover to plum for legibility */
+[data-md-color-scheme="default"]
+  .md-typeset
+  a:not(.md-button):not(.md-nav__link):not(.md-footer__link):not(
+    .md-header__button
+  ):not(.md-logo):not(.md-tabs__link):not(.headerlink):not(h1 > a):not(
+    h2 > a
+  ):not(h3 > a):not(h4 > a):not(h5 > a):not(h6 > a):hover {
+  color: var(--scale-dark-violet);
+}
+
+/* Dark mode: lighten link hover to indigo for legibility */
+[data-md-color-scheme="slate"]
+  .md-typeset
+  a:not(.md-button):not(.md-nav__link):not(.md-footer__link):not(
+    .md-header__button
+  ):not(.md-logo):not(.md-tabs__link):not(.headerlink):not(h1 > a):not(
+    h2 > a
+  ):not(h3 > a):not(h4 > a):not(h5 > a):not(h6 > a):hover {
+  color: var(--scale-indigo);
+}
+
+/* Light mode: permalink hover/active states use brand indigo */
+[data-md-color-scheme="default"] .md-typeset .headerlink:hover,
+[data-md-color-scheme="default"] .md-typeset .headerlink:focus,
+[data-md-color-scheme="default"] .md-typeset .headerlink:active,
+[data-md-color-scheme="default"] .md-typeset :hover > .headerlink,
+[data-md-color-scheme="default"] .md-typeset :target > .headerlink {
+  color: var(--scale-indigo);
+}
+
+/* --------------------------------------------------------------------------
+   4c. Tab Switcher Labels — Remove Underlines
+   -------------------------------------------------------------------------- */
+
+.md-typeset .tabbed-labels > label,
+.md-typeset .tabbed-labels > label > a {
+  text-decoration: none !important;
+  border-bottom-color: transparent;
+}
+
+/* --------------------------------------------------------------------------
+   5. Navigation & Sidebar
+   -------------------------------------------------------------------------- */
+
+/* Sidebar — match page background */
+.md-sidebar,
+.md-sidebar__scrollwrap,
+.md-sidebar__inner {
+  background-color: var(--md-default-bg-color);
+  box-shadow: none;
+}
+
+.md-nav,
+.md-nav__list,
+.md-nav__title {
+  background: transparent;
+  box-shadow: none;
+}
+
+.md-nav__link {
+  color: var(--md-default-fg-color);
+  transition: color 0.15s ease;
+}
+
+.md-nav__link--active {
+  color: var(--scale-dark-violet);
+  font-weight: 600;
+}
+
+.md-nav__link:hover,
+.md-nav__link:focus {
+  color: var(--scale-plum) !important;
+}
+
+/* Override Material's accent-based hover on nav items in light mode */
+[data-md-color-scheme="default"] .md-nav__link:hover,
+[data-md-color-scheme="default"] .md-nav__link:focus,
+[data-md-color-scheme="default"] .md-nav__item:hover > .md-nav__link {
+  color: var(--scale-plum) !important;
+}
+
+.md-nav--primary > .md-nav__title,
+.md-nav--secondary > .md-nav__title {
+  color: var(--md-default-fg-color);
+}
+
+/* Desktop sidebar resets — remove Material's painted title bars (except TOC heading) */
+@media screen and (min-width: 76.25em) {
+  .md-sidebar .md-nav--primary > .md-nav__title,
+  .md-sidebar .md-nav__title,
+  .md-sidebar .md-nav__title[for],
+  .md-sidebar .md-nav__title[for="__drawer"] {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .md-sidebar .md-nav--primary .md-nav__title[for="__drawer"],
+  .md-sidebar .md-nav--primary .md-nav__title[for="__toc"] {
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  .md-sidebar .md-nav--primary .md-nav__list,
+  .md-sidebar .md-nav--secondary .md-nav__list,
+  .md-sidebar .md-nav__title ~ .md-nav__list {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-top: 0 !important;
+  }
+
+  .md-sidebar .md-nav--primary > .md-nav__title ~ .md-nav__list,
+  .md-sidebar .md-nav--secondary > .md-nav__title ~ .md-nav__list {
+    background: transparent !important;
+    box-shadow: none !important;
+    border-top: 0 !important;
+  }
+}
+
+/* Dark mode sidebar — match page bg */
+[data-md-color-scheme="slate"] .md-sidebar,
+[data-md-color-scheme="slate"] .md-sidebar__scrollwrap,
+[data-md-color-scheme="slate"] .md-sidebar__inner {
+  background-color: var(--md-default-bg-color) !important;
+  box-shadow: none !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav,
+[data-md-color-scheme="slate"] .md-nav__list,
+[data-md-color-scheme="slate"] .md-nav__title {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav--primary > .md-nav__title {
+  color: #f5f5f5;
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav--secondary > .md-nav__title {
+  color: #f5f5f5;
+  box-shadow: none !important;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link {
+  color: #f5f5f5;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link--active {
+  color: var(--scale-turquoise);
+  font-weight: 600;
+}
+
+[data-md-color-scheme="slate"] .md-nav__link:hover,
+[data-md-color-scheme="slate"] .md-nav__link:focus,
+[data-md-color-scheme="slate"] .md-nav__item:hover > .md-nav__link {
+  color: var(--scale-indigo) !important;
+}
+
+[data-md-color-scheme="slate"] .md-sidebar .md-nav__list,
+[data-md-color-scheme="slate"] .md-sidebar .md-nav--primary .md-nav__list,
+[data-md-color-scheme="slate"] .md-sidebar .md-nav--secondary .md-nav__list,
+[data-md-color-scheme="slate"]
+  .md-sidebar
+  .md-nav__item--section
+  > .md-nav__link,
+[data-md-color-scheme="slate"]
+  .md-sidebar
+  .md-nav__item--nested
+  > .md-nav__link,
+[data-md-color-scheme="slate"]
+  .md-sidebar
+  .md-nav__item--section
+  > .md-nav__link
+  > .md-ellipsis,
+[data-md-color-scheme="slate"]
+  .md-sidebar
+  .md-nav__item--nested
+  > .md-nav__link
+  > .md-ellipsis {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+
+@media screen and (min-width: 76.25em) {
+  [data-md-color-scheme="slate"] .md-sidebar .md-nav--primary .md-nav__title,
+  [data-md-color-scheme="slate"] .md-sidebar .md-nav__title,
+  [data-md-color-scheme="slate"] .md-sidebar .md-nav__title[for],
+  [data-md-color-scheme="slate"] .md-sidebar .md-nav__title[for="__drawer"] {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border: 0 !important;
+  }
+
+  [data-md-color-scheme="slate"] .md-sidebar .md-nav--primary .md-nav__list,
+  [data-md-color-scheme="slate"] .md-sidebar .md-nav--secondary .md-nav__list,
+  [data-md-color-scheme="slate"] .md-sidebar .md-nav__title ~ .md-nav__list {
+    background: transparent !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    border-top: 0 !important;
+  }
+}
+
+/* Nuclear reset — catch remaining Material background paints on sidebar in dark mode
+   (excludes TOC heading which needs an opaque bg for sticky overlap prevention) */
+[data-md-color-scheme="slate"] .md-sidebar--primary .md-nav__title,
+[data-md-color-scheme="slate"] .md-nav__title[for="__drawer"] {
+  background: transparent !important;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  border: 0 !important;
+}
+
+/* --------------------------------------------------------------------------
+   6. Tabs — Navigation Tabs (new feature)
+   -------------------------------------------------------------------------- */
+
+.md-tabs {
+  background-color: var(--scale-dark-violet);
+  box-shadow: none;
+}
+
+.md-tabs__link {
+  color: rgba(245, 245, 245, 0.7);
+  transition: color 0.15s ease;
+}
+
+.md-tabs__link--active,
+.md-tabs__link:hover {
+  color: #f5f5f5;
+}
+
+/* --------------------------------------------------------------------------
+   7. Code Blocks — Premium Technical Feel
+   -------------------------------------------------------------------------- */
+
+.md-typeset pre {
+  background-color: var(--md-code-bg-color);
+  border-radius: var(--scale-radius);
+  box-shadow: none;
+}
+
+.md-typeset code {
+  border-radius: 4px;
+}
+
+/* Light mode: keep code copy icon legible when code blocks are hovered */
+[data-md-color-scheme="default"] .md-typeset pre > .md-clipboard,
+[data-md-color-scheme="default"] .md-typeset .highlight > .md-clipboard {
+  color: #d8cfee;
+}
+
+[data-md-color-scheme="default"] .md-typeset pre:hover > .md-clipboard,
+[data-md-color-scheme="default"] .md-typeset .highlight:hover > .md-clipboard {
+  color: #f2ecff;
+}
+
+[data-md-color-scheme="default"] .md-typeset pre > .md-clipboard:hover,
+[data-md-color-scheme="default"] .md-typeset pre > .md-clipboard:focus,
+[data-md-color-scheme="default"] .md-typeset .highlight > .md-clipboard:hover,
+[data-md-color-scheme="default"] .md-typeset .highlight > .md-clipboard:focus {
+  color: var(--scale-turquoise);
+}
+
+/* Inline code in paragraphs */
+.md-typeset :not(pre) > code {
+  background-color: rgba(43, 29, 79, 0.08);
+  color: var(--scale-plum);
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  font-size: 0.85em;
+}
+
+[data-md-color-scheme="slate"] .md-typeset :not(pre) > code {
+  background-color: rgba(174, 132, 255, 0.12);
+  color: var(--scale-indigo);
+}
+
+/* --------------------------------------------------------------------------
+   8. Admonitions — Mapped to Brand System Colours
+   -------------------------------------------------------------------------- */
+
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: var(--scale-radius);
+  box-shadow: none;
+  border: none;
+  border-left: 4px solid var(--md-accent-fg-color);
+}
+
+.md-typeset .admonition.note,
+.md-typeset details.note {
+  border-left-color: var(--scale-turquoise);
+}
+
+.md-typeset .admonition.tip,
+.md-typeset details.tip,
+.md-typeset .admonition.hint,
+.md-typeset details.hint {
+  border-left-color: var(--scale-turquoise);
+}
+
+.md-typeset .admonition.warning,
+.md-typeset details.warning,
+.md-typeset .admonition.caution,
+.md-typeset details.caution {
+  border-left-color: var(--scale-red);
+}
+
+.md-typeset .admonition.danger,
+.md-typeset details.danger,
+.md-typeset .admonition.failure,
+.md-typeset details.failure,
+.md-typeset .admonition.bug,
+.md-typeset details.bug {
+  border-left-color: var(--scale-red);
+}
+
+.md-typeset .admonition.success,
+.md-typeset details.success,
+.md-typeset .admonition.check,
+.md-typeset details.check,
+.md-typeset .admonition.done,
+.md-typeset details.done {
+  border-left-color: var(--scale-green);
+}
+
+.md-typeset .admonition.info,
+.md-typeset details.info,
+.md-typeset .admonition.todo,
+.md-typeset details.todo {
+  border-left-color: var(--scale-indigo);
+}
+
+.md-typeset .admonition.example,
+.md-typeset details.example {
+  border-left-color: var(--scale-plum);
+}
+
+.md-typeset .admonition.abstract,
+.md-typeset details.abstract,
+.md-typeset .admonition.summary,
+.md-typeset details.summary {
+  border-left-color: var(--scale-indigo);
+}
+
+.md-typeset .admonition.question,
+.md-typeset details.question,
+.md-typeset .admonition.faq,
+.md-typeset details.faq {
+  border-left-color: var(--scale-turquoise);
+}
+
+.md-typeset .admonition.quote,
+.md-typeset details.quote,
+.md-typeset .admonition.cite,
+.md-typeset details.cite {
+  border-left-color: var(--scale-plum);
+}
+
+/* --------------------------------------------------------------------------
+   9. Buttons — Turquoise = Interaction
+   -------------------------------------------------------------------------- */
+
+.md-button--primary,
+.md-typeset .md-button--primary {
+  background-color: var(--scale-turquoise);
+  color: var(--scale-dark-violet);
+  border: none;
+  border-radius: var(--scale-radius);
+  font-weight: 600;
+  transition:
+    background-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.md-button--primary:hover,
+.md-typeset .md-button--primary:hover {
+  background-color: #6cdfc9;
+  transform: translateY(-1px);
+}
+
+.md-button--primary:active,
+.md-typeset .md-button--primary:active {
+  transform: translateY(0);
+}
+
+/* --------------------------------------------------------------------------
+   10. Header
+   -------------------------------------------------------------------------- */
+
+.md-header {
+  background-color: var(--scale-dark-violet);
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   11. Footer
+   -------------------------------------------------------------------------- */
+
+.md-footer {
+  box-shadow: none;
+}
+
+.md-footer-meta {
+  background-color: var(--scale-dark-violet);
+}
+
+.md-footer-meta__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Remove underlines from footer links */
+.md-footer a,
+.md-footer-meta a,
+.md-footer__link,
+.md-footer-meta__inner a {
+  text-decoration: none !important;
+}
+
+/* --------------------------------------------------------------------------
+   12. Search
+   -------------------------------------------------------------------------- */
+
+.md-search__form {
+  border-radius: var(--scale-radius);
+  box-shadow: none;
+}
+
+/* --------------------------------------------------------------------------
+   14. Tables
+   -------------------------------------------------------------------------- */
+
+.md-typeset table:not([class]) {
+  border-radius: var(--scale-radius);
+  overflow: hidden;
+  box-shadow: none;
+}
+
+.md-typeset table:not([class]) th {
+  background-color: var(--scale-dark-violet);
+  color: #f5f5f5;
+  font-family: "Lato", sans-serif;
+  font-weight: 700;
+}
+
+[data-md-color-scheme="slate"] .md-typeset table:not([class]) th {
+  background-color: rgba(174, 132, 255, 0.15);
+  color: #f5f5f5;
+}
+
+/* --------------------------------------------------------------------------
+   15. Back-to-Top Button
+   -------------------------------------------------------------------------- */
+
+.md-top {
+  background-color: var(--scale-dark-violet);
+  color: #f5f5f5;
+  border-radius: var(--scale-radius);
+  box-shadow: none;
+}
+
+.md-top:hover {
+  background-color: var(--scale-plum);
+}
+
+/* --------------------------------------------------------------------------
+   16. General Craft Details
+   --------------------------------------------------------------------------
+   - Consistent radius
+   - No decorative gradients
+   - No unnecessary box shadows
+   - Aligned to grid
+   -------------------------------------------------------------------------- */
+
+.md-typeset hr {
+  border-color: rgba(43, 29, 79, 0.12);
+}
+
+[data-md-color-scheme="slate"] .md-typeset hr {
+  border-color: rgba(174, 132, 255, 0.2);
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection colour */
+::selection {
+  background-color: rgba(174, 132, 255, 0.3);
+  color: inherit;
+}
+
+/* Focus rings — accessible, on-brand */
+:focus-visible {
+  outline: 2px solid var(--scale-turquoise);
+  outline-offset: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   17. TOC Scrollbar — Indigo instead of aqua
+   -------------------------------------------------------------------------- */
+
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
+  background-color: var(--scale-indigo) !important;
+}
+
+.md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background-color: rgba(174, 132, 255, 0.3);
+}
+
+.md-sidebar__scrollwrap {
+  scrollbar-color: rgba(174, 132, 255, 0.3) transparent;
+}
+
+.md-sidebar__scrollwrap:hover {
+  scrollbar-color: var(--scale-indigo) transparent;
+}
+
+/* --------------------------------------------------------------------------
+   18. Sidebar Header Overlap Fix
+   -------------------------------------------------------------------------- */
+
+.md-sidebar--secondary .md-nav--secondary > .md-nav__title {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: var(--md-default-bg-color) !important;
+  background: var(--md-default-bg-color) !important;
+  padding-bottom: 0.4rem;
+}
+
+[data-md-color-scheme="slate"]
+  .md-sidebar--secondary
+  .md-nav--secondary
+  > .md-nav__title {
+  background-color: var(--md-default-bg-color) !important;
+  background: var(--md-default-bg-color) !important;
+}
+
+/* Primary (left) sidebar — same sticky-header overlap fix */
+.md-sidebar--primary .md-nav--primary > .md-nav__title {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: var(--md-default-bg-color) !important;
+  background: var(--md-default-bg-color) !important;
+  padding-bottom: 0.4rem;
+}
+
+/* Light mode: keep sticky sidebar headers/active rows fully opaque while scrolling */
+[data-md-color-scheme="default"]
+  .md-sidebar--secondary
+  .md-nav--secondary
+  > .md-nav__title,
+[data-md-color-scheme="default"]
+  .md-sidebar--primary
+  .md-nav--primary
+  > .md-nav__title,
+[data-md-color-scheme="default"]
+  .md-sidebar--primary
+  .md-nav--lifted
+  > .md-nav__list
+  > .md-nav__item--active
+  > .md-nav__link {
+  background-color: var(--md-default-bg-color) !important;
+  background: var(--md-default-bg-color) !important;
+  box-shadow: 0 0 0.4rem 0.4rem var(--md-default-bg-color) !important;
+}
+
+[data-md-color-scheme="default"]
+  .md-sidebar--primary
+  .md-nav--primary
+  > .md-nav__title,
+[data-md-color-scheme="default"]
+  .md-sidebar--primary
+  .md-nav--lifted
+  > .md-nav__list
+  > .md-nav__item--active
+  > .md-nav__link {
+  z-index: 3;
+}
+
+[data-md-color-scheme="default"]
+  .md-sidebar--primary
+  .md-nav--primary
+  > .md-nav__title::before,
+[data-md-color-scheme="default"]
+  .md-sidebar--primary
+  .md-nav--lifted
+  > .md-nav__list
+  > .md-nav__item--active
+  > .md-nav__link::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--md-default-bg-color);
+  z-index: -1;
+}
+
+[data-md-color-scheme="slate"]
+  .md-sidebar--primary
+  .md-nav--primary
+  > .md-nav__title {
+  background-color: var(--md-default-bg-color) !important;
+  background: var(--md-default-bg-color) !important;
+}
+
+/* Lifted nav (left sidebar) — restore opaque sticky heading for the active section
+   so it masks items scrolling behind it, matching how the TOC heading behaves. */
+.md-nav--lifted > .md-nav__list > .md-nav__item--active > .md-nav__link {
+  background: var(--md-default-bg-color) !important;
+  box-shadow: 0 0 0.4rem 0.4rem var(--md-default-bg-color) !important;
+}
+
+[data-md-color-scheme="slate"]
+  .md-nav--lifted
+  > .md-nav__list
+  > .md-nav__item--active
+  > .md-nav__link {
+  background: var(--md-default-bg-color) !important;
+  box-shadow: 0 0 0.4rem 0.4rem var(--md-default-bg-color) !important;
 }
