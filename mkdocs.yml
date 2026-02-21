@@ -3,6 +3,8 @@ site_url: https://docs.scale-lang.com/
 docs_dir: docs/
 extra_css:
   - style.css
+extra_javascript:
+  - scaley.js
 theme:
   name: material
   custom_dir: overrides
