@@ -1,6 +1,7 @@
 # Install SCALE
 
 Select your operating system and version below to see installation instructions.
+You can also [use SCALE with Docker](./how-to-use-with-docker.md).
 
 === "Ubuntu"
 
