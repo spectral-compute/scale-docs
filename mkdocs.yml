@@ -93,6 +93,7 @@ nav:
   - manual/CHANGELOG.md
   - Getting Started:
       - manual/how-to-install.md
+      - manual/how-to-install-with-docker.md
       - manual/how-to-use.md
       - manual/faq.md
       - Examples:
