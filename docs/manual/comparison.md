@@ -29,7 +29,7 @@ We believe HIP does not solve the "CUDA compatibility problem" because:
 
 Most projects that use HIP mitigate these issues by maintaining separate
 HIP and  CUDA codebases, or one codebase that converts to HIP or CUDA via
-complex preprocessor macros. This significantly increases maintainence costs.
+complex preprocessor macros. This significantly increases maintenance costs.
 
 We relatively often encounter projects with a significant performance or
 correctness discrepancy between their CUDA and HIP editions, because one
