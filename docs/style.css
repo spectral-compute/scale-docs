@@ -847,3 +847,64 @@ html {
   background: var(--md-default-bg-color) !important;
   box-shadow: 0 0 0.4rem 0.4rem var(--md-default-bg-color) !important;
 }
+
+/* --------------------------------------------------------------------------
+   19. Mobile Drawer Integrity
+   --------------------------------------------------------------------------
+   Material's mobile "lifted" nav stacks/animates nested lists as layered
+   panes. The desktop transparency/sticky treatments above make those panes
+   visually overlap on small screens, so reset them for the drawer.
+   -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 76.234375em) {
+  .md-sidebar--primary,
+  .md-sidebar--primary .md-sidebar__scrollwrap,
+  .md-sidebar--primary .md-sidebar__inner,
+  .md-sidebar--primary .md-nav,
+  .md-sidebar--primary .md-nav__list,
+  .md-sidebar--primary .md-nav__title {
+    background-color: var(--md-default-bg-color) !important;
+    background: var(--md-default-bg-color) !important;
+    box-shadow: none !important;
+  }
+
+  .md-sidebar--primary .md-nav--primary > .md-nav__title,
+  .md-sidebar--primary .md-nav--secondary > .md-nav__title,
+  .md-sidebar--primary
+    .md-nav--lifted
+    > .md-nav__list
+    > .md-nav__item--active
+    > .md-nav__link {
+    position: static !important;
+    top: auto !important;
+    z-index: auto !important;
+    padding-bottom: 0 !important;
+    box-shadow: none !important;
+  }
+
+  [data-md-color-scheme="default"]
+    .md-sidebar--primary
+    .md-nav--primary
+    > .md-nav__title::before,
+  [data-md-color-scheme="default"]
+    .md-sidebar--primary
+    .md-nav--lifted
+    > .md-nav__list
+    > .md-nav__item--active
+    > .md-nav__link::before {
+    content: none;
+  }
+
+  [data-md-color-scheme="default"] .md-sidebar--primary .md-nav__title {
+    color: var(--md-default-fg-color) !important;
+  }
+
+  [data-md-color-scheme="default"]
+    .md-sidebar--primary
+    .md-nav--primary
+    > .md-nav__title[for="__drawer"] {
+    background-color: var(--scale-dark-violet) !important;
+    background: var(--scale-dark-violet) !important;
+    color: #f5f5f5 !important;
+  }
+}
