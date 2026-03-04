@@ -10,19 +10,11 @@ into problems, contact us by:
 The remainder of this page provides information about how to make your 
 report as helpful as possible.
 
-## "No such function: cudaSomethingSomething()"
+## "No such function: cudaSomethingSomething/cuSomethingSomething()"
 
-If your project fails to compile due to a missing CUDA Runtime or Driver API
-function, [get in touch][get-in-touch]: this helps us prioritise work by fixing
-the holes that have the most demand first.
-
-## "No such function: cuBlas/cuFFt/cuSolverSomethingSomething()"
-
-If your project needs a missing "CUDA-X" API (cuBLAS, cuFFT, cuSOLVER and
-friends), this is most likely something you can fix yourself by submitting a
-patch to the [open-source library wrapper project](https://github.com/spectral-compute/scale-library-wrappers).
-So long as an equivalent function is available in a ROCm library, the wrapper
-code is trivial.
+If your project fails to compile due to a missing CUDA Runtime, Driver, or "CUDA-X" 
+(cuBLAS, cuFFT, cuSOLVER and friends) API function, [get in touch][get-in-touch]: 
+this helps us prioritise work by fixing the holes that have the most demand first.
 
 ## Compiler crash
 

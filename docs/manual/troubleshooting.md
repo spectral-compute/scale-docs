@@ -7,13 +7,11 @@ to compile or run CUDA programs with SCALE.
 
 Please [report a bug](../contact/report-a-bug.md).
 
-## "No such function: cuBlas/cuFFt/cuSolverSomethingSomething()"
+## "No such function: cudaSomethingSomething/cuSomethingSomething()"
 
-If your project needs a missing "CUDA-X" API (cuBLAS, cuFFT, cuSOLVER and
-friends), this is most likely something you can fix yourself by submitting a
-patch to the [open-source library wrapper project](https://github.com/spectral-compute/scale-library-wrappers).
-So long as an equivalent function is available in a ROCm library, the wrapper
-code is trivial.
+If your project fails to compile due to a missing CUDA Runtime, Driver, or "CUDA-X" 
+(cuBLAS, cuFFT, cuSOLVER and friends) API function, [get in touch][get-in-touch]: 
+this helps us prioritise work by fixing the holes that have the most demand first.
 
 ## CUDA API errors
 
@@ -249,3 +247,5 @@ This problem can be resolved by using newer C++ compiler.
 
 This issue is discussed in more detail in the [Differences from NVIDIA CUDA](differences.md#host-side-__half-support)
 section.
+
+[get-in-touch]: ../README.md#contact-us
