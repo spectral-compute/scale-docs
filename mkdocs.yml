@@ -60,6 +60,19 @@ extra:
     provider: mike
     alias: true
     default: stable
+  consent:
+    title: Cookie consent
+    description: >-
+      We use analytics cookies from Google Analytics and Microsoft Clarity to
+      understand documentation usage and improve the experience.
+    actions:
+      - accept
+      - reject
+      - manage
+    cookies:
+      analytics:
+        name: Analytics (Google Analytics and Microsoft Clarity)
+        checked: false
   analytics:
     provider: google
     property: G-FQW9W5SC5P
