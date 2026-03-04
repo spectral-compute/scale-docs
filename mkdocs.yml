@@ -76,6 +76,8 @@ extra:
   analytics:
     provider: google
     property: G-FQW9W5SC5P
+  clarity:
+    property: vpkkzb2m3e
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/spectral-compute
