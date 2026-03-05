@@ -63,15 +63,15 @@ extra:
   consent:
     title: Cookie consent
     description: >-
-      We use analytics cookies from Google Analytics and Microsoft Clarity to
-      understand documentation usage and improve the experience.
+      We use analytics cookies from Google Analytics, Microsoft Clarity, and
+      reb2b to understand documentation usage and improve the experience.
     actions:
       - accept
       - reject
       - manage
     cookies:
       analytics:
-        name: Analytics (Google Analytics and Microsoft Clarity)
+        name: Analytics (Google Analytics, Microsoft Clarity, and reb2b)
         checked: false
   analytics:
     provider: google
