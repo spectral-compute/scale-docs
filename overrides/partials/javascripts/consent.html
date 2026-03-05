@@ -1,0 +1,74 @@
+{#-
+  Override Material consent behavior:
+  - Accept defaults to accepting all cookies unless user opens Manage
+  - Reject is persisted explicitly
+  - Legacy empty-object consent is migrated to "unset" to re-prompt users
+-#}
+<script>
+  (function () {
+    var consent = __md_get("__consent");
+    if (
+      consent &&
+      "object" === typeof consent &&
+      !Array.isArray(consent) &&
+      0 === Object.keys(consent).length
+    ) {
+      localStorage.removeItem(__md_scope.pathname + ".__consent");
+      consent = null;
+    }
+
+    var form = document.forms.consent;
+    if (!form) return;
+
+    if (consent) {
+      for (var input of form.elements) {
+        if (input.name) input.checked = !!consent[input.name];
+      }
+    } else if ("file:" !== location.protocol) {
+      setTimeout(function () {
+        var banner = document.querySelector("[data-md-component=consent]");
+        if (banner) banner.hidden = false;
+      }, 250);
+    }
+
+    form.addEventListener(
+      "submit",
+      function (e) {
+        e.preventDefault();
+
+        var settings = document.getElementById("__settings");
+        var managing = settings && settings.checked;
+        if (!managing) {
+          for (var input of form.elements) {
+            if (input.name) input.checked = true;
+          }
+        }
+
+        var accepted = Object.fromEntries(
+          Array.from(new FormData(form).keys()).map(function (name) {
+            return [name, true];
+          })
+        );
+        accepted.__decision = "accepted";
+        __md_set("__consent", accepted);
+        location.hash = "";
+        location.reload();
+      },
+      false
+    );
+
+    form.addEventListener(
+      "reset",
+      function (e) {
+        e.preventDefault();
+        for (var input of form.elements) {
+          if (input.name) input.checked = false;
+        }
+        __md_set("__consent", { __decision: "rejected" });
+        location.hash = "";
+        location.reload();
+      },
+      false
+    );
+  })();
+</script>
