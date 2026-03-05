@@ -607,6 +607,50 @@
   transform: translateY(0);
 }
 
+/* Consent banner secondary action should match primary button shape/weight
+   while remaining visually secondary with clear contrast. */
+:root,
+[data-md-color-scheme="default"] {
+  --scale-consent-secondary-fg: var(--scale-dark-violet);
+  --scale-consent-secondary-border: rgba(43, 29, 79, 0.55);
+  --scale-consent-secondary-bg: rgba(43, 29, 79, 0.08);
+  --scale-consent-secondary-bg-hover: rgba(43, 29, 79, 0.14);
+}
+
+[data-md-color-scheme="slate"] {
+  --scale-consent-secondary-fg: #d3fff9;
+  --scale-consent-secondary-border: rgba(129, 244, 225, 0.65);
+  --scale-consent-secondary-bg: rgba(129, 244, 225, 0.12);
+  --scale-consent-secondary-bg-hover: rgba(129, 244, 225, 0.2);
+}
+
+.md-consent__controls .md-button {
+  border-radius: var(--scale-radius);
+  font-weight: 600;
+}
+
+.md-consent__controls label.md-button[for="__settings"] {
+  background-color: var(--scale-consent-secondary-bg);
+  border: 0.1rem solid var(--scale-consent-secondary-border);
+  color: var(--scale-consent-secondary-fg);
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    transform 0.1s ease;
+}
+
+.md-consent__controls label.md-button[for="__settings"]:hover,
+.md-consent__controls label.md-button[for="__settings"]:focus-visible {
+  background-color: var(--scale-consent-secondary-bg-hover);
+  border-color: var(--scale-consent-secondary-fg);
+  color: var(--scale-consent-secondary-fg);
+  transform: translateY(-1px);
+}
+
+.md-consent__controls label.md-button[for="__settings"]:active {
+  transform: translateY(0);
+}
+
 /* --------------------------------------------------------------------------
    10. Header
    -------------------------------------------------------------------------- */
