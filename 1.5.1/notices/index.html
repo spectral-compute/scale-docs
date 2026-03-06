@@ -59,7 +59,7 @@
 
 <script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-FQW9W5SC5P"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-FQW9W5SC5P",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-FQW9W5SC5P",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
   
-    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
   
 
     
@@ -69,6 +69,63 @@
   href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lato:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
   rel="stylesheet"
 />
+<script id="__clarity">
+  function __md_clarity() {
+    if (window.__md_clarity_initialized) return;
+    window.__md_clarity_initialized = true;
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "vpkkzb2m3e");
+  }
+  
+  var consent = __md_get("__consent");
+  consent && consent.analytics && __md_clarity();
+  
+</script>
+<script id="__reb2b">
+  function __md_reb2b() {
+    var reb2b = (window.reb2b = window.reb2b || []);
+    if (reb2b.invoked) return;
+    reb2b.invoked = true;
+    reb2b.methods = ["identify", "collect"];
+    reb2b.factory = function (method) {
+      return function () {
+        var args = Array.prototype.slice.call(arguments);
+        args.unshift(method);
+        reb2b.push(args);
+        return reb2b;
+      };
+    };
+    for (var i = 0; i < reb2b.methods.length; i++) {
+      var key = reb2b.methods[i];
+      reb2b[key] = reb2b.factory(key);
+    }
+    reb2b.load = function (key) {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.async = true;
+      script.src =
+        "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";
+      var first = document.getElementsByTagName("script")[0];
+      first.parentNode.insertBefore(script, first);
+    };
+    reb2b.SNIPPET_VERSION = "1.0.1";
+    reb2b.load("4N210H5G9Y6Z");
+  }
+  
+  var consent = __md_get("__consent");
+  consent && consent.analytics && __md_reb2b();
+  
+</script>
 
   </head>
   
@@ -2143,6 +2200,132 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
     
       <div class="md-progress" data-md-component="progress" role="progressbar"></div>
     
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+
+
+
+
+
+<h4>Cookie consent</h4>
+<p>We use analytics cookies from Google Analytics, Microsoft Clarity, and reb2b to understand documentation usage and improve the experience.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" >
+          <span class="task-list-indicator"></span>
+          Analytics (Google Analytics, Microsoft Clarity, and reb2b)
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+      <button type="reset" class="md-button md-button--primary">Reject</button>
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>
+  (function () {
+    var consent = __md_get("__consent");
+    if (
+      consent &&
+      "object" === typeof consent &&
+      !Array.isArray(consent) &&
+      0 === Object.keys(consent).length
+    ) {
+      localStorage.removeItem(__md_scope.pathname + ".__consent");
+      consent = null;
+    }
+
+    var form = document.forms.consent;
+    if (!form) return;
+
+    if (consent) {
+      for (var input of form.elements) {
+        if (input.name) input.checked = !!consent[input.name];
+      }
+    } else if ("file:" !== location.protocol) {
+      setTimeout(function () {
+        var banner = document.querySelector("[data-md-component=consent]");
+        if (banner) banner.hidden = false;
+      }, 250);
+    }
+
+    form.addEventListener(
+      "submit",
+      function (e) {
+        e.preventDefault();
+
+        var settings = document.getElementById("__settings");
+        var managing = settings && settings.checked;
+        if (!managing) {
+          for (var input of form.elements) {
+            if (input.name) input.checked = true;
+          }
+        }
+
+        var accepted = Object.fromEntries(
+          Array.from(new FormData(form).keys()).map(function (name) {
+            return [name, true];
+          })
+        );
+        accepted.__decision = "accepted";
+        __md_set("__consent", accepted);
+        location.hash = "";
+        location.reload();
+      },
+      false
+    );
+
+    form.addEventListener(
+      "reset",
+      function (e) {
+        e.preventDefault();
+        for (var input of form.elements) {
+          if (input.name) input.checked = false;
+        }
+        __md_set("__consent", { __decision: "rejected" });
+        location.hash = "";
+        location.reload();
+      },
+      false
+    );
+  })();
+</script>
     
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.sections", "navigation.top", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "content.code.copy", "toc.follow"], "search": "../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
