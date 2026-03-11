@@ -67,12 +67,33 @@ The following GPU targets are supported:
 
 === "Nvidia"
 
-    === "Enterprise"
+    You can find the list of devices for each of the compute capabilities in the NVIDIA developer documentation: [CUDA GPU Compute Capability](https://developer.nvidia.com/cuda/gpus).
 
-        | Name        | Architecture    | LLVM target |
-        |-------------|-----------------|-------------|
-        | NVIDIA B300 | Blackwell Ultra | `sm_103`    |
-        | NVIDIA H200 | Hopper          | `sm_90`     |
+    | Compute Capability | LLVM Target | Example GPU |
+    |--------------------|-------------|-------------|
+    | 12.0               | `sm_120`, `sm_120a` | NVIDIA RTX PRO 6000 Blackwell, GeForce RTX 5090 |
+    | 10.1               | `sm_101`, `sm_101a` | NVIDIA B100 |
+    | 10.0               | `sm_100`, `sm_100a` | NVIDIA B200 |
+    | 9.0                | `sm_90`, `sm_90a`   | NVIDIA H200 |
+    | 8.9                | `sm_89`     | NVIDIA RTX 6000 Ada, GeForce RTX 4090 |
+    | 8.7                | `sm_87`     | Jetson AGX Orin |
+    | 8.6                | `sm_86`     | NVIDIA A40, NVIDIA RTX A6000, GeForce RTX 3090 |
+    | 8.0                | `sm_80`     | NVIDIA A100 |
+    | 7.5                | `sm_75`     | NVIDIA T4, QUADRO RTX 8000, NVIDIA T1200, GeForce RTX 2080 |
+    | 7.2                | `sm_72`     | Jetson AGX Xavier |
+    | 7.0                | `sm_70`     | NVIDIA V100, NVIDIA TITAN V |
+    | 6.2                | `sm_62`     | Jetson TX2 |
+    | 6.1                | `sm_61`     | Tesla P40, GeForce GTX 1080 |
+    | 6.0                | `sm_60`     | Tesla P100 |
+    | 5.3                | `sm_53`     | Jetson Nano |
+    | 5.2                | `sm_52`     | Tesla M60, GeForce GTX 980 |
+    | 5.0                | `sm_50`     | GeForce GTX 750 |
+    | 3.7                | `sm_37`     | Tesla K80 |
+    | 3.5                | `sm_35`     | Tesla K40, GeForce GTX 780 |
+    | 3.2                | `sm_32`     | Tegra K1 |
+    | 3.0                | `sm_30`     | Tesla K10, GeForce GTX 770 |
+    | 2.1                | `sm_21`     | Quadro 2000 |
+    | 2.0                | `sm_20`     | Quadro Plex 7000 |
 
 [Contact us](#contact-us) if you want us to expedite support for a particular GPU
 architecture.
