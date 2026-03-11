@@ -65,7 +65,9 @@ The following GPU targets are supported:
         | Radeon RX 6800 / 6900 / 6950 | RDNA 2              | gfx1030     |
         | Radeon Pro W5700             | RDNA 1              | gfx1010     |
 
-=== "Nvidia"
+=== "NVIDIA"
+
+    More information about SCALE on NVIDIA GPUs [available here](./manual/nvidia.md).
 
     You can find the list of devices for each of the compute capabilities in the NVIDIA developer documentation: [CUDA GPU Compute Capability](https://developer.nvidia.com/cuda/gpus).
 
