@@ -125,6 +125,7 @@ nav:
       - manual/comparison.md
       - manual/troubleshooting.md
       - manual/dialects.md
+      - manual/nvidia.md
       - manual/differences.md
       - manual/runtime-extensions.md
       - Compiler:
