@@ -3,7 +3,7 @@
 ## What is SCALE?
 
 SCALE is a GPGPU programming toolkit that can natively compile CUDA
-applications for AMD GPUs.
+applications for AMD & NVIDIA GPUs.
 
 SCALE does not require the CUDA program or its build system to be modified.
 
@@ -102,11 +102,11 @@ architecture.
 
 SCALE consists of:
 
-- An `nvcc`-compatible compiler capable of compiling nvcc-dialect CUDA for AMD
+- An `nvcc`-compatible compiler capable of compiling nvcc-dialect CUDA for AMD & NVIDIA
   GPUs, including PTX asm.
 - An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.
 - Wrapper libraries providing the "CUDA-X" APIs by delegating to the
-  corresponding ROCm libraries.
+  corresponding ROCm libraries for AMD GPUs.
   This is how libraries such as `cuBLAS` and `cuSOLVER` are handled.
 
 ## What are the differences between SCALE and other solutions?
@@ -114,6 +114,8 @@ SCALE consists of:
 Instead of providing a [new way](https://xkcd.com/927/) to write GPGPU
 software, SCALE allows programs written using the widely-popular CUDA
 language to be directly compiled for AMD GPUs.
+SCALE can also compile CUDA code for NVIDIA GPUs, which [can offer additional
+benefits](./manual/nvidia.md) compared to NVIDIA CUDA itself.
 
 SCALE aims to be fully compatible with NVIDIA CUDA. We believe that users
 should not have to maintain multiple codebases or compromise on performance
