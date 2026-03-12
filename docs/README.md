@@ -25,7 +25,7 @@ Join our [Discord](https://discord.com/invite/KNpgGbTc38) to let us know what pr
 
 ## What are examples of using SCALE?
 
-Our [SCALE Examples](https://docs.scale-lang.com/stable/examples/) section show very basic examples of using SCALE and are a great place to start your hands-on experience.
+Our [SCALE Examples](https://docs.scale-lang.com/stable/examples/) section shows very basic examples of using SCALE and are a great place to start your hands-on experience.
 
 We welcome contributions from our developer community. Join our [Discord](https://discord.com/invite/KNpgGbTc38) to share _your_ SCALE projects.
 
