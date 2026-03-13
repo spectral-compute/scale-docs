@@ -13,32 +13,20 @@ compiler as a subprocess instead of a library. This differs from how
 NVIDIA's implementation works, and means that the library must be able to
 locate the compiler to invoke it.
 
-If your program uses the rtc APIs and fails with errors that relate to being 
+If your program uses the rtc APIs and fails with errors that relate to being
 unable to locate the compiler, ensure that SCALE's `nvcc` is first in PATH.
-
-### Stream synchronization
-
-SCALE does not yet support
-[per-thread default stream behaviour](http://docs.nvidia.com/cuda/cuda-runtime-api/stream-sync-behavior.html).
-
-Instead, the default stream is used in place of the per-thread default stream.
-This will not break programs, but is likely to reduce performance.
-
-A workaround which will also slightly improve the performance of your
-program when run on NVIDIA GPUs is to use nonblocking CUDA streams
-explicitly, rather than relying on the implicit CUDA stream.
 
 ### Host-side `__half` support
 
-The CUDA API allows many `__half` math functions to be used on both host and 
+The CUDA API allows many `__half` math functions to be used on both host and
 device.
 
-When compiling _non-CUDA_ translation units, you can include `<cuda_fp16.h>` 
-and use the `__half` math APIs in host code. When you do this, NVIDIA's CUDA 
+When compiling _non-CUDA_ translation units, you can include `<cuda_fp16.h>`
+and use the `__half` math APIs in host code. When you do this, NVIDIA's CUDA
 implementation converts the `__half` to 32-bit `float`, does the
 calculation, and converts back.
 
-SCALE only allows these functions to be used on the host when the host compiler 
+SCALE only allows these functions to be used on the host when the host compiler
 supports compiling fp16 code directly (via the `_Float16` type). Current
 versions of gcc and clang both support this.
 
