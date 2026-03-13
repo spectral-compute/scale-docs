@@ -1,7 +1,10 @@
 # Install SCALE
 
 Select your operating system and version below to see installation instructions.
+
 You can also [use SCALE with Docker](./how-to-use-with-docker.md).
+
+No root access? Use the tarball distribution.
 
 === "Ubuntu"
 
@@ -88,7 +91,7 @@ You can also [use SCALE with Docker](./how-to-use-with-docker.md).
         If you did not already have the `amdgpu-dkms` kernel driver installed prior to
         installing SCALE, you should now reboot.
 
-=== "Other Distros"
+=== "Other Distros (tarball)"
 
     Download and extract the SCALE tarball:
 
