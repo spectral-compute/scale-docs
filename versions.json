@@ -10,7 +10,10 @@
   {
     "version": "staging",
     "title": "staging",
-    "aliases": []
+    "aliases": [],
+    "properties": {
+      "hidden": true
+    }
   },
   {
     "version": "nonfree-unstable",
