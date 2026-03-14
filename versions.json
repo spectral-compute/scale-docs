@@ -68,6 +68,9 @@
     "title": "v1.6.1",
     "aliases": [
       "staging"
-    ]
+    ],
+    "properties": {
+      "hidden": true
+    }
   }
 ]
