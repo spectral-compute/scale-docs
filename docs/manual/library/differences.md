@@ -36,12 +36,12 @@ least 2 years old.
 This means:
 
 - All `__half` APIs work in both host and device code in `.cu` files.
-- `__half` APIs that perform floating point math will not compile in host 
+- `__half` APIs that perform floating point math will not compile in host
   code in non-CUDA translation units if an old host compiler is used.
 - The outcome of `__half` calculations on host/device will always be the same.
 - APIs for using `__half` as a storage type are always supported.
 
-SCALE bundles a modern host compiler at `<SCALE_DIR>/targets/gfxXXX/bin/clang++` 
+SCALE bundles a modern host compiler at `<SCALE_DIR>/targets/gfxXXX/bin/clang++`
 you can use as a workaround if this edgecase becomes a problem.
 
 ## Enhancements
@@ -85,9 +85,9 @@ on many operations to handle an edgecase that is not permitted.
 
 ### Kernel argument size
 
-SCALE accepts kernel arguments up to 2GB, whereas NVIDIA CUDA allows only 
+SCALE accepts kernel arguments up to 2GB, whereas NVIDIA CUDA allows only
 32kb (and 4kb before version 12.1).
 
-This is more an implementation quirk than a feature, since huge kernel 
-arguments are unlikely to perform well compared to achieving the same effect 
+This is more an implementation quirk than a feature, since huge kernel
+arguments are unlikely to perform well compared to achieving the same effect
 with async copies, memory mapping, etc.

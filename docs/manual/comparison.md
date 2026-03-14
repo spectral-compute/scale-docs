@@ -9,7 +9,7 @@ rewriting your code from CUDA to HIP.
 
 We believe HIP does not solve the "CUDA compatibility problem" because:
 
-- HIP does not address the  CUDA [dialect problem](./dialects.md).
+- HIP does not address the  CUDA [dialect problem](./compiler/dialects.md).
   HIP's language is almost identical to LLVM-dialect CUDA, which is
   quite different from the dialect
   of CUDA accepted by NVIDIA `nvcc`. Consequently, many CUDA programs fail in

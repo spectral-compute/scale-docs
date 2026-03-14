@@ -1,10 +1,10 @@
 # SCALE Example Programs
 
-These example programs are simple CUDA programs demonstrating the 
+These example programs are simple CUDA programs demonstrating the
 capabilities of SCALE.
 
-SCALE is capable of much more, but these small demonstrations serve as a 
-proof of concept of CUDA compatibility, as well as a starting point for 
+SCALE is capable of much more, but these small demonstrations serve as a
+proof of concept of CUDA compatibility, as well as a starting point for
 users wishing to get into GPGPU programming.
 
 ## List of examples
@@ -30,11 +30,11 @@ cd scale-docs/examples
 ## Using the examples
 
 To build an example:
-- [Install SCALE](../manual/how-to-install.md)
-- [Decide on a GPU target](../manual/how-to-use.md#identifying-gpu-target)
-- [Build the example using cmake](../manual/how-to-use.md#cmake)
+- [Install SCALE](../manual/tutorials/how-to-install.md)
+- [Decide on a GPU target](../manual/tutorials/how-to-use.md#identifying-gpu-target)
+- [Build the example using cmake](../manual/tutorials/how-to-use.md#cmake)
 
-The example repository includes a helper script, `example.sh` that can fully 
+The example repository includes a helper script, `example.sh` that can fully
 automate the process. Pass your SCALE target directory as the first argument,
 and the example you want to build/run as the second:
 
@@ -48,8 +48,8 @@ For the specified example, this will:
 1. Remove its build directory if it already exists.
 2. Configure CMake for that example in a freshly-created build directory.
 3. Build the example in that directory using Make.
-4. Set the [`SCALE_EXCEPTIONS=1` environment variable][exceptions] for better 
+4. Set the [`SCALE_EXCEPTIONS=1` environment variable][exceptions] for better
    error reporting.
 4. Run the example.
 
-[exceptions]: ../manual/runtime-extensions.md#scale_exceptions
+[exceptions]: ../manual/library/runtime-extensions.md#scale_exceptions

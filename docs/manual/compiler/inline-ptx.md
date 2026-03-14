@@ -1,49 +1,50 @@
 # Inline PTX support
 
-SCALE accepts inline PTX `asm` blocks in CUDA programs and will attempt to 
-compile it for AMD along with the rest of your program.
+Inline PTX `asm` blocks in CUDA programs are parsed by the SCALE compiler
+to produce useful diagnostics. When building for non-NVIDIA targets, the
+`asm` is then converted to LLVM IR and compiled with the rest of the
+program.
+
+The practical effect is that inline PTX is now a first-class part of
+the language, with porability and compiler diagnostics.
 
 ## Wave64 considerations
 
-A small number of PTX instructions depend on the warp size of the GPU being 
-used. Since all NVIDIA GPUs and many AMD ones have a warp size of 32, much 
-code implicitly relies on this. As a result, issues can appear when 
-targeting wave64 devices.
+Some PTX instructions depend on the warp size of the target GPU.
+Since most GPUs have a warp size of 32, many programs assume the warp
+size is always 32, presenting issues when compiling for GPUs that
+are different.
 
-SCALE provides several tools and compiler warnings to help you write 
-portable PTX code. In most cases only small tweaks are required to get things
-working. Since so little PTX actually depends on the warp size, most 
-projects are unaffected by the issues documented in this section. 
-Nevertheless, it is useful to adjust your code to be warp-size-agnostic, 
-since doing so can be done with no downsides.
+SCALE provides several tools and compiler warnings to help you write
+portable PTX code. Small tweaks that do not break compatibility with
+NVIDIA's compiler are all that is typically required to get things working.
 
 ### Querying warp size
 
 PTX defines the `WARP_SZ` global constant which can be used to access the
-warp size directly. It's a compile-time constant in nvidia's implementation 
-as well as in SCALE, so there is no cost to using this and doing arithmetic 
-with it (like with `warpSize` in CUDA code).
+warp size. It's a compile-time constant, so there is no cost to using this
+and doing arithmetic with it (like with `warpSize` in CUDA code).
 
 ### Lanemask inputs
 
-The length of lanemask operands on instructions will always have a number of 
-bits equal to the warp size on the target GPU. For 
+Lanemask operands will always have a number of
+bits equal to the warp size of the GPU. For
 example, when compiling for a wave64 GPU, the lanemask argument to `shfl.sync`
 is a `b64`, not `b32`.
 
 The following rules are applied to help detect problems with such operands:
 
-- If a non-constant lanemask operand is used, and its bit-length is <= the 
+- If a non-constant lanemask operand is used, and its bit-length is `<=` the
   warp size, an error is raised.
-- If a constant lanemask operand is used with no 1-bits in the high 32 bits, 
-  while compiling for a wave64 architecture, a warning is raised (which can 
-  be disabled). This catches the common case of hardcoded lanemasks like 
-  `0xFFFFFFFF` which will typecheck as `b64`, but will probably not do what 
+- If a constant lanemask operand is used with no 1-bits in the high half,
+  while compiling for a wave64 architecture, a warning is raised (which can
+  be disabled). This catches the common case of hardcoded lanemasks like
+  `0xFFFFFFFF` which will typecheck as `b64`, but will probably not do what
   you want.
 
-In the common case where you want an all-ones lanemask, the most convenient 
-thing to do is write `-1` instead of `0xFFFFFFFF`: this will give you the 
-correct number of 1-bits in all cases, including on nvidia platforms.
+In the common case where you want an all-ones lanemask, the most convenient
+thing to do is write `-1` instead of `0xFFFFFFFF`: this will give you the
+correct number of 1-bits, and is accepted by both SCALE and NVIDIA nvcc.
 
 ### The `c` argument to `shfl` instructions
 
@@ -80,7 +81,7 @@ __global__ void shuffleRevCumsumKernel(float *dst)
     "@p  add.f32        Rx, Ry, Rx;"
     "shfl.sync.down.b32  Ry|p, Rx, 0x10, %2, -1;"
     "@p  add.f32        Rx, Ry, Rx;"
-    
+
     // One extra shuffle is needed for the larger warp size.
     #if __SCALE_WARP_SIZE__ > 32
     "shfl.sync.down.b32  Ry|p, Rx, 0x20, %2, -1;"
@@ -131,24 +132,24 @@ __global__ void shuffleBflyKernel(float *dst)
 
 ## Dialect differences
 
-The SCALE compiler accepts a more permissive dialect of PTX than NVIDIA's 
-implementation does. 
+The SCALE compiler accepts a more permissive dialect of PTX than NVIDIA's
+implementation does.
 
 ### Integer lengths
 
-Most PTX instructions are defined to work only for a specific, arbitrary set 
-of integer types. We didn't bother to implement such restrictions except in 
-cases where they are needed for correctness, so many PTX instructions accept 
+Most PTX instructions are defined to work only for a specific, arbitrary set
+of integer types. We didn't bother to implement such restrictions except in
+cases where they are needed for correctness, so many PTX instructions accept
 a wider selection of types than nvcc accepts.
 
-One amusing consequence of this is that most of the simple instructions work 
-for *any* bit-length: `add.s17` is allowed (but will of course lead to 
+One amusing consequence of this is that most of the simple instructions work
+for *any* bit-length: `add.s17` is allowed (but will of course lead to
 extra sext/trunc instructions, so isn't necessarily a good idea).
 
 ### Divergent `exit`
 
-AMD hardware does not seem to have a mechanism by which individual threads 
-can terminate early (only entire warps). As a result, the `exit` 
+AMD hardware does not seem to have a mechanism by which individual threads
+can terminate early (only entire warps). As a result, the `exit`
 instruction may be used only in converged contexts. We transform it into
 approximately:
 
@@ -161,7 +162,7 @@ if (__activemask() == -1) {
 }
 ```
 
-Code that uses `exit` as a performance optimisation for nvidia hardware may 
+Code that uses `exit` as a performance optimisation for nvidia hardware may
 benefit from being adjusted for AMD.
 
 ## Empty `asm volatile` blocks
@@ -179,7 +180,7 @@ allows the compiler to model "unknowable" implicit dependencies of the actions
 takenby the inline asm. Since we're compiling the asm to IR, the *actual*
 dependencies and properties of everything it does are known and modelled. This
 can improve optimisation, but may break programs that have undefined behaviour
-that was being hidden by the optimisation barrier effect of the volatile asm 
+that was being hidden by the optimisation barrier effect of the volatile asm
 block.
 
 ## Returning the carry-bit
@@ -194,10 +195,10 @@ notes:
 > intended for use in straight-line code sequences for computing
 > extended-precision integer addition, subtraction, and multiplication.
 
-It is, therefore, undefined behaviour to write code that writes to the 
-carry-bit in one function and then attempts to read it from another. The 
-correct execution of such code is optimiser-dependent on NVIDIA's platform 
-(depending on the function to inline), so will likely fail in `-O0` builds. 
+It is, therefore, undefined behaviour to write code that writes to the
+carry-bit in one function and then attempts to read it from another. The
+correct execution of such code is optimiser-dependent on NVIDIA's platform
+(depending on the function to inline), so will likely fail in `-O0` builds.
 
 For example:
 
@@ -209,7 +210,7 @@ void createCarryBit(int x, int y) {
 
 void useCarryBit(int x, int y) {
     createCarryBit(x, y);
-    
+
     // Add with carry-in. Not allowed, since it's trying to read the
     // carry-bit across a function boundary.
     int z;
@@ -218,66 +219,66 @@ void useCarryBit(int x, int y) {
 ```
 
 Due to how SCALE's PTX support works, it *can't* support this pattern, so this
-situation is a compiler error instead. To write code like this in a portable 
+situation is a compiler error instead. To write code like this in a portable
 way, you can refactor it to use macros instead.
 
 It may also be worth considering if you truly still need this inline asm: both
-NVIDIA nvcc and SCALE have good support for `int128_t` now, which makes many 
+NVIDIA nvcc and SCALE have good support for `int128_t` now, which makes many
 common uses of these asm constructs redundant.
 
 ## `asm` input/output types
 
-`nvcc` doesn't appear to consistently follow its own tying rules for PTX asm 
-inputs/outputs. It allows the following invalid things to occur in some cases 
+`nvcc` doesn't appear to consistently follow its own tying rules for PTX asm
+inputs/outputs. It allows the following invalid things to occur in some cases
 (and real programs depend on this):
 
-- Writes to read-only asm bindings are permitted (such as writing to an "r") 
-  constraint. The result of the write is not visible to the caller: it's 
+- Writes to read-only asm bindings are permitted (such as writing to an "r")
+  constraint. The result of the write is not visible to the caller: it's
   effectively a temporary inside the scope of the asm block.
-- `=r` (write-only) constraints can be used in a read-write fashion (as if 
+- `=r` (write-only) constraints can be used in a read-write fashion (as if
   they were `+r`).
 - Values passed to the asm block are sometimes, but not always, type checked,
   implicitly widened, or implicitly truncated.
 
-To avoid having to characterise and define the perimeter of this buggy 
-behaviour, SCALE's implementation defines the following consistent rules 
+To avoid having to characterise and define the perimeter of this buggy
+behaviour, SCALE's implementation defines the following consistent rules
 which are intended to maximise compatibility (and minimise "weirdness"):
 
-- All read-only inputs may be written to. The results of these writes are 
-  visible only within the scope of the asm block (as if they were local 
+- All read-only inputs may be written to. The results of these writes are
+  visible only within the scope of the asm block (as if they were local
   variables being passed by value into a function).
-- All write-only outputs are implicitly read-write. ie.: there is no 
+- All write-only outputs are implicitly read-write. ie.: there is no
   difference between `+r` and `=r`.
-- The type of an input or output binding is governed by the type of the 
-  expression, not the constraint letter. Once "in PTX", the usual PTX rules 
-  about implicit truncation/widening/etc. apply. This nuance won't change 
-  the behaviour of programs unless they rely on using a "too short" PTX 
-  constraint type to truncate a value, and then implicitly widen it within 
-  PTX (hence zeroing out some of the bits). Since such truncations are 
-  inconsistently applied even with nvidia nvcc mode, they are probably best 
+- The type of an input or output binding is governed by the type of the
+  expression, not the constraint letter. Once "in PTX", the usual PTX rules
+  about implicit truncation/widening/etc. apply. This nuance won't change
+  the behaviour of programs unless they rely on using a "too short" PTX
+  constraint type to truncate a value, and then implicitly widen it within
+  PTX (hence zeroing out some of the bits). Since such truncations are
+  inconsistently applied even with nvidia nvcc mode, they are probably best
   achieved with an explicit cast.
 
 ## Performance considerations
 
-In most cases, there isn't a performance penalty from using PTX asm in CUDA 
-code: it will usually convert to the same IR as the C++ you could have 
+In most cases, there isn't a performance penalty from using PTX asm in CUDA
+code: it will usually convert to the same IR as the C++ you could have
 written instead, and may actually be faster due to not needing to be as
 conservative about optimisation compared to the usual rules of asm blocks.
 
-Since the compiler _effectively_ converts it to the CUDA code you could have 
-written to achieve the same effect without the use of the PTX asm, it 
-doesn't come with the optimisation-hindering downsides asm blocks 
-normally imply. The compiler will respect the ordering/synchronisation/etc. 
-requirements of each operation individually, rather than having to regard an 
+Since the compiler _effectively_ converts it to the CUDA code you could have
+written to achieve the same effect without the use of the PTX asm, it
+doesn't come with the optimisation-hindering downsides asm blocks
+normally imply. The compiler will respect the ordering/synchronisation/etc.
+requirements of each operation individually, rather than having to regard an
 entire `asm volatile` block as an opaque, immutable unit.
 
-Programs that have already added support for HIP might have multiple 
-codepaths: one for CUDA that uses inline PTX, and one for AMD which doesn't. 
+Programs that have already added support for HIP might have multiple
+codepaths: one for CUDA that uses inline PTX, and one for AMD which doesn't.
 In such cases, it is worth testing both to see which is fastest.
 
 ## Supported constraints
 
-The following PTX constraint letters are supported. See above commentary on 
+The following PTX constraint letters are supported. See above commentary on
 nuances regarding how they are interpreted.
 
 `h`: u16
@@ -293,7 +294,7 @@ nuances regarding how they are interpreted.
 
 The following instructions are currently supported.
 
-Caveat: since the `bf16`, `fp8` and `tf32` floating point formats are not 
+Caveat: since the `bf16`, `fp8` and `tf32` floating point formats are not
 currently supported in SCALE, they are also not supported here.
 
 

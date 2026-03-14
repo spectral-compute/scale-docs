@@ -4,6 +4,9 @@ import subprocess
 g = subprocess.run(["git", "branch", "--show-current"], capture_output=True)
 current_branch = g.stdout.decode("utf-8")[:-1]
 
+# The version of LLVM we're based on. Used when we link to their documentatio.
+current_llvm_version = "20.1.0"
+
 print("Current branch: " + current_branch)
 
 
@@ -22,6 +25,7 @@ def define_env(env):
 
     env.variables["scale_pkgname"] = scale_pkgname
     env.variables["repo_subdomain"] = repo_subdomain
+    env.variables["current_llvm_version"] = current_llvm_version
 
     @env.macro
     def checksum(url):

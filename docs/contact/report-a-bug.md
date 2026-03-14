@@ -1,19 +1,19 @@
 # Report a Bug
 
-SCALE is still in active development, so you may encounter bugs. If you run 
+SCALE is still in active development, so you may encounter bugs. If you run
 into problems, contact us by:
 
 - Joining our [Discord](https://discord.gg/KNpgGbTc38)
 - Creating [a ticket](https://github.com/spectral-compute/scale-validation/issues)
 - Sending us an e-mail at [hello@spectralcompute.co.uk](mailto:hello@spectralcompute.co.uk)
 
-The remainder of this page provides information about how to make your 
+The remainder of this page provides information about how to make your
 report as helpful as possible.
 
 ## "No such function: cudaSomethingSomething/cuSomethingSomething()"
 
-If your project fails to compile due to a missing CUDA Runtime, Driver, or "CUDA-X" 
-(cuBLAS, cuFFT, cuSOLVER and friends) API function, [get in touch][get-in-touch]: 
+If your project fails to compile due to a missing CUDA Runtime, Driver, or "CUDA-X"
+(cuBLAS, cuFFT, cuSOLVER and friends) API function, [get in touch][get-in-touch]:
 this helps us prioritise work by fixing the holes that have the most demand first.
 
 ## Compiler crash
@@ -65,11 +65,14 @@ It will be helpful if you provide the output of the following commands along
 with your report:
 
 ```
-lspci | grep VGA
-scaleinfo
+# Looks for common system configuration problems.
+scalediag
+
+# Prints out system info about GPUs
+scale_bugreport
 ```
 
 Running your program with the environment variable `SCALE_EXCEPTIONS=1` set might give a more detailed error that would
 be helpful to us too.
 
-[get-in-touch]: ../README.md#contact-us
+[get-in-touch]: ./join-our-discord.md

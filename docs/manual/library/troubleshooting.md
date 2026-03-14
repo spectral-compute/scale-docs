@@ -1,16 +1,16 @@
 # Troubleshooting
 
-This page provides tips for solving common problems encountered when trying
-to compile or run CUDA programs with SCALE.
+This page provides hints for some common problems encountered with the AMD
+SCALE runtime.
 
 ## Crashes
 
-Please [report a bug](../contact/report-a-bug.md).
+Please [report a bug](../../contact/report-a-bug.md).
 
 ## "No such function: cudaSomethingSomething/cuSomethingSomething()"
 
-If your project fails to compile due to a missing CUDA Runtime, Driver, or "CUDA-X" 
-(cuBLAS, cuFFT, cuSOLVER and friends) API function, [get in touch][get-in-touch]: 
+If your project fails to compile due to a missing CUDA Runtime, Driver, or "CUDA-X"
+(cuBLAS, cuFFT, cuSOLVER and friends) API function, [get in touch][get-in-touch]:
 this helps us prioritise work by fixing the holes that have the most demand first.
 
 ## CUDA API errors
@@ -45,6 +45,13 @@ To write code that works correctly on both platforms:
 - Avoid hardcoding the constant "32" to represent warp size, instead using
   the global `warpSize` available on all platforms.
 
+## Mysterious problems
+
+Try `scalediag`. This is a program shipped with SCALE that attempts to identify
+common problems (outdated drivers, bios/kernel settings that cause problems, etc.).
+
+The capabilities of this program are growing over time.
+
 ## Initialization errors or no devices found
 
 The SCALE runtime can fail to initialise if:
@@ -76,9 +83,10 @@ Aborted (core dumped)
 
 ### Verify you have a supported gpu
 
-Run `/opt/scale/bin/hsasysinfo | grep 'Name: gfx` to determine the
-architecture of your GPU, and determine if it is one of the supported
-architectures listed [here](../README.md#which-gpus-are-supported).
+If `scaleinfo` does not list your GPU, but also does not produce an error, your
+GPU is either not supported or its driver is completely broken.
+
+The list of GPUs we expect to work can be found [here](../../README.md#which-gpus-are-supported)
 
 ### Ensure `/dev/kfd` is writable
 
@@ -248,4 +256,4 @@ This problem can be resolved by using newer C++ compiler.
 This issue is discussed in more detail in the [Differences from NVIDIA CUDA](differences.md#host-side-__half-support)
 section.
 
-[get-in-touch]: ../README.md#contact-us
+[get-in-touch]: ../../contact/join-our-discord.md

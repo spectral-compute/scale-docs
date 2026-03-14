@@ -1,12 +1,12 @@
-# Compiler Diagnostics Reference
+# Diagnostics Reference
 
 This page documents the meaning of various compiler diagnostics provided by
 SCALE which are not found in other compilers. Diagnostics not listed here
 are provided by clang, and may be found in the [Clang Compiler Diagnostics
-Reference](https://clang.llvm.org/docs/DiagnosticsReference.html)
+Reference](https://releases.llvm.org/{{current_llvm_version}}/tools/clang/docs/DiagnosticsReference.html)
 
 As with all diagnostics, these can be enabled or disabled both globally
-and in a particular region of code. See [diagnostic flags reference](./diagnostic-flags.md)
+and in a particular region of code. See [diagnostic flags reference](./diagnostics.md)
 
 Since many of them represent undefined behaviour even on NVIDIA platforms,
 fixing the underlying problem is recommended.
@@ -28,6 +28,30 @@ is a no-op, the optimiser will remove this extra step (including with NVIDIA's c
 When the conversion is not a no-op, both SCALE and NVIDIA `nvcc` have compiler
 optimisations that attempt to deduce the address space of the pointer and
 rewrite it into the target address space for its entire lifetime.
+
+For example:
+
+```cu
+__global__ void foo() {
+   __shared__ int example[32];
+   int out;
+   asm("ld.shared.b32 %0, [%1];": "=r"(out) : "l"(&example[threadIdx.x]));
+}
+```
+
+SCALE output:
+
+```
+[...]:7:27: warning: passing generic address-space pointer to non-generic PTX memory instruction is undefined behaviour [-Wptx-binding-as-address]
+    7 |    asm("ld.shared.b32 %0, [%1];": "=r"(out) : "l"(&example[threadIdx.x]));
+      |                           ^
+[...]:7:27: note: use a PTX cvta instruction to convert the C++ pointer to the correct PTX address space
+    7 |    asm("ld.shared.b32 %0, [%1];": "=r"(out) : "l"(&example[threadIdx.x]));
+      |                           ^
+1 warning generated when compiling for [...].
+```
+
+NVIDIA's `nvcc` silently chops off half of the pointer and introduces undefined behaviour.
 
 ## `-Wptx-unused-local-variable`
 
@@ -108,3 +132,24 @@ fail if the compiler decides to reorder code or not perform the inlining.
 
 When compiling for AMD with SCALE, we cannot create that behaviour, so it is
 simply an error to attempt to return the carry-bit.
+
+
+### PTX diagnostics
+
+A lot of CUDA code includes blocks of [Inline PTX Assembly](https://docs.nvidia.com/cuda/inline-ptx-assembly/index.html).
+Inline PTX is often used to access niche instructions, many of which have several modifiers and require multiple operands.
+NVIDIA's `nvcc` does not parse inline PTX and provides [virtually no validation](https://docs.nvidia.com/cuda/inline-ptx-assembly/index.html#incorrect-ptx) for it, which can make writing **correct** inline PTX a great challenge.
+
+SCALE, on the other hand, parses those blocks of Inline PTX and provides proper warnings and errors for them.
+The diagnostics range from fairly simple ones such as syntax validation, to advanced ones that involve variable type information, and that are even aware of the code outside of the `asm()` blocks!
+
+For the following input, SCALE will produce an error about a missing semicolon, while NVIDIA's `nvcc` will report a fatal `ptxas` error caused by a "syntax error" without any indication of its cause or its source.
+
+
+```cu
+__device__ int ptxAdd(int x, int y) {
+    int out;
+    asm("add.u32 %0, %1, %2" : "=r"(out) : "r"(x), "r"(y));
+    return out;
+}
+```

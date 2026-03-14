@@ -2,18 +2,25 @@
 
 ## What is SCALE?
 
-SCALE is a GPGPU programming toolkit that can natively compile CUDA
-applications for AMD & NVIDIA GPUs.
+SCALE is a CUDA-compatible GPU programming toolkit targeting both
+NVIDIA and AMD GPUs.
 
-SCALE does not require the CUDA program or its build system to be modified.
+Instead of porting programs away from CUDA, SCALE offers a vendor-neutral platform
+that allows users to keep their existing codebases without compromising on performance
+or developer productivity.
 
-Support for more GPU vendors and CUDA APIs is in development.
+SCALE is in active development. [Get in touch](./contact/join-our-discord.md) if the wheels fall off.
 
-## How do I use SCALE?
+## What can SCALE do?
 
-1. [Install SCALE](./manual/how-to-install.md)
-2. Activate SCALE, e.g. `. /opt/scale/scaleenv gfx1100`
-3. Compile your [CUDA code with SCALE](https://docs.scale-lang.com/stable/manual/how-to-use/), following the same steps as for NVIDIA CUDA
+Examples of what SALE can be used for:
+
+- [Compile existing CUDA](./manual/tutorials/how-to-use.md) codebases for AMD GPUs,
+  with zero code changes. Inline asm? No problem.
+- [Provide valuable compiler diagnostics](./manual/compiler/diagnostic-reference.md),
+  helping you spot problems early.
+- [IDE integration](./manual/tutorials/editors/vscode.md) that properly understands CUDA.
+- Improve the perforance of CUDA programs on NVIDIA GPUs (sometimes).
 
 ## What projects have been tested?
 
@@ -21,17 +28,14 @@ We validate SCALE by compiling open-source CUDA projects and running their
 tests. The list of currently-tested projects and their compatibility status
 can be found [here](https://github.com/spectral-compute/scale-validation?tab=readme-ov-file#current-status).
 
-Join our [Discord](https://discord.com/invite/KNpgGbTc38) to let us know what projects are missing (_or_ support our mission by contributing yourself).
+We also offer some [toy programs](./examples/README.md) to illustrate the process in a very simple
+environment.
 
-## What are examples of using SCALE?
-
-Our [SCALE Examples](https://docs.scale-lang.com/stable/examples/) section shows very basic examples of using SCALE and are a great place to start your hands-on experience.
-
-We welcome contributions from our developer community. Join our [Discord](https://discord.com/invite/KNpgGbTc38) to share _your_ SCALE projects.
+Join our [Discord](https://discord.com/invite/KNpgGbTc38) to let us know what projects are missing, or support our mission by contributing yourself.
 
 ## Which GPUs are supported?
 
-The following GPU targets are supported:
+Below is a list of currently supported GPU targets.
 
 === "AMD"
 
@@ -67,9 +71,11 @@ The following GPU targets are supported:
 
 === "NVIDIA"
 
-    More information about SCALE on NVIDIA GPUs [available here](./manual/nvidia.md).
-
     You can find the list of devices for each of the compute capabilities in the NVIDIA developer documentation: [CUDA GPU Compute Capability](https://developer.nvidia.com/cuda/gpus).
+
+    For devices older than `sm_75`, you must install a version of the NVIDIA CUDA Toolkit older
+    than 13.0. In NVIDIA mode, SCALE provides only the compiler: the libraries used are still
+    NVIDIA's.
 
     | Compute Capability | LLVM Target | Example GPU |
     |--------------------|-------------|-------------|
@@ -97,9 +103,6 @@ The following GPU targets are supported:
     | 2.1                | `sm_21`     | Quadro 2000 |
     | 2.0                | `sm_20`     | Quadro Plex 7000 |
 
-[Contact us](#contact-us) if you want us to expedite support for a particular GPU
-architecture.
-
 ## What are the components of SCALE?
 
 SCALE consists of:
@@ -109,27 +112,28 @@ SCALE consists of:
 - An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.
 - Wrapper libraries providing the "CUDA-X" APIs by delegating to the
   corresponding ROCm libraries for AMD GPUs.
-  This is how libraries such as `cuBLAS` and `cuSOLVER` are handled.
+
+For NVIDIA targets, SCALE replaces `nvcc` in producing the GPU binaries,
+offering improved compiler diagnostics and - sometimes - performance.
+
+For AMD targets, SCALE also provides the implementation of the CUDA runtime,
+driver, and math APIs. SCALE's implementations are often faster than HIP,
+and match the behaviour of the NVIDIA CUDA APIs more precisely.
 
 ## What are the differences between SCALE and other solutions?
 
-Instead of providing a [new way](https://xkcd.com/927/) to write GPGPU
-software, SCALE allows programs written using the widely-popular CUDA
-language to be directly compiled for AMD GPUs.
-SCALE can also compile CUDA code for NVIDIA GPUs, which [can offer additional
-benefits](./manual/nvidia.md) compared to NVIDIA CUDA itself.
+Instead of providing a [new way](https://xkcd.com/927/) to write GPU
+software, SCALE aims to augment CUDA (the de-facto standard).
 
 SCALE aims to be fully compatible with NVIDIA CUDA. We believe that users
 should not have to maintain multiple codebases or compromise on performance
 to support multiple GPU vendors.
 
-SCALE's language is a _superset_ of NVIDIA CUDA, offering some opt-in
-[language extensions](./manual/language-extensions.md)
-that can make writing GPU code easier and more efficient for users who wish
-to move away from `nvcc`.
+SCALE's language is a _superset_ of NVIDIA CUDA. Explore offering some
+[enhancements](./manual/compiler/dialects.md) and opt-in
+[extensions](./manual/compiler/language-extensions.md).
 
-SCALE is a work in progress. If there is a missing API that is blocking your
-attempt to use SCALE, please contact us so we can prioritise its development.
+SCALE is a work in progress. If something gets in your way, please contact us.
 
 ## Contact us
 
