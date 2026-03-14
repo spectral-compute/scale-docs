@@ -8,6 +8,13 @@
     }
   },
   {
+    "version": "staging",
+    "title": "staging",
+    "aliases": [
+      "v1.6.1"
+    ]
+  },
+  {
     "version": "nonfree-unstable",
     "title": "nonfree-unstable",
     "aliases": [],
