@@ -13,7 +13,7 @@ SCALE is in active development. [Get in touch](./contact/join-our-discord.md) if
 
 ## What can SCALE do?
 
-Examples of what SALE can be used for:
+Examples of what SCALE can be used for:
 
 - [Compile existing CUDA](./manual/tutorials/how-to-use.md) codebases for AMD GPUs,
   with zero code changes. Inline asm? No problem.
@@ -21,6 +21,25 @@ Examples of what SALE can be used for:
   helping you spot problems early.
 - [IDE integration](./manual/tutorials/editors/vscode.md) that properly understands CUDA.
 - Improve the perforance of CUDA programs on NVIDIA GPUs (sometimes).
+
+## How does it work?
+
+SCALE provides:
+
+- A drop-in replacement for NVIDIA `nvcc`, capable of compiling nvcc-dialect
+  CUDA for AMD & NVIDIA GPUs.
+- An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.
+- Wrapper libraries providing the "CUDA-X" APIs by delegating to the
+  corresponding ROCm libraries for AMD GPUs.
+
+For NVIDIA targets, SCALE replaces `nvcc`,
+offering improved compiler diagnostics and - sometimes - performance.
+
+For AMD targets, SCALE also provides the CUDA runtime,
+driver, and math libraries. SCALE's implementations are often faster than HIP,
+and match the behaviour of the NVIDIA CUDA APIs more precisely.
+
+![Compilation Trajectories](./manual/imgs/OneFileThreeDestines.svg){ align=left }
 
 ## What projects have been tested?
 
@@ -103,24 +122,7 @@ Below is a list of currently supported GPU targets.
     | 2.1                | `sm_21`     | Quadro 2000 |
     | 2.0                | `sm_20`     | Quadro Plex 7000 |
 
-## What are the components of SCALE?
-
-SCALE consists of:
-
-- An `nvcc`-compatible compiler capable of compiling nvcc-dialect CUDA for AMD & NVIDIA
-  GPUs, including PTX asm.
-- An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.
-- Wrapper libraries providing the "CUDA-X" APIs by delegating to the
-  corresponding ROCm libraries for AMD GPUs.
-
-For NVIDIA targets, SCALE replaces `nvcc` in producing the GPU binaries,
-offering improved compiler diagnostics and - sometimes - performance.
-
-For AMD targets, SCALE also provides the implementation of the CUDA runtime,
-driver, and math APIs. SCALE's implementations are often faster than HIP,
-and match the behaviour of the NVIDIA CUDA APIs more precisely.
-
-## What are the differences between SCALE and other solutions?
+## How does SCALE compare to other solutions?
 
 Instead of providing a [new way](https://xkcd.com/927/) to write GPU
 software, SCALE aims to augment CUDA (the de-facto standard).

@@ -91,6 +91,8 @@ markdown_extensions:
       permalink: "#"
   - pymdownx.highlight
   - pymdownx.inlinehilite
+  - admonition
+  - pymdownx.details
   - pymdownx.snippets
   - pymdownx.superfences
   - attr_list
@@ -114,7 +116,6 @@ nav:
   - Get Started:
       - manual/tutorials/how-to-install.md
       - Develop With SCALE:
-          - manual/tutorials/overview.md
           - manual/tutorials/how-to-use.md
           - manual/tutorials/how-to-use-with-docker.md
           - Editor Integration:
