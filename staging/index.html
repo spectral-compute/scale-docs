@@ -1,0 +1,2484 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://docs.scale-lang.com/latest/">
+      
+      
+      
+        <link rel="next" href="manual/tutorials/how-to-install/">
+      
+      
+      <link rel="icon" href="favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.6.9">
+    
+    
+      
+        <title>SCALE Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="assets/stylesheets/main.4af4bdda.min.css">
+      
+        
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="style.css">
+    
+    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-FQW9W5SC5P"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-FQW9W5SC5P",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-FQW9W5SC5P",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
+  
+
+    
+    
+     
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Lato:wght@700;800;900&family=JetBrains+Mono:wght@400;500&display=swap"
+  rel="stylesheet"
+/>
+<script id="__clarity">
+  function __md_clarity() {
+    if (window.__md_clarity_initialized) return;
+    window.__md_clarity_initialized = true;
+    (function (c, l, a, r, i, t, y) {
+      c[a] =
+        c[a] ||
+        function () {
+          (c[a].q = c[a].q || []).push(arguments);
+        };
+      t = l.createElement(r);
+      t.async = 1;
+      t.src = "https://www.clarity.ms/tag/" + i;
+      y = l.getElementsByTagName(r)[0];
+      y.parentNode.insertBefore(t, y);
+    })(window, document, "clarity", "script", "vpkkzb2m3e");
+  }
+  
+  var consent = __md_get("__consent");
+  consent && consent.analytics && __md_clarity();
+  
+</script>
+<script id="__reb2b">
+  function __md_reb2b() {
+    var reb2b = (window.reb2b = window.reb2b || []);
+    if (reb2b.invoked) return;
+    reb2b.invoked = true;
+    reb2b.methods = ["identify", "collect"];
+    reb2b.factory = function (method) {
+      return function () {
+        var args = Array.prototype.slice.call(arguments);
+        args.unshift(method);
+        reb2b.push(args);
+        return reb2b;
+      };
+    };
+    for (var i = 0; i < reb2b.methods.length; i++) {
+      var key = reb2b.methods[i];
+      reb2b[key] = reb2b.factory(key);
+    }
+    reb2b.load = function (key) {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.async = true;
+      script.src =
+        "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";
+      var first = document.getElementsByTagName("script")[0];
+      first.parentNode.insertBefore(script, first);
+    };
+    reb2b.SNIPPET_VERSION = "1.0.1";
+    reb2b.load("4N210H5G9Y6Z");
+  }
+  
+  var consent = __md_get("__consent");
+  consent && consent.analytics && __md_reb2b();
+  
+</script>
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#scale-by-spectral-compute" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="." title="SCALE Documentation" class="md-header__button md-logo" aria-label="SCALE Documentation" data-md-component="logo">
+      
+  <img src="logo_white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            SCALE Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SCALE by Spectral Compute
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="." title="SCALE Documentation" class="md-nav__button md-logo" aria-label="SCALE Documentation" data-md-component="logo">
+      
+  <img src="logo_white.svg" alt="logo">
+
+    </a>
+    SCALE Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    SCALE by Spectral Compute
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="." class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    SCALE by Spectral Compute
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is SCALE?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-can-scale-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What can SCALE do?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-projects-have-been-tested" class="md-nav__link">
+    <span class="md-ellipsis">
+      What projects have been tested?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-gpus-are-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which GPUs are supported?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-components-of-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the components of SCALE?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-differences-between-scale-and-other-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the differences between SCALE and other solutions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact us
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Get Started
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Get Started
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/how-to-install/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install SCALE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Develop With SCALE
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Develop With SCALE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_2_2" id="__nav_2_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Editor Integration
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Editor Integration
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/editors/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    VSCode Integration
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/how-to-use/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compile CUDA with SCALE
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/how-to-use-with-docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Use SCALE with Docker
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Compiler
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Compiler
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CUDA Language
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            CUDA Language
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/compiler/dialects/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CUDA Language Support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/compiler/inline-ptx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inline PTX support
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/compiler/language-extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Language Extensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Compiler Options
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Compiler Options
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/compiler/diagnostics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Compiler warnings
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/compiler/diagnostic-reference/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Diagnostics Reference
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/compiler/optimisation-flags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimisation Flags
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Runtime Library
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Runtime Library
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/library/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    CUDA APIs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            CUDA APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/library/runtime-extensions/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Extensions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/library/differences/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Differences from NVIDIA CUDA
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_3" id="__nav_4_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Implemented APIs
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Implemented APIs
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/library/apidiff/apis/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Coverage Report
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/library/apidiff/api-driver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Driver API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/library/apidiff/api-math/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Math API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/library/apidiff/api-runtime/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Runtime API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/library/troubleshooting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Troubleshooting
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    About SCALE
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            About SCALE
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    What's New?
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_1">
+            <span class="md-nav__icon md-icon"></span>
+            What's New?
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.6.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.6.0 (2026-03-13)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.5.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.5.1 (2026-02-03)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.5.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.5.0 (2025-11-15)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.4.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.4.2 (2025-09-19)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.3.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.3.1 (2025-05-12)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.3.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.3.0 (2025-04-23)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.2.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.2.0 (2024-11-27)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.1.0/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.1.0 (2024-10-31)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.0.2/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.0.2 (2024-09-05)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/changelogs/v1.0.1/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Release 1.0.1 (2024-07-24)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/faq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequently asked questions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/comparison/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Comparison to other solutions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Contact Us
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            Contact Us
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contact/report-a-bug/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Report a Bug
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="contact/join-our-discord/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Join our Discord
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Legal
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Legal
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="licensing/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SCALE Free License
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="notices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Third party software
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-is-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      What is SCALE?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-can-scale-do" class="md-nav__link">
+    <span class="md-ellipsis">
+      What can SCALE do?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-projects-have-been-tested" class="md-nav__link">
+    <span class="md-ellipsis">
+      What projects have been tested?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#which-gpus-are-supported" class="md-nav__link">
+    <span class="md-ellipsis">
+      Which GPUs are supported?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-components-of-scale" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the components of SCALE?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-the-differences-between-scale-and-other-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      What are the differences between SCALE and other solutions?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contact-us" class="md-nav__link">
+    <span class="md-ellipsis">
+      Contact us
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="scale-by-spectral-compute">SCALE by Spectral Compute<a class="headerlink" href="#scale-by-spectral-compute" title="Permanent link">#</a></h1>
+<h2 id="what-is-scale">What is SCALE?<a class="headerlink" href="#what-is-scale" title="Permanent link">#</a></h2>
+<p>SCALE is a CUDA-compatible GPU programming toolkit targeting both
+NVIDIA and AMD GPUs.</p>
+<p>Instead of porting programs away from CUDA, SCALE offers a vendor-neutral platform
+that allows users to keep their existing codebases without compromising on performance
+or developer productivity.</p>
+<p>SCALE is in active development. <a href="contact/join-our-discord/">Get in touch</a> if the wheels fall off.</p>
+<h2 id="what-can-scale-do">What can SCALE do?<a class="headerlink" href="#what-can-scale-do" title="Permanent link">#</a></h2>
+<p>Examples of what SALE can be used for:</p>
+<ul>
+<li><a href="manual/tutorials/how-to-use/">Compile existing CUDA</a> codebases for AMD GPUs,
+  with zero code changes. Inline asm? No problem.</li>
+<li><a href="manual/compiler/diagnostic-reference/">Provide valuable compiler diagnostics</a>,
+  helping you spot problems early.</li>
+<li><a href="manual/tutorials/editors/vscode/">IDE integration</a> that properly understands CUDA.</li>
+<li>Improve the perforance of CUDA programs on NVIDIA GPUs (sometimes).</li>
+</ul>
+<h2 id="what-projects-have-been-tested">What projects have been tested?<a class="headerlink" href="#what-projects-have-been-tested" title="Permanent link">#</a></h2>
+<p>We validate SCALE by compiling open-source CUDA projects and running their
+tests. The list of currently-tested projects and their compatibility status
+can be found <a href="https://github.com/spectral-compute/scale-validation?tab=readme-ov-file#current-status">here</a>.</p>
+<p>We also offer some <a href="examples/">toy programs</a> to illustrate the process in a very simple
+environment.</p>
+<p>Join our <a href="https://discord.com/invite/KNpgGbTc38">Discord</a> to let us know what projects are missing, or support our mission by contributing yourself.</p>
+<h2 id="which-gpus-are-supported">Which GPUs are supported?<a class="headerlink" href="#which-gpus-are-supported" title="Permanent link">#</a></h2>
+<p>Below is a list of currently supported GPU targets.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">AMD</label><label for="__tabbed_1_2">NVIDIA</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Full technical specifications <a href="https://rocm.docs.amd.com/en/latest/reference/gpu-arch-specs.html">available here</a>.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Enterprise</label><label for="__tabbed_2_2">Consumer</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Architecture</th>
+<th>LLVM target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>MI350X / MI355X</td>
+<td>CDNA 4</td>
+<td>gfx950</td>
+</tr>
+<tr>
+<td>MI300A / MI300X / MI325X</td>
+<td>CDNA 3</td>
+<td>gfx942</td>
+</tr>
+<tr>
+<td>MI210 / MI250 / MI250X</td>
+<td>CDNA 2</td>
+<td>gfx90a</td>
+</tr>
+<tr>
+<td>MI100</td>
+<td>CDNA 1</td>
+<td>gfx908</td>
+</tr>
+<tr>
+<td>MI50 / MI60</td>
+<td>GCN 5.1</td>
+<td>gfx906</td>
+</tr>
+<tr>
+<td>MI25</td>
+<td>GCN 5.0</td>
+<td>gfx900</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Architecture</th>
+<th>LLVM target</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Radeon AI PRO R9600D / R9700</td>
+<td>RDNA 4</td>
+<td>gfx1201</td>
+</tr>
+<tr>
+<td>Radeon RX 9070</td>
+<td>RDNA 4</td>
+<td>gfx1201</td>
+</tr>
+<tr>
+<td>Radeon RX 9060</td>
+<td>RDNA 4</td>
+<td>gfx1200</td>
+</tr>
+<tr>
+<td>Ryzen AI Max+ PRO 395</td>
+<td>RDNA 3.5</td>
+<td>gfx1151</td>
+</tr>
+<tr>
+<td>Radeon RX 7600</td>
+<td>RDNA 3</td>
+<td>gfx1102</td>
+</tr>
+<tr>
+<td>Radeon PRO v710 / W7700</td>
+<td>RDNA 3</td>
+<td>gfx1101</td>
+</tr>
+<tr>
+<td>Radeon RX 7700 / 7800</td>
+<td>RDNA 3</td>
+<td>gfx1101</td>
+</tr>
+<tr>
+<td>Radeon PRO W7800 / W7900</td>
+<td>RDNA 3</td>
+<td>gfx1100</td>
+</tr>
+<tr>
+<td>Radeon RX W7900 XT / XTX</td>
+<td>RDNA 3</td>
+<td>gfx1100</td>
+</tr>
+<tr>
+<td>Radeon PRO v620 / W6800</td>
+<td>RDNA 2</td>
+<td>gfx1030</td>
+</tr>
+<tr>
+<td>Radeon RX 6800 / 6900 / 6950</td>
+<td>RDNA 2</td>
+<td>gfx1030</td>
+</tr>
+<tr>
+<td>Radeon Pro W5700</td>
+<td>RDNA 1</td>
+<td>gfx1010</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="tabbed-block">
+<p>You can find the list of devices for each of the compute capabilities in the NVIDIA developer documentation: <a href="https://developer.nvidia.com/cuda/gpus">CUDA GPU Compute Capability</a>.</p>
+<p>For devices older than <code>sm_75</code>, you must install a version of the NVIDIA CUDA Toolkit older
+than 13.0. In NVIDIA mode, SCALE provides only the compiler: the libraries used are still
+NVIDIA's.</p>
+<table>
+<thead>
+<tr>
+<th>Compute Capability</th>
+<th>LLVM Target</th>
+<th>Example GPU</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>12.0</td>
+<td><code>sm_120</code>, <code>sm_120a</code></td>
+<td>NVIDIA RTX PRO 6000 Blackwell, GeForce RTX 5090</td>
+</tr>
+<tr>
+<td>10.1</td>
+<td><code>sm_101</code>, <code>sm_101a</code></td>
+<td>NVIDIA B100</td>
+</tr>
+<tr>
+<td>10.0</td>
+<td><code>sm_100</code>, <code>sm_100a</code></td>
+<td>NVIDIA B200</td>
+</tr>
+<tr>
+<td>9.0</td>
+<td><code>sm_90</code>, <code>sm_90a</code></td>
+<td>NVIDIA H200</td>
+</tr>
+<tr>
+<td>8.9</td>
+<td><code>sm_89</code></td>
+<td>NVIDIA RTX 6000 Ada, GeForce RTX 4090</td>
+</tr>
+<tr>
+<td>8.7</td>
+<td><code>sm_87</code></td>
+<td>Jetson AGX Orin</td>
+</tr>
+<tr>
+<td>8.6</td>
+<td><code>sm_86</code></td>
+<td>NVIDIA A40, NVIDIA RTX A6000, GeForce RTX 3090</td>
+</tr>
+<tr>
+<td>8.0</td>
+<td><code>sm_80</code></td>
+<td>NVIDIA A100</td>
+</tr>
+<tr>
+<td>7.5</td>
+<td><code>sm_75</code></td>
+<td>NVIDIA T4, QUADRO RTX 8000, NVIDIA T1200, GeForce RTX 2080</td>
+</tr>
+<tr>
+<td>7.2</td>
+<td><code>sm_72</code></td>
+<td>Jetson AGX Xavier</td>
+</tr>
+<tr>
+<td>7.0</td>
+<td><code>sm_70</code></td>
+<td>NVIDIA V100, NVIDIA TITAN V</td>
+</tr>
+<tr>
+<td>6.2</td>
+<td><code>sm_62</code></td>
+<td>Jetson TX2</td>
+</tr>
+<tr>
+<td>6.1</td>
+<td><code>sm_61</code></td>
+<td>Tesla P40, GeForce GTX 1080</td>
+</tr>
+<tr>
+<td>6.0</td>
+<td><code>sm_60</code></td>
+<td>Tesla P100</td>
+</tr>
+<tr>
+<td>5.3</td>
+<td><code>sm_53</code></td>
+<td>Jetson Nano</td>
+</tr>
+<tr>
+<td>5.2</td>
+<td><code>sm_52</code></td>
+<td>Tesla M60, GeForce GTX 980</td>
+</tr>
+<tr>
+<td>5.0</td>
+<td><code>sm_50</code></td>
+<td>GeForce GTX 750</td>
+</tr>
+<tr>
+<td>3.7</td>
+<td><code>sm_37</code></td>
+<td>Tesla K80</td>
+</tr>
+<tr>
+<td>3.5</td>
+<td><code>sm_35</code></td>
+<td>Tesla K40, GeForce GTX 780</td>
+</tr>
+<tr>
+<td>3.2</td>
+<td><code>sm_32</code></td>
+<td>Tegra K1</td>
+</tr>
+<tr>
+<td>3.0</td>
+<td><code>sm_30</code></td>
+<td>Tesla K10, GeForce GTX 770</td>
+</tr>
+<tr>
+<td>2.1</td>
+<td><code>sm_21</code></td>
+<td>Quadro 2000</td>
+</tr>
+<tr>
+<td>2.0</td>
+<td><code>sm_20</code></td>
+<td>Quadro Plex 7000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<h2 id="what-are-the-components-of-scale">What are the components of SCALE?<a class="headerlink" href="#what-are-the-components-of-scale" title="Permanent link">#</a></h2>
+<p>SCALE consists of:</p>
+<ul>
+<li>An <code>nvcc</code>-compatible compiler capable of compiling nvcc-dialect CUDA for AMD &amp; NVIDIA
+  GPUs, including PTX asm.</li>
+<li>An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.</li>
+<li>Wrapper libraries providing the "CUDA-X" APIs by delegating to the
+  corresponding ROCm libraries for AMD GPUs.</li>
+</ul>
+<p>For NVIDIA targets, SCALE replaces <code>nvcc</code> in producing the GPU binaries,
+offering improved compiler diagnostics and - sometimes - performance.</p>
+<p>For AMD targets, SCALE also provides the implementation of the CUDA runtime,
+driver, and math APIs. SCALE's implementations are often faster than HIP,
+and match the behaviour of the NVIDIA CUDA APIs more precisely.</p>
+<h2 id="what-are-the-differences-between-scale-and-other-solutions">What are the differences between SCALE and other solutions?<a class="headerlink" href="#what-are-the-differences-between-scale-and-other-solutions" title="Permanent link">#</a></h2>
+<p>Instead of providing a <a href="https://xkcd.com/927/">new way</a> to write GPU
+software, SCALE aims to augment CUDA (the de-facto standard).</p>
+<p>SCALE aims to be fully compatible with NVIDIA CUDA. We believe that users
+should not have to maintain multiple codebases or compromise on performance
+to support multiple GPU vendors.</p>
+<p>SCALE's language is a <em>superset</em> of NVIDIA CUDA. Explore offering some
+<a href="manual/compiler/dialects/">enhancements</a> and opt-in
+<a href="manual/compiler/language-extensions/">extensions</a>.</p>
+<p>SCALE is a work in progress. If something gets in your way, please contact us.</p>
+<h2 id="contact-us">Contact us<a class="headerlink" href="#contact-us" title="Permanent link">#</a></h2>
+<p>There are multiple ways to get in touch with us:</p>
+<ul>
+<li>Join our <a href="https://discord.gg/KNpgGbTc38">Discord</a></li>
+<li>Send us an e-mail at <a href="mailto:hello@spectralcompute.co.uk">hello@spectralcompute.co.uk</a></li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+        
+          
+          <a href="manual/tutorials/how-to-install/" class="md-footer__link md-footer__link--next" aria-label="Next: Install SCALE">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Install SCALE
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/spectral-compute" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/spectral-compute" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://discord.gg/KNpgGbTc38" target="_blank" rel="noopener" title="discord.gg" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M524.531 69.836a1.5 1.5 0 0 0-.764-.7A485 485 0 0 0 404.081 32.03a1.82 1.82 0 0 0-1.923.91 338 338 0 0 0-14.9 30.6 447.9 447.9 0 0 0-134.426 0 310 310 0 0 0-15.135-30.6 1.89 1.89 0 0 0-1.924-.91 483.7 483.7 0 0 0-119.688 37.107 1.7 1.7 0 0 0-.788.676C39.068 183.651 18.186 294.69 28.43 404.354a2.02 2.02 0 0 0 .765 1.375 487.7 487.7 0 0 0 146.825 74.189 1.9 1.9 0 0 0 2.063-.676A348 348 0 0 0 208.12 430.4a1.86 1.86 0 0 0-1.019-2.588 321 321 0 0 1-45.868-21.853 1.885 1.885 0 0 1-.185-3.126 251 251 0 0 0 9.109-7.137 1.82 1.82 0 0 1 1.9-.256c96.229 43.917 200.41 43.917 295.5 0a1.81 1.81 0 0 1 1.924.233 235 235 0 0 0 9.132 7.16 1.884 1.884 0 0 1-.162 3.126 301.4 301.4 0 0 1-45.89 21.83 1.875 1.875 0 0 0-1 2.611 391 391 0 0 0 30.014 48.815 1.86 1.86 0 0 0 2.063.7A486 486 0 0 0 610.7 405.729a1.88 1.88 0 0 0 .765-1.352c12.264-126.783-20.532-236.912-86.934-334.541M222.491 337.58c-28.972 0-52.844-26.587-52.844-59.239s23.409-59.241 52.844-59.241c29.665 0 53.306 26.82 52.843 59.239 0 32.654-23.41 59.241-52.843 59.241m195.38 0c-28.971 0-52.843-26.587-52.843-59.239s23.409-59.241 52.843-59.241c29.667 0 53.307 26.82 52.844 59.239 0 32.654-23.177 59.241-52.844 59.241"/></svg>
+    </a>
+  
+</div>
+      
+      <div class="md-copyright"><a href="https://spectralcompute.com/privacy-policy">Privacy Statement</a></div>
+      <div class="md-copyright"><a href="use_of_trademarks/">Trademarks</a></div>
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 <a href="https://www.spectralcompute.co.uk">Spectral Compute Ltd</a>
+    </div>
+  
+  
+</div>
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+      <div class="md-progress" data-md-component="progress" role="progressbar"></div>
+    
+    
+      <div class="md-consent" data-md-component="consent" id="__consent" hidden>
+        <div class="md-consent__overlay"></div>
+        <aside class="md-consent__inner">
+          <form class="md-consent__form md-grid md-typeset" name="consent">
+            
+
+  
+
+
+
+
+
+<h4>Cookie consent</h4>
+<p>We use analytics cookies from Google Analytics, Microsoft Clarity, and reb2b to understand documentation usage and improve the experience.</p>
+<input class="md-toggle" type="checkbox" id="__settings" >
+<div class="md-consent__settings">
+  <ul class="task-list">
+    
+      
+      
+        
+        
+      
+      <li class="task-list-item">
+        <label class="task-list-control">
+          <input type="checkbox" name="analytics" >
+          <span class="task-list-indicator"></span>
+          Analytics (Google Analytics, Microsoft Clarity, and reb2b)
+        </label>
+      </li>
+    
+  </ul>
+</div>
+<div class="md-consent__controls">
+  
+    
+      <button class="md-button md-button--primary">Accept</button>
+    
+    
+    
+  
+    
+    
+      <button type="reset" class="md-button md-button--primary">Reject</button>
+    
+    
+  
+    
+    
+    
+      <label class="md-button" for="__settings">Manage settings</label>
+    
+  
+</div>
+          </form>
+        </aside>
+      </div>
+      <script>
+  (function () {
+    var consent = __md_get("__consent");
+    if (
+      consent &&
+      "object" === typeof consent &&
+      !Array.isArray(consent) &&
+      0 === Object.keys(consent).length
+    ) {
+      localStorage.removeItem(__md_scope.pathname + ".__consent");
+      consent = null;
+    }
+
+    var form = document.forms.consent;
+    if (!form) return;
+
+    if (consent) {
+      for (var input of form.elements) {
+        if (input.name) input.checked = !!consent[input.name];
+      }
+    } else if ("file:" !== location.protocol) {
+      setTimeout(function () {
+        var banner = document.querySelector("[data-md-component=consent]");
+        if (banner) banner.hidden = false;
+      }, 250);
+    }
+
+    form.addEventListener(
+      "submit",
+      function (e) {
+        e.preventDefault();
+
+        var settings = document.getElementById("__settings");
+        var managing = settings && settings.checked;
+        if (!managing) {
+          for (var input of form.elements) {
+            if (input.name) input.checked = true;
+          }
+        }
+
+        var accepted = Object.fromEntries(
+          Array.from(new FormData(form).keys()).map(function (name) {
+            return [name, true];
+          })
+        );
+        accepted.__decision = "accepted";
+        __md_set("__consent", accepted);
+        location.hash = "";
+        location.reload();
+      },
+      false
+    );
+
+    form.addEventListener(
+      "reset",
+      function (e) {
+        e.preventDefault();
+        for (var input of form.elements) {
+          if (input.name) input.checked = false;
+        }
+        __md_set("__consent", { __decision: "rejected" });
+        location.hash = "";
+        location.reload();
+      },
+      false
+    );
+  })();
+</script>
+    
+    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.sections", "navigation.top", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "content.code.copy", "toc.follow"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+    
+    
+      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+    
+  </body>
+</html>
