@@ -1,7 +1,14 @@
 # API Coverage Report
 
-These pages provide a diff between SCALE's headers and the NVIDIA
-documentation, describing which APIs are supported by SCALE.
+These pages provide a diff between the SCALE Runtime API's headers and
+the NVIDIA documentation.
+
+This resource makes it easy to determine which CUDA APIs are supported
+by SCALE when cross-compiling to AMD targets.
+
+When compiling for NVIDIA GPUs, NVIDIA's own libraries are used. In that
+case, you'll have access to the same set of APIs as are provided by that
+version of the NVIDIA CUDA Toolkit.
 
 - [Driver API](./api-driver.md)
 - [Math API](./api-math.md)
@@ -11,14 +18,11 @@ The lists are based on the official Nvidia documentation and use the same layout
 
 ## Presentation
 
-The lists are presented using `diff` syntax highlighting of code blocks.
-This allows seeing which entries are available and which [may be missing](#correctness).
-Missing entries are prefixed with `-` (a minus) which paints them red in the list.
+The lists are presented using `diff` syntax. Missing APIs are prefixed with a `-`,
+causing them to highlight red in the listing.
+This makes it easy to see which entries are available and which [may be missing](#correctness).
 
-By default, `__host__` qualifier is assumed for functions, it is removed if present.
-Functions that are qualified as `__host__ __device__` are split into two separate entries.
-
-Here is an example:
+For example:
 
 ```diff
 const char * cudaGetErrorName(cudaError_t);
@@ -44,13 +48,8 @@ An example of that is differences in `const`-ness of some function arguments.
 In such cases SCALE may be forced to maintain "bug compatibility" and the
 functions stop matching what NVIDIA documentation promises.
 
-Many functions are called conditionally and may never get used in certain scenarios.
-For some of those functions, SCALE may provide an empty implementation.
-By doing this, SCALE allows more projects pass compilation and linking.
-We don't want to list such empty functions as available, so we manually mark them as missing to avoid confusion.
-
 SCALE retains support for some old APIs NVIDIA have since deleted.
 
 Found a mistake?
 
-[Let us know](../contact/report-a-bug.md), or [file a pull request](https://github.com/spectral-compute/scale-docs)
+[Let us know](../../../contact/report-a-bug.md), or [file a pull request](https://github.com/spectral-compute/scale-docs)

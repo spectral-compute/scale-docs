@@ -52,7 +52,7 @@ Given:
 ```
 
 All references to `example` will be replaced by calls to `someFunction()`. Taking
-the address of a variable so declared is undefined behaviour.
+the address of such a variable is undefined behaviour.
 
 ## `__builtin_provable(bool X)`
 

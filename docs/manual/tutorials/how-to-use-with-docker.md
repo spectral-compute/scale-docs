@@ -1,8 +1,13 @@
 # Use SCALE with Docker
 
-You can use SCALE through one of our Docker images.
-The tag layout of the images imitates that of NVIDIA's CUDA Docker images.
-Access the images and read more about the tagging here:
+SCALE offers docker images with a similar tag layout to those offered by NVIDIA.
+
+These serve two main purposes:
+
+- Deploying the compiler in your CI, to benefit from its improved diagnostics etc.
+- Use as a base image for applications that depend on the SCALE runtime library.
+
+The images are available here:
 
 - [spectralcompute/scale](https://hub.docker.com/r/spectralcompute/scale) on Docker Hub
 - [spectral-compute/scale](https://quay.io/repository/spectral-compute/scale) on Quay.io

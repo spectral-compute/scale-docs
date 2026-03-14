@@ -110,39 +110,62 @@ markdown_extensions:
 
 nav:
   - README.md
-  - manual/CHANGELOG.md
-  - Getting Started:
-      - manual/how-to-install.md
-      - manual/how-to-use-with-docker.md
-      - manual/how-to-use.md
+
+  - Get Started:
+      - manual/tutorials/how-to-install.md
+      - Develop With SCALE:
+          - manual/tutorials/overview.md
+          - Editor Integration:
+              - manual/tutorials/editors/vscode.md
+          - manual/tutorials/how-to-use.md
+          - manual/tutorials/how-to-use-with-docker.md
+
+  - Compiler:
+      - CUDA Language:
+          - manual/compiler/dialects.md
+          - manual/compiler/inline-ptx.md
+          - manual/compiler/language-extensions.md
+
+      - Compiler Options:
+          - manual/compiler/diagnostics.md
+          - manual/compiler/diagnostic-reference.md
+          - manual/compiler/optimisation-flags.md
+      # - manual/compiler/compute-capabilities.md
+
+  - Runtime Library:
+      - manual/library/overview.md
+      - CUDA APIs:
+          - manual/library/runtime-extensions.md
+
+          # Rejig, but everything here is library-specific:
+          - manual/library/differences.md
+
+          - Implemented APIs:
+              - manual/library/apidiff/apis.md
+              - manual/library/apidiff/api-driver.md
+              - manual/library/apidiff/api-math.md
+              - manual/library/apidiff/api-runtime.md
+
+      - manual/library/troubleshooting.md
+
+  - About SCALE:
+      - What's New?:
+          - manual/changelogs/v1.6.0.md
+          - manual/changelogs/v1.5.1.md
+          - manual/changelogs/v1.5.0.md
+          - manual/changelogs/v1.4.2.md
+          - manual/changelogs/v1.3.1.md
+          - manual/changelogs/v1.3.0.md
+          - manual/changelogs/v1.2.0.md
+          - manual/changelogs/v1.1.0.md
+          - manual/changelogs/v1.0.2.md
+          - manual/changelogs/v1.0.1.md
       - manual/faq.md
-      - Examples:
-          - examples/README.md
-          - examples/basic.md
-          - examples/ptx.md
-          - examples/blas.md
-  - Diving Deeper:
       - manual/comparison.md
-      - manual/troubleshooting.md
-      - manual/dialects.md
-      - manual/nvidia.md
-      - manual/differences.md
-      - manual/runtime-extensions.md
-      - Compiler:
-          - manual/inline-ptx.md
-          - manual/diagnostic-flags.md
-          - manual/diagnostic-reference.md
-          - manual/optimisation-flags.md
-          - manual/language-extensions.md
-          - manual/compute-capabilities.md
-      - Implemented APIs:
-          - manual/apis.md
-          - manual/api-driver.md
-          - manual/api-math.md
-          - manual/api-runtime.md
-  - Contact Us:
-      - contact/report-a-bug.md
-      - contact/join-our-discord.md
+      - Contact Us:
+          - contact/report-a-bug.md
+          - contact/join-our-discord.md
+
   - Legal:
       - licensing.md
       - notices.md

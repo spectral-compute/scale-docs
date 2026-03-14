@@ -114,9 +114,7 @@ No root access? Use the tarball distribution.
     includes many dependent libraries directly instead of asking the system
         package manager to install them.
 
-## Troubleshooting
-
-These issues relate to installation specifically. For more general troubleshooting steps, see [here](./troubleshooting.md).
+## Installation Troubleshooting
 
 ### I'm not able to set up the SCALE repository
 
