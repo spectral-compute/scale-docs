@@ -28,7 +28,10 @@
     "title": "1.6.1",
     "aliases": [
       "stable"
-    ]
+    ],
+    "properties": {
+      "hidden": false
+    }
   },
   {
     "version": "1.5.1",
