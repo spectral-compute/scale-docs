@@ -8,14 +8,6 @@
     }
   },
   {
-    "version": "staging",
-    "title": "staging",
-    "aliases": [],
-    "properties": {
-      "hidden": true
-    }
-  },
-  {
     "version": "nonfree-unstable",
     "title": "nonfree-unstable",
     "aliases": [],
