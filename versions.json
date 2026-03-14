@@ -26,7 +26,9 @@
   {
     "version": "1.5.1",
     "title": "1.5.1",
-    "aliases": []
+    "aliases": [
+      "stable"
+    ]
   },
   {
     "version": "1.5.0",
