@@ -151,3 +151,7 @@ sudo rm -f /etc/apt/sources.list.d/scale.list /etc/apt/auth.conf.d/scale.conf
 
 # Then follow the instructions above again.
 ```
+
+### I'm still stuck!
+
+[Get help](../../contact/join-our-discord.md).
