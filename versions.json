@@ -74,9 +74,7 @@
   {
     "version": "v1.6.1",
     "title": "v1.6.1",
-    "aliases": [
-      "staging"
-    ],
+    "aliases": [],
     "properties": {
       "hidden": true
     }
