@@ -115,10 +115,11 @@ nav:
       - manual/tutorials/how-to-install.md
       - Develop With SCALE:
           - manual/tutorials/overview.md
-          - Editor Integration:
-              - manual/tutorials/editors/vscode.md
           - manual/tutorials/how-to-use.md
           - manual/tutorials/how-to-use-with-docker.md
+          - Editor Integration:
+              - manual/tutorials/editors/clangd.md
+              - manual/tutorials/editors/vscode.md
 
   - Compiler:
       - CUDA Language:
@@ -136,8 +137,6 @@ nav:
       - manual/library/overview.md
       - CUDA APIs:
           - manual/library/runtime-extensions.md
-
-          # Rejig, but everything here is library-specific:
           - manual/library/differences.md
 
           - Implemented APIs:
@@ -150,7 +149,7 @@ nav:
 
   - About SCALE:
       - What's New?:
-          - manual/changelogs/v1.6.0.md
+          - manual/changelogs/v1.6.1.md
           - manual/changelogs/v1.5.1.md
           - manual/changelogs/v1.5.0.md
           - manual/changelogs/v1.4.2.md

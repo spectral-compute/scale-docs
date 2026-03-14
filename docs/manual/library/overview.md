@@ -4,7 +4,13 @@ The SCALE runtime library is an implementation of the CUDA Math, Driver,
 and Runtime APIs. This is necessary when compiling CUDA programs for
 non-NVIDIA targets, where those libraries are not present.
 
-Currently, the SCALE runtime only supports AMD.
+The SCALE Runtime library is only needed when building for AMD GPUs.
+When targeting NVIDIA, the NVIDIA libraries are used.
+
+The purpose of the SCALE runtime library is to provide CUDA-compatible
+implementations of these APIs, so existing programs work as expected.
+Each function in these APIs should do _exactly_ what the corresponding
+one from NVIDIA's implementation does.
 
 ## Comparison to HIP
 

@@ -7,9 +7,7 @@ Since the SCALE compiler understands the same command line arguments and
 language dialect as NVIDIA `nvcc`, it can plug directly into your existing
 nvcc project.
 
-In a nutshell:
-- Follow instructions to set up clangd for your editor: https://clangd.llvm.org/installation
-- Reconfigure it to use the clangd shipped with SCALE instead of the usual one.
+See the [general clangd information](./editors.md) for more context.
 
 ## clangd extension setup
 
