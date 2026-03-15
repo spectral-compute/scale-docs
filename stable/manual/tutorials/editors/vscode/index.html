@@ -595,22 +595,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clangd-extension-setup" class="md-nav__link">
+  <a href="#one-time-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      clangd extension setup
+      One-time setup
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-setup" class="md-nav__link">
+  <a href="#project-specific-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      Project setup
+      Project-specific setup
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Project setup">
+    <nav class="md-nav" aria-label="Project-specific setup">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1814,22 +1814,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#clangd-extension-setup" class="md-nav__link">
+  <a href="#one-time-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      clangd extension setup
+      One-time setup
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#project-setup" class="md-nav__link">
+  <a href="#project-specific-setup" class="md-nav__link">
     <span class="md-ellipsis">
-      Project setup
+      Project-specific setup
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Project setup">
+    <nav class="md-nav" aria-label="Project-specific setup">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1869,41 +1869,56 @@ high-quality CUDA diagnostics directly in your editor.</p>
 language dialect as NVIDIA <code>nvcc</code>, it can plug directly into your existing
 nvcc project.</p>
 <p>See the <a href="../editors/">general clangd information</a> for more context.</p>
-<h2 id="clangd-extension-setup">clangd extension setup<a class="headerlink" href="#clangd-extension-setup" title="Permanent link">#</a></h2>
+<p>The <a href="https://clangd.llvm.org/installation#project-setup">clangd documentation</a> may
+also prove useful.</p>
+<h2 id="one-time-setup">One-time setup<a class="headerlink" href="#one-time-setup" title="Permanent link">#</a></h2>
 <ul>
 <li>Install the <code>clangd</code> extension for vscode</li>
 <li>Open settings</li>
 <li>Search for "@ext:llvm-vs-code-extensions.vscode-clangd path"</li>
 <li>Replace "clangd" with the path to the SCALE clangd, eg. <code>/opt/scale/llvm/bin/clangd</code>.</li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">CMake</label><label for="__tabbed_1_2">Other</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<ul>
+<li>Ensure you have the "CMake Tools" plugin installed.</li>
 <li>Open the command pallette (CTRL+SHIFT+P)</li>
 <li>Select "edit user-local cmake kits"</li>
 <li>Add the SCALE compilers as kits, adjusting the installation directory appropriately:</li>
 </ul>
-<div class="highlight"><pre><span></span><code>  {
-    &quot;name&quot;: &quot;SCALE-nvc x86_64-pc-linux-gnu&quot;,
-    &quot;compilers&quot;: {
-      &quot;C&quot;: &quot;/opt/scale/llvm/bin/clang&quot;,
-      &quot;CXX&quot;: &quot;/opt/scale/llvm/bin/clang++&quot;,
-      &quot;CUDA&quot;: &quot;/opt/scale/llvm/bin/clang-nvcc&quot;
-    },
-    &quot;isTrusted&quot;: true
-  },
-  {
-    &quot;name&quot;: &quot;SCALE-clang x86_64-pc-linux-gnu&quot;,
-    &quot;compilers&quot;: {
-      &quot;C&quot;: &quot;/opt/scale/llvm/bin/clang&quot;,
-      &quot;CXX&quot;: &quot;/opt/scale/llvm/bin/clang++&quot;,
-      &quot;CUDA&quot;: &quot;/opt/scale/llvm/bin/clang++&quot;
-    },
-    &quot;isTrusted&quot;: true
-  },
+<div class="highlight"><pre><span></span><code><span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCALE-nvc x86_64-pc-linux-gnu&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;compilers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;C&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/opt/scale/llvm/bin/clang&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;CXX&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/opt/scale/llvm/bin/clang++&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;CUDA&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/opt/scale/llvm/bin/clang-nvcc&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;isTrusted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;SCALE-clang x86_64-pc-linux-gnu&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;compilers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;C&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/opt/scale/llvm/bin/clang&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;CXX&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/opt/scale/llvm/bin/clang++&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;CUDA&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/opt/scale/llvm/bin/clang++&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;isTrusted&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">  </span><span class="p">},</span>
 </code></pre></div>
-<h2 id="project-setup">Project setup<a class="headerlink" href="#project-setup" title="Permanent link">#</a></h2>
+</div>
+<div class="tabbed-block">
+<p>Perform any steps required to add the SCALE compiler paths to the buildsystem you
+use with vscode. The editor integration doesn't need you to actually compile with
+these compilers, but it needs to be able to configure and emit a compilation
+database.</p>
+</div>
+</div>
+</div>
+<h2 id="project-specific-setup">Project-specific setup<a class="headerlink" href="#project-specific-setup" title="Permanent link">#</a></h2>
+<p>These steps need to be taken for each project you work with, though of course
+the repetition may be eliminated using a template.</p>
 <ul>
-<li>Set <code>copycompilecommands</code> to <code>${workspaceFolder}/compile_commands.json</code></li>
-<li>Hit "clean reconfigure all projects", and select one of the cmake kits created earlier.</li>
-<li>If you normally compile with nvcc, pick the <code>SCALE-nvcc</code> one. Otherwise, pick the <code>SCALE-clang</code> one.</li>
-<li>Add <code>-DCMAKE_CUDA_ARCHITECTURES=90 -DCMAKE_EXPORT_COMPILE_COMMANDS=ON</code> to cmake settings (adjust arch as necessary).</li>
 <li>Add a <code>.clangd</code> file to the root of your project with content similar to this:</li>
 </ul>
 <div class="highlight"><pre><span></span><code>---
@@ -1912,14 +1927,49 @@ CompileFlags:
 ---
 </code></pre></div>
 <p>Optionally, you may use the <code>-fno-gpu-defer-diag</code> flag during compilation in nvcc mode to see compiler errors that nvcc would normally ignore.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">CMake</label><label for="__tabbed_2_2">Bazel</label><label for="__tabbed_2_3">Other</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <ul>
-<li>Restart vscode.</li>
+<li>Find the <code>copycompilecommands</code> setting and set it to <code>${workspaceFolder}/compile_commands.json</code>. It could also be manually symlinked, but we find this option maximally convenient.</li>
+<li>Find the "cmake configure args" settings and add these flags to it:
+    <code>-DCMAKE_EXPORT_COMPILE_COMMANDS=ON</code>
+    <code>-DCMAKE_CUDA_ARCHITECTURES=90</code>  (Adjust as appropriate)</li>
 </ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Not to be confused with the "CMake Build Options" option!</p>
+</div>
+<ul>
+<li>Right click your <code>CMakeLists.txt</code> and hit "clean reconfigure all projects". When prompted, select one of the cmake kits created earlier.</li>
+<li>
+<p>If you normally compile with nvcc, pick the <code>SCALE-nvcc</code> one. Otherwise, pick the <code>SCALE-clang</code> one.</p>
+</li>
+<li>
+<p>Restart vscode</p>
+</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>Use the <a href="https://github.com/hedronvision/bazel-compile-commands-extractor">extractor extention</a> to have Bazel generate a configuration database for use by clangd, and ensure it's linked into the root of your workspace directory.</p>
+<ul>
+<li>Restart vscode when you're done.</li>
+</ul>
+</div>
+<div class="tabbed-block">
+<p>Refer to <a href="https://clangd.llvm.org/installation#project-setup">clangd doucumentation</a>
+for now to obtain a compilation database for <code>clangd</code>.</p>
+<ul>
+<li>Restart vscode when you're done.</li>
+</ul>
+</div>
+</div>
+</div>
 <h3 id="check-its-working">Check it's working<a class="headerlink" href="#check-its-working" title="Permanent link">#</a></h3>
 <p>As a sanity check, create a new <code>.cu</code> file with the following contents:</p>
-<div class="highlight"><pre><span></span><code>__global__ void kernel() {
-  asm(&quot;add.f32 foo, 1, 1;&quot;);
-}
+<div class="highlight"><pre><span></span><code><span class="kr">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">kernel</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">asm</span><span class="p">(</span><span class="s">&quot;add.f32 foo, 1, 1;&quot;</span><span class="p">);</span>
+<span class="p">}</span>
 </code></pre></div>
 <p>If everything is working correctly, you should get an red underline on "foo" telling you about the access of a nonexistent variable.</p>
 
