@@ -119,7 +119,7 @@ nav:
           - manual/tutorials/how-to-use.md
           - manual/tutorials/how-to-use-with-docker.md
           - Editor Integration:
-              - manual/tutorials/editors/clangd.md
+              - manual/tutorials/editors/editors.md
               - manual/tutorials/editors/vscode.md
 
   - Compiler:

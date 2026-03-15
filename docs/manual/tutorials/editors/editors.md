@@ -1,4 +1,4 @@
-# Editor Integrations
+# Overview
 
 SCALE provides a version of [`clangd`](https://clangd.llvm.org/) that
 understands nvcc-dialect CUDA, inline PTX, and provides other CUDA-specific

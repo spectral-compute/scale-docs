@@ -38,7 +38,7 @@ SCALE accepts all C++ features supported by the version of Clang is is based on
 (currently {{current_llvm_version}}). Clang maintains an exhaustive list of which
 versions support which C++ features [here](https://clang.llvm.org/cxx_status.html).
 
-As of SCALE 1.6.0, all of C++23 and much of C++26 is supported.
+As of SCALE 1.6.1, all of C++23 and much of C++26 is supported.
 
 ### Better lambda support
 

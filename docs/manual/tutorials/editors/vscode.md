@@ -1,4 +1,4 @@
-# VSCode Integration
+# VSCode Tutorial
 
 SCALE's compiler can be connected to VSCode, giving you access to our
 high-quality CUDA diagnostics directly in your editor.
