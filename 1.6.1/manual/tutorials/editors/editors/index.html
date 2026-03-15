@@ -11,6 +11,10 @@
         <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/tutorials/editors/editors/">
       
       
+        <link rel="prev" href="../../how-to-use-with-docker/">
+      
+      
+        <link rel="next" href="../vscode/">
       
       
       <link rel="icon" href="../../../../favicon.ico">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Editor Integrations - SCALE Documentation</title>
+        <title>Overview - SCALE Documentation</title>
       
     
     
@@ -144,7 +148,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#editor-integrations" class="md-skip">
+        <a href="#overview" class="md-skip">
           Skip to content
         </a>
       
@@ -183,7 +187,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Editor Integrations
+              Overview
             
           </span>
         </div>
@@ -329,8 +333,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -340,11 +346,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
@@ -359,7 +365,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             Get Started
@@ -392,6 +398,8 @@
                 
   
   
+    
+  
   
   
     
@@ -400,11 +408,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
@@ -419,7 +427,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2">
             <span class="md-nav__icon md-icon"></span>
             Develop With SCALE
@@ -474,6 +482,8 @@
                 
   
   
+    
+  
   
   
     
@@ -482,11 +492,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2_3" checked>
         
           
           <label class="md-nav__link" for="__nav_2_2_3" id="__nav_2_2_3_label" tabindex="0">
@@ -501,7 +511,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_2_2_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_2_3">
             <span class="md-nav__icon md-icon"></span>
             Editor Integration
@@ -512,19 +522,29 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../clangd.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    None
+    Overview
     
   </span>
   
 
       </a>
+      
     </li>
   
 
@@ -541,7 +561,7 @@
         
   
   <span class="md-ellipsis">
-    VSCode Integration
+    VSCode Tutorial
     
   </span>
   
@@ -1253,7 +1273,7 @@
         
   
   <span class="md-ellipsis">
-    Release 1.6.0 (2026-03-13)
+    Release 1.6.1 (2026-03-13)
     
   </span>
   
@@ -1737,7 +1757,7 @@
 
 
 
-<h1 id="editor-integrations">Editor Integrations<a class="headerlink" href="#editor-integrations" title="Permanent link">#</a></h1>
+<h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h1>
 <p>SCALE provides a version of <a href="https://clangd.llvm.org/"><code>clangd</code></a> that
 understands nvcc-dialect CUDA, inline PTX, and provides other CUDA-specific
 features.</p>
@@ -1807,6 +1827,44 @@ of the mnaual.</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../../how-to-use-with-docker/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Use SCALE with Docker">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Use SCALE with Docker
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../vscode/" class="md-footer__link md-footer__link--next" aria-label="Next: VSCode Tutorial">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                VSCode Tutorial
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
