@@ -9,8 +9,8 @@ You can read more about (some of) the specific differences in
 unironically notes "This section is painful, hopefully you can skip it and
 live your life blisfully unaware".
 
-Many CUDA programs are written with `nvcc` in mind andcannot be successfully
-compiled with `clang` because they depend on one of these quirks.
+Many CUDA programs are written with `nvcc` in mind and cannot be successfully
+compiled with `clang` because they depend on one of these differences.
 
 HIP experiences the same problem: the HIP compiler is based on LLVM, so HIP
 is closer to "LLVM-dialect CUDA" than it is to "nvcc-dialect CUDA". This
@@ -54,9 +54,6 @@ It also renders the metaprogramming using NVIDIA CUDA's Extended Lambda Type Tra
 
 If SCALE finds that an unannotated lambda can neither be `__host__` nor `__device__`, an error is raised.
 Otherwise, if SCALE finds any contradictions with the detected sidedness, errors will be raised at sites that attempt to call the lambda and provides a `note:` that explains what makes the lambda `__host__`-only or `__device__`-only.
-
-TODO: example
-
 
 ### Structs in PTX
 
