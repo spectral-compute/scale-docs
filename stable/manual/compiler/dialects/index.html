@@ -1922,8 +1922,8 @@ compiling CUDA, it supports a somewhat different dialect compared to <code>nvcc<
 <a href="https://llvm.org/docs/CompileCudaWithLLVM.html#dialect-differences-between-clang-and-nvcc">the LLVM manual page about it</a>. The LLVM manual
 unironically notes "This section is painful, hopefully you can skip it and
 live your life blisfully unaware".</p>
-<p>Many CUDA programs are written with <code>nvcc</code> in mind andcannot be successfully
-compiled with <code>clang</code> because they depend on one of these quirks.</p>
+<p>Many CUDA programs are written with <code>nvcc</code> in mind and cannot be successfully
+compiled with <code>clang</code> because they depend on one of these differences.</p>
 <p>HIP experiences the same problem: the HIP compiler is based on LLVM, so HIP
 is closer to "LLVM-dialect CUDA" than it is to "nvcc-dialect CUDA". This
 causes some CUDA programs to fail in "interesting" ways when ported to HIP. It's
@@ -1956,7 +1956,6 @@ This behaviour is compatible with NVIDIA's <code>nvcc</code>, makes lambdas more
 It also renders the metaprogramming using NVIDIA CUDA's Extended Lambda Type Traits redundant.</p>
 <p>If SCALE finds that an unannotated lambda can neither be <code>__host__</code> nor <code>__device__</code>, an error is raised.
 Otherwise, if SCALE finds any contradictions with the detected sidedness, errors will be raised at sites that attempt to call the lambda and provides a <code>note:</code> that explains what makes the lambda <code>__host__</code>-only or <code>__device__</code>-only.</p>
-<p>TODO: example</p>
 <h3 id="structs-in-ptx">Structs in PTX<a class="headerlink" href="#structs-in-ptx" title="Permanent link">#</a></h3>
 <p>Some common NVIDIA CUDA types are represented as <code>struct</code>s, which makes it difficult to use them with inline PTX with NVIDIA's <code>nvcc</code>.
 For types like <code>__half</code> and <code>__half2</code>, <code>reinterpret_cast</code>s have to be used to supply them to and receive them from the <code>asm()</code> blocks.
