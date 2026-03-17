@@ -1773,11 +1773,13 @@
 <h2 id="managed-memory">Managed memory<a class="headerlink" href="#managed-memory" title="Permanent link">#</a></h2>
 <p>SCALE doesn't yet support the <code>__managed__</code> keyword, but managed memory may still be
 used via <code>cudaMallocManaged</code> and related APIs.</p>
-<p>If you're using managed memory, you probably want to:
-- Set the <code>SCALE_AMD_XNACK=1</code> environment variable.
-- Make proper use of <code>cudaMemPrefetchAsync</code> and <code>cudaMemAdvise</code>. These have a more
+<p>If you're using managed memory, you probably want to:</p>
+<ul>
+<li>Set the <code>SCALE_AMD_XNACK=1</code> environment variable.</li>
+<li>Make proper use of <code>cudaMemPrefetchAsync</code> and <code>cudaMemAdvise</code>. These have a more
   dramatic effect on performance on AMD than they do for NVIDIA (but are beneficial
-  on NVIDIA, too!).</p>
+  on NVIDIA, too!).</li>
+</ul>
 <p>SCALE's implementation of managed memory is typically much faster than HIP's.</p>
 <p>Enabling XNACK does not make every application faster: try it out and see.</p>
 <p>A more thorough explanation is in the next section.</p>
@@ -1794,27 +1796,33 @@ faster. This is useful for managed memory buffers which are read only rarely (eg
 lookup table where only a small fraction of the entries are ever used), but will be very
 slow for other access patterns.</p>
 <p>With XNACK disabled, managed memory is very similar to a pinned host buffer.</p>
-<p>Enabling XNACK has roughly these effects:
-- Pages will now be relocated when read from the "wrong side", as users typically expect
-  from managed memory.
-- Access to managed memory buffers from the "right side" will be slower.</p>
-<p>XNACK has the following properties:
-- Your BIOS settings must be exactly correct or it won't work at all (SVM and HMM enabled).
-- <em>Every</em> AMD GPU in your system must support XNACK. Merely having a non-XNACK GPU connected
-  is enough to make the kernel driver refuse to do it.
-- It does not work on every GPU. Most gfx9 devices are supported (including the MI-series
-  datacenter cards). It does not work at all on any gfx10/11 cards.
-- You can mix XNACK and non-XNACK processes on the same GPU, but you cannot mix XNACK and
-  non-XNACK behaviour within one process.</p>
+<p>Enabling XNACK has roughly these effects:</p>
+<ul>
+<li>Pages will now be relocated when read from the "wrong side", as users typically expect
+  from managed memory.</li>
+<li>Access to managed memory buffers from the "right side" will be slower.</li>
+</ul>
+<p>XNACK has the following properties:</p>
+<ul>
+<li>Your BIOS settings must be exactly correct or it won't work at all (SVM and HMM enabled).</li>
+<li><em>Every</em> AMD GPU in your system must support XNACK. Merely having a non-XNACK GPU connected
+  is enough to make the kernel driver refuse to do it.</li>
+<li>It does not work on every GPU. Most gfx9 devices are supported (including the MI-series
+  datacenter cards). It does not work at all on any gfx10/11 cards.</li>
+<li>You can mix XNACK and non-XNACK processes on the same GPU, but you cannot mix XNACK and
+  non-XNACK behaviour within one process.</li>
+</ul>
 <p>For even more information about XNACK, we found the following sources useful:</p>
 <ul>
 <li><a href="https://docs.olcf.ornl.gov/systems/crusher_quick_start_guide.html#enabling-gpu-page-migration">Oak Ridge Lab page on XNACK</a></li>
 <li><a href="https://niconiconi.neocities.org/tech-notes/xnack-on-amd-gpus">niconiconi's blog post about it</a>.</li>
 </ul>
-<p>Notes:
-- SCALE does not look for the <code>HSA_XNACK</code> environment variable.
-- SCALE does not require any compiler flags to enable XNACK: it's purely a runtime setting
-  driven by the environment variable.</p>
+<p>Notes:</p>
+<ul>
+<li>SCALE does not look for the <code>HSA_XNACK</code> environment variable.</li>
+<li>SCALE does not require any compiler flags to enable XNACK: it's purely a runtime setting
+  driven by the environment variable.</li>
+</ul>
 
 
 
