@@ -46,6 +46,12 @@ theme:
 plugins:
   - search
   - macros
+  - redirects:
+      redirect_maps:
+        'manual/how-to-install.md': 'manual/tutorials/how-to-install.md'
+        'manual/how-to-use.md': 'manual/tutorials/how-to-use.md'
+        'manual/how-to-use-with-docker.md': 'manual/tutorials/how-to-use-with-docker.md'
+        'manual/CHANGELOG.md': 'manual/changelogs/v1.6.1.md'
   - mike:
       canonical_version: latest
       alias_type: copy
