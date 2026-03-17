@@ -142,6 +142,7 @@ nav:
 
   - Runtime Library:
       - manual/library/overview.md
+      - manual/library/performance-tuning.md
       - CUDA APIs:
           - manual/library/runtime-extensions.md
           - manual/library/differences.md
