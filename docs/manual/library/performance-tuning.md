@@ -6,6 +6,7 @@ SCALE doesn't yet support the `__managed__` keyword, but managed memory may stil
 used via `cudaMallocManaged` and related APIs.
 
 If you're using managed memory, you probably want to:
+
 - Set the `SCALE_AMD_XNACK=1` environment variable.
 - Make proper use of `cudaMemPrefetchAsync` and `cudaMemAdvise`. These have a more
   dramatic effect on performance on AMD than they do for NVIDIA (but are beneficial
@@ -35,11 +36,13 @@ slow for other access patterns.
 With XNACK disabled, managed memory is very similar to a pinned host buffer.
 
 Enabling XNACK has roughly these effects:
+
 - Pages will now be relocated when read from the "wrong side", as users typically expect
   from managed memory.
 - Access to managed memory buffers from the "right side" will be slower.
 
 XNACK has the following properties:
+
 - Your BIOS settings must be exactly correct or it won't work at all (SVM and HMM enabled).
 - *Every* AMD GPU in your system must support XNACK. Merely having a non-XNACK GPU connected
   is enough to make the kernel driver refuse to do it.
@@ -54,6 +57,7 @@ For even more information about XNACK, we found the following sources useful:
 - [niconiconi's blog post about it](https://niconiconi.neocities.org/tech-notes/xnack-on-amd-gpus).
 
 Notes:
+
 - SCALE does not look for the `HSA_XNACK` environment variable.
 - SCALE does not require any compiler flags to enable XNACK: it's purely a runtime setting
   driven by the environment variable.
