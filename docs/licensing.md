@@ -1,83 +1,120 @@
 # SCALE Free License
 
 SCALE by Spectral Compute: Free Software License
-© 2025 Spectral Compute Ltd
+© 2026 Spectral Compute Ltd
 
 
-1. Introduction
-1.1 This software licence (“License”) sets out the terms and conditions which form a legally binding agreement between you and Spectral Compute Ltd, a company incorporated in England and Wales with company number 11448807 (“Spectral”) that apply to your use of the Software.
-1.2 Words which are defined in clause 2 below, will have the meaning given to them in clause 2 below.
-1.3 By downloading, installing and using the Software (including any new releases of the Software or any complete or partial copies of the Software), you agree to all of the terms  and conditions below.
-1.4 This License governs your use of the Software and the Documentation.
+## 1. Introduction
 
-2. Definitions
+**1.1.** This software licence (“License”) sets out the terms and conditions which form a legally binding agreement between you and Spectral Compute Ltd, a company incorporated in England and Wales with company number 11448807 (“Spectral”) that apply to your use of the Software.
+
+**1.2.** Words which are defined in *Clause 2* below, will have the meaning given to them in *Clause 2* below.
+
+**1.3.** By downloading, installing and using the Software (including any new releases of the Software or any complete or partial copies of the Software), you agree to all of the terms  and conditions below.
+
+**1.4.** This License governs your use of the Software and the Documentation.
+
+## 2. Definitions
+
 In this License the following terms have the following meanings:
-* “Additional Material” has the meaning given in clause 5 below.
-* “Documentation” means  any documentation, examples,  provided with the Software [including the materials at https://docs.scale-lang.com/stable/].
-* “Inputs” means any source code input by you into the Software during your use of the same.
-* “Intellectual Property Rights” means (a) patents, inventions, designs, copyright and related rights, database rights, knowhow, trade marks (whether registered or unregistered) and related goodwill, trade names (whether registered or unregistered), and rights to apply for registration; (b) all other rights of a similar nature or having an equivalent effect anywhere in the world which currently exist or are recognised in the future; and (c) all applications, extensions and renewals in relation to any such rights.
-* “License” is defined in clause 1 above.
-* “Outputs” means any compiled code produced by you through your use of the Software.
-* “Software” is SCALE by Spectral Compute together with any other software which Spectral has made available under these terms, including any portion of it, but excludes any Additional Software.
-* “you” or “your” refers to the individual or entity agreeing to these terms.
+
+* “*Additional Material*” has the meaning given in *Clause 5* below.
+* “*Documentation*” means  any documentation, examples,  provided with the Software [including the materials at https://docs.scale-lang.com/stable/](https://docs.scale-lang.com/stable/).
+* “*Inputs*” means any source code input by you into the Software during your use of the same.
+* “*Intellectual Property Rights*” means (a) patents, inventions, designs, copyright and related rights, database rights, knowhow, trade marks (whether registered or unregistered) and related goodwill, trade names (whether registered or unregistered), and rights to apply for registration; (b) all other rights of a similar nature or having an equivalent effect anywhere in the world which currently exist or are recognised in the future; and (c) all applications, extensions and renewals in relation to any such rights.
+* “*License*” is defined in *Clause 1* above.
+* “*Outputs*” means any compiled code produced by you through your use of the Software.
+* “*Software*” is SCALE by Spectral Compute together with any other software which Spectral has made available under these terms, including any portion of it, but excludes any Additional Software.
+* “*you*” or “*your*” refers to the individual or entity agreeing to these terms.
 
 
-3. Licenses
-3.1 Spectral grants to you a non-exclusive, royalty-free, worldwide, non-sublicensable, revocable license to use, copy, distribute, and make available, the Software, in each case subject to the limitations below.
-3.2 You grant to Spectral a royalty-free, worldwide, transferable, sub-licensable, irrevocable, perpetual license to use or incorporate into the Software and Documentation any enhancement requests, bug reports, or other feedback provided by you. For any feedback that you voluntarily provide, you hereby grant Spectral a perpetual, non-exclusive, worldwide, irrevocable license to use, reproduce, modify, license, sublicence and distribute it. Spectral will not be obliged to implement any such enhancement request or feedback.
+## 3. Licenses
 
-4. Limitations
-4.1 You may use the Software under this License only for non-commercial purposes. You may distribute the Software or any Outputs or provide it to others only if you do so free of charge for non-commercial purposes.
+**3.1.** Spectral grants to you a non-exclusive, royalty-free, worldwide, non-sublicensable, revocable license to use, copy, distribute, and make available, the Software, in each case subject to the limitations below.
+
+**3.2.** You grant to Spectral a royalty-free, worldwide, transferable, sub-licensable, irrevocable, perpetual license to use or incorporate into the Software and Documentation any enhancement requests, bug reports, or other feedback provided by you. For any feedback that you voluntarily provide, you hereby grant Spectral a perpetual, non-exclusive, worldwide, irrevocable license to use, reproduce, modify, license, sublicence and distribute it. Spectral will not be obliged to implement any such enhancement request or feedback.
+
+## 4. Limitations
+
+**4.1.** You may use the Software under this License only for non-commercial purposes. You may distribute the Software or any Outputs or provide it to others only if you do so free of charge for non-commercial purposes.
 For the purposes of this License, “non-commercial purposes” means use of the Software where you do not receive any monetary payment or benefit from a third party either (a) in connection with the use of the Software; or (b) in connection with any Outputs generated by the Software. For the avoidance of doubt, "non-commercial purposes" does not include any use where you:
+
    1. charge any fee for access to or use of the Software, or any services which you provide which involve your use of the Software;
    2. incorporate the Software into any paid-for product or service that you offer;
    3. use the Software to create Outputs that are sold, licensed, or otherwise provided in exchange for payment; or
    4. use the Software or Outputs in the course of any business or undertaking carried on for profit or monetary gain.
-4.2 You may not:
-1. alter, remove, or obscure any licensing, patent, copyright, or other notices of Spectral in the Software or the Documentation;
-2. reverse engineer, modify, de-compile, attempt to derive source code (or underlying ideas, algorithms, structure or organisation) of or to the Software, as applicable; or
-3. bypass or breach any security device or protection used for or contained in the Software.
+
+**4.2.** You may not:
+
+   1. alter, remove, or obscure any licensing, patent, copyright, or other notices of Spectral in the Software or the Documentation;
+   2. reverse engineer, modify, de-compile, attempt to derive source code (or underlying ideas, algorithms, structure or organisation) of or to the Software, as applicable; or
+   3. bypass or breach any security device or protection used for or contained in the Software.
 
 
-5. Intellectual Property Rights
-5.1 Spectral retains ownership of all rights, title and interest, including Intellectual Property Rights, in and to the Software (and any modifications) and the Documentation.
-5.2 The Software may be provided with or enable access to software, tools, libraries, data or other material which is either (a) provided by a third party; or (b) provided by Spectral on terms other than this License (“Additional Material”), and such Additional Material is provided outside of this Licence and subject to the terms imposed by Spectral or the relevant third party. You agree that you will comply with any such terms, which will be included together with the Software, normally in the NOTICES File provided with it and/or in the Documentation.
-5.3 You agree that, except as set out in this License, Spectral does not grant you any rights to, or in, the Software and/or the Documentation.
-5.4 You retain ownership of all rights, title and interest, including Intellectual Property Rights, in and to your Inputs and (subject to clause 5.1 above) Outputs, including any source code developed by you independent of this License.
+## 5. Intellectual Property Rights
 
-6. Notices and Attribution
-6.1 You must ensure that any person who receives a copy of the Software (or any part of it) from you also gets a copy of and complies with the terms of this License and the above copyright notice.
-6.2 In relation to any Outputs, you must: only provide such Outputs for non-commercial use (as defined in clause 4 above).
+**5.1.** Spectral retains ownership of all rights, title and interest, including Intellectual Property Rights, in and to the Software (and any modifications) and the Documentation.
 
-7. No Other Rights
-These terms do not imply any terms, conditions, warranties, licenses or provisions other than those expressly included in these terms.
-8. Disclaimers
-8.1 To the extent the law allows, Spectral does not represent, warrant or make any commitment that: (i) the Software will meet your requirements; (ii) the Software will operate in combination with other hardware or software; or (iii) use of the Software will be uninterrupted or error free.
-8.2 The Software is provided “as is” and the provisions of this License are in place of all warranties, conditions, terms, undertakings and obligations implied by statute, common law, custom, trade usage, course of dealing or otherwise, (including but not limited to implied undertakings of satisfactory quality, conformity with description and reasonable fitness for purpose) all of which are excluded to the maximum extent permitted by law.
-8.3 Open-source software components may be distributed, embedded, or bundled with the Software. Such open-source software is separately licensed by its copyright holder. Use of the open-source software must be in accordance with its applicable license terms. Spectral makes no representation, warranty or other commitment of any kind regarding such open-source software. Spectral offers no support for such open-source software and shall, as far as the law allows, have no liability associated with its use.
+**5.2.** The Software may be provided with or enable access to software, tools, libraries, data or other material which is either (a) provided by a third party; or (b) provided by Spectral on terms other than this License (“Additional Material”), and such Additional Material is provided outside of this Licence and subject to the terms imposed by Spectral or the relevant third party. You agree that you will comply with any such terms, which will be included together with the Software, normally in the NOTICES File provided with it and/or in the Documentation.
 
-9. Liability
-9.1 Nothing in this License shall exclude or limit the liability of either party to the other for:
-1. death or personal injury arising out of negligence;
-2. fraud or fraudulent misrepresentation; or
-3. any other liability that cannot be excluded or limited by law.
-9.2 The Software and Documentation is provided by Spectral ‘as is’ and any express or implied warranties, including but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. As far as the law allows, in no event shall Spectral be liable for any direct, indirect, incidental, special, exemplary or consequential damages (including but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) or misrepresentation (whether innocent or negligent), arising in any way out of the use of the Software, even if advised of the possibility of such damage.§
+**5.3.** You agree that, except as set out in this License, Spectral does not grant you any rights to, or in, the Software and/or the Documentation.
 
-10. Termination
-10.1 If you use the Software or Documentation in breach of these terms, Spectral may terminate this License immediately on notice to you.
-10.2 On termination of this License, you must immediately discontinue all use of the Software and Documentation and return to Spectral, or at Spectral’s option destroy, all copies of same.
-10.3 Termination of this License is without prejudice to any rights Spectral has against you, including but not limited to injunctive relief.
+**5.4.** You retain ownership of all rights, title and interest, including Intellectual Property Rights, in and to your Inputs and (subject to *Clause 5.1.* above) Outputs, including any source code developed by you independent of this License.
 
-11. Miscellaneous
-11.1 Spectral may make changes to this License from time to time. Please check these terms regularly to ensure that you understand the terms that apply at the time that you access and use the Software.
-11.2 Each of the clauses of this License operates separately. If any court or relevant authority decides that any of them are unlawful or unenforceable, the remaining clauses will remain in full force and effect.
-11.3 If Spectral fails to enforce any rights against you, or delays in doing so, that will not mean that such rights have been waived and will not mean that you do not have to comply with your obligations under this License.
+## 6. Notices and Attribution
 
-12. Governing law and jurisdiction
-12.1 This License is governed by the laws of England and Wales.  This means that your access to and use of the Software, and any dispute or claim arising out of or in connection therewith (including non-contractual disputes or claims), will be governed by English law.
-12.2 The courts of England and Wales shall have exclusive jurisdiction to settle any dispute or claim (including non-contractual disputes or claims) arising out of or in connection with this License or its subject matter or formation.
+**6.1.** You must ensure that any person who receives a copy of the Software (or any part of it) from you also gets a copy of and complies with the terms of this License and the above copyright notice.
 
-13. Survival.
-The termination of this License for any reason whatsoever shall not affect any survival or operation of the following clauses: 4 (Limitations), 5 (Intellectual Property Rights), 8 (Disclaimers), 9 (Liability), 11 (Miscellaneous) and 12 (Governing Law and Jurisdiction).
+**6.2.** In relation to any Outputs, you must: only provide such Outputs for non-commercial use (as defined in *Clause 4.* above).
 
-14. If you have any questions regarding this license, please contact us at legal@spectralcompute.co.uk.
+## 7. No Other Rights
+
+**7.1.** These terms do not imply any terms, conditions, warranties, licenses or provisions other than those expressly included in these terms.
+
+## 8. Disclaimers
+
+**8.1.** To the extent the law allows, Spectral does not represent, warrant or make any commitment that: (i) the Software will meet your requirements; (ii) the Software will operate in combination with other hardware or software; or (iii) use of the Software will be uninterrupted or error free.
+
+**8.2.** The Software is provided “as is” and the provisions of this License are in place of all warranties, conditions, terms, undertakings and obligations implied by statute, common law, custom, trade usage, course of dealing or otherwise, (including but not limited to implied undertakings of satisfactory quality, conformity with description and reasonable fitness for purpose) all of which are excluded to the maximum extent permitted by law.
+
+**8.3.** Open-source software components may be distributed, embedded, or bundled with the Software. Such open-source software is separately licensed by its copyright holder. Use of the open-source software must be in accordance with its applicable license terms. Spectral makes no representation, warranty or other commitment of any kind regarding such open-source software. Spectral offers no support for such open-source software and shall, as far as the law allows, have no liability associated with its use.
+
+## 9. Liability
+
+**9.1.** Nothing in this License shall exclude or limit the liability of either party to the other for:
+
+   1. death or personal injury arising out of negligence;
+   2. fraud or fraudulent misrepresentation; or
+   3. any other liability that cannot be excluded or limited by law.
+
+**9.2.** The Software and Documentation is provided by Spectral ‘as is’ and any express or implied warranties, including but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. As far as the law allows, in no event shall Spectral be liable for any direct, indirect, incidental, special, exemplary or consequential damages (including but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) or misrepresentation (whether innocent or negligent), arising in any way out of the use of the Software, even if advised of the possibility of such damage.
+
+## 10. Termination
+
+**10.1.** If you use the Software or Documentation in breach of these terms, Spectral may terminate this License immediately on notice to you.
+
+**10.2.** On termination of this License, you must immediately discontinue all use of the Software and Documentation and return to Spectral, or at Spectral’s option destroy, all copies of same.
+
+**10.3.** Termination of this License is without prejudice to any rights Spectral has against you, including but not limited to injunctive relief.
+
+## 11. Miscellaneous
+
+**11.1.** Spectral may make changes to this License from time to time. Please check these terms regularly to ensure that you understand the terms that apply at the time that you access and use the Software.
+
+**11.2.** Each of the Clauses of this License operates separately. If any court or relevant authority decides that any of them are unlawful or unenforceable, the remaining Clauses will remain in full force and effect.
+
+**11.3.** If Spectral fails to enforce any rights against you, or delays in doing so, that will not mean that such rights have been waived and will not mean that you do not have to comply with your obligations under this License.
+
+## 12. Governing law and jurisdiction
+
+**12.1.** This License is governed by the laws of England and Wales.  This means that your access to and use of the Software, and any dispute or claim arising out of or in connection therewith (including non-contractual disputes or claims), will be governed by English law.
+
+**12.2.** The courts of England and Wales shall have exclusive jurisdiction to settle any dispute or claim (including non-contractual disputes or claims) arising out of or in connection with this License or its subject matter or formation.
+
+## 13. Survival.
+
+**13.1.** The termination of this License for any reason whatsoever shall not affect any survival or operation of the following Clauses: *4 (Limitations)*, *5 (Intellectual Property Rights)*, *8 (Disclaimers)*, *9 (Liability)*, *11 (Miscellaneous)* and *12 (Governing Law and Jurisdiction)*.
+
+## 14. Contacts
+
+**14.1.** If you have any questions regarding this license, please contact us at [legal@spectralcompute.com](mailto:legal@spectralcompute.com).
