@@ -39,7 +39,7 @@ For AMD targets, SCALE also provides the CUDA runtime,
 driver, and math libraries. SCALE's implementations are often faster than HIP,
 and match the behaviour of the NVIDIA CUDA APIs more precisely.
 
-![Compilation Trajectories](./manual/imgs/OneFileThreeDestines.svg){ align=left }
+![Compilation Trajectories](./manual/imgs/OneFileThreeDestines.svg){ width="100%" }
 
 ## What projects have been tested?
 
