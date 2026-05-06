@@ -14,20 +14,20 @@ error code that the host program has to do something with.
 SCALE provides an environment variable to make any error from the CUDA API
 produce a observable result.
 
-Setting `SCALE_EXCEPTIONS=1` will cause all CUDA APIs to throw descriptive 
+Setting `SCALE_EXCEPTIONS=1` will cause all CUDA APIs to throw descriptive
 exceptions instead of returning C-style error codes.
 
 Setting `SCALE_EXCEPTIONS=2` will print the error messages to stderr, but not
 throw them. This is helpful for programs that deliberately create CUDA errors
 as part of their processing.
 
-In cases where CUDA APIs are expected to return a value other than 
-`cudaSuccess` during normal operation (such as `cudaStreamQuery()`, an 
+In cases where CUDA APIs are expected to return a value other than
+`cudaSuccess` during normal operation (such as `cudaStreamQuery()`, an
 exception will not be thrown except if an exceptional case arises.
 
 ## API Extensions
 
-Some of SCALE's API extensions require the `scale.h` header to be included. 
+Some of SCALE's API extensions require the `scale.h` header to be included.
 
 ### Programmatic Exception Enablement
 
@@ -53,3 +53,8 @@ if (e != cudaSuccess) {
 
 The error accessed by this API is the same one you'd get from using the CUDA
 API `cudaGetLastError()`, just more descriptive.
+
+## Graphics interop
+
+OpenGL interop requires `AMD_DEBUG=noexporteddcc` to be set in the GL process environment, so Mesa decompresses DCC on DMABUF export.
+Export it yourself if not using `scaleenv`.
