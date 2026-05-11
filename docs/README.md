@@ -99,6 +99,7 @@ Below is a list of currently supported GPU targets.
     | Compute Capability | LLVM Target | Example GPU |
     |--------------------|-------------|-------------|
     | 12.0               | `sm_120`, `sm_120a` | NVIDIA RTX PRO 6000 Blackwell, GeForce RTX 5090 |
+    | 10.3               | `sm_103`, `sm_103a`, `sm_103f` | NVIDIA GB300, NVIDIA B300 |
     | 10.1               | `sm_101`, `sm_101a` | NVIDIA B100 |
     | 10.0               | `sm_100`, `sm_100a` | NVIDIA B200 |
     | 9.0                | `sm_90`, `sm_90a`   | NVIDIA H200 |
