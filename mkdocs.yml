@@ -35,6 +35,7 @@ theme:
         name: Switch to light mode
   features:
     - navigation.sections
+    - navigation.indexes
     - navigation.top
     - navigation.footer
     - navigation.instant
@@ -127,7 +128,14 @@ markdown_extensions:
 
 
 nav:
-  - README.md
+  - SCALE by Spectral Compute:
+      - README.md
+      - manual/changelogs/whats-new.md
+      - manual/faq.md
+      - manual/comparison.md
+      - Contact Us:
+          - contact/report-a-bug.md
+          - contact/join-our-discord.md
 
   - Get Started:
       - manual/tutorials/how-to-install.md
@@ -164,14 +172,6 @@ nav:
               - manual/library/apidiff/api-runtime.md
 
       - manual/library/troubleshooting.md
-
-  - About SCALE:
-      - manual/changelogs/whats-new.md
-      - manual/faq.md
-      - manual/comparison.md
-      - Contact Us:
-          - contact/report-a-bug.md
-          - contact/join-our-discord.md
 
   - Legal:
       - licensing.md
