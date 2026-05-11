@@ -51,7 +51,17 @@ plugins:
         'manual/how-to-install.md': 'manual/tutorials/how-to-install.md'
         'manual/how-to-use.md': 'manual/tutorials/how-to-use.md'
         'manual/how-to-use-with-docker.md': 'manual/tutorials/how-to-use-with-docker.md'
-        'manual/CHANGELOG.md': 'manual/changelogs/v1.6.1.md'
+        'manual/CHANGELOG.md': 'manual/changelogs/whats-new.md'
+        'manual/changelogs/v1.6.1.md': 'manual/changelogs/whats-new.md#release-161-2026-03-13'
+        'manual/changelogs/v1.5.1.md': 'manual/changelogs/whats-new.md#release-151-2026-02-03'
+        'manual/changelogs/v1.5.0.md': 'manual/changelogs/whats-new.md#release-150-2025-11-15'
+        'manual/changelogs/v1.4.2.md': 'manual/changelogs/whats-new.md#release-142-2025-09-19'
+        'manual/changelogs/v1.3.1.md': 'manual/changelogs/whats-new.md#release-131-2025-05-12'
+        'manual/changelogs/v1.3.0.md': 'manual/changelogs/whats-new.md#release-130-2025-04-23'
+        'manual/changelogs/v1.2.0.md': 'manual/changelogs/whats-new.md#release-120-2024-11-27'
+        'manual/changelogs/v1.1.0.md': 'manual/changelogs/whats-new.md#release-110-2024-10-31'
+        'manual/changelogs/v1.0.2.md': 'manual/changelogs/whats-new.md#release-102-2024-09-05'
+        'manual/changelogs/v1.0.1.md': 'manual/changelogs/whats-new.md#release-101-2024-07-24'
   - mike:
       canonical_version: latest
       alias_type: copy
@@ -156,17 +166,7 @@ nav:
       - manual/library/troubleshooting.md
 
   - About SCALE:
-      - What's New?:
-          - manual/changelogs/v1.6.1.md
-          - manual/changelogs/v1.5.1.md
-          - manual/changelogs/v1.5.0.md
-          - manual/changelogs/v1.4.2.md
-          - manual/changelogs/v1.3.1.md
-          - manual/changelogs/v1.3.0.md
-          - manual/changelogs/v1.2.0.md
-          - manual/changelogs/v1.1.0.md
-          - manual/changelogs/v1.0.2.md
-          - manual/changelogs/v1.0.1.md
+      - manual/changelogs/whats-new.md
       - manual/faq.md
       - manual/comparison.md
       - Contact Us:
