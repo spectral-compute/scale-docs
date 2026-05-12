@@ -167,9 +167,9 @@ nav:
 
           - Implemented APIs:
               - manual/library/apidiff/apis.md
-              - manual/library/apidiff/api-driver.md
-              - manual/library/apidiff/api-math.md
-              - manual/library/apidiff/api-runtime.md
+              - manual/library/apidiff/driver-api.md
+              - manual/library/apidiff/math-api.md
+              - manual/library/apidiff/runtime-api.md
 
       - manual/library/troubleshooting.md
 

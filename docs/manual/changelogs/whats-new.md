@@ -1,5 +1,50 @@
 # What's New
 
+## Release 1.7.0 (2026-05-12)
+
+### Compiler
+
+- Significant improvements to nvcc semantics emulation.
+- `-save-temps` no longer breaks compilation.
+- Fixed many compiler crashes in the presence of invalid code.
+- Support for `__managed__` keyword.
+- Compiler is now built with `RPATH` not `RUNPATH`, preventing strange crashes on systems with unusual library search path configurations.
+- Improvements to optimisation of host-side of CUDA translation units
+- Improvements to performance of device-side memory operations, particularly atomics.
+- Fix occasional miscompilation of kernels that have `__launch_bounds__`.
+- Fix issues with subtle symbol emissions rules which led to missing device symbols in some projects.
+- Enable the `shfl` optimiser for NVIDIA mode, too (pattern-matching shufle sequences onto `redux`, etc.)
+- `-fdeclspec` is no longer implicitly enabled in NVIDIA mode.
+- Newly-supported NVCC flag: `--keep-device-functions`
+
+### PTX Support
+
+- Fixed compiler crashes when compiling `atom` and `red` instructions.
+- Fix a compiler crash when using certain constraint letters with empty inline PTX asm blocks in AMD mode. Apparently people do that?
+- Added support for `bar.sync X, Y` on all architectures.
+
+### Library
+
+- Fix bug in `cooperative_groups` reduce function.
+- Managed memory is now *much* faster on XNACK-compatible devices (when `SCALE_AMD_XNACK` is enabled).
+- Small performance improvements to almost every API.
+- Improved error messages for certain common screwups, such as building for the wrong architecture.
+- `__bf16` is no longer corrupted when implicitly converted to `__nv_bfloat16_raw`.
+- `cudaMemPrefetchAsync` now works correctly when targeting the host on multi-CPU systems.
+- Add undocumented `__isnan()` and `__assertfail()` device functions.
+- OpenGL Interop support
+- More Graph API support (child graphs, etc.).
+- Fix miscalculation of SGPR occupancy leading to reduced performance.
+- GPU-side assert fails now produce the proper CUDA error code at the next sync point.
+- Fixed a bug where CUDA graphs with converging dependency edges would sometimes fail to launch.
+- Device-side printf now accepts host pointers as operands to `%s`.
+- Memory allocated with `cudaMallocHost` is now visible to all devices by default.
+- Kernel launches no longer fail when an uninitialised GPU is present (but not being used).
+- Add missing `htanh(__bfloat16)` function.
+- Added cublasLt.
+- Lots more cusparse, cusolver APIs
+- Lots more cuda apis (list being calculated)
+
 ## Release 1.6.1 (2026-03-13)
 
 ### Supported architectures

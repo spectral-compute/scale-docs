@@ -41,7 +41,7 @@ source /opt/scale/bin/scaleenv gfx1201
 source /opt/scale/bin/scaleenv sm_89
 ```
 
-You can exit a `scaleenv` by typing `deactivate` or closing your terminal. Scaleenv is
+You can exit a `scaleenv` by typing `scaleenv deactivate` or closing your terminal. Scaleenv is
 the build method we use for [scale-validation](https://github.com/spectral-compute/scale-validation), where we test various open-source CUDA projects.
 
 !!! tip

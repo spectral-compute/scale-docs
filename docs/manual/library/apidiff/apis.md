@@ -10,9 +10,9 @@ When compiling for NVIDIA GPUs, NVIDIA's own libraries are used. In that
 case, you'll have access to the same set of APIs as are provided by that
 version of the NVIDIA CUDA Toolkit.
 
-- [Driver API](./api-driver.md)
-- [Math API](./api-math.md)
-- [Runtime API](./api-runtime.md)
+- [Driver API](./driver-api.md)
+- [Math API](./math-api.md)
+- [Runtime API](./runtime-api.md)
 
 The lists are based on the official Nvidia documentation and use the same layout.
 
