@@ -20,7 +20,7 @@ Examples of what SCALE can be used for:
 - [Provide valuable compiler diagnostics](./manual/compiler/diagnostic-reference.md),
   helping you spot problems early.
 - [IDE integration](./manual/tutorials/editors/vscode.md) that properly understands CUDA.
-- Improve the perforance of CUDA programs on NVIDIA GPUs (sometimes).
+- Improve the performance of CUDA programs on NVIDIA GPUs (sometimes).
 
 ## How does it work?
 
