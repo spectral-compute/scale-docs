@@ -9,7 +9,7 @@ Instead of porting programs away from CUDA, SCALE offers a vendor-neutral platfo
 that allows users to keep their existing codebases without compromising on performance
 or developer productivity.
 
-SCALE is in active development. [Get in touch](./contact/join-our-discord.md) if the wheels fall off.
+Any questions, suggestions, or bug reports? [Join our community](./contact/join-our-discord.md) and talk with our dev team directly.
 
 ## What can SCALE do?
 
