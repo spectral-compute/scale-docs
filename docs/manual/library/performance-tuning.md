@@ -9,11 +9,9 @@ If you're using managed memory, you probably want to:
   dramatic effect on performance on AMD than they do for NVIDIA (but are beneficial
   on NVIDIA, too!).
 
-SCALE's implementation of managed memory is typically much faster than HIP's.
+SCALE's implementation of managed memory is [typically much faster than HIP's](https://gist.github.com/ChrisKitching/53d9b3503c11881c5ea395ec41aff419).
 
 Enabling XNACK does not make every application faster: try it out and see.
-
-A more thorough explanation is in the next section.
 
 ### XNACK on AMD GPUs
 
