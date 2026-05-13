@@ -2,9 +2,6 @@
 
 ## Managed memory
 
-SCALE doesn't yet support the `__managed__` keyword, but managed memory may still be
-used via `cudaMallocManaged` and related APIs.
-
 If you're using managed memory, you probably want to:
 
 - Set the `SCALE_AMD_XNACK=1` environment variable.
