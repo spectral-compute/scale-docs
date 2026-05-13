@@ -1705,8 +1705,6 @@
 
 <h1 id="performance-tuning-guide">Performance Tuning Guide<a class="headerlink" href="#performance-tuning-guide" title="Permanent link">#</a></h1>
 <h2 id="managed-memory">Managed memory<a class="headerlink" href="#managed-memory" title="Permanent link">#</a></h2>
-<p>SCALE doesn't yet support the <code>__managed__</code> keyword, but managed memory may still be
-used via <code>cudaMallocManaged</code> and related APIs.</p>
 <p>If you're using managed memory, you probably want to:</p>
 <ul>
 <li>Set the <code>SCALE_AMD_XNACK=1</code> environment variable.</li>
@@ -1714,9 +1712,8 @@ used via <code>cudaMallocManaged</code> and related APIs.</p>
   dramatic effect on performance on AMD than they do for NVIDIA (but are beneficial
   on NVIDIA, too!).</li>
 </ul>
-<p>SCALE's implementation of managed memory is typically much faster than HIP's.</p>
+<p>SCALE's implementation of managed memory is <a href="https://gist.github.com/ChrisKitching/53d9b3503c11881c5ea395ec41aff419">typically much faster than HIP's</a>.</p>
 <p>Enabling XNACK does not make every application faster: try it out and see.</p>
-<p>A more thorough explanation is in the next section.</p>
 <h3 id="xnack-on-amd-gpus">XNACK on AMD GPUs<a class="headerlink" href="#xnack-on-amd-gpus" title="Permanent link">#</a></h3>
 <p>The underlying hardware feature for page relocation works quite differently on NVIDIA
 vs. AMD GPUs. In NVIDIA's implementation, merely allocating a managed memory buffer is
