@@ -26,14 +26,14 @@
   {
     "version": "1.7.0",
     "title": "1.7.0",
-    "aliases": []
+    "aliases": [
+      "stable"
+    ]
   },
   {
     "version": "1.6.1",
     "title": "1.6.1",
-    "aliases": [
-      "stable"
-    ],
+    "aliases": [],
     "properties": {
       "hidden": false
     }
