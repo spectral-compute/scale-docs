@@ -1,5 +1,45 @@
 # What's New
 
+## Release 1.7.1 (2026-06-01)
+
+Primarily a library update, fixing many bugs in the graph API
+and introducing many previously-missing APIs.
+
+### Platform
+
+- Updated bundled rocm math libraries to vesion 7.2.3
+- Updated bundled cccl version to 2.8.2
+
+### Library
+
+- Added CUDA Logging API.
+- Added stream-ordered memory allocator (mempool) APIs.
+- Added CUDA User Object APIs.
+- `CUDA_LOG_FILE` and `CUDA_LAUNCH_BLOCKING` environment variables now supported.
+- Graph API: added node enable/disable
+- Graph API: fixed bugs causing incorrect graph topologies during multi-
+  stream recording.
+- Graph API: added support for external event nodes.
+- Graph API: dot-debug printer now prints much more information.
+- Many other graph API bugs fixed.
+- Expanded cusolver/cusparse API support
+- Fixed bug in bf16 `rint()`.
+- Fixed an issue where extra overloads of `isinf()`/`isinan()` were provided,
+  causing some programs to pick the wrong one during overload resolution.
+- Device-side assert failures now print to stderr, not stdout.
+- Printf buffer is now flushed in more cases, matching nvidia's behaviour.
+- Added `h2tanh(__bfloat162)`.
+- Added `cuCtxWait/RecordEvent()`.
+- Added some `mbarrier` APIs.
+
+See [apidiffs](../library/apidiff/apis.md) for updated API compatibility status.
+
+### Compiler
+
+- New PTX instruction: `mbarrier`.
+- Support for `-Xptxas -gpu-name`.
+- `compiler-rt` is now bundled.
+
 ## Release 1.7.0 (2026-05-12)
 
 ### Compiler

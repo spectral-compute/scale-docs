@@ -83,8 +83,8 @@ versions of the NVIDIA CUDA Driver API.
     -enum CUeglResourceLocationFlags
     enum CUevent_flags
     enum CUevent_record_flags
-    -enum CUevent_sched_flags
-    -enum CUevent_wait_flags
+    enum CUevent_sched_flags
+    enum CUevent_wait_flags
     enum CUexecAffinityType
     -enum CUexternalMemoryHandleType
     -enum CUexternalSemaphoreHandleType
@@ -94,12 +94,12 @@ versions of the NVIDIA CUDA Driver API.
     -enum CUflushGPUDirectRDMAWritesTarget
     enum CUfunc_cache
     enum CUfunction_attribute
-    -enum CUgraphChildGraphNodeOwnership
+    enum CUgraphChildGraphNodeOwnership
     -enum CUgraphConditionalNodeType
-    -enum CUgraphDebugDot_flags
+    enum CUgraphDebugDot_flags
     -enum CUgraphDependencyType
     enum CUgraphExecUpdateResult
-    -enum CUgraphInstantiateResult
+    enum CUgraphInstantiateResult
     enum CUgraphInstantiate_flags
     enum CUgraphNodeType
     enum CUgraphicsMapResourceFlags
@@ -154,8 +154,8 @@ versions of the NVIDIA CUDA Driver API.
     enum CUtensorMapInterleave
     enum CUtensorMapL2promotion
     enum CUtensorMapSwizzle
-    -enum CUuserObjectRetain_flags
-    -enum CUuserObject_flags
+    enum CUuserObjectRetain_flags
+    enum CUuserObject_flags
     -enum cl_context_flags
     -enum cl_event_flags
     -struct CUDA_ARRAY3D_DESCRIPTOR_v2
@@ -163,10 +163,10 @@ versions of the NVIDIA CUDA Driver API.
     -struct CUDA_ARRAY_MEMORY_REQUIREMENTS_v1
     -struct CUDA_ARRAY_SPARSE_PROPERTIES_v1
     -struct CUDA_BATCH_MEM_OP_NODE_PARAMS_v2
-    -struct CUDA_CHILD_GRAPH_NODE_PARAMS
+    struct CUDA_CHILD_GRAPH_NODE_PARAMS
     -struct CUDA_CONDITIONAL_NODE_PARAMS
-    -struct CUDA_EVENT_RECORD_NODE_PARAMS
-    -struct CUDA_EVENT_WAIT_NODE_PARAMS
+    struct CUDA_EVENT_RECORD_NODE_PARAMS
+    struct CUDA_EVENT_WAIT_NODE_PARAMS
     -struct CUDA_EXTERNAL_MEMORY_BUFFER_DESC_v1
     -struct CUDA_EXTERNAL_MEMORY_HANDLE_DESC_v1
     -struct CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC_v1
@@ -177,17 +177,17 @@ versions of the NVIDIA CUDA Driver API.
     -struct CUDA_EXT_SEM_SIGNAL_NODE_PARAMS_v2
     -struct CUDA_EXT_SEM_WAIT_NODE_PARAMS_v1
     -struct CUDA_EXT_SEM_WAIT_NODE_PARAMS_v2
-    -struct CUDA_GRAPH_INSTANTIATE_PARAMS
+    struct CUDA_GRAPH_INSTANTIATE_PARAMS
     struct CUDA_HOST_NODE_PARAMS_v1
     struct CUDA_HOST_NODE_PARAMS_v2
     struct CUDA_KERNEL_NODE_PARAMS_v1
     struct CUDA_KERNEL_NODE_PARAMS_v2
-    -struct CUDA_KERNEL_NODE_PARAMS_v3
+    struct CUDA_KERNEL_NODE_PARAMS_v3
     -struct CUDA_LAUNCH_PARAMS_v1
     struct CUDA_MEMCPY2D_v2
     -struct CUDA_MEMCPY3D_PEER_v1
     struct CUDA_MEMCPY3D_v2
-    -struct CUDA_MEMCPY_NODE_PARAMS
+    struct CUDA_MEMCPY_NODE_PARAMS
     struct CUDA_MEMSET_NODE_PARAMS_v1
     struct CUDA_MEMSET_NODE_PARAMS_v2
     -struct CUDA_MEM_ALLOC_NODE_PARAMS_v1
@@ -210,10 +210,10 @@ versions of the NVIDIA CUDA Driver API.
     -struct CUeglFrame_v1
     struct CUexecAffinityParam_v1
     struct CUexecAffinitySmCount_v1
-    -struct CUextent3D_v1
+    struct CUextent3D_v1
     struct CUgraphEdgeData
     struct CUgraphExecUpdateResultInfo_v1
-    -struct CUgraphNodeParams
+    struct CUgraphNodeParams
     struct CUipcEventHandle_v1
     struct CUipcMemHandle_v1
     struct CUlaunchAttribute
@@ -229,7 +229,7 @@ versions of the NVIDIA CUDA Driver API.
     -struct CUmemcpy3DOperand_v1
     struct CUmemcpyAttributes_v1
     struct CUmulticastObjectProp_v1
-    -struct CUoffset3D_v1
+    struct CUoffset3D_v1
     -union CUstreamBatchMemOpParams_v1
     struct CUtensorMap
     typedef CUarray_st * CUarray;
@@ -260,14 +260,14 @@ versions of the NVIDIA CUDA Driver API.
     typedef CUmod_st * CUmodule;
     typedef size_t(* CUoccupancyB2DSize)(int blockSize);
     typedef CUstream_st * CUstream;
-    -typedef void(* CUstreamCallback)(CUstream hStream, CUresult status, void* userData);
+    typedef void(* CUstreamCallback)(CUstream hStream, CUresult status, void* userData);
     -typedef CUsurfObject_v1 CUsurfObject;
     -typedef unsigned long long CUsurfObject_v1;
     -typedef CUsurfref_st * CUsurfref;
     typedef CUtexObject_v1 CUtexObject;
     typedef unsigned long long CUtexObject_v1;
     typedef CUtexref_st * CUtexref;
-    -typedef CUuserObject_st * CUuserObject;
+    typedef CUuserObject_st * CUuserObject;
     ```
     ## [6.2. Error Handling](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-driver-api/group__CUDA__ERROR.html#group__CUDA__ERROR)
     ```diff
@@ -287,16 +287,16 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuDeviceGet(CUdevice* device, int ordinal);
     CUresult cuDeviceGetAttribute(int* pi, CUdevice_attribute attrib, CUdevice dev);
     CUresult cuDeviceGetCount(int* count);
-    -CUresult cuDeviceGetDefaultMemPool(CUmemoryPool* pool_out, CUdevice dev);
+    CUresult cuDeviceGetDefaultMemPool(CUmemoryPool* pool_out, CUdevice dev);
     CUresult cuDeviceGetExecAffinitySupport(int* pi, CUexecAffinityType type, CUdevice dev);
     CUresult cuDeviceGetLuid(char* luid, unsigned int* deviceNodeMask, CUdevice dev);
-    -CUresult cuDeviceGetMemPool(CUmemoryPool* pool, CUdevice dev);
+    CUresult cuDeviceGetMemPool(CUmemoryPool* pool, CUdevice dev);
     CUresult cuDeviceGetName(char* name, int len, CUdevice dev);
     -CUresult cuDeviceGetNvSciSyncAttributes(void* nvSciSyncAttrList, CUdevice dev, int flags);
     -CUresult cuDeviceGetTexture1DLinearMaxWidth(size_t* maxWidthInElements, CUarray_format format, unsigned numChannels, CUdevice dev);
     CUresult cuDeviceGetUuid(CUuuid* uuid, CUdevice dev);
     CUresult cuDeviceGetUuid_v2(CUuuid* uuid, CUdevice dev);
-    -CUresult cuDeviceSetMemPool(CUdevice dev, CUmemoryPool pool);
+    CUresult cuDeviceSetMemPool(CUdevice dev, CUmemoryPool pool);
     CUresult cuDeviceTotalMem(size_t* bytes, CUdevice dev);
     -CUresult cuFlushGPUDirectRDMAWrites(CUflushGPUDirectRDMAWritesTarget target, CUflushGPUDirectRDMAWritesScope scope);
     ```
@@ -330,7 +330,7 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuCtxGetStreamPriorityRange(int* leastPriority, int* greatestPriority);
     CUresult cuCtxPopCurrent(CUcontext* pctx);
     CUresult cuCtxPushCurrent(CUcontext ctx);
-    -CUresult cuCtxRecordEvent(CUcontext hCtx, CUevent hEvent);
+    CUresult cuCtxRecordEvent(CUcontext hCtx, CUevent hEvent);
     CUresult cuCtxResetPersistingL2Cache(void);
     CUresult cuCtxSetCacheConfig(CUfunc_cache config);
     CUresult cuCtxSetCurrent(CUcontext ctx);
@@ -395,7 +395,7 @@ versions of the NVIDIA CUDA Driver API.
     -enum CUmemDecompressAlgorithm
     -struct CUmemDecompressParams
     CUresult cuArray3DCreate(CUarray* pHandle, const CUDA_ARRAY3D_DESCRIPTOR* pAllocateArray);
-    -CUresult cuArray3DGetDescriptor(CUDA_ARRAY3D_DESCRIPTOR* pArrayDescriptor, CUarray hArray);
+    CUresult cuArray3DGetDescriptor(CUDA_ARRAY3D_DESCRIPTOR* pArrayDescriptor, CUarray hArray);
     CUresult cuArrayCreate(CUarray* pHandle, const CUDA_ARRAY_DESCRIPTOR* pAllocateArray);
     CUresult cuArrayDestroy(CUarray hArray);
     CUresult cuArrayGetDescriptor(CUDA_ARRAY_DESCRIPTOR* pArrayDescriptor, CUarray hArray);
@@ -490,26 +490,26 @@ versions of the NVIDIA CUDA Driver API.
     ## [6.15. Stream Ordered Memory Allocator](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-driver-api/group__CUDA__MALLOC__ASYNC.html#group__CUDA__MALLOC__ASYNC)
     ```diff
     CUresult cuMemAllocAsync(CUdeviceptr* dptr, size_t bytesize, CUstream hStream);
-    -CUresult cuMemAllocFromPoolAsync(CUdeviceptr* dptr, size_t bytesize, CUmemoryPool pool, CUstream hStream);
+    CUresult cuMemAllocFromPoolAsync(CUdeviceptr* dptr, size_t bytesize, CUmemoryPool pool, CUstream hStream);
     CUresult cuMemFreeAsync(CUdeviceptr dptr, CUstream hStream);
-    -CUresult cuMemPoolCreate(CUmemoryPool* pool, const CUmemPoolProps* poolProps);
-    -CUresult cuMemPoolDestroy(CUmemoryPool pool);
+    CUresult cuMemPoolCreate(CUmemoryPool* pool, const CUmemPoolProps* poolProps);
+    CUresult cuMemPoolDestroy(CUmemoryPool pool);
     -CUresult cuMemPoolExportPointer(CUmemPoolPtrExportData* shareData_out, CUdeviceptr ptr);
     -CUresult cuMemPoolExportToShareableHandle(void* handle_out, CUmemoryPool pool, CUmemAllocationHandleType handleType, unsigned long long flags);
     CUresult cuMemPoolGetAccess(CUmemAccess_flags* flags, CUmemoryPool memPool, CUmemLocation* location);
-    -CUresult cuMemPoolGetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
+    CUresult cuMemPoolGetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
     -CUresult cuMemPoolImportFromShareableHandle(CUmemoryPool* pool_out, void* handle, CUmemAllocationHandleType handleType, unsigned long long flags);
     -CUresult cuMemPoolImportPointer(CUdeviceptr* ptr_out, CUmemoryPool pool, CUmemPoolPtrExportData* shareData);
-    -CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc* map, size_t count);
-    -CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
-    -CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep);
+    CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc* map, size_t count);
+    CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
+    CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep);
     ```
     ## [6.16. Multicast Object Management](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-driver-api/group__CUDA__MULTICAST.html#group__CUDA__MULTICAST)
     ```diff
-    CUresult cuMulticastAddDevice(CUmemGenericAllocationHandle mcHandle, CUdevice dev);
+    -CUresult cuMulticastAddDevice(CUmemGenericAllocationHandle mcHandle, CUdevice dev);
     -CUresult cuMulticastBindAddr(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUdeviceptr memptr, size_t size, unsigned long long flags);
-    CUresult cuMulticastBindMem(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUmemGenericAllocationHandle memHandle, size_t memOffset, size_t size, unsigned long long flags);
-    CUresult cuMulticastCreate(CUmemGenericAllocationHandle* mcHandle, const CUmulticastObjectProp* prop);
+    -CUresult cuMulticastBindMem(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUmemGenericAllocationHandle memHandle, size_t memOffset, size_t size, unsigned long long flags);
+    -CUresult cuMulticastCreate(CUmemGenericAllocationHandle* mcHandle, const CUmulticastObjectProp* prop);
     -CUresult cuMulticastGetGranularity(size_t* granularity, const CUmulticastObjectProp* prop, CUmulticastGranularity_flags option);
     -CUresult cuMulticastUnbind(CUmemGenericAllocationHandle mcHandle, CUdevice dev, size_t mcOffset, size_t size);
     ```
@@ -530,7 +530,7 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void* userData, unsigned int flags);
     -CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int flags);
     CUresult cuStreamBeginCapture(CUstream hStream, CUstreamCaptureMode mode);
-    -CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode);
+    CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode);
     -CUresult cuStreamCopyAttributes(CUstream dst, CUstream src);
     CUresult cuStreamCreate(CUstream* phStream, unsigned int Flags);
     CUresult cuStreamCreateWithPriority(CUstream* phStream, unsigned int flags, int priority);
@@ -549,8 +549,8 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuStreamQuery(CUstream hStream);
     -CUresult cuStreamSetAttribute(CUstream hStream, CUstreamAttrID attr, const CUstreamAttrValue* value);
     CUresult cuStreamSynchronize(CUstream hStream);
-    -CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode* dependencies, size_t numDependencies, unsigned int flags);
-    -CUresult cuStreamUpdateCaptureDependencies_v2(CUstream hStream, CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags);
+    CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode* dependencies, size_t numDependencies, unsigned int flags);
+    CUresult cuStreamUpdateCaptureDependencies_v2(CUstream hStream, CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags);
     CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int Flags);
     CUresult cuThreadExchangeStreamCaptureMode(CUstreamCaptureMode* mode);
     ```
@@ -624,8 +624,8 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuGraphAddDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, size_t numDependencies);
     CUresult cuGraphAddDependencies_v2(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
     CUresult cuGraphAddEmptyNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies);
-    -CUresult cuGraphAddEventRecordNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
-    -CUresult cuGraphAddEventWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
+    CUresult cuGraphAddEventRecordNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
+    CUresult cuGraphAddEventWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
     -CUresult cuGraphAddExternalSemaphoresSignalNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS* nodeParams);
     -CUresult cuGraphAddExternalSemaphoresWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_EXT_SEM_WAIT_NODE_PARAMS* nodeParams);
     CUresult cuGraphAddHostNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_HOST_NODE_PARAMS* nodeParams);
@@ -633,7 +633,7 @@ versions of the NVIDIA CUDA Driver API.
     -CUresult cuGraphAddMemAllocNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUDA_MEM_ALLOC_NODE_PARAMS* nodeParams);
     -CUresult cuGraphAddMemFreeNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUdeviceptr dptr);
     -CUresult cuGraphAddMemcpyNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMCPY3D* copyParams, CUcontext ctx);
-    CUresult cuGraphAddMemsetNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMSET_NODE_PARAMS* memsetParams, CUcontext ctx);
+    -CUresult cuGraphAddMemsetNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMSET_NODE_PARAMS* memsetParams, CUcontext ctx);
     -CUresult cuGraphAddNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUgraphNodeParams* nodeParams);
     -CUresult cuGraphAddNode_v2(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUgraphNodeParams* nodeParams);
     -CUresult cuGraphBatchMemOpNodeGetParams(CUgraphNode hNode, CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams_out);
@@ -645,15 +645,15 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuGraphDebugDotPrint(CUgraph hGraph, const char* path, unsigned int flags);
     CUresult cuGraphDestroy(CUgraph hGraph);
     CUresult cuGraphDestroyNode(CUgraphNode hNode);
-    -CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent* event_out);
-    -CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode hNode, CUevent event);
-    -CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent* event_out);
-    -CUresult cuGraphEventWaitNodeSetEvent(CUgraphNode hNode, CUevent event);
+    CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent* event_out);
+    CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode hNode, CUevent event);
+    CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent* event_out);
+    CUresult cuGraphEventWaitNodeSetEvent(CUgraphNode hNode, CUevent event);
     -CUresult cuGraphExecBatchMemOpNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams);
     CUresult cuGraphExecChildGraphNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, CUgraph childGraph);
     CUresult cuGraphExecDestroy(CUgraphExec hGraphExec);
-    -CUresult cuGraphExecEventRecordNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event);
-    -CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event);
+    CUresult cuGraphExecEventRecordNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event);
+    CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event);
     -CUresult cuGraphExecExternalSemaphoresSignalNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS* nodeParams);
     -CUresult cuGraphExecExternalSemaphoresWaitNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS* nodeParams);
     CUresult cuGraphExecGetFlags(CUgraphExec hGraphExec, cuuint64_t* flags);
@@ -668,13 +668,13 @@ versions of the NVIDIA CUDA Driver API.
     -CUresult cuGraphExternalSemaphoresWaitNodeGetParams(CUgraphNode hNode, CUDA_EXT_SEM_WAIT_NODE_PARAMS* params_out);
     -CUresult cuGraphExternalSemaphoresWaitNodeSetParams(CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS* nodeParams);
     CUresult cuGraphGetEdges(CUgraph hGraph, CUgraphNode* from, CUgraphNode* to, size_t* numEdges);
-    -CUresult cuGraphGetEdges_v2(CUgraph hGraph, CUgraphNode* from, CUgraphNode* to, CUgraphEdgeData* edgeData, size_t* numEdges);
+    CUresult cuGraphGetEdges_v2(CUgraph hGraph, CUgraphNode* from, CUgraphNode* to, CUgraphEdgeData* edgeData, size_t* numEdges);
     CUresult cuGraphGetNodes(CUgraph hGraph, CUgraphNode* nodes, size_t* numNodes);
     CUresult cuGraphGetRootNodes(CUgraph hGraph, CUgraphNode* rootNodes, size_t* numRootNodes);
     CUresult cuGraphHostNodeGetParams(CUgraphNode hNode, CUDA_HOST_NODE_PARAMS* nodeParams);
     CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS* nodeParams);
     CUresult cuGraphInstantiate(CUgraphExec* phGraphExec, CUgraph hGraph, unsigned long long flags);
-    -CUresult cuGraphInstantiateWithParams(CUgraphExec* phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS* instantiateParams);
+    CUresult cuGraphInstantiateWithParams(CUgraphExec* phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS* instantiateParams);
     -CUresult cuGraphKernelNodeCopyAttributes(CUgraphNode dst, CUgraphNode src);
     -CUresult cuGraphKernelNodeGetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, CUkernelNodeAttrValue* value_out);
     -CUresult cuGraphKernelNodeGetParams(CUgraphNode hNode, CUDA_KERNEL_NODE_PARAMS* nodeParams);
@@ -687,23 +687,23 @@ versions of the NVIDIA CUDA Driver API.
     -CUresult cuGraphMemcpyNodeSetParams(CUgraphNode hNode, const CUDA_MEMCPY3D* nodeParams);
     -CUresult cuGraphMemsetNodeGetParams(CUgraphNode hNode, CUDA_MEMSET_NODE_PARAMS* nodeParams);
     -CUresult cuGraphMemsetNodeSetParams(CUgraphNode hNode, const CUDA_MEMSET_NODE_PARAMS* nodeParams);
-    -CUresult cuGraphNodeFindInClone(CUgraphNode* phNode, CUgraphNode hOriginalNode, CUgraph hClonedGraph);
+    CUresult cuGraphNodeFindInClone(CUgraphNode* phNode, CUgraphNode hOriginalNode, CUgraph hClonedGraph);
     CUresult cuGraphNodeGetDependencies(CUgraphNode hNode, CUgraphNode* dependencies, size_t* numDependencies);
-    -CUresult cuGraphNodeGetDependencies_v2(CUgraphNode hNode, CUgraphNode* dependencies, CUgraphEdgeData* edgeData, size_t* numDependencies);
+    CUresult cuGraphNodeGetDependencies_v2(CUgraphNode hNode, CUgraphNode* dependencies, CUgraphEdgeData* edgeData, size_t* numDependencies);
     CUresult cuGraphNodeGetDependentNodes(CUgraphNode hNode, CUgraphNode* dependentNodes, size_t* numDependentNodes);
-    -CUresult cuGraphNodeGetDependentNodes_v2(CUgraphNode hNode, CUgraphNode* dependentNodes, CUgraphEdgeData* edgeData, size_t* numDependentNodes);
-    -CUresult cuGraphNodeGetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int* isEnabled);
+    CUresult cuGraphNodeGetDependentNodes_v2(CUgraphNode hNode, CUgraphNode* dependentNodes, CUgraphEdgeData* edgeData, size_t* numDependentNodes);
+    CUresult cuGraphNodeGetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int* isEnabled);
     CUresult cuGraphNodeGetType(CUgraphNode hNode, CUgraphNodeType* type);
-    -CUresult cuGraphNodeSetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int isEnabled);
+    CUresult cuGraphNodeSetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int isEnabled);
     -CUresult cuGraphNodeSetParams(CUgraphNode hNode, CUgraphNodeParams* nodeParams);
-    -CUresult cuGraphReleaseUserObject(CUgraph graph, CUuserObject object, unsigned int count);
+    CUresult cuGraphReleaseUserObject(CUgraph graph, CUuserObject object, unsigned int count);
     CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, size_t numDependencies);
-    -CUresult cuGraphRemoveDependencies_v2(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
-    -CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int count, unsigned int flags);
+    CUresult cuGraphRemoveDependencies_v2(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
+    CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int count, unsigned int flags);
     CUresult cuGraphUpload(CUgraphExec hGraphExec, CUstream hStream);
-    -CUresult cuUserObjectCreate(CUuserObject* object_out, void* ptr, CUhostFn destroy, unsigned int initialRefcount, unsigned int flags);
-    -CUresult cuUserObjectRelease(CUuserObject object, unsigned int count);
-    -CUresult cuUserObjectRetain(CUuserObject object, unsigned int count);
+    CUresult cuUserObjectCreate(CUuserObject* object_out, void* ptr, CUhostFn destroy, unsigned int initialRefcount, unsigned int flags);
+    CUresult cuUserObjectRelease(CUuserObject object, unsigned int count);
+    CUresult cuUserObjectRetain(CUuserObject object, unsigned int count);
     ```
     ## [6.25. Occupancy](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-driver-api/group__CUDA__OCCUPANCY.html#group__CUDA__OCCUPANCY)
     ```diff
@@ -822,11 +822,11 @@ versions of the NVIDIA CUDA Driver API.
     ```
     ## [6.36. Error Log Management Functions](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-driver-api/group__CUDA__LOGS.html#group__CUDA__LOGS)
     ```diff
-    -CUresult cuLogsCurrent(CUlogIterator* iterator_out, unsigned int flags);
-    -CUresult cuLogsDumpToFile(CUlogIterator* iterator, const char* pathToFile, unsigned int flags);
-    -CUresult cuLogsDumpToMemory(CUlogIterator* iterator, char* buffer, size_t* size, unsigned int flags);
-    -CUresult cuLogsRegisterCallback(CUlogsCallback callbackFunc, void* userData, CUlogsCallbackHandle* callback_out);
-    -CUresult cuLogsUnregisterCallback(CUlogsCallbackHandle callback);
+    CUresult cuLogsCurrent(CUlogIterator* iterator_out, unsigned int flags);
+    CUresult cuLogsDumpToFile(CUlogIterator* iterator, const char* pathToFile, unsigned int flags);
+    CUresult cuLogsDumpToMemory(CUlogIterator* iterator, char* buffer, size_t* size, unsigned int flags);
+    CUresult cuLogsRegisterCallback(CUlogsCallback callbackFunc, void* userData, CUlogsCallbackHandle* callback_out);
+    CUresult cuLogsUnregisterCallback(CUlogsCallbackHandle callback);
     ```
     ## [6.37. CUDA Checkpointing](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-driver-api/group__CUDA__CHECKPOINT.html#group__CUDA__CHECKPOINT)
     ```diff
@@ -975,7 +975,7 @@ versions of the NVIDIA CUDA Driver API.
     enum CUctx_flags
     -enum CUdeviceNumaConfig
     -enum CUdevice_P2PAttribute
-    enum CUdevice_attribute
+    -enum CUdevice_attribute
     enum CUdriverProcAddressQueryResult
     enum CUdriverProcAddress_flags
     -enum CUeglColorFormat
@@ -983,8 +983,8 @@ versions of the NVIDIA CUDA Driver API.
     -enum CUeglResourceLocationFlags
     enum CUevent_flags
     enum CUevent_record_flags
-    -enum CUevent_sched_flags
-    -enum CUevent_wait_flags
+    enum CUevent_sched_flags
+    enum CUevent_wait_flags
     enum CUexecAffinityType
     -enum CUexternalMemoryHandleType
     -enum CUexternalSemaphoreHandleType
@@ -994,13 +994,13 @@ versions of the NVIDIA CUDA Driver API.
     -enum CUflushGPUDirectRDMAWritesTarget
     enum CUfunc_cache
     enum CUfunction_attribute
-    -enum CUgraphChildGraphNodeOwnership
+    enum CUgraphChildGraphNodeOwnership
     -enum CUgraphConditionalNodeType
-    -enum CUgraphDebugDot_flags
+    enum CUgraphDebugDot_flags
     -enum CUgraphDependencyType
     enum CUgraphExecUpdateResult
-    -enum CUgraphInstantiateResult
-    enum CUgraphInstantiate_flags
+    enum CUgraphInstantiateResult
+    -enum CUgraphInstantiate_flags
     enum CUgraphNodeType
     enum CUgraphicsMapResourceFlags
     enum CUgraphicsRegisterFlags
@@ -1008,9 +1008,9 @@ versions of the NVIDIA CUDA Driver API.
     enum CUjitInputType
     -enum CUjit_cacheMode
     -enum CUjit_fallback
-    -enum CUjit_option
+    enum CUjit_option
     -enum CUjit_target
-    enum CUlaunchAttributeID
+    -enum CUlaunchAttributeID
     -enum CUlaunchMemSyncDomain
     enum CUlibraryOption
     enum CUlimit
@@ -1018,10 +1018,10 @@ versions of the NVIDIA CUDA Driver API.
     enum CUmemAllocationCompType
     enum CUmemAllocationGranularity_flags
     enum CUmemAllocationHandleType
-    -enum CUmemAllocationType
+    enum CUmemAllocationType
     -enum CUmemAttach_flags
     -enum CUmemHandleType
-    enum CUmemLocationType
+    -enum CUmemLocationType
     -enum CUmemOperationType
     enum CUmemPool_attribute
     -enum CUmemRangeFlags
@@ -1054,8 +1054,8 @@ versions of the NVIDIA CUDA Driver API.
     enum CUtensorMapInterleave
     enum CUtensorMapL2promotion
     enum CUtensorMapSwizzle
-    -enum CUuserObjectRetain_flags
-    -enum CUuserObject_flags
+    enum CUuserObjectRetain_flags
+    enum CUuserObject_flags
     -enum cl_context_flags
     -enum cl_event_flags
     -struct CUDA_ARRAY3D_DESCRIPTOR_v2
@@ -1064,10 +1064,10 @@ versions of the NVIDIA CUDA Driver API.
     -struct CUDA_ARRAY_SPARSE_PROPERTIES_v1
     -struct CUDA_BATCH_MEM_OP_NODE_PARAMS_v1
     -struct CUDA_BATCH_MEM_OP_NODE_PARAMS_v2
-    -struct CUDA_CHILD_GRAPH_NODE_PARAMS
+    struct CUDA_CHILD_GRAPH_NODE_PARAMS
     -struct CUDA_CONDITIONAL_NODE_PARAMS
-    -struct CUDA_EVENT_RECORD_NODE_PARAMS
-    -struct CUDA_EVENT_WAIT_NODE_PARAMS
+    struct CUDA_EVENT_RECORD_NODE_PARAMS
+    struct CUDA_EVENT_WAIT_NODE_PARAMS
     -struct CUDA_EXTERNAL_MEMORY_BUFFER_DESC_v1
     -struct CUDA_EXTERNAL_MEMORY_HANDLE_DESC_v1
     -struct CUDA_EXTERNAL_MEMORY_MIPMAPPED_ARRAY_DESC_v1
@@ -1078,17 +1078,17 @@ versions of the NVIDIA CUDA Driver API.
     -struct CUDA_EXT_SEM_SIGNAL_NODE_PARAMS_v2
     -struct CUDA_EXT_SEM_WAIT_NODE_PARAMS_v1
     -struct CUDA_EXT_SEM_WAIT_NODE_PARAMS_v2
-    -struct CUDA_GRAPH_INSTANTIATE_PARAMS
+    struct CUDA_GRAPH_INSTANTIATE_PARAMS
     struct CUDA_HOST_NODE_PARAMS_v1
     struct CUDA_HOST_NODE_PARAMS_v2
     struct CUDA_KERNEL_NODE_PARAMS_v1
     struct CUDA_KERNEL_NODE_PARAMS_v2
-    -struct CUDA_KERNEL_NODE_PARAMS_v3
+    struct CUDA_KERNEL_NODE_PARAMS_v3
     -struct CUDA_LAUNCH_PARAMS_v1
     struct CUDA_MEMCPY2D_v2
     -struct CUDA_MEMCPY3D_PEER_v1
     struct CUDA_MEMCPY3D_v2
-    -struct CUDA_MEMCPY_NODE_PARAMS
+    struct CUDA_MEMCPY_NODE_PARAMS
     struct CUDA_MEMSET_NODE_PARAMS_v1
     struct CUDA_MEMSET_NODE_PARAMS_v2
     -struct CUDA_MEM_ALLOC_NODE_PARAMS_v1
@@ -1112,10 +1112,10 @@ versions of the NVIDIA CUDA Driver API.
     -struct CUeglFrame_v1
     struct CUexecAffinityParam_v1
     struct CUexecAffinitySmCount_v1
-    -struct CUextent3D_v1
+    struct CUextent3D_v1
     struct CUgraphEdgeData
     struct CUgraphExecUpdateResultInfo_v1
-    -struct CUgraphNodeParams
+    struct CUgraphNodeParams
     struct CUipcEventHandle_v1
     struct CUipcMemHandle_v1
     struct CUlaunchAttribute
@@ -1131,7 +1131,7 @@ versions of the NVIDIA CUDA Driver API.
     -struct CUmemcpy3DOperand_v1
     struct CUmemcpyAttributes_v1
     struct CUmulticastObjectProp_v1
-    -struct CUoffset3D_v1
+    struct CUoffset3D_v1
     -union CUstreamBatchMemOpParams_v1
     struct CUtensorMap
     typedef CUarray_st * CUarray;
@@ -1162,14 +1162,14 @@ versions of the NVIDIA CUDA Driver API.
     typedef CUmod_st * CUmodule;
     typedef size_t(* CUoccupancyB2DSize)(int blockSize);
     typedef CUstream_st * CUstream;
-    -typedef void(* CUstreamCallback)(CUstream hStream, CUresult status, void* userData);
+    typedef void(* CUstreamCallback)(CUstream hStream, CUresult status, void* userData);
     -typedef CUsurfObject_v1 CUsurfObject;
     -typedef unsigned long long CUsurfObject_v1;
     -typedef CUsurfref_st * CUsurfref;
     typedef CUtexObject_v1 CUtexObject;
     typedef unsigned long long CUtexObject_v1;
     typedef CUtexref_st * CUtexref;
-    -typedef CUuserObject_st * CUuserObject;
+    typedef CUuserObject_st * CUuserObject;
     ```
     ## [6.2. Error Handling](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__ERROR.html#group__CUDA__ERROR)
     ```diff
@@ -1189,16 +1189,16 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuDeviceGet(CUdevice* device, int ordinal);
     CUresult cuDeviceGetAttribute(int* pi, CUdevice_attribute attrib, CUdevice dev);
     CUresult cuDeviceGetCount(int* count);
-    -CUresult cuDeviceGetDefaultMemPool(CUmemoryPool* pool_out, CUdevice dev);
+    CUresult cuDeviceGetDefaultMemPool(CUmemoryPool* pool_out, CUdevice dev);
     CUresult cuDeviceGetExecAffinitySupport(int* pi, CUexecAffinityType type, CUdevice dev);
     -CUresult cuDeviceGetHostAtomicCapabilities(unsigned int* capabilities, const CUatomicOperation ** operations, unsigned int count, CUdevice dev);
     CUresult cuDeviceGetLuid(char* luid, unsigned int* deviceNodeMask, CUdevice dev);
-    -CUresult cuDeviceGetMemPool(CUmemoryPool* pool, CUdevice dev);
+    CUresult cuDeviceGetMemPool(CUmemoryPool* pool, CUdevice dev);
     CUresult cuDeviceGetName(char* name, int len, CUdevice dev);
     -CUresult cuDeviceGetNvSciSyncAttributes(void* nvSciSyncAttrList, CUdevice dev, int flags);
     -CUresult cuDeviceGetTexture1DLinearMaxWidth(size_t* maxWidthInElements, CUarray_format format, unsigned numChannels, CUdevice dev);
     CUresult cuDeviceGetUuid(CUuuid* uuid, CUdevice dev);
-    -CUresult cuDeviceSetMemPool(CUdevice dev, CUmemoryPool pool);
+    CUresult cuDeviceSetMemPool(CUdevice dev, CUmemoryPool pool);
     CUresult cuDeviceTotalMem(size_t* bytes, CUdevice dev);
     -CUresult cuFlushGPUDirectRDMAWrites(CUflushGPUDirectRDMAWritesTarget target, CUflushGPUDirectRDMAWritesScope scope);
     ```
@@ -1231,7 +1231,7 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuCtxGetStreamPriorityRange(int* leastPriority, int* greatestPriority);
     CUresult cuCtxPopCurrent(CUcontext* pctx);
     CUresult cuCtxPushCurrent(CUcontext ctx);
-    -CUresult cuCtxRecordEvent(CUcontext hCtx, CUevent hEvent);
+    CUresult cuCtxRecordEvent(CUcontext hCtx, CUevent hEvent);
     CUresult cuCtxResetPersistingL2Cache(void);
     CUresult cuCtxSetCacheConfig(CUfunc_cache config);
     CUresult cuCtxSetCurrent(CUcontext ctx);
@@ -1296,11 +1296,11 @@ versions of the NVIDIA CUDA Driver API.
     ```diff
     -enum CUmemDecompressAlgorithm
     -struct CUmemDecompressParams
-    CUresult cuArray3DCreate(CUarray* pHandle, const CUDA_ARRAY3D_DESCRIPTOR* pAllocateArray);
+    -CUresult cuArray3DCreate(CUarray* pHandle, const CUDA_ARRAY3D_DESCRIPTOR* pAllocateArray);
     -CUresult cuArray3DGetDescriptor(CUDA_ARRAY3D_DESCRIPTOR* pArrayDescriptor, CUarray hArray);
-    CUresult cuArrayCreate(CUarray* pHandle, const CUDA_ARRAY_DESCRIPTOR* pAllocateArray);
+    -CUresult cuArrayCreate(CUarray* pHandle, const CUDA_ARRAY_DESCRIPTOR* pAllocateArray);
     CUresult cuArrayDestroy(CUarray hArray);
-    CUresult cuArrayGetDescriptor(CUDA_ARRAY_DESCRIPTOR* pArrayDescriptor, CUarray hArray);
+    -CUresult cuArrayGetDescriptor(CUDA_ARRAY_DESCRIPTOR* pArrayDescriptor, CUarray hArray);
     -CUresult cuArrayGetMemoryRequirements(CUDA_ARRAY_MEMORY_REQUIREMENTS* memoryRequirements, CUarray array, CUdevice device);
     -CUresult cuArrayGetPlane(CUarray* pPlaneArray, CUarray hArray, unsigned int planeIdx);
     -CUresult cuArrayGetSparseProperties(CUDA_ARRAY_SPARSE_PROPERTIES* sparseProperties, CUarray array);
@@ -1392,22 +1392,22 @@ versions of the NVIDIA CUDA Driver API.
     ## [6.15. Stream Ordered Memory Allocator](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__MALLOC__ASYNC.html#group__CUDA__MALLOC__ASYNC)
     ```diff
     CUresult cuMemAllocAsync(CUdeviceptr* dptr, size_t bytesize, CUstream hStream);
-    -CUresult cuMemAllocFromPoolAsync(CUdeviceptr* dptr, size_t bytesize, CUmemoryPool pool, CUstream hStream);
+    CUresult cuMemAllocFromPoolAsync(CUdeviceptr* dptr, size_t bytesize, CUmemoryPool pool, CUstream hStream);
     CUresult cuMemFreeAsync(CUdeviceptr dptr, CUstream hStream);
-    -CUresult cuMemGetDefaultMemPool(CUmemoryPool* pool_out, CUmemLocation* location, CUmemAllocationType type);
+    CUresult cuMemGetDefaultMemPool(CUmemoryPool* pool_out, CUmemLocation* location, CUmemAllocationType type);
     -CUresult cuMemGetMemPool(CUmemoryPool* pool, CUmemLocation* location, CUmemAllocationType type);
-    -CUresult cuMemPoolCreate(CUmemoryPool* pool, const CUmemPoolProps* poolProps);
-    -CUresult cuMemPoolDestroy(CUmemoryPool pool);
+    CUresult cuMemPoolCreate(CUmemoryPool* pool, const CUmemPoolProps* poolProps);
+    CUresult cuMemPoolDestroy(CUmemoryPool pool);
     -CUresult cuMemPoolExportPointer(CUmemPoolPtrExportData* shareData_out, CUdeviceptr ptr);
     -CUresult cuMemPoolExportToShareableHandle(void* handle_out, CUmemoryPool pool, CUmemAllocationHandleType handleType, unsigned long long flags);
     CUresult cuMemPoolGetAccess(CUmemAccess_flags* flags, CUmemoryPool memPool, CUmemLocation* location);
-    -CUresult cuMemPoolGetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
+    CUresult cuMemPoolGetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
     -CUresult cuMemPoolImportFromShareableHandle(CUmemoryPool* pool_out, void* handle, CUmemAllocationHandleType handleType, unsigned long long flags);
     -CUresult cuMemPoolImportPointer(CUdeviceptr* ptr_out, CUmemoryPool pool, CUmemPoolPtrExportData* shareData);
-    -CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc* map, size_t count);
-    -CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
-    -CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep);
-    -CUresult cuMemSetMemPool(CUmemLocation* location, CUmemAllocationType type, CUmemoryPool pool);
+    CUresult cuMemPoolSetAccess(CUmemoryPool pool, const CUmemAccessDesc* map, size_t count);
+    CUresult cuMemPoolSetAttribute(CUmemoryPool pool, CUmemPool_attribute attr, void* value);
+    CUresult cuMemPoolTrimTo(CUmemoryPool pool, size_t minBytesToKeep);
+    CUresult cuMemSetMemPool(CUmemLocation* location, CUmemAllocationType type, CUmemoryPool pool);
     ```
     ## [6.16. Multicast Object Management](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__MULTICAST.html#group__CUDA__MULTICAST)
     ```diff
@@ -1416,11 +1416,11 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuMulticastBindMem(CUmemGenericAllocationHandle mcHandle, size_t mcOffset, CUmemGenericAllocationHandle memHandle, size_t memOffset, size_t size, unsigned long long flags);
     CUresult cuMulticastCreate(CUmemGenericAllocationHandle* mcHandle, const CUmulticastObjectProp* prop);
     -CUresult cuMulticastGetGranularity(size_t* granularity, const CUmulticastObjectProp* prop, CUmulticastGranularity_flags option);
-    -CUresult cuMulticastUnbind(CUmemGenericAllocationHandle mcHandle, CUdevice dev, size_t mcOffset, size_t size);
+    CUresult cuMulticastUnbind(CUmemGenericAllocationHandle mcHandle, CUdevice dev, size_t mcOffset, size_t size);
     ```
     ## [6.17. Unified Addressing](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__UNIFIED.html#group__CUDA__UNIFIED)
     ```diff
-    -CUresult cuMemAdvise(CUdeviceptr devPtr, size_t count, CUmem_advise advice, CUmemLocation location);
+    CUresult cuMemAdvise(CUdeviceptr devPtr, size_t count, CUmem_advise advice, CUmemLocation location);
     CUresult cuMemDiscardAndPrefetchBatchAsync(CUdeviceptr* dptrs, size_t* sizes, size_t count, CUmemLocation* prefetchLocs, size_t* prefetchLocIdxs, size_t numPrefetchLocs, unsigned long long flags, CUstream hStream);
     CUresult cuMemDiscardBatchAsync(CUdeviceptr* dptrs, size_t* sizes, size_t count, unsigned long long flags, CUstream hStream);
     CUresult cuMemPrefetchAsync(CUdeviceptr devPtr, size_t count, CUmemLocation location, unsigned int flags, CUstream hStream);
@@ -1436,7 +1436,7 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuStreamAddCallback(CUstream hStream, CUstreamCallback callback, void* userData, unsigned int flags);
     -CUresult cuStreamAttachMemAsync(CUstream hStream, CUdeviceptr dptr, size_t length, unsigned int flags);
     CUresult cuStreamBeginCapture(CUstream hStream, CUstreamCaptureMode mode);
-    -CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode);
+    CUresult cuStreamBeginCaptureToGraph(CUstream hStream, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUstreamCaptureMode mode);
     -CUresult cuStreamCopyAttributes(CUstream dst, CUstream src);
     CUresult cuStreamCreate(CUstream* phStream, unsigned int Flags);
     CUresult cuStreamCreateWithPriority(CUstream* phStream, unsigned int flags, int priority);
@@ -1454,7 +1454,7 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuStreamQuery(CUstream hStream);
     -CUresult cuStreamSetAttribute(CUstream hStream, CUstreamAttrID attr, const CUstreamAttrValue* value);
     CUresult cuStreamSynchronize(CUstream hStream);
-    -CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags);
+    CUresult cuStreamUpdateCaptureDependencies(CUstream hStream, CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags);
     CUresult cuStreamWaitEvent(CUstream hStream, CUevent hEvent, unsigned int Flags);
     CUresult cuThreadExchangeStreamCaptureMode(CUstreamCaptureMode* mode);
     ```
@@ -1526,8 +1526,8 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuGraphAddChildGraphNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUgraph childGraph);
     CUresult cuGraphAddDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
     CUresult cuGraphAddEmptyNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies);
-    -CUresult cuGraphAddEventRecordNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
-    -CUresult cuGraphAddEventWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
+    CUresult cuGraphAddEventRecordNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
+    CUresult cuGraphAddEventWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUevent event);
     -CUresult cuGraphAddExternalSemaphoresSignalNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS* nodeParams);
     -CUresult cuGraphAddExternalSemaphoresWaitNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_EXT_SEM_WAIT_NODE_PARAMS* nodeParams);
     CUresult cuGraphAddHostNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_HOST_NODE_PARAMS* nodeParams);
@@ -1535,7 +1535,7 @@ versions of the NVIDIA CUDA Driver API.
     -CUresult cuGraphAddMemAllocNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUDA_MEM_ALLOC_NODE_PARAMS* nodeParams);
     -CUresult cuGraphAddMemFreeNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, CUdeviceptr dptr);
     -CUresult cuGraphAddMemcpyNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMCPY3D* copyParams, CUcontext ctx);
-    CUresult cuGraphAddMemsetNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMSET_NODE_PARAMS* memsetParams, CUcontext ctx);
+    -CUresult cuGraphAddMemsetNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, size_t numDependencies, const CUDA_MEMSET_NODE_PARAMS* memsetParams, CUcontext ctx);
     -CUresult cuGraphAddNode(CUgraphNode* phGraphNode, CUgraph hGraph, const CUgraphNode* dependencies, const CUgraphEdgeData* dependencyData, size_t numDependencies, CUgraphNodeParams* nodeParams);
     -CUresult cuGraphBatchMemOpNodeGetParams(CUgraphNode hNode, CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams_out);
     -CUresult cuGraphBatchMemOpNodeSetParams(CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams);
@@ -1546,15 +1546,15 @@ versions of the NVIDIA CUDA Driver API.
     CUresult cuGraphDebugDotPrint(CUgraph hGraph, const char* path, unsigned int flags);
     CUresult cuGraphDestroy(CUgraph hGraph);
     CUresult cuGraphDestroyNode(CUgraphNode hNode);
-    -CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent* event_out);
-    -CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode hNode, CUevent event);
-    -CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent* event_out);
-    -CUresult cuGraphEventWaitNodeSetEvent(CUgraphNode hNode, CUevent event);
+    CUresult cuGraphEventRecordNodeGetEvent(CUgraphNode hNode, CUevent* event_out);
+    CUresult cuGraphEventRecordNodeSetEvent(CUgraphNode hNode, CUevent event);
+    CUresult cuGraphEventWaitNodeGetEvent(CUgraphNode hNode, CUevent* event_out);
+    CUresult cuGraphEventWaitNodeSetEvent(CUgraphNode hNode, CUevent event);
     -CUresult cuGraphExecBatchMemOpNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_BATCH_MEM_OP_NODE_PARAMS* nodeParams);
     CUresult cuGraphExecChildGraphNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, CUgraph childGraph);
     CUresult cuGraphExecDestroy(CUgraphExec hGraphExec);
-    -CUresult cuGraphExecEventRecordNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event);
-    -CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event);
+    CUresult cuGraphExecEventRecordNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event);
+    CUresult cuGraphExecEventWaitNodeSetEvent(CUgraphExec hGraphExec, CUgraphNode hNode, CUevent event);
     -CUresult cuGraphExecExternalSemaphoresSignalNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS* nodeParams);
     -CUresult cuGraphExecExternalSemaphoresWaitNodeSetParams(CUgraphExec hGraphExec, CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS* nodeParams);
     CUresult cuGraphExecGetFlags(CUgraphExec hGraphExec, cuuint64_t* flags);
@@ -1568,13 +1568,13 @@ versions of the NVIDIA CUDA Driver API.
     -CUresult cuGraphExternalSemaphoresSignalNodeSetParams(CUgraphNode hNode, const CUDA_EXT_SEM_SIGNAL_NODE_PARAMS* nodeParams);
     -CUresult cuGraphExternalSemaphoresWaitNodeGetParams(CUgraphNode hNode, CUDA_EXT_SEM_WAIT_NODE_PARAMS* params_out);
     -CUresult cuGraphExternalSemaphoresWaitNodeSetParams(CUgraphNode hNode, const CUDA_EXT_SEM_WAIT_NODE_PARAMS* nodeParams);
-    -CUresult cuGraphGetEdges(CUgraph hGraph, CUgraphNode* from, CUgraphNode* to, CUgraphEdgeData* edgeData, size_t* numEdges);
+    CUresult cuGraphGetEdges(CUgraph hGraph, CUgraphNode* from, CUgraphNode* to, CUgraphEdgeData* edgeData, size_t* numEdges);
     CUresult cuGraphGetNodes(CUgraph hGraph, CUgraphNode* nodes, size_t* numNodes);
     CUresult cuGraphGetRootNodes(CUgraph hGraph, CUgraphNode* rootNodes, size_t* numRootNodes);
     CUresult cuGraphHostNodeGetParams(CUgraphNode hNode, CUDA_HOST_NODE_PARAMS* nodeParams);
     CUresult cuGraphHostNodeSetParams(CUgraphNode hNode, const CUDA_HOST_NODE_PARAMS* nodeParams);
     CUresult cuGraphInstantiate(CUgraphExec* phGraphExec, CUgraph hGraph, unsigned long long flags);
-    -CUresult cuGraphInstantiateWithParams(CUgraphExec* phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS* instantiateParams);
+    CUresult cuGraphInstantiateWithParams(CUgraphExec* phGraphExec, CUgraph hGraph, CUDA_GRAPH_INSTANTIATE_PARAMS* instantiateParams);
     -CUresult cuGraphKernelNodeCopyAttributes(CUgraphNode dst, CUgraphNode src);
     -CUresult cuGraphKernelNodeGetAttribute(CUgraphNode hNode, CUkernelNodeAttrID attr, CUkernelNodeAttrValue* value_out);
     -CUresult cuGraphKernelNodeGetParams(CUgraphNode hNode, CUDA_KERNEL_NODE_PARAMS* nodeParams);
@@ -1587,20 +1587,20 @@ versions of the NVIDIA CUDA Driver API.
     -CUresult cuGraphMemcpyNodeSetParams(CUgraphNode hNode, const CUDA_MEMCPY3D* nodeParams);
     -CUresult cuGraphMemsetNodeGetParams(CUgraphNode hNode, CUDA_MEMSET_NODE_PARAMS* nodeParams);
     -CUresult cuGraphMemsetNodeSetParams(CUgraphNode hNode, const CUDA_MEMSET_NODE_PARAMS* nodeParams);
-    -CUresult cuGraphNodeFindInClone(CUgraphNode* phNode, CUgraphNode hOriginalNode, CUgraph hClonedGraph);
-    -CUresult cuGraphNodeGetDependencies(CUgraphNode hNode, CUgraphNode* dependencies, CUgraphEdgeData* edgeData, size_t* numDependencies);
-    -CUresult cuGraphNodeGetDependentNodes(CUgraphNode hNode, CUgraphNode* dependentNodes, CUgraphEdgeData* edgeData, size_t* numDependentNodes);
-    -CUresult cuGraphNodeGetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int* isEnabled);
+    CUresult cuGraphNodeFindInClone(CUgraphNode* phNode, CUgraphNode hOriginalNode, CUgraph hClonedGraph);
+    CUresult cuGraphNodeGetDependencies(CUgraphNode hNode, CUgraphNode* dependencies, CUgraphEdgeData* edgeData, size_t* numDependencies);
+    CUresult cuGraphNodeGetDependentNodes(CUgraphNode hNode, CUgraphNode* dependentNodes, CUgraphEdgeData* edgeData, size_t* numDependentNodes);
+    CUresult cuGraphNodeGetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int* isEnabled);
     CUresult cuGraphNodeGetType(CUgraphNode hNode, CUgraphNodeType* type);
-    -CUresult cuGraphNodeSetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int isEnabled);
+    CUresult cuGraphNodeSetEnabled(CUgraphExec hGraphExec, CUgraphNode hNode, unsigned int isEnabled);
     -CUresult cuGraphNodeSetParams(CUgraphNode hNode, CUgraphNodeParams* nodeParams);
-    -CUresult cuGraphReleaseUserObject(CUgraph graph, CUuserObject object, unsigned int count);
-    -CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
-    -CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int count, unsigned int flags);
+    CUresult cuGraphReleaseUserObject(CUgraph graph, CUuserObject object, unsigned int count);
+    CUresult cuGraphRemoveDependencies(CUgraph hGraph, const CUgraphNode* from, const CUgraphNode* to, const CUgraphEdgeData* edgeData, size_t numDependencies);
+    CUresult cuGraphRetainUserObject(CUgraph graph, CUuserObject object, unsigned int count, unsigned int flags);
     CUresult cuGraphUpload(CUgraphExec hGraphExec, CUstream hStream);
-    -CUresult cuUserObjectCreate(CUuserObject* object_out, void* ptr, CUhostFn destroy, unsigned int initialRefcount, unsigned int flags);
-    -CUresult cuUserObjectRelease(CUuserObject object, unsigned int count);
-    -CUresult cuUserObjectRetain(CUuserObject object, unsigned int count);
+    CUresult cuUserObjectCreate(CUuserObject* object_out, void* ptr, CUhostFn destroy, unsigned int initialRefcount, unsigned int flags);
+    CUresult cuUserObjectRelease(CUuserObject object, unsigned int count);
+    CUresult cuUserObjectRetain(CUuserObject object, unsigned int count);
     ```
     ## [6.25. Occupancy](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__OCCUPANCY.html#group__CUDA__OCCUPANCY)
     ```diff
@@ -1721,11 +1721,11 @@ versions of the NVIDIA CUDA Driver API.
     ```
     ## [6.36. Error Log Management Functions](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__LOGS.html#group__CUDA__LOGS)
     ```diff
-    -CUresult cuLogsCurrent(CUlogIterator* iterator_out, unsigned int flags);
-    -CUresult cuLogsDumpToFile(CUlogIterator* iterator, const char* pathToFile, unsigned int flags);
-    -CUresult cuLogsDumpToMemory(CUlogIterator* iterator, char* buffer, size_t* size, unsigned int flags);
-    -CUresult cuLogsRegisterCallback(CUlogsCallback callbackFunc, void* userData, CUlogsCallbackHandle* callback_out);
-    -CUresult cuLogsUnregisterCallback(CUlogsCallbackHandle callback);
+    CUresult cuLogsCurrent(CUlogIterator* iterator_out, unsigned int flags);
+    CUresult cuLogsDumpToFile(CUlogIterator* iterator, const char* pathToFile, unsigned int flags);
+    CUresult cuLogsDumpToMemory(CUlogIterator* iterator, char* buffer, size_t* size, unsigned int flags);
+    CUresult cuLogsRegisterCallback(CUlogsCallback callbackFunc, void* userData, CUlogsCallbackHandle* callback_out);
+    CUresult cuLogsUnregisterCallback(CUlogsCallbackHandle callback);
     ```
     ## [6.37. CUDA Checkpointing](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__CHECKPOINT.html#group__CUDA__CHECKPOINT)
     ```diff
