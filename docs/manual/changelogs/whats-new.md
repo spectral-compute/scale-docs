@@ -1,5 +1,97 @@
 # What's New
 
+## Release 1.7.2 (2026-06-06)
+
+This release adds a few new CUDA APIs, and fixes a huge amount of bugs.
+
+The compiler has made huge progress towards NVCC compatibility, with numerous
+bugs/crashes fixed and the addition of a few undocumented language features.
+
+The runtime library has had some of its most long-standing hangs/crashes fixed,
+and gained a number of new CUDA APIs.
+
+### Compiler
+
+- Fixed miscompiles of PTX `elect` instruction
+- Fixed NVIDIA-specific build failures relating to `__assert_fail()`.
+- Fixed crash when using a redundant `.sat` modifier in inline PTX.
+- Fix a crash when empty asm blocks were used with PTX constraint letters
+  that were not valid asm constraints for the AMDGPU backend.
+ - Fixed a crash when compiling shuffles whose source lanes evaluate to undefined
+  behaviour.
+- Fixed a crash when lowering some warp reductions that fully constant-propagate.
+- Fixed miscompilation of `bar.sync 0`
+
+### Compiler Optimiser
+
+- Huge performance improvement for atomic arithmetic operations on non-managed
+  device memory for GFX10/GFX11 devices.
+- Improvements to the shuffle optimiser, allowing it to handle even more
+  complex scenarios.
+- Fixed many compiler crashes and spurious compiler errors relating to the NVCC
+  dialect.
+
+### NVCC Compatibility
+
+- Support the NVCC dialect's more permissive attribute placement rules.
+- Implement NVCC's strange handling of `+` constraints.
+- Added `#pragma nv_exec_check_disable`. Oh, my.
+- Improved handling of constructors for `__shared__` variables, more closely
+  matching `nvcc`'s behaviour.
+- Initializer-lists now work in the arguments to `<<<>>>`.
+- Fixed some defects in function-emission rules that led to the need to patch
+  CCCL's `EmptyKernel`.
+- Newly-supported `nvcc` flags:
+    * `-device-entity-has-hidden-visibility`
+    * `-static-global-template-stub`
+    * `-generate-dependencies-with-compile`
+    * `-generate-nonsystem-dependencies-with-compile`
+
+### Library
+
+- Added new leak-detection feature
+- Added the CUDA 11 variants of the entrypoint access APIs.
+- Added `curand_uniform2_double`.
+- Graph API:
+    * Added Graph Memory Nodes and related APIs.
+    * Added `cudaGraphNodeGetToolsId`/`cudaGraphNodeGetLocalId`
+    * Fixed various header/typedef compatibility issues.
+    * Added some of the missing driver APIs.
+    * Increased how much of the API works when `long long` is unavailable.
+    * Fixed bugs that yielded hangs when external event nodes are in use.
+    * `cuGraphDebugDotPrint` now always prints dependency edges correctly.
+    * graphExec flags no longer get forgotten.
+    * Fixed a crash when a recording session involves secondary streams that
+      contribute no nodes.
+    * Fixed a crash when deleting a cudaStream in the middle of a capture
+      session.
+    * Fixed a hang when deleting still-active `cudaGraphExec_t`s.
+- Fixed a startup-time crash on some older GPUs.
+- The deprecated stack-based launch APIs (`cudaSetupArgument()` etc.) are now
+  associated with the thread, not the CUDAContext, as is required.
+- Added `cudaMemcpy2DFromArrayAsync`
+- Added `cuMemcpy3D/cuMemcpy3DAsync`.
+- Improvements to the RTC header environment, making it more compatible with
+  the many and varied hacks people use in this domain.
+- Fix even more math function declaration compatibility issues.
+- `nodiscard` on `cudaError_t` is now opt-in. We have far more interesting
+  compiler warnings to show people, let's not encourage them to `-w`.
+- Added `__device_builtin__`
+- Fixed conversion ambiguity between bf16/fp16.
+- Added stream and kernel node attribute APIs.
+- `warpSize` is no longer `constexpr` in nvcc-dialect mode, after finding real
+  programs that manage to break when it is. It will, of course, constant-propagate.
+- Fixed some crashes in `cublasLt`.
+- Fixed some missing enums/API defects in `cublasLt`.
+- `cublas` and `cublasLt` handles are now layout-compatible, as is required.
+- Fixed a hang when combining `cuCtxRecordEvent` with deletion of still-busy
+  CUDA streams.
+- Emit the proper cudaError code when trying to allocate more memory than
+  exists in the universe.
+- Various random little APIS added.
+
+As always, see [the apidiff](../library/apidiff/apis.md) for the precise library completeness status.
+
 ## Release 1.7.1 (2026-06-01)
 
 Primarily a library update, fixing many bugs in the graph API

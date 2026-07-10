@@ -49,14 +49,14 @@ versions of the NVIDIA CUDA Runtime API.
     ```
     ## [6.2. Device Management [DEPRECATED]](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-runtime-api/group__CUDART__DEVICE__DEPRECATED.html#group__CUDART__DEVICE__DEPRECATED)
     ```diff
-    cudaError_t cudaDeviceGetSharedMemConfig(cudaSharedMemConfig* pConfig);
-    __device__ cudaError_t cudaDeviceGetSharedMemConfig(cudaSharedMemConfig* pConfig);
+    cudaError_t cudaDeviceGetSharedMemConfig(cudaSharedMemConfig ** pConfig);
+    __device__ cudaError_t cudaDeviceGetSharedMemConfig(cudaSharedMemConfig ** pConfig);
     cudaError_t cudaDeviceSetSharedMemConfig(cudaSharedMemConfig config);
     ```
     ## [6.3. Thread Management [DEPRECATED]](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-runtime-api/group__CUDART__THREAD__DEPRECATED.html#group__CUDART__THREAD__DEPRECATED)
     ```diff
     cudaError_t cudaThreadExit(void);
-    cudaError_t cudaThreadGetCacheConfig(cudaFuncCache * pCacheConfig);
+    cudaError_t cudaThreadGetCacheConfig(cudaFuncCache ** pCacheConfig);
     cudaError_t cudaThreadGetLimit(size_t* pValue, cudaLimit limit);
     cudaError_t cudaThreadSetCacheConfig(cudaFuncCache cacheConfig);
     cudaError_t cudaThreadSetLimit(cudaLimit limit, size_t value);
@@ -81,7 +81,7 @@ versions of the NVIDIA CUDA Runtime API.
     cudaError_t cudaStreamAttachMemAsync(cudaStream_t stream, void* devPtr, size_t length = 0, unsigned int flags = cudaMemAttachSingle);
     cudaError_t cudaStreamBeginCapture(cudaStream_t stream, cudaStreamCaptureMode mode);
     cudaError_t cudaStreamBeginCaptureToGraph(cudaStream_t stream, cudaGraph_t graph, const cudaGraphNode_t* dependencies, const cudaGraphEdgeData* dependencyData, size_t numDependencies, cudaStreamCaptureMode mode);
-    -cudaError_t cudaStreamCopyAttributes(cudaStream_t dst, cudaStream_t src);
+    cudaError_t cudaStreamCopyAttributes(cudaStream_t dst, cudaStream_t src);
     cudaError_t cudaStreamCreate(cudaStream_t* pStream);
     cudaError_t cudaStreamCreateWithFlags(cudaStream_t* pStream, unsigned int flags);
     -__device__ cudaError_t cudaStreamCreateWithFlags(cudaStream_t* pStream, unsigned int flags);
@@ -89,22 +89,22 @@ versions of the NVIDIA CUDA Runtime API.
     cudaError_t cudaStreamDestroy(cudaStream_t stream);
     -__device__ cudaError_t cudaStreamDestroy(cudaStream_t stream);
     cudaError_t cudaStreamEndCapture(cudaStream_t stream, cudaGraph_t* pGraph);
-    -cudaError_t cudaStreamGetAttribute(cudaStream_t hStream, cudaStreamAttrID attr, cudaStreamAttrValue* value_out);
-    -cudaError_t cudaStreamGetCaptureInfo(cudaStream_t stream, cudaStreamCaptureStatus ** captureStatus_out, unsigned long long* id_out = 0, cudaGraph_t* graph_out = 0, const cudaGraphNode_t** dependencies_out = 0, size_t* numDependencies_out = 0);
+    cudaError_t cudaStreamGetAttribute(cudaStream_t hStream, cudaStreamAttrID attr, cudaStreamAttrValue* value_out);
+    cudaError_t cudaStreamGetCaptureInfo(cudaStream_t stream, cudaStreamCaptureStatus ** captureStatus_out, unsigned long long* id_out = 0, cudaGraph_t* graph_out = 0, const cudaGraphNode_t** dependencies_out = 0, size_t* numDependencies_out = 0);
     -cudaError_t cudaStreamGetCaptureInfo_v3(cudaStream_t stream, cudaStreamCaptureStatus ** captureStatus_out, unsigned long long* id_out = 0, cudaGraph_t* graph_out = 0, const cudaGraphNode_t** dependencies_out = 0, const cudaGraphEdgeData** edgeData_out = 0, size_t* numDependencies_out = 0);
     cudaError_t cudaStreamGetDevice(cudaStream_t hStream, int* device);
     cudaError_t cudaStreamGetFlags(cudaStream_t hStream, unsigned int* flags);
     cudaError_t cudaStreamGetId(cudaStream_t hStream, unsigned long long* streamId);
     cudaError_t cudaStreamGetPriority(cudaStream_t hStream, int* priority);
-    cudaError_t cudaStreamIsCapturing(cudaStream_t stream, cudaStreamCaptureStatus* pCaptureStatus);
+    cudaError_t cudaStreamIsCapturing(cudaStream_t stream, cudaStreamCaptureStatus ** pCaptureStatus);
     cudaError_t cudaStreamQuery(cudaStream_t stream);
-    -cudaError_t cudaStreamSetAttribute(cudaStream_t hStream, cudaStreamAttrID attr, const cudaStreamAttrValue* value);
+    cudaError_t cudaStreamSetAttribute(cudaStream_t hStream, cudaStreamAttrID attr, const cudaStreamAttrValue* value);
     cudaError_t cudaStreamSynchronize(cudaStream_t stream);
     cudaError_t cudaStreamUpdateCaptureDependencies(cudaStream_t stream, cudaGraphNode_t* dependencies, size_t numDependencies, unsigned int flags = 0);
     cudaError_t cudaStreamUpdateCaptureDependencies_v2(cudaStream_t stream, cudaGraphNode_t* dependencies, const cudaGraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags = 0);
     cudaError_t cudaStreamWaitEvent(cudaStream_t stream, cudaEvent_t event, unsigned int flags = 0);
     -__device__ cudaError_t cudaStreamWaitEvent(cudaStream_t stream, cudaEvent_t event, unsigned int flags = 0);
-    cudaError_t cudaThreadExchangeStreamCaptureMode(cudaStreamCaptureMode* mode);
+    cudaError_t cudaThreadExchangeStreamCaptureMode(cudaStreamCaptureMode ** mode);
     ```
     ## [6.6. Event Management](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-runtime-api/group__CUDART__EVENT.html#group__CUDART__EVENT)
     ```diff
@@ -206,7 +206,7 @@ versions of the NVIDIA CUDA Runtime API.
     cudaError_t cudaMemcpy2DAsync(void* dst, size_t dpitch, const void* src, size_t spitch, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
     -__device__ cudaError_t cudaMemcpy2DAsync(void* dst, size_t dpitch, const void* src, size_t spitch, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
     cudaError_t cudaMemcpy2DFromArray(void* dst, size_t dpitch, cudaArray_const_t src, size_t wOffset, size_t hOffset, size_t width, size_t height, cudaMemcpyKind kind);
-    -cudaError_t cudaMemcpy2DFromArrayAsync(void* dst, size_t dpitch, cudaArray_const_t src, size_t wOffset, size_t hOffset, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
+    cudaError_t cudaMemcpy2DFromArrayAsync(void* dst, size_t dpitch, cudaArray_const_t src, size_t wOffset, size_t hOffset, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
     cudaError_t cudaMemcpy2DToArray(cudaArray_t dst, size_t wOffset, size_t hOffset, const void* src, size_t spitch, size_t width, size_t height, cudaMemcpyKind kind);
     cudaError_t cudaMemcpy2DToArrayAsync(cudaArray_t dst, size_t wOffset, size_t hOffset, const void* src, size_t spitch, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
     cudaError_t cudaMemcpy3D(const cudaMemcpy3DParms* p);
@@ -374,8 +374,8 @@ versions of the NVIDIA CUDA Runtime API.
     -cudaError_t cudaGraphAddExternalSemaphoresWaitNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, const cudaExternalSemaphoreWaitNodeParams* nodeParams);
     cudaError_t cudaGraphAddHostNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, const cudaHostNodeParams* pNodeParams);
     cudaError_t cudaGraphAddKernelNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, const cudaKernelNodeParams* pNodeParams);
-    -cudaError_t cudaGraphAddMemAllocNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, cudaMemAllocNodeParams* nodeParams);
-    -cudaError_t cudaGraphAddMemFreeNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, void* dptr);
+    cudaError_t cudaGraphAddMemAllocNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, cudaMemAllocNodeParams* nodeParams);
+    cudaError_t cudaGraphAddMemFreeNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, void* dptr);
     cudaError_t cudaGraphAddMemcpyNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, const cudaMemcpy3DParms* pCopyParams);
     cudaError_t cudaGraphAddMemcpyNode1D(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, void* dst, const void* src, size_t count, cudaMemcpyKind kind);
     cudaError_t cudaGraphAddMemcpyNodeFromSymbol(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, void* dst, const void* symbol, size_t count, size_t offset, cudaMemcpyKind kind);
@@ -423,10 +423,10 @@ versions of the NVIDIA CUDA Runtime API.
     cudaError_t cudaGraphInstantiate(cudaGraphExec_t* pGraphExec, cudaGraph_t graph, unsigned long long flags = 0);
     cudaError_t cudaGraphInstantiateWithFlags(cudaGraphExec_t* pGraphExec, cudaGraph_t graph, unsigned long long flags = 0);
     cudaError_t cudaGraphInstantiateWithParams(cudaGraphExec_t* pGraphExec, cudaGraph_t graph, cudaGraphInstantiateParams* instantiateParams);
-    -cudaError_t cudaGraphKernelNodeCopyAttributes(cudaGraphNode_t hSrc, cudaGraphNode_t hDst);
-    -cudaError_t cudaGraphKernelNodeGetAttribute(cudaGraphNode_t hNode, cudaKernelNodeAttrID attr, cudaKernelNodeAttrValue* value_out);
+    cudaError_t cudaGraphKernelNodeCopyAttributes(cudaGraphNode_t hSrc, cudaGraphNode_t hDst);
+    cudaError_t cudaGraphKernelNodeGetAttribute(cudaGraphNode_t hNode, cudaKernelNodeAttrID attr, cudaKernelNodeAttrValue* value_out);
     cudaError_t cudaGraphKernelNodeGetParams(cudaGraphNode_t node, cudaKernelNodeParams* pNodeParams);
-    -cudaError_t cudaGraphKernelNodeSetAttribute(cudaGraphNode_t hNode, cudaKernelNodeAttrID attr, const cudaKernelNodeAttrValue* value);
+    cudaError_t cudaGraphKernelNodeSetAttribute(cudaGraphNode_t hNode, cudaKernelNodeAttrID attr, const cudaKernelNodeAttrValue* value);
     -__device__ cudaError_t cudaGraphKernelNodeSetEnabled(cudaGraphDeviceNode_t node, bool enable);
     -__device__ cudaError_t cudaGraphKernelNodeSetGridDim(cudaGraphDeviceNode_t node, dim3 gridDim);
     -template < typename T >__device__ cudaError_t cudaGraphKernelNodeSetParam(cudaGraphDeviceNode_t node, size_t offset, const T& value);
@@ -435,8 +435,8 @@ versions of the NVIDIA CUDA Runtime API.
     -__device__ cudaError_t cudaGraphKernelNodeUpdatesApply(const cudaGraphKernelNodeUpdate* updates, size_t updateCount);
     cudaError_t cudaGraphLaunch(cudaGraphExec_t graphExec, cudaStream_t stream);
     -__device__ cudaError_t cudaGraphLaunch(cudaGraphExec_t graphExec, cudaStream_t stream);
-    -cudaError_t cudaGraphMemAllocNodeGetParams(cudaGraphNode_t node, cudaMemAllocNodeParams* params_out);
-    -cudaError_t cudaGraphMemFreeNodeGetParams(cudaGraphNode_t node, void* dptr_out);
+    cudaError_t cudaGraphMemAllocNodeGetParams(cudaGraphNode_t node, cudaMemAllocNodeParams* params_out);
+    cudaError_t cudaGraphMemFreeNodeGetParams(cudaGraphNode_t node, void* dptr_out);
     cudaError_t cudaGraphMemcpyNodeGetParams(cudaGraphNode_t node, cudaMemcpy3DParms* pNodeParams);
     cudaError_t cudaGraphMemcpyNodeSetParams(cudaGraphNode_t node, const cudaMemcpy3DParms* pNodeParams);
     cudaError_t cudaGraphMemcpyNodeSetParams1D(cudaGraphNode_t node, void* dst, const void* src, size_t count, cudaMemcpyKind kind);
@@ -502,12 +502,12 @@ versions of the NVIDIA CUDA Runtime API.
     template < class T >__host__ cudaError_t cudaGraphMemcpyNodeSetParamsToSymbol(cudaGraphNode_t node, const T& symbol, const void* src, size_t count, size_t offset, cudaMemcpyKind kind);
     template < class T >__host__ cudaError_t cudaLaunchCooperativeKernel(T* func, dim3 gridDim, dim3 blockDim, void** args, size_t sharedMem = 0, cudaStream_t stream = 0);
     template < class T >__host__ cudaError_t cudaLaunchKernel(T* func, dim3 gridDim, dim3 blockDim, void** args, size_t sharedMem = 0, cudaStream_t stream = 0);
-    template < typename... ActTypes >__host__ cudaError_t cudaLaunchKernelEx(const cudaLaunchConfig_t* config, const cudaKernel_t kernel, ActTypes &&... args);
-    template < typename... ExpTypes, typename... ActTypes >__host__ cudaError_t cudaLaunchKernelEx(const cudaLaunchConfig_t* config, void (*kernel)(ExpTypes...), ActTypes &&... args);
+    -template < typename... ActTypes >__host__ cudaError_t cudaLaunchKernelEx(const cudaLaunchConfig_t* config, const cudaKernel_t kernel, ActTypes &&... args);
+    -template < typename... ExpTypes, typename... ActTypes >__host__ cudaError_t cudaLaunchKernelEx(const cudaLaunchConfig_t* config, void (*kernel)(ExpTypes...), ActTypes &&... args);
     -template < class T >__host__ cudaError_t cudaLibraryGetGlobal(T** dptr, size_t* bytes, cudaLibrary_t library, const char* name);
     -template < class T >__host__ cudaError_t cudaLibraryGetManaged(T** dptr, size_t* bytes, cudaLibrary_t library, const char* name);
     -template < class T >__host__ cudaError_t cudaLibraryGetUnifiedFunction(T** fptr, cudaLibrary_t library, const char* symbol);
-    cudaError_t cudaMallocAsync(void** ptr, size_t size, cudaMemPool_t memPool, cudaStream_t stream);
+    -cudaError_t cudaMallocAsync(void** ptr, size_t size, cudaMemPool_t memPool, cudaStream_t stream);
     cudaError_t cudaMallocHost(void** ptr, size_t size, unsigned int flags);
     template < class T >__host__ cudaError_t cudaMallocManaged(T** devPtr, size_t size, unsigned int flags = cudaMemAttachGlobal);
     template < class T >cudaError_t cudaMemAdvise(T* devPtr, size_t count, cudaMemoryAdvise advice, cudaMemLocation location);
@@ -642,7 +642,7 @@ versions of the NVIDIA CUDA Runtime API.
     -enum cudaJitOption
     -enum cudaJit_CacheMode
     -enum cudaJit_Fallback
-    -enum cudaLaunchAttributeID
+    enum cudaLaunchAttributeID
     enum cudaLaunchMemSyncDomain
     -enum cudaLibraryOption
     enum cudaLimit
@@ -652,8 +652,8 @@ versions of the NVIDIA CUDA Runtime API.
     enum cudaMemLocationType
     enum cudaMemPoolAttr
     enum cudaMemRangeAttribute
-    -enum cudaMemcpy3DOperandType
-    -enum cudaMemcpyFlags
+    enum cudaMemcpy3DOperandType
+    enum cudaMemcpyFlags
     enum cudaMemcpyKind
     enum cudaMemoryAdvise
     enum cudaMemoryType
@@ -715,20 +715,20 @@ versions of the NVIDIA CUDA Runtime API.
     -struct cudaLaunchMemSyncDomainMap
     struct cudaLaunchParams
     struct cudaMemAccessDesc
-    -struct cudaMemAllocNodeParams
-    -struct cudaMemAllocNodeParamsV2
-    -struct cudaMemFreeNodeParams
+    struct cudaMemAllocNodeParams
+    struct cudaMemAllocNodeParamsV2
+    struct cudaMemFreeNodeParams
     struct cudaMemLocation
     struct cudaMemPoolProps
     -struct cudaMemPoolPtrExportData
-    -struct cudaMemcpy3DOperand
+    struct cudaMemcpy3DOperand
     struct cudaMemcpy3DParms
     struct cudaMemcpy3DPeerParms
-    -struct cudaMemcpyAttributes
+    struct cudaMemcpyAttributes
     struct cudaMemcpyNodeParams
     struct cudaMemsetParams
     struct cudaMemsetParamsV2
-    -struct cudaOffset3D
+    struct cudaOffset3D
     struct cudaPitchedPtr
     struct cudaPointerAttributes
     struct cudaPos
@@ -810,8 +810,8 @@ versions of the NVIDIA CUDA Runtime API.
     ```
     ## [6.2. Device Management [DEPRECATED]](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-runtime-api/group__CUDART__DEVICE__DEPRECATED.html#group__CUDART__DEVICE__DEPRECATED)
     ```diff
-    - cudaError_t cudaDeviceGetSharedMemConfig(cudaSharedMemConfig ** pConfig);
-    -__device__ cudaError_t cudaDeviceGetSharedMemConfig(cudaSharedMemConfig ** pConfig);
+    cudaError_t cudaDeviceGetSharedMemConfig(cudaSharedMemConfig ** pConfig);
+    __device__ cudaError_t cudaDeviceGetSharedMemConfig(cudaSharedMemConfig ** pConfig);
     cudaError_t cudaDeviceSetSharedMemConfig(cudaSharedMemConfig config);
     ```
     ## [6.3. Error Handling](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-runtime-api/group__CUDART__ERROR.html#group__CUDART__ERROR)
@@ -831,9 +831,9 @@ versions of the NVIDIA CUDA Runtime API.
     cudaError_t cudaCtxResetPersistingL2Cache(void);
     cudaError_t cudaStreamAddCallback(cudaStream_t stream, cudaStreamCallback_t callback, void* userData, unsigned int flags);
     cudaError_t cudaStreamAttachMemAsync(cudaStream_t stream, void* devPtr, size_t length = 0, unsigned int flags = cudaMemAttachSingle);
-    -cudaError_t cudaStreamBeginCapture(cudaStream_t stream, cudaStreamCaptureMode mode);
+    cudaError_t cudaStreamBeginCapture(cudaStream_t stream, cudaStreamCaptureMode mode);
     cudaError_t cudaStreamBeginCaptureToGraph(cudaStream_t stream, cudaGraph_t graph, const cudaGraphNode_t* dependencies, const cudaGraphEdgeData* dependencyData, size_t numDependencies, cudaStreamCaptureMode mode);
-    -cudaError_t cudaStreamCopyAttributes(cudaStream_t dst, cudaStream_t src);
+    cudaError_t cudaStreamCopyAttributes(cudaStream_t dst, cudaStream_t src);
     cudaError_t cudaStreamCreate(cudaStream_t* pStream);
     cudaError_t cudaStreamCreateWithFlags(cudaStream_t* pStream, unsigned int flags);
     -__device__ cudaError_t cudaStreamCreateWithFlags(cudaStream_t* pStream, unsigned int flags);
@@ -841,20 +841,20 @@ versions of the NVIDIA CUDA Runtime API.
     cudaError_t cudaStreamDestroy(cudaStream_t stream);
     -__device__ cudaError_t cudaStreamDestroy(cudaStream_t stream);
     cudaError_t cudaStreamEndCapture(cudaStream_t stream, cudaGraph_t* pGraph);
-    -cudaError_t cudaStreamGetAttribute(cudaStream_t hStream, cudaStreamAttrID attr, cudaStreamAttrValue* value_out);
+    cudaError_t cudaStreamGetAttribute(cudaStream_t hStream, cudaStreamAttrID attr, cudaStreamAttrValue* value_out);
     cudaError_t cudaStreamGetCaptureInfo(cudaStream_t stream, cudaStreamCaptureStatus ** captureStatus_out, unsigned long long* id_out = 0, cudaGraph_t* graph_out = 0, const cudaGraphNode_t** dependencies_out = 0, const cudaGraphEdgeData** edgeData_out = 0, size_t* numDependencies_out = 0);
     cudaError_t cudaStreamGetDevice(cudaStream_t hStream, int* device);
     cudaError_t cudaStreamGetFlags(cudaStream_t hStream, unsigned int* flags);
     cudaError_t cudaStreamGetId(cudaStream_t hStream, unsigned long long* streamId);
     cudaError_t cudaStreamGetPriority(cudaStream_t hStream, int* priority);
-    -cudaError_t cudaStreamIsCapturing(cudaStream_t stream, cudaStreamCaptureStatus ** pCaptureStatus);
+    cudaError_t cudaStreamIsCapturing(cudaStream_t stream, cudaStreamCaptureStatus ** pCaptureStatus);
     cudaError_t cudaStreamQuery(cudaStream_t stream);
-    -cudaError_t cudaStreamSetAttribute(cudaStream_t hStream, cudaStreamAttrID attr, const cudaStreamAttrValue* value);
+    cudaError_t cudaStreamSetAttribute(cudaStream_t hStream, cudaStreamAttrID attr, const cudaStreamAttrValue* value);
     cudaError_t cudaStreamSynchronize(cudaStream_t stream);
     cudaError_t cudaStreamUpdateCaptureDependencies(cudaStream_t stream, cudaGraphNode_t* dependencies, const cudaGraphEdgeData* dependencyData, size_t numDependencies, unsigned int flags = 0);
     cudaError_t cudaStreamWaitEvent(cudaStream_t stream, cudaEvent_t event, unsigned int flags = 0);
     -__device__ cudaError_t cudaStreamWaitEvent(cudaStream_t stream, cudaEvent_t event, unsigned int flags = 0);
-    -cudaError_t cudaThreadExchangeStreamCaptureMode(cudaStreamCaptureMode ** mode);
+    cudaError_t cudaThreadExchangeStreamCaptureMode(cudaStreamCaptureMode ** mode);
     ```
     ## [6.5. Event Management](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-runtime-api/group__CUDART__EVENT.html#group__CUDART__EVENT)
     ```diff
@@ -953,7 +953,7 @@ versions of the NVIDIA CUDA Runtime API.
     cudaError_t cudaMemcpy2DAsync(void* dst, size_t dpitch, const void* src, size_t spitch, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
     -__device__ cudaError_t cudaMemcpy2DAsync(void* dst, size_t dpitch, const void* src, size_t spitch, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
     cudaError_t cudaMemcpy2DFromArray(void* dst, size_t dpitch, cudaArray_const_t src, size_t wOffset, size_t hOffset, size_t width, size_t height, cudaMemcpyKind kind);
-    -cudaError_t cudaMemcpy2DFromArrayAsync(void* dst, size_t dpitch, cudaArray_const_t src, size_t wOffset, size_t hOffset, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
+    cudaError_t cudaMemcpy2DFromArrayAsync(void* dst, size_t dpitch, cudaArray_const_t src, size_t wOffset, size_t hOffset, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
     cudaError_t cudaMemcpy2DToArray(cudaArray_t dst, size_t wOffset, size_t hOffset, const void* src, size_t spitch, size_t width, size_t height, cudaMemcpyKind kind);
     cudaError_t cudaMemcpy2DToArrayAsync(cudaArray_t dst, size_t wOffset, size_t hOffset, const void* src, size_t spitch, size_t width, size_t height, cudaMemcpyKind kind, cudaStream_t stream = 0);
     cudaError_t cudaMemcpy3D(const cudaMemcpy3DParms* p);
@@ -1132,8 +1132,8 @@ versions of the NVIDIA CUDA Runtime API.
     -cudaError_t cudaGraphAddExternalSemaphoresWaitNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, const cudaExternalSemaphoreWaitNodeParams* nodeParams);
     cudaError_t cudaGraphAddHostNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, const cudaHostNodeParams* pNodeParams);
     cudaError_t cudaGraphAddKernelNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, const cudaKernelNodeParams* pNodeParams);
-    -cudaError_t cudaGraphAddMemAllocNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, cudaMemAllocNodeParams* nodeParams);
-    -cudaError_t cudaGraphAddMemFreeNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, void* dptr);
+    cudaError_t cudaGraphAddMemAllocNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, cudaMemAllocNodeParams* nodeParams);
+    cudaError_t cudaGraphAddMemFreeNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, void* dptr);
     cudaError_t cudaGraphAddMemcpyNode(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, const cudaMemcpy3DParms* pCopyParams);
     cudaError_t cudaGraphAddMemcpyNode1D(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, void* dst, const void* src, size_t count, cudaMemcpyKind kind);
     cudaError_t cudaGraphAddMemcpyNodeFromSymbol(cudaGraphNode_t* pGraphNode, cudaGraph_t graph, const cudaGraphNode_t* pDependencies, size_t numDependencies, void* dst, const void* symbol, size_t count, size_t offset, cudaMemcpyKind kind);
@@ -1179,10 +1179,10 @@ versions of the NVIDIA CUDA Runtime API.
     cudaError_t cudaGraphInstantiate(cudaGraphExec_t* pGraphExec, cudaGraph_t graph, unsigned long long flags = 0);
     cudaError_t cudaGraphInstantiateWithFlags(cudaGraphExec_t* pGraphExec, cudaGraph_t graph, unsigned long long flags = 0);
     cudaError_t cudaGraphInstantiateWithParams(cudaGraphExec_t* pGraphExec, cudaGraph_t graph, cudaGraphInstantiateParams* instantiateParams);
-    -cudaError_t cudaGraphKernelNodeCopyAttributes(cudaGraphNode_t hDst, cudaGraphNode_t hSrc);
-    -cudaError_t cudaGraphKernelNodeGetAttribute(cudaGraphNode_t hNode, cudaKernelNodeAttrID attr, cudaKernelNodeAttrValue* value_out);
+    cudaError_t cudaGraphKernelNodeCopyAttributes(cudaGraphNode_t hDst, cudaGraphNode_t hSrc);
+    cudaError_t cudaGraphKernelNodeGetAttribute(cudaGraphNode_t hNode, cudaKernelNodeAttrID attr, cudaKernelNodeAttrValue* value_out);
     cudaError_t cudaGraphKernelNodeGetParams(cudaGraphNode_t node, cudaKernelNodeParams* pNodeParams);
-    -cudaError_t cudaGraphKernelNodeSetAttribute(cudaGraphNode_t hNode, cudaKernelNodeAttrID attr, const cudaKernelNodeAttrValue* value);
+    cudaError_t cudaGraphKernelNodeSetAttribute(cudaGraphNode_t hNode, cudaKernelNodeAttrID attr, const cudaKernelNodeAttrValue* value);
     -__device__ cudaError_t cudaGraphKernelNodeSetEnabled(cudaGraphDeviceNode_t node, bool enable);
     -__device__ cudaError_t cudaGraphKernelNodeSetGridDim(cudaGraphDeviceNode_t node, dim3 gridDim);
     -template < typename T >__device__ cudaError_t cudaGraphKernelNodeSetParam(cudaGraphDeviceNode_t node, size_t offset, const T& value);
@@ -1191,8 +1191,8 @@ versions of the NVIDIA CUDA Runtime API.
     -__device__ cudaError_t cudaGraphKernelNodeUpdatesApply(const cudaGraphKernelNodeUpdate* updates, size_t updateCount);
     cudaError_t cudaGraphLaunch(cudaGraphExec_t graphExec, cudaStream_t stream);
     -__device__ cudaError_t cudaGraphLaunch(cudaGraphExec_t graphExec, cudaStream_t stream);
-    -cudaError_t cudaGraphMemAllocNodeGetParams(cudaGraphNode_t node, cudaMemAllocNodeParams* params_out);
-    -cudaError_t cudaGraphMemFreeNodeGetParams(cudaGraphNode_t node, void* dptr_out);
+    cudaError_t cudaGraphMemAllocNodeGetParams(cudaGraphNode_t node, cudaMemAllocNodeParams* params_out);
+    cudaError_t cudaGraphMemFreeNodeGetParams(cudaGraphNode_t node, void* dptr_out);
     cudaError_t cudaGraphMemcpyNodeGetParams(cudaGraphNode_t node, cudaMemcpy3DParms* pNodeParams);
     cudaError_t cudaGraphMemcpyNodeSetParams(cudaGraphNode_t node, const cudaMemcpy3DParms* pNodeParams);
     cudaError_t cudaGraphMemcpyNodeSetParams1D(cudaGraphNode_t node, void* dst, const void* src, size_t count, cudaMemcpyKind kind);
@@ -1398,7 +1398,7 @@ versions of the NVIDIA CUDA Runtime API.
     -enum cudaJitOption
     -enum cudaJit_CacheMode
     -enum cudaJit_Fallback
-    -enum cudaLaunchAttributeID
+    enum cudaLaunchAttributeID
     enum cudaLaunchMemSyncDomain
     -enum cudaLibraryOption
     enum cudaLimit
@@ -1408,8 +1408,8 @@ versions of the NVIDIA CUDA Runtime API.
     enum cudaMemLocationType
     enum cudaMemPoolAttr
     enum cudaMemRangeAttribute
-    -enum cudaMemcpy3DOperandType
-    -enum cudaMemcpyFlags
+    enum cudaMemcpy3DOperandType
+    enum cudaMemcpyFlags
     enum cudaMemcpyKind
     enum cudaMemoryAdvise
     enum cudaMemoryType
@@ -1468,20 +1468,20 @@ versions of the NVIDIA CUDA Runtime API.
     struct cudaLaunchConfig_t
     -struct cudaLaunchMemSyncDomainMap
     struct cudaMemAccessDesc
-    -struct cudaMemAllocNodeParams
-    -struct cudaMemAllocNodeParamsV2
-    -struct cudaMemFreeNodeParams
+    struct cudaMemAllocNodeParams
+    struct cudaMemAllocNodeParamsV2
+    struct cudaMemFreeNodeParams
     struct cudaMemLocation
     struct cudaMemPoolProps
     -struct cudaMemPoolPtrExportData
-    -struct cudaMemcpy3DOperand
+    struct cudaMemcpy3DOperand
     struct cudaMemcpy3DParms
     struct cudaMemcpy3DPeerParms
-    -struct cudaMemcpyAttributes
+    struct cudaMemcpyAttributes
     struct cudaMemcpyNodeParams
     struct cudaMemsetParams
     struct cudaMemsetParamsV2
-    -struct cudaOffset3D
+    struct cudaOffset3D
     struct cudaPitchedPtr
     struct cudaPointerAttributes
     struct cudaPos

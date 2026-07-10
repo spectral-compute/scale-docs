@@ -4,6 +4,7 @@ This page shows how the SCALE device library corresponds to various
 versions of the NVIDIA CUDA Math API.
 
 === "12.9"
+    
     ## [1. FP4 Intrinsics](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-math-api/cuda_math_api/group__CUDA__MATH__INTRINSIC__FP4.html)
     ```diff
     -4 bit floating point is not supported
