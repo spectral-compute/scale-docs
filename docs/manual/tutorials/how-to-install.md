@@ -43,13 +43,7 @@ No root access? Use the tarball distribution.
 
         ```
         sudo apt install {{ scale_pkgname }}
-
-        # Add your user to the `video` group:
-        sudo usermod -a -G video $(whoami)
         ```
-
-        If you did not already have the `amdgpu-dkms` kernel driver installed prior to
-        installing SCALE, you should now reboot.
 
     {% endfor %}
 
@@ -88,9 +82,6 @@ No root access? Use the tarball distribution.
         sudo dnf install {{ scale_pkgname }}
         ```
 
-        If you did not already have the `amdgpu-dkms` kernel driver installed prior to
-        installing SCALE, you should now reboot.
-
 === "Other Distros (tarball)"
 
     Download and extract the SCALE tarball:
@@ -113,6 +104,17 @@ No root access? Use the tarball distribution.
     The tarball is significantly larger than other options since it
     includes many dependent libraries directly instead of asking the system
         package manager to install them.
+
+
+## Post-installation steps
+
+Ensure that your user can access your GPU:
+
+```sh
+sudo usermod -a -G render,video $LOGNAME
+```
+
+You may also need to restart for all changes to apply, especially if you have just installed or updated the AMDGPU kernel module.
 
 ## Installation Troubleshooting
 
