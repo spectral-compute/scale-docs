@@ -50,7 +50,7 @@ can be found [here](https://github.com/spectral-compute/scale-validation?tab=rea
 We also offer some [toy programs](./examples/README.md) to illustrate the process in a very simple
 environment.
 
-Join our [Discord](https://discord.com/invite/KNpgGbTc38) to let us know what projects are missing, or support our mission by contributing yourself.
+Join our [Discord](./contact/join-our-discord.md) to let us know what projects are missing, or support our mission by contributing yourself.
 
 ## Which GPUs are supported?
 
@@ -142,5 +142,5 @@ SCALE is a work in progress. If something gets in your way, please contact us.
 
 There are multiple ways to get in touch with us:
 
- - Join our [Discord](https://discord.gg/KNpgGbTc38)
+ - Join our [Discord](./contact/join-our-discord.md)
  - Send us an e-mail at [hello@spectralcompute.co.uk](mailto:hello@spectralcompute.co.uk)
