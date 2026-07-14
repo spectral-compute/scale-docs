@@ -5,7 +5,7 @@ into problems, contact us by:
 
 - Joining our [Discord](./join-our-discord.md)
 - Creating [a ticket](https://github.com/spectral-compute/scale-validation/issues)
-- Sending us an e-mail at [hello@spectralcompute.co.uk](mailto:hello@spectralcompute.co.uk)
+- Sending us an e-mail at [hello@spectralcompute.com](mailto:hello@spectralcompute.com)
 
 The remainder of this page provides information about how to make your
 report as helpful as possible.
