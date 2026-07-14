@@ -206,8 +206,8 @@ Release dates for every version are listed in the
 ## Tell us about your work
 
 We would love to hear what you built. If you publish something that uses SCALE,
-tell us on [Discord](./contact/join-our-discord.md) or email
-[hello@spectralcompute.co.uk](mailto:hello@spectralcompute.co.uk).
+tell us on [Discord](https://scale-lang.com/s/discord?utm_source=docs&utm_medium=internal)
+or email [hello@spectralcompute.com](mailto:hello@spectralcompute.com).
 
 Note that citing SCALE does not imply that we endorse your work, and that SCALE
 is a registered trademark of Spectral Compute Ltd - see
