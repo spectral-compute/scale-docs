@@ -327,7 +327,7 @@ Some libcudacxx components not shipped with this distribution are covered by
 the below license. Each source file indicates which license it is under.
 
 If you find a file in our distribution with the following license,
-please let us know at legal@spectralcompute.co.uk immediately.
+please let us know at legal@spectralcompute.com immediately.
 ==============================================================================
 
 NVIDIA SOFTWARE LICENSE
