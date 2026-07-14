@@ -6,4 +6,4 @@ All uses of trademarks on this website are purely for nominative and/or descript
  - AMD ROCm is a registered trademark of Advanced Micro Devices, Inc.
  - SCALE is a registered trademark of Spectral Compute Ltd.
 
-Please contact us at [legal@spectralcompute.co.uk](mailto:legal@spectralcompute.co.uk) for any inquiries or corrections regarding our use of trademarks.
+Please contact us at [legal@spectralcompute.com](mailto:legal@spectralcompute.com) for any inquiries or corrections regarding our use of trademarks.

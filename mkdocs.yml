@@ -101,7 +101,7 @@ extra:
     - icon: fontawesome/brands/discord
       link: https://scale-lang.com/s/discord?utm_source=docs&utm_medium=internal
 
-copyright: Copyright &copy; 2026 <a href="https://www.spectralcompute.co.uk">Spectral Compute Ltd</a>
+copyright: Copyright &copy; 2026 <a href="https://spectralcompute.com">Spectral Compute Ltd</a>
 
 markdown_extensions:
   - toc:
