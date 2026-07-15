@@ -133,9 +133,7 @@ nav:
       - manual/changelogs/whats-new.md
       - manual/faq.md
       - manual/comparison.md
-      # DRAFT: re-enable once the TODO(cite-N) decisions in docs/citation.md are
-      # resolved. Keep in sync with `not_in_nav` below.
-      # - citation.md
+      - citation.md
       - Contact Us:
           - contact/report-a-bug.md
           - contact/join-our-discord.md
@@ -182,4 +180,3 @@ nav:
 
 not_in_nav: |
   /use_of_trademarks.md
-  /citation.md
