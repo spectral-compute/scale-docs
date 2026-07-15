@@ -16,8 +16,8 @@ Powered by SCALE (https://scale-lang.com)
 or, in running text:
 
 ```text
-GPU support on AMD hardware is provided by SCALE, a CUDA-compatible GPU
-programming toolkit by Spectral Compute (https://scale-lang.com).
+This application is built with SCALE, a CUDA-compatible GPU programming
+toolkit by Spectral Compute (https://scale-lang.com).
 ```
 
 If you would like the SCALE logo for a slide deck or an "about" screen, get in
