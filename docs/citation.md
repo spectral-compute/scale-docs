@@ -20,10 +20,10 @@ This application is built with SCALE, a CUDA-compatible GPU programming
 toolkit by Spectral Compute (https://scale-lang.com).
 ```
 
-If you would like the SCALE logo for a slide deck or an "about" screen, get in
-touch on [Discord](./contact/join-our-discord.md) or at
-[hello@spectralcompute.com](mailto:hello@spectralcompute.com) and we will be
-happy to help.
+Our logos and usage guidelines are available at
+[scale-lang.com/brand-assets](https://scale-lang.com/brand-assets). If in
+doubt, reach out on [Discord](./contact/join-our-discord.md) or at
+[hello@spectralcompute.com](mailto:hello@spectralcompute.com).
 
 ## In Publications
 
