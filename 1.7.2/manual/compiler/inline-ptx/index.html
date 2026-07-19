@@ -8,9 +8,13 @@
       
       
       
-        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/library/leak-detector/">
+        <link rel="canonical" href="https://docs.scale-lang.com/latest/manual/compiler/inline-ptx/">
       
       
+        <link rel="prev" href="../dialects/">
+      
+      
+        <link rel="next" href="../language-extensions/">
       
       
       <link rel="icon" href="../../../favicon.ico">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Resource Leak Detector - SCALE Documentation</title>
+        <title>Inline PTX support - SCALE Documentation</title>
       
     
     
@@ -144,7 +148,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#resource-leak-detector" class="md-skip">
+        <a href="#inline-ptx-support" class="md-skip">
           Skip to content
         </a>
       
@@ -183,7 +187,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Resource Leak Detector
+              Inline PTX support
             
           </span>
         </div>
@@ -812,8 +816,10 @@
       
   
   
+    
   
   
+  
     
     
       
@@ -829,11 +835,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
@@ -848,7 +854,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Compiler
@@ -859,8 +865,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -875,11 +883,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
         
           
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
@@ -894,7 +902,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             CUDA Language
@@ -908,7 +916,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compiler/dialects/" class="md-nav__link">
+      <a href="../dialects/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -927,10 +935,31 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../compiler/inline-ptx/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Inline PTX support
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -940,6 +969,155 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wave64-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wave64 considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wave64 considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#querying-warp-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Querying warp size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lanemask-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lanemask inputs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-c-argument-to-shfl-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      The c argument to shfl instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialect-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dialect differences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dialect differences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integer-lengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integer lengths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divergent-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Divergent exit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empty-asm-volatile-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Empty asm volatile blocks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#returning-the-carry-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning the carry-bit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asm-inputoutput-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      asm input/output types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported constraints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported instructions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -952,7 +1130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compiler/language-extensions/" class="md-nav__link">
+      <a href="../language-extensions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1028,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compiler/diagnostics/" class="md-nav__link">
+      <a href="../diagnostics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1050,7 +1228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compiler/diagnostic-reference/" class="md-nav__link">
+      <a href="../diagnostic-reference/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1072,7 +1250,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../compiler/optimisation-flags/" class="md-nav__link">
+      <a href="../optimisation-flags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1160,7 +1338,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../library/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1182,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../performance-tuning/" class="md-nav__link">
+      <a href="../../library/performance-tuning/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1250,7 +1428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../runtime-extensions/" class="md-nav__link">
+      <a href="../../library/runtime-extensions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1272,7 +1450,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../differences/" class="md-nav__link">
+      <a href="../../library/differences/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1342,7 +1520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../apidiff/apis/" class="md-nav__link">
+      <a href="../../library/apidiff/apis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1364,7 +1542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../apidiff/driver-api/" class="md-nav__link">
+      <a href="../../library/apidiff/driver-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1386,7 +1564,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../apidiff/math-api/" class="md-nav__link">
+      <a href="../../library/apidiff/math-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1408,7 +1586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../apidiff/runtime-api/" class="md-nav__link">
+      <a href="../../library/apidiff/runtime-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1446,7 +1624,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../troubleshooting/" class="md-nav__link">
+      <a href="../../library/troubleshooting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1586,6 +1764,143 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#wave64-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Wave64 considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Wave64 considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#querying-warp-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Querying warp size
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#lanemask-inputs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lanemask inputs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-c-argument-to-shfl-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      The c argument to shfl instructions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dialect-differences" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dialect differences
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dialect differences">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#integer-lengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integer lengths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#divergent-exit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Divergent exit
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#empty-asm-volatile-blocks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Empty asm volatile blocks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#returning-the-carry-bit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Returning the carry-bit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#asm-inputoutput-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      asm input/output types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#performance-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance considerations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-constraints" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported constraints
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#supported-instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported instructions
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1600,40 +1915,713 @@
 
 
 
-<h1 id="resource-leak-detector">Resource Leak Detector<a class="headerlink" href="#resource-leak-detector" title="Permanent link">#</a></h1>
-<p>The SCALE runtime library has a limited ability to detect resource leaks.</p>
-<p>To enable this feature, run your program with the <code>SCALE_DETECT_LEAKS=1</code>
-environment variable set. Upon exit, the program will print output similar
-to:</p>
-<div class="highlight"><pre><span></span><code>Free nodes: 7 / 7 [capacity: 4096]. 0 leaked.
-Free events: 21 / 21 [capacity: 4096]. 0 leaked.
-</code></pre></div>
-<p>If any resources are found to have leaked, the program will abort and print
-a count of leaked resources.</p>
-<p>Leaked resources indicate one of three things:</p>
+<h1 id="inline-ptx-support">Inline PTX support<a class="headerlink" href="#inline-ptx-support" title="Permanent link">#</a></h1>
+<p>Inline PTX <code>asm</code> blocks in CUDA programs are parsed by the SCALE compiler
+to produce useful diagnostics. When building for non-NVIDIA targets, the
+<code>asm</code> is then converted to LLVM IR and compiled with the rest of the
+program.</p>
+<p>The practical effect is that inline PTX is now a first-class part of
+the language, with porability and compiler diagnostics.</p>
+<h2 id="wave64-considerations">Wave64 considerations<a class="headerlink" href="#wave64-considerations" title="Permanent link">#</a></h2>
+<p>Some PTX instructions depend on the warp size of the target GPU.
+Since most GPUs have a warp size of 32, many programs assume the warp
+size is always 32, presenting issues when compiling for GPUs that
+are different.</p>
+<p>SCALE provides several tools and compiler warnings to help you write
+portable PTX code. Small tweaks that do not break compatibility with
+NVIDIA's compiler are all that is typically required to get things working.</p>
+<h3 id="querying-warp-size">Querying warp size<a class="headerlink" href="#querying-warp-size" title="Permanent link">#</a></h3>
+<p>PTX defines the <code>WARP_SZ</code> global constant which can be used to access the
+warp size. It's a compile-time constant, so there is no cost to using this
+and doing arithmetic with it (like with <code>warpSize</code> in CUDA code).</p>
+<h3 id="lanemask-inputs">Lanemask inputs<a class="headerlink" href="#lanemask-inputs" title="Permanent link">#</a></h3>
+<p>Lanemask operands will always have a number of
+bits equal to the warp size of the GPU. For
+example, when compiling for a wave64 GPU, the lanemask argument to <code>shfl.sync</code>
+is a <code>b64</code>, not <code>b32</code>.</p>
+<p>The following rules are applied to help detect problems with such operands:</p>
 <ul>
-<li>Your program forgot to delete some CUDA resource. For example: a
-  <code>cudaGraphExec_t</code> was not passed to <code>cudaGraphExecDestroy()</code> and leaked.</li>
-<li>Some of your program's CUDA resources are destroyed during static
-  deinitialisation and - due to to chance - the SCALE library's static
-  destructors ran before yours. This scenario may lead to undefined behaviour
-  when running with either SCALE or NVIDIA CUDA, since it may end up deleting
-  a resource after the CUDA library has been de-initialised.</li>
-<li>A bug in SCALE causing it to leak resources internally.</li>
+<li>If a non-constant lanemask operand is used, and its bit-length is <code>&lt;=</code> the
+  warp size, an error is raised.</li>
+<li>If a constant lanemask operand is used with no 1-bits in the high half,
+  while compiling for a wave64 architecture, a warning is raised (which can
+  be disabled). This catches the common case of hardcoded lanemasks like
+  <code>0xFFFFFFFF</code> which will typecheck as <code>b64</code>, but will probably not do what
+  you want.</li>
 </ul>
-<p>This leak detector is an emergent property of an implementation detail of the
-SCALE runtime library for AMD GPUs. Certain resources are very expensive to
-create/destroy, so we use object pooling internally to improve performance.
-The leak detector simply checks that every object created for the pool has
-made its way back to the pool by the time the SCALE library is being
-unloaded.</p>
-<p>The resources being counted are the nodes/events used internally to represent
-work in the GPU work queues. Most APIs that "do GPU stuff" result in the
-creation/use of one or more of these resources. The leak checker does not provide
-any way to map a particular leaked object back to the API call that created it.</p>
-<p>The leak detector does not detect memory leaks, file descriptor leaks, or any other
-kind of leak. It finds only leaks of resouces that the SCALE runtime handles using
-object pools.</p>
+<p>In the common case where you want an all-ones lanemask, the most convenient
+thing to do is write <code>-1</code> instead of <code>0xFFFFFFFF</code>: this will give you the
+correct number of 1-bits, and is accepted by both SCALE and NVIDIA nvcc.</p>
+<h3 id="the-c-argument-to-shfl-instructions">The <code>c</code> argument to <code>shfl</code> instructions<a class="headerlink" href="#the-c-argument-to-shfl-instructions" title="Permanent link">#</a></h3>
+<p>The <code>shfl</code> PTX instruction has a funky operand, <code>c</code>, used for clamping etc.
+See <a href="https://docs.nvidia.com/cuda/parallel-thread-execution/index.html#data-movement-and-conversion-instructions-shfl-sync">the documentation</a>.</p>
+<p>The <code>c</code> operand is really two operands packed together: <code>cval</code> in
+bits 0-4, and <code>segmask</code> in bits 8-12. For wave64, an extra bit is needed. Since
+there is space for an extra bit in each of these values, we simply add it in
+the obvious place.</p>
+<p>A portable way of reasoning about this is to assume that <code>cval</code> is in bits 0-7
+and <code>segmask</code> in bits 8-15.</p>
+<p>Here's a concrete example of a reverse cumsum that works on either warp size:</p>
+<div class="highlight"><pre><span></span><code><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">shuffleRevCumsumKernel</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">dst</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warpSize</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<span class="w">    </span><span class="k">asm</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;.reg .f32 Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;.reg .f32 Ry;&quot;</span>
+<span class="w">    </span><span class="s">&quot;.reg .pred p;&quot;</span>
+<span class="w">    </span><span class="s">&quot;mov.b32 Rx, %1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.down.b32  Ry|p, Rx, 0x1,  %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;@p  add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.down.b32  Ry|p, Rx, 0x2,  %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;@p  add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.down.b32  Ry|p, Rx, 0x4,  %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;@p  add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.down.b32  Ry|p, Rx, 0x8,  %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;@p  add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.down.b32  Ry|p, Rx, 0x10, %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;@p  add.f32        Rx, Ry, Rx;&quot;</span>
+
+<span class="w">    </span><span class="c1">// One extra shuffle is needed for the larger warp size.</span>
+<span class="w">    </span><span class="cp">#if __SCALE_WARP_SIZE__ &gt; 32</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.down.b32  Ry|p, Rx, 0x20, %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;@p  add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="c1">// __SCALE_WARP_SIZE__</span>
+<span class="w">    </span><span class="s">&quot;mov.b32 %0, Rx;&quot;</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;=f&quot;</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;f&quot;</span><span class="p">(</span><span class="mf">1.0f</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;n&quot;</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">dst</span><span class="p">[</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>And here's how to do a portable butterfly shuffle reduction:</p>
+<div class="highlight"><pre><span></span><code><span class="n">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">shuffleBflyKernel</span><span class="p">(</span><span class="kt">float</span><span class="w"> </span><span class="o">*</span><span class="n">dst</span><span class="p">)</span>
+<span class="p">{</span>
+<span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">warpSize</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+
+<span class="w">    </span><span class="kt">float</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="w">    </span><span class="k">asm</span><span class="p">(</span>
+<span class="w">    </span><span class="s">&quot;.reg .f32 Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;.reg .f32 Ry;&quot;</span>
+<span class="w">    </span><span class="s">&quot;.reg .pred p;&quot;</span>
+<span class="w">    </span><span class="s">&quot;mov.b32 Rx, %1;&quot;</span>
+<span class="w">    </span><span class="cp">#if __SCALE_WARP_SIZE__ &gt; 32</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.bfly.b32  Ry, Rx, 0x20, %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="cp">#endif </span><span class="c1">// __SCALE_WARP_SIZE__</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.bfly.b32  Ry, Rx, 0x10, %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.bfly.b32  Ry, Rx, 0x8,  %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.bfly.b32  Ry, Rx, 0x4,  %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.bfly.b32  Ry, Rx, 0x2,  %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;shfl.sync.bfly.b32  Ry, Rx, 0x1,  %2, -1;&quot;</span>
+<span class="w">    </span><span class="s">&quot;add.f32        Rx, Ry, Rx;&quot;</span>
+<span class="w">    </span><span class="s">&quot;mov.b32 %0, Rx;&quot;</span>
+<span class="w">    </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;=f&quot;</span><span class="p">(</span><span class="n">out</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;f&quot;</span><span class="p">((</span><span class="kt">float</span><span class="p">)</span><span class="w"> </span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;n&quot;</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+<span class="w">    </span><span class="p">);</span>
+
+<span class="w">    </span><span class="n">dst</span><span class="p">[</span><span class="n">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">out</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="dialect-differences">Dialect differences<a class="headerlink" href="#dialect-differences" title="Permanent link">#</a></h2>
+<p>The SCALE compiler accepts a more permissive dialect of PTX than NVIDIA's
+implementation does.</p>
+<h3 id="integer-lengths">Integer lengths<a class="headerlink" href="#integer-lengths" title="Permanent link">#</a></h3>
+<p>Most PTX instructions are defined to work only for a specific, arbitrary set
+of integer types. We didn't bother to implement such restrictions except in
+cases where they are needed for correctness, so many PTX instructions accept
+a wider selection of types than nvcc accepts.</p>
+<p>One amusing consequence of this is that most of the simple instructions work
+for <em>any</em> bit-length: <code>add.s17</code> is allowed (but will of course lead to
+extra sext/trunc instructions, so isn't necessarily a good idea).</p>
+<h3 id="divergent-exit">Divergent <code>exit</code><a class="headerlink" href="#divergent-exit" title="Permanent link">#</a></h3>
+<p>AMD hardware does not seem to have a mechanism by which individual threads
+can terminate early (only entire warps). As a result, the <code>exit</code>
+instruction may be used only in converged contexts. We transform it into
+approximately:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">__activemask</span><span class="p">()</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">-1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">exit_entire_warp</span><span class="p">();</span>
+<span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// This situation is unrepresentable</span>
+<span class="w">    </span><span class="n">__trap</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Code that uses <code>exit</code> as a performance optimisation for nvidia hardware may
+benefit from being adjusted for AMD.</p>
+<h2 id="empty-asm-volatile-blocks">Empty <code>asm volatile</code> blocks<a class="headerlink" href="#empty-asm-volatile-blocks" title="Permanent link">#</a></h2>
+<p>To cater to "interesting" user code, the SCALE compiler will not touch
+<code>asm volatile</code> blocks containing no instructions. We've seen
+real-world CUDA code that uses these as a kind of ad-hoc optimisation
+barrier to prevent the compiler breaking programs that contain undefined
+behaviour. This pragmatic choice should reduce how often such broken programs
+fail to function, but such code is broken by definition.</p>
+<p>Note that the <code>volatile</code> on non-empty <code>volatile asm</code> blocks has no effect on the
+behaviour of the SCALE compiler. <code>volatile</code> asm is a conservative feature that
+allows the compiler to model "unknowable" implicit dependencies of the actions
+takenby the inline asm. Since we're compiling the asm to IR, the <em>actual</em>
+dependencies and properties of everything it does are known and modelled. This
+can improve optimisation, but may break programs that have undefined behaviour
+that was being hidden by the optimisation barrier effect of the volatile asm
+block.</p>
+<h2 id="returning-the-carry-bit">Returning the carry-bit<a class="headerlink" href="#returning-the-carry-bit" title="Permanent link">#</a></h2>
+<p>The PTX carry-bit may not be implicitly returned from functions.</p>
+<p>Some PTX instructions have a carry flag bit, used to perform extended-precision
+integer arithmetic across multiple instructions. The <a href="https://docs.nvidia.com/cuda/parallel-thread-execution/index.html#extended-precision-integer-arithmetic-instructions">PTX manual</a>
+notes:</p>
+<blockquote>
+<p>The condition code register is not preserved across calls and is mainly
+intended for use in straight-line code sequences for computing
+extended-precision integer addition, subtraction, and multiplication.</p>
+</blockquote>
+<p>It is, therefore, undefined behaviour to write code that writes to the
+carry-bit in one function and then attempts to read it from another. The
+correct execution of such code is optimiser-dependent on NVIDIA's platform
+(depending on the function to inline), so will likely fail in <code>-O0</code> builds.</p>
+<p>For example:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">void</span><span class="w"> </span><span class="nf">createCarryBit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Add with carry-out.</span>
+<span class="w">    </span><span class="k">asm</span><span class="p">(</span><span class="s">&quot;add.cc.u32 %0, %0, %1&quot;</span><span class="o">:</span><span class="w"> </span><span class="s">&quot;+r&quot;</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">y</span><span class="p">));</span>
+<span class="p">}</span>
+
+<span class="kt">void</span><span class="w"> </span><span class="nf">useCarryBit</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">createCarryBit</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Add with carry-in. Not allowed, since it&#39;s trying to read the</span>
+<span class="w">    </span><span class="c1">// carry-bit across a function boundary.</span>
+<span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">z</span><span class="p">;</span>
+<span class="w">    </span><span class="k">asm</span><span class="p">(</span><span class="s">&quot;add.cc.u32 %0, %1, %2&quot;</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;=r&quot;</span><span class="p">(</span><span class="n">z</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="s">&quot;r&quot;</span><span class="p">(</span><span class="n">y</span><span class="p">));</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Due to how SCALE's PTX support works, it <em>can't</em> support this pattern, so this
+situation is a compiler error instead. To write code like this in a portable
+way, you can refactor it to use macros instead.</p>
+<p>It may also be worth considering if you truly still need this inline asm: both
+NVIDIA nvcc and SCALE have good support for <code>int128_t</code> now, which makes many
+common uses of these asm constructs redundant.</p>
+<h2 id="asm-inputoutput-types"><code>asm</code> input/output types<a class="headerlink" href="#asm-inputoutput-types" title="Permanent link">#</a></h2>
+<p><code>nvcc</code> doesn't appear to consistently follow its own tying rules for PTX asm
+inputs/outputs. It allows the following invalid things to occur in some cases
+(and real programs depend on this):</p>
+<ul>
+<li>Writes to read-only asm bindings are permitted (such as writing to an "r")
+  constraint. The result of the write is not visible to the caller: it's
+  effectively a temporary inside the scope of the asm block.</li>
+<li><code>=r</code> (write-only) constraints can be used in a read-write fashion (as if
+  they were <code>+r</code>).</li>
+<li>Values passed to the asm block are sometimes, but not always, type checked,
+  implicitly widened, or implicitly truncated.</li>
+</ul>
+<p>To avoid having to characterise and define the perimeter of this buggy
+behaviour, SCALE's implementation defines the following consistent rules
+which are intended to maximise compatibility (and minimise "weirdness"):</p>
+<ul>
+<li>All read-only inputs may be written to. The results of these writes are
+  visible only within the scope of the asm block (as if they were local
+  variables being passed by value into a function).</li>
+<li>All write-only outputs are implicitly read-write. ie.: there is no
+  difference between <code>+r</code> and <code>=r</code>.</li>
+<li>The type of an input or output binding is governed by the type of the
+  expression, not the constraint letter. Once "in PTX", the usual PTX rules
+  about implicit truncation/widening/etc. apply. This nuance won't change
+  the behaviour of programs unless they rely on using a "too short" PTX
+  constraint type to truncate a value, and then implicitly widen it within
+  PTX (hence zeroing out some of the bits). Since such truncations are
+  inconsistently applied even with nvidia nvcc mode, they are probably best
+  achieved with an explicit cast.</li>
+</ul>
+<h2 id="performance-considerations">Performance considerations<a class="headerlink" href="#performance-considerations" title="Permanent link">#</a></h2>
+<p>In most cases, there isn't a performance penalty from using PTX asm in CUDA
+code: it will usually convert to the same IR as the C++ you could have
+written instead, and may actually be faster due to not needing to be as
+conservative about optimisation compared to the usual rules of asm blocks.</p>
+<p>Since the compiler <em>effectively</em> converts it to the CUDA code you could have
+written to achieve the same effect without the use of the PTX asm, it
+doesn't come with the optimisation-hindering downsides asm blocks
+normally imply. The compiler will respect the ordering/synchronisation/etc.
+requirements of each operation individually, rather than having to regard an
+entire <code>asm volatile</code> block as an opaque, immutable unit.</p>
+<p>Programs that have already added support for HIP might have multiple
+codepaths: one for CUDA that uses inline PTX, and one for AMD which doesn't.
+In such cases, it is worth testing both to see which is fastest.</p>
+<h2 id="supported-constraints">Supported constraints<a class="headerlink" href="#supported-constraints" title="Permanent link">#</a></h2>
+<p>The following PTX constraint letters are supported. See above commentary on
+nuances regarding how they are interpreted.</p>
+<p><code>h</code>: u16
+<code>r</code>: u32
+<code>l</code>: u64
+<code>f</code>: f32
+<code>d</code>: f64
+<code>n</code>: constants
+<code>C</code>: dynamic asm strings</p>
+<h2 id="supported-instructions">Supported instructions<a class="headerlink" href="#supported-instructions" title="Permanent link">#</a></h2>
+<p>The following instructions are currently supported.</p>
+<p>Caveat: since the <code>bf16</code>, <code>fp8</code> and <code>tf32</code> floating point formats are not
+currently supported in SCALE, they are also not supported here.</p>
+<table>
+<thead>
+<tr>
+<th>Instruction</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>abs</td>
+<td></td>
+</tr>
+<tr>
+<td>activemask</td>
+<td></td>
+</tr>
+<tr>
+<td>add</td>
+<td></td>
+</tr>
+<tr>
+<td>addc</td>
+<td></td>
+</tr>
+<tr>
+<td>and</td>
+<td></td>
+</tr>
+<tr>
+<td>atom</td>
+<td></td>
+</tr>
+<tr>
+<td>bfe</td>
+<td></td>
+</tr>
+<tr>
+<td>bfi</td>
+<td></td>
+</tr>
+<tr>
+<td>bfind</td>
+<td></td>
+</tr>
+<tr>
+<td>bfind.shiftamt</td>
+<td></td>
+</tr>
+<tr>
+<td>bmsk</td>
+<td></td>
+</tr>
+<tr>
+<td>bra</td>
+<td></td>
+</tr>
+<tr>
+<td>brev</td>
+<td></td>
+</tr>
+<tr>
+<td>brkpt</td>
+<td>Currently a no-op</td>
+</tr>
+<tr>
+<td>clz</td>
+<td></td>
+</tr>
+<tr>
+<td>cnot</td>
+<td></td>
+</tr>
+<tr>
+<td>copysign</td>
+<td></td>
+</tr>
+<tr>
+<td>cos.approx</td>
+<td></td>
+</tr>
+<tr>
+<td>cvt</td>
+<td></td>
+</tr>
+<tr>
+<td>cvt.pack</td>
+<td></td>
+</tr>
+<tr>
+<td>discard</td>
+<td>Currently a no-op</td>
+</tr>
+<tr>
+<td>div</td>
+<td></td>
+</tr>
+<tr>
+<td>dp2a</td>
+<td></td>
+</tr>
+<tr>
+<td>dp4a</td>
+<td></td>
+</tr>
+<tr>
+<td>elect</td>
+<td></td>
+</tr>
+<tr>
+<td>ex2.approx</td>
+<td></td>
+</tr>
+<tr>
+<td>exit</td>
+<td>Only from convergent code</td>
+</tr>
+<tr>
+<td>fence</td>
+<td>Memory ranges unsupported</td>
+</tr>
+<tr>
+<td>fma</td>
+<td></td>
+</tr>
+<tr>
+<td>fns</td>
+<td></td>
+</tr>
+<tr>
+<td>griddepcontrol.launch_dependents</td>
+<td>Currently a no-op</td>
+</tr>
+<tr>
+<td>griddepcontrol.wait</td>
+<td>Currently a no-op</td>
+</tr>
+<tr>
+<td>isspacep</td>
+<td></td>
+</tr>
+<tr>
+<td>ld</td>
+<td></td>
+</tr>
+<tr>
+<td>ld.nc</td>
+<td></td>
+</tr>
+<tr>
+<td>ldmatrix</td>
+<td></td>
+</tr>
+<tr>
+<td>ldu</td>
+<td></td>
+</tr>
+<tr>
+<td>lg2.approx</td>
+<td></td>
+</tr>
+<tr>
+<td>lop3</td>
+<td></td>
+</tr>
+<tr>
+<td>mad</td>
+<td></td>
+</tr>
+<tr>
+<td>mad24</td>
+<td></td>
+</tr>
+<tr>
+<td>madc</td>
+<td></td>
+</tr>
+<tr>
+<td>match.all</td>
+<td></td>
+</tr>
+<tr>
+<td>match.any</td>
+<td></td>
+</tr>
+<tr>
+<td>max</td>
+<td></td>
+</tr>
+<tr>
+<td>max.xorsign.abs</td>
+<td></td>
+</tr>
+<tr>
+<td>membar</td>
+<td></td>
+</tr>
+<tr>
+<td>min</td>
+<td></td>
+</tr>
+<tr>
+<td>min.xorsign.abs</td>
+<td></td>
+</tr>
+<tr>
+<td>mma</td>
+<td><code>wmma.mma</code> likely faster</td>
+</tr>
+<tr>
+<td>mov</td>
+<td></td>
+</tr>
+<tr>
+<td>mul</td>
+<td></td>
+</tr>
+<tr>
+<td>mul24</td>
+<td></td>
+</tr>
+<tr>
+<td>nanosleep</td>
+<td></td>
+</tr>
+<tr>
+<td>neg</td>
+<td></td>
+</tr>
+<tr>
+<td>not</td>
+<td></td>
+</tr>
+<tr>
+<td>or</td>
+<td></td>
+</tr>
+<tr>
+<td>pmevent</td>
+<td>Currently a no-op</td>
+</tr>
+<tr>
+<td>popc</td>
+<td></td>
+</tr>
+<tr>
+<td>prefetch</td>
+<td></td>
+</tr>
+<tr>
+<td>prefetchu</td>
+<td></td>
+</tr>
+<tr>
+<td>prmt</td>
+<td></td>
+</tr>
+<tr>
+<td>prmt.b4e</td>
+<td></td>
+</tr>
+<tr>
+<td>prmt.ecl</td>
+<td></td>
+</tr>
+<tr>
+<td>prmt.ecr</td>
+<td></td>
+</tr>
+<tr>
+<td>prmt.f4e</td>
+<td></td>
+</tr>
+<tr>
+<td>prmt.rc16</td>
+<td></td>
+</tr>
+<tr>
+<td>prmt.rc8</td>
+<td></td>
+</tr>
+<tr>
+<td>rcp</td>
+<td></td>
+</tr>
+<tr>
+<td>red</td>
+<td></td>
+</tr>
+<tr>
+<td>redux</td>
+<td></td>
+</tr>
+<tr>
+<td>rem</td>
+<td></td>
+</tr>
+<tr>
+<td>sad</td>
+<td></td>
+</tr>
+<tr>
+<td>sin.approx</td>
+<td></td>
+</tr>
+<tr>
+<td>selp</td>
+<td></td>
+</tr>
+<tr>
+<td>set</td>
+<td></td>
+</tr>
+<tr>
+<td>setp</td>
+<td></td>
+</tr>
+<tr>
+<td>shf.l</td>
+<td></td>
+</tr>
+<tr>
+<td>shfl.bfly</td>
+<td></td>
+</tr>
+<tr>
+<td>shfl.down</td>
+<td></td>
+</tr>
+<tr>
+<td>shfl.idx</td>
+<td></td>
+</tr>
+<tr>
+<td>shfl.up</td>
+<td></td>
+</tr>
+<tr>
+<td>shf.r</td>
+<td></td>
+</tr>
+<tr>
+<td>shl</td>
+<td></td>
+</tr>
+<tr>
+<td>shr</td>
+<td></td>
+</tr>
+<tr>
+<td>slct</td>
+<td></td>
+</tr>
+<tr>
+<td>st</td>
+<td></td>
+</tr>
+<tr>
+<td>stmatrix</td>
+<td></td>
+</tr>
+<tr>
+<td>sub</td>
+<td></td>
+</tr>
+<tr>
+<td>subc</td>
+<td></td>
+</tr>
+<tr>
+<td>szext</td>
+<td></td>
+</tr>
+<tr>
+<td>testp.finite</td>
+<td></td>
+</tr>
+<tr>
+<td>testp.infinite</td>
+<td></td>
+</tr>
+<tr>
+<td>testp.normal</td>
+<td></td>
+</tr>
+<tr>
+<td>testp.notanumber</td>
+<td></td>
+</tr>
+<tr>
+<td>testp.number</td>
+<td></td>
+</tr>
+<tr>
+<td>testp.subnormal</td>
+<td></td>
+</tr>
+<tr>
+<td>trap</td>
+<td></td>
+</tr>
+<tr>
+<td>vabsdiff</td>
+<td></td>
+</tr>
+<tr>
+<td>vadd</td>
+<td></td>
+</tr>
+<tr>
+<td>vmax</td>
+<td></td>
+</tr>
+<tr>
+<td>vmin</td>
+<td></td>
+</tr>
+<tr>
+<td>vote.all</td>
+<td></td>
+</tr>
+<tr>
+<td>vote.any</td>
+<td></td>
+</tr>
+<tr>
+<td>vote.ballot</td>
+<td></td>
+</tr>
+<tr>
+<td>vote.uni</td>
+<td></td>
+</tr>
+<tr>
+<td>vshl</td>
+<td></td>
+</tr>
+<tr>
+<td>vshr</td>
+<td></td>
+</tr>
+<tr>
+<td>vsub</td>
+<td></td>
+</tr>
+<tr>
+<td>wmma.load</td>
+<td></td>
+</tr>
+<tr>
+<td>wmma.store</td>
+<td></td>
+</tr>
+<tr>
+<td>wmma.mma</td>
+<td></td>
+</tr>
+<tr>
+<td>xor</td>
+<td></td>
+</tr>
+</tbody>
+</table>
 
 
 
@@ -1666,6 +2654,44 @@ object pools.</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../dialects/" class="md-footer__link md-footer__link--prev" aria-label="Previous: CUDA Language Support">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                CUDA Language Support
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../language-extensions/" class="md-footer__link md-footer__link--next" aria-label="Next: Language Extensions">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Language Extensions
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
