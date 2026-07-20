@@ -1,26 +1,26 @@
 # What's New
 
-## Release 1.7.2 (2026-06-06)
+## Release 1.7.2 (2026-07-19)
 
-This release adds a few new CUDA APIs, and fixes a huge amount of bugs.
+This release adds new CUDA APIs, and fixes bugs from previous releases of SCALE.
 
-The compiler has made huge progress towards NVCC compatibility, with numerous
-bugs/crashes fixed and the addition of a few undocumented language features.
-
-The runtime library has had some of its most long-standing hangs/crashes fixed,
-and gained a number of new CUDA APIs.
+In the compiler, we have continued our progress towards full NVCC compatibility,
+adding support for a number of undocumented features of the CUDA language. The
+runtime library has gained a number of new CUDA APIs and had some of its most
+long-standing hangs/crashes fixed. We have fixed bugs in both the compiler and
+runtime library.
 
 ### Compiler
 
-- Fixed miscompiles of PTX `elect` instruction
+- Fixed miscompiles of PTX `elect` instruction.
 - Fixed NVIDIA-specific build failures relating to `__assert_fail()`.
 - Fixed crash when using a redundant `.sat` modifier in inline PTX.
 - Fix a crash when empty asm blocks were used with PTX constraint letters
   that were not valid asm constraints for the AMDGPU backend.
- - Fixed a crash when compiling shuffles whose source lanes evaluate to undefined
+- Fixed a crash when compiling shuffles whose source lanes evaluate to undefined
   behaviour.
 - Fixed a crash when lowering some warp reductions that fully constant-propagate.
-- Fixed miscompilation of `bar.sync 0`
+- Fixed miscompilation of `bar.sync 0`.
 
 ### Compiler Optimiser
 
@@ -35,7 +35,7 @@ and gained a number of new CUDA APIs.
 
 - Support the NVCC dialect's more permissive attribute placement rules.
 - Implement NVCC's strange handling of `+` constraints.
-- Added `#pragma nv_exec_check_disable`. Oh, my.
+- Added `#pragma nv_exec_check_disable`.
 - Improved handling of constructors for `__shared__` variables, more closely
   matching `nvcc`'s behaviour.
 - Initializer-lists now work in the arguments to `<<<>>>`.
@@ -49,12 +49,12 @@ and gained a number of new CUDA APIs.
 
 ### Library
 
-- Added new leak-detection feature
+- Added a new leak-detection feature (see documentation for runtime extensions).
 - Added the CUDA 11 variants of the entrypoint access APIs.
 - Added `curand_uniform2_double`.
 - Graph API:
     * Added Graph Memory Nodes and related APIs.
-    * Added `cudaGraphNodeGetToolsId`/`cudaGraphNodeGetLocalId`
+    * Added `cudaGraphNodeGetToolsId`/`cudaGraphNodeGetLocalId`.
     * Fixed various header/typedef compatibility issues.
     * Added some of the missing driver APIs.
     * Increased how much of the API works when `long long` is unavailable.
@@ -69,20 +69,18 @@ and gained a number of new CUDA APIs.
 - Fixed a startup-time crash on some older GPUs.
 - The deprecated stack-based launch APIs (`cudaSetupArgument()` etc.) are now
   associated with the thread, not the CUDAContext, as is required.
-- Added `cudaMemcpy2DFromArrayAsync`
+- Added `cudaMemcpy2DFromArrayAsync`.
 - Added `cuMemcpy3D/cuMemcpy3DAsync`.
 - Improvements to the RTC header environment, making it more compatible with
   the many and varied hacks people use in this domain.
-- Fix even more math function declaration compatibility issues.
-- `nodiscard` on `cudaError_t` is now opt-in. We have far more interesting
-  compiler warnings to show people, let's not encourage them to `-w`.
-- Added `__device_builtin__`
+- Fix further math function declaration compatibility issues.
+- `nodiscard` on `cudaError_t` is now opt-in.
+- Added `__device_builtin__`.
 - Fixed conversion ambiguity between bf16/fp16.
 - Added stream and kernel node attribute APIs.
 - `warpSize` is no longer `constexpr` in nvcc-dialect mode, after finding real
   programs that manage to break when it is. It will, of course, constant-propagate.
-- Fixed some crashes in `cublasLt`.
-- Fixed some missing enums/API defects in `cublasLt`.
+- Fixed some missing enums/API defects and crashes in `cublasLt`.
 - `cublas` and `cublasLt` handles are now layout-compatible, as is required.
 - Fixed a hang when combining `cuCtxRecordEvent` with deletion of still-busy
   CUDA streams.
