@@ -92,7 +92,7 @@ extra:
         checked: false
   analytics:
     provider: google
-    property: G-FQW9W5SC5P
+    property: G-MB0BL2P30P
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/spectral-compute
