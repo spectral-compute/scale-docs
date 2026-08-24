@@ -49,7 +49,8 @@ No root access? Use the tarball distribution.
 
 === "Rocky Linux"
 
-    === "9"
+    {% for rpm_os in [{"version": "9", "appstream": false}, {"version": "8", "appstream": true}] %}
+    === "{{ rpm_os.version }}"
 
         Set up the SCALE repository, if you haven't already:
 
@@ -60,7 +61,7 @@ No root access? Use the tarball distribution.
         export CUSTOMER_PASSWORD="<customer-password>"
 
         # Add the scale rpm repos.
-        wget --http-user="$CUSTOMER_NAME" --http-password="$CUSTOMER_PASSWORD" https://{{repo_subdomain}}.scale-lang.com/$CUSTOMER_NAME/rpm/el9/main/scale-repos.rpm
+        wget --http-user="$CUSTOMER_NAME" --http-password="$CUSTOMER_PASSWORD" https://{{repo_subdomain}}.scale-lang.com/$CUSTOMER_NAME/rpm/el{{ rpm_os.version }}/main/scale-repos.rpm
         sudo dnf install ./scale-repos.rpm
 
         # Tell dnf to authenticate to the repo
@@ -71,7 +72,7 @@ No root access? Use the tarball distribution.
         chmod 700 /etc/yum.repos.d/scale.repo
         {% else %}
         # Add the scale rpm repos.
-        sudo dnf install https://{{repo_subdomain}}.scale-lang.com/rpm/el9/main/scale-repos.rpm
+        sudo dnf install https://{{repo_subdomain}}.scale-lang.com/rpm/el{{ rpm_os.version }}/main/scale-repos.rpm
         {% endif %}
         ```
 
@@ -81,6 +82,14 @@ No root access? Use the tarball distribution.
         # Install SCALE
         sudo dnf install {{ scale_pkgname }}
         ```
+
+        {% if rpm_os.appstream %}
+        Note that on this version, we use a GCC version from the AppStream repositories.
+        These are enabled by default, but if you have disabled them you will need to re-enable them to use SCALE.
+        You can find out more information about AppStream repositories [here](https://docs.redhat.com/en/documentation/red_hat_enterprise_linux/8/html/package_manifest/appstream-repository).
+        {% endif %}
+
+    {% endfor %}
 
 === "Other Distros (tarball)"
 
