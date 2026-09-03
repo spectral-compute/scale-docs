@@ -60,7 +60,7 @@ using `-Werror` with nvcc will not compile unless you:
   of code.
 
 A quick-and-dirty way to achieve this is to put the appropriate flags in
-the `NVCC_APEND_FLAGS` environment variable, which is respected by SCALE.
+the `NVCC_APPEND_FLAGS` environment variable, which is respected by SCALE.
 
 ## Diagnostic control pragmas
 
