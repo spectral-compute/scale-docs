@@ -29,9 +29,9 @@ written in this way.
 SCALE offers tools to address this problem:
 
 - APIs that operate on warp masks accept and return a new type:
-  `cudaWarpSize_t`. This is an integer with as many bits as there are
+  `cudaLaneMask_t`. This is an integer with as many bits as there are
   threads in a warp on the target GPU.
-- Some APIs (such as `__ffs()`) have extra overloads for `cudaWarpSize_t`, so
+- Some APIs (such as `__ffs()`) have extra overloads for `cudaLaneMask_t`, so
   common patterns (such as `__ffs(__ballot(...))`) just work.
 - The SCALE compiler will emit compiler warnings when values that represent
   warp masks are implicitly truncated to 32 bits.
@@ -40,7 +40,7 @@ To write code that works correctly on both platforms:
 
 - Use `auto` instead of `uint32_t` when declaring a variable that is
   intended to contain a warp mask. With NVIDIA `nvcc` this will map to
-  `uint32_t`, and with SCALE this will map to `cudaWarpSize_t`, producing
+  `uint32_t`, and with SCALE this will map to `cudaLaneMask_t`, producing
   correct behaviour on both platforms.
 - Avoid hardcoding the constant "32" to represent warp size, instead using
   the global `warpSize` available on all platforms.
