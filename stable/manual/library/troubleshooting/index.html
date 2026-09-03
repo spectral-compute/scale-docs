@@ -59,7 +59,7 @@
   
   
 
-<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-FQW9W5SC5P"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-FQW9W5SC5P",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-FQW9W5SC5P",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-MB0BL2P30P"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-MB0BL2P30P",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-MB0BL2P30P",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
   
     <script>if("undefined"!=typeof __md_analytics){var consent=__md_get("__consent");consent&&consent.analytics&&__md_analytics()}</script>
   
@@ -2059,9 +2059,9 @@ written in this way.</p>
 <p>SCALE offers tools to address this problem:</p>
 <ul>
 <li>APIs that operate on warp masks accept and return a new type:
-  <code>cudaWarpSize_t</code>. This is an integer with as many bits as there are
+  <code>cudaLaneMask_t</code>. This is an integer with as many bits as there are
   threads in a warp on the target GPU.</li>
-<li>Some APIs (such as <code>__ffs()</code>) have extra overloads for <code>cudaWarpSize_t</code>, so
+<li>Some APIs (such as <code>__ffs()</code>) have extra overloads for <code>cudaLaneMask_t</code>, so
   common patterns (such as <code>__ffs(__ballot(...))</code>) just work.</li>
 <li>The SCALE compiler will emit compiler warnings when values that represent
   warp masks are implicitly truncated to 32 bits.</li>
@@ -2070,7 +2070,7 @@ written in this way.</p>
 <ul>
 <li>Use <code>auto</code> instead of <code>uint32_t</code> when declaring a variable that is
   intended to contain a warp mask. With NVIDIA <code>nvcc</code> this will map to
-  <code>uint32_t</code>, and with SCALE this will map to <code>cudaWarpSize_t</code>, producing
+  <code>uint32_t</code>, and with SCALE this will map to <code>cudaLaneMask_t</code>, producing
   correct behaviour on both platforms.</li>
 <li>Avoid hardcoding the constant "32" to represent warp size, instead using
   the global <code>warpSize</code> available on all platforms.</li>
