@@ -37,16 +37,16 @@ uv run mkdocs serve
 
 - Ensure your changes are all in master, and master is checked out.
 - Create (or update) the appropriate git-tag so we can find the version published later: `git tag <SCALE VERSION NUMBER> && git push origin <SCALE VERSION NUMBER>`
-- `mike deploy --push --update-aliases <SCALE VERSION NUMBER> stable`
+- `uv run mike deploy --push --update-aliases <SCALE VERSION NUMBER> stable`
 
 To deploy an unstable release of the manual:
 
 - Check out the `unstable` branch.
-- `mike deploy --push unstable`
+- `uv run mike deploy --push unstable`
 
 ### To publish a new version of the manual for an unstable release:
 
 *Make sure not to prepend 'v' to the version number*
 
 - Ensure your changes are all in `unstable`, and `unstable` is checked out.
-- `mike deploy --push unstable`
+- `uv run mike deploy --push unstable`
