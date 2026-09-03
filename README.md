@@ -12,8 +12,12 @@ Pull requests are welcomed!
 The `master` branch holds the current version of the stable documentation.
 `unstable` contains the current unstable documentation.
 
+The site is built with [Zensical](https://zensical.org/), using the existing
+`mkdocs.yml` as its configuration.
+
 The [`mike`](https://github.com/jimporter/mike) tool is used for managing
-documentation versions.
+documentation versions. We use [Zensical's fork](https://zensical.org/docs/compatibility/mkdocs/mike/)
+of it, which `uv sync` installs automatically.
 
 ## Compiling the manual
 
@@ -26,7 +30,13 @@ uv sync
 To launch the devserver and see changes live:
 
 ```sh
-uv run mkdocs serve
+uv run zensical serve
+```
+
+To build the site and fail on broken links or dead anchors:
+
+```sh
+uv run zensical build --strict
 ```
 
 ## Publishing
