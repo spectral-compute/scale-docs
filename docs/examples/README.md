@@ -32,7 +32,7 @@ cd scale-docs/examples
 To build an example:
 - [Install SCALE](../manual/tutorials/how-to-install.md)
 - [Decide on a GPU target](../manual/tutorials/how-to-use.md#identifying-gpu-target)
-- [Build the example using cmake](../manual/tutorials/how-to-use.md#cmake)
+- [Build the example using `cmake` inside a `scaleenv`](../manual/tutorials/how-to-use.md#the-easy-way-scaleenv)
 
 The example repository includes a helper script, `example.sh` that can fully
 automate the process. Pass your SCALE target directory as the first argument,
