@@ -803,29 +803,29 @@ versions of the NVIDIA CUDA Driver API.
     ```
     ## [6.35. Green Contexts](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-driver-api/group__CUDA__GREEN__CONTEXTS.html#group__CUDA__GREEN__CONTEXTS)
     ```diff
-    -enum CUdevResourceType
+    enum CUdevResourceType
     struct CUdevResource
-    -struct CUdevSmResource
-    -typedef CUdevResourceDesc_st * CUdevResourceDesc;
-    -CUresult cuCtxFromGreenCtx(CUcontext* pContext, CUgreenCtx hCtx);
-    -CUresult cuCtxGetDevResource(CUcontext hCtx, CUdevResource* resource, CUdevResourceType type);
-    -CUresult cuDevResourceGenerateDesc(CUdevResourceDesc* phDesc, CUdevResource* resources, unsigned int nbResources);
-    -CUresult cuDevSmResourceSplitByCount(CUdevResource* result, unsigned int* nbGroups, const CUdevResource* input, CUdevResource* remaining, unsigned int useFlags, unsigned int minCount);
-    -CUresult cuDeviceGetDevResource(CUdevice device, CUdevResource* resource, CUdevResourceType type);
-    -CUresult cuGreenCtxCreate(CUgreenCtx* phCtx, CUdevResourceDesc desc, CUdevice dev, unsigned int flags);
-    -CUresult cuGreenCtxDestroy(CUgreenCtx hCtx);
+    struct CUdevSmResource
+    typedef CUdevResourceDesc_st * CUdevResourceDesc;
+    CUresult cuCtxFromGreenCtx(CUcontext* pContext, CUgreenCtx hCtx);
+    CUresult cuCtxGetDevResource(CUcontext hCtx, CUdevResource* resource, CUdevResourceType type);
+    CUresult cuDevResourceGenerateDesc(CUdevResourceDesc* phDesc, CUdevResource* resources, unsigned int nbResources);
+    CUresult cuDevSmResourceSplitByCount(CUdevResource* result, unsigned int* nbGroups, const CUdevResource* input, CUdevResource* remaining, unsigned int useFlags, unsigned int minCount);
+    CUresult cuDeviceGetDevResource(CUdevice device, CUdevResource* resource, CUdevResourceType type);
+    CUresult cuGreenCtxCreate(CUgreenCtx* phCtx, CUdevResourceDesc desc, CUdevice dev, unsigned int flags);
+    CUresult cuGreenCtxDestroy(CUgreenCtx hCtx);
     -CUresult cuGreenCtxGetDevResource(CUgreenCtx hCtx, CUdevResource* resource, CUdevResourceType type);
-    -CUresult cuGreenCtxRecordEvent(CUgreenCtx hCtx, CUevent hEvent);
-    -CUresult cuGreenCtxStreamCreate(CUstream* phStream, CUgreenCtx greenCtx, unsigned int flags, int priority);
-    -CUresult cuGreenCtxWaitEvent(CUgreenCtx hCtx, CUevent hEvent);
-    -CUresult cuStreamGetGreenCtx(CUstream hStream, CUgreenCtx* phCtx);
+    CUresult cuGreenCtxRecordEvent(CUgreenCtx hCtx, CUevent hEvent);
+    CUresult cuGreenCtxStreamCreate(CUstream* phStream, CUgreenCtx greenCtx, unsigned int flags, int priority);
+    CUresult cuGreenCtxWaitEvent(CUgreenCtx hCtx, CUevent hEvent);
+    CUresult cuStreamGetGreenCtx(CUstream hStream, CUgreenCtx* phCtx);
     ```
     ## [6.36. Error Log Management Functions](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-driver-api/group__CUDA__LOGS.html#group__CUDA__LOGS)
     ```diff
     CUresult cuLogsCurrent(CUlogIterator* iterator_out, unsigned int flags);
     CUresult cuLogsDumpToFile(CUlogIterator* iterator, const char* pathToFile, unsigned int flags);
     CUresult cuLogsDumpToMemory(CUlogIterator* iterator, char* buffer, size_t* size, unsigned int flags);
-    CUresult cuLogsRegisterCallback(CUlogsCallback callbackFunc, void* userData, CUlogsCallbackHandle* callback_out);
+    -CUresult cuLogsRegisterCallback(CUlogsCallback callbackFunc, void* userData, CUlogsCallbackHandle* callback_out);
     CUresult cuLogsUnregisterCallback(CUlogsCallbackHandle callback);
     ```
     ## [6.37. CUDA Checkpointing](https://docs.nvidia.com/cuda/archive/12.9.1/cuda-driver-api/group__CUDA__CHECKPOINT.html#group__CUDA__CHECKPOINT)
@@ -1700,30 +1700,30 @@ versions of the NVIDIA CUDA Driver API.
     ```
     ## [6.35. Green Contexts](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__GREEN__CONTEXTS.html#group__CUDA__GREEN__CONTEXTS)
     ```diff
-    -enum CUdevResourceType
+    enum CUdevResourceType
     struct CUdevResource
-    -struct CUdevSmResource
-    -typedef CUdevResourceDesc_st * CUdevResourceDesc;
-    -CUresult cuCtxFromGreenCtx(CUcontext* pContext, CUgreenCtx hCtx);
-    -CUresult cuCtxGetDevResource(CUcontext hCtx, CUdevResource* resource, CUdevResourceType type);
-    -CUresult cuDevResourceGenerateDesc(CUdevResourceDesc* phDesc, CUdevResource* resources, unsigned int nbResources);
-    -CUresult cuDevSmResourceSplitByCount(CUdevResource* result, unsigned int* nbGroups, const CUdevResource* input, CUdevResource* remaining, unsigned int useFlags, unsigned int minCount);
-    -CUresult cuDeviceGetDevResource(CUdevice device, CUdevResource* resource, CUdevResourceType type);
-    -CUresult cuGreenCtxCreate(CUgreenCtx* phCtx, CUdevResourceDesc desc, CUdevice dev, unsigned int flags);
-    -CUresult cuGreenCtxDestroy(CUgreenCtx hCtx);
+    struct CUdevSmResource
+    typedef CUdevResourceDesc_st * CUdevResourceDesc;
+    CUresult cuCtxFromGreenCtx(CUcontext* pContext, CUgreenCtx hCtx);
+    CUresult cuCtxGetDevResource(CUcontext hCtx, CUdevResource* resource, CUdevResourceType type);
+    CUresult cuDevResourceGenerateDesc(CUdevResourceDesc* phDesc, CUdevResource* resources, unsigned int nbResources);
+    CUresult cuDevSmResourceSplitByCount(CUdevResource* result, unsigned int* nbGroups, const CUdevResource* input, CUdevResource* remaining, unsigned int useFlags, unsigned int minCount);
+    CUresult cuDeviceGetDevResource(CUdevice device, CUdevResource* resource, CUdevResourceType type);
+    CUresult cuGreenCtxCreate(CUgreenCtx* phCtx, CUdevResourceDesc desc, CUdevice dev, unsigned int flags);
+    CUresult cuGreenCtxDestroy(CUgreenCtx hCtx);
     -CUresult cuGreenCtxGetDevResource(CUgreenCtx hCtx, CUdevResource* resource, CUdevResourceType type);
-    -CUresult cuGreenCtxGetId(CUgreenCtx greenCtx, unsigned long long* greenCtxId);
-    -CUresult cuGreenCtxRecordEvent(CUgreenCtx hCtx, CUevent hEvent);
-    -CUresult cuGreenCtxStreamCreate(CUstream* phStream, CUgreenCtx greenCtx, unsigned int flags, int priority);
-    -CUresult cuGreenCtxWaitEvent(CUgreenCtx hCtx, CUevent hEvent);
-    -CUresult cuStreamGetGreenCtx(CUstream hStream, CUgreenCtx* phCtx);
+    CUresult cuGreenCtxGetId(CUgreenCtx greenCtx, unsigned long long* greenCtxId);
+    CUresult cuGreenCtxRecordEvent(CUgreenCtx hCtx, CUevent hEvent);
+    CUresult cuGreenCtxStreamCreate(CUstream* phStream, CUgreenCtx greenCtx, unsigned int flags, int priority);
+    CUresult cuGreenCtxWaitEvent(CUgreenCtx hCtx, CUevent hEvent);
+    CUresult cuStreamGetGreenCtx(CUstream hStream, CUgreenCtx* phCtx);
     ```
     ## [6.36. Error Log Management Functions](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__LOGS.html#group__CUDA__LOGS)
     ```diff
     CUresult cuLogsCurrent(CUlogIterator* iterator_out, unsigned int flags);
     CUresult cuLogsDumpToFile(CUlogIterator* iterator, const char* pathToFile, unsigned int flags);
     CUresult cuLogsDumpToMemory(CUlogIterator* iterator, char* buffer, size_t* size, unsigned int flags);
-    CUresult cuLogsRegisterCallback(CUlogsCallback callbackFunc, void* userData, CUlogsCallbackHandle* callback_out);
+    -CUresult cuLogsRegisterCallback(CUlogsCallback callbackFunc, void* userData, CUlogsCallbackHandle* callback_out);
     CUresult cuLogsUnregisterCallback(CUlogsCallbackHandle callback);
     ```
     ## [6.37. CUDA Checkpointing](https://docs.nvidia.com/cuda/archive/13.0.0/cuda-driver-api/group__CUDA__CHECKPOINT.html#group__CUDA__CHECKPOINT)

@@ -507,7 +507,7 @@ versions of the NVIDIA CUDA Runtime API.
     -template < class T >__host__ cudaError_t cudaLibraryGetGlobal(T** dptr, size_t* bytes, cudaLibrary_t library, const char* name);
     -template < class T >__host__ cudaError_t cudaLibraryGetManaged(T** dptr, size_t* bytes, cudaLibrary_t library, const char* name);
     -template < class T >__host__ cudaError_t cudaLibraryGetUnifiedFunction(T** fptr, cudaLibrary_t library, const char* symbol);
-    -cudaError_t cudaMallocAsync(void** ptr, size_t size, cudaMemPool_t memPool, cudaStream_t stream);
+    cudaError_t cudaMallocAsync(void** ptr, size_t size, cudaMemPool_t memPool, cudaStream_t stream);
     cudaError_t cudaMallocHost(void** ptr, size_t size, unsigned int flags);
     template < class T >__host__ cudaError_t cudaMallocManaged(T** devPtr, size_t size, unsigned int flags = cudaMemAttachGlobal);
     template < class T >cudaError_t cudaMemAdvise(T* devPtr, size_t count, cudaMemoryAdvise advice, cudaMemLocation location);
@@ -1260,7 +1260,7 @@ versions of the NVIDIA CUDA Runtime API.
     -template < class T >__host__ cudaError_t cudaLibraryGetGlobal(T** dptr, size_t* bytes, cudaLibrary_t library, const char* name);
     -template < class T >__host__ cudaError_t cudaLibraryGetManaged(T** dptr, size_t* bytes, cudaLibrary_t library, const char* name);
     -template < class T >__host__ cudaError_t cudaLibraryGetUnifiedFunction(T** fptr, cudaLibrary_t library, const char* symbol);
-    -cudaError_t cudaMallocAsync(void** ptr, size_t size, cudaMemPool_t memPool, cudaStream_t stream);
+    cudaError_t cudaMallocAsync(void** ptr, size_t size, cudaMemPool_t memPool, cudaStream_t stream);
     cudaError_t cudaMallocHost(void** ptr, size_t size, unsigned int flags);
     template < class T >__host__ cudaError_t cudaMallocManaged(T** devPtr, size_t size, unsigned int flags = cudaMemAttachGlobal);
     -template < typename T >__host__ cudaError_t cudaMemDiscardAndPrefetchBatchAsync(T** dptrs, size_t* sizes, size_t count, cudaMemLocation prefetchLocs, unsigned long long flags, cudaStream_t stream);
