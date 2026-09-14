@@ -1,5 +1,96 @@
 # What's New
 
+## Release 1.7.3 (2026-09-14)
+
+This release adds Rocky8 support (and support for older glibc in general), hugely
+expands texture API support, introduces initial support for TMA APIs, and has the
+usual selection of many bugfixes and performance improvements.
+
+### Platform
+
+- Rocky/RHEL 8 package is now available.
+- More compiler components now ship statically linked, reducing opportunities to have
+  exciting conflicts with other LLVM-based compilers (such as the Cray compiler).
+- Using rocm 7.2.4 versios of rocBLAS etc.
+
+### Compiler
+
+- Fixed various compiler crashes in the nvcc semantics mode, in both `clang`
+  and `clangd`.
+- Fixed an NVIDIA-specific crash when a shuffle loop optimised to
+  a `redux` instruction on a target without `redux` hardware.
+- Fixed some NVIDIA-specific math API overload issues.
+- Fixed spurious complaints about initialisation on `__shared__` variables.
+- Fixed incorrect `__CUDA_ARCH__` values when the ccmap feature was in use.
+- Various warnings that could not be turned off now have control flags.
+- Fixed bug causing stack variables to sometimes be less aligned than
+  they should be when building for NVIDIA targets.
+- Improved behaviour of warnings in nvcc mode, avoiding cases where
+  warnings would sometimes "vanish".
+- Added (no-op) support for `#pragma nv_diag_suppress`. Maybe someday we'll
+  find the error code reference manual...
+- Various nvcc semantics alignment improvements (ignoring `template` in more places,
+  etc.).
+- Reject kernels using too much `param` memory at compile-time. This avoids having
+  `ptxas` do it on NVIDIA platforms, and makes it happen at all on AMD.
+- Improved unroll behaviour in long kernels.
+- Deduce max-threads-per-block from kernel callsites.
+
+#### PTX Support
+
+- Fixed a crash that could occur when inline PTX contained type errors.
+- Fixed miscompilation of certain PTX memory instructions in nvcc mode.
+- Newly-supported PTX opcodes:
+  - `mbarrier`
+  - `cp.async.bulk.*`
+  - `cp.async.bulk.tensor.*`
+  - `cp.async.bulk.prefetch.*`
+  - `fence.proxy.async`
+
+### Runtime Library
+
+- Improvements to "No device found" error messages.
+- Added `cuMemGetMemPool()`.
+- Added missing templated `cudaMallocAsync()`.
+- Improved kernel launch performance.
+- Eliminated some unnecessary synchronisation when launching graphs involving
+  host-to-host copies.
+- Fixed a discrepancy between the device-side runtime API's warpSize property
+  and that reported by the warpSize global on wave64 devices.
+- Added the [CUDA Excecution Context Management API](https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__EXECUTION__CONTEXT.html)
+- Added support for Green Contexts.
+- A slew of small header compatibility improvements.
+- Minifloat conversions are now less wrong.
+- Vector elements no longer get permuted during vector-minifloat
+  conversions.
+- Fixed accuracy issues in several device-side math APIs (mostly hyperbolic trig
+  and logarithms).
+- Zero-sized memset of nullptr is now allowed.
+- Zero-sized `cudaMallocPitch()` now works correctly.
+- Fixed 3D textures on GFX12 devices.
+- Added layered texture support.
+- Added cubemap support.
+- Added Lod/Grad texture samplers.
+- Fixed unresolved symbol issue for `sincosf()`.
+- `cuArray3DGetDescriptor()` now behaves properly for 3D textures.
+- Added software-emulated TMA for devices that lack hardware support.
+- Cooperative groups: added block and block-tile reductions.
+- Cooperative groups: Introduced the `__v1` namespace used by newer CUDA versions.
+
+### CUDA-X Libraries
+
+- Fixed C89 compatibility issues in cuFFT, cuSOLVER, and cuBLAS headers.
+- `cufftGetVersion()` now returns the cuFFT version.
+- Added some missing `*_v2` cuBLAS APIs.
+- Fixed various hangs/crashes from calling into cuSolver/cuSparse.
+- curand-device is now in the bitcode library, so much less sensitive to header
+  strangeness
+- Avoid shipping any rocm headers. They mostly weren't used, but caused problems
+  for people trying to use HIP while SCALE was installed.
+- Fixed subtle typing issues of the curand direction vector APIs.
+- Added a few more npp types.
+- `curandState` now correctly defaults to XORWOW.
+
 ## Release 1.7.2 (2026-07-19)
 
 This release adds new CUDA APIs, and fixes bugs from previous releases of SCALE.
