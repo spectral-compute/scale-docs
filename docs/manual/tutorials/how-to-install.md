@@ -47,7 +47,7 @@ No root access? Use the tarball distribution.
 
     {% endfor %}
 
-=== "Rocky Linux"
+=== "Rocky/RHEL"
 
     {% for rpm_os in [{"version": "9", "appstream": false}, {"version": "8", "appstream": true}] %}
     === "{{ rpm_os.version }}"
