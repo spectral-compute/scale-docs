@@ -2,7 +2,7 @@
 
 ## Release 1.7.3 (2026-09-14)
 
-This release adds Rocky8 support (and support for older glibc in general), hugely
+This release adds Rocky 8 support (and support for older glibc in general), hugely
 expands texture API support, introduces initial support for TMA APIs, and has the
 usual selection of many bugfixes and performance improvements.
 
@@ -11,7 +11,7 @@ usual selection of many bugfixes and performance improvements.
 - Rocky/RHEL 8 package is now available.
 - More compiler components now ship statically linked, reducing opportunities to have
   exciting conflicts with other LLVM-based compilers (such as the Cray compiler).
-- Using rocm 7.2.4 versios of rocBLAS etc.
+- Using rocm 7.2.4 versions of rocBLAS etc.
 
 ### Compiler
 
@@ -57,7 +57,7 @@ usual selection of many bugfixes and performance improvements.
   host-to-host copies.
 - Fixed a discrepancy between the device-side runtime API's warpSize property
   and that reported by the warpSize global on wave64 devices.
-- Added the [CUDA Excecution Context Management API](https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__EXECUTION__CONTEXT.html)
+- Added the [CUDA Execution Context Management API](https://docs.nvidia.com/cuda/cuda-runtime-api/cuda_runtime_api/group__CUDART__EXECUTION__CONTEXT.html).
 - Added support for Green Contexts.
 - A slew of small header compatibility improvements.
 - Minifloat conversions are now less wrong.
@@ -84,7 +84,7 @@ usual selection of many bugfixes and performance improvements.
 - Added some missing `*_v2` cuBLAS APIs.
 - Fixed various hangs/crashes from calling into cuSolver/cuSparse.
 - curand-device is now in the bitcode library, so much less sensitive to header
-  strangeness
+  strangeness.
 - Avoid shipping any rocm headers. They mostly weren't used, but caused problems
   for people trying to use HIP while SCALE was installed.
 - Fixed subtle typing issues of the curand direction vector APIs.
