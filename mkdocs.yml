@@ -140,6 +140,7 @@ nav:
       - manual/changelogs/whats-new.md
       - manual/faq.md
       - manual/comparison.md
+      - citation.md
       - Contact Us:
           - contact/report-a-bug.md
           - contact/join-our-discord.md
