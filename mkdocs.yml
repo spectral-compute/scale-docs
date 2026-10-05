@@ -10,6 +10,9 @@ validation:
     unrecognized_links: warn
 extra_css:
   - style.css
+  - assets/registration.css
+extra_javascript:
+  - assets/registration.js
 theme:
   name: material
   custom_dir: overrides
@@ -79,6 +82,10 @@ plugins:
 
 extra:
   branch: master
+  registration:
+    # Where the install-page popup sends its answers (served by scale-lang.com).
+    # Empty = log to the console only, for local testing.
+    endpoint: "https://scale-lang.com/api/register"
   generator: false
   version:
     provider: mike
