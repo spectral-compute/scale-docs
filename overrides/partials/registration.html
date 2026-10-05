@@ -1,0 +1,83 @@
+{#-
+  "Register for SCALE updates" popup, shown on the install page.
+  Behaviour: scale-docs/docs/assets/registration.js
+-#}
+<dialog id="scale-register" class="scale-register" aria-labelledby="scale-register-title"
+  data-endpoint="{{ config.extra.registration.endpoint | default('', true) }}">
+  <form class="scale-register__form" novalidate>
+    <div class="scale-register__head">
+      <div class="scale-register__intro">
+        <span class="scale-register__eyebrow">SCALE updates</span>
+        <h2 id="scale-register-title">Register to get notified about SCALE updates</h2>
+        <p>Be the first to hear about new releases, new GPU support and what's coming next.</p>
+      </div>
+      <button type="button" class="scale-register__close" aria-label="Close" data-register-close>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <div class="scale-register__field">
+      <label for="scale-register-email">Email <span class="scale-register__req" aria-hidden="true">*</span></label>
+      <input id="scale-register-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required aria-describedby="scale-register-email-hint">
+      <span id="scale-register-email-hint" class="scale-register__hint">Work email preferred, if you have one.</span>
+    </div>
+
+    <div class="scale-register__field">
+      <label for="scale-register-heard">How did you hear about SCALE?</label>
+      <select id="scale-register-heard" name="heard_from">
+        <option value="">Select…</option>
+        <option>LinkedIn</option>
+        <option>X / Twitter</option>
+        <option>Reddit</option>
+        <option>Hacker News</option>
+        <option>GitHub or an open-source project</option>
+        <option>Partner tutorial</option>
+        <option>Conference or event</option>
+        <option>Colleague</option>
+        <option>Search</option>
+        <option>Other</option>
+      </select>
+    </div>
+
+    <div class="scale-register__field">
+      <label for="scale-register-run">What do you want to run with SCALE?</label>
+      <select id="scale-register-run" name="run_target">
+        <option value="">Select…</option>
+        <option>My own / internal CUDA code</option>
+        <option data-asks-project>An open-source project</option>
+        <option>Just exploring</option>
+        <option data-asks-project>Other</option>
+      </select>
+    </div>
+
+    <div class="scale-register__field scale-register__field--sub" data-register-project hidden>
+      <label for="scale-register-project">Which project?</label>
+      <input id="scale-register-project" name="project" type="text" placeholder="e.g. llama.cpp" maxlength="200">
+    </div>
+
+    <div class="scale-register__field">
+      <label for="scale-register-discord">Discord username <span class="scale-register__optional">(optional)</span></label>
+      <input id="scale-register-discord" name="discord" type="text" autocomplete="off" placeholder="username" maxlength="64" aria-describedby="scale-register-discord-hint">
+      <span id="scale-register-discord-hint" class="scale-register__hint">Leave us your Discord to join our community!</span>
+    </div>
+
+    <!-- Honeypot: hidden from people, filled in by bots. The server drops anything that fills it. -->
+    <div class="scale-register__trap" aria-hidden="true">
+      <label for="scale-register-website">Website</label>
+      <input id="scale-register-website" name="website" type="text" tabindex="-1" autocomplete="off">
+    </div>
+
+    <div class="scale-register__actions">
+      <p class="scale-register__error" data-register-error role="alert" hidden></p>
+      <button type="submit" class="scale-register__submit">Register</button>
+      <p class="scale-register__legal">By registering you agree to receive emails about SCALE. You can unsubscribe at any time. <a href="https://scale-lang.com/privacy-policy?utm_source=docs&amp;utm_medium=internal" target="_blank" rel="noopener">Privacy policy</a></p>
+    </div>
+  </form>
+
+  <div class="scale-register__thanks" data-register-thanks hidden>
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="scale-register__check" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>
+    <h2>You're on the list</h2>
+    <p>Check your inbox: we've sent you a welcome email with an invite to our Discord.</p>
+    <button type="button" class="scale-register__submit" data-register-close>Continue to install</button>
+  </div>
+</dialog>

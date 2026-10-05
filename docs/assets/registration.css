@@ -1,0 +1,243 @@
+/* "Register for SCALE updates" popup. Light card in light mode, dark card in dark mode. */
+
+.scale-register {
+  --reg-bg: #ffffff;
+  --reg-fg: #18161f;
+  --reg-title: #2b1d4f;
+  --reg-text: #4a4358;
+  --reg-muted: #5e5670;
+  --reg-eyebrow: #4e2d73;
+  --reg-field-bg: #ffffff;
+  --reg-field-border: #c9c3d6;
+  --reg-hover: #f0edf5;
+  --reg-button-bg: #2b1d4f;
+  --reg-button-hover: #4e2d73;
+  --reg-button-fg: #ffffff;
+  --reg-link: #4e2d73;
+  --reg-error: #b82636;
+  --reg-success: #00916c;
+  color-scheme: light;
+}
+
+[data-md-color-scheme="slate"] .scale-register {
+  --reg-bg: #2b1d4f;
+  --reg-fg: #f5f5f5;
+  --reg-title: #f5f5f5;
+  --reg-text: #d4d0dc;
+  --reg-muted: #b3acc0;
+  --reg-eyebrow: #ae84ff;
+  --reg-field-bg: #1f1439;
+  --reg-field-border: #7a6c9e;
+  --reg-hover: #3a2a63;
+  --reg-button-bg: #ae84ff;
+  --reg-button-hover: #c3a4ff;
+  --reg-button-fg: #18161f;
+  --reg-link: #c3a4ff;
+  --reg-error: #ff8a95;
+  --reg-success: #3fd1a5;
+  color-scheme: dark;
+}
+
+.scale-register {
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100vh - 32px);
+  box-sizing: border-box;
+  padding: 28px;
+  border: none;
+  border-radius: 16px;
+  background: var(--reg-bg);
+  color: var(--reg-fg);
+  box-shadow: 0 24px 64px rgba(10, 6, 20, 0.5);
+  font-family: Inter, sans-serif;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* The dialog sits inside the page's .md-typeset, whose block margins would push it off centre. */
+.md-typeset .scale-register,
+.scale-register {
+  margin: auto;
+}
+
+.scale-register::backdrop {
+  background: rgba(24, 22, 31, 0.6);
+  backdrop-filter: blur(3px);
+}
+
+.scale-register__form,
+.scale-register__thanks {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.scale-register__form[hidden],
+.scale-register__thanks[hidden],
+.scale-register__field[hidden],
+.scale-register__error[hidden] {
+  display: none;
+}
+
+.scale-register__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.scale-register__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.scale-register__eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--reg-eyebrow);
+}
+
+.scale-register h2 {
+  margin: 0;
+  font-family: Lato, sans-serif;
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 1.15;
+  color: var(--reg-title);
+}
+
+.scale-register p {
+  margin: 0;
+  color: var(--reg-text);
+}
+
+.scale-register__close {
+  flex: none;
+  width: 44px;
+  height: 44px;
+  margin: -8px -8px 0 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--reg-text);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scale-register__close:hover {
+  background: var(--reg-hover);
+}
+
+.scale-register__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.scale-register__field--sub {
+  padding-left: 12px;
+  border-left: 2px solid #ae84ff;
+}
+
+.scale-register label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--reg-title);
+}
+
+.scale-register__req {
+  color: var(--reg-error);
+}
+
+.scale-register__optional {
+  font-weight: 400;
+  color: var(--reg-muted);
+}
+
+.scale-register input,
+.scale-register select {
+  height: 44px;
+  box-sizing: border-box;
+  padding: 0 12px;
+  border: 1px solid var(--reg-field-border);
+  border-radius: 8px;
+  background: var(--reg-field-bg);
+  color: var(--reg-fg);
+  font: inherit;
+  font-size: 15px;
+}
+
+.scale-register input:focus-visible,
+.scale-register select:focus-visible,
+.scale-register button:focus-visible {
+  outline: 2px solid #ae84ff;
+  outline-offset: 1px;
+}
+
+.scale-register__hint {
+  font-size: 12px;
+  color: var(--reg-muted);
+}
+
+.scale-register__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.scale-register__submit {
+  height: 48px;
+  border: none;
+  border-radius: 8px;
+  background: var(--reg-button-bg);
+  color: var(--reg-button-fg);
+  font-family: Lato, sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.scale-register__submit:hover {
+  background: var(--reg-button-hover);
+}
+
+.scale-register .scale-register__error {
+  color: var(--reg-error);
+  font-size: 14px;
+}
+
+.scale-register .scale-register__legal {
+  font-size: 12px;
+  color: var(--reg-muted);
+}
+
+.scale-register__legal a {
+  color: var(--reg-link);
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .scale-register {
+    padding: 24px 20px;
+  }
+
+  .scale-register h2 {
+    font-size: 22px;
+  }
+}
+
+.scale-register__check {
+  color: var(--reg-success);
+}
+
+.scale-register__trap {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
