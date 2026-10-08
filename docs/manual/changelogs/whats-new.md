@@ -1,5 +1,155 @@
 # What's New
 
+## Release 1.7.4 (2026-10-08)
+
+This release substantially improves the accuracy of the
+single-precision maths library, adds mipmapped textures and 3D memcpy, brings
+`-ffast-math` division and floating-point contraction in line with nvcc, and
+fixes a wide range of bugs in graphs, cooperative launches, and occupancy
+calculations.
+
+### Platform
+
+- Using ROCm 7.14.1 versions of rocBLAS etc.
+- Fixed ROCm libraries in tarball packages being mangled by an outdated `patchelf`.
+- Added the `bin2c` tool.
+
+### Compiler
+
+- Floating-point division now honours `-prec-div=false`/`__CUDA_PREC_DIV=0`
+  (and therefore `-ffast-math`/`-use_fast_math`) by using approximate division,
+  as nvcc does. This can be a very large speedup for division-heavy kernels.
+- Floating-point contraction now matches nvcc: CUDA defaults to
+  `-ffp-contract=fast-honor-pragmas`, so code that disables contraction via
+  pragma is respected (including in linked bitcode). `-fmad=false` is now also
+  passed on to `ptxas`.
+- Reduced size of PTX output on NVIDIA targets.
+- Added support for variadic functions in device code.
+- `warpSize` now longer reports incorrect values in device code on some wave64 devies.
+- Kernels that contain (but do not execute) `printf` no incur a performance penalty.
+- Texture objects no longer impact register pressure so much.
+- Added support for `nvcc -V`.
+- Fixed `--dependency-output` crashing the compiler. This broke JIT builds of
+  PyTorch extensions, FlashInfer, and SGLang kernels.
+- Fixed `-keep`/`-keep-dir` when a configuration file is in use.
+- Fixed `-fno-cuda-device-side-default` doing the opposite of what it says.
+- Fixed an infinite loop when `-gencode` named a virtual architecture with
+  nothing after it.
+- Fixed a compiler crash when targeting `sm_100f`, `sm_101f`, or `sm_120f`.
+- Fixed `sm_110a`/`sm_110f` rejecting builtins that need a minimum SM version
+  (such as `__nanosleep()`).
+- Fixed kernels being registered twice on NVIDIA when using recent CUDA versions.
+- Fixed compiler crashes when instantiating lambdas in certain contexts (seen in
+  NCCL), and when lambda parameter types contain errors.
+- Fixed spurious wrong-side diagnostics arising from default arguments.
+- Improved the error produced when trying to use `threadIdx` and friends in host code.
+- Fixed miscompilation of atomic min/max on vectors of floats.
+- Fixed host-side `max`/`min` of `unsigned long` truncating to 32 bits.
+- Fixed a linker bug that led to some device symbols being dropped.
+- Fixed the shuffle optimiser overlooking cheap 16- and 4-lane lowerings.
+- Fixed stray `$` characters in merged host/device dependency files.
+- Fixed stray debug output to stderr when compiling with some precision flags.
+- Fixed the wrong SCALE installation being selected when several are present
+  in default locations.
+
+#### PTX Support
+
+- Newly-supported PTX opcodes:
+  - `tex` (1D, 2D, 3D, 1D/2D layered, cubemap and layered cubemap), including
+    LOD and offset variants.
+- Inline PTX `add`, `sub` and `mul` without an explicit rounding mode may now
+  contract into FMAs, as `ptxas` would allow.
+- Unused cache flags on memory instructions are now ignored rather than producing a warning.
+- Fixed conversions from `float` to fp8 types.
+- Fixed the two-output form of `setp`.
+- Fixed a crash when binding a float value to an `"n"` operand.
+- Fixed insufficient operand checking for `atom` and the `vadd` family.
+- Fixed user declarations being able to shadow the CUDA APIs used by PTX lowering. Hopefully nobody was actually doing this...
+
+### Runtime Library
+
+- Fixed a collision with glibc's C23 maths headers.
+- Textures:
+  - Added mipmapped arrays and mipmapped textures (runtime and driver APIs), including LOD bias.
+  - Added software emulation for some missing texture features on gfx90a.
+  - Fixed wide linear textures.
+  - Added f16 textures.
+  - Read mode is now ignored for float textures.
+  - Added support for texture-related cudaDeviceAttr queries.
+- Added support for `cudaDevAttrMaxPitch`, and various NUMA/PCI-related device attribute queries.
+- Improved kernel launch performance.
+- Improved performance of 3D memcpy.
+- 3D memcpy can now be captured into CUDA graphs.
+- Fixed a race condition that could lead to copies involving pageable
+  host memory not being properly waited for.
+- Newly-added APIs:
+  - `cuGraphicsResourceGetMappedPointer()`
+  - `cuGreenCtxGetDevResource()`
+  - `cuEventElapsedTime_v2()`
+  - `cudaDeviceFlushGPUDirectRDMAWrites()` and friends
+  - `cudaLaunchAttributeValue::preferredClusterDim`
+  - `cudaGraphDependencyType`, `cudaDeviceSyncMemops`,
+    `cudaMemPoolCreateUsageHwDecompress`, `CUarray_cubemap_face`,
+    `CUstreamUpdateCaptureDependencies_flags`, `CUshared_carveout`
+- `__trap()` now produces `cudaErrorLaunchFailure` in `cudaGetLastError()`.
+- Explicit-scope atomics no longer use the wrong scope.
+- Fixed deadlocks in `grid.sync()`.
+- Fixed several defects in the occupancy calculator, which could badly
+  underestimate achievable occupancy. Occupancy APIs also validate their
+  inputs more strictly.
+- Improved TLB behaviour for some allocation sizes.
+- Graph fixes:
+  - Fixed numerous bugs in graph memory nodes.
+  - Fixed several graph-api-related deadlocks.
+  - Fixed a hang when destroying the graph scheduler.
+  - Fixed swapped arguments in `cudaGraphKernelNodeCopyAttributes()`.
+- Fixed indexing defect in the prefetch APIs.
+- `cuCtxDetach()` no longer refuses to work except on contexts where it cannot possibly work.
+- `cuCtxGetApiVersion()` now returns a real CUDA API version.
+- Fixed `cuDeviceGetName()` with negative lengths.
+- Fixed backwards access flags in memory import.
+- Probing unknown pointers via the VMM APIs now returns `cudaErrorInvalidValue` instead of asserting.
+- NVML no longer pollutes `cudaGetLastError()`.
+- Fixed typos in some minifloat API declarations.
+- Fixed allocation handles and host pointers sometimes being 32 bits wide,
+  which broke nixl.
+- `cooperative_groups.h` is now accepted by non-cuda translation units.
+- `cudaTypedefs.h` is no longer missing most of its per-thread-default-stream variants.
+
+### Maths Library
+
+- Added `remquof()`, `erfcxf()`, `j0f()`, `j1f()`, `y0f()` and `y1f()`.
+- Improved accuracy of `erff()`, `erfinvf()`, `erfcinvf()` (which was
+  catastrophically wrong in its tail), `tgammaf()`, `lgammaf()`, `cbrtf()`,
+  `logf()`, `log1pf()`, `log10f()`, `exp10f()`, and `tanhf()`, all of which now
+  meet NVIDIA's documented error bounds.
+- `coshf()` no longer overflows early.
+- Faster `rsqrtf()`, using the hardware instruction.
+- Fixed double-precision `sinpi()`, `cospi()`, `lgamma()` and `tgamma()`
+  near their zeroes.
+- `__fadd_rn()`, `__fmul_rn()` and friends never fuse into FMAs, as CUDA
+  promises.
+- `__fsqrt_rn()` is now correctly rounded even under `-ffast-math`.
+- Fixed `fdividef()`, which divided approximately by default and was not found
+  by user code. `__fdividef()` now uses the hardware reciprocal.
+- The fast approx functions (`__tanf()`, `__powf()`, `__tanhf()`, `__sinf()`, etc.)
+  now follow NVIDIA's documented implementations, and fast-math now maps
+  `tanh`, `exp10` and `log10` to the fast versions.
+- `cuCfmaf()` now rounds correctly.
+- Many signed-zero, infinity, and flushed-denormal fixes, including in `erf()`,
+  `erfc()`, `cbrt()`, `fmodf()`, `remainderf()`, `remquof()`, `nextafter()`,
+  `nextafterf()`, `__saturatef()`, `frexpf()`, `powf()`, `tgammaf()`,
+  `erfinvf()`, `scalblnf()`, and `modf()`.
+- Adding missing conversions between `half2`/`bfloat162` and their "raw" counterparts.
+- Fixed `half` increment/decrement operators.
+
+### CUDA-X Libraries
+
+- Declared `cublasGetStatusString()` in `cublasLt.h`.
+- Added the rest of `cublasGemmAlgo_t`.
+- cuBLASLt now accepts the `FAST` and `PEDANTIC` compute types.
+- Internal cuBLASLt headers are no longer installed.
+
 ## Release 1.7.3 (2026-09-14)
 
 This release adds Rocky 8 support (and support for older glibc in general), hugely
