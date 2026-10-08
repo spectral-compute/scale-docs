@@ -25,8 +25,8 @@ calculations.
   passed on to `ptxas`.
 - Reduced size of PTX output on NVIDIA targets.
 - Added support for variadic functions in device code.
-- `warpSize` now longer reports incorrect values in device code on some wave64 devies.
-- Kernels that contain (but do not execute) `printf` no incur a performance penalty.
+- `warpSize` no longer reports incorrect values in device code on some wave64 devices.
+- Kernels that contain (but do not execute) `printf` no longer incur a performance penalty.
 - Texture objects no longer impact register pressure so much.
 - Added support for `nvcc -V`.
 - Fixed `--dependency-output` crashing the compiler. This broke JIT builds of
@@ -50,7 +50,7 @@ calculations.
 - Fixed stray `$` characters in merged host/device dependency files.
 - Fixed stray debug output to stderr when compiling with some precision flags.
 - Fixed the wrong SCALE installation being selected when several are present
-  in default locations.
+  in the default locations.
 
 #### PTX Support
 
