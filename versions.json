@@ -24,11 +24,16 @@
     }
   },
   {
-    "version": "1.7.3",
-    "title": "1.7.3",
+    "version": "1.7.4",
+    "title": "1.7.4",
     "aliases": [
       "stable"
     ]
+  },
+  {
+    "version": "1.7.3",
+    "title": "1.7.3",
+    "aliases": []
   },
   {
     "version": "1.7.2",
