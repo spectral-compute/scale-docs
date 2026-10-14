@@ -65,3 +65,4 @@
   {% endif %}
 </script>
 {% endblock %}
+{% block content %} {{ super() }} {% if page.file.src_uri == "manual/tutorials/how-to-install.md" %} {% include "partials/registration.html" %} {% endif %} {% endblock %}
