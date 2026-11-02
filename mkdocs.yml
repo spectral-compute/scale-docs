@@ -8,8 +8,12 @@ validation:
     not_found: warn
     absolute_links: warn
     unrecognized_links: warn
+hooks:
+  - hooks/apidiff.py
 extra_css:
   - style.css
+extra_javascript:
+  - javascripts/tabbed-toc.js
 theme:
   name: material
   custom_dir: overrides
@@ -49,6 +53,7 @@ theme:
     - navigation.instant.progress
     - navigation.instant.prefetch
     - content.code.copy
+    - content.tabs.link
     - toc.follow
 
 plugins:
@@ -173,11 +178,9 @@ nav:
           - manual/library/runtime-extensions.md
           - manual/library/differences.md
 
+          # The API pages are generated from the SCALE tree's apidiff output by hooks/apidiff.py.
           - Implemented APIs:
               - manual/library/apidiff/apis.md
-              - manual/library/apidiff/driver-api.md
-              - manual/library/apidiff/math-api.md
-              - manual/library/apidiff/runtime-api.md
 
       - manual/library/troubleshooting.md
 

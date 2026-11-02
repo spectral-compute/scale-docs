@@ -29,6 +29,11 @@ To launch the devserver and see changes live:
 uv run mkdocs serve
 ```
 
+The API coverage pages (`docs/manual/library/apidiff/`) are generated at build
+time from `apidiff/apidiff_out` in the enclosing SCALE source tree, so the
+manual must be built from the SCALE checkout matching the release being
+documented. Built standalone, those pages are omitted with a warning.
+
 ## Publishing
 
 ### To publish a new version of the manual for a stable release:
