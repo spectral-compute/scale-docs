@@ -19,6 +19,9 @@ OUT_DIR = "manual/library/apidiff"
 INDEX = OUT_DIR + "/apis.md"
 INDEX_MARKER = "<!-- apidiff-index -->"
 
+# CUDA versions apidiff diffs against, but which the documentation leaves out.
+HIDDEN_VERSIONS = {"13.0", "13.1", "13.2"}
+
 
 class Api:
     def __init__(self, title, scale_side, nv_side, versioned = True):
@@ -68,12 +71,20 @@ class Diff:
     def percent(self):
         return 100 * self.present / max(self.present + self.missing, 1)
 
-    def meter(self, label = True):
+    def text(self):
+        return f"{self.present} of {self.present + self.missing} declarations available"
+
+    def bar(self):
         p = self.percent()
-        text = f"{self.present} of {self.present + self.missing} declarations available"
-        bar = f'<span class="apidiff-meter" role="meter" aria-valuenow="{p:.0f}" aria-valuemin="0" ' \
-              f'aria-valuemax="100" title="{text}"><span style="width: {p:.1f}%"></span></span>'
-        return f'{bar} {p:.0f}%' + (f" ({text})" if label else "")
+        return f'<span class="apidiff-meter" role="meter" aria-valuenow="{p:.0f}" aria-valuemin="0" ' \
+               f'aria-valuemax="100" title="{self.text()}"><span style="width: {p:.1f}%"></span></span>'
+
+    def meter(self):
+        return f"{self.bar()} {self.percent():.0f}% ({self.text()})"
+
+    def cell(self):
+        """The percentage over the bar, for the overview table."""
+        return f"{self.percent():.0f}%{self.bar()}"
 
 
 # {api: {version: Diff}}, newest version first.
@@ -99,7 +110,9 @@ def on_config(config):
     for api in sorted(found, key = lambda a: list(APIS).index(a) if a in APIS else len(APIS)):
         APIS.setdefault(api, Api(api, "SCALE", api))
         versions = sorted(found[api], key = version_key, reverse = True)
-        if not APIS[api].versioned:
+        if APIS[api].versioned:
+            versions = [v for v in versions if v not in HIDDEN_VERSIONS]
+        else:
             versions = versions[:1]
         diffs[api] = {v: Diff(found[api][v]) for v in versions}
 
@@ -157,9 +170,9 @@ def on_page_markdown(markdown, page, config, files):
             "|---|" + "---|" * len(versions)]
     for api, vs in diffs.items():
         if APIS[api].versioned:
-            cells = [vs[v].meter(label = False) if v in vs else "" for v in versions]
+            cells = [vs[v].cell() if v in vs else "" for v in versions]
         else:
-            cells = [""] * (len(versions) - 1) + [next(iter(vs.values())).meter(label = False)]
+            cells = [""] * (len(versions) - 1) + [next(iter(vs.values())).cell()]
         rows.append(f"| [{APIS[api].title}]({api}-api.md) | " + " | ".join(cells) + " |")
     for api in diffs:
         if not APIS[api].versioned:

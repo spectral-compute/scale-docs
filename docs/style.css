@@ -982,6 +982,22 @@ html {
   background-color: var(--scale-indigo);
 }
 
+/* In the overview table, the bar goes under the percentage, to fit a column per CUDA version. */
+.md-typeset td > .apidiff-meter {
+  display: block;
+  width: 100%;
+  min-width: 2.5em;
+  margin-top: 0.3em;
+}
+
+.md-typeset table:not([class]):has(.apidiff-meter) th {
+  min-width: 0;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+}
+
 .md-typeset td:has(> .apidiff-meter) {
-  white-space: nowrap;
+  padding-left: 0.6em;
+  padding-right: 0.6em;
+  text-align: center;
 }
