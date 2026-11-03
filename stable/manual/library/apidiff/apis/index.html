@@ -14,7 +14,7 @@
         <link rel="prev" href="../../differences/">
       
       
-        <link rel="next" href="../driver-api/">
+        <link rel="next" href="../runtime-api/">
       
       
         
@@ -1578,6 +1578,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -1636,24 +1650,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Coverage Report
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -1671,47 +1667,34 @@
 
       </a>
       
-        
+    </li>
+  
 
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+              
+            
+              
+                
   
   
   
+  
+    <li class="md-nav__item">
+      <a href="../runtime-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
     
   
+    Runtime API
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#presentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Presentation
-      
-    </span>
-  </a>
+
+    
+  </span>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#correctness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Correctness
-      
-    </span>
-  </a>
   
-</li>
-      
-    </ul>
-  
-</nav>
-      
+
+      </a>
     </li>
   
 
@@ -1780,14 +1763,182 @@
   
   
     <li class="md-nav__item">
-      <a href="../runtime-api/" class="md-nav__link">
+      <a href="../nvrtc-api/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
     
   
-    Runtime API
+    NVRTC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cublas-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cuBLAS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cufft-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cuFFT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../curand-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cuRAND
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cusolver-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cuSOLVER
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cusparse-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    cuSPARSE
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nvml-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NVML
   
 
     
@@ -1993,36 +2144,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#presentation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Presentation
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#correctness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Correctness
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2039,45 +2160,119 @@
 
 
 <h1 id="api-coverage-report">API Coverage Report<a class="headerlink" href="#api-coverage-report" title="Permanent link">#</a></h1>
-<p>These pages provide a diff between the SCALE Runtime API's headers and
-the NVIDIA documentation.</p>
-<p>This resource makes it easy to determine which CUDA APIs are supported
-by SCALE when cross-compiling to AMD targets.</p>
+<p>This pages show how much of each version of the CUDA API is provided
+by SCALE's runtime library.</p>
 <p>When compiling for NVIDIA GPUs, NVIDIA's own libraries are used. In that
 case, you'll have access to the same set of APIs as are provided by that
 version of the NVIDIA CUDA Toolkit.</p>
-<ul>
-<li><a href="../driver-api/">Driver API</a></li>
-<li><a href="../math-api/">Math API</a></li>
-<li><a href="../runtime-api/">Runtime API</a></li>
-</ul>
-<p>The lists are based on the official Nvidia documentation and use the same layout.</p>
-<h2 id="presentation">Presentation<a class="headerlink" href="#presentation" title="Permanent link">#</a></h2>
-<p>The lists are presented using <code>diff</code> syntax. Missing APIs are prefixed with a <code>-</code>,
-causing them to highlight red in the listing.
-This makes it easy to see which entries are available and which <a href="#correctness">may be missing</a>.</p>
-<p>For example:</p>
-<div class="highlight"><pre><span></span><code>const char * cudaGetErrorName(cudaError_t);
-__device__ const char * cudaGetErrorName(cudaError_t);
-const char * cudaGetErrorString(cudaError_t);
-__device__ const char * cudaGetErrorString(cudaError_t);
-cudaError_t cudaGetLastError();
-<span class="gd">-__device__ cudaError_t cudaGetLastError();</span>
-cudaError_t cudaPeekAtLastError();
-<span class="gd">-__device__ cudaError_t cudaPeekAtLastError();</span>
-</code></pre></div>
-<p>In this example, functions <code>cudaGetErrorName</code> and <code>cudaGetErrorString</code> are available on both host and device.
-Functions <code>cudaGetLastError</code> and <code>cudaPeekAtLastError</code> are available on host, and are not available on device.</p>
-<h2 id="correctness">Correctness<a class="headerlink" href="#correctness" title="Permanent link">#</a></h2>
-<p>The lists may say that something is unavailable when it's not the case.
-This may happen for a few reasons.</p>
-<p>NVIDIA documentation may differ from what CUDA provides in reality.
-An example of that is differences in <code>const</code>-ness of some function arguments.
-In such cases SCALE may be forced to maintain "bug compatibility" and the
-functions stop matching what NVIDIA documentation promises.</p>
-<p>SCALE retains support for some old APIs NVIDIA have since deleted.</p>
-<p>Found a mistake?</p>
-<p><a href="../../../../contact/report-a-bug/">Let us know</a>, or <a href="https://github.com/spectral-compute/scale-docs">file a pull request</a></p>
+<p>Click an API name to see a detailed breakdown in <code>diff</code> format.</p>
+<table>
+<thead>
+<tr>
+<th>API</th>
+<th>CUDA 8.0</th>
+<th>CUDA 9.2</th>
+<th>CUDA 10.2</th>
+<th>CUDA 11.8</th>
+<th>CUDA 12.9</th>
+<th>CUDA 13.3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../runtime-api/">Runtime API</a></td>
+<td>85%<span class="apidiff-meter" role="meter" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" title="264 of 311 declarations available"><span style="width: 84.9%"></span></span></td>
+<td>85%<span class="apidiff-meter" role="meter" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" title="305 of 357 declarations available"><span style="width: 85.4%"></span></span></td>
+<td>83%<span class="apidiff-meter" role="meter" aria-valuenow="83" aria-valuemin="0" aria-valuemax="100" title="356 of 430 declarations available"><span style="width: 82.8%"></span></span></td>
+<td>82%<span class="apidiff-meter" role="meter" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" title="474 of 575 declarations available"><span style="width: 82.4%"></span></span></td>
+<td>80%<span class="apidiff-meter" role="meter" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" title="521 of 648 declarations available"><span style="width: 80.4%"></span></span></td>
+<td>76%<span class="apidiff-meter" role="meter" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100" title="527 of 691 declarations available"><span style="width: 76.3%"></span></span></td>
+</tr>
+<tr>
+<td><a href="../driver-api/">Driver API</a></td>
+<td>82%<span class="apidiff-meter" role="meter" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" title="268 of 325 declarations available"><span style="width: 82.5%"></span></span></td>
+<td>82%<span class="apidiff-meter" role="meter" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" title="274 of 336 declarations available"><span style="width: 81.5%"></span></span></td>
+<td>79%<span class="apidiff-meter" role="meter" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100" title="343 of 434 declarations available"><span style="width: 79.0%"></span></span></td>
+<td>75%<span class="apidiff-meter" role="meter" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" title="436 of 583 declarations available"><span style="width: 74.8%"></span></span></td>
+<td>76%<span class="apidiff-meter" role="meter" aria-valuenow="76" aria-valuemin="0" aria-valuemax="100" title="567 of 747 declarations available"><span style="width: 75.9%"></span></span></td>
+<td>71%<span class="apidiff-meter" role="meter" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" title="571 of 803 declarations available"><span style="width: 71.1%"></span></span></td>
+</tr>
+<tr>
+<td><a href="../math-api/">Math API</a></td>
+<td>98%<span class="apidiff-meter" role="meter" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" title="567 of 581 declarations available"><span style="width: 97.6%"></span></span></td>
+<td>98%<span class="apidiff-meter" role="meter" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" title="586 of 596 declarations available"><span style="width: 98.3%"></span></span></td>
+<td>97%<span class="apidiff-meter" role="meter" aria-valuenow="97" aria-valuemin="0" aria-valuemax="100" title="588 of 606 declarations available"><span style="width: 97.0%"></span></span></td>
+<td>93%<span class="apidiff-meter" role="meter" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" title="905 of 972 declarations available"><span style="width: 93.1%"></span></span></td>
+<td>93%<span class="apidiff-meter" role="meter" aria-valuenow="93" aria-valuemin="0" aria-valuemax="100" title="1343 of 1441 declarations available"><span style="width: 93.2%"></span></span></td>
+<td>77%<span class="apidiff-meter" role="meter" aria-valuenow="77" aria-valuemin="0" aria-valuemax="100" title="1103 of 1441 declarations available"><span style="width: 76.5%"></span></span></td>
+</tr>
+<tr>
+<td><a href="../nvrtc-api/">NVRTC</a></td>
+<td>85%<span class="apidiff-meter" role="meter" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" title="11 of 13 declarations available"><span style="width: 84.6%"></span></span></td>
+<td>85%<span class="apidiff-meter" role="meter" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" title="11 of 13 declarations available"><span style="width: 84.6%"></span></span></td>
+<td>85%<span class="apidiff-meter" role="meter" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" title="11 of 13 declarations available"><span style="width: 84.6%"></span></span></td>
+<td>79%<span class="apidiff-meter" role="meter" aria-valuenow="79" aria-valuemin="0" aria-valuemax="100" title="15 of 19 declarations available"><span style="width: 78.9%"></span></span></td>
+<td>60%<span class="apidiff-meter" role="meter" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" title="18 of 30 declarations available"><span style="width: 60.0%"></span></span></td>
+<td>49%<span class="apidiff-meter" role="meter" aria-valuenow="49" aria-valuemin="0" aria-valuemax="100" title="18 of 37 declarations available"><span style="width: 48.6%"></span></span></td>
+</tr>
+<tr>
+<td><a href="../cublas-api/">cuBLAS</a></td>
+<td>70%<span class="apidiff-meter" role="meter" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" title="198 of 284 declarations available"><span style="width: 69.7%"></span></span></td>
+<td>69%<span class="apidiff-meter" role="meter" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100" title="203 of 294 declarations available"><span style="width: 69.0%"></span></span></td>
+<td>69%<span class="apidiff-meter" role="meter" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100" title="222 of 323 declarations available"><span style="width: 68.7%"></span></span></td>
+<td>80%<span class="apidiff-meter" role="meter" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" title="286 of 356 declarations available"><span style="width: 80.3%"></span></span></td>
+<td>85%<span class="apidiff-meter" role="meter" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" title="335 of 394 declarations available"><span style="width: 85.0%"></span></span></td>
+<td>86%<span class="apidiff-meter" role="meter" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" title="356 of 415 declarations available"><span style="width: 85.8%"></span></span></td>
+</tr>
+<tr>
+<td><a href="../cufft-api/">cuFFT</a></td>
+<td>98%<span class="apidiff-meter" role="meter" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" title="63 of 64 declarations available"><span style="width: 98.4%"></span></span></td>
+<td>98%<span class="apidiff-meter" role="meter" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" title="64 of 65 declarations available"><span style="width: 98.5%"></span></span></td>
+<td>99%<span class="apidiff-meter" role="meter" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" title="68 of 69 declarations available"><span style="width: 98.6%"></span></span></td>
+<td>100%<span class="apidiff-meter" role="meter" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" title="69 of 69 declarations available"><span style="width: 100.0%"></span></span></td>
+<td>100%<span class="apidiff-meter" role="meter" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" title="82 of 82 declarations available"><span style="width: 100.0%"></span></span></td>
+<td>99%<span class="apidiff-meter" role="meter" aria-valuenow="99" aria-valuemin="0" aria-valuemax="100" title="85 of 86 declarations available"><span style="width: 98.8%"></span></span></td>
+</tr>
+<tr>
+<td><a href="../curand-api/">cuRAND</a></td>
+<td>96%<span class="apidiff-meter" role="meter" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" title="117 of 122 declarations available"><span style="width: 95.9%"></span></span></td>
+<td>96%<span class="apidiff-meter" role="meter" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" title="117 of 122 declarations available"><span style="width: 95.9%"></span></span></td>
+<td>98%<span class="apidiff-meter" role="meter" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" title="117 of 120 declarations available"><span style="width: 97.5%"></span></span></td>
+<td>98%<span class="apidiff-meter" role="meter" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" title="121 of 124 declarations available"><span style="width: 97.6%"></span></span></td>
+<td>98%<span class="apidiff-meter" role="meter" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" title="121 of 124 declarations available"><span style="width: 97.6%"></span></span></td>
+<td>98%<span class="apidiff-meter" role="meter" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100" title="121 of 124 declarations available"><span style="width: 97.6%"></span></span></td>
+</tr>
+<tr>
+<td><a href="../cusolver-api/">cuSOLVER</a></td>
+<td>81%<span class="apidiff-meter" role="meter" aria-valuenow="81" aria-valuemin="0" aria-valuemax="100" title="137 of 170 declarations available"><span style="width: 80.6%"></span></span></td>
+<td>84%<span class="apidiff-meter" role="meter" aria-valuenow="84" aria-valuemin="0" aria-valuemax="100" title="199 of 237 declarations available"><span style="width: 84.0%"></span></span></td>
+<td>82%<span class="apidiff-meter" role="meter" aria-valuenow="82" aria-valuemin="0" aria-valuemax="100" title="265 of 322 declarations available"><span style="width: 82.3%"></span></span></td>
+<td>88%<span class="apidiff-meter" role="meter" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" title="379 of 429 declarations available"><span style="width: 88.3%"></span></span></td>
+<td>90%<span class="apidiff-meter" role="meter" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" title="405 of 450 declarations available"><span style="width: 90.0%"></span></span></td>
+<td>90%<span class="apidiff-meter" role="meter" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" title="413 of 458 declarations available"><span style="width: 90.2%"></span></span></td>
+</tr>
+<tr>
+<td><a href="../cusparse-api/">cuSPARSE</a></td>
+<td>53%<span class="apidiff-meter" role="meter" aria-valuenow="53" aria-valuemin="0" aria-valuemax="100" title="207 of 389 declarations available"><span style="width: 53.2%"></span></span></td>
+<td>58%<span class="apidiff-meter" role="meter" aria-valuenow="58" aria-valuemin="0" aria-valuemax="100" title="290 of 499 declarations available"><span style="width: 58.1%"></span></span></td>
+<td>57%<span class="apidiff-meter" role="meter" aria-valuenow="57" aria-valuemin="0" aria-valuemax="100" title="307 of 540 declarations available"><span style="width: 56.9%"></span></span></td>
+<td>71%<span class="apidiff-meter" role="meter" aria-valuenow="71" aria-valuemin="0" aria-valuemax="100" title="335 of 473 declarations available"><span style="width: 70.8%"></span></span></td>
+<td>96%<span class="apidiff-meter" role="meter" aria-valuenow="96" aria-valuemin="0" aria-valuemax="100" title="408 of 423 declarations available"><span style="width: 96.5%"></span></span></td>
+<td>94%<span class="apidiff-meter" role="meter" aria-valuenow="94" aria-valuemin="0" aria-valuemax="100" title="408 of 435 declarations available"><span style="width: 93.8%"></span></span></td>
+</tr>
+<tr>
+<td><a href="../nvml-api/">NVML</a></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>29%<span class="apidiff-meter" role="meter" aria-valuenow="29" aria-valuemin="0" aria-valuemax="100" title="425 of 1470 declarations available"><span style="width: 28.9%"></span></span></td>
+</tr>
+</tbody>
+</table>
+<p>NVML's documentation is not versioned with CUDA: its row shows the current version.</p>
+<p>The lists are based on the official NVIDIA documentation and use the same layout.</p>
 
 
 
@@ -2097,6 +2292,8 @@ functions stop matching what NVIDIA documentation promises.</p>
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2132,13 +2329,13 @@ functions stop matching what NVIDIA documentation promises.</p>
         
         
           
-          <a href="../driver-api/" class="md-footer__link md-footer__link--next" aria-label="Next: Driver API">
+          <a href="../runtime-api/" class="md-footer__link md-footer__link--next" aria-label="Next: Runtime API">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Driver API
+                Runtime API
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -2347,10 +2544,12 @@ functions stop matching what NVIDIA documentation promises.</p>
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "content.code.copy", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.indexes", "navigation.top", "navigation.footer", "navigation.instant", "navigation.instant.progress", "navigation.instant.prefetch", "content.code.copy", "content.tabs.link", "toc.follow"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": {"alias": true, "default": "stable", "provider": "mike"}}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+        <script src="../../../../javascripts/tabbed-toc.js"></script>
       
     
   </body>
