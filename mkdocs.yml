@@ -10,6 +10,7 @@ validation:
     unrecognized_links: warn
 hooks:
   - hooks/apidiff.py
+  - hooks/math_precision.py
 extra_css:
   - style.css
 extra_javascript:
@@ -174,7 +175,9 @@ nav:
       - manual/library/overview.md
       - manual/library/performance-tuning.md
       - manual/library/warpsize.md
+      - manual/library/environment-vars.md
       - CUDA APIs:
+          - manual/library/math-precision.md
           - manual/library/runtime-extensions.md
           - manual/library/differences.md
 
