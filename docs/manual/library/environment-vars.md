@@ -64,3 +64,10 @@ any way to map a particular leaked object back to the API call that created it.
 The leak detector does not detect memory leaks, file descriptor leaks, or any other
 kind of leak. It finds only leaks of resouces that the SCALE runtime handles using
 object pools.
+
+## `SCALE_AMD_DMABUF_EXPORTABLE_ALLOCS`
+
+On AMD, this makes every device allocation exportable as a dma-buf, so that
+any `cudaMalloc` pointer can be passed to `cuMemGetHandleForAddressRange()`.
+Enable it when something registers device allocations as dma-bufs, for example
+an RDMA NIC or GPU-aware MPI over libfabric. Cray MPICH needs it.
