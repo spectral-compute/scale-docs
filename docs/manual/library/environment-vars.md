@@ -22,6 +22,26 @@ In cases where CUDA APIs are expected to return a value other than
 `cudaSuccess` during normal operation (such as `cudaStreamQuery()`, an
 exception will not be thrown except if an exceptional case arises.
 
+## `CUDA_VISIBLE_DEVICES` and `ROCR_VISIBLE_DEVICES`
+
+`CUDA_VISIBLE_DEVICES` works as it does on NVIDIA: it selects which devices
+the program sees and the order it numbers them in. Its indices count the
+devices in `CUDA_DEVICE_ORDER` order.
+
+`ROCR_VISIBLE_DEVICES` is also supported, since some job schedulers set only
+that on AMD systems. It both filters and orders: the program sees only the
+listed GPUs, and device 0 is the first usable one listed. This order overrides
+`CUDA_DEVICE_ORDER`, as `CUDA_VISIBLE_DEVICES` order does on NVIDIA.
+
+- It applies only if `CUDA_VISIBLE_DEVICES` is not set.
+- Its indices are ROCm's, counting every GPU in the system, so a list names
+  the same GPUs whichever target you use. Listed GPUs SCALE can't use are
+  skipped.
+- As in ROCm, the list stops at the first entry that isn't a valid index or
+  `GPU-` UUID, or that repeats one.
+- A list that selects no usable GPU makes the first CUDA call fail with
+  `cudaErrorNoDevice`.
+
 ## `SCALE_DETECT_LEAKS`
 
 The SCALE runtime library has a limited ability to detect resource leaks.
