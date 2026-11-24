@@ -8,8 +8,8 @@
   profile diffs and SQL querying.
   - TODO: Docs for that
 - Added shoulder, a HIP -> CUDA translation layer.
-  - TODO: Docs for that
-  - All of our math libraries are now built with shoulder and our compiler, removing any overhead from HIP interop.
+  - See [here](../tutorials/how-to-use-hip.md) for how to use.
+- All of our maths libraries are now built with shoulder and our compiler, removing any overhead from HIP interop.
   - TODO: Performance numbers if we can get them?
 - Warp matrix multiplies (`mma`, WMMA) now use AMD's MFMA/WMMA instructions where possible.
 - Cross-side optimisation, and shuffle optimisation, are both much more effective
