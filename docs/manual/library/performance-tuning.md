@@ -1,5 +1,7 @@
 # Performance Tuning Guide
 
+To find out where your program spends its time on the GPU, and why, use [scaleprof](profiling.md).
+
 ## Managed memory
 
 If you're using managed memory, you probably want to:
