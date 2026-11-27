@@ -24,11 +24,16 @@
     }
   },
   {
-    "version": "1.7.5",
-    "title": "1.7.5",
+    "version": "1.8.0",
+    "title": "1.8.0",
     "aliases": [
       "stable"
     ]
+  },
+  {
+    "version": "1.7.5",
+    "title": "1.7.5",
+    "aliases": []
   },
   {
     "version": "1.7.4",

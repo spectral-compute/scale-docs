@@ -1,0 +1,109 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="29.6.1">
+  <diagram name="Page-1" id="y1BAfsOdwWmvSAilTUN7">
+    <mxGraphModel dx="1188" dy="617" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;strokeWidth=3;strokeColor=#82B366;" value="your_executable" vertex="1">
+          <mxGeometry height="98.75" width="150" x="390" y="101.25" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-5" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" value="NVIDIA CUDA Runtime" vertex="1">
+          <mxGeometry height="60" width="60" x="397.5" y="132.5" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-14" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#d5e8d4;strokeColor=#000000;" value="NVIDIA nvcc" vertex="1">
+          <mxGeometry height="36" width="120" x="200" y="127" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-16" edge="1" parent="1" source="hnXiRvxtmzLa0xgOg7qP-18" style="endArrow=classic;html=1;rounded=0;exitX=0.453;exitY=0.058;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitPerimeter=0;" target="hnXiRvxtmzLa0xgOg7qP-14" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="85" y="145" />
+            </Array>
+            <mxPoint x="140" y="145" as="sourcePoint" />
+            <mxPoint x="450" y="230" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-17" edge="1" parent="1" source="hnXiRvxtmzLa0xgOg7qP-14" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="320" y="144.58" as="sourcePoint" />
+            <mxPoint x="390" y="144.58" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-18" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="your_source.cu" vertex="1">
+          <mxGeometry height="30" width="100" x="40" y="248.75" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-21" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#000000;" value="SCALE nvcc" vertex="1">
+          <mxGeometry height="36" width="120" x="200" y="245.75" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-22" edge="1" parent="1" source="hnXiRvxtmzLa0xgOg7qP-18" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="hnXiRvxtmzLa0xgOg7qP-21" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="400" y="398.75" as="sourcePoint" />
+            <mxPoint x="450" y="348.75" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-23" edge="1" parent="1" source="hnXiRvxtmzLa0xgOg7qP-21" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="320" y="263.33000000000004" as="sourcePoint" />
+            <mxPoint x="390" y="263.33000000000004" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-27" parent="1" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#e1d5e7;strokeColor=#000000;" value="SCALE nvcc" vertex="1">
+          <mxGeometry height="36" width="120" x="200" y="355.75" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-28" edge="1" parent="1" style="endArrow=classic;html=1;rounded=0;" target="hnXiRvxtmzLa0xgOg7qP-27" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <Array as="points">
+              <mxPoint x="85" y="373" />
+            </Array>
+            <mxPoint x="85" y="279" as="sourcePoint" />
+            <mxPoint x="205" y="372.7499999999999" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-29" edge="1" parent="1" source="hnXiRvxtmzLa0xgOg7qP-27" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" value="">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="320" y="373.33000000000004" as="sourcePoint" />
+            <mxPoint x="390" y="373.33000000000004" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-34" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" value="NVIDIA GPU Binary" vertex="1">
+          <mxGeometry height="60" width="60" x="470" y="132.5" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-35" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;strokeColor=#A680B8;strokeWidth=3;" value="your_executable" vertex="1">
+          <mxGeometry height="98.75" width="150" x="390" y="214.37" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-36" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#82b366;strokeWidth=2;" value="NVIDIA CUDA Runtime" vertex="1">
+          <mxGeometry height="60" width="60" x="397.5" y="245.62" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-37" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#d5e8d4;strokeColor=#A680B8;strokeWidth=2;" value="NVIDIA GPU Binary" vertex="1">
+          <mxGeometry height="60" width="60" x="470" y="245.62" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-38" parent="1" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;strokeColor=#A680B8;fillColor=#FFFFFF;strokeWidth=3;" value="your_executable" vertex="1">
+          <mxGeometry height="98.75" width="150" x="390" y="324.38" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-39" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#e1d5e7;strokeColor=#9673a6;strokeWidth=2;" value="SCALE Runtime" vertex="1">
+          <mxGeometry height="60" width="60" x="397.5" y="355.63" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-40" parent="1" style="whiteSpace=wrap;html=1;aspect=fixed;fillColor=#f8cecc;strokeColor=#b85450;strokeWidth=2;" value="AMD&lt;div&gt;GPU Binary&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="60" x="470" y="355.63" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-42" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="GPU Kernels compiled by NVIDIA nvcc&lt;div&gt;Runtime libraries provided by NVIDIA&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="220" x="560" y="115.63" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-43" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="GPU Kernels compiled by SCALE&lt;div&gt;Runtime libraries provided by NVIDIA&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="220" x="560" y="228.75" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-44" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="GPU Kernels compiled by SCALE&lt;div&gt;Runtime libraries provided by SCALE&lt;/div&gt;" vertex="1">
+          <mxGeometry height="70" width="220" x="560" y="338.75" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-45" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;Typical CUDA Compilation&lt;/b&gt;" vertex="1">
+          <mxGeometry height="17.5" width="220" x="560" y="113.25" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-46" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;SCALE NVIDIA Mode&lt;/b&gt;" vertex="1">
+          <mxGeometry height="17.5" width="220" x="560" y="228.37" as="geometry" />
+        </mxCell>
+        <mxCell id="hnXiRvxtmzLa0xgOg7qP-47" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;b&gt;SCALE AMD Mode&lt;/b&gt;" vertex="1">
+          <mxGeometry height="17.5" width="220" x="560" y="338.38" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
