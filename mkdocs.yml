@@ -175,6 +175,7 @@ nav:
   - Runtime Library:
       - manual/library/overview.md
       - manual/library/performance-tuning.md
+      - manual/library/profiling.md
       - manual/library/warpsize.md
       - manual/library/environment-vars.md
       - CUDA APIs:
