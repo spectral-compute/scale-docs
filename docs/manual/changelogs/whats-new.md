@@ -1,5 +1,233 @@
 # What's New
 
+## Release 1.8.0 (2026-11-27)
+
+### Highlights
+
+- Added [`scaleprof`](../library/profiling.md), a profiler with API/kernel traces, hardware counters, occupancy analysis,
+  profile diffs and SQL querying.
+- HIP programs [may now be compiled with SCALE](../tutorials/how-to-use-hip.md).
+- All kernel libraries (cuBLAS, cuSOLVER, etc.) are now faster, due to being built
+  using our toolchain instead of doing costly synchronisation with the HIP editions.
+- Warp matrix multiplies (`mma`, WMMA) now use AMD's MFMA/WMMA instructions in more cases.
+- Improvements to cross-side and shuffle optimisation.
+- Device-code lazy-loading, reducing memory use and startup time.
+- CUDA API version 13 is now the default (use [CUDA API version selection](../library/overview.md#selecting-an-api-version) to pick any version back to 8.0).
+
+### Platform
+
+- GPUs are now numbered fastest first by default.
+- `ROCR_VISIBLE_DEVICES` can now be used to determine device order, as well as `CUDA_VISIBLE_DEVICES`.
+- Each device's host memory is allocated on its own NUMA node.
+- When an application is pinned to a single CPU, SCALE's internal threads no longer inherit that.
+
+### Compiler
+
+- Cross-side optimisation is more effective:
+
+    - Now works for NVIDIA targets.
+    - Kernels launched via `cudaLaunchKernel()`, function pointers, or chosen at runtime are now covered.
+
+- New optimiser remarks to help guide optimisation:
+    - `-Rpass-missed=exchange-module-ir` explains why the optimiser failed to prove the safety of cross-side
+    optimisation.
+    - `-fcuda-remarks` now reports per-kernel resource usage (registers, scratch, occupancy, spills) and
+    stack frame layouts.
+
+- Device code is compressed under `--offload-compress` (the default in nvcc mode), and
+  decompressed lazily at runtime.
+- Device-side maths functions called with integer arguments no longer crash the compiler.
+- Fixed some cases where host-side function calls resolved to the device declarations.
+- Fixed kernel launches being dropped from lambdas that were called through `std::visit`.
+- Lambdas defined inside kernels are no longer treated as extended lambdas.
+- Clusters of 16 blocks are now accepted.
+- Added CUDA 12.8's paired-float intrinsics (`__fadd2_rn()` etc.) for sm_100+.
+- Added the `__HIP_MEMORY_SCOPE_*` macros.
+- `__tile__` is supported (and does nothing).
+- Fixed libstdc++ 15+'s headers, when used in constexpr contexts with the clang driver.
+- The missing-ccmap warning is now off by default, and can never raise a hard error.
+- `--offload-arch-tool` is now honoured when detecting AMD GPUs.
+- Faster compilation of MMA-heavy kernels.
+- Huge single-literal `asm` blocks no longer cause very long compile times.
+- More optimisations for MFMA code.
+
+#### nvcc Compatibility
+
+- Device code is always optimised (as `-O3`) regardless of the host `-O`.
+- Host code may now take the address of a `__device__` function.
+- Host-only and device-only deduction guides are accepted.
+- Skipped device constructors' member initialisers are no longer instantiated on the host.
+- Fixed even more nvcc list-argument-parsing corner cases.
+- `-M` preprocesses for one GPU architecture again.
+- `nvcc --version` now makes even more build systems' crazy regexes happy.
+- `fdividef()` is only approximate with `-use_fast_math`, not with `-prec-div=false`.
+- Dynamic shared memory (`extern __shared__ T x[]`) is now 16-byte aligned.
+- Closer adherence to nvcc `-use_fast_math`'s behaviour, enabling slightly more
+  aggressive optimisations of floating point code.
+- For NVIDIA targets:
+    - We now forward PIC, `-shared` and every architecture to the linker.
+    - Shared, constant and local pointers are 32 bits wide.
+    - Failed device asserts give `cudaErrorAssert`.
+    - `libcudadevrt` is linked.
+    - Fixed some float operations under `-ftz=true`.
+
+#### Code Generation
+
+- Warp matrix multiplies (`mma`, WMMA) now use AMD's MFMA/WMMA instructions in more cases.
+- Integer `mma` and sums of byte, nibble and 16-bit products use dot-product instructions.
+- The shuffle optimiser understands far more patterns.
+- Small `memcpy()`s and `memset()`s are much faster.
+- Fixed miscompilations:
+    - Loads could be hoisted above acquire operations, reading stale values.
+    - `__float2half_rn(x * c)` lost the sign of a zero product.
+    - Shuffles could be moved into or out of divergent branches.
+    - Local variables in kernels that call device functions from other files could be placed in
+    shared memory that the launch didn't account for.
+    - Several AMDGPU backend crashes.
+
+#### PTX Support
+
+- Newly-supported instructions:
+    - `mma.sp` (2:4 sparse).
+    - FP8 `mma.sync`, and integer `mma.sync` with mixed-signedness inputs.
+    - `cvt` to `.tf32`.
+    - `vset`, `vmad` and the SIMD video instructions.
+    - `bar.arrive`, and `bar.red`/`barrier.red` on AMD.
+    - `.rz`/`.rp` for `cvt` to `ue8m0x2`.
+
+- Byte and half selectors are now allowed on any integer operand (as an extension).
+
+### Runtime Library
+
+#### Devices and Contexts
+
+- Added `cudaDevAttrL2CacheSize` and `cudaDevAttrHostNumaId`, on host and device.
+- Added CUDA 13's device attributes and `cudaDeviceProp` fields.
+- Fixed the PCI device ID attributes.
+- Context and stream IDs are never reused.
+- Enum `_MAX`/`_COUNT` sentinels match the CUDA version being built for.
+- Added `cudaDeviceRegisterAsyncNotification()` and friends (they do nothing).
+
+#### Kernel Launches
+
+- Faster kernel launches on small-BAR AMD GPUs.
+- `cudaLaunchKernelEx()`, `cuLaunchKernelEx()` and graph kernel nodes now honour the cooperative attribute.
+- `grid_group::is_valid()` is false without a cooperative launch.
+- Fixed `cuLaunchKernel()` with unused trailing arguments omitted.
+- The legacy `cuLaunch()`/`cuLaunchGrid()` now pass the parameters set by `cuParamSet*()`.
+- Added `cuParamSetTexRef()`.
+- Fixed `blockIdx` in very large launches.
+- `cudaFuncGetAttributes()` reports the values set with `cudaFuncSetAttribute()`, and behaves more like NVIDIA.
+- Added `cudaFuncAttributes::deviceNodeUpdateStatus` and `CU_FUNC_ATTRIBUTE_DEVICE_NODE_UPDATE_SUPPORTED`.
+- Added `cudaOccupancyMaxActiveClusters()`, `cudaOccupancyMaxPotentialClusterSize()`,
+  `cudaGetKernel()`, `cuKernelSetAttribute()`, `cudaKernelSetAttributeForDevice()`,
+  `cuKernelSetCacheConfig()` and the `*GetParamCount()` APIs.
+- Faster grid synchronisation.
+- Fewer spurious scheduler wake-ups.
+
+#### Modules and Libraries
+
+- Device code is loaded lazily by default, reducing memory use and startup time.
+- Each translation unit in a module has its own local scope, fixing weak and duplicate local symbols.
+- Added `cuLibraryLoadFromFile()`, `cudaLibraryLoadData()`, `cudaLibraryLoadFromFile()`,
+  `cudaLibraryGetKernelCount()` and `cudaLibraryEnumerateKernels()`.
+- Loading PTX from a file will now never read past its end.
+- Fixed a hang when loading executables on GFX9 GPUs without SDMA.
+- NVRTC:
+    - Now warns about unused variables.
+    - Null programs return `NVRTC_ERROR_INVALID_PROGRAM`.
+    - Added `nvrtcGetTypeName()` and the missing enumerants.
+    - Fixed compilation failures involving `std::lerp`.
+
+#### Graphs
+
+- Instantiation is much faster for large graphs.
+- Nodes are now kept in creation-order.
+- Kernel node attributes survive cloning and instantiation.
+- Fixed cloned graphs' free nodes losing their alloc nodes, and their IDs.
+- Graph memory nodes no longer use quadratic memory.
+- Graph allocations get a new `BUFFER_ID` on each launch.
+- Added `cuGraphExecGetId()`, `cuGraphNodeGetContainingGraph()`, the graph memory attribute APIs and
+  `cudaDeviceGraphMemTrim()`.
+
+#### Memory
+
+- Allocations of >= 2 MiB are 2 MiB aligned.
+- Fixed some cases where peers could read stale copies of each other's memory.
+- IPC:
+    - Closed imports no longer leak memory or address space.
+    - Buffers regrown at the same address now import correctly.
+- VMM: physical memory may be aliased; mappings outside the reservation are rejected.
+- The VMM APIs may be called while a stream is capturing.
+- Memory pools:
+    - Host and managed pools without an IPC handle type are accepted.
+    - A release threshold of `UINT64_MAX` is kept.
+    - Use after destruction is an error, not a crash.
+    - Fixed a race when creating or destroying a pool.
+    - Host memory pools are reported as supported.
+- Bad `cudaFreeAsync()` pointers are reported by the call, rather than aborting later.
+- Added `cuMemcpy3DPeer()`, `cuMemcpy3DPeerAsync()` and `cudaEventElapsedTime_v2()`, and declared
+  `cuMemGetMemPool()`.
+
+#### Textures and Surfaces
+
+- Cubemap and layered cubemap textures are sampled in hardware.
+- Seamless cubemaps now work.
+- Pitched textures must have a 256-byte-aligned pitch.
+
+#### Headers and Intrinsics
+
+- Added tf32 WMMA. WMMA loads and stores use the fragment's storage type.
+- `volatile` `__half`/`__nv_bfloat16` now work.
+- Fixed `__heq2_mask()` and friends putting `.x` in the high half.
+- The half/bf16 raw types are now available in C, as are the fp8/fp6/fp4 conversion functions.
+- The fp8 types' conversion operators are explicit.
+- `v = {}` on `__half2`/`__nv_bfloat162` is no longer ambiguous.
+- CUDA 8's `__half`, `hdiv()` and `h2div()` are now supported.
+- `cuComplex.h` and `curand_kernel.h` include `math.h`, as NVIDIA's do.
+- User code can no longer override a header that's part of the platform.
+- Added `__nv_associate_access_property()`.
+- More C++ runtime API overloads accept plain function pointers.
+- Fixed the layouts of `CUlaunchConfig` and `CU_DEV_SM_RESOURCE_GROUP_PARAMS`.
+- Added the `_v1` typedefs of `CUDA_TEXTURE_DESC`, `CUaccessPolicyWindow` and
+  `CUexecAffinity{Param,SmCount}`.
+- Fixed OpenGL interop's device lookup.
+
+### Maths Library
+
+- Documented the [precision of every maths function](../library/math-precision.md).
+- Added double `erfcx()`, `normcdfinv()` and Bessel functions, and the plain-named float overloads.
+- Double precision is now within CUDA's bounds for `erf()`, `erfc()`, `erfcinv()`, `atan()`, `asin()`,
+  `acos()`, `tgamma()`, `expm1()`, `log1p()`, `tanh()`, `cosh()`, `sinh()`, `cbrt()`, `rcbrt()` and the
+  norms.
+- `tgamma()` now gives exact factorials.
+- Half and bf16 transcendental functions are now correctly rounded.
+- The NaN constant is NVIDIA's canonical NaN.
+- All of libdevice's documented `__nv_*` functions are exported, for programs that declare and call them
+  directly.
+- `__isinf()`, `__isnan()`, `__finite()`, `__signbit()` and their float forms now return `int`.
+
+### CUDA-X Libraries
+
+- The ROCm maths libraries are now part of the SCALE package, and use the SCALE runtime directly, rather than going via HIP.
+- **cuSPARSE**:
+    - Implement the APIs NVIDIA removed in CUDA 11.0 and 12.0.
+    - `csrgemm` no longer conjugates conjugate-transposed operands.
+- **cuRAND**:
+    - Added MT19937, `curandGetVersion()`, `curandGetProperty()` and `curand_discrete()`.
+    - Unknown generator types return `CURAND_STATUS_TYPE_ERROR`.
+- **cuBLAS**:
+    - cuBLASLt matrix transform attributes are now translated correctly.
+    - CUDA 10's `cudaDataType` compute types are migrated correctly.
+    - `getriBatched()` takes `const` pivots.
+    - `cublasLt.h` now includes `cuComplex.h`.
+- **cuSOLVER**:
+    - `getrf` workspaces are never empty (seen in AMGX).
+    - Jacobi solvers report sweeps and non-convergence reliably.
+    - `cusolverRf` no longer hangs on wave64 GPUs.
+- **cuFFT**: added `CUFFT_PLAN_NULL` and `CUFFTAPI`.
+- **NVML**: fixed `nvmlDeviceGetFanSpeed()` returning incorrect values.
+
 ## Release 1.7.5 (2026-11-03)
 
 Our largest release yet.
@@ -56,30 +284,30 @@ jitify and nixl.
 - Added host-compiler emulation: we now determinee which host compiler NVCC would use, then
   pretend to be that when handling the host side of CUDA files. Support (GCC, clang, MSVC, and PGI).
 - Newly-supported nvcc flags.
-  - `--resource-usage`
-  - `--brief-diagnostics`
-  - `--lib`
-  - `--cudart`
-  - `--fatbin` (treated like `--cubin`)
-  - `--compress-mode=balance`
+    - `--resource-usage`
+    - `--brief-diagnostics`
+    - `--lib`
+    - `--cudart`
+    - `--fatbin` (treated like `--cubin`)
+    - `--compress-mode=balance`
 - `-G`, `-e`, `-time`, `-O`, `--optimize` and `--profile` now have nvcc's meanings.
 - `-odir` now applies to default output names.
 - nvcc options that have no effect under SCALE are now accepted instead of being rejected or
   misparsed as clang options:
-  - `-ewp`
-  - `-reloc-ptx`
-  - `-nodlink`
-  - `-Ofc`
-  - `-device-stack-protector`
-  - `-fdevice-time-trace`
-  - `-objtemp`
-  - `-arbin`
-  - `-Xarchive`
-  - `-nohdmoveforward`
-  - `--forward-unknown-to-host-linker`
-  - `--force-cl-env-setup`
-  - `-diag-error`
-  - `-diag-warn`
+    - `-ewp`
+    - `-reloc-ptx`
+    - `-nodlink`
+    - `-Ofc`
+    - `-device-stack-protector`
+    - `-fdevice-time-trace`
+    - `-objtemp`
+    - `-arbin`
+    - `-Xarchive`
+    - `-nohdmoveforward`
+    - `--forward-unknown-to-host-linker`
+    - `--force-cl-env-setup`
+    - `-diag-error`
+    - `-diag-warn`
 - `--compress-mode` is now passed to NVIDIA's `fatbinary` only from CUDA 12.8 onwards.
 - Fixed more cursed flag parsing rules around  `-L`, `-l`, `-D`, `-U`, `-o`, `-include`, `-MF` and `-MT`.
 - `-Xlinker` lists are now split on commas.
@@ -93,52 +321,52 @@ jitify and nixl.
 - Approximate division is now faster.
 - NaN handling is now much faster and matches NVIDIA mode closely.
 - Many improvements to the shuffle optimiser:
-  - Improved optimisation of common shuffle patterns/reductions.
-  - Masked and sub-warp reductions are now optimised.
-  - Fixed several crashes and miscompilations.
-  - Concurrent, disjoint reductions are now supported.
+    - Improved optimisation of common shuffle patterns/reductions.
+    - Masked and sub-warp reductions are now optimised.
+    - Fixed several crashes and miscompilations.
+    - Concurrent, disjoint reductions are now supported.
 - Fixed miscompilations:
-  - Loops with divergent control flow no longer deadlock.
-  - Register spill reloads could read stale values on AMD GPUs.
-  - `v_dot2` is no longer formed from FMA chains without permission to approximate.
-  - Integer to bf16 conversions were incorrectly rounded on all targets, including the host.
-  - A `StructurizeCFG` crash (seen in SHOULDER).
-  - An assertion copying aperture registers.
-  - An infinite loop recovering from an AMDGPU assembly operand error at the end of a file.
-  - An assertion on calls with a mismatched function type.
+    - Loops with divergent control flow no longer deadlock.
+    - Register spill reloads could read stale values on AMD GPUs.
+    - `v_dot2` is no longer formed from FMA chains without permission to approximate.
+    - Integer to bf16 conversions were incorrectly rounded on all targets, including the host.
+    - A `StructurizeCFG` crash (seen in SHOULDER).
+    - An assertion copying aperture registers.
+    - An infinite loop recovering from an AMDGPU assembly operand error at the end of a file.
+    - An assertion on calls with a mismatched function type.
 - Improved NVIDIA code generation via some new peephole optimisations.
 
 #### PTX Support
 
 - Newly-supported instructions:
-  - `suld.b` and `sust.b`.
-  - `tex` with `.v4.f16` and `.v2.f16x2` results.
-  - `sqrt` with non-default rounding modes.
-  - `setp` on `f16x2` and `bf16x2`.
-  - `min`/`max` `.xorsign.abs` on `f16x2` and `bf16x2`.
-  - Vector `atom`/`red` `min`/`max` on `f16`, `bf16`, `f16x2` and `bf16x2`.
-  - Directed `cvt` from `f64` to `f16`/`bf16`, and between `f16` and `bf16`.
-  - `barrier.sync` as a spelling of `bar.sync`.
+    - `suld.b` and `sust.b`.
+    - `tex` with `.v4.f16` and `.v2.f16x2` results.
+    - `sqrt` with non-default rounding modes.
+    - `setp` on `f16x2` and `bf16x2`.
+    - `min`/`max` `.xorsign.abs` on `f16x2` and `bf16x2`.
+    - Vector `atom`/`red` `min`/`max` on `f16`, `bf16`, `f16x2` and `bf16x2`.
+    - Directed `cvt` from `f64` to `f16`/`bf16`, and between `f16` and `bf16`.
+    - `barrier.sync` as a spelling of `bar.sync`.
 - `div.full` and `sqrt.approx` are now much faster.
 - Fixed miscompilations:
-  - `0f` floating point hex literals are no longer interpreted as zero.
-  - `shr.u64` (and `shl`) by a constant now actually shifts.
-  - Signed `add.cc`, `sub.cc` and `mad.cc` now set the carry-bit correctly.
-  - `cvt.sat` between integer types now clamps correctly.
-  - Vector loads didn't extend elements into wider registers.
-  - `vote.uni` is no longer interpreted as `vote.all`.
-  - Instructions that write their own guard predicate now work correctly.
-  - Byte and half selectors on video instructions are no longer ignored.
-  - Video instruction secondary options now behave correctly.
-  - `mma .xor.popc` now actually computes XOR, not OR.
-  - `.relu` conversions no longer turn a negative NaN into 0.
-  - `%warpid` is now the warp ID, not the lane index.
-  - `%nwarpid` now gives the correct value in the last warp of a block with an
+    - `0f` floating point hex literals are no longer interpreted as zero.
+    - `shr.u64` (and `shl`) by a constant now actually shifts.
+    - Signed `add.cc`, `sub.cc` and `mad.cc` now set the carry-bit correctly.
+    - `cvt.sat` between integer types now clamps correctly.
+    - Vector loads didn't extend elements into wider registers.
+    - `vote.uni` is no longer interpreted as `vote.all`.
+    - Instructions that write their own guard predicate now work correctly.
+    - Byte and half selectors on video instructions are no longer ignored.
+    - Video instruction secondary options now behave correctly.
+    - `mma .xor.popc` now actually computes XOR, not OR.
+    - `.relu` conversions no longer turn a negative NaN into 0.
+    - `%warpid` is now the warp ID, not the lane index.
+    - `%nwarpid` now gives the correct value in the last warp of a block with an
     incomplete final warp.
-  - PTX cache operators are now respected (`ld.{cg/cs/cv`, `st.{cg,cs,wt}`)
-  - `tex.base` no longer applies the texture's LOD bias.
-  - `bar.sync` no longer hangs if some lanes have exited.
-  - Several `shfl.sync` edgecases no longer exhibit undefined behaviour.
+    - PTX cache operators are now respected (`ld.{cg/cs/cv`, `st.{cg,cs,wt}`)
+    - `tex.base` no longer applies the texture's LOD bias.
+    - `bar.sync` no longer hangs if some lanes have exited.
+    - Several `shfl.sync` edgecases no longer exhibit undefined behaviour.
 - Integer `asm` inputs narrower than their constraint are now sign- or
   zero-extended according to their type (`"l"(-5)` previously gave
   4294967291), with a warning unless they are constants. Other size mismatches
@@ -180,11 +408,11 @@ jitify and nixl.
 - Initialisation errors are reported from the first `cudaGetDeviceCount()`, and from whichever
   call needed initialisation.
 - Primary contexts:
-  - Implemented `cuDevicePrimaryCtxSetFlags()`.
-  - `cudaInitDevice()` flags apply to an existing primary context.
-  - `cudaFree(nullptr)` initialises the primary context.
-  - Resetting the primary context clears its flags.
-  - `cuCtxGetCurrent()` reports the runtime's primary context.
+    - Implemented `cuDevicePrimaryCtxSetFlags()`.
+    - `cudaInitDevice()` flags apply to an existing primary context.
+    - `cudaFree(nullptr)` initialises the primary context.
+    - Resetting the primary context clears its flags.
+    - `cuCtxGetCurrent()` reports the runtime's primary context.
 - `cudaGetDeviceFlags()`/`cuCtxGetFlags()` report the current context's flags.
 - `cuCtxGetId(nullptr)` returns the current context's ID.
 - `cudaSetValidDevices()` is permitted while a context is current, and no longer disables every
@@ -211,14 +439,14 @@ jitify and nixl.
 #### Graphs
 
 - Fixed many graph bugs:
-  - Event wait nodes wait for the event's latest record.
-  - `cudaGraphExecUpdate()` keeps launch order and flags.
-  - Kernel arguments stay alive until launches using them finish.
-  - Setting a child graph's kernel node parameters through the parent's exec works.
-  - Changing a copy node to a 1D copy resets its height and depth.
-  - Kernel node attributes are copied in the right direction.
-  - Graph execs no longer get invalidated when a node's enabled state doesn't actually change.
-  - Graph scheduling no longer stalls when dependencies are on other devices or behind blocked
+    - Event wait nodes wait for the event's latest record.
+    - `cudaGraphExecUpdate()` keeps launch order and flags.
+    - Kernel arguments stay alive until launches using them finish.
+    - Setting a child graph's kernel node parameters through the parent's exec works.
+    - Changing a copy node to a 1D copy resets its height and depth.
+    - Kernel node attributes are copied in the right direction.
+    - Graph execs no longer get invalidated when a node's enabled state doesn't actually change.
+    - Graph scheduling no longer stalls when dependencies are on other devices or behind blocked
     roots.
 - Graph memory allocations are aligned and reserved as on NVIDIA, and each allocation is backed
   by its own size.
@@ -271,31 +499,31 @@ jitify and nixl.
 #### Warp-Level Operations and Cooperative Groups
 
 - Warp intrinsics are now more correct, and optimise better.
-  - `__shfl_*_sync()` honours its lane mask, including operands past the width.
-  - `__reduce_*_sync()` with a partial mask no longer reads stale values.
-  - `__all()` now works.
+    - `__shfl_*_sync()` honours its lane mask, including operands past the width.
+    - `__reduce_*_sync()` with a partial mask no longer reads stale values.
+    - `__all()` now works.
 - `__fns()` and `fns` handle out-of-range bases.
 - Named barriers no longer hang when lane 0 of a wavefront has exited.
 - `__nanosleep(0)` returns immediately.
 - Grid synchronisation:
-  - Fixed hangs when the barrier's generation wraps.
-  - Fixed arrival counting for 2D/3D blocks.
+    - Fixed hangs when the barrier's generation wraps.
+    - Fixed arrival counting for 2D/3D blocks.
 - Cooperative groups:
-  - Added `grid_group::dim_threads()`/`thread_index()`,
+    - Added `grid_group::dim_threads()`/`thread_index()`,
     `cg::this_thread()`, `cg::thread_rank()` and `cg::group_size()`.
-  - `thread_block_tile::ballot()` and `match_all()` compile, and their masks are tile-relative.
-  - `coalesced_group`'s `shfl()`, `shfl_up()`, `shfl_down()`, ballot and match masks are correct.
-  - `cg::reduce()`:
+    - `thread_block_tile::ballot()` and `match_all()` compile, and their masks are tile-relative.
+    - `coalesced_group`'s `shfl()`, `shfl_up()`, `shfl_down()`, ballot and match masks are correct.
+    - `cg::reduce()`:
     - Reducing a `coalesced_group` returns the whole group's result.
     - Multi-warp tiles no longer require `block_tile_memory`.
     - Nested multi-warp tiles no longer interfere with one another.
-  - Each multi-warp `thread_block_tile` has its own barrier.
-  - `meta_group_size()` counts a partial last tile.
-  - `binary_partition()` gives the correct meta group ranks.
-  - Converting a group to `thread_group` and back no longer corrupts memory.
-  - `grid_group`'s cluster queries report correct values for non-cluster launches.
-  - `cg::memcpy_async()` now accepts `void*`.
-  - Fixed compatibility with C++03 and C++11.
+    - Each multi-warp `thread_block_tile` has its own barrier.
+    - `meta_group_size()` counts a partial last tile.
+    - `binary_partition()` gives the correct meta group ranks.
+    - Converting a group to `thread_group` and back no longer corrupts memory.
+    - `grid_group`'s cluster queries report correct values for non-cluster launches.
+    - `cg::memcpy_async()` now accepts `void*`.
+    - Fixed compatibility with C++03 and C++11.
 - Shipped `cuda/pipeline`.
 
 #### Atomics and Memory Operations
@@ -303,9 +531,9 @@ jitify and nixl.
 - Added atomic min and max for f16, bf16, f16x2 and bf16x2.
 - `atomicInc()`/`atomicDec()` work on fine-grained memory, and with a limit of `UINT_MAX`.
 - The `__nv_atomic_*()` functions:
-  - Work on mapped host and peer memory.
-  - Accept integer memory orders.
-  - Use NVIDIA's `__NV_THREAD_SCOPE_*` values.
+    - Work on mapped host and peer memory.
+    - Accept integer memory orders.
+    - Use NVIDIA's `__NV_THREAD_SCOPE_*` values.
 - Shared-memory atomics are cheaper.
 - `__ldcg()`, `__ldcv()` (and corresponding PTX instructions) honour their cache operators.
 - Vector type alignment is capped at 16 bytes.
@@ -316,89 +544,89 @@ jitify and nixl.
 ### Maths Library
 
 - New functions:
-  - `cyl_bessel_i0f()`, `cyl_bessel_i1f()`
-  - `jnf()`, `ynf()` (integer-order Bessel functions)
-  - `normcdfinvf()`
-  - Single-precision `norm*f()` functions.
-  - `__isinff()`, `__finitef()`, `__signbitf()` and their double versions
-  - `__tanhf()`
-  - Host-side `rcbrt()` and `rcbrtf()`
+    - `cyl_bessel_i0f()`, `cyl_bessel_i1f()`
+    - `jnf()`, `ynf()` (integer-order Bessel functions)
+    - `normcdfinvf()`
+    - Single-precision `norm*f()` functions.
+    - `__isinff()`, `__finitef()`, `__signbitf()` and their double versions
+    - `__tanhf()`
+    - Host-side `rcbrt()` and `rcbrtf()`
 - `-prec-div`, `-prec-sqrt` and fast maths now behave exactly as with nvcc.
 - Accuracy improvements:
-  - Double `pow()` is now within CUDA's error bound.
-  - Double `lgamma()` and `tgamma()` are now less wrong.
-  - Double `norm*()` is fixed.
-  - Directed-rounding float reciprocals, divisions and square roots, `__frsqrt_rn()` and
+    - Double `pow()` is now within CUDA's error bound.
+    - Double `lgamma()` and `tgamma()` are now less wrong.
+    - Double `norm*()` is fixed.
+    - Directed-rounding float reciprocals, divisions and square roots, `__frsqrt_rn()` and
     `__drcp_rn()` are correctly rounded.
-  - `__fmaf_ieee_rn()` keeps subnormals.
-  - `normcdff()`, `powf()`  no longer lose accuracy to contraction.
-  - Complex division and `abs` no longer overflow/underflow early.
-  - bf16 `sin`/`cos` use the high-precision implementations
-  - bf16 `hrsqrt()` no longer double rounds.
+    - `__fmaf_ieee_rn()` keeps subnormals.
+    - `normcdff()`, `powf()`  no longer lose accuracy to contraction.
+    - Complex division and `abs` no longer overflow/underflow early.
+    - bf16 `sin`/`cos` use the high-precision implementations
+    - bf16 `hrsqrt()` no longer double rounds.
 - Faster `pow()` for common constant exponents and bases.
 - NaN, infinity and saturation handling:
-  - The exponential functions, `sinpif()`/`cospif()`/`sincospif()`, `atan2()`, `fmod()`,
+    - The exponential functions, `sinpif()`/`cospif()`/`sincospif()`, `atan2()`, `fmod()`,
     `remainder()`, `remquo()`, `logb()`, `nextafter()`, `hypot()` and `lgamma()` return the correct
     NaN.
-  - `fmod()`, `remainder()` and `remquo()` return quiet NaNs.
-  - `nan()` builds the requested NaN.
-  - Float-to-integer conversions now clamp correctly.
-  - `lround()`, `lrint()` and their `long long` forms saturate as nvcc does.
-  - `scalbln()` handles exponents outside the range of `int`.
-  - `__fdividef()` divides by subnormals as nvcc does.
+    - `fmod()`, `remainder()` and `remquo()` return quiet NaNs.
+    - `nan()` builds the requested NaN.
+    - Float-to-integer conversions now clamp correctly.
+    - `lround()`, `lrint()` and their `long long` forms saturate as nvcc does.
+    - `scalbln()` handles exponents outside the range of `int`.
+    - `__fdividef()` divides by subnormals as nvcc does.
 - Many small maths and bit-manipulation functions are faster.
 - Half, bf16 and minifloats:
-  - Saturating conversions handle NaN/saturation correctly.
-  - bf16 `__hmax`/`__hmin` handle NaNs and signed zeros correctly.
-  - Fixed bf16 `__high2float()`/`__low2float()`.
-  - Added the pairwise FP4 conversions, the missing E8M0 constructors from 64-bit integers, and
+    - Saturating conversions handle NaN/saturation correctly.
+    - bf16 `__hmax`/`__hmin` handle NaNs and signed zeros correctly.
+    - Fixed bf16 `__high2float()`/`__low2float()`.
+    - Added the pairwise FP4 conversions, the missing E8M0 constructors from 64-bit integers, and
     the missing minifloat-to-bf16/char operators.
-  - Fixed E8M0 overflow when rounding toward zero.
-  - Minifloats now convert to bf16 correctly.
+    - Fixed E8M0 overflow when rounding toward zero.
+    - Minifloats now convert to bf16 correctly.
 - SIMD and integer intrinsics:
-  - Fixed `__uhadd()` and friends.
-  - Fixed rounding in `__vavgs2()`/`__vavgs4()`.
-  - Fixed `__vaddus2()`/`__vaddus4()` saturation.
-  - Fixed `__vadd`/`__vsub` with zero low lanes.
-  - Fixed the signedness of `__viaddmin_u16x2()`.
-  - Added the missing device-side `half2char_rz()` and friends.
+    - Fixed `__uhadd()` and friends.
+    - Fixed rounding in `__vavgs2()`/`__vavgs4()`.
+    - Fixed `__vaddus2()`/`__vaddus4()` saturation.
+    - Fixed `__vadd`/`__vsub` with zero low lanes.
+    - Fixed the signedness of `__viaddmin_u16x2()`.
+    - Added the missing device-side `half2char_rz()` and friends.
 - The bitwise OR and XOR reduction operators return `T`.
 
 ### CUDA-X Libraries
 
 - **cuFFT** has been rewritten:
-  - Fixed many correctness bugs:
+    - Fixed many correctness bugs:
     - Non-square 2D/3D plans no longer transpose.
     - In-place real transforms use the padded layout.
     - Batched real transforms use the right distance.
     - User work areas are honoured.
     - `cufftXtExecDescriptor*()` no longer overwrites its input.
-  - `cufftHandle` is now an `int`
-  - Now works with `SCALE_EXCEPTIONS`.
-  - Added:
+    - `cufftHandle` is now an `int`
+    - Now works with `SCALE_EXCEPTIONS`.
+    - Added:
     - `cufftSetPlanPropertyInt64()` and friends
     - `cufftXtSetWorkArea()`, `cufftXtSetWorkAreaPolicy()`, `cufftXtQueryPlan()`
     - The newer result codes and `cufftCompatibility`
-  - Plans with arbitrary strides are supported.
-  - Callbacks report `CUFFT_NOT_IMPLEMENTED`, as NVIDIA's shared library does.
+    - Plans with arbitrary strides are supported.
+    - Callbacks report `CUFFT_NOT_IMPLEMENTED`, as NVIDIA's shared library does.
 - **cuFFTW**: added.
 - **cuSPARSE** now covers essentially all of NVIDIA's APIs. Not yet supported:
-  - The half-precision pruning APIs
-  - `SpMMOp`/`SpMVOp`
-  - CUDA 13.1's `SpGEAM`
-  - Diagonal-only `SpSV`/`SpSM` updates
-  - Sliced-ELL `SpMV`
-  - 1- or 2-byte value transposes in `csr2cscEx2`
+    - The half-precision pruning APIs
+    - `SpMMOp`/`SpMVOp`
+    - CUDA 13.1's `SpGEAM`
+    - Diagonal-only `SpSV`/`SpSM` updates
+    - Sliced-ELL `SpMV`
+    - 1- or 2-byte value transposes in `csr2cscEx2`
 - **cuSOLVER** is now essentially complete:
-  - All APIs now have C linkage.
-  - `_bufferSize` APIs report real workspace sizes, and the user's workspace is used.
-  - Invalid arguments and `info` values are now handled correctly.
-  - `syevj`/`gesvdj` report non-convergence correctly. `gesvdj` returns V rather than V^H.
-  - `gesvdaStridedBatched` reports residual norms.
-  - `cusolverDnGetStream()` returns the stream that was set.
+    - All APIs now have C linkage.
+    - `_bufferSize` APIs report real workspace sizes, and the user's workspace is used.
+    - Invalid arguments and `info` values are now handled correctly.
+    - `syevj`/`gesvdj` report non-convergence correctly. `gesvdj` returns V rather than V^H.
+    - `gesvdaStridedBatched` reports residual norms.
+    - `cusolverDnGetStream()` returns the stream that was set.
 - **NPP**: added, covering around 500 of the total ~6000 APIs. More on the way.
 - **cuBLAS**:
-  - Newly-added APIs:
+    - Newly-added APIs:
     - `cublas<t>syrkx()`
     - `cublasCgemm3m()`, `cublasZgemm3m()`, `cublasCgemm3mStridedBatched()`
     - `cublasRotEx()`
@@ -407,26 +635,26 @@ jitify and nixl.
     - `cublas{S,D}gemmGroupedBatched()`, `cublasGemmGroupedBatchedEx()`
     - `cublasSetLoggerCallback()`, `cublasGetLoggerCallback()`
     - `cublasLtMatmulAlgoGetHeuristicForStream()`, `cublasLtMatmulAlgoCheckForStream()`
-  - Added the newer operation, maths mode, compute type and algorithm enumerators.
-  - cuBLASLt attribute, tile, stage and numerical-flag values now correct.
-  - `cublasSideMode_t` is numbered as in cuBLAS.
-  - Complex GEMMs through the `*gemm*Ex` paths now work (seen in QUDA).
-  - Handle structs have NVIDIA's names.
+    - Added the newer operation, maths mode, compute type and algorithm enumerators.
+    - cuBLASLt attribute, tile, stage and numerical-flag values now correct.
+    - `cublasSideMode_t` is numbered as in cuBLAS.
+    - Complex GEMMs through the `*gemm*Ex` paths now work (seen in QUDA).
+    - Handle structs have NVIDIA's names.
 - **cuRAND**:
-  - Fixed the signature of `curand_log_normal()`.
-  - The sobol64 `curand_init()` now takes a 64-bit offset.
+    - Fixed the signature of `curand_log_normal()`.
+    - The sobol64 `curand_init()` now takes a 64-bit offset.
 - **NVML**:
-  - Added `nvmlDeviceGetFieldValues()` and the field IDs.
-  - NVML no longer crashes when shut down during static destruction.
-  - Devices are counted without initialising CUDA.
-  - UUIDs match those reported by the CUDA runtime APIs.
-  - Fixed `nvmlSystemGetProcessName()` with empty command lines.
+    - Added `nvmlDeviceGetFieldValues()` and the field IDs.
+    - NVML no longer crashes when shut down during static destruction.
+    - Devices are counted without initialising CUDA.
+    - UUIDs match those reported by the CUDA runtime APIs.
+    - Fixed `nvmlSystemGetProcessName()` with empty command lines.
 - **NVTX** defines the unsuffixed A/W name macros.
 - The maths libraries:
-  - Respect `CUDA_VISIBLE_DEVICES`.
-  - Work in whichever order they are first used.
-  - No longer crash at exit or when handles are destroyed from static destructors.
-  - No longer deadlock on some GFX9 GPUs (seen in llama.cpp).
+    - Respect `CUDA_VISIBLE_DEVICES`.
+    - Work in whichever order they are first used.
+    - No longer crash at exit or when handles are destroyed from static destructors.
+    - No longer deadlock on some GFX9 GPUs (seen in llama.cpp).
 
 ## Release 1.7.4 (2026-10-08)
 
@@ -483,7 +711,7 @@ calculations.
 #### PTX Support
 
 - Newly-supported PTX opcodes:
-  - `tex` (1D, 2D, 3D, 1D/2D layered, cubemap and layered cubemap), including
+    - `tex` (1D, 2D, 3D, 1D/2D layered, cubemap and layered cubemap), including
     LOD and offset variants.
 - Inline PTX `add`, `sub` and `mul` without an explicit rounding mode may now
   contract into FMAs, as `ptxas` would allow.
@@ -498,12 +726,12 @@ calculations.
 
 - Fixed a collision with glibc's C23 maths headers.
 - Textures:
-  - Added mipmapped arrays and mipmapped textures (runtime and driver APIs), including LOD bias.
-  - Added software emulation for some missing texture features on gfx90a.
-  - Fixed wide linear textures.
-  - Added f16 textures.
-  - Read mode is now ignored for float textures.
-  - Added support for texture-related cudaDeviceAttr queries.
+    - Added mipmapped arrays and mipmapped textures (runtime and driver APIs), including LOD bias.
+    - Added software emulation for some missing texture features on gfx90a.
+    - Fixed wide linear textures.
+    - Added f16 textures.
+    - Read mode is now ignored for float textures.
+    - Added support for texture-related cudaDeviceAttr queries.
 - Added support for `cudaDevAttrMaxPitch`, and various NUMA/PCI-related device attribute queries.
 - Improved kernel launch performance.
 - Improved performance of 3D memcpy.
@@ -511,12 +739,12 @@ calculations.
 - Fixed a race condition that could lead to copies involving pageable
   host memory not being properly waited for.
 - Newly-added APIs:
-  - `cuGraphicsResourceGetMappedPointer()`
-  - `cuGreenCtxGetDevResource()`
-  - `cuEventElapsedTime_v2()`
-  - `cudaDeviceFlushGPUDirectRDMAWrites()` and friends
-  - `cudaLaunchAttributeValue::preferredClusterDim`
-  - `cudaGraphDependencyType`, `cudaDeviceSyncMemops`,
+    - `cuGraphicsResourceGetMappedPointer()`
+    - `cuGreenCtxGetDevResource()`
+    - `cuEventElapsedTime_v2()`
+    - `cudaDeviceFlushGPUDirectRDMAWrites()` and friends
+    - `cudaLaunchAttributeValue::preferredClusterDim`
+    - `cudaGraphDependencyType`, `cudaDeviceSyncMemops`,
     `cudaMemPoolCreateUsageHwDecompress`, `CUarray_cubemap_face`,
     `CUstreamUpdateCaptureDependencies_flags`, `CUshared_carveout`
 - `__trap()` now produces `cudaErrorLaunchFailure` in `cudaGetLastError()`.
@@ -527,10 +755,10 @@ calculations.
   inputs more strictly.
 - Improved TLB behaviour for some allocation sizes.
 - Graph fixes:
-  - Fixed numerous bugs in graph memory nodes.
-  - Fixed several graph-api-related deadlocks.
-  - Fixed a hang when destroying the graph scheduler.
-  - Fixed swapped arguments in `cudaGraphKernelNodeCopyAttributes()`.
+    - Fixed numerous bugs in graph memory nodes.
+    - Fixed several graph-api-related deadlocks.
+    - Fixed a hang when destroying the graph scheduler.
+    - Fixed swapped arguments in `cudaGraphKernelNodeCopyAttributes()`.
 - Fixed indexing defect in the prefetch APIs.
 - `cuCtxDetach()` no longer refuses to work except on contexts where it cannot possibly work.
 - `cuCtxGetApiVersion()` now returns a real CUDA API version.
@@ -619,11 +847,11 @@ usual selection of many bugfixes and performance improvements.
 - Fixed a crash that could occur when inline PTX contained type errors.
 - Fixed miscompilation of certain PTX memory instructions in nvcc mode.
 - Newly-supported PTX opcodes:
-  - `mbarrier`
-  - `cp.async.bulk.*`
-  - `cp.async.bulk.tensor.*`
-  - `cp.async.bulk.prefetch.*`
-  - `fence.proxy.async`
+    - `mbarrier`
+    - `cp.async.bulk.*`
+    - `cp.async.bulk.tensor.*`
+    - `cp.async.bulk.prefetch.*`
+    - `fence.proxy.async`
 
 ### Runtime Library
 
