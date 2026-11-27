@@ -6,6 +6,7 @@
 
 - Added `scaleprof`, a profiler with API/kernel traces, hardware counters, occupancy analysis,
   profile diffs and SQL querying.
+  - See [here](../library/profiling.md) for how to use.
 - Added shoulder, a HIP -> CUDA translation layer.
   - See [here](../tutorials/how-to-use-hip.md) for how to use.
 - All of our maths libraries are now built with shoulder and our compiler, removing any overhead from HIP interop.
