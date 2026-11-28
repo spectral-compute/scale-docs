@@ -1,4 +1,4 @@
-# Compile CUDA with SCALE
+# Compile CUDA and HIP with SCALE
 
 Compiling CUDA programs with SCALE can typically be done using the exact same
 commands that are used to compile using the NVIDIA CUDA Toolkit.
@@ -7,7 +7,16 @@ SCALE's compiler can be called as `nvcc` and accepts the same commandline argume
 as NVIDIA's one. This makes it trivial switch compilers (SCALE vs. NVIDIA), and to
 switch target GPU vendor (NVIDIA vs. AMD).
 
-## Possible Compilations
+The above also applies to building HIP code: the same instructions that you
+would use to build HIP with rocm should also work with scale.
+
+!!! warn
+    Our cuda support is much more complete and extensively tested than our HIP
+    support, which is a very new feature. We have support for building basic HIP
+    code, as well as a number of math libraries (rocBLAS, rocRAND, rocSPARSE...). We
+    expect to ship more HIP math libraries in the future.
+
+## Possible CUDA Compilations
 
 There are three ways to compile CUDA files:
 
@@ -19,12 +28,25 @@ There are three ways to compile CUDA files:
   libraries, to run on NVIDIA GPUs.
 3. Using SCALE's compiler and runtime libraries to build and run on AMD GPUs.
 
+## Possible HIP Compilations
+
+There are two ways to compile HIP files:
+
+1. Using ROCM hipcc to compile your GPU code, combined with ROCM's libraries.
+   AKA: not using SCALE at all.
+2. Using SCALE to compile your GPU kernels, combined with SCALE's runtime
+  libraries, to run on AMD GPUs.
+
+!!! note
+    Building HIP for nvidia will be supported imminently, but wasn't ready in time
+    for the 1.8 scale release.
+
 ## The easy way: `scaleenv`
 
 SCALE offers a "`venv`-flavoured" environment management script to allow
-"magically" building CUDA projects. This sets `PATH` and other environment variables
-that affect buildsystems (eg. CMake), instructing them to use SCALE's compiler
-and/or libraries, as appropriate.
+"magically" building CUDA and HIP projects. This sets `PATH` and other
+environment variables that affect buildsystems (eg. CMake), instructing them to
+use SCALE's compiler and/or libraries, as appropriate.
 
 The concept is simple:
 
@@ -84,6 +106,8 @@ If you don't know what target ID to use for your GPUs, here's how:
 
 ## How it really works
 
+### CUDA
+
 === "AMD"
 
     To allow compilation without build system changes, SCALE provides a series of
@@ -135,3 +159,10 @@ If you don't know what target ID to use for your GPUs, here's how:
     By placing the SCALE compiler first in `PATH`, it is picked up and used
     instead of NVIDIA nvcc. Then, it reports the library locations appropriately
     to cause the build system to link the NVIDIA CUDA runtime.
+
+### HIP
+
+To compile HIP, we use a tool called `shoulder`, to inject an appropriate API
+mapping header into the build. Under the hood, the same mechanisms that we use
+to run CUDA on AMD cards are used to make HIP work with our runtime and
+compiler.
