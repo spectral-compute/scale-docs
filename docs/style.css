@@ -718,6 +718,12 @@
   color: #f5f5f5;
 }
 
+/* Inline code in table headers follows the header's light-on-dark colouring. */
+.md-typeset table:not([class]) th > code {
+  background-color: rgba(245, 245, 245, 0.12);
+  color: inherit;
+}
+
 /* --------------------------------------------------------------------------
    15. Back-to-Top Button
    -------------------------------------------------------------------------- */
