@@ -100,8 +100,9 @@ def table(entries):
     rows = {}
     for e in entries:
         rows.setdefault(e.function, {})[e.type] = e
-    lines = ["| Function | " + " | ".join(TYPES[t] for t in types) + " | Notes |",
-             "|---|" + "---|" * len(types) + "---|"]
+    has_notes = any(e.notes for e in entries)
+    header = ["Function"] + [TYPES[t] for t in types] + (["Notes"] if has_notes else [])
+    lines = ["| " + " | ".join(header) + " |", "|" + "---|" * len(header)]
     for function, by_type in rows.items():
         cells = [by_type[t].cell() if t in by_type else "" for t in types]
         # The same note for every type stands alone, and others say which type they're for.
@@ -110,7 +111,8 @@ def table(entries):
             notes = by_type[noted[0]].notes
         else:
             notes = "<br>".join(f"{TYPES[t]}: {by_type[t].notes}" for t in noted)
-        lines.append(f"| `{function}` | " + " | ".join(cells) + f" | {notes} |")
+        row = [f"`{function}`"] + cells + ([notes] if has_notes else [])
+        lines.append("| " + " | ".join(row) + " |")
     return "\n".join(lines)
 
 
