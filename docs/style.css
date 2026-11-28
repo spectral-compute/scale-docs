@@ -1022,3 +1022,17 @@ html {
 [data-md-color-scheme="slate"] .md-typeset td > a:has(> .apidiff-meter):is(:hover, :focus-visible) {
   background-color: rgba(174, 132, 255, 0.14);
 }
+
+/* --------------------------------------------------------------------------
+   Content tabs
+   -------------------------------------------------------------------------- */
+
+/* Put a nested tab set's inputs at the top of the outermost tab set, so scrolling to a nested
+   tab's anchor shows the enclosing tabs' labels too (see javascripts/tab-anchors.js). */
+.md-typeset .tabbed-set .tabbed-set {
+  position: static;
+}
+
+.md-typeset .tabbed-set .tabbed-set > input {
+  top: 0;
+}
