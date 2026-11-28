@@ -110,10 +110,6 @@ No root access? Use the tarball distribution.
     tar xf {{scale_pkgname}}-latest-amd64.tar.xz
     ```
 
-    The tarball is significantly larger than other options since it
-    includes many dependent libraries directly instead of asking the system
-        package manager to install them.
-
 
 ## Post-installation steps
 
@@ -145,23 +141,7 @@ AMD's kernel modules are only supported on certain kernels. If your system uses 
 
 ### I get file conflicts when installing the SCALE package
 
-This is usually caused by a previous manual installation of SCALE, or a different version of SCALE installed on the same system. Currently, only one version of SCALE and its associated ROCM version can be installed at once.
-
-### I previously had your repositories set up, but it broke mysteriously.
-
-We recently merged our stable and unstable repos. This shouldn't require any action for our users, but if you're having troubles then we suggest completely removing our repositories and adding them again:
-
-```bash
-# On Rocky
-sudo dnf remove 'scale-repos*'
-sudo rm -f /etc/yum.repos.d/scale.repo
-
-# On Ubuntu
-sudo apt-get remove 'scale-repos*'
-sudo rm -f /etc/apt/sources.list.d/scale.list /etc/apt/auth.conf.d/scale.conf
-
-# Then follow the instructions above again.
-```
+This is usually caused by a previous manual installation of SCALE, or a different version of SCALE installed on the same system. Currently, only one version of SCALE can be installed at once.
 
 ### I'm still stuck!
 

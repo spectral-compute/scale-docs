@@ -46,13 +46,6 @@ you can use as a workaround if this edgecase becomes a problem.
 
 ## Enhancements
 
-### Contexts where CUDA APIs are forbidden
-
-NVIDIA's implementation forbids CUDA APIs in various contexts, such as from
-host-side functions enqueued onto streams.
-
-This implementation allows CUDA API calls in such cases.
-
 ### Static initialization and deinitialization
 
 This implementation permits the use of CUDA API functions during global static

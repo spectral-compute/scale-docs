@@ -2,14 +2,12 @@
 
 ## What is SCALE?
 
-SCALE is a CUDA-compatible GPU programming toolkit targeting both
+SCALE is a CUDA/HIP-compatible GPU programming toolkit targeting both
 NVIDIA and AMD GPUs.
 
-Instead of porting programs away from CUDA, SCALE offers a vendor-neutral platform
+Instead of porting programs, SCALE offers a vendor-neutral platform
 that allows users to keep their existing codebases without compromising on performance
 or developer productivity.
-
-Any questions, suggestions, or bug reports? [Join our community](./contact/join-our-discord.md) and talk with our dev team directly.
 
 ## What can SCALE do?
 
@@ -29,8 +27,8 @@ SCALE provides:
 - A drop-in replacement for NVIDIA `nvcc`, capable of compiling nvcc-dialect
   CUDA for AMD & NVIDIA GPUs.
 - An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.
-- Wrapper libraries providing the "CUDA-X" APIs by delegating to the
-  corresponding ROCm libraries for AMD GPUs.
+- Implementations of the "CUDA-X" APIs (cuBLAS etc.), either via recompiled
+  rocm libraries, or our own CUDA code.
 
 For NVIDIA targets, SCALE replaces `nvcc`,
 offering improved compiler diagnostics and - sometimes - performance.
