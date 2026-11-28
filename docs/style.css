@@ -1012,4 +1012,13 @@ html {
   display: block;
   padding: 0.9375em 0.6em;
   text-decoration: none !important;
+  transition: background-color 0.15s ease;
+}
+
+.md-typeset td > a:has(> .apidiff-meter):is(:hover, :focus-visible) {
+  background-color: rgba(78, 45, 115, 0.1);
+}
+
+[data-md-color-scheme="slate"] .md-typeset td > a:has(> .apidiff-meter):is(:hover, :focus-visible) {
+  background-color: rgba(174, 132, 255, 0.14);
 }
