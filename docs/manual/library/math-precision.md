@@ -19,7 +19,9 @@ doesn't care.
 
 The accuracy bounds cover all supported GPU architectures.
 
-Functions not listed here have an accuracy of 0ULP for all inputs.
+Functions not listed here have an accuracy of 0ULP for all inputs. Empty
+cells in the table indicate that the CUDA API does not provide that function
+for that data type.
 
 NVIDIA documents its own bounds in the
 [CUDA Programming Guide](https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/mathematical-functions.html).
