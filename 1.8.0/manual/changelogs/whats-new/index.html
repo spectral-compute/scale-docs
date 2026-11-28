@@ -2370,6 +2370,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -2454,7 +2468,203 @@
   <span class="md-ellipsis">
     
   
-    VSCode Tutorial
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/zed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/neovim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neovim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emacs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/clion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/helix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/kate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/sublime-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sublime Text
   
 
     
@@ -5286,97 +5496,114 @@
 <h2 id="release-180-2026-11-27">Release 1.8.0 (2026-11-27)<a class="headerlink" href="#release-180-2026-11-27" title="Permanent link">#</a></h2>
 <h3 id="highlights">Highlights<a class="headerlink" href="#highlights" title="Permanent link">#</a></h3>
 <ul>
-<li>Added <code>scaleprof</code>, a profiler with API/kernel traces, hardware counters, occupancy analysis,
+<li>Added <a href="../../library/profiling/"><code>scaleprof</code></a>, a profiler with API/kernel traces, hardware counters, occupancy analysis,
   profile diffs and SQL querying.</li>
-<li>See <a href="../../library/profiling/">here</a> for how to use.</li>
-<li>Added shoulder, a HIP -&gt; CUDA translation layer.</li>
-<li>See <a href="../../tutorials/how-to-use-hip/">here</a> for how to use.</li>
-<li>All of our maths libraries are now built with shoulder and our compiler, removing any overhead from HIP interop.</li>
-<li>Warp matrix multiplies (<code>mma</code>, WMMA) now use AMD's MFMA/WMMA instructions where possible.</li>
-<li>Cross-side optimisation, and shuffle optimisation, are both much more effective</li>
-<li>Device code is loaded lazily (as on NVIDIA's CUDA), reducing memory use and startup time.</li>
-<li>Set <code>CUDA_MODULE_LOADING=EAGER</code> to restore the old behaviour.</li>
+<li>HIP programs <a href="../../tutorials/how-to-use-hip/">may now be compiled with SCALE</a>.</li>
+<li>All kernel libraries (cuBLAS, cuSOLVER, etc.) are now faster, due to being built
+  using our toolchain instead of doing costly synchronisation with the HIP editions.</li>
+<li>Warp matrix multiplies (<code>mma</code>, WMMA) now use AMD's MFMA/WMMA instructions in more cases.</li>
+<li>Improvements to cross-side and shuffle optimisation.</li>
+<li>Device-code lazy-loading, reducing memory use and startup time.</li>
+<li>CUDA API version 13 is now the default (use <a href="../../library/overview/#selecting-an-api-version">CUDA API version selection</a> to pick any version back to 8.0).</li>
 </ul>
 <h3 id="platform">Platform<a class="headerlink" href="#platform" title="Permanent link">#</a></h3>
 <ul>
-<li>SCALE now impersonates CUDA 13.0 by default.</li>
-<li>GPUs are now numbered fastest first by default, like NVIDIA's.</li>
-<li><code>ROCR_VISIBLE_DEVICES</code> now determines the device order, as with HIP.</li>
+<li>GPUs are now numbered fastest first by default.</li>
+<li><code>ROCR_VISIBLE_DEVICES</code> can now be used to determine device order, as well as <code>CUDA_VISIBLE_DEVICES</code>.</li>
 <li>Each device's host memory is allocated on its own NUMA node.</li>
 <li>When an application is pinned to a single CPU, SCALE's internal threads no longer inherit that.</li>
-<li>Added <code>scaleprof</code>, a profiler with API/kernel traces, hardware counters, occupancy analysis,
-  profile diffs and SQL queries.</li>
 </ul>
 <h3 id="compiler">Compiler<a class="headerlink" href="#compiler" title="Permanent link">#</a></h3>
 <ul>
-<li>Cross-side optimisation is more effective:</li>
+<li>
+<p>Cross-side optimisation is more effective:</p>
+<ul>
+<li>Now works for NVIDIA targets.</li>
 <li>Kernels launched via <code>cudaLaunchKernel()</code>, function pointers, or chosen at runtime are now covered.</li>
-<li>Maximum threads per block are inferred from launches, now on NVIDIA too.</li>
-<li><code>-Rpass-missed=exchange-module-ir</code> explains why a kernel was skipped.</li>
+</ul>
+</li>
+<li>
+<p>New optimiser remarks to help guide optimisation:</p>
+<ul>
+<li><code>-Rpass-missed=exchange-module-ir</code> explains why the optimiser failed to prove the safety of cross-side
+optimisation.</li>
 <li><code>-fcuda-remarks</code> now reports per-kernel resource usage (registers, scratch, occupancy, spills) and
-  stack frame layouts.</li>
-<li>Device code is compressed under <code>--offload-compress</code> (the default in nvcc mode), and
-  decompressed lazily at runtime.</li>
-<li>Strict floating-point flags and pragmas are ignored for device code.</li>
+stack frame layouts.</li>
+</ul>
+</li>
+<li>
+<p>Device code is compressed under <code>--offload-compress</code> (the default in nvcc mode), and
+  decompressed lazily at runtime.</p>
+</li>
 <li>Device-side maths functions called with integer arguments no longer crash the compiler.</li>
 <li>Fixed some cases where host-side function calls resolved to the device declarations.</li>
 <li>Fixed kernel launches being dropped from lambdas that were called through <code>std::visit</code>.</li>
-<li>Lambdas defined inside kernels are no longer treated as extended lambdas (ie host code).</li>
-<li>Clusters of 16 blocks (the non-portable size) are accepted.</li>
+<li>Lambdas defined inside kernels are no longer treated as extended lambdas.</li>
+<li>Clusters of 16 blocks are now accepted.</li>
 <li>Added CUDA 12.8's paired-float intrinsics (<code>__fadd2_rn()</code> etc.) for sm_100+.</li>
-<li>Added the <code>__HIP_MEMORY_SCOPE_*</code> macros, and accept <code>__tile__</code>.</li>
-<li>Fix libstdc++&gt;14's headers, when used in constexpr contexts with the clang driver.</li>
+<li>Added the <code>__HIP_MEMORY_SCOPE_*</code> macros.</li>
+<li><code>__tile__</code> is supported (and does nothing).</li>
+<li>Fixed libstdc++ 15+'s headers, when used in constexpr contexts with the clang driver.</li>
 <li>The missing-ccmap warning is now off by default, and can never raise a hard error.</li>
 <li><code>--offload-arch-tool</code> is now honoured when detecting AMD GPUs.</li>
-<li>Faster compilation of MMA-heavy kernels and huge single-literal <code>asm</code> blocks.</li>
-<li>More optimisations for MFMA code</li>
+<li>Faster compilation of MMA-heavy kernels.</li>
+<li>Huge single-literal <code>asm</code> blocks no longer cause very long compile times.</li>
+<li>More optimisations for MFMA code.</li>
 </ul>
 <h4 id="nvcc-compatibility">nvcc Compatibility<a class="headerlink" href="#nvcc-compatibility" title="Permanent link">#</a></h4>
 <ul>
-<li>Device code is always optimised (as <code>-O3</code>) regardless of the host <code>-O</code>, as with nvcc.</li>
+<li>Device code is always optimised (as <code>-O3</code>) regardless of the host <code>-O</code>.</li>
 <li>Host code may now take the address of a <code>__device__</code> function.</li>
 <li>Host-only and device-only deduction guides are accepted.</li>
 <li>Skipped device constructors' member initialisers are no longer instantiated on the host.</li>
-<li>Double quotes are honoured anywhere in list option items (<code>-DFOO="a,b",BAR</code>).</li>
+<li>Fixed even more nvcc list-argument-parsing corner cases.</li>
 <li><code>-M</code> preprocesses for one GPU architecture again.</li>
-<li><code>--version</code> prints only one line containing "release".</li>
+<li><code>nvcc --version</code> now makes even more build systems' crazy regexes happy.</li>
 <li><code>fdividef()</code> is only approximate with <code>-use_fast_math</code>, not with <code>-prec-div=false</code>.</li>
-<li>Dynamic shared memory (<code>extern __shared__ T x[]</code>) is 16-byte aligned, as with nvcc.</li>
-<li>Explicit <code>__device__</code> variables always stay in global memory, so <code>extern</code> declarations of them in
-  other files agree on their address space.</li>
-<li>Some more aggressive optimisations when using fast maths.</li>
-<li>For NVIDIA targets:</li>
+<li>Dynamic shared memory (<code>extern __shared__ T x[]</code>) is now 16-byte aligned.</li>
+<li>Closer adherence to nvcc <code>-use_fast_math</code>'s behaviour, enabling slightly more
+  aggressive optimisations of floating point code.</li>
+<li>For NVIDIA targets:<ul>
 <li>We now forward PIC, <code>-shared</code> and every architecture to the linker.</li>
-<li>Shared, constant and local pointers are 32 bits wide, as with nvcc.</li>
+<li>Shared, constant and local pointers are 32 bits wide.</li>
 <li>Failed device asserts give <code>cudaErrorAssert</code>.</li>
-<li><code>libcudadevrt</code> is linked, as with nvcc.</li>
-<li>Fix some float operations under <code>-ftz=true</code>.</li>
+<li><code>libcudadevrt</code> is linked.</li>
+<li>Fixed some float operations under <code>-ftz=true</code>.</li>
+</ul>
+</li>
 </ul>
 <h4 id="code-generation">Code Generation<a class="headerlink" href="#code-generation" title="Permanent link">#</a></h4>
 <ul>
-<li>Warp matrix multiplies (<code>mma</code>, WMMA) now use AMD's MFMA/WMMA instructions where possible.</li>
+<li>Warp matrix multiplies (<code>mma</code>, WMMA) now use AMD's MFMA/WMMA instructions in more cases.</li>
 <li>Integer <code>mma</code> and sums of byte, nibble and 16-bit products use dot-product instructions.</li>
 <li>The shuffle optimiser understands far more patterns.</li>
 <li>Small <code>memcpy()</code>s and <code>memset()</code>s are much faster.</li>
-<li>Fixed miscompilations:</li>
+<li>Fixed miscompilations:<ul>
 <li>Loads could be hoisted above acquire operations, reading stale values.</li>
 <li><code>__float2half_rn(x * c)</code> lost the sign of a zero product.</li>
 <li>Shuffles could be moved into or out of divergent branches.</li>
 <li>Local variables in kernels that call device functions from other files could be placed in
-    shared memory that the launch didn't account for.</li>
+shared memory that the launch didn't account for.</li>
 <li>Several AMDGPU backend crashes.</li>
+</ul>
+</li>
 </ul>
 <h4 id="ptx-support">PTX Support<a class="headerlink" href="#ptx-support" title="Permanent link">#</a></h4>
 <ul>
-<li>Newly-supported instructions:</li>
+<li>
+<p>Newly-supported instructions:</p>
+<ul>
 <li><code>mma.sp</code> (2:4 sparse).</li>
 <li>FP8 <code>mma.sync</code>, and integer <code>mma.sync</code> with mixed-signedness inputs.</li>
 <li><code>cvt</code> to <code>.tf32</code>.</li>
 <li><code>vset</code>, <code>vmad</code> and the SIMD video instructions.</li>
 <li><code>bar.arrive</code>, and <code>bar.red</code>/<code>barrier.red</code> on AMD.</li>
 <li><code>.rz</code>/<code>.rp</code> for <code>cvt</code> to <code>ue8m0x2</code>.</li>
-<li>Byte and half selectors are now allowed on any integer operand (as an extension).</li>
-<li>Whitespace is now allowed before the comma after an operand.</li>
+</ul>
+</li>
+<li>
+<p>Byte and half selectors are now allowed on any integer operand (as an extension).</p>
+</li>
 </ul>
 <h3 id="runtime-library">Runtime Library<a class="headerlink" href="#runtime-library" title="Permanent link">#</a></h3>
 <h4 id="devices-and-contexts">Devices and Contexts<a class="headerlink" href="#devices-and-contexts" title="Permanent link">#</a></h4>
@@ -5385,15 +5612,14 @@
 <li>Added CUDA 13's device attributes and <code>cudaDeviceProp</code> fields.</li>
 <li>Fixed the PCI device ID attributes.</li>
 <li>Context and stream IDs are never reused.</li>
-<li>Error descriptions now use NVIDIA's wording.</li>
 <li>Enum <code>_MAX</code>/<code>_COUNT</code> sentinels match the CUDA version being built for.</li>
-<li>Added <code>cudaDeviceRegisterAsyncNotification()</code> and friends.</li>
+<li>Added <code>cudaDeviceRegisterAsyncNotification()</code> and friends (they do nothing).</li>
 </ul>
 <h4 id="kernel-launches">Kernel Launches<a class="headerlink" href="#kernel-launches" title="Permanent link">#</a></h4>
 <ul>
-<li>Faster kernel launches on small-BAR GPUs.</li>
+<li>Faster kernel launches on small-BAR AMD GPUs.</li>
 <li><code>cudaLaunchKernelEx()</code>, <code>cuLaunchKernelEx()</code> and graph kernel nodes now honour the cooperative attribute.</li>
-<li><code>grid_group::is_valid()</code> is false without a cooperative launch, as on NVIDIA.</li>
+<li><code>grid_group::is_valid()</code> is false without a cooperative launch.</li>
 <li>Fixed <code>cuLaunchKernel()</code> with unused trailing arguments omitted.</li>
 <li>The legacy <code>cuLaunch()</code>/<code>cuLaunchGrid()</code> now pass the parameters set by <code>cuParamSet*()</code>.</li>
 <li>Added <code>cuParamSetTexRef()</code>.</li>
@@ -5403,27 +5629,29 @@
 <li>Added <code>cudaOccupancyMaxActiveClusters()</code>, <code>cudaOccupancyMaxPotentialClusterSize()</code>,
   <code>cudaGetKernel()</code>, <code>cuKernelSetAttribute()</code>, <code>cudaKernelSetAttributeForDevice()</code>,
   <code>cuKernelSetCacheConfig()</code> and the <code>*GetParamCount()</code> APIs.</li>
-<li>Speed up grid synchronisation.</li>
+<li>Faster grid synchronisation.</li>
 <li>Fewer spurious scheduler wake-ups.</li>
 </ul>
 <h4 id="modules-and-libraries">Modules and Libraries<a class="headerlink" href="#modules-and-libraries" title="Permanent link">#</a></h4>
 <ul>
-<li>Device code is loaded lazily (as on NVIDIA's CUDA), reducing memory use and startup time.</li>
-<li>Set <code>CUDA_MODULE_LOADING=EAGER</code> to restore the old behaviour.</li>
+<li>Device code is loaded lazily by default, reducing memory use and startup time.</li>
 <li>Each translation unit in a module has its own local scope, fixing weak and duplicate local symbols.</li>
 <li>Added <code>cuLibraryLoadFromFile()</code>, <code>cudaLibraryLoadData()</code>, <code>cudaLibraryLoadFromFile()</code>,
   <code>cudaLibraryGetKernelCount()</code> and <code>cudaLibraryEnumerateKernels()</code>.</li>
 <li>Loading PTX from a file will now never read past its end.</li>
 <li>Fixed a hang when loading executables on GFX9 GPUs without SDMA.</li>
-<li>NVRTC:</li>
-<li>Warns about unused variables, as NVIDIA's does.</li>
+<li>NVRTC:<ul>
+<li>Now warns about unused variables.</li>
 <li>Null programs return <code>NVRTC_ERROR_INVALID_PROGRAM</code>.</li>
 <li>Added <code>nvrtcGetTypeName()</code> and the missing enumerants.</li>
 <li>Fixed compilation failures involving <code>std::lerp</code>.</li>
 </ul>
+</li>
+</ul>
 <h4 id="graphs">Graphs<a class="headerlink" href="#graphs" title="Permanent link">#</a></h4>
 <ul>
-<li>Instantiation is up to ~45% faster for large graphs, and nodes are kept in creation order.</li>
+<li>Instantiation is much faster for large graphs.</li>
+<li>Nodes are now kept in creation-order.</li>
 <li>Kernel node attributes survive cloning and instantiation.</li>
 <li>Fixed cloned graphs' free nodes losing their alloc nodes, and their IDs.</li>
 <li>Graph memory nodes no longer use quadratic memory.</li>
@@ -5433,85 +5661,93 @@
 </ul>
 <h4 id="memory">Memory<a class="headerlink" href="#memory" title="Permanent link">#</a></h4>
 <ul>
-<li>Allocations of &gt;= 2 MiB are 2 MiB aligned, like NVIDIA.</li>
+<li>Allocations of &gt;= 2 MiB are 2 MiB aligned.</li>
 <li>Fixed some cases where peers could read stale copies of each other's memory.</li>
-<li>IPC:</li>
+<li>IPC:<ul>
 <li>Closed imports no longer leak memory or address space.</li>
 <li>Buffers regrown at the same address now import correctly.</li>
+</ul>
+</li>
 <li>VMM: physical memory may be aliased; mappings outside the reservation are rejected.</li>
-<li>The VMM APIs may be called while a stream is capturing, as on NVIDIA.</li>
-<li>Memory pools:</li>
+<li>The VMM APIs may be called while a stream is capturing.</li>
+<li>Memory pools:<ul>
 <li>Host and managed pools without an IPC handle type are accepted.</li>
 <li>A release threshold of <code>UINT64_MAX</code> is kept.</li>
 <li>Use after destruction is an error, not a crash.</li>
 <li>Fixed a race when creating or destroying a pool.</li>
 <li>Host memory pools are reported as supported.</li>
+</ul>
+</li>
 <li>Bad <code>cudaFreeAsync()</code> pointers are reported by the call, rather than aborting later.</li>
 <li>Added <code>cuMemcpy3DPeer()</code>, <code>cuMemcpy3DPeerAsync()</code> and <code>cudaEventElapsedTime_v2()</code>, and declared
   <code>cuMemGetMemPool()</code>.</li>
 </ul>
 <h4 id="textures-and-surfaces">Textures and Surfaces<a class="headerlink" href="#textures-and-surfaces" title="Permanent link">#</a></h4>
 <ul>
-<li>Cubemap and layered cubemap textures are sampled in hardware, and honour <code>seamlessCubemap</code>.</li>
-<li>Pitched textures must have a 256-byte-aligned pitch, as on NVIDIA.</li>
+<li>Cubemap and layered cubemap textures are sampled in hardware.</li>
+<li>Seamless cubemaps now work.</li>
+<li>Pitched textures must have a 256-byte-aligned pitch.</li>
 </ul>
 <h4 id="headers-and-intrinsics">Headers and Intrinsics<a class="headerlink" href="#headers-and-intrinsics" title="Permanent link">#</a></h4>
 <ul>
-<li>Fix a regression in 1.7.5 relating to <code>__shfl_*_sync()</code>.</li>
 <li>Added tf32 WMMA. WMMA loads and stores use the fragment's storage type.</li>
 <li><code>volatile</code> <code>__half</code>/<code>__nv_bfloat16</code> now work.</li>
 <li>Fixed <code>__heq2_mask()</code> and friends putting <code>.x</code> in the high half.</li>
-<li>The half/bf16 raw types are now available in C, as are the fp8/fp6/fp4 conversion functions</li>
+<li>The half/bf16 raw types are now available in C, as are the fp8/fp6/fp4 conversion functions.</li>
 <li>The fp8 types' conversion operators are explicit.</li>
 <li><code>v = {}</code> on <code>__half2</code>/<code>__nv_bfloat162</code> is no longer ambiguous.</li>
-<li>CUDA 8's <code>__half</code>, <code>hdiv()</code> and <code>h2div()</code> are modelled when building for it.</li>
+<li>CUDA 8's <code>__half</code>, <code>hdiv()</code> and <code>h2div()</code> are now supported.</li>
 <li><code>cuComplex.h</code> and <code>curand_kernel.h</code> include <code>math.h</code>, as NVIDIA's do.</li>
-<li>A project's own <code>vector_types.h</code> no longer replaces SCALE's</li>
+<li>User code can no longer override a header that's part of the platform.</li>
 <li>Added <code>__nv_associate_access_property()</code>.</li>
 <li>More C++ runtime API overloads accept plain function pointers.</li>
 <li>Fixed the layouts of <code>CUlaunchConfig</code> and <code>CU_DEV_SM_RESOURCE_GROUP_PARAMS</code>.</li>
-<li><code>cudaAtomicCapabilitySigned</code> has NVIDIA's value, and <code>cudaDevResourceDesc_t</code> points to
-  <code>CUdevResourceDesc_st</code>.</li>
 <li>Added the <code>_v1</code> typedefs of <code>CUDA_TEXTURE_DESC</code>, <code>CUaccessPolicyWindow</code> and
   <code>CUexecAffinity{Param,SmCount}</code>.</li>
 <li>Fixed OpenGL interop's device lookup.</li>
 </ul>
 <h3 id="maths-library">Maths Library<a class="headerlink" href="#maths-library" title="Permanent link">#</a></h3>
 <ul>
+<li>Documented the <a href="../../library/math-precision/">precision of every maths function</a>.</li>
 <li>Added double <code>erfcx()</code>, <code>normcdfinv()</code> and Bessel functions, and the plain-named float overloads.</li>
 <li>Double precision is now within CUDA's bounds for <code>erf()</code>, <code>erfc()</code>, <code>erfcinv()</code>, <code>atan()</code>, <code>asin()</code>,
   <code>acos()</code>, <code>tgamma()</code>, <code>expm1()</code>, <code>log1p()</code>, <code>tanh()</code>, <code>cosh()</code>, <code>sinh()</code>, <code>cbrt()</code>, <code>rcbrt()</code> and the
   norms.</li>
-<li><code>tgamma()</code> gives exact factorials.</li>
+<li><code>tgamma()</code> now gives exact factorials.</li>
 <li>Half and bf16 transcendental functions are now correctly rounded.</li>
 <li>The NaN constant is NVIDIA's canonical NaN.</li>
-<li>Documented the <a href="../../library/math-precision/">precision of every maths function</a>.</li>
-<li>All of libdevice's <code>__nv_*</code> functions are exported, for programs that declare and call them
-  directly (except <code>__nv_fmaf_ieee_r{d,u,z}()</code>).</li>
-<li><code>__isinf()</code>, <code>__isnan()</code>, <code>__finite()</code>, <code>__signbit()</code> and their float forms return <code>int</code>, as
-  NVIDIA's do.</li>
-<li>Added <code>__brev(int)</code> when building for wave64.</li>
+<li>All of libdevice's documented <code>__nv_*</code> functions are exported, for programs that declare and call them
+  directly.</li>
+<li><code>__isinf()</code>, <code>__isnan()</code>, <code>__finite()</code>, <code>__signbit()</code> and their float forms now return <code>int</code>.</li>
 </ul>
 <h3 id="cuda-x-libraries">CUDA-X Libraries<a class="headerlink" href="#cuda-x-libraries" title="Permanent link">#</a></h3>
 <ul>
-<li>The ROCm maths libraries are now part of the SCALE package, and use the SCALE runtime directly, rather than going via HIP. </li>
-<li><strong>cuSPARSE</strong>:</li>
+<li>The ROCm maths libraries are now part of the SCALE package, and use the SCALE runtime directly, rather than going via HIP.</li>
+<li><strong>cuSPARSE</strong>:<ul>
 <li>Implement the APIs NVIDIA removed in CUDA 11.0 and 12.0.</li>
 <li><code>csrgemm</code> no longer conjugates conjugate-transposed operands.</li>
-<li><strong>cuRAND</strong>:</li>
+</ul>
+</li>
+<li><strong>cuRAND</strong>:<ul>
 <li>Added MT19937, <code>curandGetVersion()</code>, <code>curandGetProperty()</code> and <code>curand_discrete()</code>.</li>
 <li>Unknown generator types return <code>CURAND_STATUS_TYPE_ERROR</code>.</li>
-<li><strong>cuBLAS</strong>:</li>
+</ul>
+</li>
+<li><strong>cuBLAS</strong>:<ul>
 <li>cuBLASLt matrix transform attributes are now translated correctly.</li>
-<li>CUDA 10's <code>cudaDataType</code> compute types are migrated as NVIDIA's headers do.</li>
+<li>CUDA 10's <code>cudaDataType</code> compute types are migrated correctly.</li>
 <li><code>getriBatched()</code> takes <code>const</code> pivots.</li>
-<li><code>cublasLt.h</code> includes <code>cuComplex.h</code>.</li>
-<li><strong>cuSOLVER</strong>:</li>
+<li><code>cublasLt.h</code> now includes <code>cuComplex.h</code>.</li>
+</ul>
+</li>
+<li><strong>cuSOLVER</strong>:<ul>
 <li><code>getrf</code> workspaces are never empty (seen in AMGX).</li>
 <li>Jacobi solvers report sweeps and non-convergence reliably.</li>
 <li><code>cusolverRf</code> no longer hangs on wave64 GPUs.</li>
+</ul>
+</li>
 <li><strong>cuFFT</strong>: added <code>CUFFT_PLAN_NULL</code> and <code>CUFFTAPI</code>.</li>
-<li><strong>NVML</strong>: fixed <code>nvmlDeviceGetFanSpeed()</code>. <code>nvmlPciInfo_t::busId</code> is 32 bytes, as NVIDIA's is.</li>
+<li><strong>NVML</strong>: fixed <code>nvmlDeviceGetFanSpeed()</code> returning incorrect values.</li>
 </ul>
 <h2 id="release-175-2026-11-03">Release 1.7.5 (2026-11-03)<a class="headerlink" href="#release-175-2026-11-03" title="Permanent link">#</a></h2>
 <p>Our largest release yet.</p>
@@ -5567,17 +5803,19 @@ jitify and nixl.</p>
 <ul>
 <li>Added host-compiler emulation: we now determinee which host compiler NVCC would use, then
   pretend to be that when handling the host side of CUDA files. Support (GCC, clang, MSVC, and PGI).</li>
-<li>Newly-supported nvcc flags.</li>
+<li>Newly-supported nvcc flags.<ul>
 <li><code>--resource-usage</code></li>
 <li><code>--brief-diagnostics</code></li>
 <li><code>--lib</code></li>
 <li><code>--cudart</code></li>
 <li><code>--fatbin</code> (treated like <code>--cubin</code>)</li>
 <li><code>--compress-mode=balance</code></li>
+</ul>
+</li>
 <li><code>-G</code>, <code>-e</code>, <code>-time</code>, <code>-O</code>, <code>--optimize</code> and <code>--profile</code> now have nvcc's meanings.</li>
 <li><code>-odir</code> now applies to default output names.</li>
 <li>nvcc options that have no effect under SCALE are now accepted instead of being rejected or
-  misparsed as clang options:</li>
+  misparsed as clang options:<ul>
 <li><code>-ewp</code></li>
 <li><code>-reloc-ptx</code></li>
 <li><code>-nodlink</code></li>
@@ -5592,6 +5830,8 @@ jitify and nixl.</p>
 <li><code>--force-cl-env-setup</code></li>
 <li><code>-diag-error</code></li>
 <li><code>-diag-warn</code></li>
+</ul>
+</li>
 <li><code>--compress-mode</code> is now passed to NVIDIA's <code>fatbinary</code> only from CUDA 12.8 onwards.</li>
 <li>Fixed more cursed flag parsing rules around  <code>-L</code>, <code>-l</code>, <code>-D</code>, <code>-U</code>, <code>-o</code>, <code>-include</code>, <code>-MF</code> and <code>-MT</code>.</li>
 <li><code>-Xlinker</code> lists are now split on commas.</li>
@@ -5604,12 +5844,14 @@ jitify and nixl.</p>
 <li>Kernels on RDNA3 GPUs are substantially faster (~2x).</li>
 <li>Approximate division is now faster.</li>
 <li>NaN handling is now much faster and matches NVIDIA mode closely.</li>
-<li>Many improvements to the shuffle optimiser:</li>
+<li>Many improvements to the shuffle optimiser:<ul>
 <li>Improved optimisation of common shuffle patterns/reductions.</li>
 <li>Masked and sub-warp reductions are now optimised.</li>
 <li>Fixed several crashes and miscompilations.</li>
 <li>Concurrent, disjoint reductions are now supported.</li>
-<li>Fixed miscompilations:</li>
+</ul>
+</li>
+<li>Fixed miscompilations:<ul>
 <li>Loops with divergent control flow no longer deadlock.</li>
 <li>Register spill reloads could read stale values on AMD GPUs.</li>
 <li><code>v_dot2</code> is no longer formed from FMA chains without permission to approximate.</li>
@@ -5618,11 +5860,13 @@ jitify and nixl.</p>
 <li>An assertion copying aperture registers.</li>
 <li>An infinite loop recovering from an AMDGPU assembly operand error at the end of a file.</li>
 <li>An assertion on calls with a mismatched function type.</li>
+</ul>
+</li>
 <li>Improved NVIDIA code generation via some new peephole optimisations.</li>
 </ul>
 <h4 id="ptx-support_1">PTX Support<a class="headerlink" href="#ptx-support_1" title="Permanent link">#</a></h4>
 <ul>
-<li>Newly-supported instructions:</li>
+<li>Newly-supported instructions:<ul>
 <li><code>suld.b</code> and <code>sust.b</code>.</li>
 <li><code>tex</code> with <code>.v4.f16</code> and <code>.v2.f16x2</code> results.</li>
 <li><code>sqrt</code> with non-default rounding modes.</li>
@@ -5631,8 +5875,10 @@ jitify and nixl.</p>
 <li>Vector <code>atom</code>/<code>red</code> <code>min</code>/<code>max</code> on <code>f16</code>, <code>bf16</code>, <code>f16x2</code> and <code>bf16x2</code>.</li>
 <li>Directed <code>cvt</code> from <code>f64</code> to <code>f16</code>/<code>bf16</code>, and between <code>f16</code> and <code>bf16</code>.</li>
 <li><code>barrier.sync</code> as a spelling of <code>bar.sync</code>.</li>
+</ul>
+</li>
 <li><code>div.full</code> and <code>sqrt.approx</code> are now much faster.</li>
-<li>Fixed miscompilations:</li>
+<li>Fixed miscompilations:<ul>
 <li><code>0f</code> floating point hex literals are no longer interpreted as zero.</li>
 <li><code>shr.u64</code> (and <code>shl</code>) by a constant now actually shifts.</li>
 <li>Signed <code>add.cc</code>, <code>sub.cc</code> and <code>mad.cc</code> now set the carry-bit correctly.</li>
@@ -5646,11 +5892,13 @@ jitify and nixl.</p>
 <li><code>.relu</code> conversions no longer turn a negative NaN into 0.</li>
 <li><code>%warpid</code> is now the warp ID, not the lane index.</li>
 <li><code>%nwarpid</code> now gives the correct value in the last warp of a block with an
-    incomplete final warp.</li>
+incomplete final warp.</li>
 <li>PTX cache operators are now respected (<code>ld.{cg/cs/cv</code>, <code>st.{cg,cs,wt}</code>)</li>
 <li><code>tex.base</code> no longer applies the texture's LOD bias.</li>
 <li><code>bar.sync</code> no longer hangs if some lanes have exited.</li>
 <li>Several <code>shfl.sync</code> edgecases no longer exhibit undefined behaviour.</li>
+</ul>
+</li>
 <li>Integer <code>asm</code> inputs narrower than their constraint are now sign- or
   zero-extended according to their type (<code>"l"(-5)</code> previously gave
   4294967291), with a warning unless they are constants. Other size mismatches
@@ -5690,12 +5938,14 @@ jitify and nixl.</p>
 <li>Device UUIDs agree with those reported by NVML.</li>
 <li>Initialisation errors are reported from the first <code>cudaGetDeviceCount()</code>, and from whichever
   call needed initialisation.</li>
-<li>Primary contexts:</li>
+<li>Primary contexts:<ul>
 <li>Implemented <code>cuDevicePrimaryCtxSetFlags()</code>.</li>
 <li><code>cudaInitDevice()</code> flags apply to an existing primary context.</li>
 <li><code>cudaFree(nullptr)</code> initialises the primary context.</li>
 <li>Resetting the primary context clears its flags.</li>
 <li><code>cuCtxGetCurrent()</code> reports the runtime's primary context.</li>
+</ul>
+</li>
 <li><code>cudaGetDeviceFlags()</code>/<code>cuCtxGetFlags()</code> report the current context's flags.</li>
 <li><code>cuCtxGetId(nullptr)</code> returns the current context's ID.</li>
 <li><code>cudaSetValidDevices()</code> is permitted while a context is current, and no longer disables every
@@ -5721,7 +5971,7 @@ jitify and nixl.</p>
 </ul>
 <h4 id="graphs_1">Graphs<a class="headerlink" href="#graphs_1" title="Permanent link">#</a></h4>
 <ul>
-<li>Fixed many graph bugs:</li>
+<li>Fixed many graph bugs:<ul>
 <li>Event wait nodes wait for the event's latest record.</li>
 <li><code>cudaGraphExecUpdate()</code> keeps launch order and flags.</li>
 <li>Kernel arguments stay alive until launches using them finish.</li>
@@ -5730,7 +5980,9 @@ jitify and nixl.</p>
 <li>Kernel node attributes are copied in the right direction.</li>
 <li>Graph execs no longer get invalidated when a node's enabled state doesn't actually change.</li>
 <li>Graph scheduling no longer stalls when dependencies are on other devices or behind blocked
-    roots.</li>
+roots.</li>
+</ul>
+</li>
 <li>Graph memory allocations are aligned and reserved as on NVIDIA, and each allocation is backed
   by its own size.</li>
 <li>Added <code>cuGraphInstantiateWithFlags()</code>.</li>
@@ -5781,27 +6033,29 @@ jitify and nixl.</p>
 </ul>
 <h4 id="warp-level-operations-and-cooperative-groups">Warp-Level Operations and Cooperative Groups<a class="headerlink" href="#warp-level-operations-and-cooperative-groups" title="Permanent link">#</a></h4>
 <ul>
-<li>Warp intrinsics are now more correct, and optimise better.</li>
+<li>Warp intrinsics are now more correct, and optimise better.<ul>
 <li><code>__shfl_*_sync()</code> honours its lane mask, including operands past the width.</li>
 <li><code>__reduce_*_sync()</code> with a partial mask no longer reads stale values.</li>
 <li><code>__all()</code> now works.</li>
+</ul>
+</li>
 <li><code>__fns()</code> and <code>fns</code> handle out-of-range bases.</li>
 <li>Named barriers no longer hang when lane 0 of a wavefront has exited.</li>
 <li><code>__nanosleep(0)</code> returns immediately.</li>
-<li>Grid synchronisation:</li>
+<li>Grid synchronisation:<ul>
 <li>Fixed hangs when the barrier's generation wraps.</li>
 <li>Fixed arrival counting for 2D/3D blocks.</li>
-<li>Cooperative groups:</li>
+</ul>
+</li>
+<li>Cooperative groups:<ul>
 <li>Added <code>grid_group::dim_threads()</code>/<code>thread_index()</code>,
-    <code>cg::this_thread()</code>, <code>cg::thread_rank()</code> and <code>cg::group_size()</code>.</li>
+<code>cg::this_thread()</code>, <code>cg::thread_rank()</code> and <code>cg::group_size()</code>.</li>
 <li><code>thread_block_tile::ballot()</code> and <code>match_all()</code> compile, and their masks are tile-relative.</li>
 <li><code>coalesced_group</code>'s <code>shfl()</code>, <code>shfl_up()</code>, <code>shfl_down()</code>, ballot and match masks are correct.</li>
-<li><code>cg::reduce()</code>:<ul>
+<li><code>cg::reduce()</code>:</li>
 <li>Reducing a <code>coalesced_group</code> returns the whole group's result.</li>
 <li>Multi-warp tiles no longer require <code>block_tile_memory</code>.</li>
 <li>Nested multi-warp tiles no longer interfere with one another.</li>
-</ul>
-</li>
 <li>Each multi-warp <code>thread_block_tile</code> has its own barrier.</li>
 <li><code>meta_group_size()</code> counts a partial last tile.</li>
 <li><code>binary_partition()</code> gives the correct meta group ranks.</li>
@@ -5809,16 +6063,20 @@ jitify and nixl.</p>
 <li><code>grid_group</code>'s cluster queries report correct values for non-cluster launches.</li>
 <li><code>cg::memcpy_async()</code> now accepts <code>void*</code>.</li>
 <li>Fixed compatibility with C++03 and C++11.</li>
+</ul>
+</li>
 <li>Shipped <code>cuda/pipeline</code>.</li>
 </ul>
 <h4 id="atomics-and-memory-operations">Atomics and Memory Operations<a class="headerlink" href="#atomics-and-memory-operations" title="Permanent link">#</a></h4>
 <ul>
 <li>Added atomic min and max for f16, bf16, f16x2 and bf16x2.</li>
 <li><code>atomicInc()</code>/<code>atomicDec()</code> work on fine-grained memory, and with a limit of <code>UINT_MAX</code>.</li>
-<li>The <code>__nv_atomic_*()</code> functions:</li>
+<li>The <code>__nv_atomic_*()</code> functions:<ul>
 <li>Work on mapped host and peer memory.</li>
 <li>Accept integer memory orders.</li>
 <li>Use NVIDIA's <code>__NV_THREAD_SCOPE_*</code> values.</li>
+</ul>
+</li>
 <li>Shared-memory atomics are cheaper.</li>
 <li><code>__ldcg()</code>, <code>__ldcv()</code> (and corresponding PTX instructions) honour their cache operators.</li>
 <li>Vector type alignment is capped at 16 bytes.</li>
@@ -5828,7 +6086,7 @@ jitify and nixl.</p>
 </ul>
 <h3 id="maths-library_1">Maths Library<a class="headerlink" href="#maths-library_1" title="Permanent link">#</a></h3>
 <ul>
-<li>New functions:</li>
+<li>New functions:<ul>
 <li><code>cyl_bessel_i0f()</code>, <code>cyl_bessel_i1f()</code></li>
 <li><code>jnf()</code>, <code>ynf()</code> (integer-order Bessel functions)</li>
 <li><code>normcdfinvf()</code></li>
@@ -5836,86 +6094,98 @@ jitify and nixl.</p>
 <li><code>__isinff()</code>, <code>__finitef()</code>, <code>__signbitf()</code> and their double versions</li>
 <li><code>__tanhf()</code></li>
 <li>Host-side <code>rcbrt()</code> and <code>rcbrtf()</code></li>
+</ul>
+</li>
 <li><code>-prec-div</code>, <code>-prec-sqrt</code> and fast maths now behave exactly as with nvcc.</li>
-<li>Accuracy improvements:</li>
+<li>Accuracy improvements:<ul>
 <li>Double <code>pow()</code> is now within CUDA's error bound.</li>
 <li>Double <code>lgamma()</code> and <code>tgamma()</code> are now less wrong.</li>
 <li>Double <code>norm*()</code> is fixed.</li>
 <li>Directed-rounding float reciprocals, divisions and square roots, <code>__frsqrt_rn()</code> and
-    <code>__drcp_rn()</code> are correctly rounded.</li>
+<code>__drcp_rn()</code> are correctly rounded.</li>
 <li><code>__fmaf_ieee_rn()</code> keeps subnormals.</li>
 <li><code>normcdff()</code>, <code>powf()</code>  no longer lose accuracy to contraction.</li>
 <li>Complex division and <code>abs</code> no longer overflow/underflow early.</li>
 <li>bf16 <code>sin</code>/<code>cos</code> use the high-precision implementations</li>
 <li>bf16 <code>hrsqrt()</code> no longer double rounds.</li>
+</ul>
+</li>
 <li>Faster <code>pow()</code> for common constant exponents and bases.</li>
-<li>NaN, infinity and saturation handling:</li>
+<li>NaN, infinity and saturation handling:<ul>
 <li>The exponential functions, <code>sinpif()</code>/<code>cospif()</code>/<code>sincospif()</code>, <code>atan2()</code>, <code>fmod()</code>,
-    <code>remainder()</code>, <code>remquo()</code>, <code>logb()</code>, <code>nextafter()</code>, <code>hypot()</code> and <code>lgamma()</code> return the correct
-    NaN.</li>
+<code>remainder()</code>, <code>remquo()</code>, <code>logb()</code>, <code>nextafter()</code>, <code>hypot()</code> and <code>lgamma()</code> return the correct
+NaN.</li>
 <li><code>fmod()</code>, <code>remainder()</code> and <code>remquo()</code> return quiet NaNs.</li>
 <li><code>nan()</code> builds the requested NaN.</li>
 <li>Float-to-integer conversions now clamp correctly.</li>
 <li><code>lround()</code>, <code>lrint()</code> and their <code>long long</code> forms saturate as nvcc does.</li>
 <li><code>scalbln()</code> handles exponents outside the range of <code>int</code>.</li>
 <li><code>__fdividef()</code> divides by subnormals as nvcc does.</li>
+</ul>
+</li>
 <li>Many small maths and bit-manipulation functions are faster.</li>
-<li>Half, bf16 and minifloats:</li>
+<li>Half, bf16 and minifloats:<ul>
 <li>Saturating conversions handle NaN/saturation correctly.</li>
 <li>bf16 <code>__hmax</code>/<code>__hmin</code> handle NaNs and signed zeros correctly.</li>
 <li>Fixed bf16 <code>__high2float()</code>/<code>__low2float()</code>.</li>
 <li>Added the pairwise FP4 conversions, the missing E8M0 constructors from 64-bit integers, and
-    the missing minifloat-to-bf16/char operators.</li>
+the missing minifloat-to-bf16/char operators.</li>
 <li>Fixed E8M0 overflow when rounding toward zero.</li>
 <li>Minifloats now convert to bf16 correctly.</li>
-<li>SIMD and integer intrinsics:</li>
+</ul>
+</li>
+<li>SIMD and integer intrinsics:<ul>
 <li>Fixed <code>__uhadd()</code> and friends.</li>
 <li>Fixed rounding in <code>__vavgs2()</code>/<code>__vavgs4()</code>.</li>
 <li>Fixed <code>__vaddus2()</code>/<code>__vaddus4()</code> saturation.</li>
 <li>Fixed <code>__vadd</code>/<code>__vsub</code> with zero low lanes.</li>
 <li>Fixed the signedness of <code>__viaddmin_u16x2()</code>.</li>
 <li>Added the missing device-side <code>half2char_rz()</code> and friends.</li>
+</ul>
+</li>
 <li>The bitwise OR and XOR reduction operators return <code>T</code>.</li>
 </ul>
 <h3 id="cuda-x-libraries_1">CUDA-X Libraries<a class="headerlink" href="#cuda-x-libraries_1" title="Permanent link">#</a></h3>
 <ul>
-<li><strong>cuFFT</strong> has been rewritten:</li>
-<li>Fixed many correctness bugs:<ul>
+<li><strong>cuFFT</strong> has been rewritten:<ul>
+<li>Fixed many correctness bugs:</li>
 <li>Non-square 2D/3D plans no longer transpose.</li>
 <li>In-place real transforms use the padded layout.</li>
 <li>Batched real transforms use the right distance.</li>
 <li>User work areas are honoured.</li>
 <li><code>cufftXtExecDescriptor*()</code> no longer overwrites its input.</li>
-</ul>
-</li>
 <li><code>cufftHandle</code> is now an <code>int</code></li>
 <li>Now works with <code>SCALE_EXCEPTIONS</code>.</li>
-<li>Added:<ul>
+<li>Added:</li>
 <li><code>cufftSetPlanPropertyInt64()</code> and friends</li>
 <li><code>cufftXtSetWorkArea()</code>, <code>cufftXtSetWorkAreaPolicy()</code>, <code>cufftXtQueryPlan()</code></li>
 <li>The newer result codes and <code>cufftCompatibility</code></li>
-</ul>
-</li>
 <li>Plans with arbitrary strides are supported.</li>
 <li>Callbacks report <code>CUFFT_NOT_IMPLEMENTED</code>, as NVIDIA's shared library does.</li>
+</ul>
+</li>
 <li><strong>cuFFTW</strong>: added.</li>
-<li><strong>cuSPARSE</strong> now covers essentially all of NVIDIA's APIs. Not yet supported:</li>
+<li><strong>cuSPARSE</strong> now covers essentially all of NVIDIA's APIs. Not yet supported:<ul>
 <li>The half-precision pruning APIs</li>
 <li><code>SpMMOp</code>/<code>SpMVOp</code></li>
 <li>CUDA 13.1's <code>SpGEAM</code></li>
 <li>Diagonal-only <code>SpSV</code>/<code>SpSM</code> updates</li>
 <li>Sliced-ELL <code>SpMV</code></li>
 <li>1- or 2-byte value transposes in <code>csr2cscEx2</code></li>
-<li><strong>cuSOLVER</strong> is now essentially complete:</li>
+</ul>
+</li>
+<li><strong>cuSOLVER</strong> is now essentially complete:<ul>
 <li>All APIs now have C linkage.</li>
 <li><code>_bufferSize</code> APIs report real workspace sizes, and the user's workspace is used.</li>
 <li>Invalid arguments and <code>info</code> values are now handled correctly.</li>
 <li><code>syevj</code>/<code>gesvdj</code> report non-convergence correctly. <code>gesvdj</code> returns V rather than V^H.</li>
 <li><code>gesvdaStridedBatched</code> reports residual norms.</li>
 <li><code>cusolverDnGetStream()</code> returns the stream that was set.</li>
+</ul>
+</li>
 <li><strong>NPP</strong>: added, covering around 500 of the total ~6000 APIs. More on the way.</li>
-<li><strong>cuBLAS</strong>:</li>
-<li>Newly-added APIs:<ul>
+<li><strong>cuBLAS</strong>:<ul>
+<li>Newly-added APIs:</li>
 <li><code>cublas&lt;t&gt;syrkx()</code></li>
 <li><code>cublasCgemm3m()</code>, <code>cublasZgemm3m()</code>, <code>cublasCgemm3mStridedBatched()</code></li>
 <li><code>cublasRotEx()</code></li>
@@ -5924,28 +6194,34 @@ jitify and nixl.</p>
 <li><code>cublas{S,D}gemmGroupedBatched()</code>, <code>cublasGemmGroupedBatchedEx()</code></li>
 <li><code>cublasSetLoggerCallback()</code>, <code>cublasGetLoggerCallback()</code></li>
 <li><code>cublasLtMatmulAlgoGetHeuristicForStream()</code>, <code>cublasLtMatmulAlgoCheckForStream()</code></li>
-</ul>
-</li>
 <li>Added the newer operation, maths mode, compute type and algorithm enumerators.</li>
 <li>cuBLASLt attribute, tile, stage and numerical-flag values now correct.</li>
 <li><code>cublasSideMode_t</code> is numbered as in cuBLAS.</li>
 <li>Complex GEMMs through the <code>*gemm*Ex</code> paths now work (seen in QUDA).</li>
 <li>Handle structs have NVIDIA's names.</li>
-<li><strong>cuRAND</strong>:</li>
+</ul>
+</li>
+<li><strong>cuRAND</strong>:<ul>
 <li>Fixed the signature of <code>curand_log_normal()</code>.</li>
 <li>The sobol64 <code>curand_init()</code> now takes a 64-bit offset.</li>
-<li><strong>NVML</strong>:</li>
+</ul>
+</li>
+<li><strong>NVML</strong>:<ul>
 <li>Added <code>nvmlDeviceGetFieldValues()</code> and the field IDs.</li>
 <li>NVML no longer crashes when shut down during static destruction.</li>
 <li>Devices are counted without initialising CUDA.</li>
 <li>UUIDs match those reported by the CUDA runtime APIs.</li>
 <li>Fixed <code>nvmlSystemGetProcessName()</code> with empty command lines.</li>
+</ul>
+</li>
 <li><strong>NVTX</strong> defines the unsuffixed A/W name macros.</li>
-<li>The maths libraries:</li>
+<li>The maths libraries:<ul>
 <li>Respect <code>CUDA_VISIBLE_DEVICES</code>.</li>
 <li>Work in whichever order they are first used.</li>
 <li>No longer crash at exit or when handles are destroyed from static destructors.</li>
 <li>No longer deadlock on some GFX9 GPUs (seen in llama.cpp).</li>
+</ul>
+</li>
 </ul>
 <h2 id="release-174-2026-10-08">Release 1.7.4 (2026-10-08)<a class="headerlink" href="#release-174-2026-10-08" title="Permanent link">#</a></h2>
 <p>This release substantially improves the accuracy of the
@@ -5999,9 +6275,11 @@ calculations.</p>
 </ul>
 <h4 id="ptx-support_2">PTX Support<a class="headerlink" href="#ptx-support_2" title="Permanent link">#</a></h4>
 <ul>
-<li>Newly-supported PTX opcodes:</li>
+<li>Newly-supported PTX opcodes:<ul>
 <li><code>tex</code> (1D, 2D, 3D, 1D/2D layered, cubemap and layered cubemap), including
-    LOD and offset variants.</li>
+LOD and offset variants.</li>
+</ul>
+</li>
 <li>Inline PTX <code>add</code>, <code>sub</code> and <code>mul</code> without an explicit rounding mode may now
   contract into FMAs, as <code>ptxas</code> would allow.</li>
 <li>Unused cache flags on memory instructions are now ignored rather than producing a warning.</li>
@@ -6014,28 +6292,32 @@ calculations.</p>
 <h3 id="runtime-library_2">Runtime Library<a class="headerlink" href="#runtime-library_2" title="Permanent link">#</a></h3>
 <ul>
 <li>Fixed a collision with glibc's C23 maths headers.</li>
-<li>Textures:</li>
+<li>Textures:<ul>
 <li>Added mipmapped arrays and mipmapped textures (runtime and driver APIs), including LOD bias.</li>
 <li>Added software emulation for some missing texture features on gfx90a.</li>
 <li>Fixed wide linear textures.</li>
 <li>Added f16 textures.</li>
 <li>Read mode is now ignored for float textures.</li>
 <li>Added support for texture-related cudaDeviceAttr queries.</li>
+</ul>
+</li>
 <li>Added support for <code>cudaDevAttrMaxPitch</code>, and various NUMA/PCI-related device attribute queries.</li>
 <li>Improved kernel launch performance.</li>
 <li>Improved performance of 3D memcpy.</li>
 <li>3D memcpy can now be captured into CUDA graphs.</li>
 <li>Fixed a race condition that could lead to copies involving pageable
   host memory not being properly waited for.</li>
-<li>Newly-added APIs:</li>
+<li>Newly-added APIs:<ul>
 <li><code>cuGraphicsResourceGetMappedPointer()</code></li>
 <li><code>cuGreenCtxGetDevResource()</code></li>
 <li><code>cuEventElapsedTime_v2()</code></li>
 <li><code>cudaDeviceFlushGPUDirectRDMAWrites()</code> and friends</li>
 <li><code>cudaLaunchAttributeValue::preferredClusterDim</code></li>
 <li><code>cudaGraphDependencyType</code>, <code>cudaDeviceSyncMemops</code>,
-    <code>cudaMemPoolCreateUsageHwDecompress</code>, <code>CUarray_cubemap_face</code>,
-    <code>CUstreamUpdateCaptureDependencies_flags</code>, <code>CUshared_carveout</code></li>
+<code>cudaMemPoolCreateUsageHwDecompress</code>, <code>CUarray_cubemap_face</code>,
+<code>CUstreamUpdateCaptureDependencies_flags</code>, <code>CUshared_carveout</code></li>
+</ul>
+</li>
 <li><code>__trap()</code> now produces <code>cudaErrorLaunchFailure</code> in <code>cudaGetLastError()</code>.</li>
 <li>Explicit-scope atomics no longer use the wrong scope.</li>
 <li>Fixed deadlocks in <code>grid.sync()</code>.</li>
@@ -6043,11 +6325,13 @@ calculations.</p>
   underestimate achievable occupancy. Occupancy APIs also validate their
   inputs more strictly.</li>
 <li>Improved TLB behaviour for some allocation sizes.</li>
-<li>Graph fixes:</li>
+<li>Graph fixes:<ul>
 <li>Fixed numerous bugs in graph memory nodes.</li>
 <li>Fixed several graph-api-related deadlocks.</li>
 <li>Fixed a hang when destroying the graph scheduler.</li>
 <li>Fixed swapped arguments in <code>cudaGraphKernelNodeCopyAttributes()</code>.</li>
+</ul>
+</li>
 <li>Fixed indexing defect in the prefetch APIs.</li>
 <li><code>cuCtxDetach()</code> no longer refuses to work except on contexts where it cannot possibly work.</li>
 <li><code>cuCtxGetApiVersion()</code> now returns a real CUDA API version.</li>
@@ -6133,12 +6417,14 @@ usual selection of many bugfixes and performance improvements.</p>
 <ul>
 <li>Fixed a crash that could occur when inline PTX contained type errors.</li>
 <li>Fixed miscompilation of certain PTX memory instructions in nvcc mode.</li>
-<li>Newly-supported PTX opcodes:</li>
+<li>Newly-supported PTX opcodes:<ul>
 <li><code>mbarrier</code></li>
 <li><code>cp.async.bulk.*</code></li>
 <li><code>cp.async.bulk.tensor.*</code></li>
 <li><code>cp.async.bulk.prefetch.*</code></li>
 <li><code>fence.proxy.async</code></li>
+</ul>
+</li>
 </ul>
 <h3 id="runtime-library_3">Runtime Library<a class="headerlink" href="#runtime-library_3" title="Permanent link">#</a></h3>
 <ul>
@@ -7266,6 +7552,8 @@ launch options are no-ops.</li>
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/tabbed-toc.js"></script>
+      
+        <script src="../../../javascripts/tab-anchors.js"></script>
       
     
   </body>

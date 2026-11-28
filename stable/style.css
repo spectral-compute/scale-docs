@@ -718,6 +718,12 @@
   color: #f5f5f5;
 }
 
+/* Inline code in table headers follows the header's light-on-dark colouring. */
+.md-typeset table:not([class]) th > code {
+  background-color: rgba(245, 245, 245, 0.12);
+  color: inherit;
+}
+
 /* --------------------------------------------------------------------------
    15. Back-to-Top Button
    -------------------------------------------------------------------------- */
@@ -983,7 +989,7 @@ html {
 }
 
 /* In the overview table, the bar goes under the percentage, to fit a column per CUDA version. */
-.md-typeset td > .apidiff-meter {
+.md-typeset td > a > .apidiff-meter {
   display: block;
   width: 100%;
   min-width: 2.5em;
@@ -996,8 +1002,37 @@ html {
   padding-right: 0.6em;
 }
 
-.md-typeset td:has(> .apidiff-meter) {
-  padding-left: 0.6em;
-  padding-right: 0.6em;
+/* The whole cell is the link, so the link takes the cell's padding. */
+.md-typeset td:has(> a > .apidiff-meter) {
+  padding: 0;
   text-align: center;
+}
+
+.md-typeset td > a:has(> .apidiff-meter) {
+  display: block;
+  padding: 0.9375em 0.6em;
+  text-decoration: none !important;
+  transition: background-color 0.15s ease;
+}
+
+.md-typeset td > a:has(> .apidiff-meter):is(:hover, :focus-visible) {
+  background-color: rgba(78, 45, 115, 0.1);
+}
+
+[data-md-color-scheme="slate"] .md-typeset td > a:has(> .apidiff-meter):is(:hover, :focus-visible) {
+  background-color: rgba(174, 132, 255, 0.14);
+}
+
+/* --------------------------------------------------------------------------
+   Content tabs
+   -------------------------------------------------------------------------- */
+
+/* Put a nested tab set's inputs at the top of the outermost tab set, so scrolling to a nested
+   tab's anchor shows the enclosing tabs' labels too (see javascripts/tab-anchors.js). */
+.md-typeset .tabbed-set .tabbed-set {
+  position: static;
+}
+
+.md-typeset .tabbed-set .tabbed-set > input {
+  top: 0;
 }

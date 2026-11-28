@@ -840,6 +840,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -924,7 +938,203 @@
   <span class="md-ellipsis">
     
   
-    VSCode Tutorial
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/zed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/neovim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neovim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emacs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/clion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/helix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/kate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/sublime-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sublime Text
   
 
     
@@ -1461,10 +1671,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#comparison-to-hip" class="md-nav__link">
+  <a href="#selecting-an-api-version" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Comparison to HIP
+        Selecting an API version
       
     </span>
   </a>
@@ -2315,10 +2525,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#comparison-to-hip" class="md-nav__link">
+  <a href="#selecting-an-api-version" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Comparison to HIP
+        Selecting an API version
       
     </span>
   </a>
@@ -2343,26 +2553,30 @@
 
 
 <h1 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">#</a></h1>
-<p>The SCALE runtime library is an implementation of the CUDA Math, Driver,
-and Runtime APIs. This is necessary when compiling CUDA programs for
-non-NVIDIA targets, where those libraries are not present.</p>
-<p>The SCALE Runtime library is only needed when building for AMD GPUs.
-When targeting NVIDIA, the NVIDIA libraries are used.</p>
-<p>The purpose of the SCALE runtime library is to provide CUDA-compatible
-implementations of these APIs, so existing programs work as expected.
-Each function in these APIs should do <em>exactly</em> what the corresponding
-one from NVIDIA's implementation does.</p>
-<p>See also:
-- <a href="../performance-tuning/">Performance Tuning Guide</a>
-- <a href="../runtime-extensions/">API Extensions</a></p>
-<h2 id="comparison-to-hip">Comparison to HIP<a class="headerlink" href="#comparison-to-hip" title="Permanent link">#</a></h2>
-<p>The SCALE runtime library differs from the HIP runtime library in that it
-aims to precisely replicate the behaviour of the corresponding CUDA APIs.</p>
-<p>Many HIP APIs do subtly different things compared to their similarly-named
-CUDA counterparts, creating a compatibility obstacle. The goals of the
-two libraries are therefore slightly different: HIP appears to aim to provide
-a "more sensible" API, whereas SCALE aims to provide a drop-in replacement
-that makes CUDA programs work out of the box.</p>
+<p>The SCALE runtime library is an implementation of the CUDA Runtime,
+Driver, and Math APIs.</p>
+<p>It serves two key functions:</p>
+<ul>
+<li>Providing CUDA-equivalent implementations of these APIs when building
+  CUDA programs for AMD targets (since the HIP runtime semantics do not
+  match up).</li>
+<li>Providing HIP-equivalent implementations of the HIP APIs when building
+  HIP programs for NVIDIA targets (by implementing the needed semantics
+  atop the CUDA APIs, which are then provided by NVIDIA's toolkit).</li>
+</ul>
+<h2 id="selecting-an-api-version">Selecting an API version<a class="headerlink" href="#selecting-an-api-version" title="Permanent link">#</a></h2>
+<p>The SCALE runtime library can impersonate every version of the CUDA
+API back to 8.0. You can select the API version you want in one of
+two ways:</p>
+<ol>
+<li>Set the <code>__SCALE_CUDA_VER_MAJOR__</code> and <code>__SCALE_CUDA_VER_MINOR__</code>
+   macros (to eg <code>12</code> and <code>9</code>, respectively). This must be done on
+   the command-line for <code>.cu</code> files, and before including any CUDA
+   headers for other types of file.</li>
+<li>Set the <code>SCALE_CUDA_VERSION</code> environment variable (to eg. <code>12.9</code>).</li>
+</ol>
+<p>This is required only at compile-time. The runtime library itself
+contains every version of every API function.</p>
 
 
 
@@ -2640,6 +2854,8 @@ that makes CUDA programs work out of the box.</p>
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/tabbed-toc.js"></script>
+      
+        <script src="../../../javascripts/tab-anchors.js"></script>
       
     
   </body>

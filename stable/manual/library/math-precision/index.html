@@ -840,6 +840,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -924,7 +938,203 @@
   <span class="md-ellipsis">
     
   
-    VSCode Tutorial
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/zed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/neovim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neovim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emacs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/clion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/helix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/kate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tutorials/editors/sublime-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sublime Text
   
 
     
@@ -2463,13 +2673,18 @@ most-correct representable value can it be?"</p>
 Other values were calculated by testing billions of arguments per function, chosen to
 include the values maths functions often get wrong and the ranges where results are hardest to
 get right (which varies somewhat based on the properties of each function).</p>
+<p>For the exhaustively tested functions with any error, each section's "Distribution of errors" shows
+the proportion of arguments with each error, among those whose result is finite. Hover over a
+percentage to see the exact count.</p>
 <p>Where a function's result is infinite or zero, its sign matches NVIDIA's implementation.
 Where it is a NaN, its sign and payload are unspecified: you'll get <em>a</em> NaN, but not
 necessarily the same one NVIDIA produce. This is because there would be a meaningful
 performance cost to matching that, and the correct way to compare NaNs (<code>isnan()</code>)
 doesn't care.</p>
 <p>The accuracy bounds cover all supported GPU architectures.</p>
-<p>Functions not listed here have an accuracy of 0ULP for all inputs.</p>
+<p>Functions not listed here have an accuracy of 0ULP for all inputs. Empty
+cells in the table indicate that the CUDA API does not provide that function
+for that data type.</p>
 <p>NVIDIA documents its own bounds in the
 <a href="https://docs.nvidia.com/cuda/cuda-programming-guide/05-appendices/mathematical-functions.html">CUDA Programming Guide</a>.</p>
 <h2 id="exponentials-and-logarithms">Exponentials and logarithms<a class="headerlink" href="#exponentials-and-logarithms" title="Permanent link">#</a></h2>
@@ -2481,7 +2696,6 @@ doesn't care.</p>
 <th><code>double</code></th>
 <th><code>__half</code></th>
 <th><code>__nv_bfloat16</code></th>
-<th>Notes</th>
 </tr>
 </thead>
 <tbody>
@@ -2491,7 +2705,6 @@ doesn't care.</p>
 <td>1</td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>exp2</code></td>
@@ -2499,7 +2712,6 @@ doesn't care.</p>
 <td>1</td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>exp10</code></td>
@@ -2507,13 +2719,11 @@ doesn't care.</p>
 <td>1</td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>expm1</code></td>
 <td><strong>1</strong></td>
 <td>1</td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -2523,7 +2733,6 @@ doesn't care.</p>
 <td>1</td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>log2</code></td>
@@ -2531,7 +2740,6 @@ doesn't care.</p>
 <td>1</td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>log10</code></td>
@@ -2539,7 +2747,6 @@ doesn't care.</p>
 <td>1</td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>log1p</code></td>
@@ -2547,10 +2754,81 @@ doesn't care.</p>
 <td>1</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
+<details class="info">
+<summary>Distribution of <code>float</code> errors</summary>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>0 ULP</th>
+<th>1 ULP</th>
+<th>2 ULP</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>exp</code></td>
+<td><span title="3,246,980,877 of 3,258,020,377 arguments">99.7%</span></td>
+<td><span title="11,039,500 of 3,258,020,377 arguments">0.339%</span></td>
+<td></td>
+<td>0.00339</td>
+</tr>
+<tr>
+<td><code>exp2</code></td>
+<td><span title="3,231,233,930 of 3,263,168,513 arguments">99.0%</span></td>
+<td><span title="31,934,583 of 3,263,168,513 arguments">0.979%</span></td>
+<td></td>
+<td>0.00979</td>
+</tr>
+<tr>
+<td><code>exp10</code></td>
+<td><span title="3,186,749,536 of 3,248,103,580 arguments">98.1%</span></td>
+<td><span title="61,354,044 of 3,248,103,580 arguments">1.89%</span></td>
+<td></td>
+<td>0.0189</td>
+</tr>
+<tr>
+<td><code>expm1</code></td>
+<td><span title="3,246,915,678 of 3,258,020,377 arguments">99.7%</span></td>
+<td><span title="11,104,699 of 3,258,020,377 arguments">0.341%</span></td>
+<td></td>
+<td>0.00341</td>
+</tr>
+<tr>
+<td><code>log</code></td>
+<td><span title="2,126,739,825 of 2,139,095,039 arguments">99.4%</span></td>
+<td><span title="12,355,214 of 2,139,095,039 arguments">0.578%</span></td>
+<td></td>
+<td>0.00578</td>
+</tr>
+<tr>
+<td><code>log2</code></td>
+<td><span title="1,084,763,435 of 2,139,095,039 arguments">50.7%</span></td>
+<td><span title="1,054,331,604 of 2,139,095,039 arguments">49.3%</span></td>
+<td></td>
+<td>0.493</td>
+</tr>
+<tr>
+<td><code>log10</code></td>
+<td><span title="1,103,640,466 of 2,139,095,039 arguments">51.6%</span></td>
+<td><span title="1,012,307,522 of 2,139,095,039 arguments">47.3%</span></td>
+<td><span title="23,147,051 of 2,139,095,039 arguments">1.08%</span></td>
+<td>0.495</td>
+</tr>
+<tr>
+<td><code>log1p</code></td>
+<td><span title="3,200,317,268 of 3,204,448,256 arguments">99.9%</span></td>
+<td><span title="4,130,988 of 3,204,448,256 arguments">0.129%</span></td>
+<td></td>
+<td>0.00129</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h2 id="powers-and-roots">Powers and roots<a class="headerlink" href="#powers-and-roots" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -2678,6 +2956,39 @@ doesn't care.</p>
 </tr>
 </tbody>
 </table>
+<details class="info">
+<summary>Distribution of <code>float</code> errors</summary>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>0 ULP</th>
+<th>1 ULP</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rsqrt</code></td>
+<td><span title="1,903,042,404 of 2,139,095,040 arguments">89.0%</span></td>
+<td><span title="236,052,636 of 2,139,095,040 arguments">11.0%</span></td>
+<td>0.11</td>
+</tr>
+<tr>
+<td><code>cbrt</code></td>
+<td><span title="4,275,985,456 of 4,278,190,080 arguments">99.9%</span></td>
+<td><span title="2,204,624 of 4,278,190,080 arguments">0.0515%</span></td>
+<td>0.000515</td>
+</tr>
+<tr>
+<td><code>rcbrt</code></td>
+<td><span title="4,276,511,808 of 4,278,190,080 arguments">99.96%</span></td>
+<td><span title="1,678,272 of 4,278,190,080 arguments">0.0392%</span></td>
+<td>0.000392</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h2 id="trigonometric-functions">Trigonometric functions<a class="headerlink" href="#trigonometric-functions" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -2687,7 +2998,6 @@ doesn't care.</p>
 <th><code>double</code></th>
 <th><code>__half</code></th>
 <th><code>__nv_bfloat16</code></th>
-<th>Notes</th>
 </tr>
 </thead>
 <tbody>
@@ -2697,7 +3007,6 @@ doesn't care.</p>
 <td>1</td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>cos</code></td>
@@ -2705,13 +3014,11 @@ doesn't care.</p>
 <td>1</td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>sincos</code></td>
 <td>1</td>
 <td>1</td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -2721,13 +3028,11 @@ doesn't care.</p>
 <td>2</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td><code>sinpi</code></td>
 <td><strong>1</strong></td>
 <td>1</td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -2737,13 +3042,11 @@ doesn't care.</p>
 <td>1</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td><code>sincospi</code></td>
 <td>1</td>
 <td>1</td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -2753,13 +3056,11 @@ doesn't care.</p>
 <td>1</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td><code>acos</code></td>
 <td><strong>1</strong></td>
 <td>1</td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -2769,7 +3070,6 @@ doesn't care.</p>
 <td>2</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td><code>atan2</code></td>
@@ -2777,10 +3077,81 @@ doesn't care.</p>
 <td>2</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
+<details class="info">
+<summary>Distribution of <code>float</code> errors</summary>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>0 ULP</th>
+<th>1 ULP</th>
+<th>2 ULP</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sin</code></td>
+<td><span title="3,940,576,898 of 4,278,190,080 arguments">92.1%</span></td>
+<td><span title="337,613,182 of 4,278,190,080 arguments">7.89%</span></td>
+<td></td>
+<td>0.0789</td>
+</tr>
+<tr>
+<td><code>cos</code></td>
+<td><span title="3,936,169,168 of 4,278,190,080 arguments">92.0%</span></td>
+<td><span title="342,020,912 of 4,278,190,080 arguments">7.99%</span></td>
+<td></td>
+<td>0.0799</td>
+</tr>
+<tr>
+<td><code>tan</code></td>
+<td><span title="3,609,009,538 of 4,278,190,080 arguments">84.4%</span></td>
+<td><span title="668,631,164 of 4,278,190,080 arguments">15.6%</span></td>
+<td><span title="549,378 of 4,278,190,080 arguments">0.0128%</span></td>
+<td>0.157</td>
+</tr>
+<tr>
+<td><code>sinpi</code></td>
+<td><span title="3,564,337,478 of 4,278,190,080 arguments">83.3%</span></td>
+<td><span title="713,852,602 of 4,278,190,080 arguments">16.7%</span></td>
+<td></td>
+<td>0.167</td>
+</tr>
+<tr>
+<td><code>cospi</code></td>
+<td><span title="4,245,599,224 of 4,278,190,080 arguments">99.2%</span></td>
+<td><span title="32,590,856 of 4,278,190,080 arguments">0.762%</span></td>
+<td></td>
+<td>0.00762</td>
+</tr>
+<tr>
+<td><code>asin</code></td>
+<td><span title="2,119,693,422 of 2,130,706,434 arguments">99.5%</span></td>
+<td><span title="10,445,050 of 2,130,706,434 arguments">0.490%</span></td>
+<td><span title="567,962 of 2,130,706,434 arguments">0.0267%</span></td>
+<td>0.00544</td>
+</tr>
+<tr>
+<td><code>acos</code></td>
+<td><span title="1,968,342,010 of 2,130,706,434 arguments">92.4%</span></td>
+<td><span title="162,364,424 of 2,130,706,434 arguments">7.62%</span></td>
+<td></td>
+<td>0.0762</td>
+</tr>
+<tr>
+<td><code>atan</code></td>
+<td><span title="4,085,681,662 of 4,278,190,082 arguments">95.5%</span></td>
+<td><span title="192,259,902 of 4,278,190,082 arguments">4.49%</span></td>
+<td><span title="248,518 of 4,278,190,082 arguments">0.00581%</span></td>
+<td>0.0451</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h2 id="hyperbolic-functions">Hyperbolic functions<a class="headerlink" href="#hyperbolic-functions" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -2790,7 +3161,6 @@ doesn't care.</p>
 <th><code>double</code></th>
 <th><code>__half</code></th>
 <th><code>__nv_bfloat16</code></th>
-<th>Notes</th>
 </tr>
 </thead>
 <tbody>
@@ -2800,13 +3170,11 @@ doesn't care.</p>
 <td>1</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td><code>cosh</code></td>
 <td><strong>1</strong></td>
 <td>1</td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -2816,7 +3184,6 @@ doesn't care.</p>
 <td>1</td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>tanh_approx</code></td>
@@ -2824,13 +3191,11 @@ doesn't care.</p>
 <td></td>
 <td><strong>0</strong></td>
 <td><strong>0</strong></td>
-<td></td>
 </tr>
 <tr>
 <td><code>asinh</code></td>
 <td><strong>2</strong></td>
 <td>2</td>
-<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -2840,7 +3205,6 @@ doesn't care.</p>
 <td>2</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 <tr>
 <td><code>atanh</code></td>
@@ -2848,10 +3212,67 @@ doesn't care.</p>
 <td>2</td>
 <td></td>
 <td></td>
-<td></td>
 </tr>
 </tbody>
 </table>
+<details class="info">
+<summary>Distribution of <code>float</code> errors</summary>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>0 ULP</th>
+<th>1 ULP</th>
+<th>2 ULP</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sinh</code></td>
+<td><span title="2,164,910,940 of 2,238,032,378 arguments">96.7%</span></td>
+<td><span title="73,076,452 of 2,238,032,378 arguments">3.27%</span></td>
+<td><span title="44,986 of 2,238,032,378 arguments">0.00201%</span></td>
+<td>0.0327</td>
+</tr>
+<tr>
+<td><code>cosh</code></td>
+<td><span title="2,187,625,716 of 2,238,032,378 arguments">97.7%</span></td>
+<td><span title="50,406,662 of 2,238,032,378 arguments">2.25%</span></td>
+<td></td>
+<td>0.0225</td>
+</tr>
+<tr>
+<td><code>tanh</code></td>
+<td><span title="4,272,786,360 of 4,278,190,082 arguments">99.9%</span></td>
+<td><span title="5,403,722 of 4,278,190,082 arguments">0.126%</span></td>
+<td></td>
+<td>0.00126</td>
+</tr>
+<tr>
+<td><code>asinh</code></td>
+<td><span title="3,630,434,050 of 4,278,190,080 arguments">84.9%</span></td>
+<td><span title="647,754,672 of 4,278,190,080 arguments">15.1%</span></td>
+<td><span title="1,358 of 4,278,190,080 arguments">0.0000317%</span></td>
+<td>0.151</td>
+</tr>
+<tr>
+<td><code>acosh</code></td>
+<td><span title="776,849,897 of 1,073,741,824 arguments">72.3%</span></td>
+<td><span title="296,890,223 of 1,073,741,824 arguments">27.7%</span></td>
+<td><span title="1,704 of 1,073,741,824 arguments">0.000159%</span></td>
+<td>0.277</td>
+</tr>
+<tr>
+<td><code>atanh</code></td>
+<td><span title="2,079,129,444 of 2,130,706,432 arguments">97.6%</span></td>
+<td><span title="51,575,456 of 2,130,706,432 arguments">2.42%</span></td>
+<td><span title="1,532 of 2,130,706,432 arguments">0.0000719%</span></td>
+<td>0.0242</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h2 id="error-and-gamma-functions">Error and gamma functions<a class="headerlink" href="#error-and-gamma-functions" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -2919,6 +3340,95 @@ doesn't care.</p>
 </tr>
 </tbody>
 </table>
+<details class="info">
+<summary>Distribution of <code>float</code> errors</summary>
+<table>
+<thead>
+<tr>
+<th>Function</th>
+<th>0 ULP</th>
+<th>1 ULP</th>
+<th>2 ULP</th>
+<th>3 ULP</th>
+<th>4 ULP</th>
+<th>5 ULP</th>
+<th>Mean</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>erf</code></td>
+<td><span title="4,248,600,232 of 4,278,190,082 arguments">99.3%</span></td>
+<td><span title="29,589,850 of 4,278,190,082 arguments">0.692%</span></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.00692</td>
+</tr>
+<tr>
+<td><code>erfc</code></td>
+<td><span title="4,108,935,556 of 4,278,190,082 arguments">96.0%</span></td>
+<td><span title="166,736,452 of 4,278,190,082 arguments">3.90%</span></td>
+<td><span title="2,517,906 of 4,278,190,082 arguments">0.0589%</span></td>
+<td><span title="168 of 4,278,190,082 arguments">0.00000393%</span></td>
+<td></td>
+<td></td>
+<td>0.0402</td>
+</tr>
+<tr>
+<td><code>erfinv</code></td>
+<td><span title="1,874,976,760 of 2,130,706,432 arguments">88.0%</span></td>
+<td><span title="255,721,386 of 2,130,706,432 arguments">12.0%</span></td>
+<td><span title="8,286 of 2,130,706,432 arguments">0.000389%</span></td>
+<td></td>
+<td></td>
+<td></td>
+<td>0.12</td>
+</tr>
+<tr>
+<td><code>erfcinv</code></td>
+<td><span title="521,351,335 of 1,073,741,823 arguments">48.6%</span></td>
+<td><span title="490,312,303 of 1,073,741,823 arguments">45.7%</span></td>
+<td><span title="61,165,323 of 1,073,741,823 arguments">5.70%</span></td>
+<td><span title="912,862 of 1,073,741,823 arguments">0.0850%</span></td>
+<td></td>
+<td></td>
+<td>0.573</td>
+</tr>
+<tr>
+<td><code>erfcx</code></td>
+<td><span title="2,425,600,439 of 3,231,063,648 arguments">75.1%</span></td>
+<td><span title="776,976,147 of 3,231,063,648 arguments">24.0%</span></td>
+<td><span title="28,486,943 of 3,231,063,648 arguments">0.882%</span></td>
+<td><span title="119 of 3,231,063,648 arguments">0.00000368%</span></td>
+<td></td>
+<td></td>
+<td>0.258</td>
+</tr>
+<tr>
+<td><code>tgamma</code></td>
+<td><span title="2,193,708,368 of 2,353,801,487 arguments">93.2%</span></td>
+<td><span title="158,393,899 of 2,353,801,487 arguments">6.73%</span></td>
+<td><span title="1,694,482 of 2,353,801,487 arguments">0.0720%</span></td>
+<td><span title="4,738 of 2,353,801,487 arguments">0.000201%</span></td>
+<td></td>
+<td></td>
+<td>0.0687</td>
+</tr>
+<tr>
+<td><code>lgamma</code></td>
+<td><span title="2,817,940,606 of 3,334,778,765 arguments">84.5%</span></td>
+<td><span title="496,405,365 of 3,334,778,765 arguments">14.9%</span></td>
+<td><span title="19,906,353 of 3,334,778,765 arguments">0.597%</span></td>
+<td><span title="525,438 of 3,334,778,765 arguments">0.0158%</span></td>
+<td><span title="987 of 3,334,778,765 arguments">0.0000296%</span></td>
+<td><span title="16 of 3,334,778,765 arguments">0.000000480%</span></td>
+<td>0.161</td>
+</tr>
+</tbody>
+</table>
+</details>
 <h2 id="bessel-functions">Bessel functions<a class="headerlink" href="#bessel-functions" title="Permanent link">#</a></h2>
 <table>
 <thead>
@@ -3257,6 +3767,8 @@ doesn't care.</p>
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/tabbed-toc.js"></script>
+      
+        <script src="../../../javascripts/tab-anchors.js"></script>
       
     
   </body>

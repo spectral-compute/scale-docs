@@ -868,17 +868,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next steps
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -952,6 +941,20 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1041,7 +1044,203 @@
   <span class="md-ellipsis">
     
   
-    VSCode Tutorial
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/zed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/neovim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neovim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emacs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/clion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/helix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/kate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/sublime-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sublime Text
   
 
     
@@ -2426,17 +2625,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next steps
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2472,7 +2660,7 @@ switch target GPU vendor (NVIDIA vs. AMD).</p>
 </ol>
 <h2 id="the-easy-way-scaleenv">The easy way: <code>scaleenv</code><a class="headerlink" href="#the-easy-way-scaleenv" title="Permanent link">#</a></h2>
 <p>SCALE offers a "<code>venv</code>-flavoured" environment management script to allow
-"magically" building CUDA projects. This set PATH and other environment variables
+"magically" building CUDA projects. This sets <code>PATH</code> and other environment variables
 that affect buildsystems (eg. CMake), instructing them to use SCALE's compiler
 and/or libraries, as appropriate.</p>
 <p>The concept is simple:</p>
@@ -2480,7 +2668,7 @@ and/or libraries, as appropriate.</p>
 <li>Activate the <code>scaleenv</code> for the GPU target you want to build for.</li>
 <li>Run the commands you normally use to build the project.</li>
 </ol>
-<p>To activate a scaleenv:</p>
+<p>To activate <code>scaleenv</code>:</p>
 <div class="highlight"><pre><span></span><code># AMD
 source /opt/scale/bin/scaleenv gfx1201
 
@@ -2496,7 +2684,7 @@ the build method we use for <a href="https://github.com/spectral-compute/scale-v
 </div>
 <h2 id="identifying-gpu-target">Identifying GPU Target<a class="headerlink" href="#identifying-gpu-target" title="Permanent link">#</a></h2>
 <p>If you don't know what target ID to use for your GPUs, here's how:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">AMD</label><label for="__tabbed_1_2">NVIDIA</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="amd" name="__tabbed_1" type="radio" /><input id="nvidia" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="amd">AMD</label><label for="nvidia">NVIDIA</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Commands for getting info about AMD GPUs:</p>
@@ -2521,16 +2709,8 @@ nvidia-smi
 </div>
 </div>
 <h2 id="how-it-really-works">How it really works<a class="headerlink" href="#how-it-really-works" title="Permanent link">#</a></h2>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">NVIDIA</label><label for="__tabbed_2_2">AMD</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="amd_1" name="__tabbed_2" type="radio" /><input id="nvidia_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="amd_1">AMD</label><label for="nvidia_1">NVIDIA</label></div>
 <div class="tabbed-content">
-<div class="tabbed-block">
-<p>When building CUDA programs, buildsystems typically ask nvcc where to
-find the CUDA libraries (cudart and friends) by parsing the output
-of <code>nvcc -v</code>.</p>
-<p>By placing the SCALE compiler first in <code>PATH</code>, it is picked up and used
-instead of NVIDIA nvcc. Then, it reports the library locations appropriately
-to cause the build system to link the NVIDIA CUDA runtime.</p>
-</div>
 <div class="tabbed-block">
 <p>To allow compilation without build system changes, SCALE provides a series of
 directories that are recognised by build systems as being CUDA Toolkit
@@ -2566,14 +2746,16 @@ such as:</p>
 <p>Support for multiple GPU architectures in a single binary ("Fat binaries")
 is in development.</p>
 </div>
+<div class="tabbed-block">
+<p>When building CUDA programs, buildsystems typically ask nvcc where to
+find the CUDA libraries (cudart and friends) by parsing the output
+of <code>nvcc -v</code>.</p>
+<p>By placing the SCALE compiler first in <code>PATH</code>, it is picked up and used
+instead of NVIDIA nvcc. Then, it reports the library locations appropriately
+to cause the build system to link the NVIDIA CUDA runtime.</p>
 </div>
 </div>
-<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
-<ul>
-<li>Learn about <a href="../../compiler/dialects/">CUDA dialects</a></li>
-<li>Explore <a href="../../compiler/diagnostics/">diagnostics</a> or <a href="../../compiler/optimisation-flags/">optimisation</a> flags.</li>
-<li><a href="../../../contact/report-a-bug/">Report a bug</a></li>
-</ul>
+</div>
 
 
 
@@ -2851,6 +3033,8 @@ is in development.</p>
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/tabbed-toc.js"></script>
+      
+        <script src="../../../javascripts/tab-anchors.js"></script>
       
     
   </body>

@@ -840,6 +840,20 @@
       
         
       
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
     
     
     
@@ -924,7 +938,203 @@
   <span class="md-ellipsis">
     
   
-    VSCode Tutorial
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/editors/zed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/editors/neovim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neovim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/editors/emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emacs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/editors/clion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/editors/helix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/editors/kate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="manual/tutorials/editors/sublime-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sublime Text
   
 
     
@@ -2350,12 +2560,11 @@
 
 <h1 id="scale-by-spectral-compute">SCALE by Spectral Compute<a class="headerlink" href="#scale-by-spectral-compute" title="Permanent link">#</a></h1>
 <h2 id="what-is-scale">What is SCALE?<a class="headerlink" href="#what-is-scale" title="Permanent link">#</a></h2>
-<p>SCALE is a CUDA-compatible GPU programming toolkit targeting both
+<p>SCALE is a CUDA/HIP-compatible GPU programming toolkit targeting both
 NVIDIA and AMD GPUs.</p>
-<p>Instead of porting programs away from CUDA, SCALE offers a vendor-neutral platform
+<p>Instead of porting programs, SCALE offers a vendor-neutral platform
 that allows users to keep their existing codebases without compromising on performance
 or developer productivity.</p>
-<p>Any questions, suggestions, or bug reports? <a href="contact/join-our-discord/">Join our community</a> and talk with our dev team directly.</p>
 <h2 id="what-can-scale-do">What can SCALE do?<a class="headerlink" href="#what-can-scale-do" title="Permanent link">#</a></h2>
 <p>Examples of what SCALE can be used for:</p>
 <ul>
@@ -2363,7 +2572,7 @@ or developer productivity.</p>
   with zero code changes. Inline asm? No problem.</li>
 <li><a href="manual/compiler/diagnostic-reference/">Provide valuable compiler diagnostics</a>,
   helping you spot problems early.</li>
-<li><a href="manual/tutorials/editors/vscode/">IDE integration</a> that properly understands CUDA.</li>
+<li><a href="manual/tutorials/editors/editors/">Editor integration</a> that properly understands CUDA.</li>
 <li>Improve the performance of CUDA programs on NVIDIA GPUs (sometimes).</li>
 </ul>
 <h2 id="how-does-it-work">How does it work?<a class="headerlink" href="#how-does-it-work" title="Permanent link">#</a></h2>
@@ -2372,8 +2581,8 @@ or developer productivity.</p>
 <li>A drop-in replacement for NVIDIA <code>nvcc</code>, capable of compiling nvcc-dialect
   CUDA for AMD &amp; NVIDIA GPUs.</li>
 <li>An implementation of the CUDA runtime, driver and math APIs for AMD GPUs.</li>
-<li>Wrapper libraries providing the "CUDA-X" APIs by delegating to the
-  corresponding ROCm libraries for AMD GPUs.</li>
+<li>Implementations of the "CUDA-X" APIs (cuBLAS etc.), either via recompiled
+  rocm libraries, or our own CUDA code.</li>
 </ul>
 <p>For NVIDIA targets, SCALE replaces <code>nvcc</code>,
 offering improved compiler diagnostics and - sometimes - performance.</p>
@@ -2390,11 +2599,11 @@ environment.</p>
 <p>Join our <a href="contact/join-our-discord/">Discord</a> to let us know what projects are missing, or support our mission by contributing yourself.</p>
 <h2 id="which-gpus-are-supported">Which GPUs are supported?<a class="headerlink" href="#which-gpus-are-supported" title="Permanent link">#</a></h2>
 <p>Below is a list of currently supported GPU targets.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">AMD</label><label for="__tabbed_1_2">NVIDIA</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="amd" name="__tabbed_1" type="radio" /><input id="nvidia" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="amd">AMD</label><label for="nvidia">NVIDIA</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Full technical specifications <a href="https://rocm.docs.amd.com/en/latest/reference/gpu-arch-specs.html">available here</a>.</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Enterprise</label><label for="__tabbed_2_2">Consumer</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="amd-enterprise" name="__tabbed_2" type="radio" /><input id="amd-consumer" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="amd-enterprise">Enterprise</label><label for="amd-consumer">Consumer</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
@@ -2931,6 +3140,8 @@ to support multiple GPU vendors.</p>
       <script src="assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="javascripts/tabbed-toc.js"></script>
+      
+        <script src="javascripts/tab-anchors.js"></script>
       
     
   </body>

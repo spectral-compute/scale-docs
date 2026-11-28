@@ -863,17 +863,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next steps
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -919,6 +908,20 @@
   
     
     
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
       
         
       
@@ -1008,7 +1011,203 @@
   <span class="md-ellipsis">
     
   
-    VSCode Tutorial
+    Visual Studio Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/zed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zed
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/neovim/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neovim
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/emacs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Emacs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/clion/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/helix/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/kate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Kate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../editors/sublime-text/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sublime Text
   
 
     
@@ -2360,17 +2559,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#next-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Next steps
-      
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -2389,17 +2577,19 @@
 
 
 <h1 id="compile-hip-with-scale">Compile HIP with SCALE<a class="headerlink" href="#compile-hip-with-scale" title="Permanent link">#</a></h1>
-<p>Like with CUDA, Compiling HIP programs with SCALE can usually be done using the exact same
+<p>Compiling HIP programs with SCALE can usually be done using the same
 commands that you'd use with ROCM.</p>
-<p>To compile HIP, we use a tool called <code>shoulder</code>, which translates HIP calls to CUDA.
-This means you can compile your HIP program using our compiler and runtime, for AMD.</p>
-<p>Support for NVIDIA's runtime and/or compiler is coming soon.</p>
+<p>Just like CUDA programs built with SCALE, HIP programs use the SCALE
+compiler, and run on the SCALE runtime library (AMD) or the NVIDIA
+CUDA Runtime (NVIDIA).</p>
+<p>To compile HIP, we use a tool called <code>shoulder</code>, to inject an appropriate
+API mapping header into the build.</p>
 <h2 id="the-easy-way-shoulderenv">The easy way: <code>shoulder/env</code><a class="headerlink" href="#the-easy-way-shoulderenv" title="Permanent link">#</a></h2>
 <p>Shoulder offers a "<code>venv</code>-flavoured" environment management script to allow
-"magically" building HIP projects. This set PATH and other environment variables
+building HIP projects. This sets <code>PATH</code> and other environment variables
 that affect buildsystems (eg. CMake), instructing them to use shoulder, SCALE's compiler,
 and/or libraries, as appropriate.</p>
-<p>The concept is simple:</p>
+<p>Usage is simple:</p>
 <ol>
 <li>Activate the environment for the GPU target you want to build for.</li>
 <li>Run the commands you normally use to build the project.</li>
@@ -2410,7 +2600,7 @@ source /opt/scale/shoulder/env /opt/scale gfx1201
 </code></pre></div>
 <p>You can exit by typing <code>shoulder deactivate</code> or closing your terminal. </p>
 <p>HIP programs built with shoulder should be able to link to ROC/HIP maths
-libraries (rocBLAS, rocRAND, ...), however we don't currently build all of them.
+libraries (rocBLAS, rocRAND, ...), however we don't currently ship all of them.
 We expect to ship a wider range of maths libraries soon.</p>
 <h2 id="identifying-gpu-target">Identifying GPU Target<a class="headerlink" href="#identifying-gpu-target" title="Permanent link">#</a></h2>
 <p>If you don't know what target ID to use for your GPUs, here's how:</p>
@@ -2422,11 +2612,6 @@ scaleinfo
 </code></pre></div>
 <p>If the <code>scaleinfo</code> command is not found, ensure
   that <code>&lt;SCALE install path&gt;/bin</code> is in <code>PATH</code>.</p>
-<h2 id="next-steps">Next steps<a class="headerlink" href="#next-steps" title="Permanent link">#</a></h2>
-<ul>
-<li>Explore <a href="../../compiler/diagnostics/">diagnostics</a> or <a href="../../compiler/optimisation-flags/">optimisation</a> flags.</li>
-<li><a href="../../../contact/report-a-bug/">Report a bug</a></li>
-</ul>
 
 
 
@@ -2704,6 +2889,8 @@ scaleinfo
       <script src="../../../assets/javascripts/bundle.d7400e89.min.js"></script>
       
         <script src="../../../javascripts/tabbed-toc.js"></script>
+      
+        <script src="../../../javascripts/tab-anchors.js"></script>
       
     
   </body>
