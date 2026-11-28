@@ -17,7 +17,7 @@ Examples of what SCALE can be used for:
   with zero code changes. Inline asm? No problem.
 - [Provide valuable compiler diagnostics](./manual/compiler/diagnostic-reference.md),
   helping you spot problems early.
-- [IDE integration](./manual/tutorials/editors/vscode.md) that properly understands CUDA.
+- [Editor integration](./manual/tutorials/editors/editors.md) that properly understands CUDA.
 - Improve the performance of CUDA programs on NVIDIA GPUs (sometimes).
 
 ## How does it work?

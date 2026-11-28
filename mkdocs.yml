@@ -161,6 +161,13 @@ nav:
           - Editor Integration:
               - manual/tutorials/editors/editors.md
               - manual/tutorials/editors/vscode.md
+              - manual/tutorials/editors/zed.md
+              - manual/tutorials/editors/neovim.md
+              - manual/tutorials/editors/emacs.md
+              - manual/tutorials/editors/clion.md
+              - manual/tutorials/editors/helix.md
+              - manual/tutorials/editors/kate.md
+              - manual/tutorials/editors/sublime-text.md
 
   - Compiler:
       - CUDA Language:
