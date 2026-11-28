@@ -11,6 +11,10 @@ Other values were calculated by testing billions of arguments per function, chos
 include the values maths functions often get wrong and the ranges where results are hardest to
 get right (which varies somewhat based on the properties of each function).
 
+For the exhaustively tested functions with any error, each section's "Distribution of errors" shows
+the proportion of arguments with each error, among those whose result is finite. Hover over a
+percentage to see the exact count.
+
 Where a function's result is infinite or zero, its sign matches NVIDIA's implementation.
 Where it is a NaN, its sign and payload are unspecified: you'll get *a* NaN, but not
 necessarily the same one NVIDIA produce. This is because there would be a meaningful
