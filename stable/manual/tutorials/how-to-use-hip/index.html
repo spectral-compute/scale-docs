@@ -842,10 +842,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-easy-way-shoulderenv" class="md-nav__link">
+  <a href="#the-easy-way-scaleenv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The easy way: shoulder/env
+        The easy way: scaleenv
       
     </span>
   </a>
@@ -2538,10 +2538,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#the-easy-way-shoulderenv" class="md-nav__link">
+  <a href="#the-easy-way-scaleenv" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The easy way: shoulder/env
+        The easy way: scaleenv
       
     </span>
   </a>
@@ -2584,11 +2584,11 @@ compiler, and run on the SCALE runtime library (AMD) or the NVIDIA
 CUDA Runtime (NVIDIA).</p>
 <p>To compile HIP, we use a tool called <code>shoulder</code>, to inject an appropriate
 API mapping header into the build.</p>
-<h2 id="the-easy-way-shoulderenv">The easy way: <code>shoulder/env</code><a class="headerlink" href="#the-easy-way-shoulderenv" title="Permanent link">#</a></h2>
-<p>Shoulder offers a "<code>venv</code>-flavoured" environment management script to allow
-building HIP projects. This sets <code>PATH</code> and other environment variables
-that affect buildsystems (eg. CMake), instructing them to use shoulder, SCALE's compiler,
-and/or libraries, as appropriate.</p>
+<h2 id="the-easy-way-scaleenv">The easy way: <code>scaleenv</code><a class="headerlink" href="#the-easy-way-scaleenv" title="Permanent link">#</a></h2>
+<p><em>TL;DR - the steps are the same as <a href="../how-to-use/">building cuda with scale</a>:
+activating <code>scaleenv</code> sets up your environment for building both cuda and hip.</em></p>
+<p>Building either cuda or hip code shouldn't require a conflicting environment. As
+such, shoulder just uses the same <code>scaleenv</code> script as building cuda code does.</p>
 <p>Usage is simple:</p>
 <ol>
 <li>Activate the environment for the GPU target you want to build for.</li>
@@ -2596,9 +2596,9 @@ and/or libraries, as appropriate.</p>
 </ol>
 <p>To activate it:</p>
 <div class="highlight"><pre><span></span><code># AMD
-source /opt/scale/shoulder/env /opt/scale gfx1201
+source /opt/scale/bin/scaleenv /opt/scale gfx1201
 </code></pre></div>
-<p>You can exit by typing <code>shoulder deactivate</code> or closing your terminal. </p>
+<p>You can exit by typing <code>scaleenv deactivate</code> or closing your terminal.</p>
 <p>HIP programs built with shoulder should be able to link to ROC/HIP maths
 libraries (rocBLAS, rocRAND, ...), however we don't currently ship all of them.
 We expect to ship a wider range of maths libraries soon.</p>
