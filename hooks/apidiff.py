@@ -200,6 +200,13 @@ def on_page_content(html, page, config, files):
     Material drops a heading's section if the heading has data-search-exclude."""
     if page.file.src_uri not in map(page_uri, diffs):
         return html
+
+    # pymdownx.tabbed slugifies the tab IDs after MkDocs collects the page's anchors, so MkDocs's
+    # anchor validation would reject the overview's links to the tabs. It validates after rendering
+    # every page.
+    for tag in re.findall(r'<input [^>]*name="__tabbed_[^>]*>', html):
+        page.present_anchor_ids.update(re.findall(r' id="([^"]+)"', tag))
+
     blocks = html.split('<div class="tabbed-block">')
     for i in range(1, len(blocks) - 1): # The newest is last.
         blocks[i] = re.sub(r"<(h[1-6]) ", r"<\1 data-search-exclude ", blocks[i])
