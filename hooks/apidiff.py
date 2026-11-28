@@ -11,6 +11,7 @@ import os
 import re
 
 from mkdocs.structure.files import File
+from pymdownx.slugs import slugify
 
 log = logging.getLogger("mkdocs.hooks.apidiff")
 
@@ -95,6 +96,19 @@ def page_uri(api):
     return f"{OUT_DIR}/{api}-api.md"
 
 
+def tab_title(version):
+    return f"CUDA {version}"
+
+
+# Must match pymdownx.tabbed's slugify in mkdocs.yml, which gives each tab's input that id. Material
+# selects the tab whose input is the URL fragment.
+tab_slug = slugify(case = "lower")
+
+
+def tab_link(api, version):
+    return f"{api}-api.md#{tab_slug(tab_title(version), '-')}"
+
+
 def on_config(config):
     diffs.clear()
     diffs_dir = os.path.normpath(os.path.join(os.path.dirname(config.config_file_path), DIFFS_DIR))
@@ -154,7 +168,7 @@ def on_files(files, config):
             # Oldest first, with the newest selected.
             for v, d in reversed(versions.items()):
                 select = "+" if v == next(iter(versions)) else ""
-                md += f'==={select} "CUDA {v}"\n\n{indent(d.meter())}\n\n{indent(d.body)}\n'
+                md += f'==={select} "{tab_title(v)}"\n\n{indent(d.meter())}\n\n{indent(d.body)}\n'
         else:
             d = next(iter(versions.values()))
             md += f"{d.meter()}\n\n{d.body}"
@@ -166,13 +180,13 @@ def on_page_markdown(markdown, page, config, files):
     if page.file.src_uri != INDEX or not diffs:
         return markdown
     versions = sorted({v for vs in diffs.values() for v in vs}, key = version_key)
-    rows = ["| API | " + " | ".join(f"CUDA {v}" for v in versions) + " |",
+    rows = ["| API | " + " | ".join(tab_title(v) for v in versions) + " |",
             "|---|" + "---|" * len(versions)]
     for api, vs in diffs.items():
         if APIS[api].versioned:
-            cells = [vs[v].cell() if v in vs else "" for v in versions]
+            cells = [f"[{vs[v].cell()}]({tab_link(api, v)})" if v in vs else "" for v in versions]
         else:
-            cells = [""] * (len(versions) - 1) + [next(iter(vs.values())).cell()]
+            cells = [""] * (len(versions) - 1) + [f"[{next(iter(vs.values())).cell()}]({api}-api.md)"]
         rows.append(f"| [{APIS[api].title}]({api}-api.md) | " + " | ".join(cells) + " |")
     for api in diffs:
         if not APIS[api].versioned:

@@ -7,7 +7,7 @@ When compiling for NVIDIA GPUs, NVIDIA's own libraries are used. In that
 case, you'll have access to the same set of APIs as are provided by that
 version of the NVIDIA CUDA Toolkit.
 
-Click an API name to see a detailed breakdown in `diff` format.
+Click an API name or percentage to see a detailed breakdown in `diff` format.
 
 <!-- apidiff-index -->
 
