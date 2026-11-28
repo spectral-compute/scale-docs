@@ -1,28 +1,28 @@
 # Overview
 
-The SCALE runtime library is an implementation of the CUDA Math, Driver,
-and Runtime APIs. This is necessary when compiling CUDA programs for
-non-NVIDIA targets, where those libraries are not present.
+The SCALE runtime library is an implementation of the CUDA Runtime,
+Driver, and Math APIs.
 
-The SCALE Runtime library is only needed when building for AMD GPUs.
-When targeting NVIDIA, the NVIDIA libraries are used.
+It serves two key functions:
 
-The purpose of the SCALE runtime library is to provide CUDA-compatible
-implementations of these APIs, so existing programs work as expected.
-Each function in these APIs should do _exactly_ what the corresponding
-one from NVIDIA's implementation does.
+- Providing CUDA-equivalent implementations of these APIs when building
+  CUDA programs for AMD targets (since the HIP runtime semantics do not
+  match up).
+- Providing HIP-equivalent implementations of the HIP APIs when building
+  HIP programs for NVIDIA targets (by implementing the needed semantics
+  atop the CUDA APIs, which are then provided by NVIDIA's toolkit).
 
-See also:
-- [Performance Tuning Guide](./performance-tuning.md)
-- [API Extensions](./runtime-extensions.md)
+## Selecting an API version
 
-## Comparison to HIP
+The SCALE runtime library can impersonate every version of the CUDA
+API back to 8.0. You can select the API version you want in one of
+two ways:
 
-The SCALE runtime library differs from the HIP runtime library in that it
-aims to precisely replicate the behaviour of the corresponding CUDA APIs.
+1. Set the `__SCALE_CUDA_VER_MAJOR__` and `__SCALE_CUDA_VER_MINOR__`
+   macros (to eg `12` and `9`, respectively). This must be done on
+   the command-line for `.cu` files, and before including any CUDA
+   headers for other types of file.
+2. Set the `SCALE_CUDA_VERSION` environment variable (to eg. `12.9`).
 
-Many HIP APIs do subtly different things compared to their similarly-named
-CUDA counterparts, creating a compatibility obstacle. The goals of the
-two libraries are therefore slightly different: HIP appears to aim to provide
-a "more sensible" API, whereas SCALE aims to provide a drop-in replacement
-that makes CUDA programs work out of the box.
+This is required only at compile-time. The runtime library itself
+contains every version of every API function.

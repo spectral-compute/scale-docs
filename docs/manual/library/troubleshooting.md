@@ -45,6 +45,11 @@ To write code that works correctly on both platforms:
 - Avoid hardcoding the constant "32" to represent warp size, instead using
   the global `warpSize` available on all platforms.
 
+## Graphics interop
+
+OpenGL interop requires `AMD_DEBUG=noexporteddcc` to be set in the GL process environment, so Mesa decompresses DCC on DMABUF export.
+Export it yourself if not using `scaleenv`.
+
 ## Mysterious problems
 
 Try `scalediag`. This is a program shipped with SCALE that attempts to identify

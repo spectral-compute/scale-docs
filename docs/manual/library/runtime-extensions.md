@@ -28,8 +28,3 @@ if (e != cudaSuccess) {
 
 The error accessed by this API is the same one you'd get from using the CUDA
 API `cudaGetLastError()`, just more descriptive.
-
-## Graphics interop
-
-OpenGL interop requires `AMD_DEBUG=noexporteddcc` to be set in the GL process environment, so Mesa decompresses DCC on DMABUF export.
-Export it yourself if not using `scaleenv`.

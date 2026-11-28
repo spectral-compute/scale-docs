@@ -22,7 +22,7 @@ There are three ways to compile CUDA files:
 ## The easy way: `scaleenv`
 
 SCALE offers a "`venv`-flavoured" environment management script to allow
-"magically" building CUDA projects. This set PATH and other environment variables
+"magically" building CUDA projects. This sets `PATH` and other environment variables
 that affect buildsystems (eg. CMake), instructing them to use SCALE's compiler
 and/or libraries, as appropriate.
 
@@ -31,7 +31,7 @@ The concept is simple:
 1. Activate the `scaleenv` for the GPU target you want to build for.
 2. Run the commands you normally use to build the project.
 
-To activate a scaleenv:
+To activate `scaleenv`:
 
 ```
 # AMD
@@ -84,16 +84,6 @@ If you don't know what target ID to use for your GPUs, here's how:
 
 ## How it really works
 
-=== "NVIDIA"
-
-    When building CUDA programs, buildsystems typically ask nvcc where to
-    find the CUDA libraries (cudart and friends) by parsing the output
-    of `nvcc -v`.
-
-    By placing the SCALE compiler first in `PATH`, it is picked up and used
-    instead of NVIDIA nvcc. Then, it reports the library locations appropriately
-    to cause the build system to link the NVIDIA CUDA runtime.
-
 === "AMD"
 
     To allow compilation without build system changes, SCALE provides a series of
@@ -136,8 +126,12 @@ If you don't know what target ID to use for your GPUs, here's how:
     Support for multiple GPU architectures in a single binary ("Fat binaries")
     is in development.
 
-## Next steps
+=== "NVIDIA"
 
-- Learn about [CUDA dialects](../compiler/dialects.md)
-- Explore [diagnostics](../compiler/diagnostics.md) or [optimisation](../compiler/optimisation-flags.md) flags.
-- [Report a bug](../../contact/report-a-bug.md)
+    When building CUDA programs, buildsystems typically ask nvcc where to
+    find the CUDA libraries (cudart and friends) by parsing the output
+    of `nvcc -v`.
+
+    By placing the SCALE compiler first in `PATH`, it is picked up and used
+    instead of NVIDIA nvcc. Then, it reports the library locations appropriately
+    to cause the build system to link the NVIDIA CUDA runtime.
